@@ -114,8 +114,8 @@ def main():
     # 4. Optional claim ledger status check (claims.py)
     claims_file = ws / "claims.json"
     if claims_file.is_file():
-        rc, out, err = run_cmd([sys.executable, str(RL_SCRIPTS / "claims.py"), "-w", str(ws), "summary"])
-        result["checks"]["claims_ledger"] = {"returncode": rc, "stdout": out.strip()}
+        rc, out, err = run_cmd([sys.executable, str(RL_SCRIPTS / "claims.py"), "-w", str(ws), "check"])
+        result["checks"]["claims_ledger"] = {"returncode": rc, "stdout": out.strip(), "stderr": err.strip()}
         if rc != 0:
             result["blocked"] = True
             result["block_reasons"].append(f"claims ledger check failed (rc={rc})")
@@ -128,18 +128,33 @@ def main():
             sys.executable, str(RL_SCRIPTS / "run_audit.py"),
             "--workspace", str(ws),
             "--report", str(report_p),
-            "--logs", *logs_p,
             "--provider", a.reviewer_provider,
             "--model", a.reviewer_model,
             "--out", str(audit_out),
         ]
-        if scripts_p:
-            cmd_xmr.extend(["--scripts", *scripts_p])
+        for lp in logs_p:
+            cmd_xmr.extend(["--logs", lp])
+        for sp in scripts_p:
+            cmd_xmr.extend(["--scripts", sp])
         rc, out, err = run_cmd(cmd_xmr)
-        result["checks"]["cross_model_audit"] = {"returncode": rc, "review_path": str(audit_out), "stdout": out[-1000:]}
-        if rc != 0:
+        review_verdict = None
+        if audit_out.is_file():
+            import re as _re
+            txt = audit_out.read_text(encoding="utf-8", errors="ignore")
+            m = _re.search(r'"overall_decision"\s*:\s*"([A-Z_]+)"', txt)
+            if m:
+                review_verdict = m.group(1)
+        result["checks"]["cross_model_audit"] = {
+            "returncode": rc,
+            "review_path": str(audit_out),
+            "overall_decision": review_verdict,
+            "stdout": out[-1000:],
+        }
+        if rc != 0 or (review_verdict and review_verdict.startswith("BLOCK_")):
             result["blocked"] = True
-            result["block_reasons"].append(f"path-isolated cross-model audit blocked (rc={rc}, see {audit_out})")
+            result["block_reasons"].append(
+                f"path-isolated cross-model audit blocked (decision={review_verdict}, rc={rc}, see {audit_out})"
+            )
 
     if a.out_json:
         out_fp = Path(a.out_json) if Path(a.out_json).is_absolute() else (ws / a.out_json)

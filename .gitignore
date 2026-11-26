@@ -51,3 +51,4 @@ patent/
 # Verifiable-ARIS evaluation artifacts
 eval_runs/
 external/
+examples/verifiable-aris-walkthrough/demo_output/
