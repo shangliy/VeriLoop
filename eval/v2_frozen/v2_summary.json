@@ -1,0 +1,672 @@
+{
+  "total_records": 304,
+  "groups": {
+    "claude-haiku::path_only": {
+      "n": 48,
+      "errors": 0,
+      "tp": 21,
+      "fn": 3,
+      "fp": 2,
+      "tn": 22,
+      "precision": 0.9130434782608695,
+      "recall": 0.875,
+      "recall_ci": [
+        0.6899611872949993,
+        0.9565566591987655
+      ],
+      "f1": 0.8936170212765957,
+      "fpr": 0.08333333333333333,
+      "clean_yield": 0.9166666666666666,
+      "clean_yield_ci": [
+        0.741511978067893,
+        0.9768411847029567
+      ],
+      "balanced_acc": 0.8958333333333333,
+      "stability": {
+        "workspaces": 16,
+        "repeats": 3,
+        "unanimous_rate": 0.875,
+        "repeat_f1_mean": 0.8944444444444445,
+        "repeat_f1_sd": 0.03367876570272818
+      }
+    },
+    "claude-haiku::with_summary": {
+      "n": 48,
+      "errors": 0,
+      "tp": 22,
+      "fn": 2,
+      "fp": 0,
+      "tn": 24,
+      "precision": 1.0,
+      "recall": 0.9166666666666666,
+      "recall_ci": [
+        0.741511978067893,
+        0.9768411847029567
+      ],
+      "f1": 0.9565217391304348,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.8620237953250198,
+        1.0
+      ],
+      "balanced_acc": 0.9583333333333333,
+      "stability": {
+        "workspaces": 16,
+        "repeats": 3,
+        "unanimous_rate": 0.9375,
+        "repeat_f1_mean": 0.9555555555555556,
+        "repeat_f1_sd": 0.03849001794597504
+      }
+    },
+    "claude-sonnet::path_only": {
+      "n": 48,
+      "errors": 0,
+      "tp": 18,
+      "fn": 6,
+      "fp": 0,
+      "tn": 24,
+      "precision": 1.0,
+      "recall": 0.75,
+      "recall_ci": [
+        0.55100555994846,
+        0.8800063377140499
+      ],
+      "f1": 0.8571428571428571,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.8620237953250198,
+        1.0
+      ],
+      "balanced_acc": 0.875,
+      "stability": {
+        "workspaces": 16,
+        "repeats": 3,
+        "unanimous_rate": 1.0,
+        "repeat_f1_mean": 0.8571428571428571,
+        "repeat_f1_sd": 0.0
+      }
+    },
+    "claude-sonnet::with_summary": {
+      "n": 48,
+      "errors": 0,
+      "tp": 18,
+      "fn": 6,
+      "fp": 0,
+      "tn": 24,
+      "precision": 1.0,
+      "recall": 0.75,
+      "recall_ci": [
+        0.55100555994846,
+        0.8800063377140499
+      ],
+      "f1": 0.8571428571428571,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.8620237953250198,
+        1.0
+      ],
+      "balanced_acc": 0.875,
+      "stability": {
+        "workspaces": 16,
+        "repeats": 3,
+        "unanimous_rate": 1.0,
+        "repeat_f1_mean": 0.8571428571428571,
+        "repeat_f1_sd": 0.0
+      }
+    },
+    "codex-cli::path_only": {
+      "n": 48,
+      "errors": 0,
+      "tp": 21,
+      "fn": 3,
+      "fp": 0,
+      "tn": 24,
+      "precision": 1.0,
+      "recall": 0.875,
+      "recall_ci": [
+        0.6899611872949993,
+        0.9565566591987655
+      ],
+      "f1": 0.9333333333333333,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.8620237953250198,
+        1.0
+      ],
+      "balanced_acc": 0.9375,
+      "stability": {
+        "workspaces": 16,
+        "repeats": 3,
+        "unanimous_rate": 1.0,
+        "repeat_f1_mean": 0.9333333333333333,
+        "repeat_f1_sd": 0.0
+      }
+    },
+    "codex-cli::with_summary": {
+      "n": 5,
+      "errors": 43,
+      "tp": 1,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_ci": [
+        0.20654931437723745,
+        1.0
+      ],
+      "f1": 1.0,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "balanced_acc": 1.0,
+      "stability": {
+        "workspaces": 5,
+        "repeats": 3,
+        "unanimous_rate": 1.0,
+        "repeat_f1_mean": 0.3333333333333333,
+        "repeat_f1_sd": 0.5773502691896257
+      }
+    },
+    "layer1_mechanical::deterministic": {
+      "n": 16,
+      "errors": 0,
+      "tp": 6,
+      "fn": 2,
+      "fp": 1,
+      "tn": 7,
+      "precision": 0.8571428571428571,
+      "recall": 0.75,
+      "recall_ci": [
+        0.40927543031016883,
+        0.9285207872478909
+      ],
+      "f1": 0.7999999999999999,
+      "fpr": 0.125,
+      "clean_yield": 0.875,
+      "clean_yield_ci": [
+        0.5291118177871464,
+        0.9775825085499433
+      ],
+      "balanced_acc": 0.8125,
+      "stability": {
+        "workspaces": 16,
+        "repeats": 1,
+        "unanimous_rate": 1.0,
+        "repeat_f1_mean": 0.7999999999999999,
+        "repeat_f1_sd": 0.0
+      }
+    }
+  },
+  "by_executor_family": {
+    "claude-haiku::path_only::claude-haiku": {
+      "n": 24,
+      "errors": 0,
+      "tp": 9,
+      "fn": 3,
+      "fp": 2,
+      "tn": 10,
+      "precision": 0.8181818181818182,
+      "recall": 0.75,
+      "recall_ci": [
+        0.46769466506643426,
+        0.9110583316059453
+      ],
+      "f1": 0.7826086956521738,
+      "fpr": 0.16666666666666666,
+      "clean_yield": 0.8333333333333334,
+      "clean_yield_ci": [
+        0.5519691377470266,
+        0.9530348578161463
+      ],
+      "balanced_acc": 0.7916666666666667
+    },
+    "claude-haiku::path_only::codex-cli": {
+      "n": 24,
+      "errors": 0,
+      "tp": 12,
+      "fn": 0,
+      "fp": 0,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "f1": 1.0,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "balanced_acc": 1.0
+    },
+    "claude-haiku::with_summary::claude-haiku": {
+      "n": 24,
+      "errors": 0,
+      "tp": 10,
+      "fn": 2,
+      "fp": 0,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 0.8333333333333334,
+      "recall_ci": [
+        0.5519691377470266,
+        0.9530348578161463
+      ],
+      "f1": 0.9090909090909091,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "balanced_acc": 0.9166666666666667
+    },
+    "claude-haiku::with_summary::codex-cli": {
+      "n": 24,
+      "errors": 0,
+      "tp": 12,
+      "fn": 0,
+      "fp": 0,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "f1": 1.0,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "balanced_acc": 1.0
+    },
+    "claude-sonnet::path_only::claude-haiku": {
+      "n": 24,
+      "errors": 0,
+      "tp": 6,
+      "fn": 6,
+      "fp": 0,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_ci": [
+        0.2537815976337061,
+        0.7462184023662939
+      ],
+      "f1": 0.6666666666666666,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "balanced_acc": 0.75
+    },
+    "claude-sonnet::path_only::codex-cli": {
+      "n": 24,
+      "errors": 0,
+      "tp": 12,
+      "fn": 0,
+      "fp": 0,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "f1": 1.0,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "balanced_acc": 1.0
+    },
+    "claude-sonnet::with_summary::claude-haiku": {
+      "n": 24,
+      "errors": 0,
+      "tp": 6,
+      "fn": 6,
+      "fp": 0,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_ci": [
+        0.2537815976337061,
+        0.7462184023662939
+      ],
+      "f1": 0.6666666666666666,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "balanced_acc": 0.75
+    },
+    "claude-sonnet::with_summary::codex-cli": {
+      "n": 24,
+      "errors": 0,
+      "tp": 12,
+      "fn": 0,
+      "fp": 0,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "f1": 1.0,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "balanced_acc": 1.0
+    },
+    "codex-cli::path_only::claude-haiku": {
+      "n": 24,
+      "errors": 0,
+      "tp": 9,
+      "fn": 3,
+      "fp": 0,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 0.75,
+      "recall_ci": [
+        0.46769466506643426,
+        0.9110583316059453
+      ],
+      "f1": 0.8571428571428571,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "balanced_acc": 0.875
+    },
+    "codex-cli::path_only::codex-cli": {
+      "n": 24,
+      "errors": 0,
+      "tp": 12,
+      "fn": 0,
+      "fp": 0,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "f1": 1.0,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.7575059933447592,
+        1.0
+      ],
+      "balanced_acc": 1.0
+    },
+    "codex-cli::with_summary::claude-haiku": {
+      "n": 5,
+      "errors": 19,
+      "tp": 1,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_ci": [
+        0.20654931437723745,
+        1.0
+      ],
+      "f1": 1.0,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "balanced_acc": 1.0
+    },
+    "codex-cli::with_summary::codex-cli": {
+      "n": 0,
+      "errors": 24,
+      "tp": 0,
+      "fn": 0,
+      "fp": 0,
+      "tn": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "recall_ci": [
+        0.0,
+        0.0
+      ],
+      "f1": 0.0,
+      "fpr": 0.0,
+      "clean_yield": 0.0,
+      "clean_yield_ci": [
+        0.0,
+        0.0
+      ],
+      "balanced_acc": 0.0
+    },
+    "layer1_mechanical::deterministic::claude-haiku": {
+      "n": 8,
+      "errors": 0,
+      "tp": 3,
+      "fn": 1,
+      "fp": 0,
+      "tn": 4,
+      "precision": 1.0,
+      "recall": 0.75,
+      "recall_ci": [
+        0.30064184258240184,
+        0.9544127391902995
+      ],
+      "f1": 0.8571428571428571,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "balanced_acc": 0.875
+    },
+    "layer1_mechanical::deterministic::codex-cli": {
+      "n": 8,
+      "errors": 0,
+      "tp": 3,
+      "fn": 1,
+      "fp": 1,
+      "tn": 3,
+      "precision": 0.75,
+      "recall": 0.75,
+      "recall_ci": [
+        0.30064184258240184,
+        0.9544127391902995
+      ],
+      "f1": 0.75,
+      "fpr": 0.25,
+      "clean_yield": 0.75,
+      "clean_yield_ci": [
+        0.30064184258240184,
+        0.9544127391902995
+      ],
+      "balanced_acc": 0.75
+    }
+  },
+  "dual_layer_union": {
+    "L1+claude-haiku::path_only": {
+      "n": 48,
+      "errors": 0,
+      "tp": 24,
+      "fn": 0,
+      "fp": 5,
+      "tn": 19,
+      "precision": 0.8275862068965517,
+      "recall": 1.0,
+      "recall_ci": [
+        0.8620237953250198,
+        1.0
+      ],
+      "f1": 0.9056603773584906,
+      "fpr": 0.20833333333333334,
+      "clean_yield": 0.7916666666666666,
+      "clean_yield_ci": [
+        0.5952954674681133,
+        0.9075517464714814
+      ],
+      "balanced_acc": 0.8958333333333333
+    },
+    "L1+claude-haiku::with_summary": {
+      "n": 48,
+      "errors": 0,
+      "tp": 24,
+      "fn": 0,
+      "fp": 3,
+      "tn": 21,
+      "precision": 0.8888888888888888,
+      "recall": 1.0,
+      "recall_ci": [
+        0.8620237953250198,
+        1.0
+      ],
+      "f1": 0.9411764705882353,
+      "fpr": 0.125,
+      "clean_yield": 0.875,
+      "clean_yield_ci": [
+        0.6899611872949993,
+        0.9565566591987655
+      ],
+      "balanced_acc": 0.9375
+    },
+    "L1+claude-sonnet::path_only": {
+      "n": 48,
+      "errors": 0,
+      "tp": 21,
+      "fn": 3,
+      "fp": 3,
+      "tn": 21,
+      "precision": 0.875,
+      "recall": 0.875,
+      "recall_ci": [
+        0.6899611872949993,
+        0.9565566591987655
+      ],
+      "f1": 0.875,
+      "fpr": 0.125,
+      "clean_yield": 0.875,
+      "clean_yield_ci": [
+        0.6899611872949993,
+        0.9565566591987655
+      ],
+      "balanced_acc": 0.875
+    },
+    "L1+claude-sonnet::with_summary": {
+      "n": 48,
+      "errors": 0,
+      "tp": 21,
+      "fn": 3,
+      "fp": 3,
+      "tn": 21,
+      "precision": 0.875,
+      "recall": 0.875,
+      "recall_ci": [
+        0.6899611872949993,
+        0.9565566591987655
+      ],
+      "f1": 0.875,
+      "fpr": 0.125,
+      "clean_yield": 0.875,
+      "clean_yield_ci": [
+        0.6899611872949993,
+        0.9565566591987655
+      ],
+      "balanced_acc": 0.875
+    },
+    "L1+codex-cli::path_only": {
+      "n": 48,
+      "errors": 0,
+      "tp": 24,
+      "fn": 0,
+      "fp": 3,
+      "tn": 21,
+      "precision": 0.8888888888888888,
+      "recall": 1.0,
+      "recall_ci": [
+        0.8620237953250198,
+        1.0
+      ],
+      "f1": 0.9411764705882353,
+      "fpr": 0.125,
+      "clean_yield": 0.875,
+      "clean_yield_ci": [
+        0.6899611872949993,
+        0.9565566591987655
+      ],
+      "balanced_acc": 0.9375
+    },
+    "L1+codex-cli::with_summary": {
+      "n": 5,
+      "errors": 0,
+      "tp": 1,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_ci": [
+        0.20654931437723745,
+        1.0
+      ],
+      "f1": 1.0,
+      "fpr": 0.0,
+      "clean_yield": 1.0,
+      "clean_yield_ci": [
+        0.5101091635454027,
+        1.0
+      ],
+      "balanced_acc": 1.0
+    }
+  },
+  "paired_framing": {
+    "claude-haiku": {
+      "paired_n": 48,
+      "po_only_block": 2,
+      "ws_only_block": 1,
+      "mcnemar_p": 1.0
+    },
+    "claude-sonnet": {
+      "paired_n": 48,
+      "po_only_block": 0,
+      "ws_only_block": 0,
+      "mcnemar_p": 1.0
+    },
+    "codex-cli": {
+      "paired_n": 5,
+      "po_only_block": 0,
+      "ws_only_block": 0,
+      "mcnemar_p": 1.0
+    }
+  }
+}

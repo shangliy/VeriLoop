@@ -132,6 +132,57 @@ def main():
                 f"Prec={sm['precision']*100:5.1f}% Rec={sm['recall']*100:5.1f}% F1={sm['f1']*100:5.1f}% Yield={sm['clean_yield']*100:5.1f}%"
             )
 
+    # Dual-Layer Union (Layer 1 mechanical OR Layer 2 LLM) on exact same frozen workspaces
+    l1_map = {
+        r["artifact_id"]: bool(r["predicted_defective"])
+        for r in rows
+        if r["reviewer"] == "layer1_mechanical" and r.get("predicted_defective") is not None
+    }
+    if l1_map:
+        print("\n=== DUAL-LAYER UNION (Layer 1 Mechanical OR Layer 2 LLM, ZERO OVERRIDES) ===")
+        summary["dual_layer_union"] = {}
+        for (rev, frm), items in sorted(groups.items()):
+            if rev == "layer1_mechanical":
+                continue
+            valid = [r for r in items if r.get("predicted_defective") is not None and r["artifact_id"] in l1_map]
+            if not valid:
+                continue
+            union_recs = [
+                {**r, "predicted_defective": bool(r["predicted_defective"]) or l1_map[r["artifact_id"]]}
+                for r in valid
+            ]
+            um = confusion_metrics(union_recs)
+            summary["dual_layer_union"][f"L1+{rev}::{frm}"] = um
+            print(
+                f"L1+{rev:15s} | {frm:13s} | n={um['n']:3d} | TP/FN={um['tp']:2d}/{um['fn']:<2d} | TN/FP={um['tn']:2d}/{um['fp']:<2d} | "
+                f"Prec={um['precision']*100:5.1f}% | Rec={um['recall']*100:5.1f}% | F1={um['f1']*100:5.1f}% | "
+                f"FPR={um['fpr']*100:5.1f}% | Yield={um['clean_yield']*100:5.1f}% | BalAcc={um['balanced_acc']*100:5.1f}%"
+            )
+
+    # Paired Framing Comparison (path_only vs with_summary on identical (artifact_id, repeat))
+    print("\n=== PAIRED FRAMING COMPARISON (path_only vs with_summary) ===")
+    summary["paired_framing"] = {}
+    reviewers = sorted({r["reviewer"] for r in rows if r["reviewer"] != "layer1_mechanical"})
+    for rev in reviewers:
+        po = {
+            (r["artifact_id"], int(r["repeat"])): bool(r["predicted_defective"])
+            for r in rows
+            if r["reviewer"] == rev and r["framing"] == "path_only" and r.get("predicted_defective") is not None
+        }
+        ws = {
+            (r["artifact_id"], int(r["repeat"])): bool(r["predicted_defective"])
+            for r in rows
+            if r["reviewer"] == rev and r["framing"] == "with_summary" and r.get("predicted_defective") is not None
+        }
+        shared = sorted(set(po) & set(ws))
+        if not shared:
+            continue
+        b = sum(1 for k in shared if po[k] and not ws[k])
+        c = sum(1 for k in shared if (not po[k]) and ws[k])
+        pval = mcnemar_exact_p(b, c)
+        summary["paired_framing"][rev] = {"paired_n": len(shared), "po_only_block": b, "ws_only_block": c, "mcnemar_p": pval}
+        print(f"  {rev:15s} | paired_n={len(shared):2d} | discordant=(po_only={b}, ws_only={c}) | exact McNemar p={pval:.6f}")
+
     if args.json_out:
         Path(args.json_out).write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
