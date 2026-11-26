@@ -112,9 +112,9 @@ class TestTraceNumbers(unittest.TestCase):
             "p_value=1.0 slope=-0.4438 intercept=53.989 offset=0.20 F=0.6470+/-0.0030\n"
         )
         rep = self.ws / "rep.md"
-        # Report uses Unicode minus U+2212, spaced binary subtraction, "+/-", and 3-decimal trailing zeros
+        # Report uses Unicode minus U+2212, spaced binary subtraction, LaTeX en-dash range, "+/-", and 3-decimal trailing zeros
         rep.write_text(
-            "| fit | S = 53.989 \u2212 0.4438*P | b = \u22120.4438 | p = 1.000 | off = 0.200 | 0.6470 +/- 0.0030 | stats.txt |\n"
+            "| fit | S = 53.989 \u2212 0.4438*P | b = \u22120.4438 | p = 1.000 | off = 0.200 | 0.6470 +/- 0.0030 | range 0.200--0.6470 | stats.txt |\n"
         )
         r = run_tracer(rep, self.logs)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
@@ -122,7 +122,7 @@ class TestTraceNumbers(unittest.TestCase):
         self.assertEqual(len(data["untraced"]), 0)
         self.assertEqual(len(data["sign_mismatches"]), 0)
         self.assertEqual(len(data["unpaired_pairs"]), 0)
-        self.assertEqual(data["traced"], 7)
+        self.assertEqual(data["traced"], 9)
 
     def test_percent_fraction_unit_conversion_no_false_positive(self):
         (self.logs / "spr.txt").write_text(

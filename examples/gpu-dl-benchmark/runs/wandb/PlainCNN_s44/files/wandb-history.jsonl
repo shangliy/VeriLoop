@@ -1,0 +1,8 @@
+{"method": "PlainCNN", "seed": 44, "epoch": 1, "train_acc": 0.63038, "train_loss": 1.027954, "val_acc": 0.7392, "val_loss": 0.698486}
+{"method": "PlainCNN", "seed": 44, "epoch": 2, "train_acc": 0.7523, "train_loss": 0.668699, "val_acc": 0.7597, "val_loss": 0.601475}
+{"method": "PlainCNN", "seed": 44, "epoch": 3, "train_acc": 0.78424, "train_loss": 0.582831, "val_acc": 0.7842, "val_loss": 0.589214}
+{"method": "PlainCNN", "seed": 44, "epoch": 4, "train_acc": 0.80514, "train_loss": 0.530763, "val_acc": 0.8037, "val_loss": 0.508626}
+{"method": "PlainCNN", "seed": 44, "epoch": 5, "train_acc": 0.82514, "train_loss": 0.483609, "val_acc": 0.8206, "val_loss": 0.4639}
+{"method": "PlainCNN", "seed": 44, "epoch": 6, "train_acc": 0.83734, "train_loss": 0.450907, "val_acc": 0.8462, "val_loss": 0.42665}
+{"method": "PlainCNN", "seed": 44, "epoch": 7, "train_acc": 0.85214, "train_loss": 0.414384, "val_acc": 0.858, "val_loss": 0.391441}
+{"method": "PlainCNN", "seed": 44, "epoch": 8, "train_acc": 0.85972, "train_loss": 0.391121, "val_acc": 0.8574, "val_loss": 0.38785}

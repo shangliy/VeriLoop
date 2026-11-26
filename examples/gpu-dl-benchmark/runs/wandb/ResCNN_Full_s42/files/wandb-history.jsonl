@@ -1,0 +1,8 @@
+{"method": "ResCNN_Full", "seed": 42, "epoch": 1, "train_acc": 0.80646, "train_loss": 0.966152, "val_acc": 0.8418, "val_loss": 0.498064}
+{"method": "ResCNN_Full", "seed": 42, "epoch": 2, "train_acc": 0.88376, "train_loss": 0.788867, "val_acc": 0.8839, "val_loss": 0.409843}
+{"method": "ResCNN_Full", "seed": 42, "epoch": 3, "train_acc": 0.90826, "train_loss": 0.738895, "val_acc": 0.8874, "val_loss": 0.385245}
+{"method": "ResCNN_Full", "seed": 42, "epoch": 4, "train_acc": 0.91828, "train_loss": 0.713708, "val_acc": 0.9016, "val_loss": 0.388066}
+{"method": "ResCNN_Full", "seed": 42, "epoch": 5, "train_acc": 0.9315, "train_loss": 0.687293, "val_acc": 0.9153, "val_loss": 0.322557}
+{"method": "ResCNN_Full", "seed": 42, "epoch": 6, "train_acc": 0.94128, "train_loss": 0.665262, "val_acc": 0.9186, "val_loss": 0.31062}
+{"method": "ResCNN_Full", "seed": 42, "epoch": 7, "train_acc": 0.95296, "train_loss": 0.643968, "val_acc": 0.9209, "val_loss": 0.297369}
+{"method": "ResCNN_Full", "seed": 42, "epoch": 8, "train_acc": 0.96086, "train_loss": 0.629675, "val_acc": 0.9256, "val_loss": 0.286945}

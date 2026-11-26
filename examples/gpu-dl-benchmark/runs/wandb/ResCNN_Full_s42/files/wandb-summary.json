@@ -1,0 +1,12 @@
+{
+  "method": "ResCNN_Full",
+  "seed": 42,
+  "_step": 8,
+  "best_val_epoch": 8,
+  "best_val_acc": 0.9256,
+  "val_acc": 0.9256,
+  "test_acc": 0.921,
+  "test_loss": 0.29962,
+  "wall_time_s": 67.76,
+  "n_params": 308074
+}

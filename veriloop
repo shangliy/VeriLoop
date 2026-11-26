@@ -15,6 +15,16 @@ Subcommands:
   ./veriloop audit-paper [--no-lint]
                                     4-in-1 self-audit of paper/ (trace_numbers + citation_audit
                                     + bestpaper check_draft + check_figures)
+  ./veriloop verify-cites <doc> --bib <refs.bib> [--online] [--check-claims]
+                                    Hard literature verification gate (arXiv / Crossref / Semantic Scholar)
+  ./veriloop fetch-bib <id_or_query...> [--append-to refs.bib]
+                                    Fetch canonical BibTeX directly from arXiv / Crossref / S2 APIs
+  ./veriloop bind --inputs <runs...> [--out-dir paper/bound]
+                                    Auto-bind TensorBoard / W&B / CSV logs -> LaTeX macros, Booktabs & Okabe-Ito PDFs
+  ./veriloop review-ui --report <files...> --logs <logs...> [--serve] [--out review.html]
+                                    Interactive split-pane Web review UI linking manuscript numbers/cites to raw logs/code
+  ./veriloop gpu-showcase [--skip-train]
+                                    Run the real PyTorch GPU Fashion-MNIST -> paper-bind -> 8-page PDF -> gate showcase
   ./veriloop milestone-audit [args...]
                                     Independent dual-model milestone audit (latest Claude + latest
                                     Gemini in parallel on SHA-256 frozen artifacts -> action plan)
@@ -145,6 +155,16 @@ def main():
         sys.exit(run_lint_paper(rest))
     elif sub == "milestone-audit":
         passthrough([sys.executable, str(MDA_SCRIPT), *rest])
+    elif sub == "verify-cites":
+        passthrough([sys.executable, str(RL_SCRIPTS / "citation_audit.py"), *rest])
+    elif sub == "fetch-bib":
+        passthrough([sys.executable, str(RL_SCRIPTS / "citation_audit.py"), "--fetch-bib", *rest])
+    elif sub == "bind":
+        passthrough([sys.executable, str(ROOT / "tools/paper_bind.py"), *rest])
+    elif sub == "review-ui":
+        passthrough([sys.executable, str(ROOT / "tools/review_ui.py"), *rest])
+    elif sub == "gpu-showcase":
+        passthrough(["bash", str(ROOT / "examples/gpu-dl-benchmark/run_end_to_end.sh"), *rest])
     elif sub == "eval-v2":
         run_eval_v2(rest)
     elif sub == "audit-paper":

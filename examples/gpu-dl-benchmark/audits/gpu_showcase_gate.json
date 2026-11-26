@@ -1,0 +1,208 @@
+{
+  "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark",
+  "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/paper/gpu_showcase.tex",
+  "blocked": false,
+  "block_reasons": [],
+  "checks": {
+    "trace_numbers": {
+      "returncode": 0,
+      "summary": {
+        "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/paper/gpu_showcase.tex",
+        "log_files": 2,
+        "data_files": 0,
+        "skipped_large": [],
+        "traced": 6,
+        "untraced": [],
+        "sign_mismatches": [],
+        "wrong_logs": [],
+        "unpaired_pairs": [],
+        "mixed_rows": [],
+        "cited_stale": [],
+        "workspace_stale": [],
+        "common": 0
+      }
+    },
+    "audit_code": {
+      "returncode": 0,
+      "summary": {
+        "scripts_scanned": 1,
+        "counts": {
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "INFO": 0
+        },
+        "findings": []
+      }
+    },
+    "citation_audit": {
+      "returncode": 0,
+      "summary": {
+        "document": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/paper/gpu_showcase.tex",
+        "bib": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/paper/refs.bib",
+        "online_checked": false,
+        "claims_checked": false,
+        "pairs_count": 14,
+        "issues_count": 0,
+        "warnings_count": 0,
+        "issues": [],
+        "warnings": [],
+        "pairs": [
+          {
+            "line": 37,
+            "kind": "cite",
+            "key": "yang2026aris",
+            "sentence": "Autonomous research workflows~\\citep{yang2026aris} increasingly execute multi-seed deep learning experiments and author conference manuscripts end to end, yet manual transcription between experiment trackers and LaTeX tables remains a primary source of silent numerical discrepancies.",
+            "bib_title": "{ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration}",
+            "bib_author": "Ruofeng Yang and Yongcan Li and Shuai Li",
+            "bib_year": "2026",
+            "arxiv_id": "2605.03042",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 40,
+            "kind": "cite",
+            "key": "xiao2017fashion",
+            "sentence": "We evaluate four architectures on \\textsc{Fashion-MNIST}~\\citep{xiao2017fashion} to isolate the empirical effect of residual skip connections~\\citep{he2015deep}, batch normalization~\\citep{ioffe2015batch}, label smoothing~\\citep{szegedy2015rethinking}, decoupled weight decay~\\citep{loshchilov2017dec",
+            "bib_title": "{Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms}",
+            "bib_author": "Han Xiao and Kashif Rasul and Roland Vollgraf",
+            "bib_year": "2017",
+            "arxiv_id": "1708.07747",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 40,
+            "kind": "cite",
+            "key": "he2015deep",
+            "sentence": "We evaluate four architectures on \\textsc{Fashion-MNIST}~\\citep{xiao2017fashion} to isolate the empirical effect of residual skip connections~\\citep{he2015deep}, batch normalization~\\citep{ioffe2015batch}, label smoothing~\\citep{szegedy2015rethinking}, decoupled weight decay~\\citep{loshchilov2017dec",
+            "bib_title": "{Deep Residual Learning for Image Recognition}",
+            "bib_author": "Kaiming He and Xiangyu Zhang and Shaoqing Ren and Jian Sun",
+            "bib_year": "2015",
+            "arxiv_id": "1512.03385",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 40,
+            "kind": "cite",
+            "key": "ioffe2015batch",
+            "sentence": "We evaluate four architectures on \\textsc{Fashion-MNIST}~\\citep{xiao2017fashion} to isolate the empirical effect of residual skip connections~\\citep{he2015deep}, batch normalization~\\citep{ioffe2015batch}, label smoothing~\\citep{szegedy2015rethinking}, decoupled weight decay~\\citep{loshchilov2017dec",
+            "bib_title": "{Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift}",
+            "bib_author": "Sergey Ioffe and Christian Szegedy",
+            "bib_year": "2015",
+            "arxiv_id": "1502.03167",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 40,
+            "kind": "cite",
+            "key": "szegedy2015rethinking",
+            "sentence": "We evaluate four architectures on \\textsc{Fashion-MNIST}~\\citep{xiao2017fashion} to isolate the empirical effect of residual skip connections~\\citep{he2015deep}, batch normalization~\\citep{ioffe2015batch}, label smoothing~\\citep{szegedy2015rethinking}, decoupled weight decay~\\citep{loshchilov2017dec",
+            "bib_title": "{Rethinking the Inception Architecture for Computer Vision}",
+            "bib_author": "Christian Szegedy and Vincent Vanhoucke and Sergey Ioffe and Jonathon Shlens and Zbigniew Wojna",
+            "bib_year": "2015",
+            "arxiv_id": "1512.00567",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 40,
+            "kind": "cite",
+            "key": "loshchilov2017decoupled",
+            "sentence": "We evaluate four architectures on \\textsc{Fashion-MNIST}~\\citep{xiao2017fashion} to isolate the empirical effect of residual skip connections~\\citep{he2015deep}, batch normalization~\\citep{ioffe2015batch}, label smoothing~\\citep{szegedy2015rethinking}, decoupled weight decay~\\citep{loshchilov2017dec",
+            "bib_title": "{Decoupled Weight Decay Regularization}",
+            "bib_author": "Ilya Loshchilov and Frank Hutter",
+            "bib_year": "2017",
+            "arxiv_id": "1711.05101",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 40,
+            "kind": "cite",
+            "key": "loshchilov2016sgdr",
+            "sentence": "We evaluate four architectures on \\textsc{Fashion-MNIST}~\\citep{xiao2017fashion} to isolate the empirical effect of residual skip connections~\\citep{he2015deep}, batch normalization~\\citep{ioffe2015batch}, label smoothing~\\citep{szegedy2015rethinking}, decoupled weight decay~\\citep{loshchilov2017dec",
+            "bib_title": "{SGDR: Stochastic Gradient Descent with Warm Restarts}",
+            "bib_author": "Ilya Loshchilov and Frank Hutter",
+            "bib_year": "2016",
+            "arxiv_id": "1608.03983",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 44,
+            "kind": "cite",
+            "key": "xiao2017fashion",
+            "sentence": "We use the official \\textsc{Fashion-MNIST} benchmark~\\citep{xiao2017fashion} (60,000 training images and 10,000 test images, $28\\times 28$ grayscale across 10 classes).",
+            "bib_title": "{Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms}",
+            "bib_author": "Han Xiao and Kashif Rasul and Roland Vollgraf",
+            "bib_year": "2017",
+            "arxiv_id": "1708.07747",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 46,
+            "kind": "cite",
+            "key": "loshchilov2017decoupled",
+            "sentence": "Every model is trained for 8 epochs per seed across three independent random seeds (\\texttt{42}, \\texttt{43}, \\texttt{44}; batch size 256) on an NVIDIA GeForce RTX 3060 Ti GPU using AdamW~\\citep{loshchilov2017decoupled}.",
+            "bib_title": "{Decoupled Weight Decay Regularization}",
+            "bib_author": "Ilya Loshchilov and Frank Hutter",
+            "bib_year": "2017",
+            "arxiv_id": "1711.05101",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 53,
+            "kind": "cite",
+            "key": "he2015deep",
+            "sentence": "(3) \\texttt{ResCNN\\_NoReg} (308,074 parameters): a three-stage residual ConvNet with batch normalization~\\citep{he2015deep,ioffe2015batch}, constant learning rate, zero dropout, and zero label smoothing; and",
+            "bib_title": "{Deep Residual Learning for Image Recognition}",
+            "bib_author": "Kaiming He and Xiangyu Zhang and Shaoqing Ren and Jian Sun",
+            "bib_year": "2015",
+            "arxiv_id": "1512.03385",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 53,
+            "kind": "cite",
+            "key": "ioffe2015batch",
+            "sentence": "(3) \\texttt{ResCNN\\_NoReg} (308,074 parameters): a three-stage residual ConvNet with batch normalization~\\citep{he2015deep,ioffe2015batch}, constant learning rate, zero dropout, and zero label smoothing; and",
+            "bib_title": "{Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift}",
+            "bib_author": "Sergey Ioffe and Christian Szegedy",
+            "bib_year": "2015",
+            "arxiv_id": "1502.03167",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 54,
+            "kind": "cite",
+            "key": "szegedy2015rethinking",
+            "sentence": "(4) \\texttt{ResCNN\\_Full} (308,074 parameters): identical architecture augmented with dropout ($0.2$), label smoothing ($0.1$)~\\citep{szegedy2015rethinking}, weight decay ($10^{-4}$), and cosine annealing~\\citep{loshchilov2016sgdr}.",
+            "bib_title": "{Rethinking the Inception Architecture for Computer Vision}",
+            "bib_author": "Christian Szegedy and Vincent Vanhoucke and Sergey Ioffe and Jonathon Shlens and Zbigniew Wojna",
+            "bib_year": "2015",
+            "arxiv_id": "1512.00567",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 54,
+            "kind": "cite",
+            "key": "loshchilov2016sgdr",
+            "sentence": "(4) \\texttt{ResCNN\\_Full} (308,074 parameters): identical architecture augmented with dropout ($0.2$), label smoothing ($0.1$)~\\citep{szegedy2015rethinking}, weight decay ($10^{-4}$), and cosine annealing~\\citep{loshchilov2016sgdr}.",
+            "bib_title": "{SGDR: Stochastic Gradient Descent with Warm Restarts}",
+            "bib_author": "Ilya Loshchilov and Frank Hutter",
+            "bib_year": "2016",
+            "arxiv_id": "1608.03983",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 86,
+            "kind": "cite",
+            "key": "szegedy2015rethinking",
+            "sentence": "Conversely, raw unsmoothed test cross-entropy is slightly higher for \\texttt{ResCNN\\_Full} (\\vlRescnnFullTestLoss{}) than for \\texttt{ResCNN\\_NoReg} (\\vlRescnnNoregTestLoss{}), an expected effect of training with label smoothing~\\citep{szegedy2015rethinking}, which prevents overconfident logits whil",
+            "bib_title": "{Rethinking the Inception Architecture for Computer Vision}",
+            "bib_author": "Christian Szegedy and Vincent Vanhoucke and Sergey Ioffe and Jonathon Shlens and Zbigniew Wojna",
+            "bib_year": "2015",
+            "arxiv_id": "1512.00567",
+            "status": "BIB_FOUND_OFFLINE"
+          }
+        ]
+      }
+    }
+  }
+}

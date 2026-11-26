@@ -1,0 +1,8 @@
+{"method": "MLP_Baseline", "seed": 44, "epoch": 1, "train_acc": 0.81432, "train_loss": 0.513323, "val_acc": 0.8489, "val_loss": 0.398201}
+{"method": "MLP_Baseline", "seed": 44, "epoch": 2, "train_acc": 0.86934, "train_loss": 0.357059, "val_acc": 0.8667, "val_loss": 0.350105}
+{"method": "MLP_Baseline", "seed": 44, "epoch": 3, "train_acc": 0.8852, "train_loss": 0.312447, "val_acc": 0.8656, "val_loss": 0.357167}
+{"method": "MLP_Baseline", "seed": 44, "epoch": 4, "train_acc": 0.89136, "train_loss": 0.295126, "val_acc": 0.8773, "val_loss": 0.335332}
+{"method": "MLP_Baseline", "seed": 44, "epoch": 5, "train_acc": 0.897, "train_loss": 0.275387, "val_acc": 0.8794, "val_loss": 0.324281}
+{"method": "MLP_Baseline", "seed": 44, "epoch": 6, "train_acc": 0.90404, "train_loss": 0.256651, "val_acc": 0.8728, "val_loss": 0.348151}
+{"method": "MLP_Baseline", "seed": 44, "epoch": 7, "train_acc": 0.90858, "train_loss": 0.244128, "val_acc": 0.8797, "val_loss": 0.328377}
+{"method": "MLP_Baseline", "seed": 44, "epoch": 8, "train_acc": 0.91338, "train_loss": 0.230632, "val_acc": 0.8854, "val_loss": 0.316084}

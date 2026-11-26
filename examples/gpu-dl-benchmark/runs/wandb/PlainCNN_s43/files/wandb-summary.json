@@ -1,0 +1,12 @@
+{
+  "method": "PlainCNN",
+  "seed": 43,
+  "_step": 8,
+  "best_val_epoch": 8,
+  "best_val_acc": 0.8568,
+  "val_acc": 0.8568,
+  "test_acc": 0.848,
+  "test_loss": 0.41627,
+  "wall_time_s": 30.13,
+  "n_params": 93962
+}

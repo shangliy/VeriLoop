@@ -1,0 +1,8 @@
+{"method": "MLP_Baseline", "seed": 43, "epoch": 1, "train_acc": 0.81346, "train_loss": 0.515753, "val_acc": 0.8502, "val_loss": 0.399278}
+{"method": "MLP_Baseline", "seed": 43, "epoch": 2, "train_acc": 0.86792, "train_loss": 0.361097, "val_acc": 0.8572, "val_loss": 0.370263}
+{"method": "MLP_Baseline", "seed": 43, "epoch": 3, "train_acc": 0.88084, "train_loss": 0.319462, "val_acc": 0.8615, "val_loss": 0.377656}
+{"method": "MLP_Baseline", "seed": 43, "epoch": 4, "train_acc": 0.89194, "train_loss": 0.293412, "val_acc": 0.8749, "val_loss": 0.332422}
+{"method": "MLP_Baseline", "seed": 43, "epoch": 5, "train_acc": 0.89688, "train_loss": 0.275127, "val_acc": 0.8822, "val_loss": 0.326307}
+{"method": "MLP_Baseline", "seed": 43, "epoch": 6, "train_acc": 0.90124, "train_loss": 0.26057, "val_acc": 0.8831, "val_loss": 0.321524}
+{"method": "MLP_Baseline", "seed": 43, "epoch": 7, "train_acc": 0.91002, "train_loss": 0.242462, "val_acc": 0.8838, "val_loss": 0.335925}
+{"method": "MLP_Baseline", "seed": 43, "epoch": 8, "train_acc": 0.91294, "train_loss": 0.231094, "val_acc": 0.887, "val_loss": 0.318309}

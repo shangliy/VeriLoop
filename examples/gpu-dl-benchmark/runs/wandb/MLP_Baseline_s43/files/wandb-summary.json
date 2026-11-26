@@ -1,0 +1,12 @@
+{
+  "method": "MLP_Baseline",
+  "seed": 43,
+  "_step": 8,
+  "best_val_epoch": 8,
+  "best_val_acc": 0.887,
+  "val_acc": 0.887,
+  "test_acc": 0.8791,
+  "test_loss": 0.343626,
+  "wall_time_s": 31.85,
+  "n_params": 235146
+}

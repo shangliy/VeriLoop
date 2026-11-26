@@ -1,0 +1,52 @@
+# VeriLoop Paper-Bind Canonical Metrics Log (auto-generated; do not edit by hand)
+# generated_utc=2026-11-26T23:50:36.525750+00:00 sources=36 methods=4 metrics=3
+SOURCE format=tensorboard sha256=02d466b31a3459f5 points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s42/events.out.tfevents.MLP_Baseline.s42
+SOURCE format=tensorboard sha256=5af99841a6f509b4 points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s43/events.out.tfevents.MLP_Baseline.s43
+SOURCE format=tensorboard sha256=5de0d1d4883f2f6f points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s44/events.out.tfevents.MLP_Baseline.s44
+SOURCE format=tensorboard sha256=00af7ba447956801 points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s42/events.out.tfevents.PlainCNN.s42
+SOURCE format=tensorboard sha256=f7c6563d3cb3e9b3 points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s43/events.out.tfevents.PlainCNN.s43
+SOURCE format=tensorboard sha256=44dfc3502e0023e1 points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s44/events.out.tfevents.PlainCNN.s44
+SOURCE format=tensorboard sha256=d5d1a1f45e1462f4 points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s42/events.out.tfevents.ResCNN_Full.s42
+SOURCE format=tensorboard sha256=228bfcf6264f65df points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s43/events.out.tfevents.ResCNN_Full.s43
+SOURCE format=tensorboard sha256=c1cb03843ba2abd1 points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s44/events.out.tfevents.ResCNN_Full.s44
+SOURCE format=tensorboard sha256=5d3c9f2608aab6db points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s42/events.out.tfevents.ResCNN_NoReg.s42
+SOURCE format=tensorboard sha256=63f194cbb7ee9ddb points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s43/events.out.tfevents.ResCNN_NoReg.s43
+SOURCE format=tensorboard sha256=6242d17876dab2d3 points=26 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s44/events.out.tfevents.ResCNN_NoReg.s44
+SOURCE format=wandb_history sha256=1344dfc799152fbe points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=4563d7decbfe3c6a points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=e039181c3b5a25f1 points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=ad988d79e1190aca points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=22f638da96208af5 points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=ea73254bcfe767bd points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-summary.json
+SOURCE format=wandb_history sha256=bdb7dde6528a14ff points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=98041a5eeb328ba0 points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=5cdfb9c9839122a1 points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=9767ec39f1db7fa1 points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=540b80e3d6e04358 points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=35f3ba0c90d082a1 points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-summary.json
+SOURCE format=wandb_history sha256=3b60f6bf8038cc0b points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=782a1e7a98c2a765 points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=6dbde7f02756faf1 points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=9893002750028a91 points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=2d3ba4c7352b1dc0 points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=29476d2bdb46a6e1 points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-summary.json
+SOURCE format=wandb_history sha256=b11057dcdbb60199 points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=6cad45bbf0ad5d48 points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=9b7729241c9a3db6 points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=0da5219c8d5eed68 points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=055ea1ca840a41e5 points=32 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=0fe3d6ddb5656d31 points=7 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-summary.json
+
+BOUND MLP_Baseline | test_acc | n=3 | 0.8801±0.0021 [0.8750,0.8852] | pct=88.01±0.21% | s42=0.8825 s43=0.8791 s44=0.8788
+BOUND MLP_Baseline | test_loss | n=3 | 0.3424±0.0013 [0.3391,0.3458] | s42=0.3410 s43=0.3436 s44=0.3426
+BOUND MLP_Baseline | val_acc | n=3 | 0.8875±0.0024 [0.8815,0.8936] | pct=88.75±0.24% | s42=0.8902 s43=0.8870 s44=0.8854
+BOUND PlainCNN | test_acc | n=3 | 0.8495±0.0043 [0.8388,0.8602] | pct=84.95±0.43% | s42=0.8462 s43=0.8480 s44=0.8544
+BOUND PlainCNN | test_loss | n=3 | 0.4193±0.0065 [0.4032,0.4354] | s42=0.4268 s43=0.4163 s44=0.4149
+BOUND PlainCNN | val_acc | n=3 | 0.8564±0.0018 [0.8520,0.8609] | pct=85.64±0.18% | s42=0.8545 s43=0.8568 s44=0.8580
+BOUND ResCNN_Full | test_acc | n=3 | 0.9251±0.0036 [0.9163,0.9339] | pct=92.51±0.36% | s42=0.9210 s43=0.9271 s44=0.9272
+BOUND ResCNN_Full | test_loss | n=3 | 0.2926±0.0062 [0.2772,0.3081] | s42=0.2996 s43=0.2906 s44=0.2877
+BOUND ResCNN_Full | val_acc | n=3 | 0.9284±0.0026 [0.9219,0.9349] | pct=92.84±0.26% | s42=0.9256 s43=0.9288 s44=0.9308
+BOUND ResCNN_NoReg | test_acc | n=3 | 0.9086±0.0065 [0.8925,0.9246] | pct=90.86±0.65% | s42=0.9080 s43=0.9153 s44=0.9024
+BOUND ResCNN_NoReg | test_loss | n=3 | 0.2644±0.0135 [0.2308,0.2980] | s42=0.2615 s43=0.2526 s44=0.2791
+BOUND ResCNN_NoReg | val_acc | n=3 | 0.9128±0.0051 [0.9000,0.9255] | pct=91.28±0.51% | s42=0.9115 s43=0.9184 s44=0.9084
+COMPLETED_OK

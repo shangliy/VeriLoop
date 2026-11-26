@@ -1,0 +1,12 @@
+{
+  "method": "ResCNN_NoReg",
+  "seed": 42,
+  "_step": 8,
+  "best_val_epoch": 8,
+  "best_val_acc": 0.9115,
+  "val_acc": 0.9115,
+  "test_acc": 0.908,
+  "test_loss": 0.261459,
+  "wall_time_s": 67.88,
+  "n_params": 308074
+}

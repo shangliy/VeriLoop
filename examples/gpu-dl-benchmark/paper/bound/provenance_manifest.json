@@ -1,0 +1,670 @@
+{
+  "generated_utc": "2026-11-26T23:50:36.526380+00:00",
+  "bound_metrics_sha256": "fb29a971116250a67f074af2616b06cbb9c93b76634805709fd22c0a0a9459ed",
+  "sources": [
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s42/events.out.tfevents.MLP_Baseline.s42",
+      "format": "tensorboard",
+      "sha256": "02d466b31a3459f51a2e934bdfe8eefb78e8cfae906c1780491439585b1c5ecc",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s43/events.out.tfevents.MLP_Baseline.s43",
+      "format": "tensorboard",
+      "sha256": "5af99841a6f509b41844be7a7a7ba5cc296a8cba0adfd44058358accb15cb1dd",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s44/events.out.tfevents.MLP_Baseline.s44",
+      "format": "tensorboard",
+      "sha256": "5de0d1d4883f2f6f0688581e8fa8b8cdbf0fdf24283b6fee4bd97f9057cbf191",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s42/events.out.tfevents.PlainCNN.s42",
+      "format": "tensorboard",
+      "sha256": "00af7ba447956801209b217d48276ffeff5907ff99aa401dcf2c5a6489d1c893",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s43/events.out.tfevents.PlainCNN.s43",
+      "format": "tensorboard",
+      "sha256": "f7c6563d3cb3e9b31f8d4c433b8c0241d98e16282ab6b79d47b86b8c92e18202",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s44/events.out.tfevents.PlainCNN.s44",
+      "format": "tensorboard",
+      "sha256": "44dfc3502e0023e1e25236bb0e4835c372f7c85b84fb8ccfe68297e076007e71",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s42/events.out.tfevents.ResCNN_Full.s42",
+      "format": "tensorboard",
+      "sha256": "d5d1a1f45e1462f47ef8e1a65ea39d8292d5ffbfde83c74f3874b001c60c7b13",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s43/events.out.tfevents.ResCNN_Full.s43",
+      "format": "tensorboard",
+      "sha256": "228bfcf6264f65df7ee73c2fd03f271c3beec899a418c504152c47b5aa8eed56",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s44/events.out.tfevents.ResCNN_Full.s44",
+      "format": "tensorboard",
+      "sha256": "c1cb03843ba2abd18b192e56c0135a482247cf7aa8d97da184f0102e02c4767e",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s42/events.out.tfevents.ResCNN_NoReg.s42",
+      "format": "tensorboard",
+      "sha256": "5d3c9f2608aab6dbd65c005a42a7ddea7c3e20cc99c262e6bef586d01550ffde",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s43/events.out.tfevents.ResCNN_NoReg.s43",
+      "format": "tensorboard",
+      "sha256": "63f194cbb7ee9ddbbbb3caa0bef2e4454af56699fed083a7ae22125947b542e5",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s44/events.out.tfevents.ResCNN_NoReg.s44",
+      "format": "tensorboard",
+      "sha256": "6242d17876dab2d3ef20ce2df1aea464cd50785ab5bfb899f7a81357cd73ae27",
+      "points": 26
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "1344dfc799152fbeaa76faab201292836c17286ee16e011ffdb2a34d639f7b05",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "4563d7decbfe3c6a9698a37e67097fe13d28316f3cdc565acc894926a5196ddc",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "e039181c3b5a25f1eda02526c82f216856561b079aa294bfdcd69c9b6a470270",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "ad988d79e1190aca8a3f29324bda41d2604b09a08e3cfbf31ac10cad4304b520",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "22f638da96208af52190384c05828cac9d36d487e098fa0e72e1c5d8096ac25d",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "ea73254bcfe767bde41723c5403d2f71c2e6b32bd75ba9b9da1c35cf356a0b58",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "bdb7dde6528a14ff1a090f63eb5090805262d3d82a6f1323ea46a5a12d099506",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "98041a5eeb328ba0194b16176795914238753dc850300f9d01649a88b31f2aa3",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "5cdfb9c9839122a122f4d9c5d1bcbc3f308b56ea7c4b3d72ef17b18067f732ec",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "9767ec39f1db7fa157ebb62b3ef2afeb401ff3b5e8d0a5f1df2967c197265393",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "540b80e3d6e04358bf1f98fa92fb581b3578faf653080481b5a1a73ffede0337",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "35f3ba0c90d082a136ed05d973ddd78dfa1e99fcd45e4845dc7b2736ca8bfff3",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "3b60f6bf8038cc0bddcfb8c03c88a32f121e05a1bc04ab960c25ff9387dc9214",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "782a1e7a98c2a7652cc159df02b0b54f57da7905e0d82e2d919387219b900986",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "6dbde7f02756faf18c56459a3827a3ebff25cf746e0e7906ad8bddf9c99e17df",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "9893002750028a918d7ac453250700ad0aa049fad4f6aca18f2d14a0e81aa888",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "2d3ba4c7352b1dc048f8295b6572e3749e3ef03b621273bfa7f403188a6216b2",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "29476d2bdb46a6e1b7dfb11a654580adf45f478d95d2ddc9f9bf0c9c14c4ad3e",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "b11057dcdbb6019959691925ba153616dedda036d816ce0de3dec00b41356068",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "6cad45bbf0ad5d4828e6c49726c7e811e7bc453ba12f3743994e5c0670fe2d1b",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "9b7729241c9a3db65e4f89cb19672f206c0bffd097fdbc40c0855890071e3aab",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "0da5219c8d5eed686ab76f9aecd15e12339d7434e343e8d581d0602227b9d895",
+      "points": 7
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-history.jsonl",
+      "format": "wandb_history",
+      "sha256": "055ea1ca840a41e5a756bd86b0790409886156b6d8caac554f62ad6eeb97b1ad",
+      "points": 32
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-summary.json",
+      "format": "wandb_summary",
+      "sha256": "0fe3d6ddb5656d31cfcbe352e136f33d8184a2deab6b201022762b3703845016",
+      "points": 7
+    }
+  ],
+  "summary": {
+    "MLP_Baseline::test_acc": {
+      "method": "MLP_Baseline",
+      "metric": "test_acc",
+      "n_seeds": 3,
+      "mean": 0.8801333333333333,
+      "std": 0.0020550750189064124,
+      "ci_lo": 0.8750278319428941,
+      "ci_hi": 0.8852388347237725,
+      "per_seed": {
+        "42": 0.8825,
+        "43": 0.8791,
+        "44": 0.8788
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s42/events.out.tfevents.MLP_Baseline.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s43/events.out.tfevents.MLP_Baseline.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s44/events.out.tfevents.MLP_Baseline.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-summary.json"
+      ]
+    },
+    "MLP_Baseline::test_loss": {
+      "method": "MLP_Baseline",
+      "metric": "test_loss",
+      "n_seeds": 3,
+      "mean": 0.3424103333333333,
+      "std": 0.0013490279216284966,
+      "ci_lo": 0.33905889172353715,
+      "ci_hi": 0.3457617749431295,
+      "per_seed": {
+        "42": 0.340959,
+        "43": 0.343626,
+        "44": 0.342646
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s42/events.out.tfevents.MLP_Baseline.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s43/events.out.tfevents.MLP_Baseline.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s44/events.out.tfevents.MLP_Baseline.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-summary.json"
+      ]
+    },
+    "MLP_Baseline::val_acc": {
+      "method": "MLP_Baseline",
+      "metric": "val_acc",
+      "n_seeds": 3,
+      "mean": 0.8875333333333333,
+      "std": 0.002444040370643124,
+      "ci_lo": 0.8814615104578608,
+      "ci_hi": 0.8936051562088058,
+      "per_seed": {
+        "42": 0.8902,
+        "43": 0.887,
+        "44": 0.8854
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s42/events.out.tfevents.MLP_Baseline.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s43/events.out.tfevents.MLP_Baseline.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s44/events.out.tfevents.MLP_Baseline.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-summary.json"
+      ]
+    },
+    "PlainCNN::test_acc": {
+      "method": "PlainCNN",
+      "metric": "test_acc",
+      "n_seeds": 3,
+      "mean": 0.8495333333333334,
+      "std": 0.004309679029038446,
+      "ci_lo": 0.838826633055885,
+      "ci_hi": 0.8602400336107817,
+      "per_seed": {
+        "42": 0.8462,
+        "43": 0.848,
+        "44": 0.8544
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s42/events.out.tfevents.PlainCNN.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s43/events.out.tfevents.PlainCNN.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s44/events.out.tfevents.PlainCNN.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-summary.json"
+      ]
+    },
+    "PlainCNN::test_loss": {
+      "method": "PlainCNN",
+      "metric": "test_loss",
+      "n_seeds": 3,
+      "mean": 0.419326,
+      "std": 0.0064800908172648435,
+      "ci_lo": 0.4032272627892662,
+      "ci_hi": 0.43542473721073377,
+      "per_seed": {
+        "42": 0.426769,
+        "43": 0.41627,
+        "44": 0.414939
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s42/events.out.tfevents.PlainCNN.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s43/events.out.tfevents.PlainCNN.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s44/events.out.tfevents.PlainCNN.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-summary.json"
+      ]
+    },
+    "PlainCNN::val_acc": {
+      "method": "PlainCNN",
+      "metric": "val_acc",
+      "n_seeds": 3,
+      "mean": 0.8564333333333334,
+      "std": 0.0017785762095938536,
+      "ci_lo": 0.8520147484994252,
+      "ci_hi": 0.8608519181672416,
+      "per_seed": {
+        "42": 0.8545,
+        "43": 0.8568,
+        "44": 0.858
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s42/events.out.tfevents.PlainCNN.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s43/events.out.tfevents.PlainCNN.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s44/events.out.tfevents.PlainCNN.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-summary.json"
+      ]
+    },
+    "ResCNN_Full::test_acc": {
+      "method": "ResCNN_Full",
+      "metric": "test_acc",
+      "n_seeds": 3,
+      "mean": 0.9251,
+      "std": 0.0035510561809129343,
+      "ci_lo": 0.9162779754498567,
+      "ci_hi": 0.9339220245501434,
+      "per_seed": {
+        "42": 0.921,
+        "43": 0.9271,
+        "44": 0.9272
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s42/events.out.tfevents.ResCNN_Full.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s43/events.out.tfevents.ResCNN_Full.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s44/events.out.tfevents.ResCNN_Full.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-summary.json"
+      ]
+    },
+    "ResCNN_Full::test_loss": {
+      "method": "ResCNN_Full",
+      "metric": "test_loss",
+      "n_seeds": 3,
+      "mean": 0.292632,
+      "std": 0.0062287064467672695,
+      "ci_lo": 0.27715778658586854,
+      "ci_hi": 0.30810621341413147,
+      "per_seed": {
+        "42": 0.29962,
+        "43": 0.290612,
+        "44": 0.287664
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s42/events.out.tfevents.ResCNN_Full.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s43/events.out.tfevents.ResCNN_Full.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s44/events.out.tfevents.ResCNN_Full.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-summary.json"
+      ]
+    },
+    "ResCNN_Full::val_acc": {
+      "method": "ResCNN_Full",
+      "metric": "val_acc",
+      "n_seeds": 3,
+      "mean": 0.9284,
+      "std": 0.0026229754097207908,
+      "ci_lo": 0.9218836419701391,
+      "ci_hi": 0.934916358029861,
+      "per_seed": {
+        "42": 0.9256,
+        "43": 0.9288,
+        "44": 0.9308
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s42/events.out.tfevents.ResCNN_Full.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s43/events.out.tfevents.ResCNN_Full.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s44/events.out.tfevents.ResCNN_Full.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-summary.json"
+      ]
+    },
+    "ResCNN_NoReg::test_acc": {
+      "method": "ResCNN_NoReg",
+      "metric": "test_acc",
+      "n_seeds": 3,
+      "mean": 0.9085666666666666,
+      "std": 0.00646864230989266,
+      "ci_lo": 0.8924963714202259,
+      "ci_hi": 0.9246369619131074,
+      "per_seed": {
+        "42": 0.908,
+        "43": 0.9153,
+        "44": 0.9024
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s42/events.out.tfevents.ResCNN_NoReg.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s43/events.out.tfevents.ResCNN_NoReg.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s44/events.out.tfevents.ResCNN_NoReg.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-summary.json"
+      ]
+    },
+    "ResCNN_NoReg::test_loss": {
+      "method": "ResCNN_NoReg",
+      "metric": "test_loss",
+      "n_seeds": 3,
+      "mean": 0.26438066666666665,
+      "std": 0.013524297110509422,
+      "ci_lo": 0.23078173861431628,
+      "ci_hi": 0.297979594719017,
+      "per_seed": {
+        "42": 0.261459,
+        "43": 0.252556,
+        "44": 0.279127
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s42/events.out.tfevents.ResCNN_NoReg.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s43/events.out.tfevents.ResCNN_NoReg.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s44/events.out.tfevents.ResCNN_NoReg.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-summary.json"
+      ]
+    },
+    "ResCNN_NoReg::val_acc": {
+      "method": "ResCNN_NoReg",
+      "metric": "val_acc",
+      "n_seeds": 3,
+      "mean": 0.9127666666666666,
+      "std": 0.005118919156749146,
+      "ci_lo": 0.9000495402202384,
+      "ci_hi": 0.9254837931130948,
+      "per_seed": {
+        "42": 0.9115,
+        "43": 0.9184,
+        "44": 0.9084
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s42/events.out.tfevents.ResCNN_NoReg.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s43/events.out.tfevents.ResCNN_NoReg.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s44/events.out.tfevents.ResCNN_NoReg.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-summary.json"
+      ]
+    }
+  },
+  "macros": {
+    "\\vlMlpBaselineTestAcc": {
+      "method": "MLP_Baseline",
+      "metric": "test_acc",
+      "value": "0.8801$\\pm$0.0021",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s42/events.out.tfevents.MLP_Baseline.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s43/events.out.tfevents.MLP_Baseline.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s44/events.out.tfevents.MLP_Baseline.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlMlpBaselineTestLoss": {
+      "method": "MLP_Baseline",
+      "metric": "test_loss",
+      "value": "0.3424$\\pm$0.0013",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s42/events.out.tfevents.MLP_Baseline.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s43/events.out.tfevents.MLP_Baseline.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s44/events.out.tfevents.MLP_Baseline.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlMlpBaselineValAcc": {
+      "method": "MLP_Baseline",
+      "metric": "val_acc",
+      "value": "0.8875$\\pm$0.0024",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s42/events.out.tfevents.MLP_Baseline.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s43/events.out.tfevents.MLP_Baseline.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/MLP_Baseline_s44/events.out.tfevents.MLP_Baseline.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/MLP_Baseline_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlPlaincnnTestAcc": {
+      "method": "PlainCNN",
+      "metric": "test_acc",
+      "value": "0.8495$\\pm$0.0043",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s42/events.out.tfevents.PlainCNN.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s43/events.out.tfevents.PlainCNN.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s44/events.out.tfevents.PlainCNN.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlPlaincnnTestLoss": {
+      "method": "PlainCNN",
+      "metric": "test_loss",
+      "value": "0.4193$\\pm$0.0065",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s42/events.out.tfevents.PlainCNN.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s43/events.out.tfevents.PlainCNN.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s44/events.out.tfevents.PlainCNN.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlPlaincnnValAcc": {
+      "method": "PlainCNN",
+      "metric": "val_acc",
+      "value": "0.8564$\\pm$0.0018",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s42/events.out.tfevents.PlainCNN.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s43/events.out.tfevents.PlainCNN.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/PlainCNN_s44/events.out.tfevents.PlainCNN.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/PlainCNN_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlRescnnFullTestAcc": {
+      "method": "ResCNN_Full",
+      "metric": "test_acc",
+      "value": "0.9251$\\pm$0.0036",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s42/events.out.tfevents.ResCNN_Full.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s43/events.out.tfevents.ResCNN_Full.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s44/events.out.tfevents.ResCNN_Full.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlRescnnFullTestLoss": {
+      "method": "ResCNN_Full",
+      "metric": "test_loss",
+      "value": "0.2926$\\pm$0.0062",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s42/events.out.tfevents.ResCNN_Full.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s43/events.out.tfevents.ResCNN_Full.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s44/events.out.tfevents.ResCNN_Full.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlRescnnFullValAcc": {
+      "method": "ResCNN_Full",
+      "metric": "val_acc",
+      "value": "0.9284$\\pm$0.0026",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s42/events.out.tfevents.ResCNN_Full.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s43/events.out.tfevents.ResCNN_Full.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_Full_s44/events.out.tfevents.ResCNN_Full.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_Full_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlRescnnNoregTestAcc": {
+      "method": "ResCNN_NoReg",
+      "metric": "test_acc",
+      "value": "0.9086$\\pm$0.0065",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s42/events.out.tfevents.ResCNN_NoReg.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s43/events.out.tfevents.ResCNN_NoReg.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s44/events.out.tfevents.ResCNN_NoReg.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlRescnnNoregTestLoss": {
+      "method": "ResCNN_NoReg",
+      "metric": "test_loss",
+      "value": "0.2644$\\pm$0.0135",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s42/events.out.tfevents.ResCNN_NoReg.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s43/events.out.tfevents.ResCNN_NoReg.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s44/events.out.tfevents.ResCNN_NoReg.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlRescnnNoregValAcc": {
+      "method": "ResCNN_NoReg",
+      "metric": "val_acc",
+      "value": "0.9128$\\pm$0.0051",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s42/events.out.tfevents.ResCNN_NoReg.s42",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s43/events.out.tfevents.ResCNN_NoReg.s43",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/tb/ResCNN_NoReg_s44/events.out.tfevents.ResCNN_NoReg.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-history.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-dl-benchmark/runs/wandb/ResCNN_NoReg_s44/files/wandb-summary.json"
+      ]
+    }
+  }
+}

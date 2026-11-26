@@ -43,11 +43,16 @@ COMMON_FILES = 8
 SPECIFIC_FILES = 3
 
 
+LATEX_RANGE_RE = re.compile(r"(\d*\.\d+)\s*(?:--|\u2013)\s*(\d*\.\d+)")
+
+
 def _mask_non_metrics(line):
     # Normalize Unicode minus sign (U+2212) to ASCII hyphen-minus so signed
     # values like "−0.004" match "-0.004" in logs without false SIGN_MISMATCH,
+    # normalize LaTeX en-dash ranges ("0.8462--0.8544") so the second bound isn't parsed as negative,
     # and normalize ASCII "+/-" to "±" so "0.6470+/-0.0030" doesn't parse "-0.0030" as negative.
     s = line.replace("\u2212", "-").replace("+/-", "\u00b1")
+    s = LATEX_RANGE_RE.sub(r"\1 to \2", s)
     s = ARXIV.sub(lambda m: " " * len(m.group(0)), s)
     s = DATE_RE.sub(lambda m: " " * len(m.group(0)), s)
     return s

@@ -1,0 +1,12 @@
+{
+  "method": "MLP_Baseline",
+  "seed": 44,
+  "epochs": 8,
+  "batch_size": 256,
+  "lr": 0.002,
+  "weight_decay": 0.0,
+  "label_smoothing": 0.0,
+  "n_params": 235146,
+  "selected_on": "val_acc",
+  "device": "cuda"
+}

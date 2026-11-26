@@ -1,0 +1,15 @@
+# VeriLoop Real GPU Deep Learning Showcase — Fashion-MNIST (50k train / 10k val / 10k test)
+# timestamp_utc=2026-11-26T23:38:32.174589+00:00 device=cuda gpu=NVIDIA GeForce RTX 3060 Ti torch=2.9.1+cu128 epochs=8
+RUN method=MLP_Baseline   seed=42 params= 235146 best_ep=7 val_acc=0.8902 test_acc=0.8825 test_loss=0.3410 wall_s=29.43
+RUN method=MLP_Baseline   seed=43 params= 235146 best_ep=8 val_acc=0.8870 test_acc=0.8791 test_loss=0.3436 wall_s=31.85
+RUN method=MLP_Baseline   seed=44 params= 235146 best_ep=8 val_acc=0.8854 test_acc=0.8788 test_loss=0.3426 wall_s=29.69
+RUN method=PlainCNN       seed=42 params=  93962 best_ep=8 val_acc=0.8545 test_acc=0.8462 test_loss=0.4268 wall_s=30.71
+RUN method=PlainCNN       seed=43 params=  93962 best_ep=8 val_acc=0.8568 test_acc=0.8480 test_loss=0.4163 wall_s=30.13
+RUN method=PlainCNN       seed=44 params=  93962 best_ep=7 val_acc=0.8580 test_acc=0.8544 test_loss=0.4149 wall_s=30.66
+RUN method=ResCNN_NoReg   seed=42 params= 308074 best_ep=8 val_acc=0.9115 test_acc=0.9080 test_loss=0.2615 wall_s=67.88
+RUN method=ResCNN_NoReg   seed=43 params= 308074 best_ep=8 val_acc=0.9184 test_acc=0.9153 test_loss=0.2526 wall_s=66.59
+RUN method=ResCNN_NoReg   seed=44 params= 308074 best_ep=8 val_acc=0.9084 test_acc=0.9024 test_loss=0.2791 wall_s=67.44
+RUN method=ResCNN_Full    seed=42 params= 308074 best_ep=8 val_acc=0.9256 test_acc=0.9210 test_loss=0.2996 wall_s=67.76
+RUN method=ResCNN_Full    seed=43 params= 308074 best_ep=8 val_acc=0.9288 test_acc=0.9271 test_loss=0.2906 wall_s=68.31
+RUN method=ResCNN_Full    seed=44 params= 308074 best_ep=8 val_acc=0.9308 test_acc=0.9272 test_loss=0.2877 wall_s=69.35
+COMPLETED_OK

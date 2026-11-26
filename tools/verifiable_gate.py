@@ -42,6 +42,8 @@ def main():
     ap.add_argument("--no-auto-data", action="store_true", help="Disable auto-indexing <workspace>/data when --data is omitted")
     ap.add_argument("--scripts", nargs="*", default=[], help="Code file(s) or directory(ies) for AST audit")
     ap.add_argument("--bib", help="Optional .bib file for citation_audit.py")
+    ap.add_argument("--online-cites", action="store_true", help="Verify citations online via arXiv/Crossref/Semantic Scholar APIs")
+    ap.add_argument("--check-claims", action="store_true", help="Check citing sentences against fetched abstracts (requires --online-cites)")
     ap.add_argument("--strict", action="store_true", help="Treat MEDIUM AST findings as blocking too")
     ap.add_argument("--strict-stale", action="store_true", help="Block if any cited log is older than its generating script")
     ap.add_argument("--reviewer-provider", choices=["none", "dry-run", "codex-cli", "claude-cli", "openai", "anthropic"],
@@ -118,6 +120,10 @@ def main():
     if a.bib:
         bib_p = Path(a.bib) if Path(a.bib).is_absolute() else (ws / a.bib)
         cmd_cit = [sys.executable, str(RL_SCRIPTS / "citation_audit.py"), str(report_p), "--bib", str(bib_p), "--json"]
+        if a.online_cites:
+            cmd_cit.append("--online")
+        if a.check_claims:
+            cmd_cit.append("--check-claims")
         rc, out, err = run_cmd(cmd_cit)
         try:
             cit_data = json.loads(out)
