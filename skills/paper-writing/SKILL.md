@@ -34,7 +34,7 @@ Each phase builds on the previous one's output. The final deliverable is a polis
 
 In this hybrid pack, the pipeline itself is unchanged, but `paper-plan` and `paper-write` use Orchestra-adapted shared references for stronger story framing and prose guidance.
 
-> **VeriLoop Native Writing & Verification Upgrade:** Pair this workflow with `/bestpaper-writing` (60-paper award-style Abstract/Introduction/Method/Experiments drafting, Okabe-Ito `assets/figures/bestpaper.mplstyle` + `plot_style.py`, and automated `check_draft.py` / `check_figures.py` linting) and `/verifiable-gate` (`trace_numbers.py` + `citation_audit.py` hard blocks). Run `./veriloop audit-paper` before submission to enforce all four deterministic checks in one command.
+> **VeriLoop Native Writing & Verification Upgrade:** Pair this workflow with `/bestpaper-writing` (60-paper award-style Abstract/Introduction/Method/Experiments drafting, Okabe-Ito `assets/figures/bestpaper.mplstyle` + `plot_style.py`, and automated `check_draft.py` / `check_figures.py` linting), `/verifiable-gate` (`trace_numbers.py` + `citation_audit.py` hard blocks), and **`/milestone-dual-audit`** (run `./veriloop milestone-audit` after **M1 Plan, M2 Experiments, M3 Draft, and M4 Pre-Submission** so both latest **Gemini** and latest **Claude** independently audit frozen SHA-256 artifacts and produce a revised next-action plan before advancing). Run `./veriloop audit-paper` before submission to enforce all four deterministic checks in one command.
 
 ## Constants
 

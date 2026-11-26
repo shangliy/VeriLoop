@@ -129,6 +129,7 @@ cd VeriLoop
 | `./veriloop test` | Run all offline verification & Best-Paper integration tests + catalog checks |
 | `./veriloop lint-paper [args...]` | Run `bestpaper-writing` checks (`check_draft.py`, `check_figures.py`, `--metrics`, `--exemplars`) |
 | `./veriloop audit-paper [--no-lint]` | 4-in-1 manuscript gate: `trace_numbers` + `citation_audit` + `check_draft` + `check_figures` |
+| `./veriloop milestone-audit [args...]` | Independent dual-model milestone gate (**latest Claude + latest Gemini** in parallel on frozen SHA-256 artifacts → consensus/unique catches + revised next-action plan, `rc=0` pass / `rc=2` revise) |
 
 ---
 
@@ -141,6 +142,7 @@ cd VeriLoop
 | `tools/install_veriloop.sh` | Installer for Claude Code / Codex CLI (`--core-only` or `--all`) |
 | `skills/research-loop/` | 5-step verifiable research loop, 38-item hostile checklist, path-only reviewer brief, and 8 stdlib scripts (`claims.py`, `trace_numbers.py`, `audit_code.py`, `run_audit.py`, `citation_audit.py`, `budget.py`, `run_seeds.py`, `render_board.py`) |
 | `skills/verifiable-gate/` | Hard-blocking gate skill integrating verification across experiment and paper workflows |
+| `skills/milestone-dual-audit/` | Independent dual-model milestone gate (**latest Gemini + latest Claude** parallel path-only audit on SHA-256 frozen artifacts, 8-point anti-self-deception rubric, conservative merge, and next-action revision plan) |
 | `skills/bestpaper-writing/` | Integrated [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill) (CC BY 4.0): 60-award-paper writing guide, Okabe-Ito `bestpaper.mplstyle` & `plot_style.py`, `check_draft.py`, `check_figures.py`, `style_metrics.py`, `find_exemplars.py` |
 | `skills/` (90+ skills), `mcp-servers/`, `templates/` | Full research lifecycle skills (idea discovery, Research Wiki, experiment orchestration, paper writing, rebuttal), incorporating MIT-licensed upstream ARIS workflows |
 | `eval/` | Controlled benchmark harness (`run_benchmark.py`, `conditions.py`, `blind_judge.py`, `aggregate_tables.py`) for `SciIntegrity-Bench` and `AIScientistPitfalls` |

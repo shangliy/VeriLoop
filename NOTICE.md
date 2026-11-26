@@ -7,10 +7,11 @@
 - **Paper:** *"VeriLoop: Deterministic Evidence Gates and Path-Isolated Cross-Model Auditing for Autonomous Research"* (`paper/main.pdf`, `paper/main_icml2027.pdf`).
 - **License:** MIT License.
 - **Components:**
-  - `veriloop` — unified zero-dependency CLI (`gate`, `claims`, `board`, `demo`, `live`, `install`, `test`, `lint-paper`, `audit-paper`)
+  - `veriloop` — unified zero-dependency CLI (`gate`, `claims`, `board`, `demo`, `live`, `install`, `test`, `lint-paper`, `audit-paper`, `milestone-audit`)
   - `tools/verifiable_gate.py` & `tools/install_veriloop.sh` — dual-layer hard-blocking gate engine and installer
   - `skills/research-loop/` — 5-step verifiable research loop, 38-item hostile checklist, path-only reviewer brief, and 8 stdlib-only scripts (`claims.py`, `trace_numbers.py`, `audit_code.py`, `run_audit.py`, `citation_audit.py`, `budget.py`, `run_seeds.py`, `render_board.py`)
   - `skills/verifiable-gate/` — hard-blocking verification gate skill bridging experiment and paper workflows
+  - `skills/milestone-dual-audit/` — independent latest-Gemini + latest-Claude parallel milestone evaluator with SHA-256 freezing, conservative feedback merger, and prioritized next-action revision plan
   - `eval/` — controlled multi-system & ablation benchmark harness for `SciIntegrity-Bench` and `AIScientistPitfalls`
   - `examples/` (`veriloop-walkthrough/`, `mini-ml/`, `live-showcase/`), `paper/`, `docs/literature-audit.md`, `pilots/`, and `tests/verifiable/`
 

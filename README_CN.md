@@ -57,10 +57,13 @@ cd VeriLoop
   --out-json audits/veriloop_gate.json
 
 # 4. 一键安装技能到 Claude Code / Codex CLI
-./veriloop install --core-only         # 安装核心三件套（research-loop + verifiable-gate + bestpaper-writing）
-./veriloop install --all               # 安装全部 90+ 科研技能 + 硬门控 + Best-Paper 写作技能
+./veriloop install --core-only         # 安装核心四件套（research-loop + verifiable-gate + bestpaper-writing + milestone-dual-audit）
+./veriloop install --all               # 安装全部 90+ 科研技能 + 硬门控 + Best-Paper 写作 + 双模型里程碑审计
 
-# 5. 四合一论文自检（数值溯源 + BibTeX + Best-Paper 摘要/引言/图表质检）与真实双模型实战
+# 5. 阶段性成果双模型独立评审（最新 Claude + 最新 Gemini 并行纯路径审计 → 输出修正行动清单）
+./veriloop milestone-audit --milestone M2-experiments --workspace . --artifacts paper/build_tables_and_figures.py paper/out/stats_summary.txt --dry-run
+
+# 6. 四合一论文自检（数值溯源 + BibTeX + Best-Paper 摘要/引言/图表质检）与真实双模型实战
 ./veriloop audit-paper
 ./veriloop lint-paper --draft paper/sec/0_abstract.tex paper/sec/1_intro.tex --tex paper/main_icml2027.tex --layout two
 ./veriloop live --budget-limit 1.50

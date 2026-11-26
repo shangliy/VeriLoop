@@ -35,7 +35,7 @@ install_to_target() {
   local dest_root="$1"
   local count=0
   if [[ "$MODE" == "core-only" ]]; then
-    for s in research-loop verifiable-gate bestpaper-writing; do
+    for s in research-loop verifiable-gate bestpaper-writing milestone-dual-audit; do
       install_skill_dir "$REPO_ROOT/skills/$s" "$dest_root"
       count=$((count + 1))
     done

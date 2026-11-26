@@ -15,6 +15,9 @@ Subcommands:
   ./veriloop audit-paper [--no-lint]
                                     4-in-1 self-audit of paper/ (trace_numbers + citation_audit
                                     + bestpaper check_draft + check_figures)
+  ./veriloop milestone-audit [args...]
+                                    Independent dual-model milestone audit (latest Claude + latest
+                                    Gemini in parallel on SHA-256 frozen artifacts -> action plan)
 """
 import argparse
 import subprocess
@@ -25,6 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 RL_SCRIPTS = ROOT / "skills/research-loop/scripts"
 BP_SCRIPTS = ROOT / "skills/bestpaper-writing/scripts"
+MDA_SCRIPT = ROOT / "skills/milestone-dual-audit/scripts/milestone_dual_audit.py"
 
 
 def passthrough(cmd):
@@ -99,6 +103,8 @@ def main():
         sys.exit(0 if (r1.returncode == 0 and r2.returncode == 0) else 1)
     elif sub == "lint-paper":
         sys.exit(run_lint_paper(rest))
+    elif sub == "milestone-audit":
+        passthrough([sys.executable, str(MDA_SCRIPT), *rest])
     elif sub == "audit-paper":
         no_lint = "--no-lint" in rest
         sec_dir = ROOT / "paper/sec"

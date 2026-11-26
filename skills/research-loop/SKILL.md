@@ -178,7 +178,7 @@ After the decision, update the row in `ideas/ideas_verdicts.md` with the status
 and the one-line evidence. Deaths are the most valuable entries; a killed idea
 that is not recorded gets reinvented.
 
-Hand off to `paper` (or `/bestpaper-writing` for award-paper Abstract/Introduction/Method/Experiments drafting and Okabe-Ito `bestpaper.mplstyle` figure styling) only for claims at `supported`. The paper's tables are
+Hand off to `paper` (or `/bestpaper-writing` for award-paper Abstract/Introduction/Method/Experiments drafting and Okabe-Ito `bestpaper.mplstyle` figure styling) only for claims at `supported`. Before advancing across any milestone (`M1-plan`, `M2-experiments`, `M3-draft`, `M4-submission`), invoke `/milestone-dual-audit` (`./veriloop milestone-audit`) so both the latest **Gemini** and latest **Claude** independently audit the frozen SHA-256 artifacts and emit a prioritized next-action revision plan. The paper's tables are
 built from the logs the ledger points to; run `./veriloop audit-paper` (combining `trace_numbers.py`, `citation_audit.py`, and `bestpaper-writing`'s `check_draft.py` & `check_figures.py`) on the draft too.
 
 ## Optional second model

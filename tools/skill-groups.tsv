@@ -79,6 +79,7 @@ skill	serverless-modal	experiments	-	Modal 无服务器 GPU
 skill	experiment-audit	experiments	-	实验诚实度审计(防假结果)
 skill	verifiable-gate	experiments	-	双层硬门控桥接(确定性溯源/AST+纯路径跨模型阻断审计)
 skill	research-loop	review-loop	-	5步可验证科研闭环(G1-G7账本+数字溯源+AST+纯路径XMR+闭环修复)
+skill	milestone-dual-audit	review-loop	-	阶段性成果双模型独立评审(最新Gemini+最新Claude并行纯路径审计→反馈汇总与下一步修正计划)
 skill	result-to-claim	experiments	-	结果能支撑什么 claim 的裁决
 skill	ablation-planner	experiments	-	消融实验规划
 skill	paper-writing	paper-core	paper-plan,paper-write,paper-compile,paper-figure,figure-spec,proof-checker,paper-claim-audit,citation-audit,auto-paper-improvement-loop,integrity-forensics,kill-argument	W3:从报告到投稿级 PDF 全流程
