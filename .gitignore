@@ -53,3 +53,6 @@ eval_runs/
 external/
 examples/veriloop-walkthrough/demo_output/
 examples/live-showcase/workspace/
+
+# arXiv submission tarball (generated locally)
+paper/arxiv_v1_submission.tar.gz

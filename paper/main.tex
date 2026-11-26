@@ -3,8 +3,8 @@
 % ============================================================================
 % PUBLIC RELEASE METADATA (Edit these 3 macros before arXiv / GitHub upload)
 % ============================================================================
-\newcommand{\PaperAuthors}{[Author Name(s)]}
-\newcommand{\PaperAffiliation}{[Affiliation / Independent Researcher]}
+\newcommand{\PaperAuthors}{Shanglin Yang \quad Zhan Shi}
+\newcommand{\PaperAffiliation}{}
 \newcommand{\PaperDate}{November 2026}
 \newcommand{\PaperRepoURL}{https://github.com/shangliy/VeriLoop}
 \newcommand{\RepoRef}{\texttt{\PaperRepoURL}}
@@ -121,7 +121,7 @@
   \vspace{10pt}
   {\normalsize\sffamily \PaperAuthors\par}
   \vspace{3pt}
-  {\small\sffamily\color{slate} \PaperAffiliation \quad$\cdot$\quad \PaperDate\par}
+  {\small\sffamily\color{slate}\if\relax\detokenize\expandafter{\PaperAffiliation}\relax\PaperDate\else\PaperAffiliation \quad$\cdot$\quad \PaperDate\fi\par}
   \vspace{5pt}
   {\footnotesize\ttfamily\color{navy} Code \& Self-Audited Artifacts: \PaperRepoURL \quad|\quad 112 Controlled Runs (\$46.49 Total)\par}
 \end{center}

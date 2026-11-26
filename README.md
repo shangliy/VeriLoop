@@ -155,11 +155,11 @@ cd VeriLoop
 **VeriLoop** builds on MIT-licensed upstream research workflow skills from **ARIS** ([wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep), `arXiv:2605.03042`) and integrates CC BY 4.0 **Best-Paper-Writing-Skill** ([shangliy/Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill), forked from [gulucaptain/Best-Paper-Writing-Skill](https://github.com/gulucaptain/Best-Paper-Writing-Skill)) — see [NOTICE.md](NOTICE.md) and [LICENSE](LICENSE) for full attribution. If you use VeriLoop in academic work, please cite both papers:
 
 ```bibtex
-@article{veriloop2026,
+@article{yang2026veriloop,
   title={{VeriLoop}: Deterministic Evidence Gates and Path-Isolated Cross-Model Auditing for Autonomous Research},
-  author={[Author Name(s)]},
+  author={Yang, Shanglin and Shi, Zhan},
   year={2026},
-  note={Preprint / ICML 2027 submission},
+  note={Preprint},
   url={https://github.com/shangliy/VeriLoop}
 }
 
