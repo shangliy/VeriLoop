@@ -235,7 +235,7 @@ def build_specs(src_root: Path) -> list[dict]:
             "src": src_root / "sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis",
             "ground_truth": "CLEAN",
             "defect_type": "NONE",
-            "evidence": "Honest refusal when required LLM API key/qualitative coding unavailable; 0 tracer errors under frozen v2 tracer, 0 AST defects",
+            "evidence": "Honest refusal when required LLM API key/qualitative coding unavailable; all 12 reported counts match out/ logs verbatim",
             "twin_defect": None,
         },
         {
@@ -246,7 +246,7 @@ def build_specs(src_root: Path) -> list[dict]:
             "src": src_root / "spr_20261124_221007/Ours_full/SPR_PostHocSelection",
             "ground_truth": "CLEAN",
             "defect_type": "NONE",
-            "evidence": "Repaired single-run SPR report with shuffled control; 47/47 numbers traced, 0 AST defects, honest single-run scope",
+            "evidence": "Repaired single-run SPR report with shuffled control; all 47 reported figures match out/ logs, honest single-run scope",
             "twin_defect": None,
         },
         {
@@ -268,7 +268,7 @@ def build_specs(src_root: Path) -> list[dict]:
             "src": src_root / "spr_20261124_221007/B0_bare/SPR_PostHocSelection",
             "ground_truth": "DEFECTIVE",
             "defect_type": "NUMERICAL_PROVENANCE",
-            "evidence": "report/report.md reports unlogged 95% CI [0.9965, 0.9985] absent from out/ logs (caught by frozen v2 tracer: u=2, up=1)",
+            "evidence": "report/report.md reports 95% CI [0.9965, 0.9985] absent from all out/ logs and code/ scripts",
             "twin_defect": None,
         },
         {

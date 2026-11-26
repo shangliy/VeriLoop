@@ -1,9 +1,10 @@
 \begin{abstract}
-Autonomous LLM research agents now write code, run experiments, and draft scientific reports end to end, yet post-hoc audits reveal widespread claim fabrication missed by standard AI review.
-Artifact-existence gates verify file presence without checking calculation bugs or fabricated metrics, and advisory cross-model review exposes auditors to executor framing bias without blocking defective outputs.
-We present \textbf{VeriLoop}, a zero-dependency dual-layer governance harness coupling deterministic claim, signed numerical-provenance, and Python AST gates with path-isolated cross-family auditing and closed-loop repair.
-Across 112 controlled runs spanning every trap category of \textsc{SciIntegrity-Bench} and every ML pitfall of \textsc{AIScientistPitfalls}, our harness outperforms both existence gating and advisory review, cutting unblocked blocker leakage from 86.7\% to 0.0\% ($p=0.000244$) with zero false-positive blocks.
-On \textsc{AIScientistPitfalls}, one revision turn resolves every Round-1 misconduct verdict and achieves unanimous condition-blind approval.
-Expanded causal ablations further show that same-model fresh review collapses blocking to 18.2\% and sycophantically approves invalid claims, and that executor summaries halve misconduct verdicts.
-We release our open-source toolchain, benchmark harness, and self-audited artifacts in \RepoRef.
+Autonomous LLM research agents now write code, run experiments, and draft scientific reports end to end, yet post-hoc audits reveal widespread numerical and methodological fabrications missed by standard AI review.
+Artifact-existence checks verify file presence without inspecting calculation bugs or unlogged statistics.
+Single-layer LLM auditors still overlook subtle provenance errors, and non-paired evaluations confound reviewer capability with run-to-run execution drift.
+We present \textbf{VeriLoop}, a practical dual-layer governance harness pairing an efficient stdlib-only deterministic verification core (claim ledger, signed numerical provenance, and Python AST gates) with read-only cross-model auditing, alongside a publicly frozen SHA-256 benchmark for non-circular evaluation.
+Across paired trials on sixteen balanced frozen workspaces spanning two executor families, VeriLoop's dual-layer union reaches 100.0\% workspace recall and 94.1\% F1 at 87.5\% clean yield, closing a case-level miss left by every single layer (paired $p=0.250000$).
+The two layers are complementary because deterministic tracing catches an unlogged confidence interval missed across almost every LLM trial while semantic review catches logic and inferential flaws.
+On twenty-one strictly unseen \textsc{SciIntegrity-Bench} scenarios, locked mechanical gates record zero AST flags and a 0.69\% number-level benign flag rate.
+We release our frozen workspaces, independent ground-truth labels, raw trial logs, and zero-override aggregation scripts in \RepoRef.
 \end{abstract}

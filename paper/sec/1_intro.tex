@@ -2,34 +2,33 @@
 \label{sec:intro}
 
 Autonomous scientific research agents now inspect datasets, implement models, compute statistics, and author complete manuscripts without human intervention~\citep{yang2026aris,luo2025pitfalls}, yet independent audits expose a persistent divide between fluent scientific prose and actual execution evidence.
-In an audit of 144 AI-generated papers, \textsc{FabScore}~\citep{chen2026fabscore} reports a 21.2\% claim-level fabrication rate, with AI reviewers overlooking 86.2\% of fabricated claims.
+In an audit of AI-generated papers, \textsc{FabScore}~\citep{chen2026fabscore} reports a 21.2\% claim-level fabrication rate, with AI reviewers overlooking 86.2\% of fabricated claims.
 Similarly, \textsc{SciIntegrity-Bench}~\citep{yang2026sciintegrity} records a 34.2\% academic integrity failure rate across seven frontier LLMs.
-In our controlled runs, an agent analyzing nuclear decay data divided segment residuals by the global sample size in \texttt{analyze\_flame.py:62}, silently corrupting every reported RMSE and AIC while exiting cleanly with code zero.
+In our own audited agent runs, one model wrote a plausible confidence interval \texttt{[0.9965, 0.9985]} that never appeared in any execution log while another divided segment residuals by the global sample size in \texttt{analyze\_flame.py}, silently corrupting every reported RMSE and AIC while exiting cleanly with code zero.
 
-Two recent governance paradigms try to close this gap, yet both fail on valid-looking code that produces invalid science (Figure~\ref{fig:arch}).
-\textsc{EviBound}~\citep{chen2026evibound} enforces pre-execution acceptance schemas and post-execution artifact existence checks, cutting missing-file hallucinations to zero on self-authored tasks.
-Because existence checks verify only process completion and file presence, they approve scripts that miscompute denominators, hardcode reference prints, or contradict raw logs.
+Two recent governance paradigms attempt to close this gap, yet both leave critical failure modes unguarded (Figure~\ref{fig:arch}).
+\textsc{EviBound}~\citep{chen2026evibound} enforces pre-execution acceptance schemas and post-execution artifact existence checks, reducing missing-file hallucinations to zero on eight self-authored tasks.
+Because existence checks verify only process completion and file presence, they approve scripts that miscompute formulas, inject synthetic fallbacks, or report unlogged metrics.
 \textsc{ARIS}~\citep{yang2026aris} pairs a coding agent with a second model family across iterative review rounds to catch deeper flaws.
-However, \textsc{ARIS} leaves Stage-1 experiment auditing advisory rather than blocking, passes executor summaries across review boundaries, and evaluates a single observational run without controlled baselines or ablations.
+However, \textsc{ARIS} leaves Stage-1 experiment auditing advisory, evaluates a single observational trajectory without controlled baselines, and does not pair deterministic provenance checks against independent ground-truth labels.
 
-Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, or conclusions that contradict their own logs.
-To prevent such silent fabrications, we present \textbf{VeriLoop}, a zero-dependency dual-layer governance harness built around deterministic evidence gates and path-isolated cross-model auditing.
-Its first layer enforces cryptographic log hashing, signed numerical provenance, and static Python AST checks before any external model is called.
-Because syntactic checks alone cannot catch inferential fabrications or flawed experimental reasoning, our second layer invokes a read-only auditor from a distinct model family that inspects only raw filesystem paths, strips all executor narrative, enforces hard delivery blocking, and triggers closed-loop repair.
+Evaluating research governance itself carries subtle methodological hazards because comparing a blocking switch against a non-blocking switch creates tautological leakage metrics, while re-running executors per reviewer condition confounds artifact drift with reviewer capability.
+To address both the engineering gap and the evaluation gap, we present \textbf{VeriLoop}, a dual-layer verification harness with an efficient stdlib-only deterministic core paired with a publicly frozen SHA-256 evaluation benchmark.
+Its deterministic first layer enforces cryptographic claim hashing, unit-normalized signed numerical provenance, and static Python AST checks at zero LLM cost before external review runs.
+Because syntactic checks cannot detect flawed statistical formulas or unsupported causal leaps, our second layer invokes a read-only auditor on raw workspace artifacts and pairs with a dual-model milestone gate that audits intermediate outputs before downstream work proceeds.
 
-Unlike \textsc{EviBound}, which gates only artifact presence, VeriLoop mechanically binds every reported decimal and script to intact execution logs and AST hygiene rules.
-In contrast to \textsc{ARIS}, which passes narrative summaries into an advisory loop, our harness isolates the auditor to raw files, blocks defective delivery deterministically, and evaluates every design choice through controlled baselines and causal ablations.
+Unlike \textsc{EviBound}, which checks only artifact existence, VeriLoop binds every reported decimal and script to raw execution logs and AST hygiene rules while retaining semantic code auditing.
+In contrast to \textsc{ARIS}, which reports an unverified observational run, we evaluate single layers and dual-layer unions on identical SHA-256 frozen workspaces against independent file-and-line ground truth, reporting precision, recall, F1, false-positive rate (FPR), and clean-output yield with zero post-hoc overrides.
 
-Across 112 controlled live runs spanning all eleven \textsc{SciIntegrity-Bench} trap categories and all four \textsc{AIScientistPitfalls} ML pitfalls~\citep{luo2025pitfalls}, VeriLoop outperforms both baselines by cutting unblocked blocker leakage from 86.7\% to 0.0\% (exact McNemar $p=0.000244$) while cleanly approving every sound report.
-On \textsc{AIScientistPitfalls}, a single closed-loop revision turn clears every Round-1 misconduct verdict and reaches unanimous \textsc{Pass} under an anonymized condition-blind judge.
-Expanded causal ablations further reveal why both cross-family independence and path isolation are essential.
-Replacing cross-family review with a same-model fresh session drops blocking to 18.2\% ($p=0.003906$) and triggers sycophantic approval of invalid claims, while injecting executor summaries softens misconduct verdicts by more than half ($p=0.031250$).
-Swapping executor and reviewer model families also reveals stark directional asymmetry, confirming that deterministic gates remain an indispensable safety net when an LLM auditor is overly lenient.
+Across repeated paired LLM audit trials on sixteen balanced frozen workspaces authored by two executor families, VeriLoop's dual-layer union reaches 100.0\% workspace recall and 94.1\% F1 at 87.5\% clean yield, closing a case-level miss left by both deterministic checks alone and \texttt{codex-cli} alone (paired $p=0.250000$, Table~\ref{tab:primary}).
+The two layers are complementary because deterministic tracing catches the unlogged confidence interval missed across almost every LLM trial, whereas Layer~2 catches code-logic bugs and pure inferential overclaims missed by static checks.
+True frozen-artifact pairing also reveals directional model-calibration differences across auditors (Table~\ref{tab:decoupling}), while prepending an executor summary shows no statistically significant framing degradation under a calibrated binary rubric ($p=1.000000$).
+Finally, locking our mechanical gates by SHA-256 and testing them blind on twenty-one strictly unseen \textsc{SciIntegrity-Bench} scenarios yields zero AST flags and a 0.69\% number-level benign flag rate.
 
-Our contributions span four verifiable deliverables.
+Our contributions span four publicly reproducible deliverables.
 \begin{itemize}[leftmargin=1.4em,itemsep=1.5pt,topsep=2pt]
-  \item \textbf{Dual-layer governance stack (\S\ref{sec:method}).} An open-source, stdlib-only verification toolkit enforcing claim gates (\texttt{G1--G7}), signed numerical provenance, AST code hygiene, and path-isolated cross-family blocking.
-  \item \textbf{Controlled multi-benchmark evaluation (\S\ref{sec:primary} and \S\ref{sec:repair}).} Paired four-system experiments across fifteen tasks demonstrating zero blocker leakage, zero false-positive blocks, and effective one-round closed-loop repair.
-  \item \textbf{Causal mechanism analysis (\S\ref{sec:ablations} and \S\ref{sec:reverse}).} Expanded ablations and bidirectional cross-family experiments isolating same-family sycophancy, summary framing softening, and directional reviewer asymmetry.
-  \item \textbf{Reproducible self-audited release (\S\ref{sec:dogfood}).} Complete unit tests, deterministic aggregation scripts, and a manuscript audited end to end by its own provenance and citation verifiers.
+  \item \textbf{Dual-layer governance stack (\S\ref{sec:method}).} A stdlib-only deterministic core enforcing claim ledger gates, unit-normalized signed number tracing, and Python AST checks, paired with read-only auditing and dual-model milestone gates.
+  \item \textbf{Frozen paired benchmark (\S\ref{sec:primary} and \S\ref{sec:decoupling}).} Sixteen SHA-256 frozen workspaces with independent file-and-line ground truth illustrating dual-layer complementarity and decoupling model scale from framing effects.
+  \item \textbf{Unseen held-out mechanical calibration (\S\ref{sec:unseen}).} A SHA-256 locked blind test on twenty-one strictly unseen \textsc{SciIntegrity-Bench} scenarios measuring honest out-of-sample mechanical flag rates with forensic root causes.
+  \item \textbf{Zero-override reproducible release (\S\ref{sec:dogfood}).} Committed frozen workspaces, ground-truth CSV, raw trial JSONLs, offline tests, and a manuscript self-audited by its own provenance and writing linters.
 \end{itemize}

@@ -1,65 +1,61 @@
 \section{VeriLoop}
 \label{sec:method}
 
-Given a workspace containing read-only input data (\texttt{data/}), generated analysis scripts (\texttt{code/}), raw execution stdout logs (\texttt{out/}), and a drafted report (\texttt{report/report.md}), VeriLoop decides whether the deliverable may be released or must return for targeted repair.
-Figure~\ref{fig:arch} contrasts our two-layer architecture against bare execution (\texttt{B0}), existence gating (\texttt{B1}), and advisory cross-model review (\texttt{B2}).
-The harness couples three deterministic pre-audit modules with a path-isolated cross-family auditor and a persistent USD budget circuit breaker, built entirely on the Python standard library.
+Given a research workspace containing scripts (\texttt{code/}), raw execution logs (\texttt{out/}), and a draft report (\texttt{report/report.md}), VeriLoop decides whether to approve delivery (exit code~0) or block with actionable file-and-line diagnostics (exit code~2) through a deterministic first layer and an independent read-only second layer (Figure~\ref{fig:arch}).
+All verification utilities are implemented in Python~3 using only the standard library so they execute deterministically in milliseconds at zero API cost and can be audited line by line.
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig1_architecture.pdf}
-  \caption{\textbf{Dual-layer hard gating closes the verification gap left by existence checks and advisory review.} Comparison of the four evaluated governance paradigms: bare execution (\texttt{B0}), existence gating (\texttt{B1}, grey), summary-fed advisory cross-model review (\texttt{B2}, amber), and VeriLoop (blue). Our harness executes deterministic claim, numerical-provenance, and Python AST gates before path-isolated cross-family auditing, enforcing hard blocking and one-round closed-loop repair (green).}
+  \caption{\textbf{Dual-layer gating closes blind spots left by existence checks, single-layer LLM review, and static checks alone.} Existence gates miss executed bugs; single-layer LLM auditors miss unlogged intervals (\texttt{H06}, 14/15 trials); Layer~1 alone misses logic and inferential flaws (\texttt{H05}, \texttt{C08}); combining both layers on frozen raw artifacts reaches 100.0\% defect recall and 94.1\% F1 at 87.5\% clean yield.}
   \label{fig:arch}
 \end{figure*}
 
-\subsection{Pre-Registered Claim Ledger and Hard Gates (\texttt{G1--G7})}
+\subsection{Pre-Registered Claim Ledger (\texttt{G1--G7})}
 \label{sec:claims}
 
-Unconstrained research agents frequently shift hypotheses after seeing noisy outputs or promote unlogged pilot trials into headline claims.
-To bind conclusions to pre-execution intent, \texttt{claims.py} records every candidate claim before experiments run, specifying an immutable falsification criterion, primary metric, and dataset scope.
-Every claim enters the ledger in \texttt{pilot} state and cannot be promoted to \texttt{supported} unless seven deterministic gates pass (formal specifications in Appendix~\ref{app:gates}):
-\texttt{G1} verifies log file presence, intact SHA-256 digests against post-hoc tampering, and explicit completion markers against truncated runs;
-\texttt{G2} enforces per-dataset and per-arm multi-seed floors (or explicit deterministic registration);
-\texttt{G3} and \texttt{G4} enforce validation-only hyperparameter tuning and pre-registered baseline comparisons;
-\texttt{G5} requires dedicated ablation log files rather than prose assertions;
-\texttt{G6} assigns strictly monotonic sequence counters and microsecond ISO timestamps to prevent retroactive ledger edits; and
-\texttt{G7} verifies machine-parseable uncertainty intervals ($\pm$ or $[l,u]$) or $p$-values inside linked logs.
-This fail-closed design guarantees that any unverified claim remains \texttt{unsupported} unless explicitly waived by a human researcher.
+Without an immutable claim registry, autonomous agents frequently rewrite hypotheses post hoc after observing weak results or overwrite raw logs while citing stale figures.
+\texttt{claims.py} requires every scientific claim to be pre-registered with its target metric, dataset scope, and selection split before full evaluation runs.
+Every claim enters in \texttt{pilot} state and cannot be promoted to \texttt{supported} unless seven deterministic gates pass (formal specifications in Appendix~\ref{app:gates}):
+\texttt{G1} binds each evidence log to its SHA-256 digest and completion marker, rejecting truncated or silently overwritten logs;
+\texttt{G2} enforces multi-seed coverage per dataset and experimental arm;
+\texttt{G3} requires a deterministic non-parametric baseline;
+\texttt{G4} separates development selection from held-out test reporting;
+\texttt{G5} binds ablation claims to distinct executed ablation log files;
+\texttt{G6} enforces monotonic sequence IDs preventing timestamp collisions; and
+\texttt{G7} requires numeric uncertainty intervals to exist inside logged outputs.
+Only an explicit human waiver can bypass a failed gate, ensuring state transitions remain tamper-evident.
 
-\subsection{Deterministic Numerical Provenance and Static AST Gates}
-\label{sec:mech_gates}
+\subsection{Frozen Deterministic Layer-1 Gates (\$0)}
+\label{sec:layer1}
 
-Even when an agent registers claims and executes scripts cleanly, \textsc{FabScore}~\citep{chen2026fabscore} shows that 85.9\% of result fabrications contradict existing logs and 44.6\% of experiment fabrications involve hardcoded or mocked code.
-Our second deterministic layer inspects both reported numbers and source code at zero LLM cost before invoking any external reviewer.
+Even when scripts execute with exit code zero and create expected files, \textsc{FabScore}~\citep{chen2026fabscore} shows that 85.9\% of result fabrications contradict existing logs and 44.6\% of experiment fabrications rely on hardcoded or simulated components.
+VeriLoop runs three fast, zero-cost mechanical verifiers before invoking any external model.
 
-\paragraph{Signed numerical provenance (\texttt{trace\_numbers.py} v2).}
-The tracer indexes every floating-point token across \texttt{out/} and \texttt{outputs/}, preserving sign, decimal precision, and line co-occurrence, and checks every decimal with at least three decimal places in \texttt{report/report.md}.
+\paragraph{Signed, unit-normalized numerical provenance (\texttt{trace\_numbers.py}).}
+Our tracer indexes every decimal value in \texttt{out/} by both unsigned magnitude and explicit sign while normalizing Unicode minus (\texttt{U+2212}), ASCII \texttt{+/-} intervals, and fraction-to-percentage unit conversions (e.g., logged \texttt{0.65} matching tabulated \texttt{65.0} or \texttt{65.0\%}).
 It enforces four hard invariants:
-(1) \texttt{SIGN\_MISMATCH} catches sign-flip fabrications where a negative logged delta is reported as positive while normalizing Unicode minus (\texttt{U+2212}), ASCII \texttt{+/-} spacing, spaced binary subtraction, and trailing-zero equality (\texttt{1.000} vs.\ \texttt{1.0});
-(2) \texttt{WRONG\_LOG} requires every number on a table row citing a log filename to appear inside that exact log rather than elsewhere in the workspace;
-(3) \texttt{UNPAIRED\_PM/CI} verifies that \texttt{mean$\pm$std} and \texttt{[lo, hi]} bounds co-occur on the same raw log line; and
-(4) \texttt{CITED\_STALE} flags logs older than the scripts that generated them.
+(1) \texttt{SIGN\_MISMATCH} catches sign-flip fabrications where a negative logged delta is reported as positive;
+(2) \texttt{WRONG\_LOG} requires numbers on any row citing a specific log filename to appear inside that exact file;
+(3) \texttt{UNPAIRED\_PM/CI} verifies that reported \texttt{mean$\pm$std} and \texttt{[lo, hi]} pairs co-occur on the same logged line; and
+(4) \texttt{UNTRACED} flags any decimal ($\ge 3$ fractional digits) absent from all logs under exact or unit-scaled rounding.
 
-\paragraph{Static Python AST integrity (\texttt{audit\_code.py}).}
-To catch code-level shortcuts invisible to output existence checks, \texttt{audit\_code.py} parses every Python script in \texttt{code/} using stdlib \texttt{ast} and detects six high-risk patterns:
-\texttt{HARDCODED\_REF\_PRINT} (printing literal reference scores instead of computing them),
-\texttt{HARDCODED\_METRIC\_ARRAY},
-\texttt{MOCK\_FALLBACK} (substituting random or synthetic data when files are missing or empty),
-\texttt{TEST\_TUNING} (selecting checkpoints or hyperparameters using test-split variables),
-\texttt{OPTIMISTIC\_TIE} (strict-greater ranking tie bugs), and
-\texttt{DEAD\_METRIC} (defined but uncalled metric functions), alongside report scope-overclaim markers.
-Any \texttt{HIGH}-severity AST finding or numerical tracing error triggers an immediate hard delivery block.
+\paragraph{Static Python AST auditing (\texttt{audit\_code.py}).}
+Without executing untrusted code, \texttt{audit\_code.py} parses every script in \texttt{code/} via Python's \texttt{ast} module and checks six integrity patterns:
+\texttt{HARDCODED\_REF\_PRINT} (static print literals embedding metric floats, while downgrading computed f-strings referencing labeled SOTA constants to \texttt{INFO}),
+\texttt{HARDCODED\_METRIC\_ARRAY} (constant float lists or dictionaries assigned to metric variables),
+\texttt{MOCK\_OR\_SYNTHETIC\_FALLBACK} (random or mock data generation inside \texttt{except} or missing-data guards),
+\texttt{TEST\_SPLIT\_TUNING} (selection conditionals comparing \texttt{test\_acc}/\texttt{test\_loss} against \texttt{best\_*}),
+\texttt{DEAD\_METRIC\_CODE} (defined but uncalled metric functions), and
+\texttt{OPTIMISTIC\_TIE\_BREAKING} (strict \texttt{>} rank counts).
 
-\subsection{Path-Isolated Cross-Family Auditing and Closed-Loop Repair}
-\label{sec:xmr}
+\paragraph{BibTeX verification (\texttt{citation\_audit.py}).}
+For LaTeX manuscripts, \texttt{citation\_audit.py} extracts every citation key, validates its presence in \texttt{refs.bib}, and flags missing keys before compilation.
 
-Deterministic gates catch syntactic, cryptographic, and numerical mismatches cleanly, yet they cannot judge whether a valid-looking script implements a flawed statistical denominator or overstates an observational correlation as causation.
-To detect semantic and methodological fabrications without inheriting the executor's blind spots, \texttt{run\_audit.py} invokes an independent auditor from a distinct model family inside a strictly read-only sandbox.
+\subsection{Independent Layer-2 Auditing and Dual-Model Milestone Gates}
+\label{sec:layer2}
 
-Crucially, the auditor never receives the executor's narrative summary, reasoning chain, or self-assessment.
-Its prompt contains only raw filesystem paths (\texttt{data/}, \texttt{code/}, \texttt{out/}, \texttt{report/report.md}), the deterministic pre-audit JSON, and a 38-item hostile checklist covering provenance, baselines, selection, matched comparisons, attribution, statistics, measurement, scope, trajectory, and code integrity.
-The auditor reads raw CSVs, scripts, and logs directly, recomputes suspicious statistics read-only, and emits line-cited findings plus a structured JSON verdict (Appendix~\ref{app:gates}) separating valid work (\texttt{APPROVE\_SUPPORTED}), honest refusal (\texttt{APPROVE\_HONEST\_REFUSAL}), publication-sufficiency gaps (\texttt{BLOCK\_UNSUPPORTED}), and scientific misconduct or calculation errors (\texttt{BLOCK\_MISCONDUCT}).
-
-Any mechanical gate failure or \texttt{BLOCK\_*} verdict halts delivery deterministically.
-When closed-loop revision is enabled (\texttt{--max-revisions 1}), the harness snapshots the blocked report, returns only the mechanical error list and \texttt{audits/01-review.md} to the executor for one repair turn, and then runs a fresh Round-2 deterministic pre-audit and cross-family review (\texttt{audits/02-review.md}).
-A persistent USD ledger (\texttt{budget.py}) enforces a hard cost circuit breaker before every LLM call so automated verification loops never exceed their compute budget.
+Static AST and log-tracing rules cannot catch semantic calculation errors (such as dividing segment residuals by a global sample size) or inferential leaps that contradict logged numbers without inventing new decimals.
+VeriLoop therefore pairs Layer~1 with a read-only Layer-2 auditor (\texttt{run\_audit.py} and \texttt{verifiable\_gate.py}) that receives raw workspace file paths, SHA-256 manifests, and an explicit defect rubric rather than persuasive executor prose.
+Delivery passes only if both layers approve, forming the conservative dual-layer union $\mathrm{Block}_{\text{VL}} = \mathrm{Block}_{L1} \lor \mathrm{Block}_{L2}$.
+Finally, to prevent circular evaluation metrics or post-hoc overrides from entering a project across research phases, VeriLoop includes a dual-model milestone gate (\texttt{milestone-dual-audit}) that freezes intermediate artifacts by SHA-256, runs independent frontier auditors in parallel against an eight-point anti-self-deception rubric, mechanically overrides any reviewer that votes approve while listing a blocker, and emits a prioritized next-action checklist before work advances.

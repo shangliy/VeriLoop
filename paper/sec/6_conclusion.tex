@@ -1,6 +1,7 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-Autonomous research agents rarely fail by omitting files; they fail by delivering complete-looking reports containing subtle numerical, coding, and inferential fabrications.
-Across 112 controlled runs spanning all 11 \textsc{SciIntegrity-Bench} traps and all 4 \textsc{AIScientistPitfalls} pitfalls (\$46.4928 total), existence gates blocked 0/15 defective outputs, advisory review leaked 13/15 (86.7\%) blockers, same-model review dropped blocking to 18.2\% ($p=0.003906$) with 5/11 sycophantic approvals, and executor summaries cut misconduct verdicts from 90.9\% to 36.4\% ($p=0.031250$).
-Coupling deterministic evidence gates with path-isolated cross-family hard blocking and closed-loop repair cuts blocker leakage to 0/15 ($p=0.000244$), repairs \textsc{SPR} misconduct to 4/4 condition-blind \textsc{Pass} in one turn, and protects scientific integrity even under lenient LLM auditors.
+Autonomous research agents rarely fail by omitting files; they fail by executing cleanly while introducing subtle code bugs, unlogged intervals, or unsupported causal claims.
+Across 245 paired LLM audit trials on 16 SHA-256 frozen workspaces (6 natural runs, 5 clean twin bases, and 5 constructed defect twins), neither in-sample Layer-1 gates alone (6/8 workspace recall) nor any single LLM auditor alone (6/8--7/8 workspace recall) caught every defect: 14 of 15 LLM trials missed an unlogged confidence interval caught deterministically at zero cost, while static checks missed semantic denominator bugs and inferential overclaims caught by read-only LLM review.
+Coupling both layers reaches 8/8 (100.0\%) workspace recall and 94.1\% trial F1 at 87.5\% clean yield (a case-level gain over \texttt{codex-cli} alone, paired $p=0.250000$, trading yield for recall), while locked out-of-sample testing on 21 unseen \textsc{SciIntegrity-Bench} scenarios confirms 0.0\% AST flags and a 0.69\% number-level benign flag rate.
+Equally importantly, our frozen paired protocol shows that trustworthy governance evaluation requires fixed SHA-256 artifacts, workspace-level CIs, gate-independent ground truth, and zero post-hoc overrides.

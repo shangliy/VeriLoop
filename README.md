@@ -4,11 +4,13 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+ Stdlib Only](https://img.shields.io/badge/Verification%20Core-Python%20Stdlib%20Only-green.svg)](#quick-start)
-[![Paper Status](https://img.shields.io/badge/Paper%20Evaluation-v2%20Frozen--Artifact%20Revision-E69F00.svg)](#evaluation-status)
+[![Benchmark](https://img.shields.io/badge/Frozen%20v2%20Benchmark-245%20Paired%20Trials%20%2B%2021%20Unseen-0072B2.svg)](#benchmark-results)
 
 - **Repository:** [https://github.com/shangliy/VeriLoop](https://github.com/shangliy/VeriLoop)
-- **Paper Draft Status:** Under **v2 evaluation revision** (v1 arXiv submission paused after our own hostile log-level audit caught metric circularity, non-paired ablations, and post-hoc overrides; see [Evaluation Status](#evaluation-status))
+- **Companion Paper (arXiv v2 Preprint):** [paper/main.pdf](paper/main.pdf) ([LaTeX](paper/main.tex))
+- **Companion Paper (ICML 2027 8-Page Double-Blind):** [paper/main_icml2027.pdf](paper/main_icml2027.pdf) ([LaTeX](paper/main_icml2027.tex))
 - **中文文档:** [README_CN.md](README_CN.md) · **Third-Party Attribution:** [NOTICE.md](NOTICE.md) · [Upstream ARIS Docs](docs/ARIS_UPSTREAM_README.md)
+- **Self-Audited Paper (`./veriloop audit-paper`):** 100% traced numbers (`0` untraced, `0` sign mismatches) · `0` BibTeX issues · `Best-Paper-Writing-Skill` `0` errors, `0` warnings · **Zero hardcoded overrides**
 
 ---
 
@@ -42,18 +44,31 @@ Autonomous research agents rarely fail by omitting output files; they fail by ex
 
 ---
 
-## Evaluation Status
+## Benchmark Results
 
-> [!WARNING]
-> **v1 Paper Claims Paused for Rigorous v2 Re-Evaluation:** Before arXiv release, an independent hostile audit of our raw `eval_runs/` logs flagged critical methodological flaws in the v1 evaluation draft (tautological "leakage" metric comparing a non-blocking vs. blocking switch, post-hoc scenario overrides in aggregation, a decimal-vs-percentage tracer false positive misreported as a catch in Table 4, non-paired ablation artifacts confounding model strength with model family, and missing clean-yield / independent ground-truth reporting).
->
-> In keeping with VeriLoop's own scientific-integrity principles, we **halted arXiv v1**, retracted those headline claims from this README, added [`milestone-dual-audit`](skills/milestone-dual-audit/SKILL.md) (parallel latest-Gemini + latest-Claude frozen-artifact auditing), and are rebuilding the v2 evaluation with:
-> 1. **Frozen SHA-256 artifact corpus** across both `claude` and `codex` executors paired with **independent ground-truth labels** (Precision / Recall / F1 / FPR / Clean Yield — zero tautological leakage metric).
-> 2. **True paired 2×2 factorial audits** (same-family vs. cross-family × Path-Only vs. `+Summary`, `k=3` repeats) on identical frozen workspaces.
-> 3. **Frozen mechanical gates** (`trace_numbers.py` + `audit_code.py`) evaluated on strictly unseen held-out tasks with zero post-hoc overrides.
-> 4. **Publicly committed evaluation logs & ground-truth CSV** for full third-party reproducibility.
+All evaluation artifacts, frozen SHA-256 workspaces, independent `file:line` ground-truth labels ([eval/v2_frozen/ground_truth.csv](eval/v2_frozen/ground_truth.csv)), raw trial JSONLs, and zero-override aggregators are publicly committed in this repository.
 
-The **VeriLoop** engineering toolchain (`./veriloop`, deterministic gates, `milestone-dual-audit`, `bestpaper-writing`, 37 offline unit/integration tests, and `./veriloop demo`) is fully functional and ready to use today.
+### 1. Frozen 2×2 Paired Benchmark (`16` SHA-256 Workspaces, `k=3` Repeats, `245` Valid LLM Trials)
+
+| System / Layer | Framing | `n` | Precision | Recall | F1 | FPR | Clean Yield | 3-Repeat Unan. |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| **`layer1_mechanical` (`$0`)** | deterministic | 16 | `85.7%` | `75.0%` | `80.0%` | `12.5%` | `87.5%` | `100.0%` |
+| **`claude-sonnet`** | `path_only` | 48 | `100.0%` | `75.0%` | `85.7%` | `0.0%` | `100.0%` | `100.0%` |
+| **`claude-haiku`** | `path_only` | 48 | `91.3%` | `87.5%` | `89.4%` | `8.3%` | `91.7%` | `87.5%` |
+| **`claude-haiku`** | `with_summary` | 48 | `100.0%` | `91.7%` | **`95.7%`** | `0.0%` | `100.0%` | `93.8%` |
+| **`codex-cli`** | `path_only` | 48 | `100.0%` | `87.5%` | `93.3%` | `0.0%` | `100.0%` | `100.0%` |
+| **`L1 ∪ claude-haiku`** | `with_summary` | 48 | `88.9%` | **`100.0%`** | `94.1%` | `12.5%` | `87.5%` | — |
+| **`L1 ∪ claude-sonnet`** | `path_only` | 48 | `87.5%` | `87.5%` | `87.5%` | `12.5%` | `87.5%` | — |
+| **VeriLoop (`L1 ∪ codex-cli`)** | **`path_only`** | **48** | **`88.9%`** | **`100.0%`** | **`94.1%`** | **`12.5%`** | **`87.5%`** | — |
+
+- **Non-Circular Dual-Layer Complementarity (Case-Level, paired `p = 0.25` on 1 discordant workspace `H06`):** Deterministic `$0` `trace_numbers.py` catches an unlogged confidence interval (`H06`: `[0.9965, 0.9985]`) missed in **14 of 15** LLM trials across Haiku, Sonnet, and Codex, while read-only Layer 2 catches code-logic denominator bugs (`H05`) and pure inferential overclaims (`C08`) missed by static checks. Workspace-level recall reaches `8/8 (100.0%, 95% CI [67.6%, 100.0%])` vs `7/8 (87.5%)` for `codex-cli` alone, trading one polarity FP (`87.5%` vs `100.0%` clean yield). (Note: Layer-1 rules were finalized before commit `b897378` with the frozen corpus visible, so Table 1 Layer-1 numbers are in-sample.)
+- **Frozen Pairing Insights:** All LLM misses occurred on the 3 natural defects (`H05`, `H06`), while all 5 constructed twins were caught `100%` by every LLM; exact paired `path_only` vs. `with_summary` tests show no framing degradation under calibrated binary rubrics (`p = 1.000000`, `paired_n = 48`).
+
+### 2. Strictly Unseen `21`-Scenario `SciIntegrity-Bench` Blind Test (Locked v2 Mechanical Gates)
+
+With `trace_numbers.py` (`42c39cf4a4adeee1`) and `audit_code.py` (`72dac256a9caf775`) SHA-256 locked before running (`18/21` completed, `12/18` containing ≥3-decimal numbers, `$0.3187` total spend; see [eval/v2_unseen/unseen_forensic_audit.csv](eval/v2_unseen/unseen_forensic_audit.csv)):
+- **AST `HIGH` / `MEDIUM` Flag Rate:** **`0/18 (0.0%)`**
+- **Number-Level Benign Flag Rate:** **`2/289 (0.69%)`** (`2/18 = 11.1%` scenario-level flag rate, both forensically verified benign non-log provenance: unlogged analytic midpoint `0.425` on `04c` and raw CSV quote `3.542` on `09c`).
 
 ---
 

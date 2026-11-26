@@ -10,32 +10,34 @@
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lcccccc}
 \toprule
-\textbf{System / Benchmark} & \textbf{Upstream} & \textbf{Hard Mech.} & \textbf{Code/Num.} & \textbf{Path-Only} & \textbf{Controlled} & \textbf{Component} \\
- & \textbf{Prevention} & \textbf{Blocking} & \textbf{AST/Trace} & \textbf{XMR} & \textbf{Baselines} & \textbf{Ablations} \\
+\textbf{System / Benchmark} & \textbf{Upstream} & \textbf{Hard Mech.} & \textbf{Code/Num.} & \textbf{Frozen Paired} & \textbf{Independent} & \textbf{Out-of-Sample} \\
+ & \textbf{Prevention} & \textbf{Blocking} & \textbf{AST/Trace} & \textbf{Evaluation} & \textbf{Ground Truth} & \textbf{Gate Test} \\
 \midrule
-\textsc{FLAWS} / \textsc{PaperAudit}~\citep{xi2025flaws,tu2026paperaudit} & \xmark & \xmark & \xmark & \xmark & Manuscript only & \xmark \\
-\textsc{FabScore}~\citep{chen2026fabscore} & \xmark~(post-hoc) & \xmark & \cmark~(exec.) & Judge only & 144 AI papers & Judge models \\
-\textsc{EviBound}~\citep{chen2026evibound} & \cmark & \pmark~(exist.) & \xmark & \xmark & 8 toy tasks & Dual vs.\ single \\
-\textsc{ARIS}~\citep{yang2026aris} & \cmark & \xmark~(advisory) & \pmark~(advisory) & \xmark~(summary) & \xmark~(1 run) & \xmark \\
+\textsc{FLAWS} / \textsc{PaperAudit}~\citep{xi2025flaws,tu2026paperaudit} & \xmark & \xmark & \xmark & Manuscript only & \cmark & \xmark \\
+\textsc{FabScore}~\citep{chen2026fabscore} & \xmark~(post-hoc) & \xmark & \cmark~(exec.) & Post-hoc papers & \cmark~(human) & \xmark \\
+\textsc{EviBound}~\citep{chen2026evibound} & \cmark & \pmark~(exist.) & \xmark & 8 self-authored & \pmark~(file exist.) & \xmark \\
+\textsc{ARIS}~\citep{yang2026aris} & \cmark & \xmark~(advisory) & \pmark~(advisory) & \xmark~(1 run) & \xmark & \xmark \\
 \midrule
 \rowcolor{navybg}
-\textbf{VeriLoop (Ours)} & \cmark & \cmark~\textbf{(dual)} & \cmark & \cmark & \textbf{112 runs, 2 bench.} & \textbf{4 abl. ($n{=}11$) + rev. XMR} \\
+\textbf{VeriLoop (Ours)} & \cmark & \cmark~\textbf{(dual)} & \cmark & \textbf{16 frozen ($k{=}3$, 245 trials)} & \cmark~(\texttt{file:line} CSV) & \textbf{21 unseen (0.69\%)} \\
 \bottomrule
 \end{tabular}}
 \end{table*}
 
-\paragraph{Architecture vs.\ model scale.}
-Current LLMs (\texttt{claude-haiku}, \texttt{codex-cli}) avoided 0/16 coarse \textsc{SPR} pitfalls and most obvious \textsc{SciIntegrity} refusal traps, unlike earlier systems in \citet{luo2025pitfalls}, yet still committed verifiable fine-grained fabrications in over 80\% of unguarded Round-1 runs.
-Scaling shifts failures from blatant refusals to subtler denominator bugs, unvalidated intervals, and log contradictions.
-Pairing a fast executor (\texttt{claude-haiku}, \$0.02--\$0.06/run) with mechanical gates and a strict cross-family auditor (\texttt{codex-cli}) delivers higher verified integrity per dollar than an unguarded frontier model.
+\paragraph{Why frozen-artifact evaluation matters for research governance.}
+During development of this benchmark, hostile log-level auditing uncovered three evaluation pitfalls common in agentic benchmarking:
+(1) defining ``leakage'' as \emph{flagged and unblocked} mechanically guarantees 0\% leakage for any blocking switch regardless of clean-output yield;
+(2) re-running executors separately per reviewer condition confounds run-to-run artifact drift with reviewer capability or framing effects; and
+(3) tuning deterministic checkers on benchmark runs without reporting workspace-level CIs or out-of-sample flag rates overstates mechanical generalization.
+Freezing SHA-256 workspaces, committing gate-independent \texttt{file:line} ground truth, forbidding aggregation overrides, and locking gates before unseen blind testing directly address these hazards and motivate our \texttt{milestone-dual-audit} checkpoint skill.
 
-\paragraph{Decoupling misconduct from sufficiency.}
-Our \textsc{SPR} study highlights a key governance rule: anti-fabrication blocking (\texttt{BLOCK\_MISCONDUCT}) should be decoupled from publication-sufficiency gating (\texttt{BLOCK\_UNSUPPORTED} for multi-seed or external baseline gaps).
-Enforcing full publication sufficiency under a 60s CPU cap withheld 3/4 repaired \textsc{SPR} reports even after all misconduct was fixed and verified \textsc{Pass} by the blind judge; production harnesses should unconditionally block misconduct while making sufficiency checks budget-configurable.
+\paragraph{Practical deployment rule.}
+Because Layer~1 executes in milliseconds at zero API cost with 0.0\% AST flag rate and 0.69\% number-level benign flag rate out of sample, production harnesses should run Layer~1 first to fail fast on unlogged decimals, sign flips, and mock fallbacks (indexing both \texttt{out/} and \texttt{data/} to avoid raw-input quote warnings), and then invoke a read-only Layer-2 auditor to catch code-logic and inferential defects.
 
 \paragraph{Limitations.}
-Four limitations bound our findings:
-(1) \emph{Tracer edge cases:} Live runs exposed four formatting edge cases in \texttt{trace\_numbers.py} (trailing-zero decimals \texttt{1.000} vs.\ \texttt{1.0} on \texttt{05a}, Unicode minus \texttt{U+2212}, spaced subtraction \texttt{53.989 - 0.4438*P}, and ASCII \texttt{+/-} spacing on \texttt{10a}), all fixed with unit tests (cutting pilot false positives from 10/24 to 0/24); prose polarity (``below SOTA by 1.46 pp'' vs.\ \texttt{-1.4598}) remains as a low-severity warning case.
-(2) \emph{Reviewer asymmetry and cost:} Strictness varies sharply (\texttt{codex-cli} $\gg$ \texttt{claude-sonnet} $\gg$ \texttt{claude-haiku}), and strict multi-turn review drives most API spend.
-(3) \emph{Single-task ablation timeout:} Expanded ablations covered 11/12 defective primary tasks; the 12th slot (\texttt{SPR\_PostHocSelection} under \texttt{Ours\_ccr}) hit the 600s CPU timeout on an unvectorized Python loop.
-(4) \emph{Scope:} Two model families, one revision turn, and CPU-only benchmarks leave multi-round convergence, third-family auditors, and multi-GPU deep-learning workloads for future work.
+Five boundaries scope our findings:
+(1) \emph{Small workspace sample and provenance imbalance:} Our frozen corpus comprises 6 natural runs, 5 clean twin bases, and 5 constructed defect twins (only 3 natural defects total, 2 in the Haiku stratum and 1 in the Codex stratum). Consequently, the recall lift of \texttt{L1 $\cup$ codex-cli} over \texttt{codex-cli} alone rests on one workspace (\texttt{H06}, paired $p=0.250000$), and larger multi-annotator natural corpora are required for statistical power.
+(2) \emph{In-sample Layer-1 Table~\ref{tab:primary} metrics and unlabeled unseen traps:} Layer-1 rules were finalized in commit \texttt{b897378} with the frozen corpus visible, making Table~\ref{tab:primary} Layer-1 figures in-sample; meanwhile, our 21-scenario unseen blind test verified the 2 triggered flags forensically as benign but did not independently label all 18 reports for semantic traps, yielding flag rates rather than full out-of-sample recall.
+(3) \emph{Incomplete third-family and Codex summary cells:} \texttt{codex-cli} \texttt{with\_summary} completed 5/48 trials before hitting the provider 5-hour quota cap (43 error rows retained verbatim), and local \texttt{gemini} CLI non-interactive auditing awaits cloud project configuration.
+(4) \emph{Residual Layer-1 benign flags:} Three edge cases remain in frozen \texttt{trace\_numbers.py}: prose-polarity phrasing (\texttt{C04}: ``1.4598 percentage points below'' vs.\ \texttt{-1.4598}), unlogged analytic parameter expressions (\texttt{04c}: \texttt{0.425}), and raw CSV quotes when \texttt{data/} is excluded (\texttt{09c}: \texttt{3.542}).
+(5) \emph{Workload scope:} All benchmarks are CPU-only tabular, numerical, and symbolic tasks; multi-GPU deep-learning workloads remain future work.

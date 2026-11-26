@@ -1,11 +1,11 @@
 \section*{AI Use Statement}
 Large language models were used in two distinct roles in this work.
-First, frontier LLMs (\texttt{claude-cli} \texttt{haiku}/\texttt{sonnet} and \texttt{codex-cli}) served directly as the experimental subjects (autonomous research executors, independent auditors, and condition-blind judges) evaluated across all 112 controlled benchmark runs.
-Second, AI coding and writing assistants aided in implementing boilerplate harness utilities, plotting scripts, and LaTeX prose refinement.
-All experimental designs, statistical scripts, deterministic verification rules, unit tests, numbers, citations, and final manuscript claims were independently verified by the authors, including automated provenance auditing of this manuscript against \texttt{paper/out/stats\_summary.txt} and full-text verification of all cited references.
+First, frontier LLMs (\texttt{claude-haiku}, \texttt{claude-sonnet}, and \texttt{codex-cli}) served directly as the experimental subjects (autonomous research executors and independent read-only auditors) evaluated across all 245 paired frozen-artifact trials and 21 unseen \textsc{SciIntegrity-Bench} blind-test runs.
+Second, AI coding and writing assistants aided in implementing harness utilities, plotting scripts, and LaTeX prose refinement.
+All experimental protocols, independent ground-truth labels, deterministic verification rules, unit tests, numbers, citations, and final manuscript claims were independently audited by the authors, including an internal hostile log-level audit that halted an earlier draft and motivated the frozen zero-override v2 benchmark, plus automated provenance and writing verification via \texttt{./veriloop audit-paper}.
 
 \section*{Impact Statement}
-This work addresses the reliability and scientific integrity of autonomous LLM research agents by introducing open-source deterministic verification gates and path-isolated cross-model auditing.
-Its primary societal benefit is reducing the risk that fabricated statistics, hardcoded baselines, or silent coding bugs enter scientific preprints and peer-review pipelines.
-Conversely, automated governance should never be treated as a complete substitute for human scientific scrutiny: our own reverse cross-family experiments demonstrate that lenient LLM reviewers can overlook genuine defects, and deterministic checks remain bounded by their specified invariants.
-We therefore release our tooling as a transparent, fail-closed aid for researchers and reviewers rather than an autonomous arbiter of scientific truth.
+This work addresses the reliability and scientific integrity of autonomous LLM research agents by introducing open-source deterministic verification gates, dual-model milestone auditing, and a frozen SHA-256 evaluation benchmark.
+Its primary positive impact is reducing the risk that unlogged statistics, synthetic data fallbacks, or subtle coding bugs enter scientific preprints and peer review, while discouraging circular or confounded benchmark evaluation practices.
+Conversely, automated verification must never be mistaken for an infallible oracle of scientific truth: our own unseen blind test documents residual non-log provenance false positives (0.69\% number-level FPR), and even strong LLM reviewers missed natural denominator bugs and unlogged confidence intervals.
+We therefore release VeriLoop as a transparent, fail-closed aid for researchers and reviewers rather than an autonomous arbiter of scientific validity.
