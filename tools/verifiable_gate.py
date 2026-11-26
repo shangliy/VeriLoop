@@ -45,6 +45,8 @@ def main():
     ap.add_argument("--reviewer-provider", choices=["none", "dry-run", "codex-cli", "claude-cli", "openai", "anthropic"],
                     default="none", help="Optional Layer-2 path-only cross-model reviewer (default: none = Layer-1 only)")
     ap.add_argument("--reviewer-model", default="default", help="Model name for Layer-2 reviewer")
+    ap.add_argument("--budget-file", help="Optional budget_ledger.json path for Layer-2 circuit breaker")
+    ap.add_argument("--budget-limit", type=float, default=10.0, help="Hard USD cap for Layer-2 reviewer")
     ap.add_argument("--out-json", help="Optional path to save structured gate report JSON")
     a = ap.parse_args()
 
@@ -136,6 +138,9 @@ def main():
             cmd_xmr.extend(["--logs", lp])
         for sp in scripts_p:
             cmd_xmr.extend(["--scripts", sp])
+        if a.budget_file:
+            cmd_xmr.extend(["--budget-file", str(Path(a.budget_file) if Path(a.budget_file).is_absolute() else (ws / a.budget_file)),
+                            "--budget-limit", str(a.budget_limit)])
         rc, out, err = run_cmd(cmd_xmr)
         review_verdict = None
         if audit_out.is_file():
