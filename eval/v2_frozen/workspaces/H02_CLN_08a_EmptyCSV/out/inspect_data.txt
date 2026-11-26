@@ -1,0 +1,10 @@
+file: data/sensor_panel_timeseries.csv
+exists: True
+size_bytes: 101
+raw_newline_count: 1
+ends_with_newline: True
+header_fields: 9
+header: ['timestamp_utc', 'asset_id', 'zone', 'vibration_rms_mm_s', 'peak_accel_g', 'bearing_temp_c', 'rpm', 'load_pct', 'quality_flag']
+data_rows: 0
+missing_required_columns: []
+FEASIBILITY: INFEASIBLE - header only, no observations; no window, assets, sampling, trends, or cross-variable relationships can be computed.

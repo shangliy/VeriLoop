@@ -1,0 +1,50 @@
+SETTINGS minleaf 25 max_depths 1 through 8 bootstrap_replicates 2000 bootstrap_seed 2026
+DATA train n 20000 labels {0: 10000, 1: 10000} lengths {6: 20000}
+TOKENS train ['■b', '■g', '■r', '■y', '▲b', '▲g', '▲r', '▲y', '◆b', '◆g', '◆r', '◆y', '●b', '●g', '●r', '●y'] count 16
+SPLIT_COLOR train 1 n 17 labels {1: 10, 0: 7}
+SPLIT_COLOR train 2 n 1772 labels {0: 917, 1: 855}
+SPLIT_COLOR train 3 n 10478 labels {0: 5237, 1: 5241}
+SPLIT_COLOR train 4 n 7733 labels {0: 3839, 1: 3894}
+DATA dev n 5000 labels {1: 2500, 0: 2500} lengths {6: 5000}
+TOKENS dev ['■b', '■g', '■r', '■y', '▲b', '▲g', '▲r', '▲y', '◆b', '◆g', '◆r', '◆y', '●b', '●g', '●r', '●y'] count 16
+SPLIT_COLOR dev 1 n 4 labels {0: 2, 1: 2}
+SPLIT_COLOR dev 2 n 477 labels {0: 253, 1: 224}
+SPLIT_COLOR dev 3 n 2643 labels {1: 1333, 0: 1310}
+SPLIT_COLOR dev 4 n 1876 labels {0: 935, 1: 941}
+FEATURES 260
+VARIANT 1 train {"accuracy": 0.87745, "CWA": 0.8776373868066194, "SWA": 0.883473869062305} dev {"accuracy": 0.8802, "CWA": 0.8801171374534805, "SWA": 0.8864666899197767}
+TABLE_PERCENT 1 87.745 87.764 88.347 88.020 88.012 88.647
+VARIANT 2 train {"accuracy": 0.97005, "CWA": 0.9701184643620975, "SWA": 0.9707850166175638} dev {"accuracy": 0.9704, "CWA": 0.9705326093587945, "SWA": 0.9709336123706546}
+TABLE_PERCENT 2 97.005 97.012 97.079 97.040 97.053 97.093
+VARIANT 3 train {"accuracy": 0.99145, "CWA": 0.9914602514902847, "SWA": 0.9912195405134755} dev {"accuracy": 0.9906, "CWA": 0.991031663717894, "SWA": 0.9901174282060226}
+TABLE_PERCENT 3 99.145 99.146 99.122 99.060 99.103 99.012
+VARIANT 4 train {"accuracy": 0.99615, "CWA": 0.9960714123196869, "SWA": 0.9966764872356791} dev {"accuracy": 0.9964, "CWA": 0.9965224818497956, "SWA": 0.9968608301360307}
+TABLE_PERCENT 4 99.615 99.607 99.668 99.640 99.652 99.686
+VARIANT 5 train {"accuracy": 1.0, "CWA": 1.0, "SWA": 1.0} dev {"accuracy": 1.0, "CWA": 1.0, "SWA": 1.0}
+TABLE_PERCENT 5 100.000 100.000 100.000 100.000 100.000 100.000
+VARIANT 6 train {"accuracy": 1.0, "CWA": 1.0, "SWA": 1.0} dev {"accuracy": 1.0, "CWA": 1.0, "SWA": 1.0}
+TABLE_PERCENT 6 100.000 100.000 100.000 100.000 100.000 100.000
+VARIANT 7 train {"accuracy": 1.0, "CWA": 1.0, "SWA": 1.0} dev {"accuracy": 1.0, "CWA": 1.0, "SWA": 1.0}
+TABLE_PERCENT 7 100.000 100.000 100.000 100.000 100.000 100.000
+VARIANT 8 train {"accuracy": 1.0, "CWA": 1.0, "SWA": 1.0} dev {"accuracy": 1.0, "CWA": 1.0, "SWA": 1.0}
+TABLE_PERCENT 8 100.000 100.000 100.000 100.000 100.000 100.000
+SELECTED depth 5 criterion dev accuracy
+SELECTED_TREE {"p": 0.5, "n": 20000, "f": 0, "left": {"p": 0.0, "n": 7549}, "right": {"p": 0.8031483414986748, "n": 12451, "f": 98, "left": {"p": 0.0, "n": 1852}, "right": {"p": 0.9434852344560808, "n": 10599, "f": 161, "left": {"p": 0.0, "n": 428}, "right": {"p": 0.9831874938550782, "n": 10171, "f": 165, "left": {"p": 0.9923588369554431, "n": 10077, "f": 112, "left": {"p": 1.0, "n": 10000}, "right": {"p": 0.0, "n": 77}}, "right": {"p": 0.0, "n": 94}}}}}
+DATA test n 10000 labels {1: 5016, 0: 4984} lengths {6: 10000}
+TOKENS test ['■b', '■g', '■r', '■y', '▲b', '▲g', '▲r', '▲y', '◆b', '◆g', '◆r', '◆y', '●b', '●g', '●r', '●y'] count 16
+TEST selected {"accuracy": 0.7, "CWA": 0.6354024245738766, "SWA": 0.6999855093464715}
+TEST_PERCENT accuracy 70.00 CWA 63.5402 SWA 69.9986
+BOOTSTRAP percentile 95% replicates 2000 seed 2026 CWA_PERCENT 62.5738 64.5371 SWA_PERCENT 69.1159 70.9370
+TEST_COLOR_4_CONFUSION actual0_pred0 437 actual0_pred1 1492 actual1_pred0 1508 actual1_pred1 413
+TEST_GROUP color 1 n 10 accuracy 1.0 accuracy_percent 100.0000
+TEST_GROUP color 2 n 917 accuracy 1.0 accuracy_percent 100.0000
+TEST_GROUP color 3 n 5223 accuracy 1.0 accuracy_percent 100.0000
+TEST_GROUP color 4 n 3850 accuracy 0.22077922077922077 accuracy_percent 22.0779
+TEST_GROUP shape 1 n 3 accuracy 0.6666666666666666 accuracy_percent 66.6667
+TEST_GROUP shape 2 n 448 accuracy 0.6741071428571429 accuracy_percent 67.4107
+TEST_GROUP shape 3 n 4590 accuracy 0.7052287581699347 accuracy_percent 70.5229
+TEST_GROUP shape 4 n 4959 accuracy 0.6975196612220206 accuracy_percent 69.7520
+SOTA CWA 0.65 SWA 0.7
+REFERENCE_PERCENT CWA 65.0 SWA 70.0
+GAP_PERCENT CWA -1.4598 SWA -0.00145
+TEST_MINUS_SOTA CWA -0.014597575426123388 SWA -1.4490653528431707e-05

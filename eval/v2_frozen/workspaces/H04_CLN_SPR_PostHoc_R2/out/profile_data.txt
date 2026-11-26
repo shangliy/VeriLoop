@@ -1,0 +1,11 @@
+[train] n=20000 labels={'0': 10000, '1': 10000} len_hist={16: 20000}
+[dev] n=5000 labels={'0': 2500, '1': 2500} len_hist={16: 5000}
+[test] n=10000 labels={'1': 5000, '0': 5000} len_hist={16: 10000}
+[vocab] n_distinct_tokens=16
+[vocab] shape_glyphs={'◆': 163434, '●': 143813, '■': 147709, '▲': 105044}
+[vocab] color_glyphs={'g': 135759, 'r': 153052, 'b': 135911, 'y': 135278}
+[overlap] train∩dev exact sequences = 0
+[overlap] train∩test exact sequences = 0
+[overlap] dev∩test exact sequences = 0
+[dups] train duplicate sequences (count beyond first) = 0
+[dups] train sequences with conflicting labels = 0

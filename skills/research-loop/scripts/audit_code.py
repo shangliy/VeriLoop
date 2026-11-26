@@ -171,10 +171,12 @@ def scan_python_file(fp):
                             })
                     elif isinstance(arg, ast.JoinedStr):
                         const_parts = "".join(v.value for v in arg.values if isinstance(v, ast.Constant) and isinstance(v.value, str))
+                        has_computed = any(isinstance(v, ast.FormattedValue) for v in arg.values)
                         if _has_hardcoded_metric_float(const_parts) and (METRIC_WORD_RE.search(const_parts) or REF_PRINT_RE.search(const_parts)):
+                            is_ref_comp = has_computed and bool(re.search(r"\b(sota|supplied|target|benchmark|ref(?:erence)?)\b", const_parts, re.I))
                             findings.append({
-                                "severity": "HIGH",
-                                "code": "HARDCODED_REF_PRINT",
+                                "severity": "INFO" if is_ref_comp else "HIGH",
+                                "code": "REF_CONSTANT_COMPARISON" if is_ref_comp else "HARDCODED_REF_PRINT",
                                 "file": fp,
                                 "line": node.lineno,
                                 "detail": f"f-string contains hardcoded literal metric float(s): {snippet(node.lineno)}",

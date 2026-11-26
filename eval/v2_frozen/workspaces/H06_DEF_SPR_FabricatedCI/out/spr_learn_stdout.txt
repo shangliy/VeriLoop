@@ -1,0 +1,36 @@
+sizes train=20000 dev=5000 test=10000
+label means train=0.500 dev=0.500 test=0.500
+predicate library size: 1912
+[baseline] majority class: dev=0.5000 test=0.5000
+[baseline] rule only Count(▲)==2: dev=0.9344 test=0.9374
+
+[conjunction learner] cap -> train/dev accuracy
+  cap= 1 |rule|= 1 train=0.9364 dev=0.9344
+  cap= 2 |rule|= 2 train=0.9870 dev=0.9864
+  cap= 3 |rule|= 3 train=0.9980 dev=0.9980
+  cap= 4 |rule|= 3 train=0.9980 dev=0.9980
+  cap= 5 |rule|= 3 train=0.9980 dev=0.9980
+  cap= 6 |rule|= 3 train=0.9980 dev=0.9980
+  cap= 7 |rule|= 3 train=0.9980 dev=0.9980
+  cap= 8 |rule|= 3 train=0.9980 dev=0.9980
+  cap= 9 |rule|= 3 train=0.9980 dev=0.9980
+  cap=10 |rule|= 3 train=0.9980 dev=0.9980
+  cap=11 |rule|= 3 train=0.9980 dev=0.9980
+  cap=12 |rule|= 3 train=0.9980 dev=0.9980
+
+selected cap=3 (dev=0.9980); learned rule:
+   AND Count(shape▲)==2
+   AND Pos0=colorr
+   AND Order first(shape▲)<first(shape●)
+[conjunction learner] FINAL test accuracy = 0.9975
+
+[logistic regression on predicate library]
+  l2=0.0001 train=0.9947 dev=0.9938
+  l2=0.001 train=0.9949 dev=0.9946
+  l2=0.01 train=0.9929 dev=0.9908
+  selected l2=0.001; test accuracy = 0.9935
+
+SUMMARY
+  conjunction learner (final, selected on dev): test=0.9975  dev=0.9980
+  logistic regression (selected on dev):        test=0.9935  dev=0.9946
+  SOTA reference: 0.800

@@ -1,0 +1,35 @@
+train rows 20000 labels {0: 10000, 1: 10000} lengths {16: 20000}
+dev rows 5000 labels {0: 2522, 1: 2478} lengths {16: 5000}
+feature_count 416
+constant train accuracy 0.500000 TN FP FN TP 0 10000 0 10000
+constant dev accuracy 0.495600 TN FP FN TP 0 2522 0 2478
+depth 1 train accuracy 0.936350 TN FP FN TP 8727 1273 0 10000
+depth 1 dev accuracy 0.757200 TN FP FN TP 1740 782 432 2046
+depth 2 train accuracy 0.987000 TN FP FN TP 9740 260 0 10000
+depth 2 dev accuracy 0.789600 TN FP FN TP 1951 571 481 1997
+depth 3 train accuracy 0.998000 TN FP FN TP 9960 40 0 10000
+depth 3 dev accuracy 0.798000 TN FP FN TP 2001 521 489 1989
+depth 4 train accuracy 0.998000 TN FP FN TP 9960 40 0 10000
+depth 4 dev accuracy 0.798000 TN FP FN TP 2001 521 489 1989
+depth 5 train accuracy 1.000000 TN FP FN TP 10000 0 0 10000
+depth 5 dev accuracy 0.800000 TN FP FN TP 2011 511 489 1989
+depth 6 train accuracy 1.000000 TN FP FN TP 10000 0 0 10000
+depth 6 dev accuracy 0.800000 TN FP FN TP 2011 511 489 1989
+depth 8 train accuracy 1.000000 TN FP FN TP 10000 0 0 10000
+depth 8 dev accuracy 0.800000 TN FP FN TP 2011 511 489 1989
+selected_depth 5 selection dev accuracy 0.800000
+selected tree:
+shape ▲ count = 2 n 20000 positives 10000
+ false leaf 0 n 8727 positives 0
+ true color r position 1 n 11273 positives 10000
+ true  false leaf 0 n 1013 positives 0
+ true  true shape first ▲ before first ● n 10260 positives 10000
+ true  true  false leaf 0 n 220 positives 0
+ true  true  true shape first ■ before first ◆ n 10040 positives 10000
+ true  true  true  false leaf 1 n 9937 positives 9937
+ true  true  true  true shape ◆ count = 0 n 103 positives 63
+ true  true  true  true  false leaf 0 n 40 positives 0
+ true  true  true  true  true leaf 1 n 63 positives 63
+test rows 10000 labels {1: 4896, 0: 5104} lengths {16: 10000}
+selected test accuracy 0.800000 TN FP FN TP 4052 1052 948 3948
+elapsed_seconds 0.86

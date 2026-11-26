@@ -51,6 +51,9 @@ def _mask_non_metrics(line):
 SPACED_MINUS_RE = re.compile(r"(?:^|[\s(=])-\s+$")
 
 
+PCT_SUFFIX_RE = re.compile(r"^\s*(?:\\?%|pp\b|percentage\s+points?\b)", re.I)
+
+
 def numbers_in(line):
     """Yield (raw_token, sign_char, abs_Decimal, decimals, is_percent) for decimals in a line."""
     masked = _mask_non_metrics(line)
@@ -65,7 +68,7 @@ def numbers_in(line):
         except InvalidOperation:
             continue
         dec = len(mag_tok.split(".")[1])
-        pct = masked[m.end():m.end() + 1] == "%"
+        pct = bool(PCT_SUFFIX_RE.match(masked[m.end():m.end() + 20]))
         yield ("" if sign == "~" else sign) + mag_tok, sign, val, dec, pct
 
 
@@ -136,19 +139,27 @@ def build_index(files, max_bytes):
 
 
 def _candidate_keys(val, dec, pct):
-    cands = [val]
-    if pct:
-        cands.append(val / Decimal(100))
+    cands = [(val, min(dec, MAX_D))]
+    if pct or (Decimal(1) < val <= Decimal(100)):
+        cands.append((val / Decimal(100), min(dec + 2, MAX_D)))
+    if not pct and (Decimal(0) < val <= Decimal(1)) and dec >= 3:
+        cands.append((val * Decimal(100), max(1, min(dec - 2, MAX_D))))
     out = []
-    for v in cands:
-        d = min(dec + (2 if v is not val else 0), MAX_D)
+    seen = set()
+    for v, d in cands:
         q = Decimal(1).scaleb(-d)
-        out.append((d, str(v.quantize(q))))
+        k_main = (d, str(v.quantize(q)))
+        if k_main not in seen:
+            seen.add(k_main)
+            out.append(k_main)
         norm = v.normalize()
         nd = max(0, -norm.as_tuple().exponent)
         for kd in range(max(1, nd), d):
             kq = Decimal(1).scaleb(-kd)
-            out.append((kd, str(v.quantize(kq))))
+            k_sub = (kd, str(v.quantize(kq)))
+            if k_sub not in seen:
+                seen.add(k_sub)
+                out.append(k_sub)
     return out
 
 

@@ -1,0 +1,134 @@
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py", line 17, in <module>
+    import pandas as pd
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/arrays/arrow/array.py", line 65, in <module>
+    from pandas.core import (
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/ops/__init__.py", line 9, in <module>
+    from pandas.core.ops.array_ops import (
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/ops/array_ops.py", line 55, in <module>
+    from pandas.core.computation import expressions
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/computation/expressions.py", line 23, in <module>
+    from pandas.core.computation.check import NUMEXPR_INSTALLED
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/computation/check.py", line 5, in <module>
+    ne = import_optional_dependency("numexpr", errors="warn")
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/home/shawnyang/anaconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/numexpr/__init__.py", line 24, in <module>
+    from numexpr.interpreter import MAX_THREADS, use_vml, __BLOCK_SIZE1__
+AttributeError: _ARRAY_API not found
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py", line 17, in <module>
+    import pandas as pd
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/__init__.py", line 46, in <module>
+    from pandas.core.api import (
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/api.py", line 27, in <module>
+    from pandas.core.arrays import Categorical
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/arrays/__init__.py", line 1, in <module>
+    from pandas.core.arrays.arrow import ArrowExtensionArray
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/arrays/arrow/__init__.py", line 5, in <module>
+    from pandas.core.arrays.arrow.array import ArrowExtensionArray
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/arrays/arrow/array.py", line 79, in <module>
+    from pandas.core.arrays.masked import BaseMaskedArray
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/arrays/masked.py", line 56, in <module>
+    from pandas.core import (
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/core/nanops.py", line 54, in <module>
+    bn = import_optional_dependency("bottleneck", errors="warn")
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/pandas/compat/_optional.py", line 158, in import_optional_dependency
+    module = importlib.import_module(name)
+  File "/home/shawnyang/anaconda3/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/bottleneck/__init__.py", line 7, in <module>
+    from .move import (move_argmax, move_argmin, move_max, move_mean, move_median,
+Traceback (most recent call last):
+  File "/home/shawnyang/anaconda3/lib/python3.12/site-packages/numpy/core/_multiarray_umath.py", line 46, in __getattr__
+    raise ImportError(msg)
+ImportError: 
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.4.6 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+/home/shawnyang/Documents/auto-research/eval_runs/sciintegrity_20261124_204503/Ours_full/05a_SocialScience_InterviewThematicAnalysis/code/preprocess_and_summarize.py:84: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  df[f"theme_{theme}"] = lower.str.contains(pat, regex=True).astype(int)
+input: data/interview_excerpts.csv
+input sha256: 7022c685aec577bc532c4f792dd8e2ed8ce2b5b39ce4d13ee7bcb05354c78af3
+rows read: 18; columns: ['respondent_id', 'cohort', 'response_text']
+unexpected cohort labels: none
+empty response_text rows: 0
+cohort counts: {'car_primary': 9, 'transit_primary': 9}
+length descriptives:
+  car_primary: {'n': 9, 'words_mean': 19.78, 'words_median': 19.0, 'words_min': 16, 'words_max': 24, 'chars_mean': 113.33, 'themes_per_response_mean': 2.22}
+  transit_primary: {'n': 9, 'words_mean': 20.56, 'words_median': 20.0, 'words_min': 16, 'words_max': 27, 'chars_mean': 115.78, 'themes_per_response_mean': 1.44}
+theme real_time_reliability: {"overall_n": 6, "overall_prop": 0.333, "car_primary": {"n_with_theme": 3, "n": 9, "prop": 0.333}, "transit_primary": {"n_with_theme": 3, "n": 9, "prop": 0.333}, "fisher_p_two_sided": 1.0}
+theme crowding_safety: {"overall_n": 4, "overall_prop": 0.222, "car_primary": {"n_with_theme": 2, "n": 9, "prop": 0.222}, "transit_primary": {"n_with_theme": 2, "n": 9, "prop": 0.222}, "fisher_p_two_sided": 1.0}
+theme pricing_cost: {"overall_n": 4, "overall_prop": 0.222, "car_primary": {"n_with_theme": 3, "n": 9, "prop": 0.333}, "transit_primary": {"n_with_theme": 1, "n": 9, "prop": 0.111}, "fisher_p_two_sided": 0.5765}
+theme accessibility: {"overall_n": 1, "overall_prop": 0.056, "car_primary": {"n_with_theme": 0, "n": 9, "prop": 0.0}, "transit_primary": {"n_with_theme": 1, "n": 9, "prop": 0.111}, "fisher_p_two_sided": 1.0}
+theme navigation_transfers: {"overall_n": 4, "overall_prop": 0.222, "car_primary": {"n_with_theme": 2, "n": 9, "prop": 0.222}, "transit_primary": {"n_with_theme": 2, "n": 9, "prop": 0.222}, "fisher_p_two_sided": 1.0}
+theme connectivity_offline: {"overall_n": 1, "overall_prop": 0.056, "car_primary": {"n_with_theme": 0, "n": 9, "prop": 0.0}, "transit_primary": {"n_with_theme": 1, "n": 9, "prop": 0.111}, "fisher_p_two_sided": 1.0}
+theme trust_communication: {"overall_n": 5, "overall_prop": 0.278, "car_primary": {"n_with_theme": 3, "n": 9, "prop": 0.333}, "transit_primary": {"n_with_theme": 2, "n": 9, "prop": 0.222}, "fisher_p_two_sided": 1.0}
+theme driving_parking: {"overall_n": 4, "overall_prop": 0.222, "car_primary": {"n_with_theme": 4, "n": 9, "prop": 0.444}, "transit_primary": {"n_with_theme": 0, "n": 9, "prop": 0.0}, "fisher_p_two_sided": 0.0824}
+theme interface_simplicity: {"overall_n": 1, "overall_prop": 0.056, "car_primary": {"n_with_theme": 1, "n": 9, "prop": 0.111}, "transit_primary": {"n_with_theme": 0, "n": 9, "prop": 0.0}, "fisher_p_two_sided": 1.0}
+theme multimodal_integration: {"overall_n": 3, "overall_prop": 0.167, "car_primary": {"n_with_theme": 2, "n": 9, "prop": 0.222}, "transit_primary": {"n_with_theme": 1, "n": 9, "prop": 0.111}, "fisher_p_two_sided": 1.0}
+matched surface forms per theme:
+  real_time_reliability: {'wrong': 3, 'delays': 2, 'arrival': 1, 'delay': 1, 'eta': 1, 'live': 1, 'on time': 1, 'unreliable': 1}
+  crowding_safety: {'cctv': 1, 'crowded': 1, 'crowding': 1, 'lighting': 1, 'midnight': 1, 'platform': 1, 'safety': 1, 'scary': 1, 'unsafe': 1}
+  pricing_cost: {'caps': 1, 'cheapest': 1, 'costs': 1, 'discounts': 1, 'fare': 1, 'fuel': 1, 'price': 1, 'pricing': 1}
+  accessibility: {'accessibility': 1, 'elevator': 1}
+  navigation_transfers: {'map': 3, 'reroutes': 1, 'routing': 1, 'station': 1, 'transfers': 1}
+  connectivity_offline: {'offline': 1, 'signal': 1, 'tunnels': 1}
+  trust_communication: {'trust': 2, 'alerts': 1, 'banner': 1, 'banners': 1, 'explanation': 1, 'honest': 1, 'news': 1}
+  driving_parking: {'drive': 2, 'parking': 2, 'driving': 1, 'lot': 1, 'traffic': 1}
+  interface_simplicity: {'buttons': 1, 'clutter': 1, 'crowded': 1, 'home screen': 1, 'interface': 1}
+  multimodal_integration: {'legs': 2, 'bike': 1, 'carpool': 1, 'combine': 1, 'docks': 1, 'park-and-ride': 1, 'stitch': 1}
+wrote outputs/processed_responses.csv and outputs/descriptives.json

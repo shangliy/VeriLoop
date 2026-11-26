@@ -1,0 +1,11 @@
+train errors: 40 of 20000
+error label distribution (true): [40  0]
+predicted label of errors: [ 0 40]
+ y=0 pred=1 viol=[] seq=■r ▲b ●g ■r ■y ●b ◆r ◆b ▲r ◆b ◆b ●y ■r ■y ◆r ●b
+ y=0 pred=1 viol=[] seq=▲r ■g ●y ●b ■g ●y ●y ■y ■b ■b ◆r ▲y ◆g ◆b ■b ■g
+ y=0 pred=1 viol=[] seq=■r ■r ▲r ■b ●b ◆y ●b ■b ◆b ■g ◆b ◆r ●r ▲b ■r ◆y
+ y=0 pred=1 viol=[] seq=■r ◆r ▲b ●y ■r ■b ■b ■y ◆b ◆y ●y ■g ■g ◆g ▲y ◆g
+ y=0 pred=1 viol=[] seq=■r ◆b ◆r ■b ▲b ◆g ◆g ◆b ■g ●g ■r ◆b ◆y ▲y ◆y ◆y
+ y=0 pred=1 viol=[] seq=■r ◆g ■b ◆r ◆r ■g ▲g ▲r ●r ◆b ■b ●y ◆r ■y ■g ■b
+ y=0 pred=1 viol=[] seq=■r ■y ▲y ●y ■y ◆g ◆r ●b ●b ■r ■g ◆r ■b ▲g ●b ◆g
+ y=0 pred=1 viol=[] seq=■r ◆r ■g ■b ◆g ▲g ■b ●b ●g ■y ●y ●y ◆g ▲b ■y ◆b

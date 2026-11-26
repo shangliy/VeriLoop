@@ -1,0 +1,10 @@
+File: data/sensor_panel_timeseries.csv
+File size (bytes): 101
+SHA-256: 138874872add8f58fb50273bb4f36ddba0cc1ad3490c22fb54ae0dfc023d4b4c
+Columns (9): timestamp_utc, asset_id, zone, vibration_rms_mm_s, peak_accel_g, bearing_temp_c, rpm, load_pct, quality_flag
+Data rows: 0
+Nonblank asset identifiers: 0
+Nonblank timestamps: 0
+Observation window: unavailable; no observation rows
+Sampling interval: unavailable; no observation rows
+Trends, comparisons, relationships, and asset risk ranking: unavailable; no observation rows

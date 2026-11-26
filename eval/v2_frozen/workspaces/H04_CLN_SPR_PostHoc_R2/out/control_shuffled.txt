@@ -1,0 +1,5 @@
+[control] train label mean (original)=0.5000 (permuted)=0.5000; agreement original vs permuted=0.4991
+[control] logreg-rich, permuted train labels -> dev acc=0.4718
+[control] gbt depth=3, permuted train labels, rounds=50 -> dev acc=0.4824
+[control] gbt depth=3, permuted train labels, rounds=100 -> dev acc=0.4780
+[control] gbt depth=3, permuted train labels, rounds=200 -> dev acc=0.4862

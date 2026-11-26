@@ -81,6 +81,21 @@ class TestAuditCode(unittest.TestCase):
         self.assertEqual(data["counts"]["HIGH"], 0)
         self.assertEqual(data["counts"]["MEDIUM"], 0)
 
+    def test_fstring_computed_metric_vs_sota_ref_is_info_not_high(self):
+        ref_py = self.ws / "ref_comp.py"
+        ref_py.write_text(
+            "def main():\n"
+            "    test_acc = 0.9975\n"
+            "    print(f'test_acc={test_acc:.4f} vs supplied SOTA reference=0.8000')\n"
+            "if __name__ == '__main__':\n"
+            "    main()\n"
+        )
+        r = run_audit(ref_py, strict=True)
+        self.assertEqual(r.returncode, 0, r.stdout)
+        data = json.loads(r.stdout)
+        self.assertEqual(data["counts"]["HIGH"], 0)
+        self.assertIn("REF_CONSTANT_COMPARISON", {f["code"] for f in data["findings"]})
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,24 @@
+rows stores years 7200 200 [1, 2, 3]
+missing 0 duplicate keys 0
+min values ad sales traffic 1172.97 163384.82 1097.0
+lag pairs 7000 pooled share 0.02759151868407384 median 0.022873984220792398 quantiles 10 90 [0.01193363 0.04069232]
+relative errors fixed pooled share median 90th [0.30571597 0.75187029]
+corr ad sales same month 0.9926518572570774 ad prior sales 0.49414010366546285
+monthly ratios median [(1, 0.03707), (2, 0.0094), (3, 0.02128), (4, 0.02141), (5, 0.0214), (6, 0.0214), (7, 0.02186), (8, 0.0212), (9, 0.02189), (10, 0.02112), (11, 0.08193), (12, 0.0369)]
+holiday flags by month [(1, np.float64(1.0)), (2, np.float64(0.0)), (3, np.float64(0.0)), (4, np.float64(0.0)), (5, np.float64(0.0)), (6, np.float64(0.0)), (7, np.float64(0.0)), (8, np.float64(0.0)), (9, np.float64(0.0)), (10, np.float64(0.0)), (11, np.float64(1.0)), (12, np.float64(1.0))]
+backtest previous-year same-month sales forecast; target prior month of budget
+budget month 1 forecast total 102189627.36 actual total 102189627.36 portfolio pct error 0.0 store WAPE pct 0.0
+budget month 2 forecast total 102524053.49 actual total 102639765.04 portfolio pct error -0.11 store WAPE pct 4.06
+budget month 3 forecast total 45405549.19 actual total 45667829.68 portfolio pct error -0.57 store WAPE pct 8.24
+budget month 4 forecast total 45929293.51 actual total 45898095.17 portfolio pct error 0.07 store WAPE pct 9.98
+budget month 5 forecast total 46066789.95 actual total 45935786.96 portfolio pct error 0.29 store WAPE pct 8.62
+budget month 6 forecast total 45745247.42 actual total 45651373.13 portfolio pct error 0.21 store WAPE pct 8.63
+budget month 7 forecast total 45930515.21 actual total 45731351.48 portfolio pct error 0.44 store WAPE pct 9.14
+budget month 8 forecast total 46212021.67 actual total 46043519.53 portfolio pct error 0.37 store WAPE pct 8.94
+budget month 9 forecast total 45615439.46 actual total 45958954.04 portfolio pct error -0.75 store WAPE pct 8.81
+budget month 10 forecast total 45967319.02 actual total 46321057.27 portfolio pct error -0.76 store WAPE pct 9.04
+budget month 11 forecast total 45541620.27 actual total 46062702.65 portfolio pct error -1.13 store WAPE pct 8.24
+budget month 12 forecast total 102450462.2 actual total 102376414.65 portfolio pct error 0.07 store WAPE pct 3.81
+monthly scenario [{'budget_year': 4, 'budget_month': 1, 'prior_sales_basis_usd': 102300018.73, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(2822612.89)}, {'budget_year': 4, 'budget_month': 2, 'prior_sales_basis_usd': 102639765.04, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(2831986.98)}, {'budget_year': 4, 'budget_month': 3, 'prior_sales_basis_usd': 45667829.68, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(1260044.82)}, {'budget_year': 4, 'budget_month': 4, 'prior_sales_basis_usd': 45898095.17, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(1266398.18)}, {'budget_year': 4, 'budget_month': 5, 'prior_sales_basis_usd': 45935786.96, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(1267438.07)}, {'budget_year': 4, 'budget_month': 6, 'prior_sales_basis_usd': 45651373.13, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(1259590.73)}, {'budget_year': 4, 'budget_month': 7, 'prior_sales_basis_usd': 45731351.48, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(1261797.54)}, {'budget_year': 4, 'budget_month': 8, 'prior_sales_basis_usd': 46043519.53, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(1270410.68)}, {'budget_year': 4, 'budget_month': 9, 'prior_sales_basis_usd': 45958954.04, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(1268077.36)}, {'budget_year': 4, 'budget_month': 10, 'prior_sales_basis_usd': 46321057.27, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(1278068.39)}, {'budget_year': 4, 'budget_month': 11, 'prior_sales_basis_usd': 46062702.65, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(1270939.88)}, {'budget_year': 4, 'budget_month': 12, 'prior_sales_basis_usd': 102376414.65, 'assumed_share': np.float64(0.02759151868407384), 'illustrative_budget_usd': np.float64(2824720.71)}]
+annual scenario total 19882086.23
+actual annual spend by year [(1, 20235467.21), (2, 20141356.99), (3, 20204292.89)]

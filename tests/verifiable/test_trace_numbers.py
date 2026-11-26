@@ -124,6 +124,26 @@ class TestTraceNumbers(unittest.TestCase):
         self.assertEqual(len(data["unpaired_pairs"]), 0)
         self.assertEqual(data["traced"], 7)
 
+    def test_percent_fraction_unit_conversion_no_false_positive(self):
+        (self.logs / "spr.txt").write_text(
+            "depth=1 train_acc=0.87745 train_cwa=0.87764 dev_acc=0.88020 test_cwa=0.635402\n"
+        )
+        rep = self.ws / "rep.md"
+        # Table reports percentages without trailing % while log prints fractions
+        rep.write_text(
+            "The table reports percentages.\n"
+            "| depth | Train Acc | Train CWA | Dev Acc | Test CWA |\n"
+            "|---:|---:|---:|---:|---:|\n"
+            "| 1 | 87.745 | 87.764 | 88.020 | 63.5402% |\n"
+            "Fabricated cell: 91.234\n"
+        )
+        r = run_tracer(rep, self.logs)
+        self.assertEqual(r.returncode, 1)
+        data = json.loads(r.stdout)
+        # 4 real unit-scaled numbers traced; only genuinely fabricated 91.234 is untraced!
+        self.assertEqual(data["traced"], 4)
+        self.assertEqual([u["number"] for u in data["untraced"]], ["91.234"])
+
 
 if __name__ == "__main__":
     unittest.main()

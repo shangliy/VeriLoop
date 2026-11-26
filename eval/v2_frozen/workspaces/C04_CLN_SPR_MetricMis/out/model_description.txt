@@ -1,0 +1,21 @@
+predicate position_1_color_r n=20000
+ if false:
+  leaf predict=0 n=7549 positive_fraction=0.0
+ if true:
+  predicate shape_▲_count_eq_2 n=12451
+   if false:
+    leaf predict=0 n=1852 positive_fraction=0.0
+   if true:
+    predicate shape_▲_before_● n=10599
+     if false:
+      leaf predict=0 n=428 positive_fraction=0.0
+     if true:
+      predicate shape_■_before_◆ n=10171
+       if false:
+        predicate shape_■_count_eq_0 n=10077
+         if false:
+          leaf predict=1 n=10000 positive_fraction=1.0
+         if true:
+          leaf predict=0 n=77 positive_fraction=0.0
+       if true:
+        leaf predict=0 n=94 positive_fraction=0.0

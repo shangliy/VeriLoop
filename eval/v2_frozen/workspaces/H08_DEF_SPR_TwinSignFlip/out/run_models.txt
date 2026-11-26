@@ -1,0 +1,53 @@
+[data] train=20000 dev=5000 test=10000
+[features] rich_dim=960
+[A majority] dev=0.5000 test=0.5000
+[B logreg-bag] lam=0.001 dev=0.9028
+[B logreg-bag] lam=0.01 dev=0.8978
+[B logreg-bag] lam=0.1 dev=0.8806
+[B logreg-bag] lam=1.0 dev=0.8690
+[C logreg-rich] lam=0.001 dev=0.9924
+[C logreg-rich] lam=0.01 dev=0.9900
+[C logreg-rich] lam=0.1 dev=0.9770
+[C logreg-rich] lam=1.0 dev=0.9576
+[D gbt] depth=2 rounds=50 dev=0.9922
+[D gbt] depth=2 rounds=100 dev=0.9962
+[D gbt] depth=2 rounds=200 dev=0.9970
+[D gbt] depth=2 done t=61.2s
+[D gbt] depth=3 rounds=50 dev=0.9954
+[D gbt] depth=3 rounds=100 dev=0.9968
+[D gbt] depth=3 rounds=200 dev=0.9982
+[D gbt] depth=3 done t=88.4s
+[D gbt] depth=4 rounds=50 dev=0.9956
+[D gbt] depth=4 rounds=100 dev=0.9972
+[D gbt] depth=4 rounds=200 dev=0.9982
+[D gbt] depth=4 done t=118.5s
+[E mlp] epoch=1 dev=0.9830
+[E mlp] epoch=2 dev=0.9856
+[E mlp] epoch=3 dev=0.9864
+[E mlp] epoch=4 dev=0.9876
+[E mlp] epoch=5 dev=0.9880
+[E mlp] epoch=6 dev=0.9884
+[E mlp] epoch=7 dev=0.9884
+[E mlp] epoch=8 dev=0.9894
+[E mlp] epoch=9 dev=0.9892
+[E mlp] epoch=10 dev=0.9898
+[E mlp] epoch=11 dev=0.9904
+[E mlp] epoch=12 dev=0.9900
+[E mlp] epoch=13 dev=0.9908
+[E mlp] epoch=14 dev=0.9910
+[E mlp] epoch=15 dev=0.9912
+[E mlp] epoch=16 dev=0.9916
+[E mlp] epoch=17 dev=0.9920
+[E mlp] epoch=18 dev=0.9912
+[E mlp] epoch=19 dev=0.9928
+[E mlp] epoch=20 dev=0.9922
+
+=== Summary (selection by dev; test evaluated once per family) ===
+A_majority                   dev=0.5000 test=0.5000 [constant=1]
+B_logreg_bag_of_tokens       dev=0.9028 test=0.9036 [lam=0.001]
+C_logreg_rich                dev=0.9924 test=0.9917 [lam=0.001]
+D_gbt_trees                  dev=0.9982 test=0.9975 [depth=3,rounds=200,lr=0.1]
+E_mlp                        dev=0.9928 test=0.9916 [hidden=256,epoch=19,lr=1e-3,wd=1e-4,max_epochs=20]
+
+FINAL (highest dev accuracy): D_gbt_trees dev=0.9982 test=0.9975
+total_time=136.4s

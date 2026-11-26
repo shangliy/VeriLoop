@@ -1,0 +1,22 @@
+n=68, P range [38.000, 97.500] kPa, S range [19.573, 40.066] cm/s
+monotone P: True
+linear {'R2': 0.11741, 'RMSE': 4.96132, 'SSE': 1673.80003, 'AIC': 221.8274} {'a': np.float64(35.537505), 'b': np.float64(-0.103815)}
+power {'R2': 0.21655, 'RMSE': 4.67437, 'SSE': 1485.78503, 'AIC': 213.72498} {'a': np.float64(114.855661), 'm': np.float64(-0.334466)}
+exponential {'R2': 0.13533, 'RMSE': 4.91071, 'SSE': 1639.82259, 'AIC': 220.43282} {'a': np.float64(37.770094), 'k': np.float64(0.004199)}
+quadratic {'R2': 0.76457, 'RMSE': 2.56239, 'SSE': 446.47679, 'AIC': 133.96782} {'c2': np.float64(0.015638), 'c1': np.float64(-2.222808), 'c0': np.float64(102.56701)}
+largest consecutive jump: P 81.515 -> 82.403, S 19.573 -> 32.576 (dS=+13.003)
+typical |dS| median: 0.3744
+best 2-segment power split: between index 49 and 50, breakpoint ~81.959 kPa
+  left : S = 1178.9844 * P^-0.92983   (n=50)
+  right: S = 255.1574 * P^-0.46600   (n=18)
+  SSE piecewise=2.0594 vs single power SSE=1485.7850
+left linear: S = -0.44379*P + 53.9892  R2=0.9607 RMSE=1.1509
+right linear: S = -0.16318*P + 46.0559  R2=0.9452 RMSE=0.1810
+left power: a=1178.9844, m=-0.92983;  right power: a=255.1574, m=-0.46600
+piecewise (fixed split) power SSE=2.0594, RMSE=0.1740
+single-power residual mean left/right: -2.09 5.859
+LOO-CV linear: RMSE=5.1198, median|err|=5.2230
+LOO-CV power: RMSE=4.8321, median|err|=5.1715
+LOO-CV quadratic: RMSE=2.6652, median|err|=0.8183
+LOO-CV piecewise_power: RMSE=0.1839, median|err|=0.1148
+saved figure and summary

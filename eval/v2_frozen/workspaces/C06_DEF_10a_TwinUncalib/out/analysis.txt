@@ -1,0 +1,18 @@
+Formula: age_BP = -8033 * ln(F14); uncertainty endpoints: F14 ± 1σ.
+INPUT AND CONVENTIONAL AGES
+ID | context | material | F14 ± 1σ | batch | conventional BP | transformed F14 ±1σ BP interval | notes
+AC-107 | Huangtupo-Trench3-L1 | charcoal | 0.883 ± 0.004 | BP-24091 | 1000 | 963–1036 | single broad tree-ring block
+AC-108 | Huangtupo-Trench3-L2 | charred bone | 0.647 ± 0.003 | BP-24092 | 3498 | 3460–3535 | well-collagen preserved
+AC-109 | Huangtupo-Trench3-L3 | charcoal | 0.0041 ± 0.0008 | BP-24093 | 44156 | 42724–45899 | very small carbon yield post-pretreatment
+AC-110 | Huangtupo-Trench3-L4 | shell organics | 0.0065 ± 0.001 | BP-24094 | 40454 | 39304–41796 | marked reservoir correction discussion pending
+AC-111 | Huangtupo-Trench3-L5 | charcoal | 0.2187 ± 0.002 | BP-24095 | 12211 | 12137–12284 | same ridge source as AC-112 pair for duplicate chronology check
+AC-112 | Huangtupo-Trench3-L6 | charcoal | 0.2195 ± 0.002 | BP-24096 | 12181 | 12108–12255 | same ridge source as AC-111 pair for duplicate chronology check
+AC-113 | Huangtupo-Trench4-pit7 | charcoal | 0.451 ± 0.002 | BP-24097 | 6397 | 6361–6432 | short-lived twigs
+AC-114 | Huangtupo-Trench2-surface scatter | charcoal | 0.771 ± 0.003 | BP-24098 | 2089 | 2058–2120 | root intrusion risk flagged in field log
+
+No F14 values or uncertainty endpoints required clipping.
+AC-111 minus AC-112 F14: -0.0008; combined independent 1σ: 0.0028; standardized difference: -0.28.
+
+AVAILABLE DATA FILES
+analysis_spec.txt
+radiocarbon_measurements.csv

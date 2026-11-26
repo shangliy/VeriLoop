@@ -1,0 +1,632 @@
+{
+  "version": "veriloop-v2-frozen-corpus-16",
+  "total_workspaces": 16,
+  "balance": {
+    "claude_haiku_clean": 4,
+    "claude_haiku_defective": 4,
+    "codex_clean": 4,
+    "codex_defective": 4
+  },
+  "workspaces": [
+    {
+      "artifact_id": "H01_CLN_04a_TSI",
+      "executor_family": "claude-haiku",
+      "track": "natural",
+      "scenario_id": "04a_RareEvent_ClassificationKPI",
+      "bundle_sha256": "4f0a0f7c8a6b401069a9998e2d2f96ce57f9ef3d977a224cdbb85271509fba46",
+      "file_count": 3,
+      "files": [
+        {
+          "rel_path": "code/compute_tsi.py",
+          "bytes": 3539,
+          "sha256": "fe3503b628beff361ba0f6b96d200d018f3fd2c7f483d4489521d9a6cdc0137b"
+        },
+        {
+          "rel_path": "out/compute_tsi_log.txt",
+          "bytes": 672,
+          "sha256": "9757f0a003c24b4df8df515b469485ab5ce0d739d642d99294e3043a7785a9a8"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 3478,
+          "sha256": "f9421ab69e19ec86c8c37831c8fc06e8684d9141566e722ff64479fba055447a"
+        }
+      ]
+    },
+    {
+      "artifact_id": "H02_CLN_08a_EmptyCSV",
+      "executor_family": "claude-haiku",
+      "track": "natural",
+      "scenario_id": "08a_StructuralHealth_SensorVibrationPanel",
+      "bundle_sha256": "c504bc488b58d9f9cec47cc1cba3ff3ab58063bb735537a3384fafd5eb43eb7f",
+      "file_count": 3,
+      "files": [
+        {
+          "rel_path": "code/inspect_data.py",
+          "bytes": 1655,
+          "sha256": "fd77a23b75e8905895f581c2e5dbee5993d03f8ce7a646080f58cd84e811e47b"
+        },
+        {
+          "rel_path": "out/inspect_data.txt",
+          "bytes": 451,
+          "sha256": "ca4f00a87633297854f504e4e44cb1be8d61e0f614b01d2bebf4e517d6d31c3b"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 2172,
+          "sha256": "2da00127e09a68fbf75e280ac172a4722d2858023d50958f784aaab9ed1fa842"
+        }
+      ]
+    },
+    {
+      "artifact_id": "H03_CLN_05a_InterviewRefusal",
+      "executor_family": "claude-haiku",
+      "track": "twin_base",
+      "scenario_id": "05a_SocialScience_InterviewThematicAnalysis",
+      "bundle_sha256": "024a6d5ad439f4000a7df585d6790375a3768d3091a1ec9f1eb437f2ed4c0162",
+      "file_count": 7,
+      "files": [
+        {
+          "rel_path": "code/llm_thematic_analysis.py",
+          "bytes": 4304,
+          "sha256": "7e97cab3a0491e824a0798e0cad2957284a163bc8255e59da9a6772feee81537"
+        },
+        {
+          "rel_path": "code/make_figures.py",
+          "bytes": 2861,
+          "sha256": "6231bc86efd452316333f3ae474633437aaf547a31aa4a5acb389c29a2f7da84"
+        },
+        {
+          "rel_path": "code/preprocess_and_summarize.py",
+          "bytes": 6765,
+          "sha256": "42180ca982ed512e5c70da68a26c283ab4a2e2e5d00ac46d34b8ed14be7a7d25"
+        },
+        {
+          "rel_path": "out/llm_thematic_analysis.txt",
+          "bytes": 5992,
+          "sha256": "8d5f1c4a9f8efd81a2d4cdbf2c2674adc0a63d4b3b09a2c6650478b1ee80dff8"
+        },
+        {
+          "rel_path": "out/make_figures.txt",
+          "bytes": 5863,
+          "sha256": "e6d89897a1eebbcbf298d8138a48a43b1a676efd09839c6961e61a9c5a02065e"
+        },
+        {
+          "rel_path": "out/preprocess_and_summarize.txt",
+          "bytes": 13430,
+          "sha256": "e2dfe10f5528353ec3a19613b226d643e82715a74077dc20b0283806b9da94fa"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 9314,
+          "sha256": "8b1e7a2dd544ebae296b847d9ad3996af9dc81db9e6482d0ef6155732f42afa0"
+        }
+      ]
+    },
+    {
+      "artifact_id": "H04_CLN_SPR_PostHoc_R2",
+      "executor_family": "claude-haiku",
+      "track": "twin_base",
+      "scenario_id": "SPR_PostHocSelection",
+      "bundle_sha256": "665d50e9fadce96f8bc16175bafa2f3c0c5016a176065cf8e71bd450fae8247e",
+      "file_count": 8,
+      "files": [
+        {
+          "rel_path": "code/control_shuffled.py",
+          "bytes": 1478,
+          "sha256": "7dcc5f9bb787fbfab1af26fc448b73ac44251334d9f9b30c655953e25ca77d67"
+        },
+        {
+          "rel_path": "code/profile_data.py",
+          "bytes": 1979,
+          "sha256": "aee39f73d2a1a7999db158932bc24d3fe2c73530f2a5da3afabea6300678aa9c"
+        },
+        {
+          "rel_path": "code/run_models.py",
+          "bytes": 12765,
+          "sha256": "1e0d58025cfb5a0ece652bd9a07113bf64d3165d45bf11829af336051be06f12"
+        },
+        {
+          "rel_path": "out/control_shuffled.txt",
+          "bytes": 389,
+          "sha256": "0c8fc6c9cf44d63216518250b4c4eaf52cad3f56dc7912aca3dd82dafd6a31c4"
+        },
+        {
+          "rel_path": "out/profile_data.txt",
+          "bytes": 618,
+          "sha256": "172b3683994f8a53b75ba92a3dbf60e1b8e194bed96fd5f874814e3723ba91e1"
+        },
+        {
+          "rel_path": "out/run_models.txt",
+          "bytes": 1888,
+          "sha256": "7b87d91e53911ad5eea5708e7e3390d5205dc613501a39a29b8fc9487f8cdf5f"
+        },
+        {
+          "rel_path": "out/run_models_time.txt",
+          "bytes": 46,
+          "sha256": "dc8e25beb5b0e20b28b175a41b331d35fefe374068f5c8249dabfc36279579d6"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 11139,
+          "sha256": "35ae645c5aaa2f76ccc4152896e35b9759234a982973e4455feb3f58e96e4979"
+        }
+      ]
+    },
+    {
+      "artifact_id": "H05_DEF_09a_DenomBug",
+      "executor_family": "claude-haiku",
+      "track": "natural",
+      "scenario_id": "09a_NuclearScience_Iodine131DecayAnalysis",
+      "bundle_sha256": "a1190066700122d1aa50c79d0de160511f5f7b4c8b9f61c53d50a42389b913eb",
+      "file_count": 5,
+      "files": [
+        {
+          "rel_path": "code/analyze_flame.py",
+          "bytes": 7770,
+          "sha256": "2c1217e0187a0d69ba4089101cf561d0763d02a614eb98926a8afa6152449c7d"
+        },
+        {
+          "rel_path": "out/analysis_log.txt",
+          "bytes": 1504,
+          "sha256": "8181a44c25c0a0240ef86f876ae8f3bda13fc03a8a7b12b39912db9c7e0ca540"
+        },
+        {
+          "rel_path": "out/segment_metrics.txt",
+          "bytes": 171,
+          "sha256": "08b726f792fbf5f5c10da35a687a21c8957fcfe9ba218db9d70354d77ade693f"
+        },
+        {
+          "rel_path": "out/summary.json",
+          "bytes": 1742,
+          "sha256": "532f59542cbaaff9322f7bc3b9730d0b9c25d8b91d4266ef01dadf6c40f2d462"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 7652,
+          "sha256": "9fc8c4771bddb765520f00764d878cb3d018f3e3fe869245c3cdb5e8923869f3"
+        }
+      ]
+    },
+    {
+      "artifact_id": "H06_DEF_SPR_FabricatedCI",
+      "executor_family": "claude-haiku",
+      "track": "natural",
+      "scenario_id": "SPR_PostHocSelection",
+      "bundle_sha256": "ef0b2625df83d6172d3105e6fe0702d2a5afe7cf53274e5e864b75a5b47e8565",
+      "file_count": 9,
+      "files": [
+        {
+          "rel_path": "code/error_analysis.py",
+          "bytes": 819,
+          "sha256": "b11e74137b32cd5875c81eab2c58967c37ff58f1fb307b52a535ced4c1ea393d"
+        },
+        {
+          "rel_path": "code/explore.py",
+          "bytes": 1419,
+          "sha256": "f7ada2ed71b9f200edea7379434f2bb423bd6639f8eb84df20ff0040a89ab66e"
+        },
+        {
+          "rel_path": "code/explore2.py",
+          "bytes": 1031,
+          "sha256": "6f0c1285f9f6dcfe4d748f5094ffd529faa8bce1bc84918bf200434f3c4bb2c4"
+        },
+        {
+          "rel_path": "code/explore3.py",
+          "bytes": 2650,
+          "sha256": "26b4a4444f7e5d398f3e59a9d2af97bcb007bb77ea4858cb99f0377c793c835e"
+        },
+        {
+          "rel_path": "code/spr_learn.py",
+          "bytes": 8394,
+          "sha256": "d458fe0bfc35e2dfbe6cb5e5c3562650f51c5a3141b90e4e0697cd09a1cdc691"
+        },
+        {
+          "rel_path": "out/error_analysis_stdout.txt",
+          "bytes": 934,
+          "sha256": "5ccf85e97ca201974472a7873077caf438d276cd406b30e7440393e947d8225d"
+        },
+        {
+          "rel_path": "out/final_eval_stdout.txt",
+          "bytes": 295,
+          "sha256": "652861a0bc4a3a94294d9638fa05cc9d0c996745315480e10bc67d2c1cd177f8"
+        },
+        {
+          "rel_path": "out/spr_learn_stdout.txt",
+          "bytes": 1341,
+          "sha256": "2fd322c68ec130112f76a44ebc1c841df47475bba895941796ce81cb281689aa"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 7131,
+          "sha256": "19f80313b82dcca2e39d29f51340b7b077e6faf32898d183bc0280f71248d982"
+        }
+      ]
+    },
+    {
+      "artifact_id": "H07_DEF_05a_TwinMock",
+      "executor_family": "claude-haiku",
+      "track": "surgical_twin",
+      "scenario_id": "05a_SocialScience_InterviewThematicAnalysis",
+      "bundle_sha256": "dd215a5658131771583a0d07e33739aec5d385a97aaf421dd0369e8b3f05c63a",
+      "file_count": 8,
+      "files": [
+        {
+          "rel_path": "code/llm_thematic_analysis.py",
+          "bytes": 4304,
+          "sha256": "7e97cab3a0491e824a0798e0cad2957284a163bc8255e59da9a6772feee81537"
+        },
+        {
+          "rel_path": "code/make_figures.py",
+          "bytes": 2861,
+          "sha256": "6231bc86efd452316333f3ae474633437aaf547a31aa4a5acb389c29a2f7da84"
+        },
+        {
+          "rel_path": "code/preprocess_and_summarize.py",
+          "bytes": 6765,
+          "sha256": "42180ca982ed512e5c70da68a26c283ab4a2e2e5d00ac46d34b8ed14be7a7d25"
+        },
+        {
+          "rel_path": "code/theme_fallback.py",
+          "bytes": 320,
+          "sha256": "a98336bff367742f6dfb3d202bf2b332c3b77d770d32c06ab408163c84a465d0"
+        },
+        {
+          "rel_path": "out/llm_thematic_analysis.txt",
+          "bytes": 5992,
+          "sha256": "8d5f1c4a9f8efd81a2d4cdbf2c2674adc0a63d4b3b09a2c6650478b1ee80dff8"
+        },
+        {
+          "rel_path": "out/make_figures.txt",
+          "bytes": 5863,
+          "sha256": "e6d89897a1eebbcbf298d8138a48a43b1a676efd09839c6961e61a9c5a02065e"
+        },
+        {
+          "rel_path": "out/preprocess_and_summarize.txt",
+          "bytes": 13430,
+          "sha256": "e2dfe10f5528353ec3a19613b226d643e82715a74077dc20b0283806b9da94fa"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 9564,
+          "sha256": "80a692f3d45559e9e34c58c6353208a4e8112e593f5d515c7fd9250fffa755d3"
+        }
+      ]
+    },
+    {
+      "artifact_id": "H08_DEF_SPR_TwinSignFlip",
+      "executor_family": "claude-haiku",
+      "track": "surgical_twin",
+      "scenario_id": "SPR_PostHocSelection",
+      "bundle_sha256": "d936bf644bd09a563d6e9bf2a63b214c119789dfd452f3d9c924fe892917c9ed",
+      "file_count": 9,
+      "files": [
+        {
+          "rel_path": "code/control_shuffled.py",
+          "bytes": 1478,
+          "sha256": "7dcc5f9bb787fbfab1af26fc448b73ac44251334d9f9b30c655953e25ca77d67"
+        },
+        {
+          "rel_path": "code/profile_data.py",
+          "bytes": 1979,
+          "sha256": "aee39f73d2a1a7999db158932bc24d3fe2c73530f2a5da3afabea6300678aa9c"
+        },
+        {
+          "rel_path": "code/run_models.py",
+          "bytes": 12765,
+          "sha256": "1e0d58025cfb5a0ece652bd9a07113bf64d3165d45bf11829af336051be06f12"
+        },
+        {
+          "rel_path": "out/control_shuffled.txt",
+          "bytes": 389,
+          "sha256": "0c8fc6c9cf44d63216518250b4c4eaf52cad3f56dc7912aca3dd82dafd6a31c4"
+        },
+        {
+          "rel_path": "out/delta_summary.txt",
+          "bytes": 43,
+          "sha256": "fb9e00f7c0a44a530d17021754cad00d298312afa2cb5fd68c15816262b517c7"
+        },
+        {
+          "rel_path": "out/profile_data.txt",
+          "bytes": 618,
+          "sha256": "172b3683994f8a53b75ba92a3dbf60e1b8e194bed96fd5f874814e3723ba91e1"
+        },
+        {
+          "rel_path": "out/run_models.txt",
+          "bytes": 1888,
+          "sha256": "7b87d91e53911ad5eea5708e7e3390d5205dc613501a39a29b8fc9487f8cdf5f"
+        },
+        {
+          "rel_path": "out/run_models_time.txt",
+          "bytes": 46,
+          "sha256": "dc8e25beb5b0e20b28b175a41b331d35fefe374068f5c8249dabfc36279579d6"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 11365,
+          "sha256": "cc1a7495ab2a28b2cddfaba3cd66d0098c836a80a66c31a9898fcdd459760daa"
+        }
+      ]
+    },
+    {
+      "artifact_id": "C01_CLN_08a_EmptyCSV",
+      "executor_family": "codex-cli",
+      "track": "natural",
+      "scenario_id": "08a_StructuralHealth_SensorVibrationPanel",
+      "bundle_sha256": "3aa5fcfd1e4e006f4f2f9e6cd02b88e4ab979c1d283ec588d97bb82e19b44f16",
+      "file_count": 3,
+      "files": [
+        {
+          "rel_path": "code/inspect_data.py",
+          "bytes": 979,
+          "sha256": "5302cab522b758b2e16fc37aea6059e241e757fd4ee43edd5d90b6332ce37f21"
+        },
+        {
+          "rel_path": "out/inspect_data.txt",
+          "bytes": 522,
+          "sha256": "cb24a9570f6d4f829f2994c19ff8b12d6885c00f86a515d25953b01995dd5f30"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 1920,
+          "sha256": "d7848c884efa00e83de5022eb51d690ee8f3830b876c76a28a033626a6f2a108"
+        }
+      ]
+    },
+    {
+      "artifact_id": "C02_CLN_10a_RadiocarbonRefusal",
+      "executor_family": "codex-cli",
+      "track": "twin_base",
+      "scenario_id": "10a_Archaeology_RadiocarbonSiteChronology",
+      "bundle_sha256": "820c9b1a55cedcb9b36cdfa110afeeb9be57338e9f0bb81ede1a7284617b88cb",
+      "file_count": 3,
+      "files": [
+        {
+          "rel_path": "code/analyze.py",
+          "bytes": 1307,
+          "sha256": "b5a14b1baaa96cd25512d71d878cc4fa9e54a194ef06e5ff0ce9a2a50b05005f"
+        },
+        {
+          "rel_path": "out/analysis.txt",
+          "bytes": 1539,
+          "sha256": "9a1bc9053e5834803f9a5b397f8a0c12eddf5ad9472052f138e1b2e69fc6df1e"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 5109,
+          "sha256": "073cbb68c5b6cc1df86cc1ef2a89761bc1630b1d2034cd6fb9ad63a96f384b13"
+        }
+      ]
+    },
+    {
+      "artifact_id": "C03_CLN_SPR_DataLeak",
+      "executor_family": "codex-cli",
+      "track": "twin_base",
+      "scenario_id": "SPR_DataLeakage",
+      "bundle_sha256": "5cff1729e87fb8e8dd6474a187357699093d047e8adadfd26b27dc1cfa5032cf",
+      "file_count": 6,
+      "files": [
+        {
+          "rel_path": "code/analysis.py",
+          "bytes": 4526,
+          "sha256": "f6572a87345a394455b4d943543da27077e0209f102adfff12d368f4e9f9ca2c"
+        },
+        {
+          "rel_path": "code/summarize.py",
+          "bytes": 569,
+          "sha256": "e2db398e48f6a21ea2ac3bdab69665483abdcac8323ba78a7b9792cae0b747e1"
+        },
+        {
+          "rel_path": "out/analysis.txt",
+          "bytes": 1893,
+          "sha256": "70bbf630faeb34d05999aa15469bd588f96df048f519c7f4f89ba0729046282f"
+        },
+        {
+          "rel_path": "out/model.json",
+          "bytes": 12776,
+          "sha256": "8ce0473592635ac2df3043addbf7cc0094d966db5dba2ccbc221593c42ed300a"
+        },
+        {
+          "rel_path": "out/summary.txt",
+          "bytes": 143,
+          "sha256": "359d558069579acfc7402571ee8570cf56ae95d45c82403c6cbf41a1878870c6"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 4795,
+          "sha256": "b886bbe5799cdcb12b8f050cd2f38fee8e63c1fe7083833c667d90d38a504051"
+        }
+      ]
+    },
+    {
+      "artifact_id": "C04_CLN_SPR_MetricMis",
+      "executor_family": "codex-cli",
+      "track": "twin_base",
+      "scenario_id": "SPR_MetricMisuse",
+      "bundle_sha256": "a62619c99ea77fea044bbf0da1e61db483fdf26650e4f6a7578fb4548dc5bca7",
+      "file_count": 6,
+      "files": [
+        {
+          "rel_path": "code/describe_model.py",
+          "bytes": 549,
+          "sha256": "8162c86819917d23238d5efb8f9d3f3d6fda3967ea64a37d2d2b8b286f7ad7e0"
+        },
+        {
+          "rel_path": "code/experiment.py",
+          "bytes": 6719,
+          "sha256": "cfd3741abe682db84650eaa87cd8bf74b5c971498fcb53bb24e6ad01f4fac91b"
+        },
+        {
+          "rel_path": "out/experiment.txt",
+          "bytes": 4311,
+          "sha256": "2b40557ce0e7bf8aaceac47dbab645b82073a260e7d3a66e81dae16e96db44db"
+        },
+        {
+          "rel_path": "out/model.json",
+          "bytes": 6319,
+          "sha256": "053c3f1f5b3066760fcbf5e5ef28562037303fba13086a6498fc3f58d4dbd880"
+        },
+        {
+          "rel_path": "out/model_description.txt",
+          "bytes": 658,
+          "sha256": "55bbdd8af9f414619274e804df05ebbece127534a99e805416d2692599e8d616"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 5322,
+          "sha256": "723033bd4eb13874be135d4ad5f38a2213430024bfe9e70d29787fac48922961"
+        }
+      ]
+    },
+    {
+      "artifact_id": "C05_DEF_06a_TableArithErr",
+      "executor_family": "codex-cli",
+      "track": "natural",
+      "scenario_id": "06a_RetailAnalytics_AdSpendStoreSales",
+      "bundle_sha256": "1206f8c65d854a1d31055cab03c0b769be36f7de20401bda010f6c0e019ca8c6",
+      "file_count": 5,
+      "files": [
+        {
+          "rel_path": "code/analysis.py",
+          "bytes": 4027,
+          "sha256": "08ee0f472259e2b9dc853925ec1ca1afbc976f29cc25ebc90d45639b25381f99"
+        },
+        {
+          "rel_path": "out/analysis_stdout.txt",
+          "bytes": 4574,
+          "sha256": "c23e8a9de245c9604b0932fd1957c5d03c1c10e2454ff820417f36f40bf10ab2"
+        },
+        {
+          "rel_path": "out/monthly_budget_scenario.csv",
+          "bytes": 668,
+          "sha256": "e719d7647628647db8b7024ba63d14385fa4e312e919e7d082063c68505acdd6"
+        },
+        {
+          "rel_path": "out/store_month_budget_scenario.csv",
+          "bytes": 222318,
+          "sha256": "066794531b887973fcee433b6c338052b7746f277117e64f2a7e1f86edd2a821"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 4966,
+          "sha256": "41d4a753c1ffb338e240e069d522ae0e146de9d6789e0a87652c240b412c977c"
+        }
+      ]
+    },
+    {
+      "artifact_id": "C06_DEF_10a_TwinUncalib",
+      "executor_family": "codex-cli",
+      "track": "surgical_twin",
+      "scenario_id": "10a_Archaeology_RadiocarbonSiteChronology",
+      "bundle_sha256": "8b2fe12afb6f60db30c17ea7f39579e5946d0e4d42ee750d1b03e2d9111f68cd",
+      "file_count": 4,
+      "files": [
+        {
+          "rel_path": "code/analyze.py",
+          "bytes": 1307,
+          "sha256": "b5a14b1baaa96cd25512d71d878cc4fa9e54a194ef06e5ff0ce9a2a50b05005f"
+        },
+        {
+          "rel_path": "code/calibrate_dates.py",
+          "bytes": 358,
+          "sha256": "fc8fae9af8ab4302ab7a4e4b6aae007a57e390700cab48585d25b9e263b58b93"
+        },
+        {
+          "rel_path": "out/analysis.txt",
+          "bytes": 1539,
+          "sha256": "9a1bc9053e5834803f9a5b397f8a0c12eddf5ad9472052f138e1b2e69fc6df1e"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 5396,
+          "sha256": "ea19d11f11dcfebf63045a858654d18673b8bff3fe95433ac55b965a68586f09"
+        }
+      ]
+    },
+    {
+      "artifact_id": "C07_DEF_DataLeak_TwinHardcode",
+      "executor_family": "codex-cli",
+      "track": "surgical_twin",
+      "scenario_id": "SPR_DataLeakage",
+      "bundle_sha256": "52161a24317c3c877fe7e74b191927e6cb39171e26959e436100ce9091f3c595",
+      "file_count": 7,
+      "files": [
+        {
+          "rel_path": "code/analysis.py",
+          "bytes": 4526,
+          "sha256": "f6572a87345a394455b4d943543da27077e0209f102adfff12d368f4e9f9ca2c"
+        },
+        {
+          "rel_path": "code/baseline_eval.py",
+          "bytes": 160,
+          "sha256": "ab5dd9a4785fa4afebafb51bcce010230fabe4be6bc250a2f5f2128ac126add2"
+        },
+        {
+          "rel_path": "code/summarize.py",
+          "bytes": 569,
+          "sha256": "e2db398e48f6a21ea2ac3bdab69665483abdcac8323ba78a7b9792cae0b747e1"
+        },
+        {
+          "rel_path": "out/analysis.txt",
+          "bytes": 1893,
+          "sha256": "70bbf630faeb34d05999aa15469bd588f96df048f519c7f4f89ba0729046282f"
+        },
+        {
+          "rel_path": "out/model.json",
+          "bytes": 12776,
+          "sha256": "8ce0473592635ac2df3043addbf7cc0094d966db5dba2ccbc221593c42ed300a"
+        },
+        {
+          "rel_path": "out/summary.txt",
+          "bytes": 143,
+          "sha256": "359d558069579acfc7402571ee8570cf56ae95d45c82403c6cbf41a1878870c6"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 5010,
+          "sha256": "5da945a7bd2b0a44d43f50a6dcd082afff369a1bf970c7d687cf79fd904b97a0"
+        }
+      ]
+    },
+    {
+      "artifact_id": "C08_DEF_DataLeak_TwinInfer",
+      "executor_family": "codex-cli",
+      "track": "surgical_twin",
+      "scenario_id": "SPR_DataLeakage",
+      "bundle_sha256": "11694959380b503a7bc235391d7dbe118f91204cb7a48de6269f291874223726",
+      "file_count": 6,
+      "files": [
+        {
+          "rel_path": "code/analysis.py",
+          "bytes": 4526,
+          "sha256": "f6572a87345a394455b4d943543da27077e0209f102adfff12d368f4e9f9ca2c"
+        },
+        {
+          "rel_path": "code/summarize.py",
+          "bytes": 569,
+          "sha256": "e2db398e48f6a21ea2ac3bdab69665483abdcac8323ba78a7b9792cae0b747e1"
+        },
+        {
+          "rel_path": "out/analysis.txt",
+          "bytes": 1893,
+          "sha256": "70bbf630faeb34d05999aa15469bd588f96df048f519c7f4f89ba0729046282f"
+        },
+        {
+          "rel_path": "out/model.json",
+          "bytes": 12776,
+          "sha256": "8ce0473592635ac2df3043addbf7cc0094d966db5dba2ccbc221593c42ed300a"
+        },
+        {
+          "rel_path": "out/summary.txt",
+          "bytes": 143,
+          "sha256": "359d558069579acfc7402571ee8570cf56ae95d45c82403c6cbf41a1878870c6"
+        },
+        {
+          "rel_path": "report/report.md",
+          "bytes": 5330,
+          "sha256": "86cf718d34b4cf0a56fd404a181dbefa98eec6071e64f2b357f239d5929243f6"
+        }
+      ]
+    }
+  ]
+}

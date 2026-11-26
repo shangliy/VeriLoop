@@ -1,0 +1,4 @@
+selected rule: ['Count(shape▲)==2', 'Pos0=colorr', 'Order first(shape▲)<first(shape●)']
+train.csv  n= 20000 errors= 40 acc=0.9980  FP(pred1,true0)=40 FN=0
+dev.csv    n=  5000 errors= 10 acc=0.9980  FP(pred1,true0)=10 FN=0
+test.csv   n= 10000 errors= 25 acc=0.9975  FP(pred1,true0)=25 FN=0
