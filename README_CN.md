@@ -4,6 +4,7 @@
 
 > 本仓库基于 MIT 协议开源项目 **[ARIS](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep)**（`arXiv:2605.03042`，85+ 端到端科研技能、Research Wiki、MCP 桥接与论文写作工作流），深度融合 **Verifiable Research-Loop** 的零依赖确定性硬门控、纯路径跨家族阻断审计、112 次受控评测基准与自审计论文。
 
+- **GitHub 仓库：** [https://github.com/shangliy/verifiable-aris](https://github.com/shangliy/verifiable-aris)
 - **论文（arXiv 预印本）：** [paper/main.pdf](paper/main.pdf)（源码：[paper/main.tex](paper/main.tex)）
 - **论文（ICML 2027 官方 8 页双盲版）：** [paper/main_icml2027.pdf](paper/main_icml2027.pdf)（源码：[paper/main_icml2027.tex](paper/main_icml2027.tex)）
 - **上游 ARIS 完整说明：** [docs/ARIS_UPSTREAM_README_CN.md](docs/ARIS_UPSTREAM_README_CN.md) · [English](docs/ARIS_UPSTREAM_README.md) · [归属与许可说明](NOTICE.md)
@@ -26,9 +27,12 @@
 ## 快速上手（3 条命令）
 
 ```bash
-# 1. 运行 30 项离线单元与集成测试 + 10 秒零费用 Demo
+# 1. 运行 30 项离线单元与集成测试 + 端到端闭环 Demo（零费用）
 python3 -m unittest discover -s tests/verifiable -v
 bash examples/mini-ml/run_demo.sh
+bash examples/verifiable-aris-walkthrough/run_walkthrough.sh
+# （可选）真实大模型实战（claude-haiku 执行 + codex-cli 纯路径审稿，约 $0.99）：
+python3 examples/live-showcase/run_live_showcase.py --budget-limit 1.50
 
 # 2. 对任意科研工作区运行 Verifiable-ARIS 双层硬门控
 python3 tools/verifiable_gate.py \

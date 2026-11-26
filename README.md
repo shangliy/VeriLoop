@@ -4,6 +4,7 @@
 
 > Built on top of MIT-licensed **[ARIS](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep)** (`arXiv:2605.03042`, 85+ end-to-end research skills, Research Wiki, MCP bridges, and paper-writing workflows) upgraded with **Verifiable Research-Loop**'s zero-dependency deterministic verification gates, path-isolated cross-family hard blocking, controlled multi-benchmark harness, and self-audited companion paper.
 
+- **GitHub Repository:** [https://github.com/shangliy/verifiable-aris](https://github.com/shangliy/verifiable-aris)
 - **Paper (arXiv Preprint):** [paper/main.pdf](paper/main.pdf) ([paper/main.tex](paper/main.tex))
 - **Paper (ICML 2027 8-Page Double-Blind):** [paper/main_icml2027.pdf](paper/main_icml2027.pdf) ([paper/main_icml2027.tex](paper/main_icml2027.tex))
 - **Upstream ARIS Documentation:** [docs/ARIS_UPSTREAM_README.md](docs/ARIS_UPSTREAM_README.md) · [中文版](docs/ARIS_UPSTREAM_README_CN.md) · [Attribution & License Notice](NOTICE.md)
@@ -52,10 +53,13 @@ Upstream **ARIS** provides the richest open-source autonomous research skill eco
 
 ## Quick Start (3 Commands)
 
-### 1. Run all offline tests & 10-second verifiable demo (zero API cost)
+### 1. Run all offline tests & end-to-end verifiable demos (zero API cost)
 ```bash
 python3 -m unittest discover -s tests/verifiable -v
 bash examples/mini-ml/run_demo.sh
+bash examples/verifiable-aris-walkthrough/run_walkthrough.sh
+# Optional live LLM showcase (claude-haiku executor + codex-cli path-only reviewer, ~$0.99):
+python3 examples/live-showcase/run_live_showcase.py --budget-limit 1.50
 ```
 
 ### 2. Run the unified Verifiable-ARIS hard gate on any research workspace
