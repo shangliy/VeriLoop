@@ -18,20 +18,21 @@
 
 Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, or conclusions that contradict their own logs. **VeriLoop** delivers a complete, convenient, and high-efficiency research pipeline in one place:
 
-- **Complete Lifecycle (90+ Modular Skills):** Idea discovery, literature search, persistent Research Wiki, remote/local experiment execution, multi-seed statistical runs, dual-layer hard verification, automated LaTeX paper writing, and rebuttal workflows.
-- **Convenient Single CLI (`./veriloop`):** One unified entry point (`gate`, `claims`, `board`, `demo`, `live`, `install`, `test`, `audit-paper`) with zero third-party dependencies for the entire deterministic verification core.
-- **Efficient Fail-Fast Gating (`$0` Layer 1 → Targeted Layer 2):** Catches fabricated numbers, sign flips, Python AST integrity bugs, broken claim hashes, and missing BibTeX entries in milliseconds at `$0` LLM cost before invoking a path-isolated cross-family reviewer, backed by a hard USD budget circuit breaker.
+- **Complete Lifecycle (90+ Modular Skills):** Idea discovery, literature search, persistent Research Wiki, remote/local experiment execution, multi-seed statistical runs, dual-layer hard verification, **award-paper style writing & figure linting (`bestpaper-writing`)**, automated LaTeX paper generation, and rebuttal workflows.
+- **Convenient Single CLI (`./veriloop`):** One unified entry point (`gate`, `claims`, `board`, `demo`, `live`, `install`, `test`, `lint-paper`, `audit-paper`) with zero third-party dependencies for the entire deterministic verification and prose-linting core.
+- **Efficient Fail-Fast Gating (`$0` Layer 1 → Targeted Layer 2 → 4-in-1 Paper Audit):** Catches fabricated numbers, sign flips, Python AST integrity bugs, broken claim hashes, missing BibTeX entries, and AI-draft writing/figure anti-patterns in milliseconds at `$0` LLM cost before invoking a path-isolated cross-family reviewer, backed by a hard USD budget circuit breaker.
 
 ```text
-  Idea & Lit/Wiki ──▶ Experiment Execution ──▶ VeriLoop Dual-Layer Hard Gate ──▶ Paper & Rebuttal
-  (90+ Modular Skills)   (Multi-Seed / GPU)         (./veriloop gate)            (Self-Audited)
-                                                            │
+  Idea & Lit/Wiki ──▶ Experiment Execution ──▶ VeriLoop Dual-Layer Hard Gate ──▶ Best-Paper Writing & Lint
+  (90+ Modular Skills)   (Multi-Seed / GPU)         (./veriloop gate)            (/bestpaper-writing +
+                                                            │                     ./veriloop audit-paper)
                              ┌──────────────────────────────▼──────────────────────────────┐
                              │ Layer 1 — Deterministic Mechanical Gates ($0 LLM Cost)      │
                              │ • claims.py        : Pre-registered ledger (G1–G7, SHA-256) │
                              │ • trace_numbers.py : Signed provenance & WRONG_LOG checks   │
                              │ • audit_code.py    : 6 static Python AST integrity rules    │
                              │ • citation_audit.py: BibTeX key & citation verification     │
+                             │ • check_draft/figs : Best-Paper prose & figure style lint   │
                              ├─────────────────────────────────────────────────────────────┤
                              │ Layer 2 — Path-Isolated Cross-Model Hard Blocking           │
                              │ • Zero executor summaries (paths to raw artifacts only)     │
@@ -71,8 +72,11 @@ cd VeriLoop
 # Run the zero-API closed-loop walkthrough (Round 1 hard block -> Round 2 repair -> HTML board)
 ./veriloop demo
 
-# Self-audit the companion paper (numbers + citations)
+# Self-audit the companion paper (4-in-1: numbers + citations + Best-Paper prose & figure lint)
 ./veriloop audit-paper
+
+# Or lint any LaTeX paper with built-in Best-Paper-Writing-Skill checks
+./veriloop lint-paper --draft paper/sec/0_abstract.tex paper/sec/1_intro.tex --tex paper/main_icml2027.tex --layout two
 ```
 
 ### 2. Gate Any Research Workspace
@@ -98,10 +102,10 @@ cd VeriLoop
 
 ### 3. Install Skills into Claude Code / Codex CLI
 ```bash
-# Install core verification skills (research-loop + verifiable-gate)
-./veriloop install --verifiable-only
+# Install core VeriLoop triad (research-loop + verifiable-gate + bestpaper-writing)
+./veriloop install --core-only
 
-# Install the full VeriLoop suite (all 90+ lifecycle skills + hard verification gates)
+# Install the full VeriLoop suite (all 90+ lifecycle skills + hard gates + bestpaper-writing)
 ./veriloop install --all
 ```
 
@@ -121,9 +125,10 @@ cd VeriLoop
 | `./veriloop board -w <ws>` | Render interactive HTML verification board (`board.html`) |
 | `./veriloop demo` | Run the 10-second offline closed-loop walkthrough |
 | `./veriloop live [args...]` | Run the live `claude-haiku` + `codex-cli` path-isolated showcase |
-| `./veriloop install [--verifiable-only \| --all]` | Install VeriLoop skills into Claude Code / Codex CLI |
-| `./veriloop test` | Run all 30 offline verification unit/integration tests + catalog checks |
-| `./veriloop audit-paper` | Run `trace_numbers.py` and `citation_audit.py` across `paper/sec/*.tex` |
+| `./veriloop install [--core-only \| --all]` | Install VeriLoop skills into Claude Code / Codex CLI |
+| `./veriloop test` | Run all offline verification & Best-Paper integration tests + catalog checks |
+| `./veriloop lint-paper [args...]` | Run `bestpaper-writing` checks (`check_draft.py`, `check_figures.py`, `--metrics`, `--exemplars`) |
+| `./veriloop audit-paper [--no-lint]` | 4-in-1 manuscript gate: `trace_numbers` + `citation_audit` + `check_draft` + `check_figures` |
 
 ---
 
@@ -133,20 +138,21 @@ cd VeriLoop
 |---|---|
 | `veriloop` | Unified zero-dependency CLI entry point |
 | `tools/verifiable_gate.py` | Dual-layer hard-blocking gate engine (`rc=0` pass / `rc=2` block + JSON report) |
-| `tools/install_veriloop.sh` | Installer for Claude Code / Codex CLI (`--verifiable-only` or `--all`) |
+| `tools/install_veriloop.sh` | Installer for Claude Code / Codex CLI (`--core-only` or `--all`) |
 | `skills/research-loop/` | 5-step verifiable research loop, 38-item hostile checklist, path-only reviewer brief, and 8 stdlib scripts (`claims.py`, `trace_numbers.py`, `audit_code.py`, `run_audit.py`, `citation_audit.py`, `budget.py`, `run_seeds.py`, `render_board.py`) |
 | `skills/verifiable-gate/` | Hard-blocking gate skill integrating verification across experiment and paper workflows |
+| `skills/bestpaper-writing/` | Integrated [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill) (CC BY 4.0): 60-award-paper writing guide, Okabe-Ito `bestpaper.mplstyle` & `plot_style.py`, `check_draft.py`, `check_figures.py`, `style_metrics.py`, `find_exemplars.py` |
 | `skills/` (90+ skills), `mcp-servers/`, `templates/` | Full research lifecycle skills (idea discovery, Research Wiki, experiment orchestration, paper writing, rebuttal), incorporating MIT-licensed upstream ARIS workflows |
 | `eval/` | Controlled benchmark harness (`run_benchmark.py`, `conditions.py`, `blind_judge.py`, `aggregate_tables.py`) for `SciIntegrity-Bench` and `AIScientistPitfalls` |
 | `examples/` | `veriloop-walkthrough/` (zero-API demo), `mini-ml/` (minimal workspace), `live-showcase/` (real dual-model showcase) |
 | `paper/` | Self-audited companion paper: [main.pdf](paper/main.pdf) (arXiv), [main_icml2027.pdf](paper/main_icml2027.pdf) (ICML 2027 8-page), `sec/*.tex`, `figures/*.pdf`, `build_tables_and_figures.py` |
-| `tests/verifiable/` | 30 offline unit & integration tests covering claims, number tracing, AST auditing, citation checks, budget breaker, and `verifiable_gate.py` |
+| `tests/verifiable/` | Offline unit & integration tests covering claims, number tracing, AST auditing, citation checks, budget breaker, `verifiable_gate.py`, and `bestpaper-writing` CLI integration |
 
 ---
 
 ## Attribution & Citation
 
-**VeriLoop** builds on MIT-licensed upstream research workflow skills from **ARIS** ([wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep), `arXiv:2605.03042`) — see [NOTICE.md](NOTICE.md) and [LICENSE](LICENSE) for full attribution. If you use VeriLoop in academic work, please cite both papers:
+**VeriLoop** builds on MIT-licensed upstream research workflow skills from **ARIS** ([wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep), `arXiv:2605.03042`) and integrates CC BY 4.0 **Best-Paper-Writing-Skill** ([shangliy/Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill), forked from [gulucaptain/Best-Paper-Writing-Skill](https://github.com/gulucaptain/Best-Paper-Writing-Skill)) — see [NOTICE.md](NOTICE.md) and [LICENSE](LICENSE) for full attribution. If you use VeriLoop in academic work, please cite both papers:
 
 ```bibtex
 @article{veriloop2026,

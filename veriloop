@@ -8,9 +8,15 @@ Subcommands:
   ./veriloop demo                   Run 10-second zero-API closed-loop verification demo
   ./veriloop live [args...]         Run live LLM showcase (claude-haiku + codex-cli path-only XMR)
   ./veriloop install [args...]      Install VeriLoop skills into Claude Code / Codex CLI
-  ./veriloop test                   Run all 30 offline verification tests + skill catalog checks
-  ./veriloop audit-paper            Self-audit paper/sec/*.tex (trace_numbers + citation_audit)
+  ./veriloop test                   Run all offline verification tests + skill catalog checks
+  ./veriloop lint-paper [args...]   Run Best-Paper-Writing-Skill prose & figure checks
+                                    (supports --draft <files...>, --tex <main.tex>,
+                                     --layout one|two, --metrics <files...>, --exemplars [args...])
+  ./veriloop audit-paper [--no-lint]
+                                    4-in-1 self-audit of paper/ (trace_numbers + citation_audit
+                                    + bestpaper check_draft + check_figures)
 """
+import argparse
 import subprocess
 import sys
 import tempfile
@@ -18,11 +24,55 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 RL_SCRIPTS = ROOT / "skills/research-loop/scripts"
+BP_SCRIPTS = ROOT / "skills/bestpaper-writing/scripts"
 
 
 def passthrough(cmd):
     p = subprocess.run(cmd)
     sys.exit(p.returncode)
+
+
+def run_lint_paper(rest):
+    if rest and rest[0] == "--exemplars":
+        passthrough([sys.executable, str(BP_SCRIPTS / "find_exemplars.py"), *rest[1:]])
+    if rest and rest[0] == "--metrics":
+        targets = rest[1:] or [
+            str(ROOT / "paper/sec/0_abstract.tex"),
+            str(ROOT / "paper/sec/1_intro.tex"),
+        ]
+        passthrough([sys.executable, str(BP_SCRIPTS / "style_metrics.py"), *targets])
+
+    ap = argparse.ArgumentParser(prog="veriloop lint-paper")
+    ap.add_argument(
+        "--draft",
+        nargs="+",
+        default=[
+            str(ROOT / "paper/sec/0_abstract.tex"),
+            str(ROOT / "paper/sec/1_intro.tex"),
+        ],
+        help="Draft .tex/.md files for check_draft.py (default: abstract + intro)",
+    )
+    ap.add_argument(
+        "--tex",
+        default=str(ROOT / "paper/main_icml2027.tex"),
+        help="Main .tex file for check_figures.py (pass 'none' to skip)",
+    )
+    ap.add_argument(
+        "--layout",
+        choices=("one", "two"),
+        default="two",
+        help="Paper column layout for check_figures.py",
+    )
+    args = ap.parse_args(rest)
+
+    r1 = subprocess.run([sys.executable, str(BP_SCRIPTS / "check_draft.py"), *args.draft])
+    r2_rc = 0
+    if args.tex.lower() != "none" and Path(args.tex).exists():
+        r2 = subprocess.run(
+            [sys.executable, str(BP_SCRIPTS / "check_figures.py"), args.tex, "--layout", args.layout]
+        )
+        r2_rc = r2.returncode
+    return 0 if (r1.returncode == 0 and r2_rc == 0) else 1
 
 
 def main():
@@ -47,7 +97,10 @@ def main():
         r1 = subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "tests/verifiable"), "-v"])
         r2 = subprocess.run([sys.executable, "-m", "unittest", "tests/test_skill_groups.py", "-v"], cwd=str(ROOT))
         sys.exit(0 if (r1.returncode == 0 and r2.returncode == 0) else 1)
+    elif sub == "lint-paper":
+        sys.exit(run_lint_paper(rest))
     elif sub == "audit-paper":
+        no_lint = "--no-lint" in rest
         sec_dir = ROOT / "paper/sec"
         order = [
             "0_abstract.tex", "1_intro.tex", "2_method.tex", "3_experiments.tex",
@@ -60,7 +113,8 @@ def main():
         try:
             r1 = subprocess.run([sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), tmp_path, "--logs", str(ROOT / "paper/out/stats_summary.txt")])
             r2 = subprocess.run([sys.executable, str(RL_SCRIPTS / "citation_audit.py"), tmp_path, "--bib", str(ROOT / "paper/refs.bib")])
-            sys.exit(0 if (r1.returncode == 0 and r2.returncode == 0) else 1)
+            r3_rc = 0 if no_lint else run_lint_paper([])
+            sys.exit(0 if (r1.returncode == 0 and r2.returncode == 0 and r3_rc == 0) else 1)
         finally:
             Path(tmp_path).unlink(missing_ok=True)
     else:

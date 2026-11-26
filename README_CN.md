@@ -14,9 +14,9 @@
 
 自主科研 Agent 很少因为「忘记输出文件」而失败；它们真正的失败模式是**代码正常跑完，却在报告中写出与原始日志、代码路径或统计结果相矛盾的数值与结论**。**VeriLoop** 将完整科研流程与硬验证机制合二为一，打造更完备、更便捷、更高效的科研流水线：
 
-1. **更完备（90+ 全周期技能）：** 覆盖选题探索、文献检索与持久化 Research Wiki、本地/远程多随机种子实验、双层硬门控审计、单轮靶向闭环修复、LaTeX 论文撰写与 Rebuttal 全流程。
-2. **更便捷（统一入口 `./veriloop`）：** 单一零依赖命令行工具统一调度 `gate` / `claims` / `board` / `demo` / `live` / `install` / `test` / `audit-paper`，开箱即用。
-3. **更高效（`$0` 确定性快速失败 + 预算熔断）：** 第一层在毫秒级以零 API 成本拦截数值编造、正负号反转、6 类 Python AST 代码作弊、SHA-256 账本篡改与缺失 BibTeX；仅对通过确定性校验的工作区触发纯路径跨模型硬阻断审计，并内置严格 USD 熔断器。
+1. **更完备（90+ 全周期技能 + 顶会写作引擎）：** 覆盖选题探索、文献检索与持久化 Research Wiki、多随机种子实验、双层硬门控审计、单轮靶向闭环修复、**内置 [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)（60 篇顶会获奖论文写作规范 + Okabe-Ito 绘图样式 + 自动文风/图表质检）**、LaTeX 论文生成与 Rebuttal 全流程。
+2. **更便捷（统一入口 `./veriloop`）：** 单一零依赖命令行工具统一调度 `gate` / `claims` / `board` / `demo` / `live` / `install` / `test` / `lint-paper` / `audit-paper`，开箱即用。
+3. **更高效（`$0` 确定性快速失败 + 四合一投稿自检 + 预算熔断）：** 第一层在毫秒级以零 API 成本拦截数值编造、正负号反转、6 类 Python AST 代码作弊、SHA-256 账本篡改、缺失 BibTeX 与 AI 写作/图表硬伤；仅对通过确定性校验的工作区触发纯路径跨模型硬阻断审计，并内置严格 USD 熔断器。
 
 ---
 
@@ -57,11 +57,12 @@ cd VeriLoop
   --out-json audits/veriloop_gate.json
 
 # 4. 一键安装技能到 Claude Code / Codex CLI
-./veriloop install --verifiable-only   # 仅安装核心硬门控技能
-./veriloop install --all               # 安装全部 90+ 科研技能 + 硬门控
+./veriloop install --core-only         # 安装核心三件套（research-loop + verifiable-gate + bestpaper-writing）
+./veriloop install --all               # 安装全部 90+ 科研技能 + 硬门控 + Best-Paper 写作技能
 
-# 5. （可选）复现论文自审计 / 真实双模型实战
+# 5. 四合一论文自检（数值溯源 + BibTeX + Best-Paper 摘要/引言/图表质检）与真实双模型实战
 ./veriloop audit-paper
+./veriloop lint-paper --draft paper/sec/0_abstract.tex paper/sec/1_intro.tex --tex paper/main_icml2027.tex --layout two
 ./veriloop live --budget-limit 1.50
 ```
 
@@ -69,4 +70,4 @@ cd VeriLoop
 
 ## 开源许可与归属
 
-**VeriLoop** 采用 **MIT License** 开源，工作流技能库基于 MIT 协议的上游项目 **ARIS**（[wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep)，`arXiv:2605.03042`）扩展构建，完整版权与模块边界详见 [LICENSE](LICENSE) 与 [NOTICE.md](NOTICE.md)。如在学术工作中使用本仓库，请同时引用 VeriLoop 与 ARIS。
+**VeriLoop** 核心代码采用 **MIT License** 开源：工作流技能库基于 MIT 协议的上游 **ARIS**（[wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep)，`arXiv:2605.03042`）扩展构建，并原生集成 **CC BY 4.0** 协议的 **[Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)**（`skills/bestpaper-writing/`）。完整版权与模块边界详见 [LICENSE](LICENSE) 与 [NOTICE.md](NOTICE.md)。如在学术工作中使用本仓库，请同时引用 VeriLoop 与 ARIS。
