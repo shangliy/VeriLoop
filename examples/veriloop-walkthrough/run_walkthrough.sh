@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# End-to-end Verifiable-ARIS walkthrough (0 API spend):
+# End-to-end VeriLoop walkthrough (0 API spend):
 #   Phase 1: Pre-register claim C1 + run real 3-seed ML experiment & ablation
-#   Phase 2: Round 1 (defective report + hardcoded ref print) -> EviBound passes, Verifiable-ARIS HARD BLOCKS (rc=2)
-#   Phase 3: Round 2 (1-round closed-loop repair) -> G1-G7 supported + Verifiable-ARIS PASSES (rc=0) + board.html
+#   Phase 2: Round 1 (defective report + hardcoded ref print) -> EviBound passes, VeriLoop HARD BLOCKS (rc=2)
+#   Phase 3: Round 2 (1-round closed-loop repair) -> G1-G7 supported + VeriLoop PASSES (rc=0) + board.html
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 SCRIPTS="$ROOT/skills/research-loop/scripts"
 GATE="$ROOT/tools/verifiable_gate.py"
-WS="${1:-$ROOT/examples/verifiable-aris-walkthrough/demo_output}"
+WS="${1:-$ROOT/examples/veriloop-walkthrough/demo_output}"
 
 rm -rf "$WS"
 mkdir -p "$WS/code" "$WS/out" "$WS/report" "$WS/audits"
@@ -102,7 +102,7 @@ set +e
 python3 "$GATE" -w "$WS" --report report/report.md --logs out --scripts code --bib refs.bib --out-json audits/r1_gate.json
 R1_RC=$?
 set -e
-echo "  [Verifiable-ARIS Round-1 exit code]: $R1_RC (expected 2 = HARD BLOCK)"
+echo "  [VeriLoop Round-1 exit code]: $R1_RC (expected 2 = HARD BLOCK)"
 
 # ----------------------------------------------------------------------------
 # PHASE 3: Round 2 — 1-Round Closed-Loop Repair -> Verified PASS + HTML Board
@@ -120,7 +120,7 @@ for arm in ("baseline", "method", "ablation_nol2"):
     rows.append(f"| `{arm}` | 3 | `{m.group(1)}` | `aggregate.txt` |")
 m_delta = re.search(r"DELTA_METHOD_MINUS_BASELINE\s+([+-][0-9.]+)", agg).group(1)
 md = (
-    "# Round-2 Repaired Report (Verifiable-ARIS)\n\n"
+    "# Round-2 Repaired Report (VeriLoop)\n\n"
     "Building on autonomous research workflows \\cite{yang2026aris}, every metric below is dynamically computed and traced:\n\n"
     "| Arm | Seeds | Test Accuracy (mean±std) | Raw Log |\n|---|---:|---|---|\n"
     + "\n".join(rows) + "\n\n"

@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Unified Verifiable-ARIS Hard Evidence Gate CLI.
+"""Unified VeriLoop Hard Evidence Gate CLI.
 
-Bridges ARIS research workspaces (experiment-audit, result-to-claim,
-paper-claim-audit, research-pipeline) with Verifiable Research-Loop's
-zero-dependency dual-layer governance stack:
+Enforces VeriLoop's zero-dependency dual-layer governance stack across any
+autonomous research workspace (experiments, ablations, or LaTeX manuscripts):
 
   Layer 1 (Deterministic, $0 LLM cost):
     - trace_numbers.py : signed numerical provenance, WRONG_LOG, UNPAIRED_PM/CI, staleness

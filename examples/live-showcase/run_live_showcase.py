@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Live end-to-end Verifiable-ARIS showcase:
+"""Live end-to-end VeriLoop showcase:
   1. Generates a clean local benchmark dataset (train/val/test CSV, 0 leakage) + refs.bib
   2. Runs a real autonomous executor (claude-cli haiku) to code, train, ablate, and draft report.md
   3. Runs tools/verifiable_gate.py (Layer 1 deterministic AST/provenance/citation + Layer 2 path-only codex-cli XMR)
@@ -107,7 +107,7 @@ def main():
         "--scope", "Synthetic 8-feature nonlinear classification dataset (n_test=250)",
     ], check=True)
 
-    print(f"=== Live Verifiable-ARIS Showcase Workspace: {ws} (Budget Cap: ${a.budget_limit:.2f}) ===")
+    print(f"=== Live VeriLoop Showcase Workspace: {ws} (Budget Cap: ${a.budget_limit:.2f}) ===")
     exec_prompt = f"""You are an autonomous ML researcher working inside `{ws}`.
 Task:
 1. Read `data/dataset.csv` (`id,split,f0..f7,label`; splits are `train`, `val`, `test`). Do NOT modify `data/`.
@@ -132,7 +132,7 @@ Task:
         ):
             subprocess.run([sys.executable, str(RL_SCRIPTS / "claims.py"), "-w", str(ws), "evidence", "C1", "--log", str(res_log), *extra], check=False)
 
-    print("\n>>> [Round 1] Running Verifiable-ARIS Hard Gate (Layer 1 deterministic + Layer 2 path-only codex-cli)...")
+    print("\n>>> [Round 1] Running VeriLoop Hard Gate (Layer 1 deterministic + Layer 2 path-only codex-cli)...")
     t0 = time.monotonic()
     p1 = subprocess.run([
         sys.executable, str(GATE),
@@ -160,7 +160,7 @@ Task:
             shutil.copyfile(ws / "audits/verifiable-gate-review.md", ws / "audits/r1_review.md")
 
         print("\n>>> [Round 2] Round 1 BLOCKED — running 1 targeted closed-loop repair turn (claude-haiku)...")
-        repair_prompt = f"""Your Round-1 submission in `{ws}` was HARD-BLOCKED by Verifiable-ARIS.
+        repair_prompt = f"""Your Round-1 submission in `{ws}` was HARD-BLOCKED by VeriLoop.
 Fix EVERY mechanical and reviewer issue below by editing `code/` (re-running `out/results.txt` if needed) and `report/report.md`.
 Do NOT fabricate numbers; every decimal (>=3 places) in `report/report.md` must match `out/results.txt` verbatim with exact sign and paired CI/± lines.
 
@@ -182,7 +182,7 @@ Do NOT fabricate numbers; every decimal (>=3 places) in `report/report.md` must 
                 "--has-ci", "--complete-marker", "SUMMARY_COMPLETE",
             ], check=False)
 
-        print("\n>>> [Round 2] Re-running Verifiable-ARIS Hard Gate (Layer 1 + Layer 2 path-only codex-cli)...")
+        print("\n>>> [Round 2] Re-running VeriLoop Hard Gate (Layer 1 + Layer 2 path-only codex-cli)...")
         t1 = time.monotonic()
         p2 = subprocess.run([
             sys.executable, str(GATE),

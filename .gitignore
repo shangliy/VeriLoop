@@ -48,8 +48,8 @@ patent/
 # ARIS runtime state (per-project traces, caches, installed-skills manifest)
 .aris/
 
-# Verifiable-ARIS evaluation artifacts
+# VeriLoop evaluation & demo artifacts
 eval_runs/
 external/
-examples/verifiable-aris-walkthrough/demo_output/
+examples/veriloop-walkthrough/demo_output/
 examples/live-showcase/workspace/

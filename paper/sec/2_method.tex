@@ -1,14 +1,14 @@
-\section{Verifiable Research-Loop}
+\section{VeriLoop}
 \label{sec:method}
 
-Given a workspace containing read-only input data (\texttt{data/}), generated analysis scripts (\texttt{code/}), raw execution stdout logs (\texttt{out/}), and a drafted report (\texttt{report/report.md}), Verifiable Research-Loop decides whether the deliverable may be released or must return for targeted repair.
+Given a workspace containing read-only input data (\texttt{data/}), generated analysis scripts (\texttt{code/}), raw execution stdout logs (\texttt{out/}), and a drafted report (\texttt{report/report.md}), VeriLoop decides whether the deliverable may be released or must return for targeted repair.
 Figure~\ref{fig:arch} contrasts our two-layer architecture against bare execution (\texttt{B0}), existence gating (\texttt{B1}), and advisory cross-model review (\texttt{B2}).
 The harness couples three deterministic pre-audit modules with a path-isolated cross-family auditor and a persistent USD budget circuit breaker, built entirely on the Python standard library.
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig1_architecture.pdf}
-  \caption{\textbf{Dual-layer hard gating closes the verification gap left by existence checks and advisory review.} Comparison of the four evaluated governance paradigms: bare execution (\texttt{B0}), existence gating (\texttt{B1}, grey), summary-fed advisory cross-model review (\texttt{B2}, amber), and Verifiable Research-Loop (blue). Our harness executes deterministic claim, numerical-provenance, and Python AST gates before path-isolated cross-family auditing, enforcing hard blocking and one-round closed-loop repair (green).}
+  \caption{\textbf{Dual-layer hard gating closes the verification gap left by existence checks and advisory review.} Comparison of the four evaluated governance paradigms: bare execution (\texttt{B0}), existence gating (\texttt{B1}, grey), summary-fed advisory cross-model review (\texttt{B2}, amber), and VeriLoop (blue). Our harness executes deterministic claim, numerical-provenance, and Python AST gates before path-isolated cross-family auditing, enforcing hard blocking and one-round closed-loop repair (green).}
   \label{fig:arch}
 \end{figure*}
 

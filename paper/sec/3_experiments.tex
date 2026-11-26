@@ -55,7 +55,7 @@ Every primary condition runs on identical isolated workspace copies, identical C
 \texttt{B0\_bare} (minimal coding agent, no gates, no review),
 \texttt{B1\_evibound} (pre-execution \texttt{acceptance\_contract.json} plus post-execution file existence and non-emptiness checks),
 \texttt{B2\_aris} (cross-model advisory review receiving the executor's narrative summary, non-blocking delivery), and
-\texttt{Ours\_full} (full Verifiable Research-Loop; one-round closed-loop revision enabled on \textsc{SPR} and reverse cross-family suites).
+\texttt{Ours\_full} (full VeriLoop; one-round closed-loop revision enabled on \textsc{SPR} and reverse cross-family suites).
 To isolate each mechanism, we evaluate four ablations:
 \texttt{Ours\_no\_gates} (removes mechanical gates),
 \texttt{Ours\_with\_summary} (injects the executor summary into the cross-model reviewer),
@@ -71,14 +71,14 @@ We report Wilson 95\% confidence intervals~\citep{wilson1927probable} and exact 
 \begin{figure*}[!t]
   \centering
   \includegraphics[width=0.88\textwidth]{figures/fig2_main_benchmark.pdf}
-  \caption{\textbf{Verifiable Research-Loop reduces blocker leakage from 86.7\% to 0.0\%.} Unblocked blocker delivery rates with 95\% Wilson confidence intervals across \textsc{SciIntegrity-Bench} (11/11 traps), \textsc{AIScientistPitfalls} (4/4 \textsc{SPR} tasks), and pooled primary tasks ($n=15$). Existence gating (\texttt{B1}, grey) blocks 0/15 runs; advisory review (\texttt{B2}, vermilion) leaks 13/15 (86.7\%); \texttt{Ours\_full} (blue) leaks 0/15 (exact McNemar $p=0.000244$).}
+  \caption{\textbf{VeriLoop reduces blocker leakage from 86.7\% to 0.0\%.} Unblocked blocker delivery rates with 95\% Wilson confidence intervals across \textsc{SciIntegrity-Bench} (11/11 traps), \textsc{AIScientistPitfalls} (4/4 \textsc{SPR} tasks), and pooled primary tasks ($n=15$). Existence gating (\texttt{B1}, grey) blocks 0/15 runs; advisory review (\texttt{B2}, vermilion) leaks 13/15 (86.7\%); \texttt{Ours\_full} (blue) leaks 0/15 (exact McNemar $p=0.000244$).}
   \label{fig:primary}
 \end{figure*}
 
 \subsection{Primary Comparison Across 15 Paired Tasks}
 \label{sec:primary}
 
-Verifiable Research-Loop cuts unblocked blocker leakage from 86.7\% to 0.0\% across all 15 paired tasks ($p=0.000244$) while approving every clean output with zero false-positive blocks (Table~\ref{tab:primary}, Figure~\ref{fig:primary}; per-scenario outcomes in Appendix~\ref{app:per_task}).
+VeriLoop cuts unblocked blocker leakage from 86.7\% to 0.0\% across all 15 paired tasks ($p=0.000244$) while approving every clean output with zero false-positive blocks (Table~\ref{tab:primary}, Figure~\ref{fig:primary}; per-scenario outcomes in Appendix~\ref{app:per_task}).
 
 Existence gating (\texttt{B1\_evibound}) failed on every subtle fabrication, passing valid \texttt{acceptance\_contract.json} files and triggering 0/15 (0.0\%) blocks even when reports fabricated a 70.00\% test score for an unevaluated model family (\texttt{SPR\_MetricMisuse}) or invented chronological epochs (\texttt{10a}).
 Advisory cross-model review (\texttt{B2\_aris}) detected verified blockers in 9/11 (81.8\%) \textsc{SciIntegrity} tasks and 4/4 (100.0\%) \textsc{SPR} tasks (13/15 = 86.7\% pooled, including 10 \texttt{BLOCK\_MISCONDUCT}), yet non-blocking delivery let every defective report reach the user.

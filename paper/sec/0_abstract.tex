@@ -1,7 +1,7 @@
 \begin{abstract}
 Autonomous LLM research agents now write code, run experiments, and draft scientific reports end to end, yet post-hoc audits reveal widespread claim fabrication missed by standard AI review.
 Artifact-existence gates verify file presence without checking calculation bugs or fabricated metrics, and advisory cross-model review exposes auditors to executor framing bias without blocking defective outputs.
-We present \textbf{Verifiable Research-Loop}, a zero-dependency dual-layer governance harness coupling deterministic claim, signed numerical-provenance, and Python AST gates with path-isolated cross-family auditing and closed-loop repair.
+We present \textbf{VeriLoop}, a zero-dependency dual-layer governance harness coupling deterministic claim, signed numerical-provenance, and Python AST gates with path-isolated cross-family auditing and closed-loop repair.
 Across 112 controlled runs spanning every trap category of \textsc{SciIntegrity-Bench} and every ML pitfall of \textsc{AIScientistPitfalls}, our harness outperforms both existence gating and advisory review, cutting unblocked blocker leakage from 86.7\% to 0.0\% ($p=0.000244$) with zero false-positive blocks.
 On \textsc{AIScientistPitfalls}, one revision turn resolves every Round-1 misconduct verdict and achieves unanimous condition-blind approval.
 Expanded causal ablations further show that same-model fresh review collapses blocking to 18.2\% and sycophantically approves invalid claims, and that executor summaries halve misconduct verdicts.

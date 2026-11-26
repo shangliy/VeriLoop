@@ -1,4 +1,4 @@
-# Best-Paper Writing Report (`Verifiable Research-Loop`)
+# Best-Paper Writing Report (`VeriLoop`)
 
 Generated following `gulucaptain/Best-Paper-Writing-Skill` (Steps 1--8) for dual-target release:
 - **Public arXiv Preprint**: `paper/main.tex` (modern single-column layout with toggleable author/repo macros)
@@ -46,7 +46,7 @@ Generated following `gulucaptain/Best-Paper-Writing-Skill` (Steps 1--8) for dual
 |---|---|---|
 | **Abstract** | 333 words (>p90), 36 numbers (>p90), mean sentence length 41.6w (one 156w monster sentence), 2 em-dash ERRORs, 0 evaluative claims, inline citations | ~185 words, 7 crisp sentences (~24w mean), 0 dashes, headline numbers only, explicit evaluative claim (`outperforms`), no citations |
 | **Introduction** | 63 numbers (>p90), 3 ERRORs (2 em-dashes + `superiority`), `\subsection` headers, no Fig. 1 reference, contributions repeated results numbers | 6 flowing paragraphs (no `\subsection`), concrete `analyze_flame.py:62` example in P1, Fig. 1 cited in P2, ≤14 numbers, 0 dashes, 1-line contributions pointing to sections |
-| **Method** | Generic heading (`System Architecture`), callout box repeating prose, em-dashes | Named after method (`Verifiable Research-Loop`), opener states I/O + Fig. 1, each subsection follows `need → mechanism → property`, 0 dashes |
+| **Method** | Generic heading (`System Architecture`), callout box repeating prose, em-dashes | Named after method (`VeriLoop`), opener states I/O + Fig. 1, each subsection follows `need → mechanism → property`, 0 dashes |
 | **Experiments** | Four subsections opened with `"Table X reports..."`; ablation `n=6` (`p=0.0625`); outdated self-audit count (`37/37`) | Every subsection opens with the empirical claim first; expanded key ablations to `n=11` (`p=0.003906` sycophancy, `p=0.031250` softening); synced 100% self-audit |
 | **Figures 1--4** | Internal Matplotlib titles (forbidden by ICML & `figures.md`), ad-hoc colors, 22-word first caption sentence on Fig. 2 | Redrawn with `bestpaper.mplstyle` Okabe-Ito palette (`Ours = #0072B2`), zero internal plot titles, Type-42 fonts, bold 3--10 word takeaway captions |
 
@@ -57,7 +57,7 @@ Generated following `gulucaptain/Best-Paper-Writing-Skill` (Steps 1--8) for dual
 | Fig | Place | Claim Carried | Type | Status | Caption Takeaway |
 |---|---|---|---|---|---|
 | 1 | \S2 top (`figure*`) | Dual-layer hard gating closes the gap left by `B1` & `B2` | `contrast-schematic` | Vector PDF drawn | Dual-layer hard gating closes the verification gap left by existence checks and advisory review. |
-| 2 | \S3.2 (`figure*`) | Reduces blocker leakage from 86.7% to 0.0% ($p=0.000244$) | `bar + 95% Wilson CI` | Vector PDF drawn | Verifiable Research-Loop reduces blocker leakage from 86.7% to 0.0%. |
+| 2 | \S3.2 (`figure*`) | Reduces blocker leakage from 86.7% to 0.0% ($p=0.000244$) | `bar + 95% Wilson CI` | Vector PDF drawn | VeriLoop reduces blocker leakage from 86.7% to 0.0%. |
 | 3 | \S3.4 (`figure*`) | CCR causes sycophancy; summaries soften misconduct verdicts | `2-panel ablation bar` | Vector PDF drawn | Same-model review induces sycophantic self-approval and executor summaries soften misconduct verdicts. |
 | 4 | \S3.5 (`figure*`) | Reviewer strictness is directional; total spend < $50 | `2-panel asymmetry + cost` | Vector PDF drawn | Cross-family audit strictness is sharply directional, while total evaluation spend remains under $50. |
 

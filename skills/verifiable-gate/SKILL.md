@@ -5,9 +5,9 @@ argument-hint: "[workspace-path]"
 allowed-tools: Bash(*), Read, Grep, Glob
 ---
 
-# Verifiable Gate: Hard Dual-Layer Evidence Enforcement for ARIS
+# VeriLoop Gate: Hard Dual-Layer Evidence Enforcement
 
-Upgrades ARIS's advisory `/experiment-audit`, `/result-to-claim`, and `/paper-claim-audit` stages into a **fail-closed, hard-blocking dual-layer gate** validated across 112 controlled runs (cutting unblocked blocker leakage from 86.7% to 0.0%, exact McNemar $p=0.000244$).
+Enforces **VeriLoop**'s fail-closed, hard-blocking dual-layer verification gate before any research deliverable or manuscript section is released (validated across 112 controlled runs: cutting unblocked blocker leakage from 86.7% to 0.0%, exact McNemar $p=0.000244$).
 
 ## Why This Skill Exists
 

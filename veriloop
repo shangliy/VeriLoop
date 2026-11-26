@@ -1,0 +1,72 @@
+#!/usr/bin/env python3
+"""VeriLoop — Unified CLI for the End-to-End Verifiable Autonomous Research Pipeline.
+
+Subcommands:
+  ./veriloop gate [args...]         Run dual-layer hard evidence gate (tools/verifiable_gate.py)
+  ./veriloop claims [args...]       Manage pre-registered claim ledger G1-G7 (claims.py)
+  ./veriloop board -w <ws>          Render interactive verifiable HTML research board
+  ./veriloop demo                   Run 10-second zero-API closed-loop verification demo
+  ./veriloop live [args...]         Run live LLM showcase (claude-haiku + codex-cli path-only XMR)
+  ./veriloop install [args...]      Install VeriLoop skills into Claude Code / Codex CLI
+  ./veriloop test                   Run all 30 offline verification tests + skill catalog checks
+  ./veriloop audit-paper            Self-audit paper/sec/*.tex (trace_numbers + citation_audit)
+"""
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+RL_SCRIPTS = ROOT / "skills/research-loop/scripts"
+
+
+def passthrough(cmd):
+    p = subprocess.run(cmd)
+    sys.exit(p.returncode)
+
+
+def main():
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help", "help"):
+        print(__doc__.strip())
+        sys.exit(0)
+
+    sub, rest = sys.argv[1], sys.argv[2:]
+    if sub == "gate":
+        passthrough([sys.executable, str(ROOT / "tools/verifiable_gate.py"), *rest])
+    elif sub == "claims":
+        passthrough([sys.executable, str(RL_SCRIPTS / "claims.py"), *rest])
+    elif sub == "board":
+        passthrough([sys.executable, str(RL_SCRIPTS / "render_board.py"), *rest])
+    elif sub == "demo":
+        passthrough(["bash", str(ROOT / "examples/veriloop-walkthrough/run_walkthrough.sh"), *rest])
+    elif sub == "live":
+        passthrough([sys.executable, str(ROOT / "examples/live-showcase/run_live_showcase.py"), *rest])
+    elif sub == "install":
+        passthrough(["bash", str(ROOT / "tools/install_veriloop.sh"), *rest])
+    elif sub == "test":
+        r1 = subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", str(ROOT / "tests/verifiable"), "-v"])
+        r2 = subprocess.run([sys.executable, "-m", "unittest", "tests/test_skill_groups.py", "-v"], cwd=str(ROOT))
+        sys.exit(0 if (r1.returncode == 0 and r2.returncode == 0) else 1)
+    elif sub == "audit-paper":
+        sec_dir = ROOT / "paper/sec"
+        order = [
+            "0_abstract.tex", "1_intro.tex", "2_method.tex", "3_experiments.tex",
+            "4_discussion.tex", "5_related.tex", "6_conclusion.tex", "7_statements.tex", "appendix.tex",
+        ]
+        combined = "\n".join((sec_dir / f).read_text(encoding="utf-8") for f in order if (sec_dir / f).exists())
+        with tempfile.NamedTemporaryFile("w", suffix=".tex", delete=False) as tf:
+            tf.write(combined)
+            tmp_path = tf.name
+        try:
+            r1 = subprocess.run([sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), tmp_path, "--logs", str(ROOT / "paper/out/stats_summary.txt")])
+            r2 = subprocess.run([sys.executable, str(RL_SCRIPTS / "citation_audit.py"), tmp_path, "--bib", str(ROOT / "paper/refs.bib")])
+            sys.exit(0 if (r1.returncode == 0 and r2.returncode == 0) else 1)
+        finally:
+            Path(tmp_path).unlink(missing_ok=True)
+    else:
+        print(f"Unknown subcommand: {sub}\n\n" + __doc__.strip(), file=sys.stderr)
+        sys.exit(2)
+
+
+if __name__ == "__main__":
+    main()

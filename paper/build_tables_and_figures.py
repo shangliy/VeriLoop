@@ -8,6 +8,7 @@ Every number reported in paper/sec/*.tex traces directly to paper/out/stats_summ
 """
 import json
 import math
+import os
 from collections import defaultdict
 from pathlib import Path
 
@@ -18,7 +19,7 @@ import matplotlib.patches as mpatches
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-EVAL_RUNS = ROOT / "eval_runs"
+EVAL_RUNS = Path(os.environ.get("VERILOOP_EVAL_RUNS", str(ROOT / "eval_runs")))
 PAPER_DIR = ROOT / "paper"
 FIG_DIR = PAPER_DIR / "figures"
 OUT_DIR = PAPER_DIR / "out"
@@ -334,7 +335,8 @@ def main():
             for ln in fp.read_text(encoding="utf-8", errors="ignore").splitlines():
                 if needle in ln:
                     clean = ln.strip().replace("p=.006", "p=0.006")
-                    print(f"EXCERPT {tag} ({fp.relative_to(ROOT)}): {clean}")
+                    rel = fp.relative_to(ROOT) if fp.is_relative_to(ROOT) else fp.relative_to(EVAL_RUNS.parent)
+                    print(f"EXCERPT {tag} ({rel}): {clean}")
                     break
 
     # ==================== GENERATE 4 VECTOR PDF FIGURES (BESTPAPER + ICML STYLE) ====================
@@ -403,9 +405,9 @@ def main():
             draw_arrow(3.61, y + 0.32, 7.26, y + 0.32)
         draw_box(7.30, y, 2.62, 0.64, o_txt, o_fc, ec=o_ec, tc=o_ec, lw=1.0, fs=6.6, bold=True)
 
-    # Row 4: Verifiable Research-Loop (Ours) highlighted in saturated blue (#0072B2)
+    # Row 4: VeriLoop (Ours) highlighted in saturated blue (#0072B2)
     y = 0.28
-    ax.text(0.04, y + 0.42, "Verifiable Loop\n(Ours)", fontsize=7.1, fontweight="bold", va="center", color=C_OURS)
+    ax.text(0.04, y + 0.42, "VeriLoop\n(Ours)", fontsize=7.2, fontweight="bold", va="center", color=C_OURS)
     draw_box(1.72, y + 0.08, 1.72, 0.68, "Pre-Reg Claims\n+ Executor\n(raw logs only)", C_OURS_LT, ec=C_OURS, lw=1.0, fs=6.4)
     draw_box(3.66, y + 0.08, 1.78, 0.68, "Hard Mech. Gates\ntrace_numbers +\naudit_code + G1-G7", "#BDDDF1", ec=C_OURS, lw=1.1, fs=6.0, bold=True)
     draw_box(5.66, y + 0.08, 1.42, 0.68, "Path-Only XMR\n(no summary,\nhard block)", C_OURS, ec=C_OURS, tc="white", lw=1.1, fs=6.1, bold=True)
@@ -448,7 +450,7 @@ def main():
     ax.bar(x, b2_vals, w, yerr=[b2_lo, b2_hi], capsize=3, error_kw=dict(lw=0.8, ecolor=C_DARK),
            label="B2: ARIS-style Advisory XMR", color=C_B2, edgecolor="#8C3D00", lw=0.7)
     ax.bar(x + w, ou_vals, w, yerr=[ou_lo, ou_hi], capsize=3, error_kw=dict(lw=0.8, ecolor=C_DARK),
-           label="Verifiable Research-Loop (Ours)", color=C_OURS, edgecolor="#004C78", lw=0.7)
+           label="VeriLoop (Ours)", color=C_OURS, edgecolor="#004C78", lw=0.7)
 
     for i, (b2k, b2n, pval) in enumerate([
         (s_sci["B2_aris"]["leaked"], 11, s_sci["mcnemar_b2_vs_ours"][2]),
