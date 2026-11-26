@@ -4,13 +4,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+ Stdlib Only](https://img.shields.io/badge/Verification%20Core-Python%20Stdlib%20Only-green.svg)](#quick-start)
-[![Benchmark](https://img.shields.io/badge/Controlled%20Runs-112%20Live%20Runs-0072B2.svg)](#benchmark-results)
+[![Paper Status](https://img.shields.io/badge/Paper%20Evaluation-v2%20Frozen--Artifact%20Revision-E69F00.svg)](#evaluation-status)
 
 - **Repository:** [https://github.com/shangliy/VeriLoop](https://github.com/shangliy/VeriLoop)
-- **Companion Paper (arXiv Preprint):** [paper/main.pdf](paper/main.pdf) ([LaTeX](paper/main.tex))
-- **Companion Paper (ICML 2027 8-Page Double-Blind):** [paper/main_icml2027.pdf](paper/main_icml2027.pdf) ([LaTeX](paper/main_icml2027.tex))
+- **Paper Draft Status:** Under **v2 evaluation revision** (v1 arXiv submission paused after our own hostile log-level audit caught metric circularity, non-paired ablations, and post-hoc overrides; see [Evaluation Status](#evaluation-status))
 - **中文文档:** [README_CN.md](README_CN.md) · **Third-Party Attribution:** [NOTICE.md](NOTICE.md) · [Upstream ARIS Docs](docs/ARIS_UPSTREAM_README.md)
-- **Self-Audited Paper:** `trace_numbers.py` **69/69 traced (0 untraced, 0 sign mismatches)** · `citation_audit.py` **26/26 verified (0 issues)** · `Best-Paper-Writing-Skill` **0 errors, 0 warnings**
 
 ---
 
@@ -44,18 +42,18 @@ Autonomous research agents rarely fail by omitting output files; they fail by ex
 
 ---
 
-## Benchmark Results
+## Evaluation Status
 
-Across **112 controlled live runs** (`$46.49 / $50.00` total API budget) spanning all `11/11` `SciIntegrity-Bench` failure classes and all `4/4` `AIScientistPitfalls` ML traps:
+> [!WARNING]
+> **v1 Paper Claims Paused for Rigorous v2 Re-Evaluation:** Before arXiv release, an independent hostile audit of our raw `eval_runs/` logs flagged critical methodological flaws in the v1 evaluation draft (tautological "leakage" metric comparing a non-blocking vs. blocking switch, post-hoc scenario overrides in aggregation, a decimal-vs-percentage tracer false positive misreported as a catch in Table 4, non-paired ablation artifacts confounding model strength with model family, and missing clean-yield / independent ground-truth reporting).
+>
+> In keeping with VeriLoop's own scientific-integrity principles, we **halted arXiv v1**, retracted those headline claims from this README, added [`milestone-dual-audit`](skills/milestone-dual-audit/SKILL.md) (parallel latest-Gemini + latest-Claude frozen-artifact auditing), and are rebuilding the v2 evaluation with:
+> 1. **Frozen SHA-256 artifact corpus** across both `claude` and `codex` executors paired with **independent ground-truth labels** (Precision / Recall / F1 / FPR / Clean Yield — zero tautological leakage metric).
+> 2. **True paired 2×2 factorial audits** (same-family vs. cross-family × Path-Only vs. `+Summary`, `k=3` repeats) on identical frozen workspaces.
+> 3. **Frozen mechanical gates** (`trace_numbers.py` + `audit_code.py`) evaluated on strictly unseen held-out tasks with zero post-hoc overrides.
+> 4. **Publicly committed evaluation logs & ground-truth CSV** for full third-party reproducibility.
 
-| Governance Paradigm | Primary Blocker Leakage (`n=15`) | Exact McNemar `p` | Key Empirical Finding |
-|---|---:|---:|---|
-| **Existence Gate (`B1`, EviBound-style)** | `0/15` blocked (delivers all) | — | Checks output presence; misses code bugs & fabricated metrics |
-| **Advisory Cross-Model Review (`B2`, ARIS-style)** | `13/15` (`86.7%`, 95% CI `[62.1%, 96.3%]`) | — | Advisory delivery leaks blockers; executor summaries soften `BLOCK_MISCONDUCT` (`90.9% → 36.4%`, `p=0.031250`) |
-| **Same-Model Fresh Review (`Ours_ccr`, `n=11`)** | Only `2/11` (`18.2%`) blocked | `p = 0.003906` | **Same-family sycophancy:** lists invalid claims in JSON yet votes `APPROVE` in `5/11 (45.5%)` runs |
-| **VeriLoop (`Ours_full`)** | **`0/15` (`0.0%`, 95% CI `[0.0%, 20.4%]`)** | **`p = 0.000244`** | **0% leakage**, **0% false-positive blocking (`3/3` clean approved)**, **4/4 SPR misconduct cleared in 1 repair turn** |
-
-> **Live End-to-End Showcase (`./veriloop live`, `$0.99` total spend):** On a fresh ML classification experiment (`claude-haiku` executor + path-isolated `codex-cli` reviewer), Layer 1 verified numerical/AST provenance at `$0`, Layer 2 blocked Round 1 (`rc=2`) by uncovering 5 real methodological flaws directly from raw code and logs (confidence interval crossing zero, test-set exposure, optimizer-init seeds masquerading as independent splits, missing majority-class baseline, and convergence overclaim), and Round 2 repaired the defects while live G1 SHA-256 hashing immediately flagged an overwritten log.
+The **VeriLoop** engineering toolchain (`./veriloop`, deterministic gates, `milestone-dual-audit`, `bestpaper-writing`, 37 offline unit/integration tests, and `./veriloop demo`) is fully functional and ready to use today.
 
 ---
 

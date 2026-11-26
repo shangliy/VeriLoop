@@ -3,10 +3,8 @@
 **端到端可验证自主科研流水线：90+ 全周期模块化科研技能 × 确定性硬证据门控 × 纯路径跨模型阻断审计。**
 
 - **GitHub 仓库：** [https://github.com/shangliy/VeriLoop](https://github.com/shangliy/VeriLoop)
-- **论文（arXiv 预印本）：** [paper/main.pdf](paper/main.pdf)（源码：[paper/main.tex](paper/main.tex)）
-- **论文（ICML 2027 官方 8 页双盲版）：** [paper/main_icml2027.pdf](paper/main_icml2027.pdf)（源码：[paper/main_icml2027.tex](paper/main_icml2027.tex)）
+- **论文评测状态：** **v2 冻结产物重测重构中**（arXiv v1 已在投稿前经独立原始日志审计主动撤回，详见下方「评测状态说明」）
 - **English README:** [README.md](README.md) · **第三方归属与许可说明：** [NOTICE.md](NOTICE.md) · [上游 ARIS 原版文档](docs/ARIS_UPSTREAM_README_CN.md)
-- **论文自审计通过：** `trace_numbers.py` **69/69 全量可追溯（0 未追溯，0 符号反转）** · `citation_audit.py` **26/26 引用校验通过（0 异常）**
 
 ---
 
@@ -20,18 +18,18 @@
 
 ---
 
-## 112 次受控实测结果
+## 评测状态说明（v2 冻结产物重测进行中）
 
-在覆盖 `SciIntegrity-Bench` 全部 `11/11` 陷阱类与 `AIScientistPitfalls` 全部 `4/4` ML 陷阱的 **112 次受控实测**（总 API 花费 `$46.49 / $50.00`）中：
+> [!WARNING]
+> **v1 论文旧结论已主动暂停并撤出 README：** 在 arXiv 上传前，我们通过独立的原始日志逐行复核发现了 v1 评测中的核心方法学漏洞（同义反复的「泄漏率」指标、聚合脚本事后硬编码覆盖、把小数/百分比单位误报当成机械门控成果、消融未冻结同一产物且混杂模型强弱、缺少独立真值与干净产出放行率）。
+>
+> 遵循 VeriLoop 自身的科研诚信底线，我们已**暂停 arXiv v1 发布**、新增 [`milestone-dual-audit`](skills/milestone-dual-audit/SKILL.md)（阶段性成果最新 Gemini + 最新 Claude 并行独立评审），并正在执行 **v2 冻结产物重测**：
+> 1. **冻结 SHA-256 产物库 + 独立真值标签**：同时包含 `claude` 与 `codex` 执行者产物，改报 Precision / Recall / F1 / FPR / 干净报告放行率（废除同义反复指标）。
+> 2. **真·配对 2×2 因子实验**：在同一批冻结工作区上解耦同/跨家族与模型强弱，并做 `Path-Only` vs `+Summary` 的多次重复方差估计。
+> 3. **冻结版机械门控盲测**：修复单位换算与参考打印误报后冻结版本，在完全未见任务上零事后覆盖重测。
+> 4. **全量评测记录公开可复现**：公开脱敏后的原始评测 JSONL 与独立真值标签表。
 
-| 治理范式 | 主评测阻断漏报率（`n=15`） | 精确 McNemar `p` | 核心机制发现 |
-|---|---:|---:|---|
-| **存在性门控（`B1`，EviBound 式）** | `0/15` 拦截（全部放行） | — | 只查产物文件是否存在，无法发现代码缺陷与编造指标 |
-| **建议型跨模型审稿（`B2`，ARIS 式）** | `13/15`（`86.7%`） | — | 建议性交付放行阻断缺陷；执行者摘要使 `BLOCK_MISCONDUCT` 从 `90.9%` 软化至 `36.4%`（`p=0.031250`） |
-| **同模型全新会话复审（`Ours_ccr`, `n=11`）** | 仅拦截 `2/11`（`18.2%`） | `p = 0.003906` | **同源谄媚：** `5/11 (45.5%)` 在 JSON 列出无效声明却仍投 `APPROVE` |
-| **VeriLoop（`Ours_full`）** | **`0/15`（`0.0%`）** | **`p = 0.000244`** | **0% 漏报**、干净任务 **0% 误杀（`3/3`）**、SPR 单轮闭环修复清除 **4/4** 不端 |
-
-> **真实双模型实战（`./veriloop live`，花费 `$0.99`）：** `claude-haiku` 执行完整分类实验，`codex-cli` 纯路径审稿在 Round 1 零摘要条件下直接从原始代码与日志揪出 5 项真实方法学硬伤（95% 置信区间跨零、测试集暴露、用优化器随机种子冒充独立划分、缺失多数类基线、过度宣称收敛）并硬阻断（`rc=2`）；Round 2 完成基线补齐与措辞修正，且 G1 SHA-256 哈希实时捕获日志覆盖漂移。
+当前 **VeriLoop** 工程工具链（`./veriloop` 统一 CLI、确定性门控、`milestone-dual-audit`、`bestpaper-writing`、37 项离线测试与 `./veriloop demo`）均可直接稳定使用。
 
 ---
 
