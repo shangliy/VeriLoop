@@ -56,3 +56,6 @@ examples/live-showcase/workspace/
 
 # arXiv submission tarball (generated locally)
 paper/arxiv_v1_submission.tar.gz
+
+# Unseen blind-test raw workspaces (large benchmark data; results JSONL & audit CSV are tracked)
+eval/v2_unseen/workspaces/

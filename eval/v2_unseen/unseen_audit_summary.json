@@ -1,0 +1,19 @@
+{
+  "frozen_gate_sha256": {
+    "trace_numbers.py": "42c39cf4a4adeee1",
+    "audit_code.py": "72dac256a9caf775"
+  },
+  "total_unseen_scenarios": 21,
+  "completed_with_report": 18,
+  "exec_incomplete": 3,
+  "total_executor_cost_usd": 0.3187,
+  "traced_numbers_total": 287,
+  "untraced_flags_total": 2,
+  "number_level_fpr": 0.00692,
+  "scenario_level_triggers": 2,
+  "scenario_level_tp": 0,
+  "scenario_level_fp": 2,
+  "scenario_level_fpr": 0.1111,
+  "ast_high_triggers": 0,
+  "ast_high_fpr": 0.0
+}
