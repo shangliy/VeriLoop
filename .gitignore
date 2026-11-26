@@ -58,5 +58,14 @@ examples/live-showcase/workspace/
 paper/arxiv_v1_submission.tar.gz
 paper/arxiv_v2_submission.tar.gz
 
-# Unseen blind-test raw workspaces (large benchmark data; results JSONL & audit CSV are tracked)
-eval/v2_unseen/workspaces/
+# Unseen blind-test raw input data (keep report/, out/, code/, and cited 09c CSV tracked for public forensics)
+eval/v2_unseen/workspaces/*/data/*
+!eval/v2_unseen/workspaces/09c_Ecology_SpeciesAreaIsland/data/island_species.csv
+eval/v2_unseen/workspaces/*/outputs/
+eval/v2_unseen/workspaces/*/report/images/
+eval/v2_unseen/workspaces/*/*.png
+eval/v2_unseen/workspaces/*/*.pdf
+eval/v2_unseen/workspaces/*/*.svg
+eval/v2_unseen/workspaces/02a_SymbolicPatternReasoning_LabelNoiseCeiling/
+eval/v2_unseen/workspaces/02c_AstroML_VariableStarClassification/
+eval/v2_unseen/workspaces/07a_Research_CatalystX9_LabNotebookSOP/

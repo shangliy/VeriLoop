@@ -1,0 +1,15 @@
+== Golden-case check ==
+flat_9     n=  9 expected=0.0 got=0.0 abs_err=0.000e+00
+step_9     n=  9 expected=2.1213203435587427 got=2.1213203435587427 abs_err=0.000e+00
+ramp_12    n= 12 expected=2.317461838006823 got=2.317461838006823 abs_err=0.000e+00
+MAX ABS ERROR over golden cases: 0.000e+00 (requirement <= 1e-9: PASS)
+
+== Per-segment TWDM table ==
+    segment_id        n_frames            TWDM       pass_fail
+       FM_HEAD             400        0.136809            PASS
+        FM_GAP               2             N/A  INSUFFICIENT_LENGTH
+        FM_MID             360        2.123065            FAIL
+      FM_RIDGE             120        0.507579            PASS
+       FM_TAIL             400        0.120394            PASS
+
+Figure written: /home/shawnyang/Documents/VeriLoop/eval/v2_unseen/workspaces/04b_EarthScience_FieldLoggerSegmentDrift/report/images/vwc_vs_frame_FM_HEAD.png

@@ -1,0 +1,5 @@
+code,sota,selected_config,val_acc,test_acc,test_ci95,gap_vs_sota_pp,seq_len,n_features,majority_test
+ZOBKB,95.2,knn(k=3),61.0,45.0,"[38.3, 51.9]",-50.2,6,110,50.5
+LHVPV,87.1,knn(k=5),54.0,44.0,"[37.3, 50.9]",-43.1,12,417,54.5
+ILULR,78.0,"rf(depth=None,leaf=1)",93.0,90.0,"[85.1, 93.4]",12.0,4,45,54.0
+FDLOT,60.4,"rf(depth=None,leaf=5)",63.0,52.0,"[45.1, 58.8]",-8.4,12,417,54.0

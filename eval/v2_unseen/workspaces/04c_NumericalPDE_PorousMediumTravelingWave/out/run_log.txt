@@ -1,0 +1,34 @@
+{
+  "M": 2.0,
+  "EPS": 0.01,
+  "U_L": 0.75,
+  "U_R": 0.1,
+  "C": 1.249302844394869,
+  "G_at_UR": 0.0,
+  "G_at_UL": 0.0,
+  "G_one_sign_inside": true,
+  "Lax": true,
+  "fp_UL": 1.5867768595041323,
+  "fp_UR": 0.13549625503406226
+}
+
+Main run (rtol=1e-11, atol=1e-13): N=1200001, nfev=21841
+u(-T)=0.750000000000 (U_L=0.7500), u(+T)=0.100000000000 (U_R=0.1000)
+max upward step (monotonicity violation): 1.464e-12
+2nd-order residual (interior): {
+  "n_points_used": 4578,
+  "max_abs_residual": 0.0012335590061063328,
+  "max_abs_term": 10.28782831739129,
+  "max_rel_residual": 0.0020602690212879722,
+  "rel_L2_residual": 7.67699669663805e-05,
+  "max_abs_first_order_residual": 3.67494217043407e-06
+}
+quadrature check: max |xi_ODE(u) - xi_quad(u)| = 7.894e-10 over 201 transition points
+max |u - u_ref| vs rtol (ref rtol=1e-13): {
+  "rtol=1e-06": 3.188563729261684e-05,
+  "rtol=1e-08": 3.2100894653552814e-07,
+  "rtol=1e-10": 2.993970404929769e-09
+}
+10%-90% transition width in xi: 0.043402
+
+Wrote outputs/profile.csv and outputs/summary.json

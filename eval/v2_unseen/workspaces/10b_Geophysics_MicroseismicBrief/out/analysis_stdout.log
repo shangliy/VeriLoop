@@ -1,0 +1,55 @@
+=== 1. Data inventory ===
+stations: 5 rows, ids=['S0', 'S1', 'S2', 'S3', 'S4']
+picks: 12 rows, unique event_ids=12
+picks per event_id: {np.int64(0): np.int64(1), np.int64(1): np.int64(1), np.int64(2): np.int64(1), np.int64(3): np.int64(1), np.int64(4): np.int64(1), np.int64(5): np.int64(1), np.int64(6): np.int64(1), np.int64(7): np.int64(1), np.int64(8): np.int64(1), np.int64(9): np.int64(1), np.int64(10): np.int64(1), np.int64(11): np.int64(1)}
+picks per station: {'S0': 3, 'S1': 3, 'S2': 2, 'S3': 2, 'S4': 2}
+unknown station ids in picks: set()
+duplicate (event,station) pairs: 0
+arrival range (s): [-0.0011, 5.4902]; monotone in event_id: True
+
+=== 2. Station geometry ===
+x range: 0.212 to 5.109 km; y range: 3.042 to 9.623 km
+station depths (z_km): [0.0]
+centroid (x,y): (3.068, 6.472) km
+max inter-station distance: S2-S3 = 6.719 km
+min inter-station distance: S0-S1 = 1.773 km
+array convex-hull area: 15.770 km^2 (hull vertices: 4)
+azimuths from centroid (deg): [33.3, 77.7, 174.0, 197.3, 300.8]; max azimuthal gap: 233.2 deg
+
+=== 3. Temporal structure of picks ===
+linear fit arrival = a + b*event_id: a=-0.0063 s, b=0.5006 s/event; residual RMS=0.0160 s, max |res|=0.0368 s
+inter-pick intervals: mean=0.4992 s, std=0.0288 s, CV=0.0577
+station sequence matches strict round-robin S0..S4 repeating: True
+
+=== 4. Moveout / apparent-velocity test (consecutive picks) ===
+  S0->S1: distance=1.773 km, dt=0.5049 s, implied speed=3.51 km/s
+  S1->S2: distance=5.517 km, dt=0.4831 s, implied speed=11.42 km/s
+  S2->S3: distance=6.719 km, dt=0.4828 s, implied speed=13.92 km/s
+  S3->S4: distance=2.301 km, dt=0.5346 s, implied speed=4.30 km/s
+  S4->S0: distance=3.087 km, dt=0.4928 s, implied speed=6.26 km/s
+  S0->S1: distance=1.773 km, dt=0.5109 s, implied speed=3.47 km/s
+  S1->S2: distance=5.517 km, dt=0.4659 s, implied speed=11.84 km/s
+  S2->S3: distance=6.719 km, dt=0.5612 s, implied speed=11.97 km/s
+  S3->S4: distance=2.301 km, dt=0.4627 s, implied speed=4.97 km/s
+  S4->S0: distance=3.087 km, dt=0.4990 s, implied speed=6.19 km/s
+  S0->S1: distance=1.773 km, dt=0.4934 s, implied speed=3.59 km/s
+implied speeds: min=3.47, median=6.19, max=13.92 km/s; CV=0.545
+
+=== 5. Station terms relative to linear trend ===
+  S0: mean residual=+0.0010 s, n=3
+  S1: mean residual=+0.0035 s, n=3
+  S2: mean residual=-0.0159 s, n=2
+  S3: mean residual=+0.0055 s, n=2
+  S4: mean residual=+0.0036 s, n=2
+Pearson r(station distance from centroid, station mean residual) = -0.571 (n=5, not significant)
+
+=== 6. Location feasibility ===
+Each event_id has exactly one pick; a hypocentre needs x,y,z and origin time (4 unknowns) => >=4 picks per event.
+Picks per event: 1 (max)
+[A] single common source for all 12 picks (repeated stations): best RMS=1.7177 s at {'x': 4.25, 'y': 3.25, 'z': 0.5, 'v': 7.0, 't0': 2.1474541313277897}
+[B] single source from first pick at each station (5 picks, 1 dof after v grid): best RMS=0.4085 s at {'x': -2.0, 'y': 3.0, 'z': 8.5, 'v': 2.0, 't0': -4.412699401760568}
+max moveout across array at 3.0 km/s: 2.240 s
+max moveout across array at 6.0 km/s: 1.120 s
+pick scatter (resid_lin RMS) = 0.0160 s
+
+wrote outputs/summary.json

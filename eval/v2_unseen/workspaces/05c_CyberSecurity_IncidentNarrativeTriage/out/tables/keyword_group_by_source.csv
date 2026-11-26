@@ -1,0 +1,15 @@
+keyword_group,source_system,incidents_with_hit,n,share
+execution_script,edr,1,3,0.333
+execution_script,network_ids,0,3,0.0
+credential_auth,edr,1,3,0.333
+credential_auth,network_ids,0,3,0.0
+network_traffic,edr,0,3,0.0
+network_traffic,network_ids,3,3,1.0
+file_data,edr,1,3,0.333
+file_data,network_ids,2,3,0.667
+containment_action,edr,2,3,0.667
+containment_action,network_ids,3,3,1.0
+false_positive_closure,edr,1,3,0.333
+false_positive_closure,network_ids,1,3,0.333
+process_notification,edr,2,3,0.667
+process_notification,network_ids,2,3,0.667

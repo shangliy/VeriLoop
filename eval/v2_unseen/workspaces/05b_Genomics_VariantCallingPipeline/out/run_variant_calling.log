@@ -1,0 +1,10 @@
+== Preflight checks ==
+[MISSING] GATK launcher: gatk
+[MISSING] Reference FASTA: /refs/b37/human_g1k_v37.fasta
+[MISSING] Reference .fai: /refs/b37/human_g1k_v37.fasta.fai
+[MISSING] Reference .dict: /refs/b37/human_g1k_v37.dict
+[MISSING] dbSNP VCF: /refs/b37/dbsnp_138.b37.vcf.gz
+[MISSING] dbSNP index (.tbi): /refs/b37/dbsnp_138.b37.vcf.gz.tbi
+[MISSING] CRAM for S001: /home/shawnyang/Documents/VeriLoop/eval/v2_unseen/workspaces/05b_Genomics_VariantCallingPipeline/data/crams/sample.cram
+ABORT: locked inputs/tools missing; no variant calls were produced.
+exit=2

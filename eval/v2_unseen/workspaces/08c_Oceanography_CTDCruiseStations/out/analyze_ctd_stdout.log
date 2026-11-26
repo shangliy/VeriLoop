@@ -1,0 +1,25 @@
+file: data/cruise_ctd.csv
+columns: ['station_id', 'lat', 'lon', 'temperature_c', 'salinity_psu', 'pressure_dbar']
+n_stations: 6
+
+== CTD variable coverage ==
+temperature_c: non-missing=0/6
+salinity_psu: non-missing=0/6
+pressure_dbar: non-missing=0/6
+total non-missing CTD values: 0
+profile/thermohaline analysis possible: False
+
+== Station geometry ==
+lat range: -19.9328 to -18.2354
+lon range: 40.3282 to 41.9837
+
+station  lat        lon        nearest_km  nearest_station
+ST0      -19.7649   41.4093    47.9        ST1
+ST1      -19.9328   40.9874    47.9        ST0
+ST2      -18.3183   41.8248    86.0        ST3
+ST3      -19.0772   41.9837    86.0        ST2
+ST4      -19.2527   40.5070    90.8        ST1
+ST5      -18.2354   40.3282    114.7       ST4
+
+max pairwise station distance: 204.6 km
+min pairwise station distance: 47.9 km

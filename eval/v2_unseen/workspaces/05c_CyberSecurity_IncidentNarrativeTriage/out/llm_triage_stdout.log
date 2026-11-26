@@ -1,0 +1,1 @@
+ERROR: no GEMINI_API_KEY / GOOGLE_API_KEY in environment; LLM step not executed. No outputs/gemini_raw.json written.

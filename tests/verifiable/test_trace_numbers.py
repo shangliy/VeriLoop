@@ -200,6 +200,14 @@ class TestTraceNumbers(unittest.TestCase):
         self.assertEqual(r_tbl.returncode, 1)
         self.assertEqual(len(json.loads(r_tbl.stdout)["sign_mismatches"]), 1)
 
+        # Metric noun "loss" MUST NOT relax sign checking (e.g. "validation loss of 0.312" vs logged -0.312)!
+        (self.logs / "loss.txt").write_text("val_loss=-0.3120\n")
+        rep_loss = self.ws / "rep_loss.md"
+        rep_loss.write_text("The model reached a validation loss of 0.3120 on dev.\n")
+        r_loss = run_tracer(rep_loss, self.logs)
+        self.assertEqual(r_loss.returncode, 1)
+        self.assertEqual(len(json.loads(r_loss.stdout)["sign_mismatches"]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

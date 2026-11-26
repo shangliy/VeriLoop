@@ -11,7 +11,7 @@
 \begin{tabular}{lcccccc}
 \toprule
 \textbf{System / Benchmark} & \textbf{Upstream} & \textbf{Hard Mech.} & \textbf{Code/Num.} & \textbf{Frozen Paired} & \textbf{Independent} & \textbf{Out-of-Sample} \\
- & \textbf{Prevention} & \textbf{Blocking} & \textbf{AST/Trace} & \textbf{Evaluation} & \textbf{Ground Truth} & \textbf{Gate Test} \\
+ & \textbf{Prevention} & \textbf{Blocking} & \textbf{AST/Trace} & \textbf{Evaluation} & \textbf{Ground Truth} & \textbf{Gate FPR Test} \\
 \midrule
 \textsc{FLAWS} / \textsc{PaperAudit}~\citep{xi2025flaws,tu2026paperaudit} & \xmark & \xmark & \xmark & Manuscript only & \cmark & \xmark \\
 \textsc{FabScore}~\citep{chen2026fabscore} & \xmark~(post-hoc) & \xmark & \cmark~(exec.) & Post-hoc papers & \cmark~(human) & \xmark \\
@@ -24,20 +24,21 @@
 \end{tabular}}
 \end{table*}
 
-\paragraph{Why frozen-artifact evaluation matters for research governance.}
-During development of this benchmark, hostile log-level auditing uncovered three evaluation pitfalls common in agentic benchmarking:
-(1) defining ``leakage'' as \emph{flagged and unblocked} mechanically guarantees 0\% leakage for any blocking switch regardless of clean-output yield;
-(2) re-running executors separately per reviewer condition confounds run-to-run artifact drift with reviewer capability or framing effects; and
-(3) tuning deterministic checkers on benchmark runs without reporting workspace-level CIs or out-of-sample flag rates overstates mechanical generalization.
-Freezing SHA-256 workspaces, committing gate-independent \texttt{file:line} ground truth, forbidding aggregation overrides, and locking gates before unseen blind testing directly address these hazards and motivate our \texttt{milestone-dual-audit} checkpoint skill.
+\paragraph{Why frozen-artifact evaluation and unified rules matter.}
+Independent hostile milestone audits during development uncovered four hazards common in governance benchmarking:
+(1) defining ``leakage'' as \emph{flagged and unblocked} guarantees 0\% leakage for any blocking switch regardless of yield;
+(2) re-running executors per condition confounds artifact drift with reviewer capability;
+(3) labeling an unlogged analytic derivation as defective on one split (\texttt{H06}) while treating an equivalent derivation as a benign FP on another (\texttt{04c}) creates circular Layer-1 wins; and
+(4) computing paired tests across $k=3$ repeats of one workspace causes pseudo-replication.
+Freezing SHA-256 workspaces, applying one pre-registered rule, pinning locked v2 gate snapshots, and reporting workspace-level CIs and McNemar tests directly address these hazards.
 
 \paragraph{Practical deployment rule.}
-Because Layer~1 executes in milliseconds at zero API cost with 0.0\% AST flag rate and 0.69\% number-level benign flag rate out of sample, production harnesses should run Layer~1 first to fail fast on unlogged decimals, sign flips, and mock fallbacks (indexing both \texttt{out/} and \texttt{data/} to avoid raw-input quote warnings), and then invoke a read-only Layer-2 auditor to catch code-logic and inferential defects.
+Because locked Layer~1 runs in milliseconds at \$0 cost, pre-filters 5/7 (71.4\%) frozen defects, and achieves 0.0\% AST FPR out of sample, production harnesses should hard-block immediately on deterministic AST rules (0.0\% FPR in-sample and unseen) and route signed number tracing (\texttt{trace\_numbers.py}) as a \$0 pre-audit feeding Layer~2 adjudication (reserving strict numerical hard blocks for projects adopting a log-every-derived-number contract).
 
 \paragraph{Limitations.}
 Five boundaries scope our findings:
-(1) \emph{Small workspace sample and provenance imbalance:} Our frozen corpus comprises 6 natural runs, 5 clean twin bases, and 5 constructed defect twins (only 3 natural defects total, 2 in the Haiku stratum and 1 in the Codex stratum). Consequently, the recall lift of \texttt{L1 $\cup$ codex-cli} over \texttt{codex-cli} alone rests on one workspace (\texttt{H06}, paired $p=0.250000$), and larger multi-annotator natural corpora are required for statistical power.
-(2) \emph{In-sample Layer-1 Table~\ref{tab:primary} metrics and unlabeled unseen traps:} Layer-1 rules were finalized in commit \texttt{b897378} with the frozen corpus visible, making Table~\ref{tab:primary} Layer-1 figures in-sample; meanwhile, our 21-scenario unseen blind test verified the 2 triggered flags forensically as benign but did not independently label all 18 reports for semantic traps, yielding flag rates rather than full out-of-sample recall.
-(3) \emph{Incomplete third-family and Codex summary cells:} \texttt{codex-cli} \texttt{with\_summary} completed 5/48 trials before hitting the provider 5-hour quota cap (43 error rows retained verbatim), and local \texttt{gemini} CLI non-interactive auditing awaits cloud project configuration.
-(4) \emph{Residual Layer-1 benign flags:} Three edge cases remain in frozen \texttt{trace\_numbers.py}: prose-polarity phrasing (\texttt{C04}: ``1.4598 percentage points below'' vs.\ \texttt{-1.4598}), unlogged analytic parameter expressions (\texttt{04c}: \texttt{0.425}), and raw CSV quotes when \texttt{data/} is excluded (\texttt{09c}: \texttt{3.542}).
+(1) \emph{Small sample and single-team annotation:} Our corpus has 16 workspaces (9 \textsc{Clean}, 7 \textsc{Defective}, only 2 natural defects: \texttt{H05}, \texttt{C05}) labeled by the authors under a written rule without multi-annotator reliability; workspace-level tests ($p=0.500000$--$1.000000$) are underpowered.
+(2) \emph{In-sample Layer-1 recall and unmeasured unseen recall:} Locked v2 Layer-1 rules (commit \texttt{b897378}) were finalized with the 16 workspaces visible (in-sample Table~\ref{tab:primary}), while all 18/18 completed unseen runs avoided traps, calibrating out-of-sample FPR rather than recall.
+(3) \emph{Post-v2 tracer updates:} Shipped v3 \texttt{trace\_numbers.py} adds \texttt{--data} and unsigned prose-polarity rules motivated by \texttt{C04}/\texttt{09c} (in-sample) and awaits a fresh held-out benchmark before any v3 FP-reduction claim.
+(4) \emph{Incomplete cells:} \texttt{codex-cli} \texttt{with\_summary} stopped at 5/48 trials due to the provider 5-hour quota cap (43 errors retained verbatim), and non-interactive \texttt{gemini} CLI auditing awaits cloud project setup.
 (5) \emph{Workload scope:} All benchmarks are CPU-only tabular, numerical, and symbolic tasks; multi-GPU deep-learning workloads remain future work.

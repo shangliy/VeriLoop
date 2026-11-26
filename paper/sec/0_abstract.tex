@@ -1,10 +1,10 @@
 \begin{abstract}
-Autonomous LLM research agents now write code, run experiments, and draft scientific reports end to end, yet post-hoc audits reveal widespread numerical and methodological fabrications missed by standard AI review.
+Autonomous LLM research agents now write code, run experiments, and draft scientific reports end to end, yet post-hoc audits reveal widespread numerical and methodological defects missed by standard AI review.
 Artifact-existence checks verify file presence without inspecting calculation bugs or unlogged statistics.
-Single-layer LLM auditors still overlook subtle provenance errors, and non-paired evaluations confound reviewer capability with run-to-run execution drift.
-We present \textbf{VeriLoop}, a practical dual-layer governance harness pairing an efficient stdlib-only deterministic verification core (claim ledger, signed numerical provenance, and Python AST gates) with read-only cross-model auditing, alongside a publicly frozen SHA-256 benchmark for non-circular evaluation.
-Across paired trials on sixteen balanced frozen workspaces spanning two executor families, VeriLoop's dual-layer union reaches 100.0\% workspace recall and 94.1\% F1 at 87.5\% clean yield, closing a case-level miss left by every single layer (paired $p=0.250000$).
-The two layers are complementary because deterministic tracing catches an unlogged confidence interval missed across almost every LLM trial while semantic review catches logic and inferential flaws.
-On twenty-one strictly unseen \textsc{SciIntegrity-Bench} scenarios, locked mechanical gates record zero AST flags and a 0.69\% number-level benign flag rate.
-We release our frozen workspaces, independent ground-truth labels, raw trial logs, and zero-override aggregation scripts in \RepoRef.
+Running frontier LLM auditors on every iteration is costly, and non-paired evaluations confound reviewer capability with execution drift.
+We present \textbf{VeriLoop}, an efficient dual-layer governance harness pairing a stdlib-only deterministic core (claim ledger, signed numerical provenance, and Python AST gates) with read-only cross-model auditing, alongside a publicly frozen SHA-256 benchmark for non-circular evaluation.
+Across paired trials on sixteen frozen workspaces under one unified labeling rule, zero-cost mechanical gates pre-filter 71.4\% of defective workspaces before paid review.
+Read-only \texttt{codex-cli} auditing resolves the remaining logic and inferential defects to reach 100.0\% recall, quantifying a concrete trade-off between strict hard-blocking yield (77.8\%) and cascading Layer-1 diagnostics into Layer~2.
+On twenty-one strictly unseen \textsc{SciIntegrity-Bench} scenarios where all eighteen completed runs avoided the benchmark trap, locked mechanical gates record zero AST false positives and a 0.69\% number-level FPR, while out-of-sample recall remains unmeasured due to zero positive unseen traps.
+We release all frozen workspaces, locked v2 gates, unseen forensic files, ground-truth labels, raw logs, and zero-override aggregators in \RepoRef.
 \end{abstract}

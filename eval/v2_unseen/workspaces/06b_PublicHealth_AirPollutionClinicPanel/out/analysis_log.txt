@@ -1,0 +1,70 @@
+N days = 120; day_index range 0..119
+
+== Descriptives ==
+pm25                   mean=  10.320 sd=  7.163 min=  0.00 med=   9.63 max=  33.31 zeros=8
+respiratory_visits     mean= 108.383 sd= 20.634 min= 62.00 med= 107.00 max= 168.00 zeros=0
+heating_degree_day     mean=   5.275 sd=  3.070 min=  0.00 med=   6.00 max=   9.00 zeros=5
+flu_index              mean=   0.319 sd=  0.194 min=  0.00 med=   0.31 max=   0.81 zeros=6
+school_holiday         mean=   0.033 sd=  0.180 min=  0.00 med=   0.00 max=   1.00 zeros=116
+holiday days (index): [0, 30, 60, 90]
+pm25 zeros at index: [2, 4, 12, 23, 27, 81, 93, 117]
+flu_index zeros at index: [5, 11, 17, 24, 85, 114]
+
+== Pearson / Spearman correlations ==
+pm25                   ~ respiratory_visits     r=+0.117  rho=+0.117
+pm25                   ~ heating_degree_day     r=-0.160  rho=-0.180
+pm25                   ~ flu_index              r=+0.092  rho=+0.082
+pm25                   ~ school_holiday         r=+0.099  rho=+0.033
+respiratory_visits     ~ heating_degree_day     r=+0.434  rho=+0.390
+respiratory_visits     ~ flu_index              r=+0.382  rho=+0.348
+respiratory_visits     ~ school_holiday         r=+0.028  rho=+0.044
+heating_degree_day     ~ flu_index              r=-0.033  rho=-0.041
+heating_degree_day     ~ school_holiday         r=+0.059  rho=+0.078
+flu_index              ~ school_holiday         r=+0.064  rho=+0.071
+
+== OLS (Newey-West SE, 3 lags) ==
+lag0 full: pm25 b=+0.4654 SE=0.2232 t=+2.08 CI=[+0.0279,+0.9029] R2=0.371 n=120
+    heating_degree_day   b=+3.1902 SE=0.5636 t=+5.66
+    flu_index            b=+41.0582 SE=8.1707 t=+5.03
+    school_holiday       b=-4.6696 SE=3.1696 t=-1.47
+lag1 full: pm25 b=+0.2994 SE=0.2396 t=+1.25 CI=[-0.1703,+0.7691] R2=0.355 n=119
+    heating_degree_day   b=+3.1219 SE=0.5569 t=+5.61
+    flu_index            b=+42.4163 SE=8.6987 t=+4.88
+    school_holiday       b=-5.8093 SE=4.0485 t=-1.43
+lag2 full: pm25 b=+0.3864 SE=0.2222 t=+1.74 CI=[-0.0492,+0.8219] R2=0.361 n=118
+    heating_degree_day   b=+3.0663 SE=0.5520 t=+5.56
+    flu_index            b=+42.7801 SE=8.7470 t=+4.89
+    school_holiday       b=-5.6820 SE=5.1693 t=-1.10
+lag3 full: pm25 b=-0.0648 SE=0.2944 t=-0.22 CI=[-0.6418,+0.5121] R2=0.357 n=117
+    heating_degree_day   b=+2.9464 SE=0.5834 t=+5.05
+    flu_index            b=+44.0865 SE=9.3540 t=+4.71
+    school_holiday       b=-4.3985 SE=3.8136 t=-1.15
+lag0 pm25-only: b=+0.3381 SE=0.2639 t=+1.28 R2=0.014
+lag1 pm25-only: b=+0.0837 SE=0.2984 t=+0.28 R2=0.001
+
+== Moving-block bootstrap (block=7d, B=2000) ==
+lag0 full pm25 coef bootstrap 95% CI = [+0.0434, +0.9945]
+lag1 full pm25 coef bootstrap 95% CI = [-0.3357, +0.6941]
+
+== Sensitivity: drop pm25==0 (n=112) ==
+  const                b=+73.5994 SE_ols=4.7182
+  pm25                 b=+0.4109 SE_ols=0.2280
+  heating_degree_day   b=+3.2762 SE_ols=0.4969
+  flu_index            b=+42.9920 SE_ols=7.8184
+  school_holiday       b=-4.9631 SE_ols=8.2978
+
+Holiday mean visits 111.50 (n=4) vs non-holiday 108.28
+
+== Visits by PM2.5 band (same day) ==
+  pm25 in [0,0.0001)   n=  8 mean visits=105.0
+  pm25 in [0.0001,5)   n= 23 mean visits=110.3
+  pm25 in [5,10)       n= 30 mean visits=104.3
+  pm25 in [10,15)      n= 28 mean visits=107.6
+  pm25 in [15,20)      n= 21 mean visits=106.1
+  pm25 in [20,100)     n= 10 mean visits=126.0
+
+lag0: +10 ug/m3 PM2.5 -> +4.65 visits/day (+4.29% of mean), NW95% CI [+0.28,+9.03]
+
+lag1: +10 ug/m3 PM2.5 -> +2.99 visits/day (+2.76% of mean), NW95% CI [-1.70,+7.69]
+
+Wrote /home/shawnyang/Documents/VeriLoop/eval/v2_unseen/workspaces/06b_PublicHealth_AirPollutionClinicPanel/outputs/results.json

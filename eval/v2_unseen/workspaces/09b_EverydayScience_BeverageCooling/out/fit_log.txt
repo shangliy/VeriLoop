@@ -1,0 +1,63 @@
+N=200, t in [0,199] min, T in [31.022,85.000] C, uniform 1-min steps
+
+== Part A: smooth models, all 200 points ==
+A1_newton_Ta_T0_k: Ta=17.942+/-1.7, T0=82.366+/-0.55, k=0.0081781+/-0.00043
+   RMSE=2.1819 AIC=318.1 BIC=328.0 max|r|=4.662 lag1-acf(res)=0.960
+A2_newton_T0fixed: Ta=22.213+/-1, k=0.0097417+/-0.00032
+   RMSE=2.2984 AIC=336.9 BIC=343.5 max|r|=5.031 lag1-acf(res)=0.964
+A3_two_exponential: Ta=-19.602+/-32, A=14.783+/-3.9, k1=0.046951+/-0.015, B=91.176+/-28, k2=0.0031459+/-0.0017
+   RMSE=1.9510 AIC=277.3 BIC=293.8 max|r|=3.792 lag1-acf(res)=0.950
+A4_power_law_excess: Ta=-50+/-1.1e+02, T0=83.948+/-0.8, b=0.011401+/-0.009, p=0.43194+/-0.64
+   RMSE=2.0748 AIC=299.9 BIC=313.1 max|r|=4.446 lag1-acf(res)=0.956
+
+== Part B: first differences (raw) ==
+first-difference deviations > 0.5 C/min from local median (index i means y[i+1]-y[i]):
+  step t=79->80: dy=+5.151, local trend=-0.232, deviation=+5.383
+  step t=120->121: dy=-6.922, local trend=-0.166, deviation=-6.756
+smoothness: sd of 2nd differences excluding events = 0.0021
+
+== Part C: event-aware Newton model, change points at t=[80, 121] ==
+             Ta = 25.583 +/- 0.31
+             T0 = 84.731 +/- 0.15
+              k = 0.011539 +/- 0.00013
+    J1(jump@80) = 7.0496 +/- 0.16
+   J2(drop@121) = -5.037 +/- 0.17
+  tau=1/k=86.7 min; RMSE=0.5319, max|r|=1.9135, lag1-acf=0.949
+  change-point scan (+/-3 min): best at t=80,121 RSS=56.5738 (fixed-cp RSS=56.5738)
+
+== Part D: Newton fitted only to clean windows ==
+  pre-event t<80                                n= 80 Ta= 25.002+/-0.00 T0= 85.000 k=0.01155+/-0.00000 tau=  86.6 RMSE=0.0003 lag1-acf=+0.144
+  between events 81<=t<121                      n= 40 Ta= 34.002+/-0.01 T0= 85.003 k=0.01155+/-0.00000 tau=  86.5 RMSE=0.0003 lag1-acf=-0.086
+  post-event t>=121                             n= 79 Ta= 25.000+/-0.00 T0= 85.003 k=0.01155+/-0.00000 tau=  86.6 RMSE=0.0003 lag1-acf=-0.069
+  whole series excluding both event readings    n=198 Ta= 18.069+/-1.66 T0= 82.374 k=0.00821+/-0.00044 tau= 121.8 RMSE=2.1789 lag1-acf=+0.960
+
+Event-model residual by segment (mean, sd):
+  t in [0,80): mean=-0.0410 sd=0.1550
+  t in [80,121): mean=+0.1531 sd=1.1238
+  t in [121,200): mean=-0.0380 sd=0.1452
+
+Ambient sensitivity (event model, Ta fixed):
+  Ta= 15.0: T0=83.068 k=0.00854 tau=117.0 J1=+7.045 J2=-2.410 RMSE=1.1118
+  Ta= 18.0: T0=83.518 k=0.00926 tau=108.0 J1=+7.125 J2=-2.972 RMSE=0.9212
+  Ta= 20.0: T0=83.832 k=0.00979 tau=102.2 J1=+7.154 J2=-3.416 RMSE=0.7887
+  Ta= 22.0: T0=84.154 k=0.01037 tau=96.5 J1=+7.154 J2=-3.925 RMSE=0.6618
+  Ta= 24.0: T0=84.478 k=0.01100 tau=90.9 J1=+7.116 J2=-4.511 RMSE=0.5627
+  Ta= 26.0: T0=84.797 k=0.01169 tau=85.6 J1=+7.026 J2=-5.186 RMSE=0.5343
+
+Derived (event model): half-life of excess = 60.1 min; fraction of initial excess remaining at t=199 = 0.1006
+
+== Part E: piecewise-ambient Newton (shared T0,k; segment Ta_j) ==
+         Ta_seg1(t<80) = 25.000324 +/- 0.0004
+    Ta_seg2(80<=t<121) = 34.000031 +/- 0.00026
+       Ta_seg3(t>=121) = 25.000089 +/- 0.0002
+                    T0 = 84.999866 +/- 7.9e-05
+                     k = 0.011552 +/- 1.2e-07
+  tau=1/k=86.56 min; RMSE=0.00028, max|r|=0.00056, lag1-acf=+0.016
+  implied discontinuity at t=80: +5.428 C (observed deviation +5.383)
+  implied discontinuity at t=121: -6.776 C (observed deviation -6.756)
+  residual t in [0,80): mean=-0.00000 sd=0.00027
+  residual t in [80,121): mean=-0.00000 sd=0.00026
+  residual t in [121,200): mean=+0.00000 sd=0.00030
+  with T0 fixed at y[0]=85.0: Ta=(25.0005,34.0002,25.0002) k=0.011553 RMSE=0.00028
+
+Wrote out/fit_summary.json, outputs/residuals.csv, outputs/fit_plot.svg

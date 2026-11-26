@@ -1,0 +1,94 @@
+=== QA ===
+n_rows: 672
+first_timestamp: 2026-01-01T00:00:00
+last_timestamp: 2026-01-07T23:45:00
+calendar_days: 7
+sampling_minutes_unique: [15]
+duplicate_timestamps: 0
+missing_values: 120
+missing_fraction: 0.17857142857142858
+min_MW: 99.074
+max_MW: 133.573
+mean_MW: 119.83001811594202
+median_MW: 120.001
+std_MW: 4.966293518801441
+peak_to_average: 1.1146873054025654
+load_factor_week: 0.8971125760141796
+peak_time: 2026-01-05T19:30:00
+trough_time: 2026-01-01T05:15:00
+weekend_mean_MW: 119.7288858695652
+weekday_mean_MW: 119.88058423913041
+ramp_15min_MW: {'p50_abs': 4.620999999999995, 'p99_abs': 19.202229999999993, 'max_abs': 21.837999999999994, 'max_up': 21.168999999999983, 'max_down': -21.837999999999994}
+percentiles_MW: {1: 107.8456, 5: 111.1252, 50: 120.001, 95: 127.98034999999999, 99: 131.36063, 99.9: 133.35755900000004}
+missing_runs: [{"start": "2026-01-01T20:00:00", "end": "2026-01-03T01:45:00", "n_intervals": 120, "hours": 30.0}]
+weekday_names_of_days: {np.str_('2026-01-01'): 'Thu', np.str_('2026-01-02'): 'Fri', np.str_('2026-01-03'): 'Sat', np.str_('2026-01-04'): 'Sun', np.str_('2026-01-05'): 'Mon', np.str_('2026-01-06'): 'Tue', np.str_('2026-01-07'): 'Wed'}
+
+=== Daily (observed) ===
+2026-01-01 valid= 80 cov=0.83 mean=119.17 max=128.98 min=99.07 energy_obs=2383.4 MWh
+2026-01-02 valid=  0 cov=0.00 mean=nan max=nan min=nan energy_obs=0.0 MWh
+2026-01-03 valid= 88 cov=0.92 mean=119.64 max=131.46 min=106.49 energy_obs=2632.1 MWh
+2026-01-04 valid= 96 cov=1.00 mean=119.81 max=133.18 min=105.36 energy_obs=2875.4 MWh
+2026-01-05 valid= 96 cov=1.00 mean=119.53 max=133.57 min=109.13 energy_obs=2868.7 MWh
+2026-01-06 valid= 96 cov=1.00 mean=120.23 max=131.46 min=109.45 energy_obs=2885.4 MWh
+2026-01-07 valid= 96 cov=1.00 mean=120.48 max=131.93 min=105.51 energy_obs=2891.5 MWh
+
+=== Hourly mean (UTC) ===
+h00 mean=119.63 min=105.51 max=126.50
+h01 mean=118.50 min=108.71 max=125.89
+h02 mean=119.37 min=111.08 max=128.16
+h03 mean=121.09 min=112.01 max=133.18
+h04 mean=119.60 min=107.88 max=127.70
+h05 mean=118.49 min=99.07 max=131.27
+h06 mean=120.75 min=110.90 max=130.68
+h07 mean=120.52 min=113.74 max=126.15
+h08 mean=119.68 min=113.67 max=128.58
+h09 mean=122.62 min=116.29 max=131.93
+h10 mean=120.87 min=110.05 max=130.46
+h11 mean=119.53 min=109.89 max=130.52
+h12 mean=120.18 min=113.49 max=127.20
+h13 mean=119.20 min=109.45 max=130.52
+h14 mean=118.89 min=107.81 max=129.25
+h15 mean=120.57 min=113.44 max=127.29
+h16 mean=118.41 min=110.84 max=127.57
+h17 mean=120.42 min=109.78 max=131.46
+h18 mean=118.35 min=105.36 max=128.33
+h19 mean=120.93 min=107.90 max=133.57
+h20 mean=120.05 min=111.96 max=126.97
+h21 mean=120.17 min=109.96 max=130.82
+h22 mean=119.36 min=107.45 max=126.14
+h23 mean=118.21 min=106.49 max=125.66
+
+=== Backtest per day ===
+2026-01-05 persistence_prev_day   n= 96 MAE=5.830 RMSE=7.245 MAPE=4.90%
+2026-01-05 slot_mean_prior_days   n= 96 MAE=4.482 RMSE=5.700 MAPE=3.74%
+2026-01-05 flat_prior_mean        n= 96 MAE=4.100 RMSE=5.121 MAPE=3.42%
+2026-01-06 persistence_prev_day   n= 96 MAE=5.560 RMSE=6.998 MAPE=4.63%
+2026-01-06 slot_mean_prior_days   n= 96 MAE=3.943 RMSE=5.007 MAPE=3.27%
+2026-01-06 flat_prior_mean        n= 96 MAE=3.598 RMSE=4.581 MAPE=2.98%
+2026-01-07 persistence_prev_day   n= 96 MAE=4.509 RMSE=5.895 MAPE=3.74%
+2026-01-07 slot_mean_prior_days   n= 96 MAE=3.768 RMSE=4.721 MAPE=3.12%
+2026-01-07 flat_prior_mean        n= 96 MAE=3.240 RMSE=4.181 MAPE=2.69%
+=== Backtest pooled ===
+persistence_prev_day   n=288 MAE=5.300 RMSE=6.738 MAPE=4.42%
+slot_mean_prior_days   n=288 MAE=4.064 RMSE=5.159 MAPE=3.38%
+flat_prior_mean        n=288 MAE=3.646 RMSE=4.644 MAPE=3.03%
+
+=== Annual scenarios (growth, peak uplift -> energy GWh, planning peak MW) ===
+growth=0% uplift=0% energy=1049.7 GWh peak=133.6 MW
+growth=0% uplift=5% energy=1049.7 GWh peak=140.3 MW
+growth=0% uplift=10% energy=1049.7 GWh peak=146.9 MW
+growth=0% uplift=15% energy=1049.7 GWh peak=153.6 MW
+growth=1% uplift=0% energy=1060.2 GWh peak=134.9 MW
+growth=1% uplift=5% energy=1060.2 GWh peak=141.7 MW
+growth=1% uplift=10% energy=1060.2 GWh peak=148.4 MW
+growth=1% uplift=15% energy=1060.2 GWh peak=155.1 MW
+growth=2% uplift=0% energy=1070.7 GWh peak=136.2 MW
+growth=2% uplift=5% energy=1070.7 GWh peak=143.1 MW
+growth=2% uplift=10% energy=1070.7 GWh peak=149.9 MW
+growth=2% uplift=15% energy=1070.7 GWh peak=156.7 MW
+growth=3% uplift=0% energy=1081.2 GWh peak=137.6 MW
+growth=3% uplift=5% energy=1081.2 GWh peak=144.5 MW
+growth=3% uplift=10% energy=1081.2 GWh peak=151.3 MW
+growth=3% uplift=15% energy=1081.2 GWh peak=158.2 MW
+
+Flat annual energy (week mean x 8760): 1049.7 GWh

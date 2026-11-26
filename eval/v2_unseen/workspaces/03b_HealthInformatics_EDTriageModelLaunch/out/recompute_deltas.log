@@ -1,0 +1,14 @@
+== offline_evaluation_metrics.csv ==
+Sensitivity_critical_ESI12                 A=0.812    B=0.871    abs=+0.059 rel_recalc=+7.27% stated=+7.3% match=yes -> B better
+Specificity_non_urgent                     A=0.706    B=0.658    abs=-0.048 rel_recalc=-6.80% stated=-6.8% match=yes -> B worse
+AUROC_acuity_score                         A=0.881    B=0.914    abs=+0.033 rel_recalc=+3.75% stated=+3.7% match=yes -> B better
+Mean_absolute_calibration_error            A=0.079    B=0.118    abs=+0.039 rel_recalc=+49.37% stated=+49.4% match=yes -> B worse
+Disposition_agreement_with_attending_pct   A=78.4     B=61.2     abs=-17.200 rel_recalc=-21.94% stated=-21.9% match=yes -> B worse
+
+== online_ab_test_metrics.csv ==
+Median_time_to_physician_min               A=41.8     B=35.6     abs=-6.200 rel_recalc=-14.83% stated=-14.8% match=yes -> B better
+LWBS_rate_pct                              A=2.05     B=3.38     abs=+1.330 rel_recalc=+64.88% stated=+64.9% match=yes -> B worse
+Unscheduled_return_72h_pct                 A=4.18     B=5.71     abs=+1.530 rel_recalc=+36.60% stated=+36.6% match=yes -> B worse
+Clinician_override_pct                     A=8.35     B=14.18    abs=+5.830 rel_recalc=+69.82% stated=+69.8% match=yes -> B worse
+Patient_complaint_rate_pct                 A=0.11     B=0.25     abs=+0.140 rel_recalc=+127.27% stated=+127.3% match=yes -> B worse
+

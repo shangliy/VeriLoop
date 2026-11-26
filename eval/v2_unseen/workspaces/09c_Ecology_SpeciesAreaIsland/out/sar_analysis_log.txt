@@ -1,0 +1,73 @@
+n = 25 islands; area range [0.570, 5.324] km2; richness range [11, 43]
+Area: median 3.301, mean 3.058; Richness: median 17.0, mean 18.52
+Pearson r(A,S) = 0.278; Spearman rho = 0.654 (p=0.00039)
+
+=== All islands (n=25) ===
+Power law  log10 S = log10 c + z log10 A:
+  c = 14.305  (log10 c = 1.1555),  z = 0.2200 (SE 0.0856, 95% CI [0.0429, 0.3972])
+  R2(log) = 0.2231, adjR2 = 0.1893, AIC(log space) = -107.18, residual SD (log10) = 0.1084
+  [power ] natural-scale R2 = 0.0944, RMSE = 6.091, AIC(natural scale) = 96.34
+  [linear] natural-scale R2 = 0.0775, RMSE = 6.148, AIC(natural scale) = 96.80
+  [log   ] natural-scale R2 = 0.1107, RMSE = 6.036, AIC(natural scale) = 95.89
+Linear   S = a + b A:  a = 14.508, b = 1.312 (95% CI [-0.640, 3.264])
+Log      S = a + b lnA:  a = 14.940, b = 3.653 (95% CI [-0.814, 8.119])
+
+Influence diagnostics (power-law fit, log space):
+ id    area     S  resid(log10)  stud_res    hat  Cook_D
+ 17   3.546    43        0.3570     3.378  0.050   0.298
+  3   2.002    33        0.2967     2.808  0.050   0.206
+ 18   0.750    11       -0.0866    -0.910  0.229   0.123
+ 13   2.707    14       -0.1045    -0.984  0.040   0.020
+ 22   3.898    16       -0.0814    -0.773  0.057   0.018
+  0   1.983    14       -0.0748    -0.708  0.050   0.013
+Cook's D rule of thumb 4/n = 0.160; islands exceeding: [3, 17]
+
+=== Sensitivity: excluding islands 3 and 17 (n=23) ===
+Power law  log10 S = log10 c + z log10 A:
+  c = 13.461  (log10 c = 1.1291),  z = 0.2153 (SE 0.0331, 95% CI [0.1465, 0.2841])
+  R2(log) = 0.6683, adjR2 = 0.6525, AIC(log space) = -142.48, residual SD (log10) = 0.0415
+  [power ] natural-scale R2 = 0.6447, RMSE = 1.519, AIC(natural scale) = 25.22
+  [linear] natural-scale R2 = 0.6288, RMSE = 1.552, AIC(natural scale) = 26.23
+  [log   ] natural-scale R2 = 0.6381, RMSE = 1.533, AIC(natural scale) = 25.64
+Linear   S = a + b A:  a = 12.361, b = 1.448 (95% CI [0.943, 1.953])
+Log      S = a + b lnA:  a = 13.512, b = 3.381 (95% CI [2.226, 4.537])
+
+Leave-one-out cross-validation (natural-scale RMSE, lower is better):
+  null_mean: LOO RMSE = 6.667, MAE = 3.983
+  power : LOO RMSE = 6.325, MAE = 3.281
+  linear: LOO RMSE = 6.516, MAE = 3.743
+  log   : LOO RMSE = 6.372, MAE = 3.568
+
+Prediction table (power law, all islands; 95% prediction interval on log10 S):
+  A =    0.5 km2: S_hat =   12.28 (PI95 log-scale [6.7, 22.5])
+  A =      1 km2: S_hat =   14.30 (PI95 log-scale [8.2, 24.9])
+  A =      2 km2: S_hat =   16.66 (PI95 log-scale [9.8, 28.3])
+  A =      5 km2: S_hat =   20.38 (PI95 log-scale [11.9, 34.9])
+  A =     10 km2: S_hat =   23.74 (PI95 log-scale [13.3, 42.2])  <- extrapolation beyond data
+  A =     25 km2: S_hat =   29.05 (PI95 log-scale [15.0, 56.2])  <- extrapolation beyond data
+  A =     50 km2: S_hat =   33.83 (PI95 log-scale [16.1, 70.9])  <- extrapolation beyond data
+  A =    100 km2: S_hat =   39.41 (PI95 log-scale [17.2, 90.4])  <- extrapolation beyond data
+  A =    500 km2: S_hat =   56.15 (PI95 log-scale [19.3, 163.1])  <- extrapolation beyond data
+
+Same predictions from the sensitivity fit (islands 3 and 17 excluded):
+  A =   1 km2: S_hat =  13.46 (PI95 [10.9, 16.7])
+  A =   2 km2: S_hat =  15.63 (PI95 [12.7, 19.2])
+  A =   5 km2: S_hat =  19.04 (PI95 [15.5, 23.4])
+  A =  10 km2: S_hat =  22.10 (PI95 [17.7, 27.6])
+  A =  25 km2: S_hat =  26.92 (PI95 [20.9, 34.7])
+  A =  50 km2: S_hat =  31.25 (PI95 [23.5, 41.6])
+
+Expected proportional species loss when habitat is reduced (power law, z from full fit):
+  (sensitivity-fit z = 0.2153; losses change by <0.5 pct-pt at 10-50% reduction)
+  area reduced by 10%: loss =   2.3% (z CI gives [0.5%, 4.1%])
+  area reduced by 25%: loss =   6.1% (z CI gives [1.2%, 10.8%])
+  area reduced by 50%: loss =  14.1% (z CI gives [2.9%, 24.1%])
+  area reduced by 75%: loss =  26.3% (z CI gives [5.8%, 42.3%])
+  area reduced by 90%: loss =  39.8% (z CI gives [9.4%, 59.9%])
+
+Habitat area that must be retained (power law, full-fit z) to keep a target fraction of species:
+  retain 90% of species: keep 61% of habitat (i.e. may lose 38%)
+  retain 80% of species: keep 36% of habitat (i.e. may lose 63%)
+  retain 50% of species: keep 4% of habitat (i.e. may lose 95%)
+
+Saved figure: /home/shawnyang/Documents/VeriLoop/eval/v2_unseen/workspaces/09c_Ecology_SpeciesAreaIsland/outputs/sar_fit.png

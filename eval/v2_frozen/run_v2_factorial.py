@@ -29,10 +29,31 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 V2_DIR = Path(__file__).resolve().parent
+LOCKED_V2_DIR = V2_DIR / "locked"
 RL_SCRIPTS = ROOT / "skills/research-loop/scripts"
 MDA_SCRIPTS = ROOT / "skills/milestone-dual-audit/scripts"
 sys.path.insert(0, str(MDA_SCRIPTS))
 import milestone_dual_audit as mda  # noqa: E402
+
+LOCKED_V2_SHA256 = {
+    "trace_numbers_v2.py": "42c39cf4a4adeee1",
+    "audit_code_v2.py": "72dac256a9caf775",
+}
+
+
+def verify_locked_v2_gates() -> tuple[Path, Path]:
+    paths = {}
+    for fname, expected_prefix in LOCKED_V2_SHA256.items():
+        p = LOCKED_V2_DIR / fname
+        if not p.is_file():
+            raise RuntimeError(f"Locked v2 gate missing: {p}")
+        h = hashlib.sha256(p.read_bytes()).hexdigest()
+        if not h.startswith(expected_prefix):
+            raise RuntimeError(
+                f"LOCKED_V2_GATE_DRIFT for {fname}: got {h[:16]}, expected {expected_prefix}"
+            )
+        paths[fname] = p
+    return paths["trace_numbers_v2.py"], paths["audit_code_v2.py"]
 
 
 def verify_bundle_sha(ws: Path, expected_sha: str) -> bool:
@@ -46,7 +67,9 @@ def verify_bundle_sha(ws: Path, expected_sha: str) -> bool:
     return h.hexdigest() == expected_sha
 
 
-def run_layer1_on_workspace(ws: Path) -> dict:
+def run_layer1_on_workspace(ws: Path, trace_script: Path | None = None, audit_script: Path | None = None) -> dict:
+    if trace_script is None or audit_script is None:
+        trace_script, audit_script = verify_locked_v2_gates()
     rep = ws / "report/report.md"
     out_dir = ws / "out"
     code_dir = ws / "code"
@@ -55,7 +78,7 @@ def run_layer1_on_workspace(ws: Path) -> dict:
     trace_rc = 0
     if out_dir.is_dir() and any(out_dir.rglob("*")):
         p = subprocess.run(
-            [sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), str(rep), "--logs", str(out_dir), "--json"],
+            [sys.executable, str(trace_script), str(rep), "--logs", str(out_dir), "--json"],
             capture_output=True, text=True,
         )
         trace_rc = p.returncode
@@ -66,7 +89,7 @@ def run_layer1_on_workspace(ws: Path) -> dict:
     audit_rc = 0
     if code_dir.is_dir() and any(code_dir.rglob("*.py")):
         p2 = subprocess.run(
-            [sys.executable, str(RL_SCRIPTS / "audit_code.py"), "--scripts", str(code_dir), "--report", str(rep), "--json", "--strict"],
+            [sys.executable, str(audit_script), "--scripts", str(code_dir), "--report", str(rep), "--json", "--strict"],
             capture_output=True, text=True,
         )
         audit_rc = p2.returncode
@@ -195,11 +218,13 @@ def main():
             sys.exit(1)
 
     if args.layer1_only:
-        out_path = Path(args.out_jsonl) if args.out_jsonl else (v2_dir / "results_layer1.jsonl")
+        trace_script, audit_script = verify_locked_v2_gates()
+        stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        out_path = Path(args.out_jsonl) if args.out_jsonl else (v2_dir / f"results_layer1_{stamp}.jsonl")
         with out_path.open("w", encoding="utf-8") as fh:
             for row in gt_rows:
                 ws = v2_dir / "workspaces" / row["artifact_id"]
-                l1 = run_layer1_on_workspace(ws)
+                l1 = run_layer1_on_workspace(ws, trace_script=trace_script, audit_script=audit_script)
                 rec = {
                     "artifact_id": row["artifact_id"],
                     "executor_family": row["executor_family"],
@@ -214,7 +239,7 @@ def main():
                     "details": l1,
                 }
                 fh.write(json.dumps(rec) + "\n")
-        print(f"LAYER1_DONE: wrote {len(gt_rows)} records to {out_path}")
+        print(f"LAYER1_DONE: wrote {len(gt_rows)} records to {out_path} (locked v2 SHA-256 verified)")
         sys.exit(0)
 
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")

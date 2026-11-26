@@ -2,18 +2,21 @@
 """Zero-Override Aggregator for VeriLoop v2 Frozen-Artifact Evaluation.
 
 Structurally enforces:
-  - ZERO hardcoded scenario overrides (every record is evaluated strictly against
-    independent ground_truth.csv labels).
+  - ZERO hardcoded scenario overrides: every record's ground_truth label is joined
+    directly from ground_truth.csv by artifact_id (immutable raw JSONL predictions).
   - Reports Precision, Recall, F1, FPR, Clean Yield (TNR), Balanced Accuracy,
-    Wilson 95% CIs, repeat-to-repeat consistency, and paired exact McNemar p-values
-    across identical frozen SHA-256 workspaces.
+    Wilson 95% CIs, repeat-to-repeat consistency, and workspace-level exact McNemar
+    p-values across identical frozen SHA-256 workspaces (preventing pseudo-replication).
 """
 import argparse
+import csv
 import json
 import math
 import statistics
 from collections import defaultdict
 from pathlib import Path
+
+DEFAULT_GT_CSV = Path(__file__).resolve().parent / "ground_truth.csv"
 
 
 def wilson_ci(k: int, n: int, z: float = 1.959963984540054) -> tuple[float, float, float]:
@@ -32,6 +35,11 @@ def mcnemar_exact_p(b: int, c: int) -> float:
         return 1.0
     k = min(b, c)
     return min(1.0, 2.0 * sum(math.comb(n, i) for i in range(k + 1)) * (0.5 ** n))
+
+
+def load_ground_truth_map(gt_csv: Path) -> dict[str, dict]:
+    with gt_csv.open("r", encoding="utf-8") as fh:
+        return {row["artifact_id"]: row for row in csv.DictReader(fh)}
 
 
 def confusion_metrics(records: list[dict]) -> dict:
@@ -62,6 +70,25 @@ def confusion_metrics(records: list[dict]) -> dict:
     }
 
 
+def workspace_majority_records(records: list[dict]) -> list[dict]:
+    by_a = defaultdict(list)
+    meta = {}
+    for r in records:
+        if r.get("predicted_defective") is not None:
+            by_a[r["artifact_id"]].append(bool(r["predicted_defective"]))
+            meta[r["artifact_id"]] = r
+    return [
+        {
+            "artifact_id": aid,
+            "ground_truth": meta[aid]["ground_truth"],
+            "executor_family": meta[aid]["executor_family"],
+            "track": meta[aid]["track"],
+            "predicted_defective": sum(vs) > len(vs) / 2,
+        }
+        for aid, vs in sorted(by_a.items())
+    ]
+
+
 def repeat_stability(records: list[dict]) -> dict:
     by_art = defaultdict(list)
     for r in records:
@@ -83,27 +110,40 @@ def repeat_stability(records: list[dict]) -> dict:
     }
 
 
-def load_jsonl(paths: list[str]) -> list[dict]:
+def load_jsonl(paths: list[str], gt_map: dict[str, dict] | None = None) -> list[dict]:
     rows = []
     for p in paths:
         for line in Path(p).read_text(encoding="utf-8").splitlines():
             if line.strip():
-                rows.append(json.loads(line))
+                r = json.loads(line)
+                if gt_map and r.get("artifact_id") in gt_map:
+                    g = gt_map[r["artifact_id"]]
+                    r = {
+                        **r,
+                        "ground_truth": g["ground_truth"],
+                        "defect_type": g["defect_type"],
+                        "executor_family": g["executor_family"],
+                        "track": g["track"],
+                    }
+                rows.append(r)
     return rows
 
 
 def main():
     ap = argparse.ArgumentParser(description="Aggregate VeriLoop v2 frozen-artifact results with zero overrides.")
     ap.add_argument("jsonl_files", nargs="+", help="One or more results_*.jsonl files")
+    ap.add_argument("--ground-truth", default=str(DEFAULT_GT_CSV), help="Authoritative ground_truth.csv path")
     ap.add_argument("--json-out", default=None)
     args = ap.parse_args()
 
-    rows = load_jsonl(args.jsonl_files)
+    gt_path = Path(args.ground_truth)
+    gt_map = load_ground_truth_map(gt_path) if gt_path.is_file() else None
+    rows = load_jsonl(args.jsonl_files, gt_map=gt_map)
     groups = defaultdict(list)
     for r in rows:
         groups[(r["reviewer"], r["framing"])].append(r)
 
-    summary = {"total_records": len(rows), "groups": {}, "by_executor_family": {}}
+    summary = {"total_records": len(rows), "groups": {}, "workspace_level": {}, "by_executor_family": {}}
     print(f"=== VERILOOP V2 FROZEN-ARTIFACT AGGREGATION (ZERO OVERRIDES, records={len(rows)}) ===")
     print(
         f"{'Reviewer':18s} | {'Framing':13s} | {'n':3s} | {'TP/FN':5s} | {'TN/FP':5s} | "
@@ -113,8 +153,10 @@ def main():
     for (rev, frm), items in sorted(groups.items()):
         m = confusion_metrics(items)
         st = repeat_stability(items)
+        wm = confusion_metrics(workspace_majority_records(items))
         key = f"{rev}::{frm}"
         summary["groups"][key] = {**m, "stability": st}
+        summary["workspace_level"][key] = wm
         print(
             f"{rev:18s} | {frm:13s} | {m['n']:3d} | {m['tp']:2d}/{m['fn']:<2d} | {m['tn']:2d}/{m['fp']:<2d} | "
             f"{m['precision']*100:5.1f}% | {m['recall']*100:5.1f}% | {m['f1']*100:5.1f}% | "
@@ -122,7 +164,7 @@ def main():
             f"{st['unanimous_rate']*100:4.0f}%"
         )
 
-        # Stratified by executor family (critical for 2x2 same-vs-cross family decoupling)
+        # Stratified by executor family
         for ef in sorted({r["executor_family"] for r in items}):
             sub = [r for r in items if r["executor_family"] == ef]
             sm = confusion_metrics(sub)
@@ -159,29 +201,21 @@ def main():
                 f"FPR={um['fpr']*100:5.1f}% | Yield={um['clean_yield']*100:5.1f}% | BalAcc={um['balanced_acc']*100:5.1f}%"
             )
 
-    # Paired Framing Comparison (path_only vs with_summary on identical (artifact_id, repeat))
-    print("\n=== PAIRED FRAMING COMPARISON (path_only vs with_summary) ===")
-    summary["paired_framing"] = {}
+    # Workspace-Level Paired Framing Comparison (majority vote per workspace, preventing pseudo-replication)
+    print("\n=== WORKSPACE-LEVEL PAIRED FRAMING COMPARISON (n=16 independent workspaces) ===")
+    summary["paired_framing_ws"] = {}
     reviewers = sorted({r["reviewer"] for r in rows if r["reviewer"] != "layer1_mechanical"})
     for rev in reviewers:
-        po = {
-            (r["artifact_id"], int(r["repeat"])): bool(r["predicted_defective"])
-            for r in rows
-            if r["reviewer"] == rev and r["framing"] == "path_only" and r.get("predicted_defective") is not None
-        }
-        ws = {
-            (r["artifact_id"], int(r["repeat"])): bool(r["predicted_defective"])
-            for r in rows
-            if r["reviewer"] == rev and r["framing"] == "with_summary" and r.get("predicted_defective") is not None
-        }
-        shared = sorted(set(po) & set(ws))
+        po_ws = {r["artifact_id"]: r["predicted_defective"] for r in workspace_majority_records(groups[(rev, "path_only")])}
+        ws_ws = {r["artifact_id"]: r["predicted_defective"] for r in workspace_majority_records(groups[(rev, "with_summary")])}
+        shared = sorted(set(po_ws) & set(ws_ws))
         if not shared:
             continue
-        b = sum(1 for k in shared if po[k] and not ws[k])
-        c = sum(1 for k in shared if (not po[k]) and ws[k])
+        b = sum(1 for k in shared if po_ws[k] and not ws_ws[k])
+        c = sum(1 for k in shared if (not po_ws[k]) and ws_ws[k])
         pval = mcnemar_exact_p(b, c)
-        summary["paired_framing"][rev] = {"paired_n": len(shared), "po_only_block": b, "ws_only_block": c, "mcnemar_p": pval}
-        print(f"  {rev:15s} | paired_n={len(shared):2d} | discordant=(po_only={b}, ws_only={c}) | exact McNemar p={pval:.6f}")
+        summary["paired_framing_ws"][rev] = {"paired_ws": len(shared), "po_only_block": b, "ws_only_block": c, "mcnemar_p": pval}
+        print(f"  {rev:15s} | paired_ws={len(shared):2d} | discordant=(po_only={b}, ws_only={c}) | exact McNemar p={pval:.6f}")
 
     if args.json_out:
         Path(args.json_out).write_text(json.dumps(summary, indent=2), encoding="utf-8")

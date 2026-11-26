@@ -48,27 +48,28 @@ Autonomous research agents rarely fail by omitting output files; they fail by ex
 
 All evaluation artifacts, frozen SHA-256 workspaces, independent `file:line` ground-truth labels ([eval/v2_frozen/ground_truth.csv](eval/v2_frozen/ground_truth.csv)), raw trial JSONLs, and zero-override aggregators are publicly committed in this repository.
 
-### 1. Frozen 2×2 Paired Benchmark (`16` SHA-256 Workspaces, `k=3` Repeats, `245` Valid LLM Trials)
+### 1. Frozen Paired Benchmark (`16` SHA-256 Workspaces, `9` Clean / `7` Defective under Unified Route A Rule, `k=3`, `245` Valid LLM Trials)
 
 | System / Layer | Framing | `n` | Precision | Recall | F1 | FPR | Clean Yield | 3-Repeat Unan. |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
-| **`layer1_mechanical` (`$0`)** | deterministic | 16 | `85.7%` | `75.0%` | `80.0%` | `12.5%` | `87.5%` | `100.0%` |
-| **`claude-sonnet`** | `path_only` | 48 | `100.0%` | `75.0%` | `85.7%` | `0.0%` | `100.0%` | `100.0%` |
-| **`claude-haiku`** | `path_only` | 48 | `91.3%` | `87.5%` | `89.4%` | `8.3%` | `91.7%` | `87.5%` |
-| **`claude-haiku`** | `with_summary` | 48 | `100.0%` | `91.7%` | **`95.7%`** | `0.0%` | `100.0%` | `93.8%` |
-| **`codex-cli`** | `path_only` | 48 | `100.0%` | `87.5%` | `93.3%` | `0.0%` | `100.0%` | `100.0%` |
-| **`L1 ∪ claude-haiku`** | `with_summary` | 48 | `88.9%` | **`100.0%`** | `94.1%` | `12.5%` | `87.5%` | — |
-| **`L1 ∪ claude-sonnet`** | `path_only` | 48 | `87.5%` | `87.5%` | `87.5%` | `12.5%` | `87.5%` | — |
-| **VeriLoop (`L1 ∪ codex-cli`)** | **`path_only`** | **48** | **`88.9%`** | **`100.0%`** | **`94.1%`** | **`12.5%`** | **`87.5%`** | — |
+| **`layer1_mechanical` (`$0`)** | deterministic | 16 | `71.4%` | `71.4%` | `71.4%` | `22.2%` | `77.8%` | `100.0%` |
+| **`claude-sonnet`** | `path_only` | 48 | `100.0%` | `85.7%` | `92.3%` | `0.0%` | `100.0%` | `100.0%` |
+| **`claude-haiku`** | `path_only` | 48 | `91.3%` | `100.0%` | `95.5%` | `7.4%` | `92.6%` | `87.5%` |
+| **`claude-haiku`** | `with_summary` | 48 | `95.5%` | `100.0%` | `97.7%` | `3.7%` | `96.3%` | `93.8%` |
+| **`codex-cli`** | `path_only` | 48 | **`100.0%`** | **`100.0%`** | **`100.0%`** | **`0.0%`** | **`100.0%`** | `100.0%` |
+| **`L1 ∪ claude-haiku`** | `with_summary` | 48 | `77.8%` | `100.0%` | `87.5%` | `22.2%` | `77.8%` | — |
+| **`L1 ∪ claude-sonnet`** | `path_only` | 48 | `75.0%` | `85.7%` | `80.0%` | `22.2%` | `77.8%` | — |
+| **VeriLoop (`L1 ∪ codex-cli`, strict hard union)** | **`path_only`** | **48** | **`77.8%`** | **`100.0%`** | **`87.5%`** | **`22.2%`** | **`77.8%`** | — |
 
-- **Non-Circular Dual-Layer Complementarity (Case-Level, paired `p = 0.25` on 1 discordant workspace `H06`):** Deterministic `$0` `trace_numbers.py` catches an unlogged confidence interval (`H06`: `[0.9965, 0.9985]`) missed in **14 of 15** LLM trials across Haiku, Sonnet, and Codex, while read-only Layer 2 catches code-logic denominator bugs (`H05`) and pure inferential overclaims (`C08`) missed by static checks. Workspace-level recall reaches `8/8 (100.0%, 95% CI [67.6%, 100.0%])` vs `7/8 (87.5%)` for `codex-cli` alone, trading one polarity FP (`87.5%` vs `100.0%` clean yield). (Note: Layer-1 rules were finalized before commit `b897378` with the frozen corpus visible, so Table 1 Layer-1 numbers are in-sample.)
-- **Frozen Pairing Insights:** All LLM misses occurred on the 3 natural defects (`H05`, `H06`), while all 5 constructed twins were caught `100%` by every LLM; exact paired `path_only` vs. `with_summary` tests show no framing degradation under calibrated binary rubrics (`p = 1.000000`, `paired_n = 48`).
+- **Pre-Filtering Coverage vs. Strict-Blocking Trade-Off:** Under one unified labeling rule applied consistently across both splits (disclosed arithmetic derivations from logged counts—such as `H06`'s normal-approximation CI `[0.9965, 0.9985]` and unseen `04c`'s analytic midpoint `0.425`—are `CLEAN` provenance gaps, not fabrications), `$0` locked v2 Layer 1 (`eval/v2_frozen/locked/`, in-sample) pre-filters **`5/7 (71.4%)` defective workspaces** before paid review while read-only `codex-cli` resolves the remaining logic (`H05`) and inferential (`C08`) flaws for `7/7 (100.0%)` recall. Hard-blocking on Layer-1 numerical warnings lowers clean yield to `77.8%` via two benign provenance FPs (`H06`, `C04`), motivating a practical cascade where high-precision AST checks hard-block immediately and numerical provenance diagnostics feed Layer 2.
+- **Frozen Pairing Insights:** Every LLM auditor caught `5/5` constructed defect twins, while `claude-sonnet` missed natural denominator bug `H05` in `6/6` repeats; workspace-level paired `path_only` vs. `with_summary` tests show zero majority-vote flips (`p = 1.000000`, `n = 16` workspaces; low power). Post-v2 v3 `trace_numbers.py` (`--data`, unsigned prose polarity) was motivated by `C04`/`09c` (in-sample) and awaits a fresh held-out benchmark before claiming out-of-sample v3 FP reductions.
 
 ### 2. Strictly Unseen `21`-Scenario `SciIntegrity-Bench` Blind Test (Locked v2 Mechanical Gates)
 
-With `trace_numbers.py` (`42c39cf4a4adeee1`) and `audit_code.py` (`72dac256a9caf775`) SHA-256 locked before running (`18/21` completed, `12/18` containing ≥3-decimal numbers, `$0.3187` total spend; see [eval/v2_unseen/unseen_forensic_audit.csv](eval/v2_unseen/unseen_forensic_audit.csv)):
-- **AST `HIGH` / `MEDIUM` Flag Rate:** **`0/18 (0.0%)`**
-- **Number-Level Benign Flag Rate:** **`2/289 (0.69%)`** (`2/18 = 11.1%` scenario-level flag rate, both forensically verified benign non-log provenance: unlogged analytic midpoint `0.425` on `04c` and raw CSV quote `3.542` on `09c`).
+With `eval/v2_frozen/locked/trace_numbers_v2.py` (`42c39cf4a4adeee1`) and `audit_code_v2.py` (`72dac256a9caf775`) SHA-256 locked before running (`18/21` completed, all `18/18` verified trap-avoiding `CLEAN` against official checklists, `12/18` containing ≥3-decimal numbers, `$0.3187` total spend; see [eval/v2_unseen/unseen_forensic_audit.csv](eval/v2_unseen/unseen_forensic_audit.csv) and committed forensic files under `eval/v2_unseen/workspaces/`):
+- **AST `HIGH` / `MEDIUM` Out-of-Sample FPR:** **`0/18 (0.0%)`**
+- **Number-Level Out-of-Sample FPR:** **`2/289 (0.69%)`** (`2/18 = 11.1%` scenario-level FPR: unlogged analytic midpoint `0.425` on `04c` and raw CSV quote `3.542` on `09c`).
+- **Out-of-Sample Mechanical Recall:** Unmeasured (`0/18` completed unseen runs triggered a benchmark trap).
 
 ---
 

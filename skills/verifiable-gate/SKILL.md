@@ -5,18 +5,18 @@ argument-hint: "[workspace-path]"
 allowed-tools: Bash(*), Read, Grep, Glob
 ---
 
-# VeriLoop Gate: Hard Dual-Layer Evidence Enforcement
+# VeriLoop Gate: Dual-Layer Evidence Enforcement
 
-Enforces **VeriLoop**'s fail-closed, hard-blocking dual-layer verification gate before any research deliverable or manuscript section is released.
+Enforces **VeriLoop**'s fail-closed dual-layer verification gate before any research deliverable or manuscript section is released.
 
-## Empirical Basis (v2 Frozen-Artifact Benchmark & Unseen Blind Test)
+## Empirical Basis (v2 Frozen Benchmark & Unseen Blind Test, Unified Route A Rule)
 
-Controlled zero-override evaluations across 16 SHA-256 frozen workspaces (`245` paired LLM trials, `k=3` repeats) and 21 strictly unseen `SciIntegrity-Bench` scenarios (`paper/main.pdf`, `eval/v2_frozen/`, `eval/v2_unseen/`) establish why both layers are needed together:
-1. **Deterministic Layer 1 catches unlogged fabrications that LLMs miss (`$0` cost):** `trace_numbers.py` deterministically catches an unlogged confidence interval (`H06`: `[0.9965, 0.9985]`) missed in **14 of 15** independent LLM trials across `claude-haiku`, `claude-sonnet`, and `codex-cli`.
-2. **Read-only Layer 2 closes the semantic blind spot of static gates:** Layer-1 checks alone reach `75.0%` recall (`85.7%` precision) because they cannot judge subtle code-logic denominator bugs (`H05`) or pure inferential overclaims (`C08`). Coupling Layer 1 with read-only `codex-cli` (`path_only`) reaches **`100.0%` recall (`8/8` defective workspaces, `94.1%` F1, `87.5%` clean yield)**.
-3. **Low benign flag rate on strictly unseen tasks:** With locked v2 mechanical gates (`42c39cf4a4adeee1` / `72dac256a9caf775`), the 21-scenario blind test produced **`0/18 (0.0%)` AST flags** and **`2/289 (0.69%)` number-level benign flags** (v3 adds `--data` raw-dataset provenance and negative-direction prose polarity recognition to eliminate the `09c` raw-CSV and `C04` prose-polarity false positives without relaxing explicit `+` sign checks).
+Controlled zero-override evaluations across 16 SHA-256 frozen workspaces (`9` clean / `7` defective, `245` paired LLM trials, `k=3` repeats) and 21 strictly unseen `SciIntegrity-Bench` scenarios (`paper/main.pdf`, `eval/v2_frozen/`, `eval/v2_unseen/`) establish the exact role of each layer:
+1. **Deterministic Layer 1 is a `$0` millisecond pre-filter (`71.4%` in-sample defect recall):** Locked v2 Layer 1 (`eval/v2_frozen/locked/`, SHA-256 `42c39cf4a4adeee1` / `72dac256a9caf775`) deterministically catches `5/7` defective workspaces (sign flips, table arithmetic errors, mock fallbacks, test-set tuning, hardcoded prints) before any paid LLM call is needed.
+2. **Read-only Layer 2 closes the semantic blind spot and preserves clean yield:** Layer 1 misses subtle code-logic denominator bugs (`H05`) and pure inferential overclaims (`C08`), while strict log-only numerical blocking incurs `2/9` clean provenance-gap FPs (`H06` disclosed normal-approx CI, `C04` prose polarity; `77.8%` yield). Read-only `codex-cli` resolves all `7/7 (100.0%)` defects and `9/9 (100.0%)` clean workspaces.
+3. **Low out-of-sample FPR on strictly unseen clean runs:** With locked v2 mechanical gates, all `18/18` completed unseen scenarios were verified trap-avoiding (`CLEAN`), recording **`0/18 (0.0%)` AST FPR** and **`2/289 (0.69%)` number-level FPR** (out-of-sample recall unmeasured due to `0` positive unseen traps). Shipped v3 `trace_numbers.py` adds `--data` raw-dataset indexing and unsigned negative-direction prose polarity motivated by `C04`/`09c` (in-sample; fresh held-out validation is required before claiming out-of-sample v3 FP reductions).
 
-## Workflow (Two Hard Layers)
+## Workflow (Two Layers)
 
 ### Layer 1: Deterministic Zero-Cost Mechanical Gate
 Run the unified CLI directly on the target workspace (`$ARGUMENTS`, default `.`):
@@ -31,8 +31,8 @@ Run the unified CLI directly on the target workspace (`$ARGUMENTS`, default `.`)
 ```
 
 This deterministically verifies:
-- **`trace_numbers.py` (v3)**: every decimal ($\ge 3$ places) traces to intact logs (and auto-detected `<workspace>/data` or explicit `--data` raw datasets) with matching sign (`SIGN_MISMATCH`), percent/fraction equivalence, explicit negative-direction prose polarity on unsigned magnitudes, row-cited log file (`WRONG_LOG`), paired `±` / CI bounds (`UNPAIRED_PM/CI`), and script freshness (`CITED_STALE`, pass `--strict-stale` to hard-block on stale cited logs).
-- **`audit_code.py`**: Python AST scan for `HARDCODED_REF_PRINT`, `HARDCODED_METRIC_ARRAY`, `MOCK_FALLBACK`, `TEST_TUNING`, `OPTIMISTIC_TIE`, and `DEAD_METRIC`.
+- **`trace_numbers.py` (v3)**: every decimal ($\ge 3$ places) traces to intact logs (and auto-detected `<workspace>/data` or explicit `--data` raw datasets) with matching sign (`SIGN_MISMATCH`), percent/fraction equivalence, explicit negative-direction prose polarity on unsigned magnitudes (excluding metric nouns like `loss` and never relaxing explicit `+`), row-cited log file (`WRONG_LOG`), paired `±` / CI bounds (`UNPAIRED_PM/CI`), and script freshness (`CITED_STALE`, pass `--strict-stale` to hard-block on stale cited logs).
+- **`audit_code.py`**: Python AST scan for `HARDCODED_REF_PRINT`, `HARDCODED_METRIC_ARRAY`, `MOCK_FALLBACK`, `TEST_TUNING`, `OPTIMISTIC_TIE`, and `DEAD_METRIC` (`0.0%` FPR in-sample and unseen).
 - **`claims.py` (`G1--G7`)**: if `claims.json` exists, enforces SHA-256 log integrity, completion markers, multi-seed floors, validation-only selection, pre-registered baselines, ablation logs, anti-drift chronology, and machine-parseable CIs.
 - **`citation_audit.py`**: add `--bib paper/refs.bib` when auditing LaTeX manuscripts.
 
@@ -55,7 +55,7 @@ For milestone-level peer review of frozen code, tables, and paper drafts before 
 
 ```bash
 ./veriloop milestone-audit \
-  --milestone M3-draft \
+  --milestone M4-submission \
   --workspace "${ARGUMENTS:-.}" \
   --artifacts report/report.md out/ code/
 ```

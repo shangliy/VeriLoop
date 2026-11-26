@@ -1,0 +1,68 @@
+== Parsed A rows ==
+{'sku': 'A-1', 'qty': '10', 'warehouse': 'WH1', 'as_of_utc': '2026-03-01 00:00:00+00'} -> A-1 WH1 2026-03-01T00:00:00+00:00 10.0
+{'sku': 'A-1', 'qty': '10', 'warehouse': 'WH1', 'as_of_utc': '2026-03-02 00:00:00+00'} -> A-1 WH1 2026-03-02T00:00:00+00:00 10.0
+== Parsed B rows (base offset +0 h) ==
+{'SKU': 'A-1', 'Quantity': '10.0', 'Site': 'Warehouse-01', 'timestamp_local': '2026-03-01 08:00:00'} -> A-1 WH1 2026-03-01T08:00:00+00:00 10.0
+== Reconciliation detail ==
+{'sku': 'A-1', 'wh': 'WH1', 'utc_date': '2026-03-01', 'qty_A': 10.0, 'qty_B': 10.0, 'qty_diff_A_minus_B': 0.0, 'key_status': 'matched', 'qty_status': 'match'}
+{'sku': 'A-1', 'wh': 'WH1', 'utc_date': '2026-03-02', 'qty_A': 10.0, 'qty_B': None, 'qty_diff_A_minus_B': None, 'key_status': 'only_in_A', 'qty_status': 'n/a'}
+== KPIs ==
+{
+  "rows_A": 2,
+  "rows_B": 1,
+  "distinct_skus_A": 1,
+  "distinct_skus_B": 1,
+  "distinct_warehouses_A": [
+    "WH1"
+  ],
+  "distinct_warehouses_B": [
+    "WH1"
+  ],
+  "keys_total": 2,
+  "matched_keys": 1,
+  "match_rate_of_A_keys": 0.5,
+  "coverage_of_B_keys": 1.0,
+  "only_in_A": 1,
+  "only_in_B": 0,
+  "qty_mismatches_on_matched": 0,
+  "qty_accuracy_on_matched": 1.0,
+  "units_matched_A": 10.0,
+  "units_matched_B": 10.0,
+  "units_only_in_A": 10.0,
+  "units_only_in_B": 0,
+  "A_snapshot_dates": [
+    "2026-03-01",
+    "2026-03-02"
+  ],
+  "B_snapshot_dates_base_case": [
+    "2026-03-01"
+  ]
+}
+== Sensitivity to B timezone offset ==
+{'B_offset_hours': -12, 'B_utc_timestamp': '2026-03-01T20:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -11, 'B_utc_timestamp': '2026-03-01T19:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -10, 'B_utc_timestamp': '2026-03-01T18:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -9, 'B_utc_timestamp': '2026-03-01T17:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -8, 'B_utc_timestamp': '2026-03-01T16:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -7, 'B_utc_timestamp': '2026-03-01T15:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -6, 'B_utc_timestamp': '2026-03-01T14:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -5, 'B_utc_timestamp': '2026-03-01T13:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -4, 'B_utc_timestamp': '2026-03-01T12:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -3, 'B_utc_timestamp': '2026-03-01T11:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -2, 'B_utc_timestamp': '2026-03-01T10:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': -1, 'B_utc_timestamp': '2026-03-01T09:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 0, 'B_utc_timestamp': '2026-03-01T08:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 1, 'B_utc_timestamp': '2026-03-01T07:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 2, 'B_utc_timestamp': '2026-03-01T06:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 3, 'B_utc_timestamp': '2026-03-01T05:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 4, 'B_utc_timestamp': '2026-03-01T04:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 5, 'B_utc_timestamp': '2026-03-01T03:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 6, 'B_utc_timestamp': '2026-03-01T02:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 7, 'B_utc_timestamp': '2026-03-01T01:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 8, 'B_utc_timestamp': '2026-03-01T00:00:00+00:00', 'matched': 1, 'only_in_A': 1, 'only_in_B': 0, 'duplicate_key': 0}
+{'B_offset_hours': 9, 'B_utc_timestamp': '2026-02-28T23:00:00+00:00', 'matched': 0, 'only_in_A': 2, 'only_in_B': 1, 'duplicate_key': 0}
+{'B_offset_hours': 10, 'B_utc_timestamp': '2026-02-28T22:00:00+00:00', 'matched': 0, 'only_in_A': 2, 'only_in_B': 1, 'duplicate_key': 0}
+{'B_offset_hours': 11, 'B_utc_timestamp': '2026-02-28T21:00:00+00:00', 'matched': 0, 'only_in_A': 2, 'only_in_B': 1, 'duplicate_key': 0}
+{'B_offset_hours': 12, 'B_utc_timestamp': '2026-02-28T20:00:00+00:00', 'matched': 0, 'only_in_A': 2, 'only_in_B': 1, 'duplicate_key': 0}
+{'B_offset_hours': 13, 'B_utc_timestamp': '2026-02-28T19:00:00+00:00', 'matched': 0, 'only_in_A': 2, 'only_in_B': 1, 'duplicate_key': 0}
+{'B_offset_hours': 14, 'B_utc_timestamp': '2026-02-28T18:00:00+00:00', 'matched': 0, 'only_in_A': 2, 'only_in_B': 1, 'duplicate_key': 0}

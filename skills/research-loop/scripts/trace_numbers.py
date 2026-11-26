@@ -55,10 +55,11 @@ def _mask_non_metrics(line):
 
 SPACED_MINUS_RE = re.compile(r"(?:^|[\s(=])-\s+$")
 PCT_SUFFIX_RE = re.compile(r"^\s*(?:\\?%|pp\b|percentage\s+points?\b)", re.I)
-# Explicit negative-direction prose polarity for UNSIGNED numbers only (never relaxes explicit '+')
+# Explicit negative-direction prose polarity for UNSIGNED numbers only (never relaxes explicit '+').
+# Deliberately excludes metric nouns like "loss" so "validation loss of 0.312" stays sign-checked.
 NEG_PREFIX_RE = re.compile(
     r"\b(?:below|lower|drop(?:s|ped)?|decreas(?:e|es|ed|ing)|reduc(?:e|es|ed|ing)|"
-    r"fell|fall(?:s|ing)?|worse|underperform(?:s|ed|ing)?|decline(?:s|d)?|deficit|shortfall|loss)"
+    r"fell|fall(?:s|ing)?|worse|underperform(?:s|ed|ing)?|decline(?:s|d)?|deficit|shortfall)"
     r"\b(?:\s+[\w-]+){0,4}\s+(?:by|of)\s*$",
     re.I,
 )

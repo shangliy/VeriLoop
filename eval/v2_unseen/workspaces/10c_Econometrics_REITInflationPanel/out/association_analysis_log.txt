@@ -1,0 +1,48 @@
+N = 40 quarters (index 0..39); no date column provided
+
+== Descriptives ==
+inflation_yoy      mean=2.3097 sd=0.7458 min=0.6540 median=2.2990 max=4.1770
+reit_index_return  mean=0.3733 sd=0.1248 min=0.1424 median=0.3635 max=0.6434
+AR(1) inflation  rho1=0.109
+AR(1) REIT       rho1=-0.003
+
+== Contemporaneous association (same quarter) ==
+Pearson r=0.931 (95% Fisher CI [0.872, 0.963]) p=3.428e-18  [iid p-value; see HAC/bootstrap below]
+Spearman rho=0.931 p=3.636e-18
+Circular block-bootstrap (L=4, B=10000) 95% CI for Pearson r: [0.875, 0.961]
+Permutation p (iid, reference only) = 0 (B=10000; 0 means < 1/B)
+
+== OLS: REIT return on inflation (Newey-West HAC, lag=4) ==
+const=0.0137 (se 0.0159)  beta_infl=0.1557 (se 0.0062, p=0) R2=0.866
+beta 95% CI [0.1431, 0.1683]
+
+== Lead/lag cross-correlations (corr(inflation_{t-k}, REIT_t)) ==
+k=-4  n=36  r=-0.190
+k=-3  n=37  r=-0.175
+k=-2  n=38  r=-0.153
+k=-1  n=39  r=+0.042
+k=+0  n=40  r=+0.931
+k=+1  n=39  r=+0.052
+k=+2  n=38  r=-0.051
+k=+3  n=37  r=-0.189
+k=+4  n=36  r=-0.213
+
+== Lagged regression: REIT_t on inflation_{t-1} (HAC lag=4) ==
+beta_lag1=0.0088 (se 0.0309, p=0.7784) R2=0.003
+
+== Regime split: inflation >= 3.0% vs < 3.0% ==
+n_high=6 mean REIT=0.5480 | n_low=34 mean REIT=0.3425
+Welch t=6.126 p=0.0001267 (iid)
+Median REIT high=0.5242 low=0.3301; Mann-Whitney p=0.0006078
+
+== Sub-sample stability (first vs second half) ==
+first half   n=20 r=+0.875 p=4.37e-07
+second half  n=20 r=+0.959 p=2.509e-11
+
+== Influence / robustness ==
+Leave-one-out r range: [0.921 (drop q27), 0.938 (drop q8)]
+Top Cook's D: q8=0.132, q36=0.130, q24=0.089
+Pearson r dropping q8: +0.938 (p=1.173e-18)
+
+== Power note ==
+With n=40, iid, the 5% two-sided critical |r| is 0.312

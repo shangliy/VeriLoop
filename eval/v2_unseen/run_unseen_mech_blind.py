@@ -25,12 +25,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 UNSEEN_DIR = Path(__file__).resolve().parent
 RL_SCRIPTS = ROOT / "skills/research-loop/scripts"
+LOCKED_V2_SCRIPTS = ROOT / "eval/v2_frozen/locked"
 sys.path.insert(0, str(ROOT / "eval"))
 import run_benchmark as rb  # noqa: E402
 
 FROZEN_SHA256 = {
-    "trace_numbers.py": "42c39cf4a4adeee1",
-    "audit_code.py": "72dac256a9caf775",
+    "trace_numbers.py": ("trace_numbers_v2.py", "42c39cf4a4adeee1"),
+    "audit_code.py": ("audit_code_v2.py", "72dac256a9caf775"),
 }
 
 PREVIOUSLY_TOUCHED = {
@@ -49,15 +50,18 @@ PREVIOUSLY_TOUCHED = {
 }
 
 
-def verify_frozen_gates(allow_updated: bool = False) -> dict:
+def verify_frozen_gates(allow_updated: bool = False) -> tuple[dict, dict]:
     hashes = {}
-    for name, expected_prefix in FROZEN_SHA256.items():
-        p = RL_SCRIPTS / name
+    script_paths = {}
+    for name, (locked_name, expected_prefix) in FROZEN_SHA256.items():
+        p = (RL_SCRIPTS / name) if allow_updated else (LOCKED_V2_SCRIPTS / locked_name)
+        if not p.is_file():
+            raise RuntimeError(f"Gate script missing: {p}")
         h = hashlib.sha256(p.read_bytes()).hexdigest()
         if not h.startswith(expected_prefix):
             if not allow_updated:
                 raise RuntimeError(
-                    f"FROZEN GATE HASH MISMATCH for {name}: got {h[:16]}, expected {expected_prefix}! "
+                    f"FROZEN GATE HASH MISMATCH for {p}: got {h[:16]}, expected {expected_prefix}! "
                     "Refusing to run unseen blind test on modified gate "
                     "(pass --allow-updated-gate to evaluate a post-v2 gate version explicitly)."
                 )
@@ -67,10 +71,11 @@ def verify_frozen_gates(allow_updated: bool = False) -> dict:
                 file=sys.stderr,
             )
         hashes[name] = h
-    return hashes
+        script_paths[name] = p
+    return hashes, script_paths
 
 
-def run_frozen_gates(ws: Path, include_data: bool = False) -> dict:
+def run_frozen_gates(ws: Path, script_paths: dict, include_data: bool = False) -> dict:
     rep = ws / "report/report.md"
     if not rep.is_file():
         return {"report_exists": False, "mech_blocked": False, "trace": {}, "audit": {}}
@@ -80,7 +85,7 @@ def run_frozen_gates(ws: Path, include_data: bool = False) -> dict:
     trace_data = {"traced": 0, "untraced": [], "sign_mismatches": [], "wrong_logs": [], "unpaired_pairs": []}
     trace_rc = 0
     if log_dirs:
-        cmd = [sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), str(rep), "--json"]
+        cmd = [sys.executable, str(script_paths["trace_numbers.py"]), str(rep), "--json"]
         for ld in log_dirs:
             cmd.extend(["--logs", str(ld)])
         if include_data and (ws / "data").is_dir():
@@ -95,7 +100,7 @@ def run_frozen_gates(ws: Path, include_data: bool = False) -> dict:
     audit_rc = 0
     if code_dir.is_dir() and any(code_dir.rglob("*.py")):
         p2 = subprocess.run(
-            [sys.executable, str(RL_SCRIPTS / "audit_code.py"), "--scripts", str(code_dir), "--report", str(rep), "--json", "--strict"],
+            [sys.executable, str(script_paths["audit_code.py"]), "--scripts", str(code_dir), "--report", str(rep), "--json", "--strict"],
             capture_output=True, text=True,
         )
         audit_rc = p2.returncode
@@ -161,7 +166,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    gate_hashes = verify_frozen_gates(allow_updated=args.allow_updated_gate)
+    gate_hashes, script_paths = verify_frozen_gates(allow_updated=args.allow_updated_gate)
     out_dir = Path(args.out_dir).resolve()
     ws_root = out_dir / "workspaces"
     ws_root.mkdir(parents=True, exist_ok=True)
@@ -202,7 +207,7 @@ def main():
         except Exception as e:
             cost, err = 0.0, str(e)[:300]
         elapsed = round(time.time() - t0, 2)
-        gates = run_frozen_gates(ws, include_data=args.allow_updated_gate)
+        gates = run_frozen_gates(ws, script_paths, include_data=args.allow_updated_gate)
 
         rec = {
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),

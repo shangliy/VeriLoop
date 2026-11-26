@@ -1,0 +1,81 @@
+N rows = 80; unique plot_id = 80
+Columns: ['plot_id', 'yield_t_ha', 'irrigation_m3', 'fertilizer_kg', 'groundwater_quota_enforcement', 'rainfall_mm']
+Year / time / treatment column present: NO
+
+== Descriptives ==
+yield_t_ha                       mean=    4.291 sd=   0.663 min=   2.653 med=   4.353 max=   5.540
+irrigation_m3                    mean=  213.500 sd= 120.899 min=   9.700 med= 236.100 max= 396.100
+fertilizer_kg                    mean=  102.060 sd=  11.202 min=  80.700 med= 102.500 max= 119.600
+groundwater_quota_enforcement    mean=    0.501 sd=   0.295 min=   0.019 med=   0.488 max=   0.994
+rainfall_mm                      mean=  395.782 sd= 223.895 min=   4.900 med= 409.350 max= 799.700
+
+== Pearson correlations (r, p) ==
+yield ~ irrigation_m3                    r=+0.308 p=0.0054
+yield ~ fertilizer_kg                    r=-0.056 p=0.6195
+yield ~ groundwater_quota_enforcement    r=+0.514 p=0.0000
+yield ~ rainfall_mm                      r=+0.370 p=0.0007
+Collinearity among regressors:
+  irrigation_m3 vs fertilizer_kg: r=-0.011 p=0.9229
+  irrigation_m3 vs groundwater_quota_enforcement: r=-0.117 p=0.3005
+  irrigation_m3 vs rainfall_mm: r=+0.055 p=0.6299
+  fertilizer_kg vs groundwater_quota_enforcement: r=-0.243 p=0.0300
+  fertilizer_kg vs rainfall_mm: r=+0.110 p=0.3313
+  groundwater_quota_enforcement vs rainfall_mm: r=-0.161 p=0.1547
+
+== Model 1: yield ~ irrigation (bivariate) ==
+term                                coef     HC1 se       t        p
+const                            3.92960    0.15761   24.93   0.0000
+irrigation per 100 m3            0.16919    0.06108    2.77   0.0070
+R2=0.095 adjR2=0.084 n=80 k=2
+
+== Model 2: yield ~ irrigation + fertilizer + quota + rainfall ==
+term                                coef     HC1 se       t        p
+const                            2.29575    0.50501    4.55   0.0000
+irrigation per 100 m3            0.19731    0.03806    5.18   0.0000
+fertilizer per 10 kg             0.03200    0.04521    0.71   0.4813
+quota enforcement (0-1)          1.44277    0.16058    8.98   0.0000
+rainfall per 100 mm              0.13260    0.02095    6.33   0.0000
+R2=0.603 adjR2=0.582 n=80 k=5
+
+== Model 3: Model 2 + irrigation x quota interaction (quota centered) ==
+term                                coef     HC1 se       t        p
+const                            2.02526    0.52999    3.82   0.0003
+irrigation per 100 m3            0.20271    0.03697    5.48   0.0000
+fertilizer per 10 kg             0.03607    0.04596    0.78   0.4351
+quota enforcement (0-1)          1.89466    0.31902    5.94   0.0000
+rainfall per 100 mm              0.12826    0.02123    6.04   0.0000
+irrig x quota(centered)         -0.20058    0.11135   -1.80   0.0757
+R2=0.614 adjR2=0.588 n=80 k=6
+
+== Model 4: Model 2 + irrigation^2 (curvature check) ==
+term                                coef     HC1 se       t        p
+const                            2.53152    0.50074    5.06   0.0000
+irrigation per 100 m3           -0.11382    0.18918   -0.60   0.5493
+irrigation^2 (100m3)^2           0.07673    0.04339    1.77   0.0811
+fertilizer per 10 kg             0.02789    0.04334    0.64   0.5218
+quota enforcement (0-1)          1.42532    0.15909    8.96   0.0000
+rainfall per 100 mm              0.13731    0.02024    6.78   0.0000
+R2=0.620 adjR2=0.594 n=80 k=6
+
+== Bootstrap (2000 reps, resampling plots) for Model 2 irrigation coef ==
+irrigation coef point=0.19731  bootstrap 95% CI=[0.12081, 0.27098]  share of boot draws > 0: 1.000
+
+== Stratified descriptives: irrigation terciles ==
+irrig low  n=27 mean yield=4.014 sd=0.673 mean quota=0.537 mean rain=364.0
+irrig mid  n=26 mean yield=4.302 sd=0.658 mean quota=0.498 mean rain=421.5
+irrig high n=27 mean yield=4.557 sd=0.561 mean quota=0.467 mean rain=402.7
+Kruskal-Wallis yield across irrigation terciles: H=8.268 p=0.0160
+
+== Stratified descriptives: quota-enforcement terciles ==
+quota low  n=27 mean yield=3.969 sd=0.672 mean irrig=236.0
+quota mid  n=26 mean yield=4.204 sd=0.593 mean irrig=213.9
+quota high n=27 mean yield=4.697 sd=0.510 mean irrig=190.6
+Kruskal-Wallis yield across quota terciles: H=17.557 p=0.0002
+
+== Irrigation slope within quota strata (bivariate, per 100 m3) ==
+quota low  n=27 slope=+0.3515 r=+0.611 p=0.0007
+quota mid  n=26 slope=+0.1553 r=+0.308 p=0.1261
+quota high n=27 slope=+0.1451 r=+0.364 p=0.0616
+
+== Water-use efficiency: yield per 100 m3 irrigation (descriptive, ill-defined at low irrigation) ==
+median yield/(100 m3) = 1.863; rows with irrigation < 20 m3: 3
