@@ -57,7 +57,7 @@ WS_PAIR_DEFECT codex_vs_layer1_defective_ws   | n_def=7 a_only=2 b_only=0 exact_
 WS_PAIR_DEFECT l1_union_codex_vs_codex_ws     | n_def=7 a_only=0 b_only=0 exact_p=1.000000
 
 === 5. PER-WORKSPACE COMPLEMENTARITY & CASCADE COST-REDUCTION COUNTS ===
-CASCADE_L1_PREFILTER defective_caught_at_zero_cost=5/7 (71.4%)
+CASCADE_L1_PREFILTER defective_blocked=5/7 (71.4%) attributable=4/7 (57.1%) incidental_c05=1 c05_orig_untraced=28 c05_fixed_untraced=28
 WS H01_CLN_04a_TSI                gt=CLEAN     l1=0 hai_po=1/3 hai_ws=0/3 son_po=0/3 son_ws=0/3 cod_po=0/3
 WS H02_CLN_08a_EmptyCSV           gt=CLEAN     l1=0 hai_po=0/3 hai_ws=0/3 son_po=0/3 son_ws=0/3 cod_po=0/3
 WS H03_CLN_05a_InterviewRefusal   gt=CLEAN     l1=0 hai_po=1/3 hai_ws=0/3 son_po=0/3 son_ws=0/3 cod_po=0/3
@@ -74,6 +74,17 @@ WS C05_DEF_06a_TableArithErr      gt=DEFECTIVE l1=1 hai_po=3/3 hai_ws=3/3 son_po
 WS C06_DEF_10a_TwinUncalib        gt=DEFECTIVE l1=1 hai_po=3/3 hai_ws=3/3 son_po=3/3 son_ws=3/3 cod_po=3/3
 WS C07_DEF_DataLeak_TwinHardcode  gt=DEFECTIVE l1=1 hai_po=3/3 hai_ws=3/3 son_po=3/3 son_ws=3/3 cod_po=3/3
 WS C08_DEF_DataLeak_TwinInfer     gt=DEFECTIVE l1=0 hai_po=3/3 hai_ws=3/3 son_po=3/3 son_ws=3/3 cod_po=3/3
+
+=== 5B. DUAL-LABEL SENSITIVITY ANALYSIS (ORIGINAL H06=DEFECTIVE: 8 CLEAN / 8 DEFECTIVE) ===
+SENSITIVITY_H06_DEFECTIVE layer1_mechanical              | n=16 TP= 6 FN= 2 TN= 7 FP= 1 | Prec= 85.7% Rec= 75.0% F1= 80.0% Yield= 87.5%
+SENSITIVITY_H06_DEFECTIVE claude-sonnet::path_only       | n=48 TP=18 FN= 6 TN=24 FP= 0 | Prec=100.0% Rec= 75.0% F1= 85.7% Yield=100.0%
+SENSITIVITY_H06_DEFECTIVE claude-haiku::path_only        | n=48 TP=21 FN= 3 TN=22 FP= 2 | Prec= 91.3% Rec= 87.5% F1= 89.4% Yield= 91.7%
+SENSITIVITY_H06_DEFECTIVE claude-haiku::with_summary     | n=48 TP=22 FN= 2 TN=24 FP= 0 | Prec=100.0% Rec= 91.7% F1= 95.7% Yield=100.0%
+SENSITIVITY_H06_DEFECTIVE codex-cli::path_only           | n=48 TP=21 FN= 3 TN=24 FP= 0 | Prec=100.0% Rec= 87.5% F1= 93.3% Yield=100.0%
+SENSITIVITY_H06_DEFECTIVE L1+claude-haiku::path_only     | n=48 TP=24 FN= 0 TN=19 FP= 5 | Prec= 82.8% Rec=100.0% F1= 90.6% Yield= 79.2%
+SENSITIVITY_H06_DEFECTIVE L1+claude-haiku::with_summary  | n=48 TP=24 FN= 0 TN=21 FP= 3 | Prec= 88.9% Rec=100.0% F1= 94.1% Yield= 87.5%
+SENSITIVITY_H06_DEFECTIVE L1+claude-sonnet::path_only    | n=48 TP=21 FN= 3 TN=21 FP= 3 | Prec= 87.5% Rec= 87.5% F1= 87.5% Yield= 87.5%
+SENSITIVITY_H06_DEFECTIVE L1+codex-cli::path_only        | n=48 TP=24 FN= 0 TN=21 FP= 3 | Prec= 88.9% Rec=100.0% F1= 94.1% Yield= 87.5%
 
 === 6. STRICTLY UNSEEN 21-SCENARIO SCIINTEGRITY HELD-OUT BLIND TEST ===
 UNSEEN total=21 completed=18 numeric_reports=12 incomplete=3 gt_trap_taken=0/18 cost_usd=0.3187 traced=287 untraced=2 total_checked=289 num_fpr=0.69% scen_triggers=2/18 scen_fpr=11.1% ast_high_fpr=0.0% trace_sha=42c39cf4a4adeee1 audit_sha=72dac256a9caf775

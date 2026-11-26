@@ -34,6 +34,31 @@ Table~\ref{tab:app_frozen} lists all 16 SHA-256 frozen workspaces committed in \
 \end{tabular}
 \end{table*}
 
+\begin{table*}[h]
+\centering
+\caption{\textbf{Dual-label sensitivity analysis comparing Table~\ref{tab:primary} under the post-audit Route~A rule (\texttt{H06}=\textsc{Clean}, 9C/7D) versus the original raw JSONL label (\texttt{H06}=\textsc{Defective}, 8C/8D).} All metrics are computed directly from immutable trial JSONLs with zero overrides.}
+\label{tab:app_sensitivity}
+\setlength{\tabcolsep}{3.8pt}
+\scriptsize
+\begin{tabular}{llcccc|cccc}
+\toprule
+ & & \multicolumn{4}{c|}{\textbf{Post-Audit Route~A (\texttt{H06}=\textsc{Clean}, 9C/7D)}} & \multicolumn{4}{c}{\textbf{Original Label (\texttt{H06}=\textsc{Defective}, 8C/8D)}} \\
+\textbf{System / Layer} & \textbf{Framing} & \textbf{Prec.} & \textbf{Rec.} & \textbf{F1} & \textbf{Yield} & \textbf{Prec.} & \textbf{Rec.} & \textbf{F1} & \textbf{Yield} \\
+\midrule
+\texttt{layer1\_mechanical} (\$0) & deterministic & 71.4\% & 71.4\% & 71.4\% & 77.8\% & 85.7\% & 75.0\% & 80.0\% & 87.5\% \\
+\texttt{claude-sonnet}            & \texttt{path\_only} & 100.0\% & 85.7\% & 92.3\% & 100.0\% & 100.0\% & 75.0\% & 85.7\% & 100.0\% \\
+\texttt{claude-haiku}             & \texttt{path\_only} & 91.3\% & 100.0\% & 95.5\% & 92.6\% & 91.3\% & 87.5\% & 89.4\% & 91.7\% \\
+\texttt{claude-haiku}             & \texttt{with\_summary} & 95.5\% & 100.0\% & 97.7\% & 96.3\% & 100.0\% & 91.7\% & 95.7\% & 100.0\% \\
+\texttt{codex-cli}                & \texttt{path\_only} & 100.0\% & 100.0\% & 100.0\% & 100.0\% & 100.0\% & 87.5\% & 93.3\% & 100.0\% \\
+\midrule
+\texttt{L1 $\cup$ claude-haiku}   & \texttt{path\_only} & 72.4\% & 100.0\% & 84.0\% & 70.4\% & 82.8\% & 100.0\% & 90.6\% & 79.2\% \\
+\texttt{L1 $\cup$ claude-haiku}   & \texttt{with\_summary} & 77.8\% & 100.0\% & 87.5\% & 77.8\% & 88.9\% & 100.0\% & 94.1\% & 87.5\% \\
+\texttt{L1 $\cup$ claude-sonnet}  & \texttt{path\_only} & 75.0\% & 85.7\% & 80.0\% & 77.8\% & 87.5\% & 87.5\% & 87.5\% & 87.5\% \\
+\texttt{L1 $\cup$ codex-cli}      & \texttt{path\_only} & 77.8\% & 100.0\% & 87.5\% & 77.8\% & 88.9\% & 100.0\% & 94.1\% & 87.5\% \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
 \section{Strictly Unseen 21-Scenario Mechanical Blind-Test Audit}
 \label{app:unseen}
 

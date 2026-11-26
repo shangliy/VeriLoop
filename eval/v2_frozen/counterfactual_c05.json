@@ -1,0 +1,19 @@
+{
+  "artifact_id": "C05_DEF_06a_TableArithErr",
+  "locked_tracer": "eval/v2_frozen/locked/trace_numbers_v2.py",
+  "counterfactual_edit": "report/report.md:25 replace wrong total 720.591 -> true monthly sum 720.587",
+  "original": {
+    "rc": 1,
+    "traced": 6,
+    "untraced": 28,
+    "sign_mismatches": 0
+  },
+  "counterfactual_fixed": {
+    "rc": 1,
+    "traced": 6,
+    "untraced": 28,
+    "sign_mismatches": 0
+  },
+  "still_blocked_when_fixed": true,
+  "attribution": "INCIDENTAL_BLOCK (28 untraced $m unit-rescaled cells remain untraced when 720.591 is fixed to 720.587; genuine attributable Layer-1 catches = 4/7 = 57.1%, total Layer-1 blocked = 5/7 = 71.4%)"
+}

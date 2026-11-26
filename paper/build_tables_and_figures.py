@@ -292,7 +292,14 @@ def main():
         if r.get("predicted_defective") is not None:
             by_cell[(r["artifact_id"], r["reviewer"], r["framing"])].append(int(bool(r["predicted_defective"])))
     l1_def_hits = sum(1 for aid in def_ids if l1_map[aid])
-    print(f"CASCADE_L1_PREFILTER defective_caught_at_zero_cost={l1_def_hits}/{len(def_ids)} ({l1_def_hits/len(def_ids)*100:.1f}%)")
+    cf_c05 = json.loads((V2_FROZEN / "counterfactual_c05.json").read_text(encoding="utf-8"))
+    attrib_hits = l1_def_hits - (1 if cf_c05["still_blocked_when_fixed"] else 0)
+    print(
+        f"CASCADE_L1_PREFILTER defective_blocked={l1_def_hits}/{len(def_ids)} ({l1_def_hits/len(def_ids)*100:.1f}%) "
+        f"attributable={attrib_hits}/{len(def_ids)} ({attrib_hits/len(def_ids)*100:.1f}%) "
+        f"incidental_c05={1 if cf_c05['still_blocked_when_fixed'] else 0} "
+        f"c05_orig_untraced={cf_c05['original']['untraced']} c05_fixed_untraced={cf_c05['counterfactual_fixed']['untraced']}"
+    )
     for r1 in l1_rows:
         aid = r1["artifact_id"]
         print(
@@ -302,6 +309,29 @@ def main():
             f"son_po={sum(by_cell[(aid,'claude-sonnet','path_only')])}/{len(by_cell[(aid,'claude-sonnet','path_only')])} "
             f"son_ws={sum(by_cell[(aid,'claude-sonnet','with_summary')])}/{len(by_cell[(aid,'claude-sonnet','with_summary')])} "
             f"cod_po={sum(by_cell[(aid,'codex-cli','path_only')])}/{len(by_cell[(aid,'codex-cli','path_only')])}"
+        )
+
+    print("\n=== 5B. DUAL-LABEL SENSITIVITY ANALYSIS (ORIGINAL H06=DEFECTIVE: 8 CLEAN / 8 DEFECTIVE) ===")
+    def _with_h06_def(recs):
+        return [
+            {**r, "ground_truth": "DEFECTIVE" if r["artifact_id"] == "H06_DEF_SPR_FabricatedCI" else r["ground_truth"]}
+            for r in recs
+        ]
+    for label, src in [
+        ("layer1_mechanical", l1_rows),
+        ("claude-sonnet::path_only", groups[("claude-sonnet", "path_only")]),
+        ("claude-haiku::path_only", groups[("claude-haiku", "path_only")]),
+        ("claude-haiku::with_summary", groups[("claude-haiku", "with_summary")]),
+        ("codex-cli::path_only", groups[("codex-cli", "path_only")]),
+        ("L1+claude-haiku::path_only", [{**r, "predicted_defective": bool(r["predicted_defective"]) or l1_map[r["artifact_id"]]} for r in groups[("claude-haiku", "path_only")]]),
+        ("L1+claude-haiku::with_summary", [{**r, "predicted_defective": bool(r["predicted_defective"]) or l1_map[r["artifact_id"]]} for r in groups[("claude-haiku", "with_summary")]]),
+        ("L1+claude-sonnet::path_only", [{**r, "predicted_defective": bool(r["predicted_defective"]) or l1_map[r["artifact_id"]]} for r in groups[("claude-sonnet", "path_only")]]),
+        ("L1+codex-cli::path_only", [{**r, "predicted_defective": bool(r["predicted_defective"]) or l1_map[r["artifact_id"]]} for r in groups[("codex-cli", "path_only")]]),
+    ]:
+        sm = confusion(_with_h06_def(src))
+        print(
+            f"SENSITIVITY_H06_DEFECTIVE {label:30s} | n={sm['n']:2d} TP={sm['tp']:2d} FN={sm['fn']:2d} TN={sm['tn']:2d} FP={sm['fp']:2d} | "
+            f"Prec={sm['prec']*100:5.1f}% Rec={sm['rec']*100:5.1f}% F1={sm['f1']*100:5.1f}% Yield={sm['yld']*100:5.1f}%"
         )
 
     print("\n=== 6. STRICTLY UNSEEN 21-SCENARIO SCIINTEGRITY HELD-OUT BLIND TEST ===")
@@ -390,7 +420,7 @@ def main():
     arrow(3.71, 1.54, 4.02, 1.54)
     box(4.08, 1.18, 2.20, 0.72, "trace_numbers + audit_code\n(G1-G7, signed, AST)", C_L1_LT, C_L1)
     arrow(6.34, 1.54, 7.12, 1.54)
-    box(7.18, 1.18, 2.74, 0.72, f"{l1_m['tp']}/{l1_m['tp']+l1_m['fn']} ($0 Pre-Filter: {l1_m['rec']*100:.1f}%)\nMisses Logic & Overclaims", C_L1_LT, C_L1, tc="#075985", bold=True)
+    box(7.18, 1.18, 2.74, 0.72, f"{l1_m['tp']}/{l1_m['tp']+l1_m['fn']} Blocked ({attrib_hits}/{n_def} Attrib.)\nMisses Logic & Overclaims", C_L1_LT, C_L1, tc="#075985", bold=True)
 
     # Row 4: VeriLoop Dual-Layer Cascade (Ours)
     vl_m = union_metrics[("codex-cli", "path_only")]
@@ -401,7 +431,7 @@ def main():
     arrow(5.39, 0.51, 5.61, 0.51, color=C_OURS, lw=1.35)
     box(5.67, 0.14, 1.56, 0.74, "Layer 2 (XMR)\nRead-Only Audit", C_OURS, C_OURS, tc="white", lw=1.35, fs=6.5, bold=True)
     arrow(7.29, 0.51, 7.49, 0.51, color=C_CODEX, lw=1.35)
-    box(7.55, 0.14, 2.37, 0.74, f"{vl_m['rec']*100:.1f}% Recall ({n_def}/{n_def} ws)\n{l1_m['tp']}/{n_def} at $0 | {vl_m['yld']*100:.1f}% Strict Yield", C_CODEX_LT, C_CODEX, tc="#065F46", lw=1.35, fs=6.3, bold=True)
+    box(7.55, 0.14, 2.37, 0.74, f"{vl_m['rec']*100:.1f}% Recall ({n_def}/{n_def} ws)\n{attrib_hits}/{n_def} Attrib. at $0 | {vl_m['yld']*100:.1f}% Yield", C_CODEX_LT, C_CODEX, tc="#065F46", lw=1.35, fs=6.3, bold=True)
 
     fig.tight_layout(pad=0.2)
     fig.savefig(FIG_DIR / "fig1_architecture.pdf", bbox_inches="tight")

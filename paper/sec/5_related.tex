@@ -2,16 +2,15 @@
 \label{sec:related}
 
 \paragraph{Autonomous research harnesses.}
-Table~\ref{tab:related} contrasts VeriLoop against closely related research harnesses and scientific auditing benchmarks.
-\textsc{ARIS}~\citep{yang2026aris} introduces a 65-skill adversarial workflow spanning ideation through paper writing, yet keeps Stage-1 experiment auditing advisory and evaluates a single observational run without controlled baselines or independent ground truth.
-\textsc{EviBound}~\citep{chen2026evibound} enforces pre-execution acceptance schemas and MLflow existence gates (cutting missing-file hallucinations from 8/8 to 0/8 on eight Colab tasks), yet does not verify calculation logic, signed numerical provenance, or inferential consistency inside executed scripts.
+Table~\ref{tab:related} contrasts VeriLoop against prior harnesses and auditing suites.
+\textsc{ARIS}~\citep{yang2026aris} introduces a 65-skill workflow yet keeps Stage-1 experiment auditing advisory on a single unbaselined run.
+\textsc{EviBound}~\citep{chen2026evibound} enforces pre-execution schemas and MLflow existence gates (0/8 missing-file hallucinations on eight Colab tasks), without checking calculation logic, numerical provenance, or inferential consistency inside executed code.
 
 \paragraph{Fabrication and error-auditing benchmarks.}
-\textsc{SciIntegrity-Bench}~\citep{yang2026sciintegrity} evaluates seven LLMs across 33 dilemmatic scenarios (11 traps, 34.2\% integrity issue rate), showing that removing completion pressure fails to stop synthetic data substitution (57.1\% to 55.6\%).
-\citet{luo2025pitfalls} build the \textsc{SPR} benchmark spanning four ML pitfalls and prove that auditing code plus execution logs lifts detection from 55.0\% to 82.0\% ($p=6.3\times 10^{-5}$).
-\textsc{FabScore}~\citep{chen2026fabscore} audits 144 AI-generated papers post-hoc (21.2\% claim fabrication; 85.9\% contradicting logs; 44.6\% hardcoded/mocked code; 86.2\% missed by AI reviewers).
-Manuscript-only suites including \textsc{FLAWS}~\citep{xi2025flaws} (713 ICML papers; GPT-5 39.1\% at $k=10$) and \textsc{PaperAudit-Bench}~\citep{tu2026paperaudit} (220 papers, $>$2,200 errors) confirm that text-only review cannot detect execution-layer fabrications.
+\textsc{SciIntegrity-Bench}~\citep{yang2026sciintegrity} evaluates seven LLMs on 33 dilemmatic scenarios (11 traps, 34.2\% failure rate; removing pressure barely changes synthetic substitution from 57.1\% to 55.6\%).
+\citet{luo2025pitfalls} show on \textsc{SPR} that auditing code plus execution logs lifts detection from 55.0\% to 82.0\% ($p=6.3\times 10^{-5}$).
+\textsc{FabScore}~\citep{chen2026fabscore} audits 144 AI papers post-hoc (21.2\% claim fabrication; 85.9\% contradicting logs; 44.6\% hardcoded/mocked code; 86.2\% missed by AI reviewers), and manuscript-only suites \textsc{FLAWS}~\citep{xi2025flaws} (713 ICML papers) and \textsc{PaperAudit-Bench}~\citep{tu2026paperaudit} (220 papers, $>$2,200 errors) confirm text-only review cannot verify execution.
 
 \paragraph{Cross-model verification.}
-\citet{song2026secondmodel} evaluates 900 review sessions on 30 artifacts, finding that single-pass cross-model review does not uniformly outperform same-model fresh review whereas combining both raises recall from 42.7\% to 56.7\% ($p=0.006$).
-Our frozen 2$\times$2 evaluation extends this line of inquiry to autonomous scientific workspaces, showing that pairing deterministic provenance checks with read-only LLM review closes defects missed by all tested LLM families while revealing that reviewer calibration outweighs raw model size.
+\citet{song2026secondmodel} evaluates 900 sessions on 30 artifacts, finding single-pass cross-model review does not uniformly beat same-model review whereas combining both lifts recall from 42.7\% to 56.7\% ($p=0.006$).
+Our frozen evaluation extends this paradigm to autonomous scientific workspaces, quantifying zero-cost mechanical pre-filtering, strict-blocking yield trade-offs, and reviewer-calibration differences on natural code bugs.

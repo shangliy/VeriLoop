@@ -30,14 +30,14 @@ Independent hostile milestone audits during development uncovered four hazards c
 (2) re-running executors per condition confounds artifact drift with reviewer capability;
 (3) labeling an unlogged analytic derivation as defective on one split (\texttt{H06}) while treating an equivalent derivation as a benign FP on another (\texttt{04c}) creates circular Layer-1 wins; and
 (4) computing paired tests across $k=3$ repeats of one workspace causes pseudo-replication.
-Freezing SHA-256 workspaces, applying one pre-registered rule, pinning locked v2 gate snapshots, and reporting workspace-level CIs and McNemar tests directly address these hazards.
+Freezing SHA-256 workspaces, applying one unified post-audit rule (with dual-label sensitivity in Table~\ref{tab:app_sensitivity}), pinning locked v2 gate snapshots, and reporting workspace-level CIs and McNemar tests directly address these hazards.
 
 \paragraph{Practical deployment rule.}
-Because locked Layer~1 runs in milliseconds at \$0 cost, pre-filters 5/7 (71.4\%) frozen defects, and achieves 0.0\% AST FPR out of sample, production harnesses should hard-block immediately on deterministic AST rules (0.0\% FPR in-sample and unseen) and route signed number tracing (\texttt{trace\_numbers.py}) as a \$0 pre-audit feeding Layer~2 adjudication (reserving strict numerical hard blocks for projects adopting a log-every-derived-number contract).
+Because locked Layer~1 runs in milliseconds at \$0 cost, blocks an in-sample 5/7 (71.4\%, 4/7 attributable) frozen defects, and achieves 0.0\% AST FPR out of sample, production harnesses should hard-block immediately on deterministic AST rules (0.0\% FPR in-sample and unseen) and route signed number tracing (\texttt{trace\_numbers.py}) as a \$0 pre-audit feeding Layer~2 adjudication (reserving strict numerical hard blocks for projects adopting a log-every-derived-number contract).
 
 \paragraph{Limitations.}
 Five boundaries scope our findings:
-(1) \emph{Small sample and single-team annotation:} Our corpus has 16 workspaces (9 \textsc{Clean}, 7 \textsc{Defective}, only 2 natural defects: \texttt{H05}, \texttt{C05}) labeled by the authors under a written rule without multi-annotator reliability; workspace-level tests ($p=0.500000$--$1.000000$) are underpowered.
+(1) \emph{Small sample, post-audit relabeling, and single-team annotation:} Our corpus has 16 workspaces (9 \textsc{Clean}, 7 \textsc{Defective}, only 2 natural defects: \texttt{H05}, \texttt{C05}) labeled by the authors without blind non-author inter-rater reliability; \texttt{H06} was relabeled post hoc after the M4 audit (Table~\ref{tab:app_sensitivity} reports sensitivity under the original label), and workspace-level tests ($p=0.500000$--$1.000000$) are underpowered.
 (2) \emph{In-sample Layer-1 recall and unmeasured unseen recall:} Locked v2 Layer-1 rules (commit \texttt{b897378}) were finalized with the 16 workspaces visible (in-sample Table~\ref{tab:primary}), while all 18/18 completed unseen runs avoided traps, calibrating out-of-sample FPR rather than recall.
 (3) \emph{Post-v2 tracer updates:} Shipped v3 \texttt{trace\_numbers.py} adds \texttt{--data} and unsigned prose-polarity rules motivated by \texttt{C04}/\texttt{09c} (in-sample) and awaits a fresh held-out benchmark before any v3 FP-reduction claim.
 (4) \emph{Incomplete cells:} \texttt{codex-cli} \texttt{with\_summary} stopped at 5/48 trials due to the provider 5-hour quota cap (43 errors retained verbatim), and non-interactive \texttt{gemini} CLI auditing awaits cloud project setup.

@@ -2,7 +2,7 @@
 \label{sec:conclusion}
 
 Autonomous research agents rarely fail by omitting files; they fail by executing cleanly while introducing subtle code bugs, arithmetic contradictions, or unsupported causal claims.
-Across 245 paired LLM audit trials on 16 SHA-256 frozen workspaces under a unified labeling rule (9 clean, 7 defective), VeriLoop's deterministic Layer~1 pre-filters 5/7 (71.4\%) defects at \$0 cost while read-only \texttt{codex-cli} resolves remaining semantic flaws for 7/7 (100.0\%) recall and 9/9 (100.0\%) clean yield.
+Across 245 paired LLM audit trials on 16 SHA-256 frozen workspaces under a unified post-audit labeling rule (9 clean, 7 defective), VeriLoop's deterministic Layer~1 blocks an in-sample 5/7 (71.4\%) defects at \$0 cost (4/7 = 57.1\% directly attributable plus 1/7 incidental on \texttt{C05}) while read-only \texttt{codex-cli} resolves remaining semantic flaws for 7/7 (100.0\%) recall and 9/9 (100.0\%) clean yield.
 Strict hard blocking on Layer-1 numerical warnings lowers clean yield to 77.8\% (87.5\% F1) on benign non-log derivations, motivating a cascade where high-precision AST checks hard-block and numerical provenance flags feed Layer~2.
 On 21 strictly unseen \textsc{SciIntegrity-Bench} scenarios (18/18 completed runs verified clean), locked v2 gates record 0.0\% AST FPR and 0.69\% number-level FPR, with out-of-sample recall unmeasured.
 More broadly, our benchmark shows that credible governance evaluation requires fixed SHA-256 artifacts, unified labeling rules, locked checker snapshots, workspace-level inference, and zero post-hoc overrides.

@@ -40,8 +40,8 @@ We evaluate VeriLoop around four non-circular empirical questions:
 \label{sec:setup}
 
 Our primary evaluation freezes 16 workspaces (\texttt{eval/v2\_frozen/}) authored equally by \texttt{claude-haiku} (8) and \texttt{codex-cli} (8), with all condition metadata, prior audits, and ledgers stripped prior to SHA-256 hashing so every reviewer inspects identical read-only \texttt{code/}, \texttt{out/}, and \texttt{report/report.md} files.
-To prevent circular labeling between Layer-1 rules and scientific misconduct, we apply one pre-registered rule across both splits: \emph{any number explicitly disclosed in prose as an arithmetic derivation from logged raw counts or parameters is \textsc{Clean} (a benign non-log provenance gap), not \textsc{Defective}}.
-Accordingly, \texttt{H06\_DEF\_SPR\_FabricatedCI} (directory ID retained for SHA-256 immutability) is \textsc{Clean} because \texttt{report/report.md:73} discloses \texttt{[0.9965, 0.9985]} as a normal approximation on logged test errors (\texttt{25} of \texttt{10,000}, \texttt{acc=0.9975} in \texttt{out/final\_eval\_stdout.txt:4}), matching unseen \texttt{04c}'s midpoint \texttt{0.425}.
+To prevent circular labeling between Layer-1 rules and scientific misconduct, we adopt one unified post-audit rule (introduced after our M4 milestone audit) across both splits: \emph{any number explicitly disclosed in prose as an arithmetically correct derivation from logged raw counts or parameters is \textsc{Clean} (a benign non-log provenance gap), not \textsc{Defective}}.
+Accordingly, \texttt{H06\_DEF\_SPR\_FabricatedCI} (directory ID retained for SHA-256 immutability; originally labeled \textsc{Defective} in raw JSONL metadata) is relabeled \textsc{Clean} because \texttt{report/report.md:73} discloses \texttt{[0.9965, 0.9985]} as a normal approximation on logged test errors (\texttt{25} of \texttt{10,000}, \texttt{acc=0.9975} in \texttt{out/final\_eval\_stdout.txt:4}), matching unseen \texttt{04c}'s midpoint \texttt{0.425}; Table~\ref{tab:app_sensitivity} reports full sensitivity metrics under the original \texttt{H06}=\textsc{Defective} label.
 
 Under this rule, the corpus has \textbf{9 \textsc{Clean}} (5 Haiku, 4 Codex) and \textbf{7 \textsc{Defective}} (3 Haiku, 4 Codex) workspaces: \textbf{6 natural runs} (\textsc{Clean}: \texttt{H01}, \texttt{H02}, \texttt{H06}, \texttt{C01}; \textsc{Defective}: \texttt{H05}, \texttt{C05}), \textbf{5 clean twin bases} (\texttt{H03}, \texttt{H04}, \texttt{C02}, \texttt{C03}, \texttt{C04}), and \textbf{5 constructed defect twins} (\texttt{H07}, \texttt{H08}, \texttt{C06}, \texttt{C07}, \texttt{C08}).
 Author-verified \texttt{file:line} labels (\texttt{ground\_truth.csv}, Appendix~\ref{app:frozen_corpus}) are joined dynamically at aggregation time without altering immutable raw JSONLs; trivial policies stall at 50.0\% balanced accuracy.
@@ -58,14 +58,15 @@ Locked v2 Layer-1 scripts (\texttt{eval/v2\_frozen/locked/}, SHA-256 \texttt{42c
 \subsection{Pre-Filtering Coverage and Strict-Blocking Trade-Off}
 \label{sec:primary}
 
-On the 16 frozen workspaces, in-sample deterministic Layer~1 pre-filters 5/7 (71.4\%) defective workspaces in milliseconds at zero LLM cost, while read-only \texttt{codex-cli} resolves the remaining semantic defects to reach 7/7 (100.0\%) recall and 9/9 (100.0\%) clean yield; enforcing Layer-1 numerical flags as strict hard blocks trades clean yield down to 7/9 (77.8\%, 87.5\% F1; Table~\ref{tab:primary}, Figure~\ref{fig:primary}).
+On the 16 frozen workspaces, in-sample deterministic Layer~1 blocks 5/7 (71.4\%) defective workspaces in milliseconds at zero LLM cost (4/7 = 57.1\% directly attributable catches plus 1/7 incidental block on \texttt{C05}), while read-only \texttt{codex-cli} resolves the remaining semantic defects to reach 7/7 (100.0\%) recall and 9/9 (100.0\%) clean yield; enforcing Layer-1 numerical flags as strict hard blocks trades clean yield down to 7/9 (77.8\%, 87.5\% F1; Table~\ref{tab:primary}, Figure~\ref{fig:primary}).
 
-Per-workspace results (Figure~\ref{fig:comp}) clarify the exact division of labor between layers without circular claims.
-Layer~1 deterministically catches all five numerical, sign-flip, and static-AST defects (\texttt{H07}, \texttt{H08}, \texttt{C05}, \texttt{C06}, \texttt{C07}), missing only the two purely semantic flaws: \texttt{H05}'s denominator bug in \texttt{analyze\_flame.py} and \texttt{C08}'s inferential overclaim (workspace-level McNemar vs.\ \texttt{codex-cli}: discordant 2:0, $p=0.500000$).
-At the same time, strict log-only matching flags two clean workspaces: \texttt{H06}'s disclosed normal-approximation interval \texttt{[0.9965, 0.9985]} and \texttt{C04}'s negative-direction prose (\texttt{1.4598 percentage points below} against logged \texttt{-1.4598}), producing a 22.2\% in-sample Layer-1 FPR (77.8\% clean yield).
-By contrast, read-only \texttt{codex-cli} (\texttt{path\_only}) correctly approves both \texttt{H06} and \texttt{C04} in 3/3 repeats while catching all 7/7 defects (100.0\% precision, 100.0\% recall, 100.0\% F1, 100.0\% unanimity).
-Hard-unioning Layer~1 with \texttt{codex-cli} therefore preserves 7/7 (100.0\%) recall (workspace-level McNemar vs.\ \texttt{codex-cli} alone: discordant 0:0, $p=1.000000$) while inheriting Layer~1's two benign provenance flags (77.8\% yield, 87.5\% F1).
-This yields a direct architectural finding: Layer~1 delivers its greatest practical value either as a \textbf{\$0 fail-fast pre-filter} that hard-blocks high-precision AST violations (0.0\% FPR in-sample and unseen) and catches 5/7 defects before paid review, or as \textbf{structured provenance evidence passed into Layer~2} so semantic auditors adjudicate disclosed analytic derivations without sacrificing clean yield.
+Per-workspace results (Figure~\ref{fig:comp}) clarify the exact division of labor and attribution without circular claims.
+Layer~1 directly catches four numerical, sign-flip, and static-AST defects (\texttt{H07}, \texttt{H08}, \texttt{C06}, \texttt{C07}) and also blocks \texttt{C05}, though a counterfactual test replacing \texttt{C05}'s wrong total \texttt{720.591} with the true monthly sum \texttt{720.587} (\texttt{counterfactual\_c05.json}) still triggers 28 untraced \$m unit-rescaled cells, making \texttt{C05} an incidental block rather than an attributable arithmetic detection.
+Layer~1 misses both purely semantic flaws: \texttt{H05}'s denominator bug in \texttt{analyze\_flame.py} and \texttt{C08}'s inferential overclaim (workspace-level McNemar vs.\ \texttt{codex-cli}: discordant 2:0, $p=0.500000$).
+Strict log-only matching also flags two clean workspaces: \texttt{H06}'s disclosed normal-approximation interval \texttt{[0.9965, 0.9985]} and \texttt{C04}'s negative-direction prose (\texttt{1.4598 percentage points below} against logged \texttt{-1.4598}), producing a 22.2\% in-sample Layer-1 FPR (77.8\% clean yield).
+By contrast, read-only \texttt{codex-cli} (\texttt{path\_only}) approves both \texttt{H06} and \texttt{C04} in 3/3 repeats while catching all 7/7 defects (100.0\% F1 under the post-audit rule; 87.5\% recall and 93.3\% F1 under original \texttt{H06}=\textsc{Defective} in Table~\ref{tab:app_sensitivity}).
+Hard-unioning Layer~1 with \texttt{codex-cli} preserves 7/7 (100.0\%) recall (workspace-level McNemar vs.\ \texttt{codex-cli}: discordant 0:0, $p=1.000000$) while inheriting Layer~1's two benign provenance flags (77.8\% yield, 87.5\% F1).
+This yields a concrete architectural lesson: hard-block immediately on high-precision AST checks (0.0\% FPR in-sample and unseen), and pass numerical provenance flags as \$0 diagnostic evidence into Layer~2 unless a project enforces a strict log-every-derived-number contract.
 
 \begin{figure*}[t]
   \centering
@@ -107,14 +108,14 @@ Stratifying frozen results by executor family and defect track shows that all fi
   \label{fig:decoupling}
 \end{figure*}
 
-\paragraph{Defect provenance and directional reviewer differences.}
-Every LLM auditor caught 5/5 constructed defect twins across every repeat, confirming that synthetic single-defect twins are substantially easier than subtle natural logic bugs.
-Across the two natural defects (\texttt{H05} denominator bug and \texttt{C05} table arithmetic mismatch), \texttt{codex-cli} and \texttt{claude-haiku} caught 2/2 while \texttt{claude-sonnet} caught 1/2 (missing \texttt{H05} in 6/6 repeats; workspace-level McNemar vs.\ \texttt{codex-cli} or \texttt{claude-haiku}: discordant 1:0, $p=1.000000$) while keeping 0.0\% FPR and 100.0\% unanimity.
-Meanwhile, \texttt{claude-haiku} under \texttt{path\_only} showed lower repeat stability (87.5\% unanimity, 7.4\% trial FPR from single-repeat false alarms on clean \texttt{H01} and \texttt{H03}, though majority vote reached 9/9 clean yield).
+\paragraph{Defect provenance and reviewer differences.}
+Every LLM auditor caught 5/5 constructed twins across every repeat, confirming synthetic single-defect twins are easier than subtle natural logic bugs.
+On the two natural defects (\texttt{H05} denominator bug, \texttt{C05} arithmetic error), \texttt{codex-cli} and \texttt{claude-haiku} caught 2/2 while \texttt{claude-sonnet} caught 1/2 (missing \texttt{H05} in 6/6 repeats; workspace-level McNemar discordant 1:0, $p=1.000000$) at 0.0\% FPR and 100.0\% unanimity.
+\texttt{claude-haiku} under \texttt{path\_only} had lower repeat stability (87.5\% unanimity, 7.4\% trial FPR from single-repeat false alarms on \texttt{H01} and \texttt{H03}; majority vote reached 9/9 yield).
 
-\paragraph{No detectable framing degradation under calibrated binary rubrics.}
-Prepending a frozen executor summary produced zero workspace-level majority-vote flips for both \texttt{claude-sonnet} (paired $n=16$ workspaces, discordant 0:0, $p=1.000000$) and \texttt{claude-haiku} (paired $n=16$ workspaces, discordant 0:0, $p=1.000000$; descriptive trial-level flips were 2:1 as single-repeat false alarms on \texttt{H01}/\texttt{H03} disappeared and \texttt{H06} triggered once, raising trial F1 from 95.5\% to 97.7\%).
-Because $n=16$ workspaces yields low statistical power, we interpret this as no detectable framing degradation under calibrated binary rubrics rather than proof of framing invariance.
+\paragraph{No detectable framing degradation.}
+Prepending a frozen summary caused zero workspace-level majority-vote flips for \texttt{claude-sonnet} and \texttt{claude-haiku} (paired $n=16$, discordant 0:0, $p=1.000000$; descriptive trial flips on Haiku were 2:1, lifting trial F1 from 95.5\% to 97.7\%).
+Given low power at $n=16$, we report no detectable degradation rather than proof of invariance.
 
 \subsection{Strictly Unseen 21-Scenario Mechanical Blind Test}
 \label{sec:unseen}
@@ -156,4 +157,4 @@ Six of the 18 completed reports contained zero $\ge 3$-decimal numbers (primaril
 \label{sec:dogfood}
 
 All 16 frozen workspaces, locked v2 gate snapshots (\texttt{eval/v2\_frozen/locked/}), unified ground-truth labels (\texttt{ground\_truth.csv}), raw trial JSONLs (\texttt{results\_layer1.jsonl}, \texttt{results\_factorial\_v2.jsonl}), unseen blind-test JSONL, trap-labeled forensic audit CSV, minimal unseen forensic files (\texttt{report/}, \texttt{out/}, \texttt{code/}, and \texttt{09c}'s cited CSV), and zero-override aggregators are committed in \RepoRef.
-Running \texttt{./veriloop eval-v2 layer1} verifies the locked v2 SHA-256 hashes and reproduces committed Layer-1 predictions verbatim; running \texttt{./veriloop test} passes 46 offline unit and integration tests plus 6 skill-catalog checks; and running \texttt{./veriloop audit-paper} verifies this manuscript's numbers, citations, abstract/introduction style, and figures end to end.
+Running \texttt{./veriloop eval-v2 layer1} verifies the locked v2 SHA-256 hashes and reproduces committed Layer-1 \texttt{predicted\_defective} and \texttt{details} fields verbatim (while \texttt{ground\_truth.csv} is joined dynamically at aggregation time); running \texttt{./veriloop test} passes 46 offline tests plus 6 catalog checks; and running \texttt{./veriloop audit-paper} verifies numbers, citations, style, and figures end to end.

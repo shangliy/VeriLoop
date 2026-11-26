@@ -7,7 +7,7 @@ All verification utilities are implemented in Python~3 using only the standard l
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig1_architecture.pdf}
-  \caption{\textbf{VeriLoop pairs zero-cost mechanical pre-filtering with read-only Layer-2 auditing on frozen raw artifacts.} Existence gates miss executed bugs; single-layer LLM review incurs paid calls on every run (and \texttt{claude-sonnet} misses \texttt{H05}); Layer~1 alone pre-filters 5/7 (71.4\%) defects at \$0 cost while missing semantic flaws (\texttt{H05}, \texttt{C08}); cascading Layer~1 into read-only \texttt{codex-cli} reaches 7/7 (100.0\%) recall.}
+  \caption{\textbf{VeriLoop pairs zero-cost mechanical pre-filtering with read-only Layer-2 auditing on frozen raw artifacts.} Existence gates miss executed bugs; single-layer LLM review incurs paid calls on every run (and \texttt{claude-sonnet} misses \texttt{H05}); in-sample Layer~1 blocks 5/7 (71.4\%) defects at \$0 cost (4/7 directly attributable plus 1/7 incidental on \texttt{C05}) while missing semantic flaws (\texttt{H05}, \texttt{C08}); cascading Layer~1 into read-only \texttt{codex-cli} reaches 7/7 (100.0\%) recall.}
   \label{fig:arch}
 \end{figure*}
 

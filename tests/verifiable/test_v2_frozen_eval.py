@@ -51,8 +51,8 @@ class TestV2FrozenEval(unittest.TestCase):
             self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
             repro = [json.loads(l) for l in out_fp.read_text(encoding="utf-8").splitlines() if l.strip()]
         self.assertEqual(
-            [(x["artifact_id"], x["predicted_defective"]) for x in repro],
-            [(x["artifact_id"], x["predicted_defective"]) for x in committed],
+            [(x["artifact_id"], x["predicted_defective"], x["details"]) for x in repro],
+            [(x["artifact_id"], x["predicted_defective"], x["details"]) for x in committed],
         )
 
     def test_layer1_aggregator_runs_zero_override(self):
