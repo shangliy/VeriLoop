@@ -43,6 +43,15 @@ class TestV2FrozenEval(unittest.TestCase):
         self.assertIn("ZERO OVERRIDES", r.stdout)
         self.assertIn("layer1_mechanical", r.stdout)
 
+    def test_veriloop_eval_v2_summary_cli(self):
+        r = subprocess.run(
+            [sys.executable, str(ROOT / "veriloop"), "eval-v2", "summary"],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn("ZERO OVERRIDES", r.stdout)
+        self.assertIn("codex-cli", r.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

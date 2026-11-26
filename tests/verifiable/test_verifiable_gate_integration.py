@@ -68,6 +68,49 @@ class TestVerifiableGateCLI(unittest.TestCase):
         self.assertTrue(any("trace_numbers" in r for r in data["block_reasons"]))
         self.assertTrue(any("audit_code" in r for r in data["block_reasons"]))
 
+    def test_multilog_auto_data_and_wrong_logs_reporting(self):
+        (self.ws / "out1").mkdir()
+        (self.ws / "out2").mkdir()
+        (self.ws / "data").mkdir()
+        (self.ws / "out1/a.txt").write_text("ACC 0.8123\n")
+        (self.ws / "out2/b.txt").write_text("ACC 0.9456\n")
+        (self.ws / "data/raw.csv").write_text("x,val\n1,3.542\n")
+
+        # Clean report spanning two --logs dirs + auto-detected <workspace>/data
+        (self.ws / "report/report.md").write_text(
+            "| Run | Acc | Log |\n|---|---:|---|\n"
+            "| A | 0.8123 | a.txt |\n"
+            "| B | 0.9456 | b.txt |\n"
+            "Raw dataset sample value: 3.542.\n"
+        )
+        p_ok = subprocess.run(
+            [
+                sys.executable, GATE,
+                "-w", str(self.ws),
+                "--report", "report/report.md",
+                "--logs", "out1", "out2",
+                "--out-json", "audits/gate_ok.json",
+            ],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(p_ok.returncode, 0, p_ok.stdout + p_ok.stderr)
+
+        # Wrong-log defect: row cites a.txt while value comes from b.txt -> reports wrong_logs=1
+        (self.ws / "report/report.md").write_text("| A | 0.9456 | a.txt |\n")
+        p_bad = subprocess.run(
+            [
+                sys.executable, GATE,
+                "-w", str(self.ws),
+                "--report", "report/report.md",
+                "--logs", "out1", "out2",
+                "--out-json", "audits/gate_bad.json",
+            ],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(p_bad.returncode, 2, p_bad.stdout + p_bad.stderr)
+        bad_data = json.loads((self.ws / "audits/gate_bad.json").read_text())
+        self.assertTrue(any("wrong_logs=1" in r for r in bad_data["block_reasons"]), bad_data["block_reasons"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -19,7 +19,7 @@
 Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, or conclusions that contradict their own logs. **VeriLoop** delivers a complete, convenient, and high-efficiency research pipeline in one place:
 
 - **Complete Lifecycle (90+ Modular Skills):** Idea discovery, literature search, persistent Research Wiki, remote/local experiment execution, multi-seed statistical runs, dual-layer hard verification, **award-paper style writing & figure linting (`bestpaper-writing`)**, automated LaTeX paper generation, and rebuttal workflows.
-- **Convenient Single CLI (`./veriloop`):** One unified entry point (`gate`, `claims`, `board`, `demo`, `live`, `install`, `test`, `lint-paper`, `audit-paper`) with zero third-party dependencies for the entire deterministic verification and prose-linting core.
+- **Convenient Single CLI (`./veriloop`):** One unified entry point (`gate`, `claims`, `board`, `demo`, `live`, `install`, `test`, `lint-paper`, `audit-paper`, `milestone-audit`, `eval-v2`) with zero third-party dependencies for the entire deterministic verification and prose-linting core.
 - **Efficient Fail-Fast Gating (`$0` Layer 1 → Targeted Layer 2 → 4-in-1 Paper Audit):** Catches fabricated numbers, sign flips, Python AST integrity bugs, broken claim hashes, missing BibTeX entries, and AI-draft writing/figure anti-patterns in milliseconds at `$0` LLM cost before invoking a path-isolated cross-family reviewer, backed by a hard USD budget circuit breaker.
 
 ```text
@@ -79,8 +79,11 @@ With `trace_numbers.py` (`42c39cf4a4adeee1`) and `audit_code.py` (`72dac256a9caf
 git clone https://github.com/shangliy/VeriLoop.git
 cd VeriLoop
 
-# Run all 30 offline verification tests + skill catalog checks
+# Run all offline verification & integration tests + skill catalog checks
 ./veriloop test
+
+# Reproduce v2 zero-override benchmark tables and stats directly from committed JSONLs
+./veriloop eval-v2 summary
 
 # Run the zero-API closed-loop walkthrough (Round 1 hard block -> Round 2 repair -> HTML board)
 ./veriloop demo
@@ -143,6 +146,7 @@ cd VeriLoop
 | `./veriloop lint-paper [args...]` | Run `bestpaper-writing` checks (`check_draft.py`, `check_figures.py`, `--metrics`, `--exemplars`) |
 | `./veriloop audit-paper [--no-lint]` | 4-in-1 manuscript gate: `trace_numbers` + `citation_audit` + `check_draft` + `check_figures` |
 | `./veriloop milestone-audit [args...]` | Independent dual-model milestone gate (**latest Claude + latest Gemini** in parallel on frozen SHA-256 artifacts → consensus/unique catches + revised next-action plan, `rc=0` pass / `rc=2` revise) |
+| `./veriloop eval-v2 <subcmd> [args...]` | Reproduce v2 zero-override benchmark (`summary`, `layer1`, `run`, `unseen`, `rebuild-paper`) directly from committed frozen artifacts |
 
 ---
 

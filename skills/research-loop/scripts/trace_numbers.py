@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Trace every number in a report back to raw logs on disk (v2).
+"""Trace every number in a report back to raw logs (and optional raw data files) on disk (v3).
 
-Upgrades over v1 (from real 5-step dry-run findings):
+Upgrades over v1/v2 (from dry-run and v2 blind-test forensic findings):
   1. SIGN MISMATCH: preserves leading +/- signs and catches sign-flip fabrications
-     (e.g., log says -0.0106, report writes +0.0106).
+     (e.g., log says -0.0106, report writes +0.0106), while recognizing explicit
+     negative-direction prose phrasing on unsigned magnitudes (e.g. "1.4598 pp below"
+     or "lower by 1.4598") without relaxing explicit "+" signs.
   2. WRONG LOG: if a table row (or inline backtick) names a specific log file
      (e.g. `fg_noid_all3.txt`), every number on that row MUST exist in the cited
      log file(s), not merely somewhere else among 50 unrelated logs.
@@ -11,6 +13,9 @@ Upgrades over v1 (from real 5-step dry-run findings):
      together on the same line of a log file.
   4. CITED STALE vs WORKSPACE STALE: distinguishes stale logs actually referenced
      or matched by the report from unrelated stale logs in the workspace.
+  5. PERCENT/FRACTION EQUIVALENCE & OPTIONAL --data PROVENANCE: matches fraction/
+     percentage pairs (0.87745 <-> 87.745%) and optionally indexes raw input data
+     files (--data) without triggering script-staleness checks on input datasets.
 
 Exit code:
   0  all numbers traced cleanly (0 untraced, 0 sign mismatches, 0 wrong-log, 0 unpaired)
@@ -49,12 +54,23 @@ def _mask_non_metrics(line):
 
 
 SPACED_MINUS_RE = re.compile(r"(?:^|[\s(=])-\s+$")
-
-
 PCT_SUFFIX_RE = re.compile(r"^\s*(?:\\?%|pp\b|percentage\s+points?\b)", re.I)
+# Explicit negative-direction prose polarity for UNSIGNED numbers only (never relaxes explicit '+')
+NEG_PREFIX_RE = re.compile(
+    r"\b(?:below|lower|drop(?:s|ped)?|decreas(?:e|es|ed|ing)|reduc(?:e|es|ed|ing)|"
+    r"fell|fall(?:s|ing)?|worse|underperform(?:s|ed|ing)?|decline(?:s|d)?|deficit|shortfall|loss)"
+    r"\b(?:\s+[\w-]+){0,4}\s+(?:by|of)\s*$",
+    re.I,
+)
+NEG_SUFFIX_RE = re.compile(
+    r"^\s*(?:(?:\\?%|pp\b|percentage\s+points?|points?|pts?)\s+)?"
+    r"(?:below|lower(?:\s+than)?|worse(?:\s+than)?|less(?:\s+than)?|under(?:\s+the)?|"
+    r"drop\b|decrease\b|reduction\b|deficit\b)",
+    re.I,
+)
 
 
-def numbers_in(line):
+def numbers_in(line, allow_prose_polarity=False):
     """Yield (raw_token, sign_char, abs_Decimal, decimals, is_percent) for decimals in a line."""
     masked = _mask_non_metrics(line)
     for m in NUM.finditer(masked):
@@ -63,6 +79,12 @@ def numbers_in(line):
         if not sign and SPACED_MINUS_RE.search(masked[:m.start()]):
             # Space-separated binary subtraction (e.g. "53.989 - 0.4438*P") or spaced range
             sign = "~"
+        elif not sign and allow_prose_polarity:
+            prefix = masked[max(0, m.start() - 48):m.start()]
+            suffix = masked[m.end():m.end() + 48]
+            if NEG_PREFIX_RE.search(prefix) or NEG_SUFFIX_RE.search(suffix):
+                # Unsigned magnitude with explicit negative-direction prose (e.g. "1.4598 pp below")
+                sign = "~"
         try:
             val = Decimal(mag_tok if mag_tok[0] != "." else "0" + mag_tok)
         except InvalidOperation:
@@ -207,14 +229,23 @@ def pair_on_same_line(line_keys, a_str, b_str, allowed_files=None):
     return False
 
 
-def stale_logs(files, scripts_dir):
-    if not scripts_dir or not os.path.isdir(scripts_dir):
+def stale_logs(files, scripts_dirs):
+    if not scripts_dirs:
         return []
+    if isinstance(scripts_dirs, str):
+        scripts_dirs = [scripts_dirs]
     scripts = {}
-    for root, _d, fs in os.walk(scripts_dir):
-        for f in fs:
-            if f.endswith((".py", ".sh", ".ipynb")):
-                scripts[os.path.splitext(f)[0]] = os.path.join(root, f)
+    for sd in scripts_dirs:
+        if os.path.isfile(sd):
+            if sd.endswith((".py", ".sh", ".ipynb")):
+                scripts[os.path.splitext(os.path.basename(sd))[0]] = sd
+            continue
+        if not os.path.isdir(sd):
+            continue
+        for root, _d, fs in os.walk(sd):
+            for f in fs:
+                if f.endswith((".py", ".sh", ".ipynb")):
+                    scripts[os.path.splitext(f)[0]] = os.path.join(root, f)
     out = []
     for f in files:
         stem = os.path.splitext(os.path.basename(f))[0]
@@ -228,7 +259,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("report")
     ap.add_argument("--logs", action="append", required=True, help="log file or directory (repeatable)")
-    ap.add_argument("--scripts", help="scripts dir, to flag logs older than their script")
+    ap.add_argument("--data", action="append", default=[],
+                    help="optional raw input data file or directory for provenance (repeatable; excluded from staleness checks)")
+    ap.add_argument("--scripts", action="append", default=[],
+                    help="scripts file or dir, to flag logs older than their script (repeatable)")
     ap.add_argument("--min-decimals", type=int, default=3,
                     help="ignore numbers with fewer decimals (default 3)")
     ap.add_argument("--max-mb", type=float, default=50.0, help="skip log files larger than this")
@@ -243,12 +277,14 @@ def main():
     if not files:
         print("no log files found under --logs", file=sys.stderr)
         sys.exit(2)
+    data_files = log_files(a.data, a.report) if a.data else []
+    all_files = sorted(set(files) | set(data_files))
 
     by_basename = defaultdict(set)
-    for f in files:
+    for f in all_files:
         by_basename[os.path.basename(f)].add(f)
 
-    idx_u, idx_s, line_keys, skipped = build_index(files, int(a.max_mb * 1e6))
+    idx_u, idx_s, line_keys, skipped = build_index(all_files, int(a.max_mb * 1e6))
 
     traced, untraced, sign_mismatches, wrong_logs = [], [], [], []
     common, mixed, unpaired_pairs = [], [], []
@@ -275,7 +311,7 @@ def main():
             enforce_cited = is_table_row and bool(row_cited)
             row_sets = []
 
-            for raw_tok, sign, val, dec, pct in numbers_in(line):
+            for raw_tok, sign, val, dec, pct in numbers_in(line, allow_prose_polarity=True):
                 if dec < a.min_decimals:
                     continue
                 rec = {"line": ln, "number": raw_tok + ("%" if pct else ""), "context": line.strip()[:160]}
@@ -357,6 +393,7 @@ def main():
     result = {
         "report": a.report,
         "log_files": len(files),
+        "data_files": len(data_files),
         "skipped_large": skipped,
         "traced": len(traced),
         "untraced": untraced,

@@ -144,6 +144,62 @@ class TestTraceNumbers(unittest.TestCase):
         self.assertEqual(data["traced"], 4)
         self.assertEqual([u["number"] for u in data["untraced"]], ["91.234"])
 
+    def test_data_flag_traces_raw_csv_without_stale_flag(self):
+        data_dir = self.ws / "data"
+        data_dir.mkdir()
+        raw_csv = data_dir / "island_species.csv"
+        raw_csv.write_text("island,area,species\nA,3.542,12\n")
+        # Even if a script with the same stem is newer than the input CSV, --data is never flagged stale
+        sc = self.scripts / "island_species.py"
+        sc.write_text("print('analysis')\n")
+        t_new = os.path.getmtime(raw_csv) + 100
+        os.utime(sc, (t_new, t_new))
+
+        rep = self.ws / "rep.md"
+        rep.write_text("Model All=0.3221 on island area 3.542 (`island_species.csv`).\n")
+
+        # Without --data, 3.542 is untraced
+        r_no_data = run_tracer(rep, self.logs)
+        self.assertEqual(r_no_data.returncode, 1)
+        self.assertEqual([u["number"] for u in json.loads(r_no_data.stdout)["untraced"]], ["3.542"])
+
+        # With --data and --strict-stale, 3.542 traces cleanly and is not marked stale
+        r_with_data = run_tracer(
+            rep, self.logs, scripts=self.scripts, extra=("--data", str(data_dir), "--strict-stale")
+        )
+        self.assertEqual(r_with_data.returncode, 0, r_with_data.stdout + r_with_data.stderr)
+        d = json.loads(r_with_data.stdout)
+        self.assertEqual(d["data_files"], 1)
+        self.assertEqual(d["traced"], 2)
+        self.assertEqual(len(d["untraced"]), 0)
+        self.assertEqual(len(d["cited_stale"]), 0)
+
+    def test_negative_direction_prose_polarity_preserves_explicit_sign_flip(self):
+        (self.logs / "sota.txt").write_text("delta_pp=-1.4598\ndelta_f1=-0.0106\n")
+        rep_ok = self.ws / "rep_ok.md"
+        rep_ok.write_text(
+            "Our model sits 1.4598 percentage points below SOTA and is lower by 0.0106.\n"
+        )
+        r_ok = run_tracer(rep_ok, self.logs)
+        self.assertEqual(r_ok.returncode, 0, r_ok.stdout + r_ok.stderr)
+        d_ok = json.loads(r_ok.stdout)
+        self.assertEqual(d_ok["traced"], 2)
+        self.assertEqual(len(d_ok["sign_mismatches"]), 0)
+
+        # Explicit '+' sign MUST still be caught as SIGN_MISMATCH even next to negative-direction prose!
+        rep_plus = self.ws / "rep_plus.md"
+        rep_plus.write_text("Our model sits +1.4598 percentage points below SOTA.\n")
+        r_plus = run_tracer(rep_plus, self.logs)
+        self.assertEqual(r_plus.returncode, 1)
+        self.assertEqual(len(json.loads(r_plus.stdout)["sign_mismatches"]), 1)
+
+        # Unsigned table cell without directional prose MUST still be caught as SIGN_MISMATCH!
+        rep_tbl = self.ws / "rep_tbl.md"
+        rep_tbl.write_text("| Model | 0.0106 | sota.txt |\n")
+        r_tbl = run_tracer(rep_tbl, self.logs)
+        self.assertEqual(r_tbl.returncode, 1)
+        self.assertEqual(len(json.loads(r_tbl.stdout)["sign_mismatches"]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

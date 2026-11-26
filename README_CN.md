@@ -15,7 +15,7 @@
 自主科研 Agent 很少因为「忘记输出文件」而失败；它们真正的失败模式是**代码正常跑完，却在报告中写出与原始日志、代码路径或统计结果相矛盾的数值与结论**。**VeriLoop** 将完整科研流程与硬验证机制合二为一，打造更完备、更便捷、更高效的科研流水线：
 
 1. **更完备（90+ 全周期技能 + 顶会写作引擎）：** 覆盖选题探索、文献检索与持久化 Research Wiki、多随机种子实验、双层硬门控审计、单轮靶向闭环修复、**内置 [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)（60 篇顶会获奖论文写作规范 + Okabe-Ito 绘图样式 + 自动文风/图表质检）**、LaTeX 论文生成与 Rebuttal 全流程。
-2. **更便捷（统一入口 `./veriloop`）：** 单一零依赖命令行工具统一调度 `gate` / `claims` / `board` / `demo` / `live` / `install` / `test` / `lint-paper` / `audit-paper`，开箱即用。
+2. **更便捷（统一入口 `./veriloop`）：** 单一零依赖命令行工具统一调度 `gate` / `claims` / `board` / `demo` / `live` / `install` / `test` / `lint-paper` / `audit-paper` / `milestone-audit` / `eval-v2`，开箱即用。
 3. **更高效（`$0` 确定性快速失败 + 四合一投稿自检 + 预算熔断）：** 第一层在毫秒级以零 API 成本拦截数值编造、正负号反转、6 类 Python AST 代码作弊、SHA-256 账本篡改、缺失 BibTeX 与 AI 写作/图表硬伤；仅对通过确定性校验的工作区触发纯路径跨模型硬阻断审计，并内置严格 USD 熔断器。
 
 ---
@@ -51,8 +51,11 @@
 git clone https://github.com/shangliy/VeriLoop.git
 cd VeriLoop
 
-# 1. 运行全部 30 项离线测试 + 技能目录完整性校验（零费用）
+# 1. 运行全部离线验证测试 + 技能目录完整性校验（零费用）
 ./veriloop test
+
+# 1b. 从已提交的 v2 冻结语料直接复现零覆盖统计表（零费用）
+./veriloop eval-v2 summary
 
 # 2. 运行 10 秒零 API 闭环演示（Round 1 硬阻断 -> Round 2 修复放行 -> 生成 HTML 看板）
 ./veriloop demo

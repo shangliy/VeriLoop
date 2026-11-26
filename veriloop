@@ -18,6 +18,13 @@ Subcommands:
   ./veriloop milestone-audit [args...]
                                     Independent dual-model milestone audit (latest Claude + latest
                                     Gemini in parallel on SHA-256 frozen artifacts -> action plan)
+  ./veriloop eval-v2 <subcmd> [args...]
+                                    Reproduce v2 zero-override benchmark from committed artifacts:
+                                      summary       aggregate committed v2 JSONLs (zero overrides)
+                                      layer1        re-run deterministic Layer-1 gate on 16 frozen workspaces
+                                      run           run/resume paired 2x2 factorial reviewer benchmark
+                                      unseen        run 21-scenario unseen blind test (SHA-256 locked by default)
+                                      rebuild-paper regenerate paper/out/ tables & figures from v2 JSONLs
 """
 import argparse
 import subprocess
@@ -79,6 +86,39 @@ def run_lint_paper(rest):
     return 0 if (r1.returncode == 0 and r2_rc == 0) else 1
 
 
+def run_eval_v2(rest):
+    usage = (
+        "Usage: ./veriloop eval-v2 <summary|layer1|run|unseen|rebuild-paper> [args...]\n"
+        "  summary        Aggregate committed v2 frozen JSONLs with zero overrides\n"
+        "  layer1         Run deterministic Layer-1 gate across the 16 frozen workspaces\n"
+        "  run            Run or resume the paired 2x2 factorial LLM benchmark (supports --dry-run)\n"
+        "  unseen         Run the 21-scenario unseen SciIntegrity blind test (supports --dry-run)\n"
+        "  rebuild-paper  Rebuild paper/out/ stats, LaTeX tables, and vector figures from v2 JSONLs"
+    )
+    if not rest or rest[0] in ("-h", "--help", "help"):
+        print(usage)
+        sys.exit(0)
+    action, extra = rest[0], rest[1:]
+    v2_dir = ROOT / "eval/v2_frozen"
+    if action == "summary":
+        targets = extra or [
+            str(v2_dir / "results_layer1.jsonl"),
+            str(v2_dir / "results_factorial_v2.jsonl"),
+        ]
+        passthrough([sys.executable, str(v2_dir / "aggregate_v2.py"), *targets])
+    elif action == "layer1":
+        passthrough([sys.executable, str(v2_dir / "run_v2_factorial.py"), "--layer1-only", *extra])
+    elif action == "run":
+        passthrough([sys.executable, str(v2_dir / "run_v2_factorial.py"), *extra])
+    elif action == "unseen":
+        passthrough([sys.executable, str(ROOT / "eval/v2_unseen/run_unseen_mech_blind.py"), *extra])
+    elif action == "rebuild-paper":
+        passthrough([sys.executable, str(ROOT / "paper/build_tables_and_figures.py"), *extra])
+    else:
+        print(f"Unknown eval-v2 subcommand: {action}\n\n{usage}", file=sys.stderr)
+        sys.exit(2)
+
+
 def main():
     if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help", "help"):
         print(__doc__.strip())
@@ -105,6 +145,8 @@ def main():
         sys.exit(run_lint_paper(rest))
     elif sub == "milestone-audit":
         passthrough([sys.executable, str(MDA_SCRIPT), *rest])
+    elif sub == "eval-v2":
+        run_eval_v2(rest)
     elif sub == "audit-paper":
         no_lint = "--no-lint" in rest
         sec_dir = ROOT / "paper/sec"

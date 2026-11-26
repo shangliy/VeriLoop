@@ -38,9 +38,12 @@ def main():
     ap.add_argument("--workspace", "-w", default=".", help="Project workspace root")
     ap.add_argument("--report", required=True, help="Report/manuscript path (relative to workspace or absolute)")
     ap.add_argument("--logs", nargs="+", required=True, help="Raw log file(s) or directory(ies)")
+    ap.add_argument("--data", nargs="*", default=[], help="Optional raw input data file(s) or directory(ies) for provenance")
+    ap.add_argument("--no-auto-data", action="store_true", help="Disable auto-indexing <workspace>/data when --data is omitted")
     ap.add_argument("--scripts", nargs="*", default=[], help="Code file(s) or directory(ies) for AST audit")
     ap.add_argument("--bib", help="Optional .bib file for citation_audit.py")
     ap.add_argument("--strict", action="store_true", help="Treat MEDIUM AST findings as blocking too")
+    ap.add_argument("--strict-stale", action="store_true", help="Block if any cited log is older than its generating script")
     ap.add_argument("--reviewer-provider", choices=["none", "dry-run", "codex-cli", "claude-cli", "openai", "anthropic"],
                     default="none", help="Optional Layer-2 path-only cross-model reviewer (default: none = Layer-1 only)")
     ap.add_argument("--reviewer-model", default="default", help="Model name for Layer-2 reviewer")
@@ -52,6 +55,12 @@ def main():
     ws = Path(a.workspace).resolve()
     report_p = Path(a.report) if Path(a.report).is_absolute() else (ws / a.report)
     logs_p = [str(Path(x) if Path(x).is_absolute() else (ws / x)) for x in a.logs]
+    if a.data:
+        data_p = [str(Path(x) if Path(x).is_absolute() else (ws / x)) for x in a.data]
+    elif not a.no_auto_data and (ws / "data").is_dir():
+        data_p = [str(ws / "data")]
+    else:
+        data_p = []
     scripts_p = [str(Path(x) if Path(x).is_absolute() else (ws / x)) for x in a.scripts]
 
     result = {
@@ -63,9 +72,15 @@ def main():
     }
 
     # 1. Numerical provenance (trace_numbers.py)
-    cmd_tr = [sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), str(report_p), "--logs", *logs_p, "--json"]
-    if scripts_p:
-        cmd_tr.extend(["--scripts", *scripts_p])
+    cmd_tr = [sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), str(report_p), "--json"]
+    for lp in logs_p:
+        cmd_tr.extend(["--logs", lp])
+    for dp in data_p:
+        cmd_tr.extend(["--data", dp])
+    for sp in scripts_p:
+        cmd_tr.extend(["--scripts", sp])
+    if a.strict_stale:
+        cmd_tr.append("--strict-stale")
     rc, out, err = run_cmd(cmd_tr)
     try:
         tr_data = json.loads(out)
@@ -77,7 +92,8 @@ def main():
         result["block_reasons"].append(
             f"trace_numbers failed (untraced={len(tr_data.get('untraced', []))}, "
             f"sign={len(tr_data.get('sign_mismatches', []))}, "
-            f"wrong_log={len(tr_data.get('wrong_log', []))})"
+            f"wrong_logs={len(tr_data.get('wrong_logs', []))}, "
+            f"unpaired={len(tr_data.get('unpaired_pairs', []))})"
             if isinstance(tr_data, dict) else f"trace_numbers exited {rc}"
         )
 

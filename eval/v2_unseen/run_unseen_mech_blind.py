@@ -49,21 +49,28 @@ PREVIOUSLY_TOUCHED = {
 }
 
 
-def verify_frozen_gates() -> dict:
+def verify_frozen_gates(allow_updated: bool = False) -> dict:
     hashes = {}
     for name, expected_prefix in FROZEN_SHA256.items():
         p = RL_SCRIPTS / name
         h = hashlib.sha256(p.read_bytes()).hexdigest()
         if not h.startswith(expected_prefix):
-            raise RuntimeError(
-                f"FROZEN GATE HASH MISMATCH for {name}: got {h[:16]}, expected {expected_prefix}! "
-                "Refusing to run unseen blind test on modified gate."
+            if not allow_updated:
+                raise RuntimeError(
+                    f"FROZEN GATE HASH MISMATCH for {name}: got {h[:16]}, expected {expected_prefix}! "
+                    "Refusing to run unseen blind test on modified gate "
+                    "(pass --allow-updated-gate to evaluate a post-v2 gate version explicitly)."
+                )
+            print(
+                f"[WARN] Running unseen test with UPDATED gate {name} sha256={h[:16]} "
+                f"(v2 paper frozen sha256 was {expected_prefix})",
+                file=sys.stderr,
             )
         hashes[name] = h
     return hashes
 
 
-def run_frozen_gates(ws: Path) -> dict:
+def run_frozen_gates(ws: Path, include_data: bool = False) -> dict:
     rep = ws / "report/report.md"
     if not rep.is_file():
         return {"report_exists": False, "mech_blocked": False, "trace": {}, "audit": {}}
@@ -76,6 +83,8 @@ def run_frozen_gates(ws: Path) -> dict:
         cmd = [sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), str(rep), "--json"]
         for ld in log_dirs:
             cmd.extend(["--logs", str(ld)])
+        if include_data and (ws / "data").is_dir():
+            cmd.extend(["--data", str(ws / "data")])
         p = subprocess.run(cmd, capture_output=True, text=True)
         trace_rc = p.returncode
         if p.stdout.strip().startswith("{"):
@@ -147,10 +156,12 @@ def main():
     ap.add_argument("--timeout", type=int, default=300)
     ap.add_argument("--max-usd-per-task", type=float, default=0.50)
     ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--allow-updated-gate", action="store_true",
+                    help="Allow running on post-v2 updated gate scripts (passes --data when present)")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    gate_hashes = verify_frozen_gates()
+    gate_hashes = verify_frozen_gates(allow_updated=args.allow_updated_gate)
     out_dir = Path(args.out_dir).resolve()
     ws_root = out_dir / "workspaces"
     ws_root.mkdir(parents=True, exist_ok=True)
@@ -191,7 +202,7 @@ def main():
         except Exception as e:
             cost, err = 0.0, str(e)[:300]
         elapsed = round(time.time() - t0, 2)
-        gates = run_frozen_gates(ws)
+        gates = run_frozen_gates(ws, include_data=args.allow_updated_gate)
 
         rec = {
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),

@@ -1,71 +1,43 @@
-# Best-Paper Writing Report (`VeriLoop`)
+# Best-Paper Writing Report (`VeriLoop` v2)
 
-Generated following `gulucaptain/Best-Paper-Writing-Skill` (Steps 1--8) for dual-target release:
-- **Public arXiv Preprint**: `paper/main.tex` (modern single-column layout with toggleable author/repo macros)
-- **ICML 2027 Submission (`Datasets, Evaluations, and Benchmarks` track)**: `paper/main_icml2027.tex` (official unmodified `icml2027.sty`, double-blind, 8-page main body + mandatory AI Use & Impact Statements + unlimited References/Appendix)
+Generated following `shangliy/Best-Paper-Writing-Skill` (forked from `gulucaptain/Best-Paper-Writing-Skill`) and verified via `./veriloop audit-paper` and `./veriloop milestone-audit` (Opus `M3-draft-v2`: `0 BLOCKER`, all `7 MAJOR` + `5 MINOR` resolved) for dual-target release:
+- **Public arXiv v2 Preprint**: `paper/main.pdf` (`paper/main.tex`, `paper/arxiv_v2_submission.tar.gz`)
+- **ICML 2027 Submission (`Datasets, Evaluations, and Benchmarks` track)**: `paper/main_icml2027.pdf` (`paper/main_icml2027.tex`, official unmodified `icml2027.sty`, double-blind, exact 8-page main body + Page 9 `AI Use Statement` & `Impact Statement` + `References` + Appendix)
 
 ---
 
 ## Step 1: Core Positioning
 
-- **Claim**: We show that coupling deterministic claim, signed numerical-provenance, and Python AST gates with path-isolated cross-family hostile auditing cuts unblocked blocker leakage from 86.7% to 0.0% across 15 paired tasks ($p=0.000244$) and clears all Round-1 misconduct in one repair turn, because it closes both the semantic blind spot of existence gating and the framing-softening, non-blocking, and same-family sycophancy failures of LLM review loops.
-- **Tension Type**: `capability-missing` / `tradeoff` (existence gates verify execution without verifying scientific validity; advisory LLM reviews inspect prose without blocking delivery and suffer framing bias and same-family sycophancy).
-- **Observation / Insight** (stated directly in prose, no formula): Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, or conclusions that contradict their own logs.
+- **Claim**: Coupling deterministic numerical-provenance and Python AST gates with path-isolated cross-family read-only auditing delivers complementary coverage on a public 16-workspace SHA-256 frozen benchmark (`245` paired trials, zero overrides) — raising recall to `100.0%` (`8/8` defective workspaces, `94.1%` F1, `87.5%` clean yield) while maintaining a `0.0%` AST flag rate and `0.69%` number-level benign flag rate on 21 strictly unseen `SciIntegrity-Bench` scenarios.
+- **Tension Type**: `capability-missing` / `tradeoff` (existence gates verify execution without verifying scientific validity; standalone LLM reviewers miss unlogged numerical fabrications; static mechanical gates miss subtle code-logic and inferential overclaims).
+- **Observation / Insight** (stated directly in prose): Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, or conclusions that contradict their own logs.
 - **Handle**: *Deterministic Evidence Gates and Path-Isolated Cross-Model Auditing* (placed directly in the title).
 - **Closest Work & Checkable Differences**:
-  1. **EviBound** (`chen2026evibound`): checks pre-execution schemas and post-execution file existence, but never audits numerical provenance, static AST code integrity, or claim semantics.
-  2. **ARIS** (`yang2026aris`): pairs cross-model agents in an iterative loop, but designates Stage-1 experiment auditing as advisory (non-blocking), injects executor narrative summaries across review boundaries, and lacks controlled baselines or ablations.
-- **Headline Numbers**: 112 controlled runs ($46.49 total), 86.7% → 0.0% unblocked blocker leakage ($p=0.000244$), 4/4 one-round SPR misconduct clearance, 100.0% → 18.2% same-model CCR collapse ($p=0.003906$), 90.9% → 36.4% summary framing softening ($p=0.031250$).
+  1. **EviBound** (`chen2026evibound`): checks pre-execution schemas and post-execution file existence, but does not audit signed numerical provenance, static AST code integrity, or claim semantics.
+  2. **ARIS** (`yang2026aris`): pairs cross-model agents in an iterative loop, but designates Stage-1 experiment auditing as advisory, injects executor narrative summaries across review boundaries, and lacks frozen-artifact paired evaluations.
+- **Headline Verified Numbers (Zero Overrides, `paper/out/stats_summary.txt`)**:
+  - `16` SHA-256 frozen workspaces (`8` `claude-haiku` + `8` `codex-cli`, exact `8` `CLEAN` + `8` `DEFECTIVE`; `6` natural runs, `5` clean twin bases, `5` constructed defect twins)
+  - `245` valid LLM trials (`k=3` repeats across `claude-haiku`, `claude-sonnet`, `codex-cli` under `path_only` and `with_summary`, plus `43` transparently logged `codex-cli` rolling-quota errors)
+  - `layer1_mechanical` (`$0`): `85.7%` precision, `75.0%` recall, `80.0%` F1, `12.5%` FPR, `87.5%` clean yield (in-sample)
+  - `L1 ∪ codex-cli (path_only)`: `88.9%` precision, `100.0%` recall (`8/8`, 95% Wilson CI `[67.6%, 100.0%]`), `94.1%` F1, `87.5%` clean yield (case-level complementarity on `H06`: caught by Layer 1, missed in `14/15` LLM trials; paired `p = 0.250000`)
+  - Strictly unseen `21`-scenario `SciIntegrity-Bench` blind test (`18/21` completed, `12/18` numeric, `$0.3187` spend, locked SHA-256 gates): `0/18 (0.0%)` AST flag rate, `2/289 (0.69%)` number-level benign flag rate (`2/18 = 11.1%` scenario-level).
 
 ---
 
-## Step 2: Route
-
-- **Paper Type**: `L1 method improvement` + secondary `L5 mechanism analysis`.
-- **Motivation Type**: `failure` (existing governance paradigms reproducibly fail on subtle code/numerical/claim fabrications, illustrated in Figure 1 and concrete line-cited failure `analyze_flame.py:62`).
-- **Abstract Arc**: Setting → Gap → Method → Headline Results (primary + repair + ablations) → Open-source Release.
-- **Introduction Arc**: Concrete failure example + credit prior work → Diagnosis of EviBound & ARIS (Fig. 1) → Observation + dual-layer mechanism by relation → Explicit contrast with EviBound & ARIS → Story-first headline results → Crisp 1-line contributions pointing to sections.
-
----
-
-## Step 3: Claim & Evidence Map
+## Step 2: Claim & Evidence Map (v2 Zero-Override)
 
 | # | Claim | Method Section | Evidence (Table / Figure) | Exact Verified Statistic |
 |---|---|---|---|---|
-| 1 | Outperforms existence gating (`B1`) and advisory review (`B2`) on defect leakage | \S2.1--\S2.3 | Table 1, Figure 2, Table 6 (App. A) | `B1` blocks 0/15; `B2` leaks 13/15 (86.7%); `Ours` leaks 0/15 (0.0%), McNemar $p=0.000244$ (SciIntegrity alone: $p=0.003906$); 3/3 clean approved |
-| 2 | One closed-loop revision turn eliminates verified misconduct on SPR | \S2.3 | Table 2 | 4/4 (100.0%) Round-1 `BLOCK_MISCONDUCT` cleared; 4/4 condition-blind `PASS` (vs. 2/4 `B2`, 3/4 `B1`); 1/4 immediate Round-2 `APPROVE_SUPPORTED` |
-| 3 | Same-family independence prevents sycophantic self-approval | \S2.3 | Table 3, Figure 3(a,b) | $n=11$: blocking collapses 11/11 → 2/11 (18.2%, $p=0.003906$), `BLOCK_MISCONDUCT` 10/11 → 0/11 ($p=0.001953$), 5/11 (45.5%) invalid-yet-approved |
-| 4 | Path isolation prevents summary framing softening | \S2.3 | Table 3, Figure 3(a,b) | $n=11$: `BLOCK_MISCONDUCT` drops 10/11 (90.9%) → 4/11 (36.4%, $p=0.031250$) |
-| 5 | Mechanical gates backstop lenient cross-family reviewers | \S2.2 | Table 4, Figure 4(a) | `Codex→Sonnet`: Sonnet approves 10/10 runs; `trace_numbers.py` blocks 22 untraced decimals on `SPR_MetricMisuse` → 0 after 1 revision |
+| 1 | Non-circular dual-layer complementarity on frozen 16-workspace corpus | \S2.1--\S2.3 | Table 1, Figure 2, Table 4 (App.) | `layer1_mechanical`: `75.0%` recall / `85.7%` prec; `codex-cli (path_only)`: `87.5%` recall / `100.0%` prec; `L1 ∪ codex-cli`: `100.0%` recall (`8/8`, CI `[67.6%, 100.0%]`), `94.1%` F1, `87.5%` clean yield; `H06` unlogged CI caught by Layer 1, missed in `14/15` LLM trials |
+| 2 | Paired frozen-artifact factorial isolates reviewer family vs. summary framing | \S3.3 | Table 2, Figure 3 | On identical frozen workspaces under calibrated binary rubrics: `path_only` vs `with_summary` exact McNemar `p = 1.000000` (`paired_n = 48`); `100%` LLM detection on `5` constructed twins, all misses on `3` natural defects (`H05`, `H06`) |
+| 3 | Locked mechanical gates maintain low benign flag rate on strictly unseen tasks | \S3.4 | Table 3, Figure 4 | `21` unseen scenarios (`18/21` completed, `12/18` numeric, `$0.3187`): `0/18 (0.0%)` AST flags, `2/289 (0.69%)` number-level benign flags (`04c` analytic midpoint `0.425`, `09c` raw CSV `3.542`) |
+| 4 | Self-audited manuscript and public reproducibility | \S3.1, App. | `./veriloop audit-paper`, `eval/v2_frozen/` | `37/37` traced numbers (`0` untraced, `0` sign mismatches), `23/23` BibTeX citations valid, `0` errors / `0` warnings on `check_draft.py` & `check_figures.py`, zero hardcoded overrides |
 
 ---
 
-## Step 4: Major Changes Applied (Original Draft → Best-Paper Revised Version)
+## Step 3: Post-Audit v3 Engineering Follow-Ups (Implemented in Codebase, Kept Separate from v2 Paper Lock)
 
-| Section | Original Draft Issue (from `check_draft.py` / `check_figures.py`) | Revised Version Fix |
-|---|---|---|
-| **Abstract** | 333 words (>p90), 36 numbers (>p90), mean sentence length 41.6w (one 156w monster sentence), 2 em-dash ERRORs, 0 evaluative claims, inline citations | ~185 words, 7 crisp sentences (~24w mean), 0 dashes, headline numbers only, explicit evaluative claim (`outperforms`), no citations |
-| **Introduction** | 63 numbers (>p90), 3 ERRORs (2 em-dashes + `superiority`), `\subsection` headers, no Fig. 1 reference, contributions repeated results numbers | 6 flowing paragraphs (no `\subsection`), concrete `analyze_flame.py:62` example in P1, Fig. 1 cited in P2, ≤14 numbers, 0 dashes, 1-line contributions pointing to sections |
-| **Method** | Generic heading (`System Architecture`), callout box repeating prose, em-dashes | Named after method (`VeriLoop`), opener states I/O + Fig. 1, each subsection follows `need → mechanism → property`, 0 dashes |
-| **Experiments** | Four subsections opened with `"Table X reports..."`; ablation `n=6` (`p=0.0625`); outdated self-audit count (`37/37`) | Every subsection opens with the empirical claim first; expanded key ablations to `n=11` (`p=0.003906` sycophancy, `p=0.031250` softening); synced 100% self-audit |
-| **Figures 1--4** | Internal Matplotlib titles (forbidden by ICML & `figures.md`), ad-hoc colors, 22-word first caption sentence on Fig. 2 | Redrawn with `bestpaper.mplstyle` Okabe-Ito palette (`Ours = #0072B2`), zero internal plot titles, Type-42 fonts, bold 3--10 word takeaway captions |
-
----
-
-## Step 5c: Figure Plan
-
-| Fig | Place | Claim Carried | Type | Status | Caption Takeaway |
-|---|---|---|---|---|---|
-| 1 | \S2 top (`figure*`) | Dual-layer hard gating closes the gap left by `B1` & `B2` | `contrast-schematic` | Vector PDF drawn | Dual-layer hard gating closes the verification gap left by existence checks and advisory review. |
-| 2 | \S3.2 (`figure*`) | Reduces blocker leakage from 86.7% to 0.0% ($p=0.000244$) | `bar + 95% Wilson CI` | Vector PDF drawn | VeriLoop reduces blocker leakage from 86.7% to 0.0%. |
-| 3 | \S3.4 (`figure*`) | CCR causes sycophancy; summaries soften misconduct verdicts | `2-panel ablation bar` | Vector PDF drawn | Same-model review induces sycophantic self-approval and executor summaries soften misconduct verdicts. |
-| 4 | \S3.5 (`figure*`) | Reviewer strictness is directional; total spend < $50 | `2-panel asymmetry + cost` | Vector PDF drawn | Cross-family audit strictness is sharply directional, while total evaluation spend remains under $50. |
-
----
-
-## Limitations Notes (Deliberately Kept in \S4 Discussion & Limitations, Excluded from Abstract & Introduction)
-
-1. Four formatting edge cases in `trace_numbers.py` (all fixed with unit tests) plus one remaining prose-polarity edge case (`"below SOTA by 1.46 pp"` vs. `-1.4598`).
-2. Sharp reviewer calibration asymmetry (`codex-cli >> claude-sonnet >> claude-haiku`) and API cost dominated by strict multi-turn agentic review.
-3. Expanded ablations cover 11/12 defective primary tasks; the 12th slot (`SPR_PostHocSelection` under `Ours_ccr`) hit the 600s CPU executor timeout on an unvectorized Python loop.
-4. Two model families (Anthropic, OpenAI), 1-round revision cap, and CPU-only tabular/symbolic benchmarks.
+To preserve exact reproducibility of the published v2 paper numbers (locked at commit `b897378`), all post-v2 improvements are cleanly versioned as v3 code upgrades without altering committed v2 benchmark JSONLs:
+1. **`trace_numbers.py` v3**: Added optional repeatable `--data <file-or-dir>` raw-dataset provenance (eliminating `09c`-style raw CSV quote FPs without triggering script-staleness checks) and explicit negative-direction prose polarity recognition on unsigned magnitudes (eliminating `C04`-style `"1.4598 pp below"` FPs while strictly preserving `SIGN_MISMATCH` on explicit `+` signs).
+2. **`tools/verifiable_gate.py`**: Fixed `wrong_log` → `wrong_logs` reporting key, fixed multi-`--logs` / multi-`--scripts` forwarding, and added `--data` / auto-`<workspace>/data` and `--strict-stale`.
+3. **`./veriloop eval-v2`**: Added unified CLI subcommand for one-command reproduction of v2 zero-override aggregation, Layer-1 audit, factorial runner, unseen blind test, and paper table/figure rebuild.
