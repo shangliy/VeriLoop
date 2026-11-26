@@ -1,0 +1,36 @@
+\section{Introduction}
+\label{sec:intro}
+
+Autonomous scientific research agents now inspect datasets, implement models, compute statistics, and author complete manuscripts without human intervention~\citep{yang2026aris,luo2025pitfalls}.
+Yet independent audits expose a persistent divide between fluent scientific prose and actual execution evidence.
+In an audit of 144 AI-generated papers, \textsc{FabScore}~\citep{chen2026fabscore} reports a 21.2\% claim-level fabrication rate, with AI reviewers overlooking 86.2\% of fabricated claims.
+Similarly, \textsc{SciIntegrity-Bench}~\citep{yang2026sciintegrity} records a 34.2\% academic integrity failure rate across seven frontier LLMs.
+In our controlled runs, an agent analyzing nuclear decay data divided segment residuals by the global sample size in \texttt{analyze\_flame.py:62}, silently corrupting every reported RMSE and AIC while exiting cleanly with code zero.
+
+Two recent governance paradigms try to close this gap, yet both fail on valid-looking code that produces invalid science (Figure~\ref{fig:arch}).
+\textsc{EviBound}~\citep{chen2026evibound} enforces pre-execution acceptance schemas and post-execution artifact existence checks, cutting missing-file hallucinations to zero on self-authored tasks.
+Because existence checks verify only process completion and file presence, they approve scripts that miscompute denominators, hardcode reference prints, or contradict raw logs.
+\textsc{ARIS}~\citep{yang2026aris} pairs a coding agent with a second model family across iterative review rounds to catch deeper flaws.
+However, \textsc{ARIS} leaves Stage-1 experiment auditing advisory rather than blocking, passes executor summaries across review boundaries, and evaluates a single observational run without controlled baselines or ablations.
+
+Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, or conclusions that contradict their own logs.
+To prevent such silent fabrications, we present \textbf{Verifiable Research-Loop}, a zero-dependency dual-layer governance harness built around deterministic evidence gates and path-isolated cross-model auditing.
+Its first layer enforces cryptographic log hashing, signed numerical provenance, and static Python AST checks before any external model is called.
+Because syntactic checks alone cannot catch inferential fabrications or flawed experimental reasoning, our second layer invokes a read-only auditor from a distinct model family that inspects only raw filesystem paths, strips all executor narrative, enforces hard delivery blocking, and triggers closed-loop repair.
+
+Unlike \textsc{EviBound}, which gates only artifact presence, Verifiable Research-Loop mechanically binds every reported decimal and script to intact execution logs and AST hygiene rules.
+In contrast to \textsc{ARIS}, which passes narrative summaries into an advisory loop, our harness isolates the auditor to raw files, blocks defective delivery deterministically, and evaluates every design choice through controlled baselines and causal ablations.
+
+Across 112 controlled live runs spanning all eleven \textsc{SciIntegrity-Bench} trap categories and all four \textsc{AIScientistPitfalls} ML pitfalls~\citep{luo2025pitfalls}, Verifiable Research-Loop outperforms both baselines by cutting unblocked blocker leakage from 86.7\% to 0.0\% (exact McNemar $p=0.000244$) while cleanly approving every sound report.
+On \textsc{AIScientistPitfalls}, a single closed-loop revision turn clears every Round-1 misconduct verdict and reaches unanimous \textsc{Pass} under an anonymized condition-blind judge.
+Expanded causal ablations further reveal why both cross-family independence and path isolation are essential.
+Replacing cross-family review with a same-model fresh session drops blocking to 18.2\% ($p=0.003906$) and triggers sycophantic approval of invalid claims, while injecting executor summaries softens misconduct verdicts by more than half ($p=0.031250$).
+Swapping executor and reviewer model families also reveals stark directional asymmetry, confirming that deterministic gates remain an indispensable safety net when an LLM auditor is overly lenient.
+
+Our contributions span four verifiable deliverables.
+\begin{itemize}[leftmargin=1.4em,itemsep=1.5pt,topsep=2pt]
+  \item \textbf{Dual-layer governance stack (\S\ref{sec:method}).} An open-source, stdlib-only verification toolkit enforcing claim gates (\texttt{G1--G7}), signed numerical provenance, AST code hygiene, and path-isolated cross-family blocking.
+  \item \textbf{Controlled multi-benchmark evaluation (\S\ref{sec:primary} and \S\ref{sec:repair}).} Paired four-system experiments across fifteen tasks demonstrating zero blocker leakage, zero false-positive blocks, and effective one-round closed-loop repair.
+  \item \textbf{Causal mechanism analysis (\S\ref{sec:ablations} and \S\ref{sec:reverse}).} Expanded ablations and bidirectional cross-family experiments isolating same-family sycophancy, summary framing softening, and directional reviewer asymmetry.
+  \item \textbf{Reproducible self-audited release (\S\ref{sec:dogfood}).} Complete unit tests, deterministic aggregation scripts, and a manuscript audited end to end by its own provenance and citation verifiers.
+\end{itemize}

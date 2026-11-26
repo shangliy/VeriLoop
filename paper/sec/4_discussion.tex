@@ -1,0 +1,41 @@
+\section{Discussion and Limitations}
+\label{sec:limitations}
+
+\begin{table*}[!t]
+\centering
+\caption{\textbf{Comparison with autonomous research harnesses and scientific auditing benchmarks.}}
+\label{tab:related}
+\setlength{\tabcolsep}{4.0pt}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{System / Benchmark} & \textbf{Upstream} & \textbf{Hard Mech.} & \textbf{Code/Num.} & \textbf{Path-Only} & \textbf{Controlled} & \textbf{Component} \\
+ & \textbf{Prevention} & \textbf{Blocking} & \textbf{AST/Trace} & \textbf{XMR} & \textbf{Baselines} & \textbf{Ablations} \\
+\midrule
+\textsc{FLAWS} / \textsc{PaperAudit}~\citep{xi2025flaws,tu2026paperaudit} & \xmark & \xmark & \xmark & \xmark & Manuscript only & \xmark \\
+\textsc{FabScore}~\citep{chen2026fabscore} & \xmark~(post-hoc) & \xmark & \cmark~(exec.) & Judge only & 144 AI papers & Judge models \\
+\textsc{EviBound}~\citep{chen2026evibound} & \cmark & \pmark~(exist.) & \xmark & \xmark & 8 toy tasks & Dual vs.\ single \\
+\textsc{ARIS}~\citep{yang2026aris} & \cmark & \xmark~(advisory) & \pmark~(advisory) & \xmark~(summary) & \xmark~(1 run) & \xmark \\
+\midrule
+\rowcolor{navybg}
+\textbf{Verifiable Research-Loop (Ours)} & \cmark & \cmark~\textbf{(dual)} & \cmark & \cmark & \textbf{112 runs, 2 bench.} & \textbf{4 abl. ($n{=}11$) + rev. XMR} \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+\paragraph{Architecture vs.\ model scale.}
+Current LLMs (\texttt{claude-haiku}, \texttt{codex-cli}) avoided 0/16 coarse \textsc{SPR} pitfalls and most obvious \textsc{SciIntegrity} refusal traps, unlike earlier systems in \citet{luo2025pitfalls}, yet still committed verifiable fine-grained fabrications in over 80\% of unguarded Round-1 runs.
+Scaling shifts failures from blatant refusals to subtler denominator bugs, unvalidated intervals, and log contradictions.
+Pairing a fast executor (\texttt{claude-haiku}, \$0.02--\$0.06/run) with mechanical gates and a strict cross-family auditor (\texttt{codex-cli}) delivers higher verified integrity per dollar than an unguarded frontier model.
+
+\paragraph{Decoupling misconduct from sufficiency.}
+Our \textsc{SPR} study highlights a key governance rule: anti-fabrication blocking (\texttt{BLOCK\_MISCONDUCT}) should be decoupled from publication-sufficiency gating (\texttt{BLOCK\_UNSUPPORTED} for multi-seed or external baseline gaps).
+Enforcing full publication sufficiency under a 60s CPU cap withheld 3/4 repaired \textsc{SPR} reports even after all misconduct was fixed and verified \textsc{Pass} by the blind judge; production harnesses should unconditionally block misconduct while making sufficiency checks budget-configurable.
+
+\paragraph{Limitations.}
+Four limitations bound our findings:
+(1) \emph{Tracer edge cases:} Live runs exposed four formatting edge cases in \texttt{trace\_numbers.py} (trailing-zero decimals \texttt{1.000} vs.\ \texttt{1.0} on \texttt{05a}, Unicode minus \texttt{U+2212}, spaced subtraction \texttt{53.989 - 0.4438*P}, and ASCII \texttt{+/-} spacing on \texttt{10a}), all fixed with unit tests (cutting pilot false positives from 10/24 to 0/24); prose polarity (``below SOTA by 1.46 pp'' vs.\ \texttt{-1.4598}) remains as a low-severity warning case.
+(2) \emph{Reviewer asymmetry and cost:} Strictness varies sharply (\texttt{codex-cli} $\gg$ \texttt{claude-sonnet} $\gg$ \texttt{claude-haiku}), and strict multi-turn review drives most API spend.
+(3) \emph{Single-task ablation timeout:} Expanded ablations covered 11/12 defective primary tasks; the 12th slot (\texttt{SPR\_PostHocSelection} under \texttt{Ours\_ccr}) hit the 600s CPU timeout on an unvectorized Python loop.
+(4) \emph{Scope:} Two model families, one revision turn, and CPU-only benchmarks leave multi-round convergence, third-family auditors, and multi-GPU deep-learning workloads for future work.

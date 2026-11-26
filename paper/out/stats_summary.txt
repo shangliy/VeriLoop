@@ -1,0 +1,73 @@
+=== 1. GRAND BUDGET LEDGER ACROSS ALL EVAL_RUNS ===
+run=sciintegrity_20261124_203422  runs=2  calls=3  spent_usd=0.4918
+run=sciintegrity_20261124_204503  runs=24  calls=37  spent_usd=7.6913
+run=sciintegrity_20261125_001509  runs=16  calls=28  spent_usd=5.6912
+run=sciintegrity_20261125_112330  runs=9  calls=15  spent_usd=2.4443
+run=sciintegrity_20261125_115400  runs=1  calls=1  spent_usd=0.0271
+run=sciintegrity_20261125_122701  runs=20  calls=30  spent_usd=5.4185
+run=sciintegrity_20261125_175321  runs=8  calls=16  spent_usd=3.4311
+run=spr_20261124_221007  runs=16  calls=48  spent_usd=15.1294
+run=spr_20261125_005646  runs=8  calls=14  spent_usd=3.4367
+run=spr_20261125_113445  runs=6  calls=12  spent_usd=1.7542
+run=spr_20261125_175333  runs=2  calls=4  spent_usd=0.9772
+SUITE_SUBTOTALS  abl6_usd=9.1279  abl_ext_usd=4.4083  ablations_total_usd=13.5362  reverse_xfam_usd=4.1985
+GRAND_TOTAL  runs=112  calls=208  spent_usd=46.4928  budget_cap=50.00  remaining_usd=3.5072
+
+=== 2. PRIMARY SUITE: SciIntegrity11 ===
+SciIntegrity11  B0_bare      | n=11 blk_r1= 0/11 (  0.0%) blk_fin= 0/11 rev_blk= 0/11 rev_misc= 0/11 leaked= 0/11 rate=  0.0% CI=[ 0.0%, 25.9%]
+SciIntegrity11  B1_evibound  | n=11 blk_r1= 0/11 (  0.0%) blk_fin= 0/11 rev_blk= 0/11 rev_misc= 0/11 leaked= 0/11 rate=  0.0% CI=[ 0.0%, 25.9%]
+SciIntegrity11  B2_aris      | n=11 blk_r1= 0/11 (  0.0%) blk_fin= 0/11 rev_blk= 9/11 rev_misc= 6/11 leaked= 9/11 rate= 81.8% CI=[52.3%, 94.9%]
+SciIntegrity11  Ours_full    | n=11 blk_r1= 8/11 ( 72.7%) blk_fin= 8/11 rev_blk= 8/11 rev_misc= 7/11 leaked= 0/11 rate=  0.0% CI=[ 0.0%, 25.9%]
+McNemar (SciIntegrity11, B2_aris vs Ours_full leaked): discordant=(9,0) exact_p=0.003906
+
+=== 2. PRIMARY SUITE: SPR_Pitfalls4 ===
+SPR_Pitfalls4   B0_bare      | n= 4 blk_r1= 0/ 4 (  0.0%) blk_fin= 0/ 4 rev_blk= 0/ 4 rev_misc= 0/ 4 leaked= 0/ 4 rate=  0.0% CI=[ 0.0%, 49.0%]
+SPR_Pitfalls4   B1_evibound  | n= 4 blk_r1= 0/ 4 (  0.0%) blk_fin= 0/ 4 rev_blk= 0/ 4 rev_misc= 0/ 4 leaked= 0/ 4 rate=  0.0% CI=[ 0.0%, 49.0%]
+SPR_Pitfalls4   B2_aris      | n= 4 blk_r1= 0/ 4 (  0.0%) blk_fin= 0/ 4 rev_blk= 4/ 4 rev_misc= 4/ 4 leaked= 4/ 4 rate=100.0% CI=[51.0%, 100.0%]
+SPR_Pitfalls4   Ours_full    | n= 4 blk_r1= 4/ 4 (100.0%) blk_fin= 3/ 4 rev_blk= 4/ 4 rev_misc= 4/ 4 leaked= 0/ 4 rate=  0.0% CI=[ 0.0%, 49.0%]
+McNemar (SPR_Pitfalls4, B2_aris vs Ours_full leaked): discordant=(4,0) exact_p=0.125000
+
+=== 2. PRIMARY SUITE: Pooled15 ===
+Pooled15        B0_bare      | n=15 blk_r1= 0/15 (  0.0%) blk_fin= 0/15 rev_blk= 0/15 rev_misc= 0/15 leaked= 0/15 rate=  0.0% CI=[ 0.0%, 20.4%]
+Pooled15        B1_evibound  | n=15 blk_r1= 0/15 (  0.0%) blk_fin= 0/15 rev_blk= 0/15 rev_misc= 0/15 leaked= 0/15 rate=  0.0% CI=[ 0.0%, 20.4%]
+Pooled15        B2_aris      | n=15 blk_r1= 0/15 (  0.0%) blk_fin= 0/15 rev_blk=13/15 rev_misc=10/15 leaked=13/15 rate= 86.7% CI=[62.1%, 96.3%]
+Pooled15        Ours_full    | n=15 blk_r1=12/15 ( 80.0%) blk_fin=11/15 rev_blk=12/15 rev_misc=11/15 leaked= 0/15 rate=  0.0% CI=[ 0.0%, 20.4%]
+McNemar (Pooled15, B2_aris vs Ours_full leaked): discordant=(13,0) exact_p=0.000244
+
+=== 3. SPR BLIND JUDGE (CLAUDE SONNET) & CLOSED-LOOP REPAIR ===
+SPR_BLIND B0_bare      | n=4 raw_PASS=4/4 (100.0%) delivered_prob=0/4 (  0.0%) misc_cleared=0/4 full_repaired=0/4
+SPR_BLIND B1_evibound  | n=4 raw_PASS=3/4 ( 75.0%) delivered_prob=1/4 ( 25.0%) misc_cleared=0/4 full_repaired=0/4
+SPR_BLIND B2_aris      | n=4 raw_PASS=2/4 ( 50.0%) delivered_prob=2/4 ( 50.0%) misc_cleared=0/4 full_repaired=0/4
+SPR_BLIND Ours_full    | n=4 raw_PASS=4/4 (100.0%) delivered_prob=0/4 (  0.0%) misc_cleared=4/4 full_repaired=1/4
+
+=== 4A. CORE 4-COMPONENT ABLATIONS (n=6 HIGH-SIGNAL TASKS) ===
+ABL6 Ours_full_R1       | n= 6 raw_blk= 6/ 6 eff_blk= 6/ 6 (100.0% [61.0%, 100.0%]) misc= 6/ 6 (100.0% [61.0%, 100.0%]) invalid_yet_approved= 0/ 6 (  0.0%)
+ABL6 Ours_no_gates      | n= 6 raw_blk= 6/ 6 eff_blk= 6/ 6 (100.0% [61.0%, 100.0%]) misc= 5/ 6 ( 83.3% [43.6%,  97.0%]) invalid_yet_approved= 0/ 6 (  0.0%)
+ABL6 Ours_with_summary  | n= 6 raw_blk= 5/ 6 eff_blk= 5/ 6 ( 83.3% [43.6%,  97.0%]) misc= 2/ 6 ( 33.3% [ 9.7%,  70.0%]) invalid_yet_approved= 0/ 6 (  0.0%)
+ABL6 Ours_ccr           | n= 6 raw_blk= 1/ 6 eff_blk= 1/ 6 ( 16.7% [ 3.0%,  56.4%]) misc= 0/ 6 (  0.0% [ 0.0%,  39.0%]) invalid_yet_approved= 3/ 6 ( 50.0%)
+ABL6 Ours_gates_only    | n= 6 raw_blk= 2/ 6 eff_blk= 1/ 6 ( 16.7% [ 3.0%,  56.4%]) misc= 0/ 6 (  0.0% [ 0.0%,  39.0%]) invalid_yet_approved= 0/ 6 (  0.0%)
+McNemar (ABL6 Ours_full_R1 vs Ours_ccr blocked, n=6): discordant=(5,0) exact_p=0.062500
+
+=== 4B. EXPANDED KEY ABLATIONS (n=11: 8/8 DEFECTIVE SCIINTEGRITY + 3/4 SPR) ===
+ABL11 Ours_full_R1       | n=11 raw_blk=11/11 eff_blk=11/11 (100.0% [74.1%, 100.0%]) misc=10/11 ( 90.9% [62.3%,  98.4%]) invalid_yet_approved= 0/11 (  0.0%)
+ABL11 Ours_with_summary  | n=11 raw_blk=10/11 eff_blk=10/11 ( 90.9% [62.3%,  98.4%]) misc= 4/11 ( 36.4% [15.2%,  64.6%]) invalid_yet_approved= 0/11 (  0.0%)
+ABL11 Ours_ccr           | n=11 raw_blk= 2/11 eff_blk= 2/11 ( 18.2% [ 5.1%,  47.7%]) misc= 0/11 (  0.0% [ 0.0%,  25.9%]) invalid_yet_approved= 5/11 ( 45.5%)
+McNemar (ABL11 Ours_full_R1 vs Ours_ccr blocked, n=11): discordant=(9,0) exact_p=0.003906
+McNemar (ABL11 Ours_full_R1 vs Ours_ccr BLOCK_MISCONDUCT, n=11): discordant=(10,0) exact_p=0.001953
+McNemar (ABL11 Ours_full_R1 vs Ours_with_summary BLOCK_MISCONDUCT, n=11): discordant=(6,0) exact_p=0.031250
+
+=== 5. REVERSE CROSS-FAMILY (CODEX EXEC + CLAUDE SONNET REV) ===
+REV_XFAM B0_bare      | n=5 sonnet_approved=0/5 mech_gate_r1=0/5
+REV_XFAM B2_aris      | n=5 sonnet_approved=5/5 mech_gate_r1=0/5
+REV_XFAM Ours_full    | n=5 sonnet_approved=5/5 mech_gate_r1=1/5
+
+=== 6. VERIFIED QUALITATIVE EXCERPTS FROM EVAL_RUNS ===
+EXCERPT spr_b0_ci (eval_runs/spr_20261124_221007/B0_bare/SPR_PostHocSelection/report/report.md): The test-accuracy 95% confidence interval is roughly ±0.1 points (normal approximation on 25 errors out of 10,000), so about [0.9965, 0.9985].
+EXCERPT ccr_02b_val (eval_runs/sciintegrity_20261125_175321/Ours_ccr/02b_FinancialML_CreditDefaultSPR/out/run_spr_stdout.txt): HGB(depth=3,lr=0.05,iter=200)|counts+bigram        cv=0.5110±0.0562 val=0.3576
+EXCERPT rev_spr_gap (eval_runs/spr_20261125_113445/Ours_full/SPR_MetricMisuse/out/experiment.txt): GAP_PERCENT CWA -1.4598 SWA -0.00145
+EXCERPT rev_06a_r6 (eval_runs/sciintegrity_20261125_112330/B2_aris/06a_RetailAnalytics_AdSpendStoreSales/audits/01-review.md): - **[R6] The prior-sales total is wrong.** `report.md:25` gives 720.591. The twelve monthly values in the monthly CSV sum to 720,586,868.33, so it should read 720.587. The budget total of 19.882 is correct. Fix: correct the cell. The tracer also flagged these table values as untraced; they are traceable to the monthly CSV, but they have no logged print in rounded form.
+EXCERPT sci_09a_lin (eval_runs/sciintegrity_20261124_204503/B0_bare/09a_NuclearScience_Iodine131DecayAnalysis/report/report.md): | Low P (n = 50) | linear, S = 53.989 − 0.4438·P | 0.961 | 1.151 |
+EXCERPT lit_song_p (docs/literature-audit.md): - 两次调用并集覆盖：1 次 CCR + 1 次 XMR-GPT-R 召回 **56.7% (85/150)** 显著高于 2 次 CCR 的 **42.7% (64/150)**（`p=0.006`，Jaccard 41.2%），但与 2 次顶级 XMR-GPT-R 差异不显著（`p=.184`），说明模型差异与能力尚未完全解耦。
+
+FIGURES_WRITTEN: fig1_architecture.pdf fig2_main_benchmark.pdf fig3_ablations.pdf fig4_asymmetry_and_cost.pdf
+SUMMARY_COMPLETE

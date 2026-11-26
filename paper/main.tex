@@ -1,0 +1,148 @@
+\documentclass[10pt]{article}
+
+% ============================================================================
+% PUBLIC RELEASE METADATA (Edit these 3 macros before arXiv / GitHub upload)
+% ============================================================================
+\newcommand{\PaperAuthors}{[Author Name(s)]}
+\newcommand{\PaperAffiliation}{[Affiliation / Independent Researcher]}
+\newcommand{\PaperDate}{November 2026}
+\newcommand{\PaperRepoURL}{https://github.com/[username]/auto-research}
+\newcommand{\RepoRef}{\texttt{\PaperRepoURL}}
+
+% ---- Typography & Layout (Modern arXiv Preprint Style) ----
+\usepackage[margin=0.9in, headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage[scaled=0.90]{helvet}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage[most]{tcolorbox}
+\usepackage{natbib}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+% ---- Color Palette (aligned with Okabe-Ito figures) ----
+\definecolor{navy}{HTML}{004C78}
+\definecolor{slate}{HTML}{4A5568}
+\definecolor{navybg}{HTML}{EEF5FA}
+\definecolor{okgreen}{HTML}{007A59}
+\definecolor{badred}{HTML}{B34700}
+\definecolor{warnamber}{HTML}{B45309}
+\definecolor{codebg}{HTML}{F7F8FA}
+\definecolor{rulegray}{HTML}{CBD5E0}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=navy,
+  citecolor=navy,
+  urlcolor=navy
+}
+
+% ---- Checkmarks / Crosses ----
+\newcommand{\cmark}{\textcolor{okgreen}{\ding{51}}}
+\newcommand{\xmark}{\textcolor{badred}{\ding{55}}}
+\newcommand{\pmark}{\textcolor{warnamber}{\textbf{$\triangle$}}}
+
+% ---- Section & Caption Styling ----
+\titleformat{\section}{\large\sffamily\bfseries\color{navy}}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\normalsize\sffamily\bfseries\color{navy!85!black}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\small\sffamily\bfseries\color{slate}}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{11pt plus 3pt minus 2pt}{4pt plus 2pt}
+\titlespacing*{\subsection}{0pt}{8pt plus 2pt minus 2pt}{3pt plus 1pt}
+
+\captionsetup{
+  font=small,
+  labelfont={sf,bf,color=navy},
+  skip=5pt
+}
+
+% ---- Running Header / Footer ----
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\sffamily\color{slate} Closing the Verification Gap in Autonomous Research}
+\fancyhead[R]{\footnotesize\sffamily\color{slate} Preprint}
+\fancyfoot[C]{\footnotesize\sffamily\color{slate}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulegray}\leaders\hrule height \headrulewidth\hfill}}
+
+% ---- Abstract Box (wraps standard \begin{abstract} cleanly) ----
+\newtcolorbox{abstractbox}{
+  colback=navybg,
+  colframe=navy,
+  boxrule=0pt,
+  leftrule=3pt,
+  arc=2pt,
+  left=10pt,
+  right=10pt,
+  top=8pt,
+  bottom=8pt,
+  fontupper=\small
+}
+\renewenvironment{abstract}{%
+  \begin{abstractbox}\noindent\textbf{\sffamily\color{navy} Abstract.} %
+}{%
+  \end{abstractbox}\vspace{4pt}%
+}
+
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{rulegray},
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  aboveskip=6pt,
+  belowskip=6pt
+}
+
+\emergencystretch=1.5em
+
+\begin{document}
+\thispagestyle{plain}
+
+% ---- Modern arXiv Preprint Title Block ----
+\noindent{\color{navy}\rule{\linewidth}{2.0pt}}\\[8pt]
+\begin{center}
+  {\Large\sffamily\bfseries\color{navy} Closing the Verification Gap in Autonomous Research:\\
+  Deterministic Evidence Gates and Path-Isolated Cross-Model Auditing\par}
+  \vspace{10pt}
+  {\normalsize\sffamily \PaperAuthors\par}
+  \vspace{3pt}
+  {\small\sffamily\color{slate} \PaperAffiliation \quad$\cdot$\quad \PaperDate\par}
+  \vspace{5pt}
+  {\footnotesize\ttfamily\color{navy} Code \& Self-Audited Artifacts: \PaperRepoURL \quad|\quad 112 Controlled Runs (\$46.49 Total)\par}
+\end{center}
+\vspace{-2pt}
+\noindent{\color{rulegray}\rule{\linewidth}{0.6pt}}
+\vspace{6pt}
+
+\input{sec/0_abstract}
+\input{sec/1_intro}
+\input{sec/2_method}
+\input{sec/3_experiments}
+\input{sec/4_discussion}
+\input{sec/5_related}
+\input{sec/6_conclusion}
+\input{sec/7_statements}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\clearpage
+\appendix
+\input{sec/appendix}
+
+\end{document}

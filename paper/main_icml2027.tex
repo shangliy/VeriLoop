@@ -1,0 +1,94 @@
+%%%%%%%% ICML 2027 DOUBLE-BLIND SUBMISSION %%%%%%%%%%%%%%%%%
+\documentclass{article}
+
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{pifont}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+% Official unmodified ICML 2027 style file (double-blind submission mode)
+% Swap to \usepackage[preprint]{icml2027} or \usepackage[accepted]{icml2027} after acceptance.
+\usepackage{icml2027}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+% Anonymized repository reference (strictly no identifying URLs in blind mode)
+\newcommand{\RepoRef}{the anonymized supplementary repository}
+
+% Subtle table tint & status icons matching Okabe-Ito figures
+\definecolor{navybg}{HTML}{EEF5FA}
+\definecolor{okgreen}{HTML}{007A59}
+\definecolor{badred}{HTML}{B34700}
+\definecolor{warnamber}{HTML}{B45309}
+\definecolor{codebg}{HTML}{F7F8FA}
+\definecolor{rulegray}{HTML}{CBD5E0}
+\newcommand{\cmark}{\textcolor{okgreen}{\ding{51}}}
+\newcommand{\xmark}{\textcolor{badred}{\ding{55}}}
+\newcommand{\pmark}{\textcolor{warnamber}{\textbf{$\triangle$}}}
+
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{rulegray},
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  aboveskip=4pt,
+  belowskip=4pt
+}
+
+\icmltitlerunning{Closing the Verification Gap in Autonomous Research}
+
+\begin{document}
+
+\twocolumn[
+  \icmltitle{Closing the Verification Gap in Autonomous Research:\\
+  Deterministic Evidence Gates and Path-Isolated Cross-Model Auditing}
+
+  \begin{icmlauthorlist}
+    \icmlauthor{Anonymous Author}{anon}
+  \end{icmlauthorlist}
+
+  \icmlaffiliation{anon}{Anonymous Institution}
+  \icmlcorrespondingauthor{Anonymous Author}{anonymous@example.com}
+
+  \icmlkeywords{Autonomous Scientific Research, LLM Agents, Verification, Cross-Model Auditing, Evaluation, Trustworthy AI}
+
+  \vskip 0.3in
+]
+
+\printAffiliationsAndNotice{}
+
+\input{sec/0_abstract}
+\input{sec/1_intro}
+\input{sec/2_method}
+\input{sec/3_experiments}
+\input{sec/4_discussion}
+\input{sec/5_related}
+\input{sec/6_conclusion}
+
+% Ensure all main-body floats flush on or before page 8, then place required statements on page 9
+\clearpage
+\input{sec/7_statements}
+
+\bibliography{refs}
+\bibliographystyle{icml2027}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\appendix
+\onecolumn
+\input{sec/appendix}
+
+\end{document}

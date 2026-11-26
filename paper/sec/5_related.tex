@@ -1,0 +1,17 @@
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Autonomous research harnesses.}
+Table~\ref{tab:related} contrasts our framework against closely related harnesses and auditing benchmarks.
+\textsc{ARIS}~\citep{yang2026aris} introduces a 65-skill adversarial loop, yet leaves Stage-1 auditing advisory, passes narrative summaries across review boundaries, and lacks controlled baselines or ablations.
+\textsc{EviBound}~\citep{chen2026evibound} adds pre-execution schema and MLflow existence gates (cutting missing-file hallucinations from 8/8 to 0/8 on eight Colab tasks), yet misses numerical and methodological fabrications inside executed code.
+
+\paragraph{Fabrication and error-auditing benchmarks.}
+\textsc{SciIntegrity-Bench}~\citep{yang2026sciintegrity} evaluates seven LLMs across 33 scenarios (11 traps, 34.2\% problem rate), showing that removing pressure fails to stop synthetic data substitution (57.1\% to 55.6\%).
+\citet{luo2025pitfalls} construct the \textsc{SPR} benchmark covering four ML pitfalls and prove that inspecting code plus logs lifts detection from 55.0\% to 82.0\% ($p=6.3\times 10^{-5}$).
+\textsc{FabScore}~\citep{chen2026fabscore} audits 144 papers post-hoc (21.2\% fabrication; 85.9\% contradicting logs; 44.6\% hardcoded/mocked code; 86.2\% missed by AI reviewers).
+Manuscript-only suites including \textsc{FLAWS}~\citep{xi2025flaws} (713 ICML papers; GPT-5 39.1\% at $k=10$) and \textsc{PaperAudit-Bench}~\citep{tu2026paperaudit} (220 papers, $>$2,200 errors) confirm that text-only review cannot verify execution claims.
+
+\paragraph{Cross-model verification.}
+\citet{song2026secondmodel} evaluates 900 review sessions on 30 Korean artifacts, finding that single-pass XMR does not uniformly beat same-model CCR whereas CCR+XMR lifts recall from 42.7\% to 56.7\% ($p=0.006$).
+Our ablations extend this analysis to autonomous scientific agents, isolating same-family sycophancy ($p=0.003906$), summary framing softening ($p=0.031250$), and directional reviewer asymmetry.

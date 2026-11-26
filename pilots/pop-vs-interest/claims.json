@@ -1,0 +1,251 @@
+{
+ "claims": {
+  "C1": {
+   "text": "On text-rich ultra-sparse Amazon benchmarks (Office N=3,459, Industrial N=3,686, Beauty N=12,101), removing free item ID embeddings in a full-D L2-normalized sequential model (fullD noID+L2) beats fullD ID+unnorm on R@200 Tail across all 3 datasets (3 seeds each) and beats 3-seed TIGER on Beauty at all 5 matched tau in {0..1} (3/3 seeds paired 95% CI > 0).",
+   "metric": "R@200 All/Tail",
+   "select_on": "valid",
+   "seeds_planned": 3,
+   "baselines": [
+    "fullD-ID-unnorm",
+    "TIGER",
+    "hybrid-kNN",
+    "LIGER"
+   ],
+   "kill": "fullD ID+unnorm or TIGER matches or beats fullD noID+L2 on R@200 Tail across Amazon Beauty/Office/Industrial at matched tau=0",
+   "scope": "Amazon Office/Industrial/Beauty (N<=12,101, text-rich sparse tail); excludes dense-tail text-weak regimes such as MicroLens-100K",
+   "status": "partial",
+   "registered": "2026-11-24 20:40:54",
+   "history": [
+    {
+     "at": "2026-11-24 20:40:54",
+     "text": "On text-rich ultra-sparse Amazon benchmarks (Office N=3,459, Industrial N=3,686, Beauty N=12,101), removing free item ID embeddings in a full-D L2-normalized sequential model (fullD noID+L2) beats fullD ID+unnorm on R@200 Tail across all 3 datasets (3 seeds each) and beats 3-seed TIGER on Beauty at all 5 matched tau in {0..1} (3/3 seeds paired 95% CI > 0).",
+     "why": "registered"
+    }
+   ],
+   "evidence": [
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/fg_noid_all3.txt",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 22363,
+     "changes": 2,
+     "ablated": 2,
+     "note": "3-seed Amazon Office/Industrial/Beauty"
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/noid_norm_ablation.txt",
+     "seeds": 1,
+     "selected_on": "valid",
+     "n": 22363,
+     "changes": 2,
+     "ablated": 2,
+     "note": "2x2 ID vs noID x unnorm vs L2 ablation"
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/fg_noid_all3.txt",
+     "arm": "fullD-ID-unnorm",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 22363
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/beauty_tiger_3seed_eval.txt",
+     "arm": "TIGER",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 22363
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/audit_and_frontier_logs.txt",
+     "arm": "hybrid-kNN",
+     "seeds": 1,
+     "selected_on": "valid",
+     "n": 22363
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/liger_baseline.txt",
+     "arm": "LIGER",
+     "seeds": 1,
+     "selected_on": "valid",
+     "n": 22363
+    }
+   ],
+   "status_log": [
+    {
+     "at": "2026-11-24 20:51:30",
+     "from": "proposed",
+     "to": "partial",
+     "by": "reviewer"
+    }
+   ]
+  },
+  "C2": {
+   "text": "On Amazon Beauty (N=12,101, n=22,363), GeoTrie-GR (la00) beats native TIGER on both R@200 All and Tail across all 5 matched tau in {0..1} (paired 95% CI > 0) at matched latency (~1.53 ms/q), with 4 single-variable ablations separating encoder text vs subtree centroids, lossless leaf, and +log|S|.",
+   "metric": "R@200 All/Tail",
+   "select_on": "valid",
+   "seeds_planned": 3,
+   "baselines": [
+    "TIGER",
+    "fullD-noID-L2",
+    "hybrid-kNN"
+   ],
+   "kill": "GeoTrie-GR fails to beat TIGER on matched-tau R@200 All and Tail or gains vanish under single-variable ablations",
+   "scope": "Amazon Beauty (N=12,101, single seed s0); trails flat fullD noID+L2 and ~220x slower than flat GEMM",
+   "status": "pilot",
+   "registered": "2026-11-24 20:40:54",
+   "history": [
+    {
+     "at": "2026-11-24 20:40:54",
+     "text": "On Amazon Beauty (N=12,101, n=22,363), GeoTrie-GR (la00) beats native TIGER on both R@200 All and Tail across all 5 matched tau in {0..1} (paired 95% CI > 0) at matched latency (~1.53 ms/q), with 4 single-variable ablations separating encoder text vs subtree centroids, lossless leaf, and +log|S|.",
+     "why": "registered"
+    }
+   ],
+   "evidence": [
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/tiger_subtree_gr.txt",
+     "seeds": 1,
+     "selected_on": "valid",
+     "n": 22363,
+     "changes": 4,
+     "ablated": 4
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/geotrie_ablations.txt",
+     "seeds": 1,
+     "selected_on": "valid",
+     "n": 22363,
+     "changes": 4,
+     "ablated": 4
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/audit_and_frontier_logs.txt",
+     "seeds": 1,
+     "selected_on": "valid",
+     "n": 22363,
+     "changes": 4,
+     "ablated": 4
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/beauty_tiger_3seed_eval.txt",
+     "arm": "TIGER",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 22363
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/fg_noid_all3.txt",
+     "arm": "fullD-noID-L2",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 22363
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/audit_and_frontier_logs.txt",
+     "arm": "hybrid-kNN",
+     "seeds": 1,
+     "selected_on": "valid",
+     "n": 22363
+    }
+   ],
+   "status_log": [
+    {
+     "at": "2026-11-24 20:51:30",
+     "from": "proposed",
+     "to": "pilot",
+     "by": "reviewer"
+    }
+   ]
+  },
+  "C3": {
+   "text": "In text-rich sparse-tail Amazon regimes (Beauty, Industrial), fg_noid_a05 pushes the All-Tail Pareto frontier above fullD ID+unnorm while keeping Head higher; on dense-tail text-weak MicroLens-100K it collapses on Tail (0.0269 vs 0.1633) and is NOT recommended.",
+   "metric": "R@200 All/Tail",
+   "select_on": "valid",
+   "seeds_planned": 3,
+   "baselines": [
+    "fullD-ID-unnorm",
+    "fullD-noID-L2",
+    "TIGER"
+   ],
+   "kill": "fg_noid_a05 fails to push the All-Tail Pareto frontier or collapses on Tail",
+   "scope": "Sequential recommendation datasets (Amazon Office/Industrial/Beauty + MicroLens-100K)",
+   "status": "partial",
+   "registered": "2026-11-24 20:40:54",
+   "history": [
+    {
+     "at": "2026-11-24 20:40:54",
+     "text": "Frequency-gated bounded ID residual (fg_noid_a05) improves the All-Tail Pareto frontier over both fullD ID+unnorm and fullD noID+L2 across sequential recommendation datasets.",
+     "why": "registered"
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "text": "In text-rich sparse-tail Amazon regimes (Beauty, Industrial), fg_noid_a05 pushes the All-Tail Pareto frontier above fullD ID+unnorm while keeping Head higher; on dense-tail text-weak MicroLens-100K it collapses on Tail (0.0269 vs 0.1633) and is NOT recommended.",
+     "why": "MicroLens-100K (microlens_benchmark.txt) refuted generality across all sequential datasets"
+    }
+   ],
+   "evidence": [
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/fg_noid_all3.txt",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 22363,
+     "changes": 2,
+     "ablated": 1
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/microlens_benchmark.txt",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 100000,
+     "changes": 2,
+     "ablated": 1
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/fg_noid_all3.txt",
+     "arm": "fullD-ID-unnorm",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 22363
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/fg_noid_all3.txt",
+     "arm": "fullD-noID-L2",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 22363
+    },
+    {
+     "at": "2026-11-24 20:41:30",
+     "log": "/home/shawnyang/Documents/Sigir/exp_resid/out/beauty_tiger_3seed_eval.txt",
+     "arm": "TIGER",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 22363
+    }
+   ],
+   "status_log": [
+    {
+     "at": "2026-11-24 20:51:30",
+     "from": "proposed",
+     "to": "partial",
+     "by": "reviewer"
+    }
+   ]
+  }
+ }
+}

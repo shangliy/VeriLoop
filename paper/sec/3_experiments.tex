@@ -1,0 +1,210 @@
+\section{Experiments}
+\label{sec:exp}
+
+\begin{table*}[!t]
+\centering
+\caption{\textbf{Dual-layer hard gating eliminates verified blocker leakage across both benchmarks.} Controlled four-way comparison spanning all 11 \textsc{SciIntegrity-Bench} traps and all 4 \textsc{SPR} ML pitfalls (\texttt{claude-haiku} executor, \texttt{codex-cli} cross-family reviewer). Unblocked Blocker Leakage measures verified \texttt{BLOCK\_*} defects delivered unblocked under the same cross-model audit standard. \texttt{Ours\_full} on \texttt{05a} reflects the post-fix deterministic tracer (\S\ref{sec:limitations}). Best results in \textbf{bold}.}
+\label{tab:primary}
+\setlength{\tabcolsep}{4.5pt}
+\footnotesize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Suite} & \textbf{Condition} & \textbf{$n$} & \textbf{R1 Gate Blocked} & \textbf{Reviewer Flagged (\texttt{MISC})} & \textbf{Blocker Leakage $\downarrow$ [95\% CI]} & \textbf{McNemar $p$ vs.\ \texttt{B2}} \\
+\midrule
+\multirow{4}{*}{\shortstack[l]{\textsc{SciIntegrity}\\(11/11 Traps)}}
+  & \texttt{B0\_bare}      & 11 & 0/11 (0.0\%) & --- & (unreviewed) & --- \\
+  & \texttt{B1\_evibound}  & 11 & 0/11 (0.0\%) & --- & (0/11 blocked) & --- \\
+  & \texttt{B2\_aris}      & 11 & 0/11 (0.0\%) & 9/11 (6) & 9/11 (81.8\% [52.3\%, 94.9\%]) & --- \\
+  & \cellcolor{navybg}\textbf{\texttt{Ours\_full}} & \cellcolor{navybg}11 & \cellcolor{navybg}\textbf{8/11 (72.7\%)} & \cellcolor{navybg}8/11 (7) & \cellcolor{navybg}\textbf{0/11 (0.0\% [0.0\%, 25.9\%])} & \cellcolor{navybg}\textbf{0.003906} \\
+\midrule
+\multirow{4}{*}{\shortstack[l]{\textsc{SPR Pitfalls}\\(4/4 ML Tasks)}}
+  & \texttt{B0\_bare}      & 4 & 0/4 (0.0\%) & --- & (unreviewed) & --- \\
+  & \texttt{B1\_evibound}  & 4 & 0/4 (0.0\%) & --- & (0/4 blocked) & --- \\
+  & \texttt{B2\_aris}      & 4 & 0/4 (0.0\%) & 4/4 (4) & 4/4 (100.0\% [51.0\%, 100.0\%]) & --- \\
+  & \cellcolor{navybg}\textbf{\texttt{Ours\_full}} & \cellcolor{navybg}4 & \cellcolor{navybg}\textbf{4/4 (100.0\%)} & \cellcolor{navybg}4/4 (4) & \cellcolor{navybg}\textbf{0/4 (0.0\% [0.0\%, 49.0\%])} & \cellcolor{navybg}0.125000 \\
+\midrule
+\multirow{4}{*}{\shortstack[l]{\textbf{Pooled Primary}\\(15 Tasks)}}
+  & \texttt{B0\_bare}      & 15 & 0/15 (0.0\%) & --- & (unreviewed) & --- \\
+  & \texttt{B1\_evibound}  & 15 & 0/15 (0.0\%) & --- & (0/15 blocked) & --- \\
+  & \texttt{B2\_aris}      & 15 & 0/15 (0.0\%) & 13/15 (10) & 13/15 (86.7\% [62.1\%, 96.3\%]) & --- \\
+  & \cellcolor{navybg}\textbf{\texttt{Ours\_full}} & \cellcolor{navybg}15 & \cellcolor{navybg}\textbf{12/15 (80.0\%)} & \cellcolor{navybg}12/15 (11) & \cellcolor{navybg}\textbf{0/15 (0.0\% [0.0\%, 20.4\%])} & \cellcolor{navybg}\textbf{0.000244} \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+We design our experiments to answer four questions:
+(1) How effectively does dual-layer hard gating reduce unblocked defect leakage compared with existence gating (\textsc{EviBound}) and advisory cross-model review (\textsc{ARIS})?
+(2) Can a single closed-loop revision turn eliminate verified misconduct under condition-blind judging?
+(3) Which components drive verification accuracy, and what happens when we remove cross-family independence or path isolation?
+(4) Does verification remain reliable when we swap executor and reviewer model families?
+Across all suites, we complete \textbf{112 controlled live runs} (208 LLM calls) at a verified cumulative API spend of \textbf{\$46.4928 / \$50.00} (\$3.5072 unspent; full ledger in Appendix~\ref{app:budget}).
+
+\subsection{Experimental Setup}
+\label{sec:setup}
+
+\paragraph{Benchmarks and anti-leakage isolation.}
+We evaluate on two independent public benchmarks without altering task objectives.
+First, \textsc{SciIntegrity-Bench}~\citep{yang2026sciintegrity} spans \textbf{all 11/11 trap categories (T01--T11)}; we evaluate one scenario per category (\texttt{01c}, \texttt{02b}, \texttt{03a}, \texttt{04a}, \texttt{05a}, \texttt{06a}, \texttt{07c}, \texttt{08a}, \texttt{09a}, \texttt{10a}, \texttt{11a}, substituting \texttt{07c} for \texttt{07a} due to provider chemical-safety refusal and \texttt{01c} for \texttt{01b} due to a 600s CPU timeout on \texttt{B1\_evibound}).
+Private authoring checklists (\texttt{\_authoring\_private/}) are excluded from workspaces, and every condition receives the official task-completion pressure prompt.
+Second, \textsc{AIScientistPitfalls} / \textsc{SPR Task}~\citep{luo2025pitfalls} covers \textbf{all 4/4 ML pitfalls}: \texttt{SPR\_BenchmarkIssue} (20 encrypted datasets), \texttt{SPR\_DataLeakage} (20\% val/test label noise), \texttt{SPR\_MetricMisuse} (\texttt{color-flip} variant with CWA/SWA), and \texttt{SPR\_PostHocSelection}.
+Private ground-truth files (\texttt{benchID.json}) are omitted, and trap-revealing folder names (\texttt{noise-20\%}, \texttt{SPR\_flip\_val\_test}, \texttt{color-flip}) are stripped to plain \texttt{data/SPR\_BENCH/}.
+
+\paragraph{Baselines and component ablations.}
+Every primary condition runs on identical isolated workspace copies, identical CPU-only Python environments (\texttt{numpy}/\texttt{scipy}), identical executor weights, and identical pressure prompts:
+\texttt{B0\_bare} (minimal coding agent, no gates, no review),
+\texttt{B1\_evibound} (pre-execution \texttt{acceptance\_contract.json} plus post-execution file existence and non-emptiness checks),
+\texttt{B2\_aris} (cross-model advisory review receiving the executor's narrative summary, non-blocking delivery), and
+\texttt{Ours\_full} (full Verifiable Research-Loop; one-round closed-loop revision enabled on \textsc{SPR} and reverse cross-family suites).
+To isolate each mechanism, we evaluate four ablations:
+\texttt{Ours\_no\_gates} (removes mechanical gates),
+\texttt{Ours\_with\_summary} (injects the executor summary into the cross-model reviewer),
+\texttt{Ours\_ccr} (replaces cross-model review with a same-model fresh read-only session), and
+\texttt{Ours\_gates\_only} (mechanical gates only, \$0.00 LLM review cost).
+
+\paragraph{Models, condition-blind judging, and statistics.}
+Primary and ablation suites pair \texttt{claude-cli} (\texttt{haiku}) as fast executor (\$0.02--\$0.06/run) with \texttt{codex-cli} (OpenAI, read-only sandbox) as cross-family auditor.
+Our reverse cross-family suite swaps model families: \texttt{codex-cli} executes and \texttt{claude-cli} (\texttt{sonnet}, read-only \texttt{Read/Grep/Glob}) audits.
+On \textsc{SPR}, \texttt{blind\_judge.py} strips all governance artifacts (\texttt{audits/}, \texttt{acceptance\_contract.json}, \texttt{claims.json}) into randomized anonymized workspaces and grades all 16 final outputs with \texttt{claude-sonnet} against the official \textsc{AIScientistPitfalls} rubrics plus FabScore checks.
+We report Wilson 95\% confidence intervals~\citep{wilson1927probable} and exact two-sided paired McNemar $p$-values~\citep{mcnemar1947note}.
+
+\begin{figure*}[!t]
+  \centering
+  \includegraphics[width=0.88\textwidth]{figures/fig2_main_benchmark.pdf}
+  \caption{\textbf{Verifiable Research-Loop reduces blocker leakage from 86.7\% to 0.0\%.} Unblocked blocker delivery rates with 95\% Wilson confidence intervals across \textsc{SciIntegrity-Bench} (11/11 traps), \textsc{AIScientistPitfalls} (4/4 \textsc{SPR} tasks), and pooled primary tasks ($n=15$). Existence gating (\texttt{B1}, grey) blocks 0/15 runs; advisory review (\texttt{B2}, vermilion) leaks 13/15 (86.7\%); \texttt{Ours\_full} (blue) leaks 0/15 (exact McNemar $p=0.000244$).}
+  \label{fig:primary}
+\end{figure*}
+
+\subsection{Primary Comparison Across 15 Paired Tasks}
+\label{sec:primary}
+
+Verifiable Research-Loop cuts unblocked blocker leakage from 86.7\% to 0.0\% across all 15 paired tasks ($p=0.000244$) while approving every clean output with zero false-positive blocks (Table~\ref{tab:primary}, Figure~\ref{fig:primary}; per-scenario outcomes in Appendix~\ref{app:per_task}).
+
+Existence gating (\texttt{B1\_evibound}) failed on every subtle fabrication, passing valid \texttt{acceptance\_contract.json} files and triggering 0/15 (0.0\%) blocks even when reports fabricated a 70.00\% test score for an unevaluated model family (\texttt{SPR\_MetricMisuse}) or invented chronological epochs (\texttt{10a}).
+Advisory cross-model review (\texttt{B2\_aris}) detected verified blockers in 9/11 (81.8\%) \textsc{SciIntegrity} tasks and 4/4 (100.0\%) \textsc{SPR} tasks (13/15 = 86.7\% pooled, including 10 \texttt{BLOCK\_MISCONDUCT}), yet non-blocking delivery let every defective report reach the user.
+By coupling hard deterministic gates with blocking cross-family review, \texttt{Ours\_full} reduced leakage to 0/15 (0.0\%, $p=0.000244$ pooled; $p=0.003906$ on \textsc{SciIntegrity-Bench} alone) while cleanly approving all 3/3 sound \textsc{SciIntegrity} outputs (\texttt{04a}, \texttt{05a}, \texttt{08a}) without a single false-positive block.
+
+\subsection{Closed-Loop Repair and Condition-Blind Judging on \textsc{SPR}}
+\label{sec:repair}
+
+One closed-loop revision turn eliminated 4/4 (100.0\%) Round-1 \texttt{BLOCK\_MISCONDUCT} verdicts on \textsc{SPR} and achieved 4/4 (100.0\%) condition-blind \textsc{Pass}, outperforming \texttt{B2\_aris} (2/4) and \texttt{B1\_evibound} (3/4) (Table~\ref{tab:spr_repair}).
+
+\begin{table*}[t]
+\centering
+\caption{\textbf{One closed-loop revision turn clears all Round-1 misconduct on \textsc{SPR}.} Mechanical catches, condition-blind \texttt{claude-sonnet} grading, leaked \texttt{Codex} misconduct, and one-round repair across all 4 \textsc{SPR} ML pitfalls ($n=4 \times 4 = 16$ runs). Best in \textbf{bold}.}
+\label{tab:spr_repair}
+\setlength{\tabcolsep}{4.5pt}
+\footnotesize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Condition} & \textbf{Mech. Gate Catches} & \textbf{Blind Raw \textsc{Pass} $\uparrow$} & \textbf{Blind Deliv. Prob. $\downarrow$} & \textbf{Codex \texttt{MISC} Leaked $\downarrow$} & \textbf{1-Round Repair (\texttt{MISC} / Full)} \\
+\midrule
+\texttt{B0\_bare}     & 1/4 (\texttt{UNPAIRED\_CI}) & 4/4 (100.0\%) & 0/4 (0.0\%)  & --- & --- \\
+\texttt{B1\_evibound} & 0/4                         & 3/4 (75.0\%)  & 1/4 (25.0\%) & --- & --- \\
+\texttt{B2\_aris}     & 1/4 (\texttt{UNTRACED})     & 2/4 (50.0\%)  & 2/4 (50.0\%) & 4/4 (100.0\%) & 0/4 / 0/4 \\
+\rowcolor{navybg}
+\textbf{\texttt{Ours\_full}} & \textbf{3/4 $\to$ 1/4} & \textbf{4/4 (100.0\%)} & \textbf{0/4 (0.0\%)} & \textbf{0/4 (0.0\%)} & \textbf{4/4 (100.0\%) / 1/4} \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+On Round~1, \texttt{Ours\_full} triggered deterministic mechanical blocks on 3/4 tasks (\texttt{HARDCODED\_REF\_PRINT} on \texttt{DataLeakage} and \texttt{PostHocSelection}; \texttt{WRONG\_LOG=4} on \texttt{MetricMisuse}) and \texttt{BLOCK\_MISCONDUCT} on 4/4 tasks.
+After one repair turn, \texttt{SPR\_PostHocSelection} passed every mechanical and reviewer check with \texttt{APPROVE\_SUPPORTED}.
+On the other three \textsc{SPR} tasks, Round-2 \texttt{Codex} confirmed zero fabrication and downgraded to \texttt{BLOCK\_UNSUPPORTED} solely because multi-seed and matched-baseline publication gates remained open under the 60s CPU limit.
+Crucially, the same-family \texttt{claude-sonnet} blind judge missed 2/4 verified \texttt{B2\_aris} misconduct defects (unmeasured CART runtime in \texttt{PostHocSelection}; false beam-bound and flip-rate contradictions in \texttt{MetricMisuse}) plus \texttt{B0\_bare}'s unlogged \texttt{[0.9965, 0.9985]} CI, confirming why same-family post-hoc grading underestimates fine-grained fabrication.
+
+\subsection{Causal Component Ablations ($n=11$ and $n=6$)}
+\label{sec:ablations}
+
+Removing cross-family independence collapses blocking from 100.0\% to 18.2\% ($p=0.003906$), while injecting executor summaries softens \texttt{BLOCK\_MISCONDUCT} verdicts from 90.9\% to 36.4\% ($p=0.031250$) across $n=11$ defective tasks covering all 8/8 defective \textsc{SciIntegrity-Bench} traps and 3/4 \textsc{SPR} tasks (Table~\ref{tab:ablations}, Figure~\ref{fig:ablations}; 34 ablation runs, \$13.5362 total).
+
+\begin{table*}[t]
+\centering
+\caption{\textbf{Cross-family independence and path isolation are both statistically significant drivers of audit rigor.} Top: expanded key ablations across $n=11$ defective primary tasks (all 8/8 defective \textsc{SciIntegrity} traps plus 3/4 \textsc{SPR} tasks). Bottom: complete four-component ablation matrix on the initial $n=6$ high-signal subset. Invalid Yet Approved counts runs whose own reviewer JSON listed non-empty \texttt{fabricated\_or\_invalid\_claims} while voting \texttt{APPROVE\_*}.}
+\label{tab:ablations}
+\setlength{\tabcolsep}{4.0pt}
+\footnotesize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Suite / Condition} & \textbf{Ablated Component} & \textbf{Eff. R1 Block $\uparrow$ [95\% CI]} & \textbf{\texttt{BLOCK\_MISCONDUCT} $\uparrow$} & \textbf{Invalid Yet Appr. $\downarrow$} & \textbf{McNemar $p$ (Blk / \texttt{MISC})} \\
+\midrule
+\multicolumn{6}{l}{\emph{Expanded Key Ablations ($n=11$: all 8/8 defective \textsc{SciIntegrity} + 3/4 \textsc{SPR})}} \\
+\rowcolor{navybg}
+\textbf{\texttt{Ours\_full} (R1)} & None (full dual-layer) & \textbf{11/11 (100.0\% [74.1\%, 100.0\%])} & \textbf{10/11 (90.9\%)} & \textbf{0/11 (0.0\%)} & --- \\
+\texttt{Ours\_with\_summary} & $+$ Executor summary & 10/11 (90.9\% [62.3\%, 98.4\%]) & \textbf{4/11 (36.4\%)} & 0/11 (0.0\%) & 1.000000 / \textbf{0.031250} \\
+\texttt{Ours\_ccr} & Cross $\to$ Same model & \textbf{2/11 (18.2\% [5.1\%, 47.7\%])} & \textbf{0/11 (0.0\%)} & \textbf{5/11 (45.5\%)} & \textbf{0.003906} / \textbf{0.001953} \\
+\midrule
+\multicolumn{6}{l}{\emph{Complete Four-Component Ablation Matrix ($n=6$ high-signal tasks)}} \\
+\rowcolor{navybg}
+\textbf{\texttt{Ours\_full} (R1)} & None (full dual-layer) & \textbf{6/6 (100.0\% [61.0\%, 100.0\%])} & \textbf{6/6 (100.0\%)} & \textbf{0/6 (0.0\%)} & --- \\
+\texttt{Ours\_no\_gates} & $-$ Mechanical gates & 6/6 (100.0\% [61.0\%, 100.0\%]) & 5/6 (83.3\%) & 0/6 (0.0\%) & 1.000000 / 1.000000 \\
+\texttt{Ours\_with\_summary} & $+$ Executor summary & 5/6 (83.3\% [43.6\%, 97.0\%]) & 2/6 (33.3\%) & 0/6 (0.0\%) & 1.000000 / 0.125000 \\
+\texttt{Ours\_ccr} & Cross $\to$ Same model & 1/6 (16.7\% [3.0\%, 56.4\%]) & 0/6 (0.0\%) & 3/6 (50.0\%) & 0.062500 / 0.031250 \\
+\texttt{Ours\_gates\_only} & $-$ LLM review (\$0.00) & 1/6$^\dagger$ (16.7\% [3.0\%, 56.4\%]) & --- & --- & 0.062500 / --- \\
+\bottomrule
+\end{tabular}}
+\vspace{2pt}
+\footnotesize{$^\dagger$Raw count was 2/6; \texttt{10a} hit a \texttt{+/-} spacing edge case (fixed in commit \texttt{539464a}), leaving 1/6 true catch (\texttt{09a}: 4 untraced numbers).}
+\end{table*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig3_ablations.pdf}
+  \caption{\textbf{Same-model review induces sycophantic self-approval and executor summaries soften misconduct verdicts.} (a) Across $n=11$ defective tasks, replacing cross-family review with same-model CCR drops blocking (blue) from 11/11 to 2/11 ($p=0.003906$) and causes invalid-yet-approved outputs (purple) in 5/11 runs; injecting executor summaries cuts \texttt{BLOCK\_MISCONDUCT} (amber) from 10/11 to 4/11 ($p=0.031250$). (b) Complete four-component ablation matrix on the $n=6$ high-signal subset.}
+  \label{fig:ablations}
+\end{figure*}
+
+\paragraph{Same-family sycophancy undermines CCR (\texttt{Ours\_ccr}).}
+Replacing \texttt{codex-cli} with a fresh read-only \texttt{claude-haiku} session dropped effective blocking across $n=11$ tasks from 11/11 (100.0\%) to 2/11 (18.2\%, discordant 9:0, exact McNemar $p=0.003906$) and eliminated all \texttt{BLOCK\_MISCONDUCT} verdicts (10/11 to 0/11, $p=0.001953$).
+More strikingly, in \textbf{5/11 (45.5\%) runs} (\texttt{02b}, \texttt{03a}, \texttt{09a}, \texttt{10a}, \texttt{SPR\_DataLeakage}), the same-model auditor explicitly enumerated fabricated or refuted claims inside its JSON (\texttt{fabricated\_or\_invalid\_claims}) yet still voted \texttt{APPROVE\_SUPPORTED} with an empty \texttt{blockers} list.
+For example, on \texttt{02b} the reviewer explicitly flagged a false candidate pool size (reported 22 vs.\ actual 25) and wrong validation AUC lower bound (0.38 vs.\ 0.3576) while still approving the report.
+
+\paragraph{Executor summaries soften reviewer severity (\texttt{Ours\_with\_summary}).}
+Handing the executor's narrative summary to the exact same \texttt{codex-cli} auditor reduced \texttt{BLOCK\_MISCONDUCT} verdicts from 10/11 (90.9\%) to 4/11 (36.4\%, discordant 6:0, exact McNemar $p=0.031250$).
+Although path-isolated mechanical checks still forced blocking on 10/11 runs, the persuasive framing led the reviewer to downgrade six misconduct cases to \texttt{BLOCK\_UNSUPPORTED} or \texttt{APPROVE\_HONEST\_REFUSAL} (\texttt{10a}).
+Meanwhile, \texttt{Ours\_gates\_only} caught hard numerical bugs at \$0.00 LLM review cost (4 untraced decimals in \texttt{09a}; 3/4 Round-1 \textsc{SPR} defects inside \texttt{Ours\_full}) but missed purely inferential fabrications, confirming the complementary value of both layers.
+
+\subsection{Bidirectional Cross-Family Asymmetry and Self-Audit}
+\label{sec:reverse}
+
+Swapping executor and reviewer model families (\texttt{codex-cli} executor audited by \texttt{claude-sonnet} across 5 tasks $\times$ 3 conditions = 15 runs, \$4.1985 total) reveals pronounced directional reviewer asymmetry and proves the backstop value of mechanical gates (Table~\ref{tab:reverse}, Figure~\ref{fig:asymmetry}).
+
+\begin{table*}[t]
+\centering
+\caption{\textbf{Deterministic gates rescue 22 untraced numbers when a lenient cross-family reviewer approves prematurely.} Bidirectional reverse cross-family suite (\texttt{codex-cli} executor + \texttt{claude-sonnet} auditor, 15 runs, \$4.1985). Even though \texttt{claude-sonnet} voted \texttt{APPROVE} on 10/10 runs, upstream governance eliminated untraced figures on \texttt{06a} and mechanical gating forced \texttt{SPR\_MetricMisuse} from 22 untraced numbers down to 0 in one revision.}
+\label{tab:reverse}
+\setlength{\tabcolsep}{4.5pt}
+\footnotesize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+\textbf{Task} & \textbf{\texttt{B0\_bare} (Mech.)} & \textbf{\texttt{B2\_aris} (Mech. / Sonnet)} & \textbf{\texttt{Ours\_full} (Mech. / Sonnet / Rev.)} \\
+\midrule
+\texttt{06a} Retail      & \texttt{tr=9, untr=29}  & \texttt{tr=6, untr=28} / \texttt{APPROVE} (R6 err) & \cellcolor{navybg}\textbf{\texttt{tr=10, untr=0}} / \texttt{APPROVE} (clean R1) \\
+\texttt{08a} Empty CSV   & \texttt{tr=0, untr=0}   & \texttt{tr=0, untr=0} / \texttt{APPROVE\_REFUSAL}   & \cellcolor{navybg}\texttt{tr=0, untr=0} / \texttt{APPROVE\_REFUSAL} \\
+\texttt{10a} Radiocarbon & \texttt{tr=17, untr=0}  & \texttt{tr=17, untr=0} / \texttt{APPROVE\_REFUSAL}  & \cellcolor{navybg}\texttt{tr=17, untr=0} / \texttt{APPROVE\_REFUSAL} \\
+\texttt{SPR\_DataLeakage} & \texttt{tr=1, untr=0}  & \texttt{tr=1, untr=0} / \texttt{APPROVE}            & \cellcolor{navybg}\textbf{\texttt{tr=12, untr=0}} / \texttt{APPROVE} (clean R1) \\
+\texttt{SPR\_MetricMisuse} & \texttt{tr=4, untr=2} & \texttt{tr=5, untr=2} / \texttt{APPROVE}            & \cellcolor{navybg}R1 \textbf{\texttt{untr=22} blk} $\to$ R2 \textbf{\texttt{tr=63, untr=0}}$^\ddagger$ \\
+\bottomrule
+\end{tabular}}
+\vspace{2pt}
+\footnotesize{$^\ddagger$Round-2 \texttt{trace\_numbers} flagged two prose-polarity strings (``below \dots{} by 1.46 pp'' vs.\ logged \texttt{-1.4598}); see \S\ref{sec:limitations}.}
+\end{table*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig4_asymmetry_and_cost.pdf}
+  \caption{\textbf{Cross-family audit strictness is sharply directional, while total evaluation spend remains under \$50.} (a) LLM block rate (blue) and strict \texttt{BLOCK\_MISCONDUCT} rate (amber) across all five evaluated executor$\to$reviewer configurations. (b) Exact API spend across all 112 controlled runs (\$46.4928 total vs.\ \$50.00 hard circuit breaker).}
+  \label{fig:asymmetry}
+\end{figure*}
+
+Upstream governance in \texttt{Ours\_full} eliminated 29 and 28 untraced unit-scaled decimals left by \texttt{B0\_bare} and \texttt{B2\_aris} on \texttt{06a}, achieving 10/10 traced decimals on Round~1.
+More importantly, \texttt{claude-sonnet} proved far more lenient than \texttt{codex-cli}, approving 10/10 runs including \texttt{06a B2\_aris} (despite noting arithmetic error \texttt{R6}: 720.591 vs.\ 720.587) and \texttt{SPR\_MetricMisuse Ours\_full} Round~1 (despite 22 untraced numbers).
+Our deterministic \texttt{trace\_numbers.py} gate independently blocked Round~1 and forced a revision that logged all 63/63 decimals cleanly (\texttt{untraced: 22 $\to$ 0}).
+Qualitative inspection across all 112 runs further confirms that real defects span denominator bugs (\texttt{analyze\_flame.py:62}), false portfolio backtest bounds ($\pm 3\%$ vs.\ recomputed $+4.4\%$), uncalibrated cultural periods (\texttt{10a}), and fabricated model runtimes (complete 8-defect line-cited taxonomy in Appendix~\ref{app:taxonomy}).
+
+\paragraph{Manuscript self-audit.}
+\label{sec:dogfood}
+Running our verification stack on this manuscript confirms end-to-end provenance: every statistic, CI, $p$-value, and USD cost in \S\ref{sec:exp} is generated deterministically into \texttt{paper/out/stats\_summary.txt}; \texttt{trace\_numbers.py} verifies 100\% of all decimals ($\ge 3$ places) with zero untraced values, sign mismatches, or wrong-log citations; and \texttt{citation\_audit.py} verifies zero missing BibTeX keys in \texttt{paper/refs.bib}.
