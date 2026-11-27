@@ -44,6 +44,24 @@ Autonomous research agents rarely fail by omitting output files; they fail by ex
 
 ---
 
+## How VeriLoop Compares
+
+> *While most AI research tools focus on generating papers faster, **VeriLoop** focuses on making every number, plot, citation, and claim line-by-line auditable before release.*
+
+| System / Project | Category | End-to-End Exp → Paper | Hard Mechanical Gates (AST / Signed Trace) | Auto-Bind Logs → LaTeX & Figs (TB/W&B/CSV) | Online Citation & Abstract Gate | Award-Paper Style & Fig Lint | Interactive Audit UI (Paper ↔ Log) | Frozen Paired + Unseen Eval |
+|---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **AI-Scientist / v2** (Sakana) | Autonomous research agent | ✅ (tree search) | ❌ (LLM self-review) | ⚠️ (custom scripts) | ⚠️ (S2 search, non-blocking) | ❌ | ❌ | ❌ |
+| **ARIS** (upstream base) | Cross-model research workflow | ✅ (65+ skills) | ❌ (advisory review) | ❌ | ❌ | ❌ | ❌ | ❌ (1 run) |
+| **EviBound** | Execution existence gate | ⚠️ (Colab runner) | ⚠️ (file existence / `rc=0`) | ❌ (MLflow schema) | ❌ | ❌ | ❌ | ⚠️ (8 self-authored) |
+| **FabScore / FLAWS / PaperAudit** | Post-hoc audit benchmarks | ❌ (post-hoc) | ⚠️ (FabScore re-exec) | ❌ | ⚠️ (partial) | ❌ | ❌ | ✅ (post-hoc corpora) |
+| **PaperQA2 / OpenScholar / STORM** | Literature RAG & synthesis | ❌ (lit/writing) | ❌ | ❌ | ✅ (full-text RAG) | ❌ | ⚠️ (cite links) | ✅ (lit QA benchmarks) |
+| **Overleaf / Cursor + LaTeX** | Collaborative / IDE editors | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ (no log binding) | — |
+| **VeriLoop (Ours)** | **Verifiable end-to-end research & paper pipeline** | ✅ (**90+ skills + real GPU showcase**) | ✅ (**`$0` AST + signed trace + G1–G7 + XMR**) | ✅ (**stdlib TB / W&B / CSV → macros, tables, PDFs**) | ✅ (**arXiv / Crossref / S2 gate + abstract check + `fetch-bib`**) | ✅ (**60-award-paper lint + Okabe-Ito**) | ✅ (**zero-dep split-pane `review-ui`**) | ✅ (**16 frozen + 21 unseen, zero overrides**) |
+
+*Note on complementary strengths:* Full-text literature RAG tools (e.g., PaperQA2 / OpenScholar) remain stronger for large-scale multi-document synthesis, and AI-Scientist-v2 demonstrates broader open-ended tree-search exploration; VeriLoop is complementary to Cursor/Overleaf and specialized RAG tools, providing the missing deterministic verification and log-to-LaTeX provenance layer.
+
+---
+
 ## Benchmark Results
 
 All evaluation artifacts, frozen SHA-256 workspaces, independent `file:line` ground-truth labels ([eval/v2_frozen/ground_truth.csv](eval/v2_frozen/ground_truth.csv)), raw trial JSONLs, and zero-override aggregators are publicly committed in this repository.
@@ -57,6 +75,7 @@ All evaluation artifacts, frozen SHA-256 workspaces, independent `file:line` gro
 | **`claude-haiku`** | `path_only` | 48 | `91.3%` | `100.0%` | `95.5%` | `7.4%` | `92.6%` | `87.5%` |
 | **`claude-haiku`** | `with_summary` | 48 | `95.5%` | `100.0%` | `97.7%` | `3.7%` | `96.3%` | `93.8%` |
 | **`codex-cli`** | `path_only` | 48 | **`100.0%`** | **`100.0%`** | **`100.0%`** | **`0.0%`** | **`100.0%`** | `100.0%` |
+| **`L1 ∪ claude-haiku`** | `path_only` | 48 | `72.4%` | `100.0%` | `84.0%` | `29.6%` | `70.4%` | — |
 | **`L1 ∪ claude-haiku`** | `with_summary` | 48 | `77.8%` | `100.0%` | `87.5%` | `22.2%` | `77.8%` | — |
 | **`L1 ∪ claude-sonnet`** | `path_only` | 48 | `75.0%` | `85.7%` | `80.0%` | `22.2%` | `77.8%` | — |
 | **VeriLoop (`L1 ∪ codex-cli`, strict hard union)** | **`path_only`** | **48** | **`77.8%`** | **`100.0%`** | **`87.5%`** | **`22.2%`** | **`77.8%`** | — |
