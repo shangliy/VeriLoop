@@ -1,5 +1,8 @@
 * text=auto eol=lf
 
+# Preserve exact raw bytes of SHA-256 frozen benchmark workspaces across OS checkouts
+eval/v2_frozen/workspaces/** -text
+
 skills/paper-write/templates/* linguist-vendored
 skills/skills-codex/paper-write/templates/* linguist-vendored
 skills/skills-codex-claude-review/paper-write/templates/* linguist-vendored
