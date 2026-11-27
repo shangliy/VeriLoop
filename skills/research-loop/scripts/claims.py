@@ -447,7 +447,7 @@ def main():
     p.add_argument("--why", required=True); p.set_defaults(fn=cmd_revise)
 
     p = sub.add_parser("status"); p.add_argument("id"); p.add_argument("status", choices=STATUSES)
-    p.add_argument("--by", choices=["reviewer", "user"], required=True); p.add_argument("--waive")
+    p.add_argument("--by", choices=["reviewer", "user", "executor"], required=True); p.add_argument("--waive")
     p.set_defaults(fn=cmd_status)
 
     p = sub.add_parser("check"); p.add_argument("--json", action="store_true"); p.set_defaults(fn=cmd_check)

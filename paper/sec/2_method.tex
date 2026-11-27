@@ -15,15 +15,12 @@ All verification utilities are implemented in Python~3 using only the standard l
 \label{sec:claims}
 
 Without an immutable claim registry, autonomous agents frequently rewrite hypotheses post hoc after observing weak results or overwrite raw logs while citing stale figures.
-\texttt{claims.py} requires every scientific claim to be pre-registered with its target metric, dataset scope, and selection split before full evaluation runs.
-Every claim enters in \texttt{proposed} state and reaches \texttt{supported} only when seven deterministic gates pass (matching \texttt{claims.py}; details in Appendix~\ref{app:gates}):
-\texttt{G1} checks evidence-log existence, non-emptiness, SHA-256 integrity, and completion markers;
-\texttt{G2} enforces planned multi-seed coverage per dataset and non-deterministic baseline;
-\texttt{G3} forbids test-split or unknown selection;
-\texttt{G4} requires evidence for every pre-registered baseline arm;
-\texttt{G5} requires $\ge k-1$ ablations plus a dedicated \texttt{--role ablation} log when $k>1$ changes are introduced;
-\texttt{G6} keeps claim wording fixed before the latest evidence via monotonic sequence IDs; and
-\texttt{G7} verifies logged uncertainty/CI syntax (\texttt{$\pm$}, \texttt{[lo, hi]}, \texttt{95\% CI}, or $p$) when seeds $\ge 3$.
+\texttt{claims.py} logs each claim's wording, target metric, dataset scope, and selection split in \texttt{claims.json}.
+Every claim enters \texttt{proposed} and reaches \texttt{supported} only when seven gates pass (matching \texttt{claims.py}; Appendix~\ref{app:gates}):
+\texttt{G1} verifies log existence, non-emptiness, byte size, SHA-256, and completion markers on disk;
+\texttt{G2}--\texttt{G5} check declared metadata for planned seeds (\texttt{G2}), no test/unknown selection (\texttt{G3}), baseline coverage (\texttt{G4}), and $\ge k-1$ ablations with a dedicated ablation log (\texttt{G5});
+\texttt{G6} forbids wording revisions after evidence via monotonic sequence IDs (without verifying pre-run registration unless anchored in an external pre-run commit); and
+\texttt{G7} scans logged files for CI/\texttt{$\pm$}/$p$ syntax when seeds $\ge 3$.
 Only an explicit human waiver can bypass a failed gate, ensuring state transitions remain tamper-evident.
 
 \subsection{Frozen Deterministic Layer-1 Gates (\$0)}
