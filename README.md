@@ -1,56 +1,131 @@
-# VeriLoop
+<a name="readme-top"></a>
 
-**End-to-End Verifiable Autonomous Research Pipeline: 90+ Composable Research Skills Backed by Deterministic Evidence Gates and Path-Isolated Cross-Model Auditing.**
+<div align="center">
+  <img src="docs/assets/veriloop_logo.png" alt="VeriLoop Logo" width="760" />
+  <h1 align="center">VeriLoop: End-to-End Verifiable Autonomous Scientific Research</h1>
+  <p align="center">
+    <strong>Level-1 &amp; Level-2 Autonomous Research · 90+ Composable Skills · $0 Deterministic Hard Evidence Gates · VeriLoop Studio</strong>
+  </p>
+</div>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3.10+ Stdlib Only](https://img.shields.io/badge/Verification%20Core-Python%20Stdlib%20Only-green.svg)](#quick-start)
-[![Benchmark](https://img.shields.io/badge/Frozen%20v2%20Benchmark-245%20Paired%20Trials%20%2B%2021%20Unseen-0072B2.svg)](#benchmark-results)
+<div align="center">
+  <a href="https://shangliy.github.io/VeriLoop/"><img src="https://img.shields.io/badge/Project-Homepage-0072B2?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Project Homepage" /></a>
+  <a href="https://shangliy.github.io/VeriLoop/demo/studio_snapshot.html"><img src="https://img.shields.io/badge/Live-VeriLoop%20Studio-059669?style=for-the-badge&logo=vercel&logoColor=white" alt="Live VeriLoop Studio" /></a>
+  <a href="https://shangliy.github.io/VeriLoop/demo/review_ui.html"><img src="https://img.shields.io/badge/Live-Audit%20Workbench-0284C7?style=for-the-badge&logo=checkmarx&logoColor=white" alt="Live Review UI" /></a>
+  <br />
+  <a href="paper/main.pdf"><img src="https://img.shields.io/badge/Paper-arXiv%20Preprint-1E293B?style=for-the-badge&logo=arxiv&logoColor=FFE165" alt="arXiv Paper" /></a>
+  <a href="paper/main_icml2027.pdf"><img src="https://img.shields.io/badge/Paper-ICML%208--Page-1E293B?style=for-the-badge&logo=adobeacrobatreader&logoColor=F87171" alt="ICML 8-Page Paper" /></a>
+  <a href="#benchmark-results"><img src="https://img.shields.io/badge/Benchmark-245%20Paired%20%2B%2021%20Unseen-0072B2?style=for-the-badge" alt="Frozen Benchmark" /></a>
+  <br />
+  <a href="https://github.com/shangliy/VeriLoop/actions/workflows/test-suite.yml"><img src="https://img.shields.io/github/actions/workflow/status/shangliy/VeriLoop/test-suite.yml?branch=main&style=for-the-badge&label=CI%20Tests%20(1248)" alt="CI Tests" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-059669?style=for-the-badge" alt="MIT License" /></a>
+  <a href="README_CN.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3-README__CN-D97706?style=for-the-badge" alt="中文文档" /></a>
+</div>
 
-- **Repository:** [https://github.com/shangliy/VeriLoop](https://github.com/shangliy/VeriLoop)
-- **Companion Paper (arXiv v2 Preprint):** [paper/main.pdf](paper/main.pdf) ([LaTeX](paper/main.tex))
-- **Companion Paper (ICML 2027 8-Page Double-Blind):** [paper/main_icml2027.pdf](paper/main_icml2027.pdf) ([LaTeX](paper/main_icml2027.tex))
-- **中文文档:** [README_CN.md](README_CN.md) · **Third-Party Attribution:** [NOTICE.md](NOTICE.md) · [Upstream ARIS Docs](docs/ARIS_UPSTREAM_README.md)
-- **Self-Audited Paper (`./veriloop audit-paper`):** 100% traced numbers (`0` untraced, `0` sign mismatches) · `0` BibTeX issues · `Best-Paper-Writing-Skill` `0` errors, `0` warnings · **Zero hardcoded overrides**
+<br />
+
+Welcome to **VeriLoop**! Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, citations, or conclusions that contradict their own logs. **VeriLoop** unites full **Level-1 & Level-2 autonomous research** with **deterministic mechanical verification** so every number, figure, citation, and claim is auditable line by line before release:
+
+- 🎯 **Dual-Level Autonomy (Level 1 & Level 2):** Launch from a concrete research idea + baseline repo (**Level 1**) or directly from arXiv reference papers → Formula↔Code AST alignment → Gap → Innovation (**Level 2**).
+- 🛡️ **Zero-Cost Mechanical Hard Gates (`$0` Layer 1 → Path-Isolated Layer 2):** Catches fabricated numbers, sign flips, 6 classes of Python AST integrity defects, broken SHA-256 claim hashes (`G1–G7`), and hallucinated citations in milliseconds with exit code `2` hard blocking.
+- 📐 **Byte-Deterministic Log-to-LaTeX Binding (`./veriloop bind`):** Reads raw TensorBoard `.tfevents`, W&B, and CSV/JSONL files directly via Python stdlib to emit `\newcommand` macros, Booktabs tables, and Okabe-Ito vector PDFs — zero hand-copied numbers.
+- 🖥️ **Zero-Dep Web Research Cockpit (`./veriloop studio` & `review-ui`):** Real-time SSE pipeline monitor, Level-1/2 launcher, and interactive split-pane Paper ↔ Log audit workbench.
 
 ---
 
 <p align="center">
   <img src="docs/assets/veriloop_overview.png" alt="VeriLoop End-to-End Verifiable Autonomous Research & Paper Pipeline Overview" width="100%" />
+  <br />
+  <em>End-to-end overview of VeriLoop v5: Level-1/2 research orchestration backed by deterministic evidence gates, byte-stable log binding, and interactive auditing.</em>
 </p>
 
 ---
 
-## Why VeriLoop?
+<span id="news"></span>
+## 🔥 News
 
-Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, or conclusions that contradict their own logs. **VeriLoop** delivers a complete, convenient, and high-efficiency research pipeline in one place:
-
-- **Complete Lifecycle (91 Modular Skills):** Idea discovery, literature search, persistent Research Wiki, remote/local experiment execution, multi-seed statistical runs, dual-layer hard verification, **award-paper style writing & figure linting (`bestpaper-writing`)**, automated LaTeX paper generation, and rebuttal workflows.
-- **Convenient Single CLI (`./veriloop`):** One unified entry point (`gate`, `verify-cites`, `fetch-bib`, `bind`, `review-ui`, `audit-pdf`, `gpu-showcase`, `claims`, `board`, `demo`, `live`, `install`, `test`, `lint-paper`, `audit-paper`, `milestone-audit`, `eval-v2`) with zero third-party dependencies for the entire deterministic verification, log-binding, citation-API, and interactive review-UI core.
-- **Efficient Fail-Fast Gating (`$0` Layer 1 → Targeted Layer 2 → 4-in-1 Paper Audit):** Catches fabricated numbers, sign flips, Python AST integrity bugs, broken claim hashes, missing/fabricated citations, and AI-draft writing/figure anti-patterns in milliseconds at `$0` LLM cost before invoking a path-isolated cross-family reviewer, backed by a hard USD budget circuit breaker.
+- **`[v5.0]`** Shipped **arXiv LaTeX + Python AST Formula↔Code Ingest** (`./veriloop ingest`), **Docker/Local GPU Sandbox** (`./veriloop sandbox` + `docker/Dockerfile.gpu`), **Unified Level-1/Level-2 Crash-Resumable Orchestrator** (`./veriloop research`), **VeriLoop Studio Web Cockpit** (`./veriloop studio`), and the live [Project Homepage](https://shangliy.github.io/VeriLoop/). Full CI suite passes **`1,248` tests (`0` failures)**.
+- **`[v4.0]`** Completed the **42-run NVIDIA RTX 3060 Ti real-GPU overnight case study** (`92.47 min`, `195/195` expanded PDF numbers traced, `14/14` live Wiki stage checks, `10/10` online-verified citations), plus byte-deterministic `paper_bind.py`, `review_ui.py`, and `pdf_audit.py`.
+- **`[v2.0–v3.0]`** Released the publicly committed **zero-override frozen benchmark** (`16` SHA-256 workspaces, `245` paired trials + `21` strictly unseen `SciIntegrity-Bench` scenarios), integrated [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill) (CC BY 4.0), and published the self-audited companion paper ([arXiv PDF](paper/main.pdf) · [ICML 8-page PDF](paper/main_icml2027.pdf)).
 
 ---
 
-## How VeriLoop Compares
+<span id="table-of-contents"></span>
+## 📑 Table of Contents
 
-> *While most AI research tools focus on generating papers faster, **VeriLoop** focuses on making every number, plot, citation, and claim line-by-line auditable before release.*
+- [🔥 News](#news)
+- [✨ Two-Level Autonomous Research Entry](#two-level-entry)
+- [🖥️ VeriLoop Studio & Interactive Audit Workbench](#veriloop-studio)
+- [⚔️ How VeriLoop Compares](#how-veriloop-compares)
+- [📊 Benchmark Results & 42-Run Real-GPU Study](#benchmark-results)
+- [⚡ Quick Start](#quick-start)
+- [🧰 Unified CLI Reference (`./veriloop`)](#unified-cli-reference)
+- [📂 Repository Structure](#repository-structure)
+- [🌟 Attribution & Citation](#attribution-and-citation)
 
-| System / Project | Category | End-to-End Exp → Paper | Hard Mechanical Gates (AST / Signed Trace) | Auto-Bind Logs → LaTeX & Figs (TB/W&B/CSV) | Online Citation & Abstract Gate | Award-Paper Style & Fig Lint | Interactive Audit UI (Paper ↔ Log) | Frozen Paired + Unseen Eval |
-|---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| **AI-Scientist / v2** (Sakana) | Autonomous research agent | ✅ (tree search) | ❌ (LLM self-review) | ⚠️ (custom scripts) | ⚠️ (S2 search, non-blocking) | ❌ | ❌ | ❌ |
-| **HKUDS/AI-Researcher** (NeurIPS Spotlight) | Autonomous Level-1/2 research + Docker + GUI | ✅ (Level-1/2 + Docker) | ❌ (agent self-debug only) | ❌ (LLM writes numbers) | ⚠️ (arXiv LaTeX ingest, no gate) | ❌ | ⚠️ (run GUI, no log-link) | ⚠️ (Scientist-Bench) |
-| **ARIS** (upstream base) | Cross-model research workflow | ✅ (87 skills) | ❌ (advisory review) | ❌ | ❌ | ❌ | ❌ | ❌ (1 run) |
-| **EviBound** | Execution existence gate | ⚠️ (Colab runner) | ⚠️ (file existence / `rc=0`) | ❌ (MLflow schema) | ❌ | ❌ | ❌ | ⚠️ (8 self-authored) |
-| **FabScore / FLAWS / PaperAudit** | Post-hoc audit benchmarks | ❌ (post-hoc) | ⚠️ (FabScore re-exec) | ❌ | ⚠️ (partial) | ❌ | ❌ | ✅ (post-hoc corpora) |
-| **PaperQA2 / OpenScholar / STORM** | Literature RAG & synthesis | ❌ (lit/writing) | ❌ | ❌ | ✅ (full-text RAG) | ❌ | ⚠️ (cite links) | ✅ (lit QA benchmarks) |
-| **AI-research-feedback** (`claesbackman`) | Multi-agent writing feedback & dissemination | ❌ (post-draft review) | ❌ (LLM subagents, advisory) | ❌ | ⚠️ (LLM check, no API gate) | ✅ (`voice-builder` + Beamer/web) | ⚠️ (`explain-diff` HTML) | ❌ |
-| **Overleaf / Cursor + LaTeX** | Collaborative / IDE editors | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ (no log binding) | — |
-| **VeriLoop (Ours)** | **Verifiable end-to-end research & paper pipeline** | ✅ (**90+ skills + real GPU showcase**) | ✅ (**`$0` AST + signed trace + G1–G7 + XMR**) | ✅ (**stdlib TB / W&B / CSV → macros, tables, PDFs**) | ✅ (**arXiv / Crossref / S2 gate + abstract check + `fetch-bib`**) | ✅ (**60-award-paper lint + Okabe-Ito**) | ✅ (**zero-dep split-pane `review-ui`**) | ✅ (**16 frozen + 21 unseen, zero overrides**) |
+---
+
+<span id="two-level-entry"></span>
+## ✨ Two-Level Autonomous Research Entry
+
+**VeriLoop** accepts research tasks at two levels — both wired into the same crash-resumable 7-stage pipeline (`ingest → ideate_and_register → execute → bind → draft → gate_and_repair → package_and_ui`):
+
+1. **Level 1 — Idea-Driven Implementation (`--level 1 --idea "..." --repo ...`):**
+   Provide your concrete hypothesis and baseline repo. VeriLoop statically indexes the repo via Python AST, registers falsifiable claims (`G1–G7`), executes multi-seed runs inside a local or Docker GPU sandbox with NaN/OOM watchdogs, binds raw logs into LaTeX macros/figures, and enforces hard exit-code-2 verification.
+2. **Level 2 — Reference-Paper Discovery (`--level 2 --papers <arxiv_id...> --auto-clone-github`):**
+   Provide reference arXiv IDs without a fixed design. `./veriloop ingest` downloads raw arXiv LaTeX e-print tarballs, extracts equations/sections/hyperparameters/GitHub links, aligns paper equations directly to baseline Python AST `file:line` symbols (`wiki/INGEST_MAP.md`), and flags unmatched equations into a Layer-2 verification watchlist.
+
+> **Live Verified Example (`./veriloop ingest --arxiv 1706.04599 --repo examples/gpu-overnight-research/code`):** Automatically fetches Guo et al. (ICML 2017) raw LaTeX sources (`13` equations, `14` sections, official repo `github.com/gpleiss/temperature_scaling`) and maps `calibration_methods.tex:L142 (scaling)` & `L152 (temp)` → `fit_temperature_on_val` (`run_overnight_study.py:L241`) and `definitions.tex:L70 (ece)` → `compute_metrics_from_logits` (`L220`) at `$0` LLM cost.
+
+---
+
+<span id="veriloop-studio"></span>
+## 🖥️ VeriLoop Studio & Interactive Audit Workbench
+
+Launch the zero-dependency local Web cockpit with `./veriloop studio -w examples/gpu-overnight-research --port 8765`, or explore the live interactive snapshots hosted directly on our [Project Homepage](https://shangliy.github.io/VeriLoop/):
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://shangliy.github.io/VeriLoop/demo/studio_snapshot.html">
+        <img src="docs/assets/veriloop_studio_preview.png" alt="VeriLoop Studio Web Cockpit" width="100%" />
+      </a>
+      <p align="center"><strong>VeriLoop Studio</strong> (<code>./veriloop studio</code>)<br />7-stage live SSE pipeline monitor, Level-1/2 launcher, hard-gate KPI cards &amp; auto-bound 95% CI tables · <a href="https://shangliy.github.io/VeriLoop/demo/studio_snapshot.html"><strong>Open Live Demo →</strong></a></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://shangliy.github.io/VeriLoop/demo/review_ui.html">
+        <img src="docs/assets/veriloop_review_ui_preview.png" alt="VeriLoop Split-Pane Review UI" width="100%" />
+      </a>
+      <p align="center"><strong>Split-Pane Audit Workbench</strong> (<code>./veriloop review-ui</code>)<br />Click any number or <code>\cite{}</code> in the manuscript → jump straight to exact SHA-256 <code>log:line</code>, AST check, or online abstract · <a href="https://shangliy.github.io/VeriLoop/demo/review_ui.html"><strong>Open Live Demo →</strong></a></p>
+    </td>
+  </tr>
+</table>
+
+---
+
+<span id="how-veriloop-compares"></span>
+## ⚔️ How VeriLoop Compares
+
+> *While most AI research tools focus on generating papers faster, **VeriLoop** delivers Level-1/2 autonomy AND makes every number, formula, plot, citation, and claim line-by-line auditable before release.*
+
+| System / Project | Category | Level-1/2 + Docker GPU | arXiv LaTeX ↔ AST Map | Hard Mechanical Gates (AST / Signed Trace) | Auto-Bind Logs → LaTeX & Figs | Online Citation & Abstract Gate | Award-Paper Style & Fig Lint | Interactive Audit Studio | Frozen Paired + Unseen Eval |
+|---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **HKUDS/AI-Researcher** (NeurIPS Spotlight) | Autonomous Level-1/2 research + Docker + GUI | ✅ | ⚠️ (LLM read) | ❌ (agent self-debug only) | ❌ (LLM writes numbers) | ⚠️ (no gate) | ❌ | ⚠️ (run GUI, no log-link) | ⚠️ (Scientist-Bench) |
+| **AI-Scientist / v2** (Sakana) | Autonomous research agent | ⚠️ (tree search) | ❌ | ❌ (LLM self-review) | ⚠️ (custom scripts) | ⚠️ (non-blocking) | ❌ | ❌ | ❌ |
+| **ARIS** (upstream base) | Cross-model research workflow | ⚠️ (87 skills) | ❌ | ❌ (advisory review) | ❌ | ❌ | ❌ | ❌ | ❌ (1 run) |
+| **EviBound** | Execution existence gate | ⚠️ (Colab) | ❌ | ⚠️ (file existence / `rc=0`) | ❌ (MLflow schema) | ❌ | ❌ | ❌ | ⚠️ (8 self-authored) |
+| **FabScore / FLAWS / PaperAudit** | Post-hoc audit benchmarks | ❌ | ❌ | ⚠️ (FabScore re-exec) | ❌ | ⚠️ (partial) | ❌ | ❌ | ✅ (post-hoc corpora) |
+| **PaperQA2 / OpenScholar / STORM** | Literature RAG & synthesis | ❌ | ❌ | ❌ | ❌ | ✅ (full-text RAG) | ❌ | ⚠️ (cite links) | ✅ (lit QA benchmarks) |
+| **AI-research-feedback** (`claesbackman`) | Multi-agent writing feedback & dissemination | ❌ | ❌ | ❌ (LLM advisory) | ❌ | ⚠️ (no API gate) | ✅ (`voice-builder`) | ⚠️ (`explain-diff`) | ❌ |
+| **Overleaf / Cursor + LaTeX** | Collaborative / IDE editors | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | — |
+| **VeriLoop v5 (Ours)** | **Verifiable end-to-end research & paper pipeline** | ✅ (**Level-1/2 + Docker/Local**) | ✅ (**Static AST + watchlist**) | ✅ (**`$0` AST + signed trace + G1–G7 + XMR**) | ✅ (**stdlib TB / W&B / CSV → macros, tables, PDFs**) | ✅ (**arXiv / Crossref / S2 + abstract check**) | ✅ (**60-award-paper lint + Okabe-Ito**) | ✅ (**Studio + split-pane `review-ui`**) | ✅ (**16 frozen + 21 unseen, zero overrides**) |
 
 *Note on complementary strengths:* Full-text literature RAG tools (e.g., PaperQA2 / OpenScholar) remain stronger for large-scale multi-document synthesis, and AI-Scientist-v2 demonstrates broader open-ended tree-search exploration; VeriLoop is complementary to Cursor/Overleaf and specialized RAG tools, providing the missing deterministic verification and log-to-LaTeX provenance layer.
 
 ---
 
-## Benchmark Results
+<span id="benchmark-results"></span>
+## 📊 Benchmark Results & 42-Run Real-GPU Study
 
 All evaluation artifacts, frozen SHA-256 workspaces, independent `file:line` ground-truth labels ([eval/v2_frozen/ground_truth.csv](eval/v2_frozen/ground_truth.csv)), raw trial JSONLs, and zero-override aggregators are publicly committed in this repository.
 
@@ -82,45 +157,52 @@ With `eval/v2_frozen/locked/trace_numbers_v2.py` (`42c39cf4a4adeee1`) and `audit
 ### 3. Long-Horizon Real-GPU End-to-End Case Study (`42` RTX 3060 Ti Runs)
 
 Committed in [examples/gpu-overnight-research/](examples/gpu-overnight-research/) (`bash examples/gpu-overnight-research/run_reproduce.sh`, with full audit logs committed under `audits/`): a crash-resumable 42-run multi-seed PyTorch AMP fp16 study (`5548.4s` / `92.47 min` GPU time, `593.0 MB` peak VRAM) across an 8-stage bundled CIFAR-10 recipe ladder (30 epochs, 3 seeds) and a 6-stage Fashion-MNIST ladder (15 epochs, 3 seeds; Mixup CIFAR-10 only):
-- **Live Pipeline Self-Consistency & Committed Audit Logs (`$0` API cost):** **`14/14` stage checks passed** on `wiki/RESEARCH_WIKI.md` (`182` distinct numbers in the final wiki re-audited at each stage, `0` AST `HIGH`, `81.8 ms` median latency — a live pipeline self-consistency and AST smoke check), while committed logs under `audits/` separately record `4/4` claims passing `G1–G7` (`audits/claims_check.txt`, `0` wording revisions; `G2/G3/G5` check self-attested CLI metadata while `G1/G7` verify files on disk; rebuilt cleanly post-run via `register_claims.sh` with `--by executor` and tz-aware timestamps after making `paper_bind.py` byte-deterministic so `run_reproduce.sh` exits `0`, keeping raw `trajectory_ledger.jsonl` untouched), hard-gate `"blocked": false` + `"online_checked": true` (`audits/veriloop_gate.json`), `10/10` arXiv/Crossref/S2 references (`audits/verify_cites_online.json`), and `100%` expanded-PDF number tracing (`audits/pdf_audit.json`).
-- **Auto-Bound Tables & Interactive Review UI:** `./veriloop bind` ingests 126 TensorBoard/W&B files into `\vlC*` / `\vlF*` LaTeX macros for every per-arm metric and `temp_T` table cell, Booktabs tables, and Okabe-Ito PDFs (aggregate deltas/totals trace to `out/overnight_summary.txt`) → compiled ICML-style report ([overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf), `0` Type-3 fonts, `0` warnings) + interactive split-pane [review_ui.html](examples/gpu-overnight-research/review_ui.html).
-- **Real Empirical Findings:** On CIFAR-10, `M7_SEResNet_Full` reaches `0.9193±0.0004` (`+14.06 pp` over `M1_PlainCNN`); unaugmented `M2_ResNet_Base` is strongly overconfident on CIFAR-10 (`raw_ece=0.1261 → cal_ece=0.0098`, `T*=2.6460`; milder on Fashion-MNIST, `T*=1.3368`), whereas Label Smoothing flips to underconfidence on both datasets (`T*=0.7234` CIFAR-10 / `0.6716` Fashion-MNIST) and Mixup does likewise on CIFAR-10 (`T*=0.6449`), until validation-fitted `T*` (`T*<1` for LS/Mixup, `T*>1` for `M4`) restores calibrated ECE to `0.0061–0.0120` across CIFAR-10 `M4–M7` (note Fashion-MNIST `M1_PlainCNN` raw ECE `0.0059` slightly increases to `0.0069` after `T*`).
+- **Live Pipeline Self-Consistency & Committed Audit Logs (`$0` API cost):** **`14/14` stage checks passed** on `wiki/RESEARCH_WIKI.md` (`182` distinct numbers in the final wiki re-audited at each stage, `0` AST `HIGH`, `81.8 ms` median latency), while committed logs under `audits/` record `4/4` claims passing `G1–G7` (`audits/claims_check.txt`, `0` wording revisions), hard-gate `"blocked": false` + `"online_checked": true` (`audits/veriloop_gate.json`), `10/10` arXiv/Crossref/S2 references (`audits/verify_cites_online.json`), and `100%` expanded-PDF number tracing (`195/195`, `audits/pdf_audit.json`).
+- **Auto-Bound Tables, Studio & Interactive Review UI:** `./veriloop bind` ingests 126 TensorBoard/W&B files into `\vlC*` / `\vlF*` LaTeX macros, Booktabs tables, and Okabe-Ito PDFs → compiled ICML-style report ([overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf), `0` Type-3 fonts, `0` warnings), [studio_snapshot.html](examples/gpu-overnight-research/studio_snapshot.html), and interactive split-pane [review_ui.html](examples/gpu-overnight-research/review_ui.html).
+- **Real Empirical Findings:** On CIFAR-10, `M7_SEResNet_Full` reaches `0.9193±0.0004` (`+14.06 pp` over `M1_PlainCNN`); unaugmented `M2_ResNet_Base` is strongly overconfident (`raw_ece=0.1261 → cal_ece=0.0098`, `T*=2.6460`), whereas Label Smoothing (`T*=0.7234` CIFAR-10 / `0.6716` Fashion-MNIST) and Mixup (`T*=0.6449`) flip to underconfidence until validation-fitted `T*` restores calibrated ECE to `0.0061–0.0120` across CIFAR-10 `M4–M7` (note Fashion-MNIST `M1_PlainCNN` raw ECE `0.0059` slightly increases to `0.0069` after `T*`).
 
 ---
 
-## Quick Start
+<span id="quick-start"></span>
+## ⚡ Quick Start
 
-### 1. Verify Installation & Run the 10-Second Closed-Loop Demo (`$0` API cost)
+### 1. Zero-Cost Verification, Demo & Frozen Eval (`$0` API cost)
 ```bash
 git clone https://github.com/shangliy/VeriLoop.git
 cd VeriLoop
 
-# Run all offline verification & integration tests + skill catalog checks
+# Run all 62 core verification & integration tests + skill catalog checks
 ./veriloop test
 
-# Reproduce v2 zero-override benchmark tables and stats directly from committed JSONLs
-./veriloop eval-v2 summary
-
-# Run the zero-API closed-loop walkthrough (Round 1 hard block -> Round 2 repair -> HTML board)
+# Run the 10-second closed-loop walkthrough (Round 1 hard block -> Round 2 repair -> HTML board)
 ./veriloop demo
+
+# Reproduce v2 zero-override benchmark tables directly from committed JSONLs
+./veriloop eval-v2 summary
 
 # Self-audit the companion paper (4-in-1: numbers + citations + Best-Paper prose & figure lint)
 ./veriloop audit-paper
-
-# Or lint any LaTeX paper with built-in Best-Paper-Writing-Skill checks
-./veriloop lint-paper --draft paper/sec/0_abstract.tex paper/sec/1_intro.tex --tex paper/main_icml2027.tex --layout two
 ```
 
-### 2. Gate Any Research Workspace
+### 2. VeriLoop v5: arXiv+AST Ingest, Level-1/2 Orchestrator, Docker GPU Sandbox & Studio
 ```bash
-# Layer 1 only: deterministic claims + signed number tracing + Python AST + BibTeX ($0)
-./veriloop gate \
-  --workspace ./examples/mini-ml \
-  --report report/report.md \
-  --logs out/ \
-  --scripts code/
+# 1. Fetch real arXiv LaTeX sources & statically map paper equations <-> Python AST
+./veriloop ingest -w ./my_study --arxiv 1706.04599 --repo examples/gpu-overnight-research/code
 
-# Layer 1 + Layer 2: add path-isolated cross-family blocking audit
+# 2. Run crash-resumable Level-1 (Idea+Repo) or Level-2 (Reference Papers -> Gap -> Innovation)
+./veriloop research -w ./my_study --level 2 --papers 1706.04599 --sandbox local --dry-run
+
+# 3. Optional: Build Docker GPU sandbox & execute isolated training with NaN/OOM watchdog
+docker build -t veriloop-gpu:latest -f docker/Dockerfile.gpu .
+./veriloop sandbox -w ./my_study --mode docker --gpus device=0 --network-none --cmd "python3 code/train.py"
+
+# 4. Launch VeriLoop Studio zero-dep local Web cockpit (http://127.0.0.1:8765)
+./veriloop studio -w examples/gpu-overnight-research --port 8765
+```
+
+### 3. Gate Any Research Workspace & Install Skills into Claude Code / Codex CLI
+```bash
+# Layer 1 ($0) + Layer 2 path-isolated cross-model blocking audit
 ./veriloop gate \
   --workspace /path/to/your/project \
   --report report/report.md \
@@ -130,74 +212,59 @@ cd VeriLoop
   --budget-file audits/budget.json \
   --budget-limit 5.00 \
   --out-json audits/veriloop_gate.json
-```
 
-### 3. Install Skills into Claude Code / Codex CLI
-```bash
-# Install core VeriLoop triad (research-loop + verifiable-gate + bestpaper-writing)
+# Install VeriLoop core quartet or full 90+ lifecycle skills into Claude Code / Codex CLI
 ./veriloop install --core-only
-
-# Install the full VeriLoop suite (all 90+ lifecycle skills + hard gates + bestpaper-writing)
 ./veriloop install --all
 ```
 
-### 4. Optional Live LLM Showcase (`~$1.00`)
-```bash
-./veriloop live --budget-limit 1.50
-```
-
 ---
 
-## Unified CLI Reference (`./veriloop`)
+<span id="unified-cli-reference"></span>
+## 🧰 Unified CLI Reference (`./veriloop`)
 
 | Command | Purpose |
 |---|---|
-| `./veriloop gate [args...]` | Run dual-layer hard evidence gate (exit `0` pass, exit `2` hard block) |
-| `./veriloop claims [args...]` | Manage pre-registered claim ledger (G1–G7, SHA-256 evidence hashes) |
-| `./veriloop board -w <ws>` | Render interactive HTML verification board (`board.html`) |
-| `./veriloop demo` | Run the 10-second offline closed-loop walkthrough |
-| `./veriloop live [args...]` | Run the live `claude-haiku` + `codex-cli` path-isolated showcase |
-| `./veriloop install [--core-only \| --all]` | Install VeriLoop skills into Claude Code / Codex CLI |
-| `./veriloop test` | Run all offline verification & Best-Paper integration tests + catalog checks |
-| `./veriloop lint-paper [args...]` | Run `bestpaper-writing` checks (`check_draft.py`, `check_figures.py`, `--metrics`, `--exemplars`) |
-| `./veriloop audit-paper [--no-lint]` | 4-in-1 manuscript gate: `trace_numbers` + `citation_audit` + `check_draft` + `check_figures` |
-| `./veriloop verify-cites <doc> --bib <refs.bib> --online --check-claims` | Hard literature gate querying **arXiv / Crossref / Semantic Scholar** (verifies existence, title, authors, year, retractions & claim-vs-abstract consistency) |
-| `./veriloop fetch-bib <arxiv\|doi\|title...> [--append-to refs.bib]` | Fetch canonical BibTeX directly from arXiv / Crossref / Semantic Scholar APIs |
-| `./veriloop bind --inputs <runs...> [--out-dir paper/bound]` | Auto-bind **TensorBoard / W&B / CSV** logs → `bound_metrics.txt`, LaTeX macros, Booktabs table, SHA-256 manifest & Okabe-Ito vector PDFs |
-| `./veriloop review-ui --report <files...> --logs <logs...> [--serve]` | Interactive split-pane local Web review workbench (click any number/citation in manuscript → jump straight to exact `log:line`, AST finding, or fetched abstract) |
-| `./veriloop audit-pdf <main.pdf> [--max-main-pages 8] [--render-dir dir]` | Per-page compiled PDF auditor: page limit, Type-3 fonts, `??` refs, anonymity leaks, visual margin overflow & expanded-macro number tracing |
-| `./veriloop gpu-showcase [--skip-train]` | Real **NVIDIA RTX 3060 Ti** PyTorch Fashion-MNIST (`12` runs) → `bind` → ICML PDF → `gate` → `review_ui.html` end-to-end trace |
+| `./veriloop research -w <ws> --level 1\|2 [args...]` | Unified **Level-1 (Idea+Repo) & Level-2 (Reference Papers → Gap → Innovation)** crash-resumable 7-stage orchestrator wired into `paper-bind` and dual-layer hard blocking |
 | `./veriloop ingest -w <ws> [--arxiv ID...] [--repo URL\|DIR]` | Download **arXiv LaTeX sources** & statically index baseline repos via Python AST → `wiki/INGEST_MAP.md` (**Formula ↔ Code `file:line` alignment + unmatched watchlist**) |
 | `./veriloop sandbox -w <ws> [--mode local\|docker] --cmd "..."` | Run experiments locally (zero-dep) or inside an isolated **Docker GPU container** (`docker/Dockerfile.gpu`, `:ro` data mount, NaN/OOM watchdog, SHA-256 ledger) |
-| `./veriloop research -w <ws> --level 1\|2 [--idea "..."] [--papers ID...]` | Unified **Level-1 (Idea+Repo) & Level-2 (Reference Papers → Gap → Innovation)** crash-resumable 7-stage orchestrator wired directly into `paper-bind` and dual-layer hard blocking |
 | `./veriloop studio -w <ws> [--port 8765] [--export-html out.html]` | Launch **VeriLoop Studio** zero-dep local Web cockpit (Level-1/2 Launcher + Live SSE Monitor & Gates + embedded Split-Pane Audit Workbench) |
-| `./veriloop milestone-audit [args...]` | Independent dual-model milestone gate (**latest Claude + latest Gemini** in parallel on frozen SHA-256 artifacts → consensus/unique catches + revised next-action plan, `rc=0` pass / `rc=2` revise) |
-| `./veriloop eval-v2 <subcmd> [args...]` | Reproduce v2 zero-override benchmark (`summary`, `layer1`, `run`, `unseen`, `rebuild-paper`) directly from committed frozen artifacts |
+| `./veriloop gate [args...]` | Run dual-layer hard evidence gate (exit `0` pass, exit `2` hard block) |
+| `./veriloop bind --inputs <runs...> [--out-dir paper/bound]` | Auto-bind **TensorBoard / W&B / CSV** logs → `bound_metrics.txt`, LaTeX macros, Booktabs table, SHA-256 manifest & Okabe-Ito vector PDFs |
+| `./veriloop verify-cites <doc> --bib <refs.bib> --online --check-claims` | Hard literature gate querying **arXiv / Crossref / Semantic Scholar** (existence, title, authors, year, retractions & claim-vs-abstract check) |
+| `./veriloop fetch-bib <arxiv\|doi\|title...> [--append-to refs.bib]` | Fetch canonical BibTeX directly from arXiv / Crossref / Semantic Scholar APIs |
+| `./veriloop review-ui --report <files...> --logs <logs...> [--serve]` | Interactive split-pane local Web review workbench (click any number/citation → jump straight to exact `log:line`, AST finding, or fetched abstract) |
+| `./veriloop audit-pdf <main.pdf> [--max-main-pages 8]` | Per-page compiled PDF auditor: page limit, Type-3 fonts, `??` refs, anonymity leaks, visual margin overflow & expanded-macro number tracing |
+| `./veriloop audit-paper [--no-lint]` | 4-in-1 manuscript gate: `trace_numbers` + `citation_audit` + `check_draft` + `check_figures` |
+| `./veriloop lint-paper [args...]` | Run `bestpaper-writing` checks (`check_draft.py`, `check_figures.py`, `--metrics`, `--exemplars`) |
+| `./veriloop milestone-audit [args...]` | Independent dual-model milestone gate (**latest Claude + latest Gemini** in parallel on frozen SHA-256 artifacts, `rc=0` pass / `rc=2` revise) |
+| `./veriloop claims [args...]` | Manage pre-registered claim ledger (G1–G7, SHA-256 evidence hashes) |
+| `./veriloop gpu-showcase [--skip-train]` | Real **NVIDIA RTX 3060 Ti** PyTorch Fashion-MNIST (`12` runs) → `bind` → ICML PDF → `gate` → `review_ui.html` end-to-end trace |
+| `./veriloop board` / `demo` / `live` / `install` / `test` / `eval-v2` | Verification HTML board, 10-second offline demo, live dual-model showcase, Claude/Codex skill installer, CI test runner & frozen v2 evaluator |
 
 ---
 
-## Repository Structure
+<span id="repository-structure"></span>
+## 📂 Repository Structure
 
 | Path | Contents |
 |---|---|
 | `veriloop` | Unified zero-dependency CLI entry point |
-| `tools/verifiable_gate.py` | Dual-layer hard-blocking gate engine (`rc=0` pass / `rc=2` block + JSON report) |
-| `tools/install_veriloop.sh` | Installer for Claude Code / Codex CLI (`--core-only` or `--all`) |
-| `skills/research-loop/` | 5-step verifiable research loop, 38-item hostile checklist, path-only reviewer brief, and 8 stdlib scripts (`claims.py`, `trace_numbers.py`, `audit_code.py`, `run_audit.py`, `citation_audit.py`, `budget.py`, `run_seeds.py`, `render_board.py`) |
-| `skills/verifiable-gate/` | Hard-blocking gate skill integrating verification across experiment and paper workflows |
-| `skills/milestone-dual-audit/` | Independent dual-model milestone gate (**latest Gemini + latest Claude** parallel path-only audit on SHA-256 frozen artifacts, 8-point anti-self-deception rubric, conservative merge, and next-action revision plan) |
-| `skills/bestpaper-writing/` | Integrated [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill) (CC BY 4.0): 60-award-paper writing guide, Okabe-Ito `bestpaper.mplstyle` & `plot_style.py`, `check_draft.py`, `check_figures.py`, `style_metrics.py`, `find_exemplars.py` |
-| `skills/` (90+ skills), `mcp-servers/`, `templates/` | Full research lifecycle skills (idea discovery, Research Wiki, experiment orchestration, paper writing, rebuttal), incorporating MIT-licensed upstream ARIS workflows |
-| `eval/` | Controlled benchmark harness (`run_benchmark.py`, `conditions.py`, `blind_judge.py`, `aggregate_tables.py`) for `SciIntegrity-Bench` and `AIScientistPitfalls` |
-| `examples/` | `veriloop-walkthrough/` (zero-API demo), `mini-ml/` (minimal workspace), `live-showcase/` (real dual-model showcase) |
-| `paper/` | Self-audited companion paper: [main.pdf](paper/main.pdf) (arXiv), [main_icml2027.pdf](paper/main_icml2027.pdf) (ICML 2027 8-page), `sec/*.tex`, `figures/*.pdf`, `build_tables_and_figures.py` |
-| `tests/verifiable/` | Offline unit & integration tests covering claims, number tracing, AST auditing, citation checks, budget breaker, `verifiable_gate.py`, and `bestpaper-writing` CLI integration |
+| `tools/` | `paper_ingest.py`, `sandbox_runner.py`, `research_orchestrator.py`, `studio_server.py`, `verifiable_gate.py`, `paper_bind.py`, `review_ui.py`, `pdf_audit.py`, `install_veriloop.sh` |
+| `docker/Dockerfile.gpu` | Optional PyTorch 2.x CUDA container image for `--sandbox docker` isolation |
+| `docs/` | GitHub Pages homepage ([docs/index.html](docs/index.html)), interactive live demos (`docs/demo/`), architecture assets (`docs/assets/`), and upstream ARIS documentation (`docs/ARIS_UPSTREAM_README.md`) |
+| `skills/` (90+ skills) | Core VeriLoop suite (`research-loop`, `verifiable-gate`, `milestone-dual-audit`, `bestpaper-writing`) + full research lifecycle skills incorporating MIT-licensed upstream ARIS workflows |
+| `eval/` | Controlled benchmark harness (`run_benchmark.py`, `conditions.py`, `blind_judge.py`, `aggregate_tables.py`) & frozen v2/unseen artifacts |
+| `examples/` | `gpu-overnight-research/` (42-run RTX 3060 Ti study), `gpu-dl-benchmark/` (12-run showcase), `veriloop-walkthrough/`, `mini-ml/`, `live-showcase/` |
+| `paper/` | Self-audited companion paper: [main.pdf](paper/main.pdf) (arXiv), [main_icml2027.pdf](paper/main_icml2027.pdf) (ICML 2027 8-page), `sec/*.tex`, `figures/*.pdf` |
+| `tests/` | `1,248` passing unit & integration tests (`tests/verifiable/` + full skill/catalog CI suite) |
 
 ---
 
-## Attribution & Citation
+<span id="attribution-and-citation"></span>
+## 🌟 Attribution & Citation
 
-**VeriLoop** builds on MIT-licensed upstream research workflow skills from **ARIS** ([wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep), `arXiv:2605.03042`) and integrates CC BY 4.0 **Best-Paper-Writing-Skill** ([shangliy/Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill), forked from [gulucaptain/Best-Paper-Writing-Skill](https://github.com/gulucaptain/Best-Paper-Writing-Skill)) — see [NOTICE.md](NOTICE.md) and [LICENSE](LICENSE) for full attribution. If you use VeriLoop in academic work, please cite both papers:
+**VeriLoop** core code is open-sourced under the **MIT License**, building on MIT-licensed upstream research workflow skills from **ARIS** ([wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep), `arXiv:2605.03042`) and integrating CC BY 4.0 **Best-Paper-Writing-Skill** ([shangliy/Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill), forked from [gulucaptain/Best-Paper-Writing-Skill](https://github.com/gulucaptain/Best-Paper-Writing-Skill)) — see [NOTICE.md](NOTICE.md) and [LICENSE](LICENSE) for full attribution. If you use VeriLoop in academic work, please cite both papers:
 
 ```bibtex
 @article{yang2026veriloop,

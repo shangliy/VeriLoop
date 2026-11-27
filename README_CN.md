@@ -1,50 +1,127 @@
-# VeriLoop
+<a name="readme-top"></a>
 
-**端到端可验证自主科研流水线：90+ 全周期模块化科研技能 × 确定性硬证据门控 × 纯路径跨模型阻断审计。**
+<div align="center">
+  <img src="docs/assets/veriloop_logo.png" alt="VeriLoop Logo" width="760" />
+  <h1 align="center">VeriLoop：端到端可验证自主科研流水线</h1>
+  <p align="center">
+    <strong>Level-1 / Level-2 全自动科研编排 · 90+ 模块化科研技能 · $0 确定性硬证据门控 · VeriLoop Studio 本地 Web 驾驶舱</strong>
+  </p>
+</div>
 
-- **GitHub 仓库：** [https://github.com/shangliy/VeriLoop](https://github.com/shangliy/VeriLoop)
-- **论文（arXiv v2 预印本）：** [paper/main.pdf](paper/main.pdf)（源码：[paper/main.tex](paper/main.tex)）
-- **论文（ICML 2027 官方 8 页双盲版）：** [paper/main_icml2027.pdf](paper/main_icml2027.pdf)（源码：[paper/main_icml2027.tex](paper/main_icml2027.tex)）
-- **English README:** [README.md](README.md) · **第三方归属与许可说明：** [NOTICE.md](NOTICE.md) · [上游 ARIS 原版文档](docs/ARIS_UPSTREAM_README_CN.md)
-- **全量公开可复现：** 全部 16 个冻结 SHA-256 工作区、独立 `file:line` 真值表、245 次配对审稿 JSONL、21 个未见盲测取证表与零覆盖脚本均已提交至本仓库
+<div align="center">
+  <a href="https://shangliy.github.io/VeriLoop/"><img src="https://img.shields.io/badge/%E9%A1%B9%E7%9B%AE%E4%B8%BB%E9%A1%B5-Project%20Page-0072B2?style=for-the-badge&logo=googlechrome&logoColor=white" alt="项目主页" /></a>
+  <a href="https://shangliy.github.io/VeriLoop/demo/studio_snapshot.html"><img src="https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C-VeriLoop%20Studio-059669?style=for-the-badge&logo=vercel&logoColor=white" alt="在线体验 Studio" /></a>
+  <a href="https://shangliy.github.io/VeriLoop/demo/review_ui.html"><img src="https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E4%BD%93%E9%AA%8C-%E5%88%86%E6%A0%8F%E6%9F%A5%E8%B4%A6%E5%8F%B0-0284C7?style=for-the-badge&logo=checkmarx&logoColor=white" alt="在线体验 Review UI" /></a>
+  <br />
+  <a href="paper/main.pdf"><img src="https://img.shields.io/badge/%E8%AE%BA%E6%96%87-arXiv%20%E9%A2%84%E5%8D%B0%E6%9C%AC-1E293B?style=for-the-badge&logo=arxiv&logoColor=FFE165" alt="arXiv 论文" /></a>
+  <a href="paper/main_icml2027.pdf"><img src="https://img.shields.io/badge/%E8%AE%BA%E6%96%87-ICML%208%E9%A1%B5%E5%8F%8C%E7%9B%B2%E7%89%88-1E293B?style=for-the-badge&logo=adobeacrobatreader&logoColor=F87171" alt="ICML 论文" /></a>
+  <a href="#benchmark-results"><img src="https://img.shields.io/badge/%E5%86%BB%E7%BB%93%E8%AF%84%E6%B5%8B-245%E6%AC%A1%E9%85%8D%E5%AF%B9%20%2B%2021%E6%9C%AA%E8%A7%81-0072B2?style=for-the-badge" alt="基准评测" /></a>
+  <br />
+  <a href="https://github.com/shangliy/VeriLoop/actions/workflows/test-suite.yml"><img src="https://img.shields.io/github/actions/workflow/status/shangliy/VeriLoop/test-suite.yml?branch=main&style=for-the-badge&label=CI%20%E6%B5%8B%E8%AF%95%20(1248)" alt="CI 测试" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-059669?style=for-the-badge" alt="MIT 许可" /></a>
+  <a href="README.md"><img src="https://img.shields.io/badge/English-README-D97706?style=for-the-badge" alt="English README" /></a>
+</div>
+
+<br />
+
+欢迎来到 **VeriLoop**！自主科研 Agent 很少因为「忘记输出文件」而失败；它们真正的失败模式是**代码正常跑完，却在报告中写出与原始日志、代码路径、引用文献或统计结果相矛盾的数值与结论**。**VeriLoop** 将完整的 **Level-1 / Level-2 全自动科研编排** 与 **确定性硬验证机制** 深度融合，让每一组数字、每一条公式、每一张图和每一篇引用在放行前都经得起逐行查账：
+
+- 🎯 **双入口全自动科研（Level 1 & Level 2）：** 既支持给具体 Idea + 基线仓库直接落地（**Level 1**），也支持只给几篇 arXiv 论文自动抓 LaTeX 源码、做公式↔AST 对齐、发现 Gap 并提出创新（**Level 2**）。
+- 🛡️ **`$0` 确定性硬阻断门控（Layer 1 → 纯路径跨模型 Layer 2）：** 毫秒级以零 API 成本拦截数值编造、正负号反转、6 类 Python AST 代码作弊、SHA-256 假设账本篡改（`G1–G7`）与虚假引用，不通过则以退出码 `2` 硬阻断交付。
+- 📐 **字节确定性日志直出 LaTeX（`./veriloop bind`）：** 零额外 Python 依赖直读 TensorBoard `.tfevents` / W&B / CSV / JSONL，自动生成 `\newcommand` 宏、Booktabs 表格与 Okabe-Ito 矢量图，杜绝手抄数字。
+- 🖥️ **零依赖本地 Web 驾驶舱（`./veriloop studio` & `review-ui`）：** 集成 7 阶段 SSE 实时监控、Level-1/2 启动表单与「论文 ↔ 原始日志/AST/在线摘要」分栏联动查账台。
 
 ---
 
 <p align="center">
   <img src="docs/assets/veriloop_overview.png" alt="VeriLoop 端到端可验证自主科研与论文流水线全景图" width="100%" />
+  <br />
+  <em>VeriLoop v5 全局架构：Level-1 / Level-2 双入口编排 × arXiv 公式↔AST 对齐 × Docker GPU 沙箱 × 确定性日志绑定与双层硬门控。</em>
 </p>
 
 ---
 
-## 为什么选择 VeriLoop？
+<span id="news"></span>
+## 🔥 最新动态（News）
 
-自主科研 Agent 很少因为「忘记输出文件」而失败；它们真正的失败模式是**代码正常跑完，却在报告中写出与原始日志、代码路径或统计结果相矛盾的数值与结论**。**VeriLoop** 将完整科研流程与硬验证机制合二为一，打造更完备、更便捷、更高效的科研流水线：
-
-1. **更完备（90+ 全周期技能 + 顶会写作引擎）：** 覆盖选题探索、文献检索与持久化 Research Wiki、多随机种子实验、双层硬门控审计、单轮靶向闭环修复、**内置 [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)（60 篇顶会获奖论文写作规范 + Okabe-Ito 绘图样式 + 自动文风/图表质检）**、LaTeX 论文生成与 Rebuttal 全流程。
-2. **更便捷（统一入口 `./veriloop`）：** 单一零依赖命令行工具统一调度 `gate` / `verify-cites` / `fetch-bib` / `bind` / `review-ui` / `audit-pdf` / `gpu-showcase` / `claims` / `board` / `demo` / `live` / `install` / `test` / `lint-paper` / `audit-paper` / `milestone-audit` / `eval-v2`，开箱即用。
-3. **更高效（`$0` 确定性快速失败 + 四合一投稿自检 + 预算熔断）：** 第一层在毫秒级以零 API 成本拦截数值编造、正负号反转、6 类 Python AST 代码作弊、SHA-256 账本篡改、缺失 BibTeX 与 AI 写作/图表硬伤；仅对通过确定性校验的工作区触发纯路径跨模型硬阻断审计，并内置严格 USD 熔断器。
-
----
-
-## 与其他开源科研 / 写论文工具的定位对比
-
-> *如果别人都在卷“怎么让 AI 把论文自动写出来”，**VeriLoop** 卷的是“怎么让 AI 写出的每一组数字、每一张图、每一条引用和每一个结论都经得起审稿人逐行查账”。*
-
-| 系统 / 工作 | 定位阵营 | 端到端实验→成文 | 执行期硬门控（AST/数值溯源） | 日志直出 LaTeX 宏/表/图 | 联网文献真伪与摘要核验 | 顶会文风/图表自动质检 | 交互式查账 UI（文↔日志联动） | 冻结对照与未见盲测 |
-|---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| **AI-Scientist / v2**（Sakana） | 全自动科研 Agent | ✅（树搜索探索） | ❌（仅 LLM 自审） | ⚠️（定制脚本） | ⚠️（S2 检索，无硬阻断） | ❌ | ❌ | ❌ |
-| **HKUDS/AI-Researcher**（NeurIPS Spotlight） | Level-1/2 全自动科研 + Docker + Web GUI | ✅（Level-1/2 + Docker） | ❌（仅 Agent 自修） | ❌（LLM 手写数字） | ⚠️（拉 arXiv 源码，无门控） | ❌ | ⚠️（运行界面，无日志联动） | ⚠️（Scientist-Bench） |
-| **ARIS**（上游基座） | 跨模型科研工作流 | ✅（87 技能） | ❌（仅建议性 review） | ❌ | ❌ | ❌ | ❌ | ❌（单次轨迹） |
-| **EviBound** | 执行期存在性门控 | ⚠️（Colab 编排） | ⚠️（仅查文件存在/`rc=0`） | ❌（MLflow 登记） | ❌ | ❌ | ❌ | ⚠️（8 个自建任务） |
-| **FabScore / FLAWS / PaperAudit** | 事后造假审计基准 | ❌（事后尸检） | ⚠️（FabScore 事后复跑） | ❌ | ⚠️（部分核验） | ❌ | ❌ | ✅（事后论文集） |
-| **PaperQA2 / OpenScholar / STORM** | 文献 RAG 与综述生成 | ❌（纯文献/写作） | ❌ | ❌ | ✅（强在全文 RAG 综述） | ❌ | ⚠️（引文溯源） | ✅（文献 QA 基准） |
-| **AI-research-feedback**（`claesbackman`） | 多角色审稿与成果传播技能包 | ❌（成稿后反馈） | ❌（纯 LLM 子 Agent，建议性） | ❌ | ⚠️（LLM 检查，无 API 门控） | ✅（`voice-builder` + Beamer/网页） | ⚠️（`explain-diff` HTML） | ❌ |
-| **Overleaf / Cursor + LaTeX** | 协作/IDE 写作环境 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌（无日志联动） | — |
-| **VeriLoop（本仓库）** | **可验证端到端科研与写论文流水线** | ✅（**90+ 技能 + 真实 GPU 标杆**） | ✅（**`$0` AST + 有符号溯源 + G1–G7 + XMR**） | ✅（**零依赖读 TB/W&B/CSV→宏/表/PDF**） | ✅（**arXiv/Crossref/S2 硬门控 + 摘要核对 + `fetch-bib`**） | ✅（**60 篇顶会获奖规范 + Okabe-Ito**） | ✅（**零依赖分栏 `review-ui`**） | ✅（**16 冻结 + 21 未见，零覆盖**） |
+- **`[v5.0]`** 正式发布 **arXiv LaTeX + Python AST 公式↔代码对齐引擎**（`./veriloop ingest`）、**Docker / 本地 GPU 隔离沙箱**（`./veriloop sandbox` + `docker/Dockerfile.gpu`）、**Level-1 / Level-2 断点续跑编排器**（`./veriloop research`）、**VeriLoop Studio 本地 Web 驾驶舱**（`./veriloop studio`）以及全新在线 [项目主页](https://shangliy.github.io/VeriLoop/)；全仓 CI 通过 **`1,248` 项测试（`0` 失败）**。
+- **`[v4.0]`** 跑通 **42 次本地 RTX 3060 Ti 真实 GPU 过夜科研案例**（`92.47 min`、`195/195` PDF 展开数值 100% 溯源、`14/14` 阶段 Wiki 自洽检查、`10/10` 在线文献核验），上线字节确定性 `paper_bind.py`、`review_ui.py` 与 `pdf_audit.py`。
+- **`[v2.0–v3.0]`** 公开提交零事后覆盖冻结基准（`16` 个 SHA-256 工作区、`245` 次配对审稿 + `21` 个严格未见场景），原生集成 [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)（CC BY 4.0）并发布自审通过的配套论文（[arXiv 版](paper/main.pdf) · [ICML 8 页双盲版](paper/main_icml2027.pdf)）。
 
 ---
 
-## v2 冻结产物与未见盲测实证结果（零事后覆盖）
+<span id="table-of-contents"></span>
+## 📑 目录导航
+
+- [🔥 最新动态（News）](#news)
+- [✨ Level-1 / Level-2 双入口自主科研](#two-level-entry)
+- [🖥️ VeriLoop Studio 与分栏查账工作台](#veriloop-studio)
+- [⚔️ 与其他开源科研 / 写论文工具对比](#how-veriloop-compares)
+- [📊 冻结基准评测与 42 次真实 GPU 实证](#benchmark-results)
+- [⚡ 快速上手](#quick-start)
+- [🌟 开源许可、归属与引用](#attribution-and-citation)
+
+---
+
+<span id="two-level-entry"></span>
+## ✨ Level-1 / Level-2 双入口自主科研
+
+**VeriLoop** 统一支持两种科研启动入口，并全部接入可断点续跑的 7 阶段闭环流水线（`ingest → ideate_and_register → execute → bind → draft → gate_and_repair → package_and_ui`）：
+
+1. **Level 1 — 给定 Idea 与基线仓库（`--level 1 --idea "..." --repo ...`）：**
+   输入具体研究假设与基线代码，系统自动执行 AST 索引、预注册可证伪假设（`G1–G7`）、在本地或 Docker GPU 沙箱中执行多随机种子训练（带 NaN/OOM 监控）、将原始日志绑定成 LaTeX 宏与图表，并通过双层硬门控（`rc=2`）才放行。
+2. **Level 2 — 给定参考论文自动发现 Gap 与创新（`--level 2 --papers <arxiv_id...> --auto-clone-github`）：**
+   仅输入 arXiv 编号，`./veriloop ingest` 自动抓取 arXiv e-print 原始 LaTeX 源码、抽取公式/章节/超参与官方 GitHub 仓库，静态构建「**公式 ↔ 代码 `file:line` 对齐表**」（`wiki/INGEST_MAP.md`），并将未匹配到代码实现的公式自动加入 Layer-2 审计警戒清单。
+
+> **真实在线验证示例（`./veriloop ingest --arxiv 1706.04599 --repo examples/gpu-overnight-research/code`）：** 零 LLM 成本自动下载 Guo et al.（ICML 2017）原始 LaTeX（`13` 条公式、`14` 个章节、官方仓库 `github.com/gpleiss/temperature_scaling`），精准将 `calibration_methods.tex:L142 (scaling)` 与 `L152 (temp)` 对齐至 `fit_temperature_on_val`（`run_overnight_study.py:L241`），将 `definitions.tex:L70 (ece)` 对齐至 `compute_metrics_from_logits`（`L220`）。
+
+---
+
+<span id="veriloop-studio"></span>
+## 🖥️ VeriLoop Studio 与分栏查账工作台
+
+本地运行 `./veriloop studio -w examples/gpu-overnight-research --port 8765` 即可打开零依赖 Web 驾驶舱，也可直接点击下方由 42 次真实 GPU 案例导出的在线静态互动页面：
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://shangliy.github.io/VeriLoop/demo/studio_snapshot.html">
+        <img src="docs/assets/veriloop_studio_preview.png" alt="VeriLoop Studio 本地驾驶舱" width="100%" />
+      </a>
+      <p align="center"><strong>VeriLoop Studio</strong>（<code>./veriloop studio</code>）<br />7 阶段实时 SSE 监控、Level-1/2 表单启动、硬门控 KPI 看板与自动绑定 95% CI 指标表 · <a href="https://shangliy.github.io/VeriLoop/demo/studio_snapshot.html"><strong>在线体验 →</strong></a></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://shangliy.github.io/VeriLoop/demo/review_ui.html">
+        <img src="docs/assets/veriloop_review_ui_preview.png" alt="VeriLoop 分栏查账工作台" width="100%" />
+      </a>
+      <p align="center"><strong>分栏查账工作台</strong>（<code>./veriloop review-ui</code>）<br />点击左侧论文任意数字或 <code>\cite{}</code>，右侧直达 SHA-256 锁定原始 <code>log:line</code>、AST 报告与在线摘要 · <a href="https://shangliy.github.io/VeriLoop/demo/review_ui.html"><strong>在线体验 →</strong></a></p>
+    </td>
+  </tr>
+</table>
+
+---
+
+<span id="how-veriloop-compares"></span>
+## ⚔️ 与其他开源科研 / 写论文工具的定位对比
+
+> *如果别人都在卷“怎么让 AI 把论文自动写出来”，**VeriLoop** 既提供 Level-1/2 全自动科研与 Studio 驾驶舱，更确保“AI 写出的每一组数字、每一条公式、每一张图、每一条引用和每一个结论都经得起审稿人逐行查账”。*
+
+| 系统 / 工作 | 定位阵营 | Level-1/2 + Docker GPU | arXiv 公式↔AST 对齐 | 执行期硬门控（AST/数值溯源） | 日志直出 LaTeX 宏/表/图 | 联网文献真伪与摘要核验 | 顶会文风/图表自动质检 | 交互式查账 Studio | 冻结对照与未见盲测 |
+|---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| **HKUDS/AI-Researcher**（NeurIPS Spotlight） | Level-1/2 全自动科研 + Docker + Web GUI | ✅ | ⚠️（LLM 阅读） | ❌（仅 Agent 自修） | ❌（LLM 手写数字） | ⚠️（无门控） | ❌ | ⚠️（运行界面，无日志联动） | ⚠️（Scientist-Bench） |
+| **AI-Scientist / v2**（Sakana） | 全自动科研 Agent | ⚠️（树搜索） | ❌ | ❌（仅 LLM 自审） | ⚠️（定制脚本） | ⚠️（无硬阻断） | ❌ | ❌ | ❌ |
+| **ARIS**（上游基座） | 跨模型科研工作流 | ⚠️（87 技能） | ❌ | ❌（仅建议性 review） | ❌ | ❌ | ❌ | ❌ | ❌（单次轨迹） |
+| **EviBound** | 执行期存在性门控 | ⚠️（Colab） | ❌ | ⚠️（仅查文件存在/`rc=0`） | ❌（MLflow 登记） | ❌ | ❌ | ❌ | ⚠️（8 个自建任务） |
+| **FabScore / FLAWS / PaperAudit** | 事后造假审计基准 | ❌ | ❌ | ⚠️（FabScore 事后复跑） | ❌ | ⚠️（部分核验） | ❌ | ❌ | ✅（事后论文集） |
+| **PaperQA2 / OpenScholar / STORM** | 文献 RAG 与综述生成 | ❌ | ❌ | ❌ | ❌ | ✅（全文 RAG） | ❌ | ⚠️（引文溯源） | ✅（文献 QA 基准） |
+| **AI-research-feedback**（`claesbackman`） | 多角色审稿与成果传播 | ❌ | ❌ | ❌（纯 LLM 建议） | ❌ | ⚠️（无 API 门控） | ✅（`voice-builder`） | ⚠️（`explain-diff`） | ❌ |
+| **Overleaf / Cursor + LaTeX** | 协作/IDE 写作环境 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | — |
+| **VeriLoop v5（本仓库）** | **可验证端到端科研与写论文流水线** | ✅（**Level-1/2 + Docker/本地**） | ✅（**静态 AST + 警戒清单**） | ✅（**`$0` AST + 有符号溯源 + G1–G7 + XMR**） | ✅（**零依赖读 TB/W&B/CSV→宏/表/PDF**） | ✅（**arXiv/Crossref/S2 硬门控 + 摘要核对**） | ✅（**60 篇顶会获奖规范 + Okabe-Ito**） | ✅（**Studio + 分栏 `review-ui`**） | ✅（**16 冻结 + 21 未见，零覆盖**） |
+
+---
+
+<span id="benchmark-results"></span>
+## 📊 v2 冻结产物、未见盲测与 42 次真实 GPU 实证
 
 ### 1. 16 个 SHA-256 冻结工作区配对实验（统一 Route A 规则：`9` 干净 / `7` 缺陷，`k=3`，`245` 次有效审稿；以下均为 Trial 级指标）
 
@@ -61,26 +138,26 @@
 | **`L1 ∪ claude-sonnet`** | `path_only` | 48 | `75.0%` | `85.7%` | `80.0%` | `22.2%` | `77.8%` | — |
 | **VeriLoop（`L1 ∪ codex-cli` 严格硬阻断）** | **`path_only`** | **48** | **`77.8%`** | **`100.0%`** | **`87.5%`** | **`22.2%`** | **`77.8%`** | — |
 
-- **零成本预过滤与严格硬阻断权衡：** 在审稿后统一采纳的跨划分规则下（由已入日志原始计数按明确披露公式推导且**算术正确**的近似值，如 `H06` 的正态近似 CI `[0.9965, 0.9985]` 与未见 `04c` 的解析中点 `0.425`，统一归为 `CLEAN` 良性溯源缺口而非作弊；论文附录表 5 同步报告原 `H06=DEFECTIVE` 口径敏感性），`$0` 锁定 v2 Layer 1（`eval/v2_frozen/locked/`，样本内）可在触发付费审稿前拦截 **`5/7 (71.4%)` 真实缺陷**（其中 `4/7 = 57.1%` 为直接归因命中，`1/7` 为 `C05` 上由百万单位换算附带触发，详见 `eval/v2_frozen/counterfactual_c05.json`），只读 `codex-cli` 补齐剩余逻辑分母 bug（`H05`）与纯推断夸大（`C08`）达 `7/7 (100.0%)` 召回。严格硬阻断 Layer-1 数值告警会使干净产出率降至 `77.8%`（`H06`/`C04` 两例溯源缺口），因此工程最佳实践为：**高精度 AST 规则（样本内外均 `0.0%` FPR）直接硬阻断，数值溯源告警作为 `$0` 诊断证据送入 Layer 2 裁决**。
-- **冻结配对关键发现：** 全部 LLM 在 5 例构造孪生缺陷上达 `100%` 检出，`claude-sonnet` 在自然分母 bug `H05` 上 6/6 漏检；工作区级配对检验显示在校准二元量表下附加执行者摘要零多数票翻转（`n=16` 工作区，`p=1.000000`）。v3 `trace_numbers.py` 的 `--data` 与负向措辞更新基于 `C04`/`09c`（样本内），需在新的未见集验证后方可主张 v3 样本外误报下降。
+- **零成本预过滤与严格硬阻断权衡：** 在统一 Route A 规则下，`$0` 锁定 v2 Layer 1（`eval/v2_frozen/locked/`，样本内）可在触发付费审稿前拦截 **`5/7 (71.4%)` 真实缺陷**（`4/7 = 57.1%` 直接命中 + `1/7` 为 `C05` 附带触发），只读 `codex-cli` 补齐剩余逻辑分母 bug（`H05`）与纯推断夸大（`C08`）达 `7/7 (100.0%)` 召回。工程最佳实践为：**高精度 AST 规则（样本内外均 `0.0%` FPR）直接硬阻断，数值溯源告警作为 `$0` 诊断证据送入 Layer 2 裁决**。
+- **冻结配对关键发现：** 全部 LLM 在 5 例构造孪生缺陷上达 `100%` 检出，`claude-sonnet` 在自然分母 bug `H05` 上 6/6 漏检；工作区级配对检验显示在校准二元量表下附加执行者摘要零多数票翻转（`n=16` 工作区，`p=1.000000`）。
 
 ### 2. 21 个严格未见 `SciIntegrity-Bench` 场景锁定门控盲测（`$0.3187`）
 
-在 SHA-256 锁定门控（`eval/v2_frozen/locked/trace_numbers_v2.py` `42c39cf4a4adeee1`、`audit_code_v2.py` `72dac256a9caf775`）零修改、零覆盖下（`18/21` 生成报告，经官方 checklist 核验全部 `18/18` 均规避陷阱为 `CLEAN`，其中 `12/18` 含 ≥3 位小数，详见 [eval/v2_unseen/unseen_forensic_audit.csv](eval/v2_unseen/unseen_forensic_audit.csv) 及已公开提交的 `eval/v2_unseen/workspaces/` 最小取证文件）：
+在 SHA-256 锁定门控（`trace_numbers_v2.py`、`audit_code_v2.py`）零修改、零覆盖下（`18/21` 完成，经官方 checklist 核验全部 `18/18` 均规避陷阱为 `CLEAN`，详见 [eval/v2_unseen/unseen_forensic_audit.csv](eval/v2_unseen/unseen_forensic_audit.csv)）：
 - **静态 AST 样本外 FPR：** **`0/18 (0.0%)`**
 - **数值级样本外 FPR：** **`2/289 (0.69%)`**（场景级 `2/18 = 11.1%`：`04c` 解析中点 `0.425` 与 `09c` 原始 CSV 值 `3.542`）。
-- **样本外机械召回率：** 未测得（`0/18` 完成的未见运行触发基准陷阱）。
 
 ### 3. 长程真实 GPU 端到端标杆案例（`42` 次 RTX 3060 Ti 训练轨迹）
 
-完整公开轨迹、复现脚本与全部审计日志（`audits/`）已提交至 [examples/gpu-overnight-research/](examples/gpu-overnight-research/)（`bash examples/gpu-overnight-research/run_reproduce.sh`）：在本地 **NVIDIA GeForce RTX 3060 Ti** 上执行可断点续跑的 42 次多随机种子 PyTorch AMP fp16 训练（总耗时 `5548.4s` / `92.47 min`，峰值显存 `593.0 MB`），覆盖 CIFAR-10 八阶段组合配方阶梯（30 epochs × 3 seeds）与 Fashion-MNIST 六阶段验证（15 epochs × 3 seeds；Mixup 仅在 CIFAR-10 测试）：
-- **全阶段流水线自洽检查与可查证审计日志（`$0` API 成本）：** `wiki/RESEARCH_WIKI.md` 全部 **`14/14` 阶段自洽与 AST 冒烟检查通过**（终版 Wiki 含 `182` 个不重复数值并逐阶段复检、`0` AST 高危告警，中位耗时 `81.8 ms`）；同时在 `audits/` 目录提交了 `claims_check.txt`（4/4 假设通过 `G1–G7`，`0` 次改口）、`veriloop_gate.json`、`verify_cites_online.json`（`10/10` 文献通过 arXiv/Crossref/S2 联网核验）与 `pdf_audit.json`（PDF 宏展开后 100% 数值溯源、`0` Type-3、`0` 警告）。
-- **宏绑定表格与交互审稿视图：** `./veriloop bind` 直接读取 126 个 TensorBoard/W&B 日志生成覆盖全部模型指标与 `temp_T` 单元格的 `\vlC*` / `\vlF*` LaTeX 宏、Booktabs 表格与 Okabe-Ito 矢量图（汇总差值与算力统计溯源至 `out/overnight_summary.txt`）→ 编译出 [overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf) 并生成交互式分栏审稿界面 [review_ui.html](examples/gpu-overnight-research/review_ui.html)。
-- **真实科学发现：** CIFAR-10 上 `M7_SEResNet_Full` 达到 `0.9193±0.0004`（较 `M1_PlainCNN` 提升 `+14.06 pp`）；无增强残差网 `M2_ResNet_Base` 在 CIFAR-10 上高度过自信（`raw_ece=0.1261 → cal_ece=0.0098`，`T*=2.6460`；Fashion-MNIST 较温和，`T*=1.3368`），而 Label Smoothing 在两个数据集均反转为欠自信（`T*=0.7234` / `0.6716`）、Mixup 在 CIFAR-10 上亦然（`T*=0.6449`），经验证集温度缩放 `T*`（LS/Mixup 为 `T*<1`，`M4` 为 `T*>1`）后 CIFAR-10 `M4–M7` 校准 ECE 压回 `0.0061–0.0120`（同时如实报告：本已良好校准的 Fashion-MNIST `M1_PlainCNN` 经温度缩放后 ECE 从 `0.0059` 微升至 `0.0069`）。
+完整公开轨迹、复现脚本与全部审计日志（`audits/`）已提交至 [examples/gpu-overnight-research/](examples/gpu-overnight-research/)（`bash examples/gpu-overnight-research/run_reproduce.sh`）：在本地 **NVIDIA GeForce RTX 3060 Ti** 上执行可断点续跑的 42 次多随机种子 PyTorch AMP fp16 训练（总耗时 `5548.4s` / `92.47 min`，峰值显存 `593.0 MB`），覆盖 CIFAR-10 八阶段组合配方阶梯（30 epochs × 3 seeds）与 Fashion-MNIST 六阶段验证（15 epochs × 3 seeds）：
+- **全阶段流水线自洽检查与可查证审计日志（`$0` API 成本）：** `wiki/RESEARCH_WIKI.md` 全部 **`14/14` 阶段自洽检查通过**（终版 `182` 个数值、`0` AST 高危告警，中位耗时 `81.8 ms`）；`audits/` 同步提交 `claims_check.txt`（4/4 假设通过 `G1–G7`）、`veriloop_gate.json`、`verify_cites_online.json`（`10/10` 文献联网核验通过）与 `pdf_audit.json`（`195/195` PDF 展开数值 100% 溯源）。
+- **宏绑定表格、Studio 与交互审稿视图：** `./veriloop bind` 直读 126 个 TensorBoard/W&B 日志生成 `\vlC*` / `\vlF*` LaTeX 宏与 Okabe-Ito 矢量图 → 编译出 [overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf)、[studio_snapshot.html](examples/gpu-overnight-research/studio_snapshot.html) 与分栏审稿界面 [review_ui.html](examples/gpu-overnight-research/review_ui.html)。
+- **真实科学发现：** CIFAR-10 上 `M7_SEResNet_Full` 达到 `0.9193±0.0004`（较 `M1_PlainCNN` 提升 `+14.06 pp`）；无增强残差网 `M2_ResNet_Base` 高度过自信（`raw_ece=0.1261 → cal_ece=0.0098`，`T*=2.6460`），而 Label Smoothing（`T*=0.7234` / `0.6716`）与 Mixup（`T*=0.6449`）反转为欠自信，经验证集温度缩放 `T*` 后 CIFAR-10 `M4–M7` 校准 ECE 压回 `0.0061–0.0120`。
 
 ---
 
-## 快速上手
+<span id="quick-start"></span>
+## ⚡ 快速上手
 
 ```bash
 git clone https://github.com/shangliy/VeriLoop.git
@@ -89,44 +166,30 @@ cd VeriLoop
 # 1. 运行全部离线验证测试 + 技能目录完整性校验（零费用）
 ./veriloop test
 
-# 1b. 从已提交的 v2 冻结语料直接复现零覆盖统计表（零费用）
+# 2. 复现 v2 冻结语料零覆盖统计表 & 运行 10 秒零 API 闭环演示
 ./veriloop eval-v2 summary
-
-# 2. 运行 10 秒零 API 闭环演示（Round 1 硬阻断 -> Round 2 修复放行 -> 生成 HTML 看板）
 ./veriloop demo
 
-# 3. 对任意科研工作区执行双层硬门控
-./veriloop gate \
-  --workspace /path/to/project \
-  --report report/report.md \
-  --logs out/ \
-  --scripts code/ \
-  --reviewer-provider codex-cli \
-  --out-json audits/veriloop_gate.json
+# 3. VeriLoop v5：arXiv LaTeX+AST 公式代码对齐、Level-1/2 统一编排、Docker GPU 沙箱与本地 Web 驾驶舱
+./veriloop ingest -w ./my_study --arxiv 1706.04599 --repo examples/gpu-overnight-research/code
+./veriloop research -w ./my_study --level 2 --papers 1706.04599 --sandbox local --dry-run
+./veriloop sandbox -w ./my_study --mode docker --gpus device=0 --network-none --cmd "python3 train.py" --dry-run
+./veriloop studio -w examples/gpu-overnight-research --port 8765
 
-# 4. 一键安装技能到 Claude Code / Codex CLI
-./veriloop install --core-only         # 安装核心四件套（research-loop + verifiable-gate + bestpaper-writing + milestone-dual-audit）
-./veriloop install --all               # 安装全部 90+ 科研技能 + 硬门控 + Best-Paper 写作 + 双模型里程碑审计
-
-# 5. 阶段性成果双模型独立评审（最新 Claude + 最新 Gemini 并行纯路径审计 → 输出修正行动清单）
-./veriloop milestone-audit --milestone M2-experiments --workspace . --artifacts paper/build_tables_and_figures.py paper/out/stats_summary.txt --dry-run
-
-# 6. 四合一论文自检 + 零编造引文/数据绑定 + 真实 RTX 3060 Ti GPU 标杆演示 + 交互式溯源审核台
+# 4. 四合一论文自检 + 零编造引文/数据绑定 + 交互式溯源审核台
 ./veriloop audit-paper
 ./veriloop fetch-bib 1512.03385 1708.07747
 ./veriloop verify-cites examples/gpu-dl-benchmark/paper/gpu_showcase.tex --bib examples/gpu-dl-benchmark/paper/refs.bib --online --check-claims
-./veriloop gpu-showcase --skip-train   # 5 秒零 GPU 复现 RTX 3060 Ti 标杆案例 -> bind -> PDF -> 硬门控 -> review_ui.html
 ./veriloop review-ui --report paper/sec/3_experiments.tex --logs paper/out/stats_summary.txt --bib paper/refs.bib --out review_ui.html
 
-# 7. VeriLoop v5：arXiv LaTeX+AST 公式代码对齐、Level-1/2 统一编排、Docker GPU 沙箱与本地 Web 驾驶舱
-./veriloop ingest -w ./my_study --arxiv 1706.04599 --repo ./baseline_repo
-./veriloop research -w ./my_study --level 2 --papers 1706.04599 --sandbox local --dry-run
-./veriloop sandbox -w ./my_study --mode auto --cmd "python train.py" --dry-run
-./veriloop studio -w examples/gpu-overnight-research --port 8765
+# 5. 一键安装技能到 Claude Code / Codex CLI
+./veriloop install --core-only         # 安装核心四件套（research-loop + verifiable-gate + bestpaper-writing + milestone-dual-audit）
+./veriloop install --all               # 安装全部 90+ 科研技能 + 硬门控 + Best-Paper 写作 + 双模型里程碑审计
 ```
 
 ---
 
-## 开源许可与归属
+<span id="attribution-and-citation"></span>
+## 🌟 开源许可、归属与引用
 
-**VeriLoop** 核心代码采用 **MIT License** 开源：工作流技能库基于 MIT 协议的上游 **ARIS**（[wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep)，`arXiv:2605.03042`）扩展构建，并原生集成 **CC BY 4.0** 协议的 **[Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)**（`skills/bestpaper-writing/`）。完整版权与模块边界详见 [LICENSE](LICENSE) 与 [NOTICE.md](NOTICE.md)。如在学术工作中使用本仓库，请同时引用 VeriLoop 与 ARIS。
+**VeriLoop** 核心代码采用 **MIT License** 开源：工作流技能库基于 MIT 协议的上游 **ARIS**（[wanshuiyin/Auto-claude-code-research-in-sleep](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep)，`arXiv:2605.03042`）扩展构建，并原生集成 **CC BY 4.0** 协议的 **[Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)**（`skills/bestpaper-writing/`）。完整版权与模块边界详见 [LICENSE](LICENSE)、[NOTICE.md](NOTICE.md) 与 [上游 ARIS 原版文档](docs/ARIS_UPSTREAM_README_CN.md)。如在学术工作中使用本仓库，请同时引用 VeriLoop 与 ARIS。

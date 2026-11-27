@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 180" width="880" height="180">
+  <defs>
+    <linearGradient id="bgPill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B2545"/>
+      <stop offset="55%" stop-color="#0E3A63"/>
+      <stop offset="100%" stop-color="#005F8E"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="softGlow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#020617" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <!-- Main rounded dark-navy hero banner pill (looks crisp on both GitHub light & dark themes) -->
+  <rect x="16" y="14" width="848" height="152" rx="28" fill="url(#bgPill)" stroke="#2A5885" stroke-width="2" filter="url(#softGlow)"/>
+
+  <!-- Subtle tech grid accent on right -->
+  <g opacity="0.10" stroke="#7DD3FC" stroke-width="1">
+    <line x1="650" y1="24" x2="650" y2="156"/>
+    <line x1="700" y1="24" x2="700" y2="156"/>
+    <line x1="750" y1="24" x2="750" y2="156"/>
+    <line x1="800" y1="24" x2="800" y2="156"/>
+    <line x1="630" y1="56" x2="844" y2="56"/>
+    <line x1="630" y1="90" x2="844" y2="90"/>
+    <line x1="630" y1="124" x2="844" y2="124"/>
+  </g>
+
+  <!-- Emblem: Verifiable Loop + Shield Check -->
+  <g transform="translate(56, 36)">
+    <!-- Outer loop ring -->
+    <circle cx="54" cy="54" r="46" fill="rgba(56,189,248,0.10)" stroke="url(#accentGrad)" stroke-width="5.5" stroke-dasharray="225 48" stroke-linecap="round"/>
+    <!-- Loop arrow head -->
+    <polygon points="94,25 106,42 86,41" fill="#38BDF8"/>
+    <!-- Shield center -->
+    <path d="M54 20 L80 31 V55 C80 73 68 85 54 91 C40 85 28 73 28 55 V31 Z" fill="url(#shieldGrad)" stroke="#D1FAE5" stroke-width="2"/>
+    <!-- Checkmark -->
+    <path d="M41 55 L50 64 L68 45" fill="none" stroke="#FFFFFF" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="192" y="96" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="66" font-weight="800" letter-spacing="-1.5" fill="#FFFFFF">Veri<tspan fill="#38BDF8">Loop</tspan></text>
+
+  <!-- Version Pill -->
+  <rect x="498" y="54" width="128" height="32" rx="16" fill="rgba(16,185,129,0.18)" stroke="#34D399" stroke-width="1.5"/>
+  <text x="562" y="75" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="700" fill="#6EE7B7">v5.0 · OPEN</text>
+
+  <!-- Tagline -->
+  <text x="194" y="132" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="500" fill="#BAE6FD" letter-spacing="0.15">Verifiable Autonomous Research Pipeline</text>
+
+  <!-- Right-side mini metric badges -->
+  <g transform="translate(656, 38)">
+    <rect x="0" y="0" width="180" height="44" rx="10" fill="rgba(15,23,42,0.55)" stroke="#334155" stroke-width="1.2"/>
+    <text x="14" y="18" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="0.6">LAYER-1 HARD GATE</text>
+    <text x="14" y="36" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#34D399">$0 · 0.0% AST FPR</text>
+
+    <rect x="0" y="56" width="180" height="44" rx="10" fill="rgba(15,23,42,0.55)" stroke="#334155" stroke-width="1.2"/>
+    <text x="14" y="74" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="0.6">END-TO-END SUITE</text>
+    <text x="14" y="92" font-family="Inter, sans-serif" font-size="15" font-weight="800" fill="#38BDF8">90+ Skills · Studio UI</text>
+  </g>
+</svg>
