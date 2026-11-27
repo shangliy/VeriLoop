@@ -15,7 +15,7 @@
 自主科研 Agent 很少因为「忘记输出文件」而失败；它们真正的失败模式是**代码正常跑完，却在报告中写出与原始日志、代码路径或统计结果相矛盾的数值与结论**。**VeriLoop** 将完整科研流程与硬验证机制合二为一，打造更完备、更便捷、更高效的科研流水线：
 
 1. **更完备（90+ 全周期技能 + 顶会写作引擎）：** 覆盖选题探索、文献检索与持久化 Research Wiki、多随机种子实验、双层硬门控审计、单轮靶向闭环修复、**内置 [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)（60 篇顶会获奖论文写作规范 + Okabe-Ito 绘图样式 + 自动文风/图表质检）**、LaTeX 论文生成与 Rebuttal 全流程。
-2. **更便捷（统一入口 `./veriloop`）：** 单一零依赖命令行工具统一调度 `gate` / `verify-cites` / `fetch-bib` / `bind` / `review-ui` / `gpu-showcase` / `claims` / `board` / `demo` / `live` / `install` / `test` / `lint-paper` / `audit-paper` / `milestone-audit` / `eval-v2`，开箱即用。
+2. **更便捷（统一入口 `./veriloop`）：** 单一零依赖命令行工具统一调度 `gate` / `verify-cites` / `fetch-bib` / `bind` / `review-ui` / `audit-pdf` / `gpu-showcase` / `claims` / `board` / `demo` / `live` / `install` / `test` / `lint-paper` / `audit-paper` / `milestone-audit` / `eval-v2`，开箱即用。
 3. **更高效（`$0` 确定性快速失败 + 四合一投稿自检 + 预算熔断）：** 第一层在毫秒级以零 API 成本拦截数值编造、正负号反转、6 类 Python AST 代码作弊、SHA-256 账本篡改、缺失 BibTeX 与 AI 写作/图表硬伤；仅对通过确定性校验的工作区触发纯路径跨模型硬阻断审计，并内置严格 USD 熔断器。
 
 ---
@@ -31,6 +31,7 @@
 | **EviBound** | 执行期存在性门控 | ⚠️（Colab 编排） | ⚠️（仅查文件存在/`rc=0`） | ❌（MLflow 登记） | ❌ | ❌ | ❌ | ⚠️（8 个自建任务） |
 | **FabScore / FLAWS / PaperAudit** | 事后造假审计基准 | ❌（事后尸检） | ⚠️（FabScore 事后复跑） | ❌ | ⚠️（部分核验） | ❌ | ❌ | ✅（事后论文集） |
 | **PaperQA2 / OpenScholar / STORM** | 文献 RAG 与综述生成 | ❌（纯文献/写作） | ❌ | ❌ | ✅（强在全文 RAG 综述） | ❌ | ⚠️（引文溯源） | ✅（文献 QA 基准） |
+| **AI-research-feedback**（`claesbackman`） | 多角色审稿与成果传播技能包 | ❌（成稿后反馈） | ❌（纯 LLM 子 Agent，建议性） | ❌ | ⚠️（LLM 检查，无 API 门控） | ✅（`voice-builder` + Beamer/网页） | ⚠️（`explain-diff` HTML） | ❌ |
 | **Overleaf / Cursor + LaTeX** | 协作/IDE 写作环境 | ❌ | ❌ | ❌ | ❌ | ❌ | ❌（无日志联动） | — |
 | **VeriLoop（本仓库）** | **可验证端到端科研与写论文流水线** | ✅（**90+ 技能 + 真实 GPU 标杆**） | ✅（**`$0` AST + 有符号溯源 + G1–G7 + XMR**） | ✅（**零依赖读 TB/W&B/CSV→宏/表/PDF**） | ✅（**arXiv/Crossref/S2 硬门控 + 摘要核对 + `fetch-bib`**） | ✅（**60 篇顶会获奖规范 + Okabe-Ito**） | ✅（**零依赖分栏 `review-ui`**） | ✅（**16 冻结 + 21 未见，零覆盖**） |
 

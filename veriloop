@@ -23,6 +23,8 @@ Subcommands:
                                     Auto-bind TensorBoard / W&B / CSV logs -> LaTeX macros, Booktabs & Okabe-Ito PDFs
   ./veriloop review-ui --report <files...> --logs <logs...> [--serve] [--out review.html]
                                     Interactive split-pane Web review UI linking manuscript numbers/cites to raw logs/code
+  ./veriloop audit-pdf <main.pdf> [--max-main-pages 8] [--logs ...] [--render-dir ...]
+                                    Per-page PDF layout, Type-3 font, anonymity, visual margin & expanded-macro audit
   ./veriloop gpu-showcase [--skip-train]
                                     Run the real PyTorch GPU Fashion-MNIST -> paper-bind -> 8-page PDF -> gate showcase
   ./veriloop milestone-audit [args...]
@@ -163,6 +165,8 @@ def main():
         passthrough([sys.executable, str(ROOT / "tools/paper_bind.py"), *rest])
     elif sub == "review-ui":
         passthrough([sys.executable, str(ROOT / "tools/review_ui.py"), *rest])
+    elif sub == "audit-pdf":
+        passthrough([sys.executable, str(ROOT / "tools/pdf_audit.py"), *rest])
     elif sub == "gpu-showcase":
         passthrough(["bash", str(ROOT / "examples/gpu-dl-benchmark/run_end_to_end.sh"), *rest])
     elif sub == "eval-v2":

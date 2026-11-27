@@ -1,6 +1,7 @@
 ---
 name: milestone-dual-audit
 description: "Independent dual-model milestone evaluation using both the latest Gemini and latest Claude models in parallel after every research or paper-writing milestone (M1 Plan, M2 Experiments, M3 Draft, M4 Pre-Submission). Freezes raw artifacts with SHA-256, runs path-isolated hostile audits without executor framing, merges consensus and unique catches conservatively, and generates a prioritized next-action revision plan before advancing."
+disable-model-invocation: true
 ---
 
 # Milestone Dual-Model Audit (Latest Gemini + Latest Claude)

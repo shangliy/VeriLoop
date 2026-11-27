@@ -202,5 +202,50 @@ class TestReviewUI(unittest.TestCase):
             self.assertIn("HARDCODED_METRIC_ARRAY", txt)
 
 
+class TestPDFAudit(unittest.TestCase):
+    def test_audits_icml2027_and_gpu_showcase_pdfs_with_expanded_macros(self):
+        icml_pdf = ROOT / "paper/main_icml2027.pdf"
+        gpu_pdf = ROOT / "examples/gpu-dl-benchmark/paper/gpu_showcase.pdf"
+        self.assertTrue(icml_pdf.is_file())
+        self.assertTrue(gpu_pdf.is_file())
+
+        # 1. Main ICML 2027 double-blind PDF: <= 8 main pages, 0 Type-3, 0 anonymity leaks
+        r1 = subprocess.run(
+            [
+                sys.executable, str(ROOT / "tools/pdf_audit.py"), str(icml_pdf),
+                "--max-main-pages", "8",
+                "--forbidden-terms", "Shanglin", "Zhan Shi", "shangliy",
+                "--json",
+            ],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(r1.returncode, 0, r1.stdout + r1.stderr)
+        d1 = json.loads(r1.stdout)
+        self.assertLessEqual(d1["main_body_end_page"], 8)
+        self.assertEqual(d1["issues_count"], 0)
+        self.assertEqual(len(d1["type3_fonts"]), 0)
+
+        # 2. GPU showcase PDF: expanded LaTeX macros trace cleanly + PNG rendering works
+        with tempfile.TemporaryDirectory() as td:
+            r2 = subprocess.run(
+                [
+                    sys.executable, str(ROOT / "tools/pdf_audit.py"), str(gpu_pdf),
+                    "--logs",
+                    str(ROOT / "examples/gpu-dl-benchmark/paper/bound/bound_metrics.txt"),
+                    str(ROOT / "examples/gpu-dl-benchmark/out/gpu_runs.log"),
+                    "--render-dir", td,
+                    "--json",
+                ],
+                capture_output=True, text=True,
+            )
+            self.assertEqual(r2.returncode, 0, r2.stdout + r2.stderr)
+            d2 = json.loads(r2.stdout)
+            self.assertEqual(d2["issues_count"], 0)
+            self.assertGreaterEqual(d2["pdf_number_trace"]["traced"], 20)
+            self.assertEqual(d2["pdf_number_trace"]["untraced"], 0)
+            self.assertEqual(d2["pdf_number_trace"]["sign_mismatches"], 0)
+            self.assertGreaterEqual(len(d2["rendered_pages"]), 3)
+
+
 if __name__ == "__main__":
     unittest.main()
