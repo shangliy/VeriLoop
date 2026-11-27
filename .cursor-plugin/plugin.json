@@ -1,0 +1,23 @@
+{
+  "name": "veriloop",
+  "version": "5.0.0",
+  "description": "VeriLoop autonomous research workflow and deterministic verification plugin for Cursor: 90+ research lifecycle skills, AST & numeric hard gates, log-to-LaTeX binding, and citation verification.",
+  "author": {
+    "name": "Shanglin Yang and Zhan Shi",
+    "url": "https://github.com/shangliy"
+  },
+  "homepage": "https://shangliy.github.io/VeriLoop/",
+  "repository": "https://github.com/shangliy/VeriLoop",
+  "license": "MIT",
+  "skills": "./skills",
+  "keywords": [
+    "veriloop",
+    "research",
+    "verification",
+    "paper",
+    "literature-review",
+    "skills",
+    "workflow",
+    "cursor"
+  ]
+}

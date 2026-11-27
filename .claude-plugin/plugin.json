@@ -1,19 +1,22 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "aris",
-  "description": "ARIS research workflow as a Claude Code plugin: literature review, idea discovery, experiments, paper writing, rebuttal, slides — with a cross-model Codex reviewer. Run /aris:setup once after installing.",
+  "name": "veriloop",
+  "description": "VeriLoop autonomous research workflow and deterministic verification plugin for Claude Code: Level-1/2 research, AST & numeric hard gates, log-to-LaTeX binding, citation checks, and 90+ lifecycle skills (extending upstream ARIS).",
   "author": {
-    "name": "wanshuiyin",
-    "url": "https://github.com/wanshuiyin"
+    "name": "Shanglin Yang and Zhan Shi",
+    "url": "https://github.com/shangliy"
   },
-  "homepage": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
-  "repository": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
+  "homepage": "https://shangliy.github.io/VeriLoop/",
+  "repository": "https://github.com/shangliy/VeriLoop",
   "license": "MIT",
   "keywords": [
+    "veriloop",
     "research",
+    "verification",
     "paper",
     "literature-review",
     "skills",
-    "workflow"
+    "workflow",
+    "claude-code"
   ]
 }

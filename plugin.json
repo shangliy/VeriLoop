@@ -1,0 +1,24 @@
+{
+  "name": "veriloop",
+  "displayName": "VeriLoop",
+  "version": "5.0.0",
+  "description": "Full-stack autonomous scientific research engine and deterministic verification skills (90+ research lifecycle skills, AST & numeric provenance gates, log-to-LaTeX binding, and citation verification).",
+  "author": {
+    "name": "Shanglin Yang and Zhan Shi",
+    "url": "https://github.com/shangliy"
+  },
+  "homepage": "https://shangliy.github.io/VeriLoop/",
+  "repository": "https://github.com/shangliy/VeriLoop",
+  "license": "MIT",
+  "keywords": [
+    "veriloop",
+    "autonomous-research",
+    "scientific-research",
+    "verification",
+    "latex",
+    "paper-writing",
+    "reproducibility",
+    "skills",
+    "ai-scientist"
+  ]
+}

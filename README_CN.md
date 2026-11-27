@@ -198,9 +198,16 @@ cd VeriLoop
 ./veriloop verify-cites examples/gpu-dl-benchmark/paper/gpu_showcase.tex --bib examples/gpu-dl-benchmark/paper/refs.bib --online --check-claims
 ./veriloop review-ui --report paper/sec/3_experiments.tex --logs paper/out/stats_summary.txt --bib paper/refs.bib --out review_ui.html
 
-# 5. 一键安装技能到 Claude Code / Codex CLI
+# 5. 一键安装技能（本地 CLI 或主流 Coding Agent 跨平台插件）
 ./veriloop install --core-only         # 安装核心四件套（research-loop + verifiable-gate + bestpaper-writing + milestone-dual-audit）
 ./veriloop install --all               # 安装全部 90+ 科研技能 + 硬门控 + Best-Paper 写作 + 双模型里程碑审计
+
+# 或直接按跨平台 Plugin 标准安装（Antigravity / Claude Code / Codex / Cursor / Vercel Skills CLI）
+agy plugin install https://github.com/shangliy/VeriLoop         # Antigravity (AGY)
+npx skills add shangliy/VeriLoop --list                         # Vercel Skills CLI
+# Claude Code: /plugin marketplace add shangliy/VeriLoop  &&  /plugin install veriloop@veriloop
+# Cursor:      /add-plugin shangliy/VeriLoop
+# Codex CLI:   codex plugin marketplace add shangliy/VeriLoop  &&  codex plugin add veriloop@veriloop
 ```
 
 ---

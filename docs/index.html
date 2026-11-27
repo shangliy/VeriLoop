@@ -1609,9 +1609,15 @@ cd VeriLoop
 docker build -t veriloop-gpu:latest -f docker/Dockerfile.gpu .
 ./veriloop sandbox -w ./my_study --mode docker --gpus device=0 --network-none --cmd "python3 code/train.py"
 
-# Install core quartet or all 90+ lifecycle skills into Claude Code / Codex CLI
+# Install core quartet or all 90+ lifecycle skills locally
 ./veriloop install --core-only
-./veriloop install --all</code></pre>
+./veriloop install --all
+
+# Or install via cross-platform Agent Plugin manifests
+agy plugin install https://github.com/shangliy/VeriLoop   # Antigravity
+npx skills add shangliy/VeriLoop --list                   # Vercel Skills CLI
+# Claude Code: /plugin marketplace add shangliy/VeriLoop -&gt; /plugin install veriloop@veriloop
+# Cursor: /add-plugin shangliy/VeriLoop   |   Codex: codex plugin marketplace add shangliy/VeriLoop</code></pre>
           </div>
         </div>
       </div>

@@ -229,9 +229,16 @@ docker build -t veriloop-gpu:latest -f docker/Dockerfile.gpu .
   --budget-limit 5.00 \
   --out-json audits/veriloop_gate.json
 
-# Install VeriLoop core quartet or full 90+ lifecycle skills into Claude Code / Codex CLI
+# Install VeriLoop core quartet or full 90+ lifecycle skills locally
 ./veriloop install --core-only
 ./veriloop install --all
+
+# Or install directly as a cross-platform Agent Plugin (Antigravity / Claude Code / Codex / Cursor / Vercel Skills CLI)
+agy plugin install https://github.com/shangliy/VeriLoop         # Antigravity (AGY)
+npx skills add shangliy/VeriLoop --list                         # Vercel Skills CLI
+# Claude Code: /plugin marketplace add shangliy/VeriLoop  &&  /plugin install veriloop@veriloop
+# Cursor:      /add-plugin shangliy/VeriLoop
+# Codex CLI:   codex plugin marketplace add shangliy/VeriLoop  &&  codex plugin add veriloop@veriloop
 ```
 
 ---

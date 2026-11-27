@@ -1,18 +1,27 @@
 {
-  "name": "aris",
-  "description": "ARIS research workflow for Codex CLI: literature review, idea discovery, experiments, paper writing, rebuttal, slides — the Codex-native skill mirror, with a fresh spawn_agent reviewer per review round.",
+  "name": "veriloop",
+  "description": "VeriLoop autonomous research workflow and deterministic verification plugin for Codex CLI: Codex-native skill mirror with fresh path-isolated cross-model reviewing and hard evidence gates.",
   "author": {
-    "name": "wanshuiyin",
-    "url": "https://github.com/wanshuiyin"
+    "name": "Shanglin Yang and Zhan Shi",
+    "url": "https://github.com/shangliy"
   },
-  "homepage": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
-  "repository": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
+  "homepage": "https://shangliy.github.io/VeriLoop/",
+  "repository": "https://github.com/shangliy/VeriLoop",
   "license": "MIT",
-  "keywords": ["research", "paper", "literature-review", "skills", "workflow", "codex"],
+  "keywords": [
+    "veriloop",
+    "research",
+    "verification",
+    "paper",
+    "literature-review",
+    "skills",
+    "workflow",
+    "codex"
+  ],
   "skills": "./skills/skills-codex/",
   "interface": {
-    "displayName": "ARIS",
-    "shortDescription": "Auto research in sleep — overnight ML research with cross-model review",
-    "developerName": "wanshuiyin"
+    "displayName": "VeriLoop",
+    "shortDescription": "End-to-end verifiable autonomous research with deterministic hard gates",
+    "developerName": "Shanglin Yang and Zhan Shi"
   }
 }

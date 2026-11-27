@@ -1,0 +1,22 @@
+{
+  "name": "veriloop",
+  "interface": {
+    "displayName": "VeriLoop"
+  },
+  "plugins": [
+    {
+      "name": "veriloop",
+      "version": "5.0.0",
+      "description": "Full-stack autonomous scientific research engine and deterministic verification skills (90+ research lifecycle skills, hard evidence gates, and log-to-LaTeX binding).",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Research & Developer Tools"
+    }
+  ]
+}

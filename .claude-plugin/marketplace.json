@@ -1,28 +1,30 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
-  "name": "aris",
+  "name": "veriloop",
   "owner": {
-    "name": "wanshuiyin",
-    "url": "https://github.com/wanshuiyin"
+    "name": "Shanglin Yang",
+    "url": "https://github.com/shangliy"
   },
   "metadata": {
-    "description": "ARIS — skill-based research workflow (literature review → idea → experiment → paper → rebuttal), installable as a plugin."
+    "description": "VeriLoop — full-stack autonomous scientific research workflow and deterministic verification skills (extending upstream ARIS), installable as a plugin."
   },
   "plugins": [
     {
-      "name": "aris",
+      "name": "veriloop",
       "source": "./",
-      "description": "The ARIS skill set as a plugin — every mainline skill under skills/, plus /aris:setup, which registers the bundled Codex reviewer bridge (mcp-servers/codex-exec/) and points helper resolution at the plugin.",
+      "description": "The VeriLoop skill set as a plugin — 90+ research lifecycle skills under skills/, hard deterministic verification gates, Best-Paper writing checks, plus /veriloop:setup for the bundled Codex reviewer bridge.",
       "author": {
-        "name": "wanshuiyin",
-        "url": "https://github.com/wanshuiyin"
+        "name": "Shanglin Yang and Zhan Shi",
+        "url": "https://github.com/shangliy"
       },
-      "homepage": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
-      "repository": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
+      "homepage": "https://shangliy.github.io/VeriLoop/",
+      "repository": "https://github.com/shangliy/VeriLoop",
       "license": "MIT",
       "category": "research",
       "keywords": [
+        "veriloop",
         "research",
+        "verification",
         "paper",
         "literature-review",
         "skills",
