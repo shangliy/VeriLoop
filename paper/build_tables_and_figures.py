@@ -438,7 +438,7 @@ def main():
     plt.close(fig)
 
     # ---------- FIGURE 2: Main Frozen-Artifact Benchmark (Recall, F1, Clean Yield across Systems) ----------
-    fig, ax = plt.subplots(figsize=(6.8, 2.75))
+    fig, ax = plt.subplots(figsize=(7.2, 2.75))
     labels = [
         "Layer 1 Only\n($0 Mech.)",
         "Claude-Sonnet\n(Path-Only)",
@@ -473,16 +473,17 @@ def main():
     ]
 
     x = np.arange(len(labels))
-    w = 0.25
-    b1 = ax.bar(x - w, recs, w, label="Defect Recall (%)", color=C_OURS, edgecolor=C_DARK, linewidth=0.55)
+    w = 0.24
+    gap = 0.27
+    b1 = ax.bar(x - gap, recs, w, label="Defect Recall (%)", color=C_OURS, edgecolor=C_DARK, linewidth=0.55)
     b2 = ax.bar(x, f1s, w, label="F1 Score (%)", color=C_CODEX, edgecolor=C_DARK, linewidth=0.55)
-    b3 = ax.bar(x + w, ylds, w, label="Clean Yield / TNR (%)", color=C_SONNET, edgecolor=C_DARK, linewidth=0.55)
+    b3 = ax.bar(x + gap, ylds, w, label="Clean Yield / TNR (%)", color=C_SONNET, edgecolor=C_DARK, linewidth=0.55)
 
     for bars in (b1, b2, b3):
         for bar in bars:
             h = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width() / 2, h + 1.5, f"{h:.1f}",
-                    ha="center", va="bottom", fontsize=6.1, color=C_DARK, fontweight="bold")
+            ax.text(bar.get_x() + bar.get_width() / 2, h + 1.6, f"{h:.1f}",
+                    ha="center", va="bottom", fontsize=5.3, color=C_DARK, fontweight="bold")
 
     ax.axhline(100, color=C_GREY, linestyle=":", linewidth=0.7, alpha=0.6)
     ax.set_ylabel("Percentage (%)")
@@ -553,7 +554,7 @@ def main():
     plt.close(fig)
 
     # ---------- FIGURE 4: 2x2 Executor x Reviewer Decoupling + Framing Paired Test ----------
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(6.8, 2.55), gridspec_kw={"width_ratios": [1.15, 1.0], "wspace": 0.34})
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.2, 2.65), gridspec_kw={"width_ratios": [1.22, 1.0], "wspace": 0.30})
 
     revs = ["Layer 1\n($0)", "Claude\nSonnet", "Claude\nHaiku", "Codex\nCLI", "L1+Codex\nUnion"]
     rec_h = [
@@ -572,17 +573,18 @@ def main():
     ]
     x4 = np.arange(len(revs))
     w4 = 0.34
-    r1 = ax1.bar(x4 - w4 / 2, rec_h, w4, label=f"Haiku-authored (n={h_def} def.)", color=C_HAIKU, edgecolor=C_DARK, linewidth=0.55)
-    r2 = ax1.bar(x4 + w4 / 2, rec_c, w4, label=f"Codex-authored (n={c_def} def.)", color=C_OURS, edgecolor=C_DARK, linewidth=0.55)
+    g4 = 0.19
+    r1 = ax1.bar(x4 - g4, rec_h, w4, label=f"Haiku-authored (n={h_def} def.)", color=C_HAIKU, edgecolor=C_DARK, linewidth=0.55)
+    r2 = ax1.bar(x4 + g4, rec_c, w4, label=f"Codex-authored (n={c_def} def.)", color=C_OURS, edgecolor=C_DARK, linewidth=0.55)
     for bars in (r1, r2):
         for bar in bars:
             h = bar.get_height()
-            ax1.text(bar.get_x() + bar.get_width() / 2, h + 1.8, f"{h:.0f}%",
-                     ha="center", va="bottom", fontsize=5.5, fontweight="bold", color=C_DARK)
+            ax1.text(bar.get_x() + bar.get_width() / 2, h + 1.8, f"{h:.0f}",
+                     ha="center", va="bottom", fontsize=5.6, fontweight="bold", color=C_DARK)
     ax1.set_xticks(x4)
     ax1.set_xticklabels(revs, fontsize=6.4)
     ax1.set_ylabel("Defect Recall (%)")
-    ax1.set_ylim(0, 118)
+    ax1.set_ylim(0, 120)
     ax1.set_yticks([0, 25, 50, 75, 100])
     ax1.grid(axis="y", linestyle=":", alpha=0.4)
     ax1.set_axisbelow(True)
@@ -602,15 +604,15 @@ def main():
         for bar in bars:
             h = bar.get_height()
             ax2.text(bar.get_x() + bar.get_width() / 2, h + 1.5, f"{h:.1f}%",
-                     ha="center", va="bottom", fontsize=6.2, fontweight="bold", color=C_DARK)
-    ax2.text(0, 107, "WS p = 1.000", ha="center", fontsize=6.2, color=C_MUTED,
-             bbox=dict(boxstyle="round,pad=0.16", facecolor="#F3F4F6", edgecolor=C_GREY, lw=0.5))
-    ax2.text(1, 107, "WS p = 1.000", ha="center", fontsize=6.2, color=C_MUTED,
-             bbox=dict(boxstyle="round,pad=0.16", facecolor="#F3F4F6", edgecolor=C_GREY, lw=0.5))
+                     ha="center", va="bottom", fontsize=6.0, fontweight="bold", color=C_DARK)
+    ax2.text(0, 114, "WS p = 1.000", ha="center", fontsize=6.1, color=C_MUTED,
+             bbox=dict(boxstyle="round,pad=0.18", facecolor="#F3F4F6", edgecolor=C_GREY, lw=0.5))
+    ax2.text(1, 114, "WS p = 1.000", ha="center", fontsize=6.1, color=C_MUTED,
+             bbox=dict(boxstyle="round,pad=0.18", facecolor="#F3F4F6", edgecolor=C_GREY, lw=0.5))
     ax2.set_xticks(xf)
     ax2.set_xticklabels(f_revs, fontsize=6.6)
     ax2.set_ylabel("Trial F1 Score (%)")
-    ax2.set_ylim(0, 118)
+    ax2.set_ylim(0, 126)
     ax2.set_yticks([0, 25, 50, 75, 100])
     ax2.grid(axis="y", linestyle=":", alpha=0.4)
     ax2.set_axisbelow(True)
