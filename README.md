@@ -17,7 +17,7 @@
   <a href="paper/main_icml2027.pdf"><img src="https://img.shields.io/badge/Paper-ICML%208--Page-1E293B?style=for-the-badge&logo=adobeacrobatreader&logoColor=F87171" alt="ICML 8-Page Paper" /></a>
   <a href="#benchmark-results"><img src="https://img.shields.io/badge/Benchmark-245%20Paired%20%2B%2021%20Unseen-0072B2?style=for-the-badge" alt="Frozen Benchmark" /></a>
   <br />
-  <a href="https://github.com/shangliy/VeriLoop/actions/workflows/test-suite.yml"><img src="https://img.shields.io/github/actions/workflow/status/shangliy/VeriLoop/test-suite.yml?branch=main&style=for-the-badge&label=CI%20Tests%20(1248)" alt="CI Tests" /></a>
+  <a href="https://github.com/shangliy/VeriLoop/actions/workflows/test-suite.yml"><img src="https://img.shields.io/badge/CI%20Tests-Passing%20(Linux%20%2B%20macOS)-16A34A?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI Tests" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-059669?style=for-the-badge" alt="MIT License" /></a>
   <a href="README_CN.md"><img src="https://img.shields.io/badge/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3-README__CN-D97706?style=for-the-badge" alt="中文文档" /></a>
 </div>

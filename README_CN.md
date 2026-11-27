@@ -17,7 +17,7 @@
   <a href="paper/main_icml2027.pdf"><img src="https://img.shields.io/badge/%E8%AE%BA%E6%96%87-ICML%208%E9%A1%B5%E5%8F%8C%E7%9B%B2%E7%89%88-1E293B?style=for-the-badge&logo=adobeacrobatreader&logoColor=F87171" alt="ICML 论文" /></a>
   <a href="#benchmark-results"><img src="https://img.shields.io/badge/%E5%86%BB%E7%BB%93%E8%AF%84%E6%B5%8B-245%E6%AC%A1%E9%85%8D%E5%AF%B9%20%2B%2021%E6%9C%AA%E8%A7%81-0072B2?style=for-the-badge" alt="基准评测" /></a>
   <br />
-  <a href="https://github.com/shangliy/VeriLoop/actions/workflows/test-suite.yml"><img src="https://img.shields.io/github/actions/workflow/status/shangliy/VeriLoop/test-suite.yml?branch=main&style=for-the-badge&label=CI%20%E6%B5%8B%E8%AF%95%20(1248)" alt="CI 测试" /></a>
+  <a href="https://github.com/shangliy/VeriLoop/actions/workflows/test-suite.yml"><img src="https://img.shields.io/badge/CI%20%E6%B5%8B%E8%AF%95-Passing%20(Linux%20%2B%20macOS)-16A34A?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI 测试" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-059669?style=for-the-badge" alt="MIT 许可" /></a>
   <a href="README.md"><img src="https://img.shields.io/badge/English-README-D97706?style=for-the-badge" alt="English README" /></a>
 </div>
