@@ -8,3 +8,6 @@
 {"method": "R3_SimGCL", "seed": 42, "best_epoch": 60, "val_ndcg20": 0.0137, "test_recall10": 0.016, "test_ndcg10": 0.0095, "test_recall20": 0.0245, "test_ndcg20": 0.0116, "elapsed_s": 119.49}
 {"method": "R3_SimGCL", "seed": 43, "best_epoch": 60, "val_ndcg20": 0.0212, "test_recall10": 0.0235, "test_ndcg10": 0.0117, "test_recall20": 0.0341, "test_ndcg20": 0.0144, "elapsed_s": 88.23}
 {"method": "R3_SimGCL", "seed": 44, "best_epoch": 60, "val_ndcg20": 0.0181, "test_recall10": 0.0181, "test_ndcg10": 0.0097, "test_recall20": 0.0309, "test_ndcg20": 0.0129, "elapsed_s": 119.47}
+{"method": "R3b_SimGCL_Tuned", "seed": 42, "best_epoch": 60, "val_ndcg20": 0.0948, "test_recall10": 0.1311, "test_ndcg10": 0.0665, "test_recall20": 0.2068, "test_ndcg20": 0.0855, "elapsed_s": 344.15}
+{"method": "R3b_SimGCL_Tuned", "seed": 43, "best_epoch": 60, "val_ndcg20": 0.0906, "test_recall10": 0.1333, "test_ndcg10": 0.067, "test_recall20": 0.2058, "test_ndcg20": 0.0853, "elapsed_s": 379.63}
+{"method": "R3b_SimGCL_Tuned", "seed": 44, "best_epoch": 55, "val_ndcg20": 0.0906, "test_recall10": 0.1397, "test_ndcg10": 0.0692, "test_recall20": 0.2058, "test_ndcg20": 0.0857, "elapsed_s": 384.03}

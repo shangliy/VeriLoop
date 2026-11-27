@@ -279,6 +279,8 @@ def build_model(name: str, in_dim: int, out_dim: int, device: torch.device) -> n
         return APPNPModel(in_dim, 64, out_dim, alpha=0.1, steps=10, dropout=0.5).to(device)
     if name == "M4_GCNII_8L":
         return GCNIIModel(in_dim, 64, out_dim, num_layers=8, alpha=0.15, lam=0.5, dropout=0.5).to(device)
+    if name == "M4b_GCNII_SplitWD":
+        return GCNIIModel(in_dim, 64, out_dim, num_layers=8, alpha=0.1, lam=0.5, dropout=0.6).to(device)
     raise ValueError(f"Unknown model: {name}")
 
 
@@ -298,8 +300,15 @@ def train_one_run(model_name: str, data: dict, seed: int, epochs: int, device: t
     set_seed(seed)
     t0 = time.perf_counter()
     model = build_model(model_name, data["num_features"], data["num_classes"], device)
-    wd = 1e-2 if model_name == "M4_GCNII_8L" else 5e-4
-    opt = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=wd)
+    if model_name == "M4b_GCNII_SplitWD":
+        # Per Chen et al. (2020): apply higher weight decay ONLY to deep conv weights, low decay on input/output projections
+        opt = torch.optim.Adam([
+            {"params": list(model.convs.parameters()), "weight_decay": 1e-2},
+            {"params": list(model.in_proj.parameters()) + list(model.out_proj.parameters()), "weight_decay": 5e-4},
+        ], lr=0.01)
+    else:
+        wd = 1e-2 if model_name == "M4_GCNII_8L" else 5e-4
+        opt = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=wd)
 
     best_val_acc = -1.0
     best_val_loss = float("inf")
@@ -361,7 +370,7 @@ def main():
     if device.type == "cuda":
         torch.cuda.reset_peak_memory_stats()
 
-    methods = ["M0_MLP", "M1_GCN_2L", "M2_GCN_8L_Deep", "M3_APPNP_PPR", "M4_GCNII_8L"]
+    methods = ["M0_MLP", "M1_GCN_2L", "M2_GCN_8L_Deep", "M3_APPNP_PPR", "M4_GCNII_8L", "M4b_GCNII_SplitWD"]
     ledger_path = ws / "out/trajectory_ledger.jsonl"
     ledger_path.write_text("", encoding="utf-8")
 

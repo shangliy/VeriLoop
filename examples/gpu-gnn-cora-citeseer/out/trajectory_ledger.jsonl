@@ -48,3 +48,13 @@
 {"dataset": "citeseer", "method": "M4_GCNII_8L", "seed": 44, "best_epoch": 172, "val_acc": 0.29, "test_acc": 0.262, "test_ece": 0.0944, "dirichlet_energy": 0.0, "elapsed_s": 4.301}
 {"dataset": "citeseer", "method": "M4_GCNII_8L", "seed": 45, "best_epoch": 195, "val_acc": 0.284, "test_acc": 0.239, "test_ece": 0.0714, "dirichlet_energy": 0.0, "elapsed_s": 4.694}
 {"dataset": "citeseer", "method": "M4_GCNII_8L", "seed": 46, "best_epoch": 142, "val_acc": 0.27, "test_acc": 0.215, "test_ece": 0.0471, "dirichlet_energy": 0.0, "elapsed_s": 5.309}
+{"dataset": "cora", "method": "M4b_GCNII_SplitWD", "seed": 42, "best_epoch": 197, "val_acc": 0.812, "test_acc": 0.825, "test_ece": 0.3576, "dirichlet_energy": 0.0174, "elapsed_s": 18.688}
+{"dataset": "cora", "method": "M4b_GCNII_SplitWD", "seed": 43, "best_epoch": 190, "val_acc": 0.81, "test_acc": 0.822, "test_ece": 0.3552, "dirichlet_energy": 0.0186, "elapsed_s": 18.567}
+{"dataset": "cora", "method": "M4b_GCNII_SplitWD", "seed": 44, "best_epoch": 174, "val_acc": 0.812, "test_acc": 0.827, "test_ece": 0.363, "dirichlet_energy": 0.0178, "elapsed_s": 18.722}
+{"dataset": "cora", "method": "M4b_GCNII_SplitWD", "seed": 45, "best_epoch": 182, "val_acc": 0.81, "test_acc": 0.825, "test_ece": 0.3456, "dirichlet_energy": 0.0166, "elapsed_s": 17.913}
+{"dataset": "cora", "method": "M4b_GCNII_SplitWD", "seed": 46, "best_epoch": 187, "val_acc": 0.818, "test_acc": 0.834, "test_ece": 0.3627, "dirichlet_energy": 0.0182, "elapsed_s": 16.811}
+{"dataset": "citeseer", "method": "M4b_GCNII_SplitWD", "seed": 42, "best_epoch": 90, "val_acc": 0.694, "test_acc": 0.7, "test_ece": 0.4575, "dirichlet_energy": 0.0054, "elapsed_s": 19.314}
+{"dataset": "citeseer", "method": "M4b_GCNII_SplitWD", "seed": 43, "best_epoch": 198, "val_acc": 0.708, "test_acc": 0.713, "test_ece": 0.3335, "dirichlet_energy": 0.0071, "elapsed_s": 15.556}
+{"dataset": "citeseer", "method": "M4b_GCNII_SplitWD", "seed": 44, "best_epoch": 146, "val_acc": 0.698, "test_acc": 0.729, "test_ece": 0.4072, "dirichlet_energy": 0.0074, "elapsed_s": 13.491}
+{"dataset": "citeseer", "method": "M4b_GCNII_SplitWD", "seed": 45, "best_epoch": 191, "val_acc": 0.708, "test_acc": 0.706, "test_ece": 0.3131, "dirichlet_energy": 0.0079, "elapsed_s": 11.08}
+{"dataset": "citeseer", "method": "M4b_GCNII_SplitWD", "seed": 46, "best_epoch": 195, "val_acc": 0.696, "test_acc": 0.706, "test_ece": 0.3299, "dirichlet_energy": 0.0069, "elapsed_s": 15.21}

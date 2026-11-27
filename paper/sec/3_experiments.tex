@@ -154,8 +154,9 @@ Line-by-line forensic inspection of both false-positive triggers confirms non-lo
 (2) on \texttt{09c\_Ecology}, \texttt{3.542} is a verbatim input value quoted from \path{data/island_species.csv} (line~17: \texttt{15,3.542,16}) while the locked v2 tracer indexed only \texttt{out/}.
 Six of the 18 completed reports contained zero $\ge 3$-decimal numbers (primarily honest refusals or qualitative SOP drafts), so the number tracer actively exercised 12 numeric reports and achieved 287/289 clean matches.
 
-\subsection{Real-GPU Case Study and Self-Audit}
+\subsection{Multi-Domain GPU Portfolio and External Audit}
 \label{sec:dogfood}
 
-Beyond CPU tasks, a 42-run RTX 3060~Ti study (92.47~min, 593.0~MB VRAM; Appendix~\ref{app:gpu_case_study}, \path{examples/gpu-overnight-research/}) on CIFAR-10 (\texttt{M7\_SEResNet\_Full} 0.9193 vs.\ \texttt{M1\_PlainCNN} 0.7787, +14.06~pp) and Fashion-MNIST (+3.75~pp) passes 14/14 Wiki self-consistency checks (\$0, 182 final wiki numbers, 0 AST \texttt{HIGH}, 81.8~ms median), 4/4 ledger checks (\texttt{G1--G7}; \texttt{G2/G3/G5} self-attested), 10/10 online citations, and 100\% expanded PDF decimals (\texttt{audits/}).
-All frozen workspaces, locked v2 gates, \texttt{ground\_truth.csv}, JSONLs, and unseen artifacts are committed in \RepoRef; \texttt{./veriloop eval-v2 layer1} reproduces Layer~1 verbatim, \texttt{./veriloop test} passes 51 unit/integration + 6 catalog checks (57 total), and \texttt{./veriloop audit-paper} checks numbers, citations, style, and figures end to end.
+Beyond CPU tasks, VeriLoop governs 115 real RTX 3060~Ti runs across three domains (42 CV, 60 Level-2 GNN, 13 Level-2 RecSys; Appendices~\ref{app:gpu_case_study}--\ref{app:external_audit}) with 100\% expanded PDF decimal tracing (416/416), 0 AST \texttt{HIGH}, and 0 Type-3 fonts.
+Applied externally at \$0 cost to all seven official \textsc{AI-Researcher}~\citep{tang2025airesearcher} showcases (including all committed \texttt{.log}/\texttt{.json} files; Appendix~\ref{app:external_audit}), VeriLoop records 0/79 (0.0\%) AST FPR while flagging 32 untraced decimals (152/184 = 82.6\% traced), including 25 verified unlogged or log-exceeding table metrics across three papers.
+All frozen workspaces, locked gates, forensic CSVs, and JSONLs are committed in \RepoRef; \texttt{./veriloop test} passes 63 offline checks, and \texttt{./veriloop audit-paper} audits this manuscript end to end.

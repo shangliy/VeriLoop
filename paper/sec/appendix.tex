@@ -162,3 +162,37 @@ F-MNIST  & \texttt{M7\_SEResNet\_Full}    & 0.9420$\pm$0.0011 & 0.9373$\pm$0.001
 \bottomrule
 \end{tabular}}
 \end{table*}
+
+\section{Multi-Domain Level-2 GPU Portfolio and External Third-Party Audit}
+\label{app:external_audit}
+
+To test VeriLoop v5 beyond computer vision and evaluate external third-party AI papers at \$0 cost, we executed two additional Level-2 real-GPU studies on the same RTX 3060~Ti and ran identical deterministic auditors (\texttt{./veriloop compare-bench --fetch-ai-researcher}, \path{eval/compare_ai_researcher.py}) across all seven official published \textsc{AI-Researcher}~\citep{tang2025airesearcher} showcase artifacts (\path{examples/*}, including every committed \texttt{.log}, \texttt{.txt}, \texttt{.csv}, and \texttt{.json} result file under \path{project/}).
+
+\paragraph{Additional Level-2 GPU domains.}
+(1) \textbf{GNN (\path{examples/gpu-gnn-cora-citeseer/}, 60 runs, 295.81~s, 135.2~MB VRAM):} Static arXiv ingest aligns 49 equations to Python AST symbols; deepening plain GCN to 8 layers collapses Cora accuracy from 0.8184 to 0.2292, \texttt{M3\_APPNP\_PPR} reaches 0.8348, and diagnosing uniform weight-decay collapse in \texttt{M4\_GCNII\_8L} (0.2868) with split decay (\texttt{M4b\_GCNII\_SplitWD}) restores Cora to 0.8266 and CiteSeer to 0.7108 (129/129 expanded PDF decimals traced).
+(2) \textbf{RecSys (\path{examples/gpu-recsys-movielens/}, 13 runs, 1645.18~s, 37.5~MB VRAM):} Static ingest aligns 26 LightGCN/SimGCL equations; diagnosing over-weighted \texttt{R3\_SimGCL} collapse (0.0298 \texttt{Recall@20}) and balancing InfoNCE loss in \texttt{R3b\_SimGCL\_Tuned} reaches 0.2061 \texttt{Recall@20} and 0.0855 \texttt{NDCG@20} over full-catalog ranking (92/92 expanded PDF decimals traced).
+
+\paragraph{External third-party forensic findings.}
+Full row-by-row evidence is committed in \path{eval/comparison_ai_researcher/ai_researcher_forensic_audit.csv}.
+Across all seven official \textsc{AI-Researcher} showcase PDFs, VeriLoop records 0/79 (0.0\%) AST false positives on third-party PyTorch codebases and traces 152/184 (82.6\%) decimals, flagging 32 untraced entries across three papers.
+Line-by-line forensic inspection separates 7 benign metadata items (5 EMA hyperparameters in \texttt{con\_flowmatching}; 2 dataset densities in \texttt{dccf}) from \textbf{25 verified unlogged or log-exceeding experimental metrics}:
+(i) \texttt{dccf} (20 metrics): reports \texttt{Recall@40} up to 0.1226 and \texttt{Recall@20} up to 0.0698 plus Table~5 losses, whereas across all 12 committed logs the maximum logged \texttt{Recall@40} is 0.0693 (\texttt{Recall@20} max 0.0464; final revision log 0.0000);
+(ii) \texttt{rotation\_vq} (3 metrics): repeats 0.0077 as reconstruction loss across three size rows absent from all 12 committed \texttt{.log}/\texttt{.json} files;
+(iii) \texttt{con\_flowmatching} (2 metrics): reports final training losses 0.8903 and 0.8124 while all five \path{project/experiments/logs/*.log} files are 0 bytes.
+\texttt{hgcl} additionally contains 1 unresolved citation marker, and all seven examples ship PDF-only without verifiable BibTeX, claim ledgers, or bound logs (Table~\ref{tab:app_external}).
+
+\begin{table*}[h]
+\centering
+\caption{\textbf{External zero-override audit: VeriLoop v5 (3 real-GPU PDFs) vs.\ official \textsc{AI-Researcher} showcases (7 published PDFs, all committed \texttt{.log}/\texttt{.json} included).} Reproducible via \texttt{./veriloop compare-bench --fetch-ai-researcher} (\$0 API cost).}
+\label{tab:app_external}
+\setlength{\tabcolsep}{3.0pt}
+\scriptsize
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{System} & \textbf{PDFs} & \textbf{PDF Trace} & \textbf{Unlogged} & \textbf{AST \texttt{HIGH}} & \textbf{BibTeX} & \textbf{Gov.} & \textbf{Audit} \\
+\midrule
+\textbf{VeriLoop v5 (CV+GNN+RecSys)} & 3 (3 logs) & \textbf{416/416 (100.0\%)} & \textbf{0} & \textbf{0} & \textbf{100.0\%} & \textbf{100.0\%} & 283~ms \\
+\textsc{AI-Researcher} (7 Showcases) & 7 (7 logs) & 152/184 (82.6\%) & 25 (+7 meta) & 0 (79 py) & 0.0\% & 0.0\% & 348~ms \\
+\bottomrule
+\end{tabular}
+\end{table*}

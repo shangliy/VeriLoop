@@ -79,7 +79,7 @@
     <rect x="0" y="34" width="162" height="26" rx="13" fill="#F59E0B" fill-opacity="0.22" stroke="#FBBF24" stroke-width="1"/>
     <text x="81" y="51" text-anchor="middle" fill="#FEF3C7" font-size="11.5" font-weight="700">0.0% Unseen AST FPR</text>
     <rect x="172" y="34" width="166" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.14" stroke="#93C5FD" stroke-width="1"/>
-    <text x="255" y="51" text-anchor="middle" fill="#FFFFFF" font-size="11.5" font-weight="700">1243 / 1243 CI Tests</text>
+    <text x="255" y="51" text-anchor="middle" fill="#FFFFFF" font-size="11.5" font-weight="700">1249+ CI Tests (0 Fail)</text>
   </g>
 
   <!-- ==================== STAGE 1: RESEARCH & GPU EXECUTION (LEFT) ==================== -->
@@ -316,11 +316,11 @@
     <text x="358" y="38" fill="#CBD5E1" font-size="11.5">Unseen AST FPR / Number FPR (21 Blind Scenarios)</text>
 
     <line x1="686" y1="-2" x2="686" y2="42" stroke="#334155" stroke-width="1.2"/>
-    <text x="708" y="18" fill="#FBBF24" font-size="22" font-weight="800">42 GPU Runs</text>
-    <text x="708" y="38" fill="#CBD5E1" font-size="11.5">RTX 3060 Ti CIFAR-10 &amp; F-MNIST (14/14 Stages, 81.8ms)</text>
+    <text x="708" y="18" fill="#FBBF24" font-size="22" font-weight="800">115 GPU Runs</text>
+    <text x="708" y="38" fill="#CBD5E1" font-size="11.5">RTX 3060 Ti CV + GNN + RecSys (100% PDF Traced)</text>
 
     <line x1="1044" y1="-2" x2="1044" y2="42" stroke="#334155" stroke-width="1.2"/>
-    <text x="1066" y="18" fill="#A78BFA" font-size="22" font-weight="800">1243 Passed</text>
+    <text x="1066" y="18" fill="#A78BFA" font-size="22" font-weight="800">1249+ Passed</text>
     <text x="1066" y="38" fill="#CBD5E1" font-size="11.5">Full Cross-Platform CI (Linux + macOS, 0 Failures)</text>
   </g>
 </svg>

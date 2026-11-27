@@ -1,0 +1,33 @@
+example,pdf_line,number,category,context,forensic_note
+con_flowmatching,470,0.999,HYPERPARAM_EMA,"training, we implemented an Exponential Moving Average (EMA) with a decay rate of 0.999.",EMA decay hyperparameter
+con_flowmatching,485,0.999,HYPERPARAM_EMA,Exponential Moving Average (EMA) rate of 0.999. Evaluation was conducted using the Inception v3,EMA decay hyperparameter
+con_flowmatching,589,0.8903,UNLOGGED_EXP_METRIC,0.8903,Final Training Loss; all 5 project/experiments/logs/*.log files are 0 bytes
+con_flowmatching,590,0.8124,UNLOGGED_EXP_METRIC,0.8124,Final Training Loss; all 5 project/experiments/logs/*.log files are 0 bytes
+con_flowmatching,702,0.999,HYPERPARAM_EMA,0.999,EMA decay hyperparameter
+con_flowmatching,703,0.995,HYPERPARAM_EMA,0.995,EMA decay hyperparameter
+con_flowmatching,705,0.999,HYPERPARAM_EMA,0.999,EMA decay hyperparameter
+dccf,462,0.00130,DATASET_STAT,0.00130,Table 1 dataset density
+dccf,463,0.00085,DATASET_STAT,0.00085,Table 1 dataset density
+dccf,611,0.1153,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.1153,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,671,0.0698,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.0698,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,672,0.0645,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.0645,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,679,0.1153,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.1153,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,680,0.0945,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.0945,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,681,0.1021,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.1021,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,682,0.0978,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.0978,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,878,3.3487,UNLOGGED_OR_EXCEEDS_LOG_METRIC,3.3487,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,879,2.9214,UNLOGGED_OR_EXCEEDS_LOG_METRIC,2.9214,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,880,3.2904,UNLOGGED_OR_EXCEEDS_LOG_METRIC,3.2904,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,881,3.2689,UNLOGGED_OR_EXCEEDS_LOG_METRIC,3.2689,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,884,0.0981,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.0981,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,885,0.1057,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.1057,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,886,0.0973,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.0973,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,887,0.0968,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.0968,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,890,3.242,UNLOGGED_OR_EXCEEDS_LOG_METRIC,3.242,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,896,0.1153,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.1153,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,897,0.1184,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.1184,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,898,0.1226,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.1226,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+dccf,899,0.1205,UNLOGGED_OR_EXCEEDS_LOG_METRIC,0.1205,"Not in any of 12 committed logs (max logged Recall@20=0.0464, Recall@40=0.0693; final revision=0.0000)"
+rotation_vq,584,0.0077,UNLOGGED_EXP_METRIC,0.0077,Not found in any of 12 committed .log/.json result files under project/results/
+rotation_vq,586,0.0077,UNLOGGED_EXP_METRIC,0.0077,Not found in any of 12 committed .log/.json result files under project/results/
+rotation_vq,587,0.0077,UNLOGGED_EXP_METRIC,0.0077,Not found in any of 12 committed .log/.json result files under project/results/

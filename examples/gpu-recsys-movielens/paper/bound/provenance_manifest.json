@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-11-27T07:26:17.106929+00:00",
-  "bound_metrics_sha256": "741cd72d8ede5a0c94e7574108eaf06ae8430e893288d31a1795174a07c96d02",
+  "generated_utc": "2026-11-27T19:11:23.630988+00:00",
+  "bound_metrics_sha256": "625421ffb7990ab1eab57eb3fe6d31ebe3b0e6140befd1bbd595703a6cc482f6",
   "sources": [
     {
       "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
@@ -75,49 +75,25 @@
       "points": 5
     },
     {
-      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl",
-      "format": "jsonl",
-      "sha256": "52988be8cbce6a3959a9f9153a86a959abd53f71ffa5591ce486f5b54335089f",
-      "points": 3
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+      "format": "csv",
+      "sha256": "a64b6329cf1badd7bc66599851a799426c310bc217870a5d05edc430a61f596b",
+      "points": 5
     },
     {
-      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
-      "format": "jsonl",
-      "sha256": "ddfbdf7cc5d3f1361e7272966d6e4b63c72810f5cb96da9efd2597914b030cc1",
-      "points": 70
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+      "format": "csv",
+      "sha256": "2185d476f491ca1b191f6783b78bb6d498a053c7cec3cde59b43dc4235c807f5",
+      "points": 5
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv",
+      "format": "csv",
+      "sha256": "946e6691f879b49c4b3758939d54b43179e32626c5f1fcd8ad9e9b85085e8250",
+      "points": 5
     }
   ],
   "summary": {
-    "R0_Pop::best_epoch": {
-      "method": "R0_Pop",
-      "metric": "best_epoch",
-      "n_seeds": 1,
-      "mean": 0.0,
-      "std": 0.0,
-      "ci_lo": 0.0,
-      "ci_hi": 0.0,
-      "per_seed": {
-        "42": 0.0
-      },
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
-      ]
-    },
-    "R0_Pop::elapsed_s": {
-      "method": "R0_Pop",
-      "metric": "elapsed_s",
-      "n_seeds": 1,
-      "mean": 0.01,
-      "std": 0.0,
-      "ci_lo": 0.01,
-      "ci_hi": 0.01,
-      "per_seed": {
-        "42": 0.01
-      },
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
-      ]
-    },
     "R0_Pop::test_ndcg10": {
       "method": "R0_Pop",
       "metric": "test_ndcg10",
@@ -132,7 +108,6 @@
         "44": 0.0406
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
@@ -152,7 +127,6 @@
         "44": 0.0545
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
@@ -172,7 +146,6 @@
         "44": 0.081
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
@@ -192,7 +165,6 @@
         "44": 0.1365
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
@@ -212,44 +184,9 @@
         "44": 0.0475
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
-      ]
-    },
-    "R1_MF_BPR::best_epoch": {
-      "method": "R1_MF_BPR",
-      "metric": "best_epoch",
-      "n_seeds": 3,
-      "mean": 46.666666666666664,
-      "std": 7.637626158259733,
-      "ci_lo": 27.69222018081511,
-      "ci_hi": 65.64111315251822,
-      "per_seed": {
-        "42": 55.0,
-        "43": 45.0,
-        "44": 40.0
-      },
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
-      ]
-    },
-    "R1_MF_BPR::elapsed_s": {
-      "method": "R1_MF_BPR",
-      "metric": "elapsed_s",
-      "n_seeds": 3,
-      "mean": 26.023333333333333,
-      "std": 3.6876053657262906,
-      "ci_lo": 16.862074426042746,
-      "ci_hi": 35.18459224062392,
-      "per_seed": {
-        "42": 26.74,
-        "43": 22.03,
-        "44": 29.3
-      },
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
       ]
     },
     "R1_MF_BPR::test_ndcg10": {
@@ -266,7 +203,6 @@
         "44": 0.0595
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
@@ -286,7 +222,6 @@
         "44": 0.0774
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
@@ -306,7 +241,6 @@
         "44": 0.1205
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
@@ -326,7 +260,6 @@
         "44": 0.193
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
@@ -346,44 +279,9 @@
         "44": 0.0836
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
-      ]
-    },
-    "R2_LightGCN::best_epoch": {
-      "method": "R2_LightGCN",
-      "metric": "best_epoch",
-      "n_seeds": 3,
-      "mean": 58.333333333333336,
-      "std": 2.8867513459481287,
-      "ci_lo": 51.16166666666667,
-      "ci_hi": 65.505,
-      "per_seed": {
-        "42": 55.0,
-        "43": 60.0,
-        "44": 60.0
-      },
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
-      ]
-    },
-    "R2_LightGCN::elapsed_s": {
-      "method": "R2_LightGCN",
-      "metric": "elapsed_s",
-      "n_seeds": 3,
-      "mean": 44.03333333333333,
-      "std": 5.971886915651815,
-      "ci_lo": 29.19714649299557,
-      "ci_hi": 58.86952017367109,
-      "per_seed": {
-        "42": 50.81,
-        "43": 39.54,
-        "44": 41.75
-      },
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
       ]
     },
     "R2_LightGCN::test_ndcg10": {
@@ -400,7 +298,6 @@
         "44": 0.0552
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
@@ -420,7 +317,6 @@
         "44": 0.0721
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
@@ -440,7 +336,6 @@
         "44": 0.1183
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
@@ -460,7 +355,6 @@
         "44": 0.1855
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
@@ -480,44 +374,9 @@
         "44": 0.0742
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
-      ]
-    },
-    "R3_SimGCL::best_epoch": {
-      "method": "R3_SimGCL",
-      "metric": "best_epoch",
-      "n_seeds": 3,
-      "mean": 60.0,
-      "std": 0.0,
-      "ci_lo": 60.0,
-      "ci_hi": 60.0,
-      "per_seed": {
-        "42": 60.0,
-        "43": 60.0,
-        "44": 60.0
-      },
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
-      ]
-    },
-    "R3_SimGCL::elapsed_s": {
-      "method": "R3_SimGCL",
-      "metric": "elapsed_s",
-      "n_seeds": 3,
-      "mean": 109.06333333333333,
-      "std": 18.04219868345688,
-      "ci_lo": 64.2404097818672,
-      "ci_hi": 153.88625688479948,
-      "per_seed": {
-        "42": 119.49,
-        "43": 88.23,
-        "44": 119.47
-      },
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
       ]
     },
     "R3_SimGCL::test_ndcg10": {
@@ -534,7 +393,6 @@
         "44": 0.0097
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
@@ -554,7 +412,6 @@
         "44": 0.0129
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
@@ -574,7 +431,6 @@
         "44": 0.0181
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
@@ -594,7 +450,6 @@
         "44": 0.0309
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
@@ -614,277 +469,356 @@
         "44": 0.0181
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
       ]
     },
-    "sandbox_runs::elapsed_s": {
-      "method": "sandbox_runs",
-      "metric": "elapsed_s",
-      "n_seeds": 1,
-      "mean": 550.72,
-      "std": 0.0,
-      "ci_lo": 550.72,
-      "ci_hi": 550.72,
+    "R3b_SimGCL_Tuned::test_ndcg10": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "test_ndcg10",
+      "n_seeds": 3,
+      "mean": 0.06756666666666666,
+      "std": 0.0014364307617610128,
+      "ci_lo": 0.06399808684161333,
+      "ci_hi": 0.07113524649172,
       "per_seed": {
-        "0": 550.72
+        "42": 0.0665,
+        "43": 0.067,
+        "44": 0.0692
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
       ]
     },
-    "sandbox_runs::log_bytes": {
-      "method": "sandbox_runs",
-      "metric": "log_bytes",
-      "n_seeds": 1,
-      "mean": 838.0,
-      "std": 0.0,
-      "ci_lo": 838.0,
-      "ci_hi": 838.0,
+    "R3b_SimGCL_Tuned::test_ndcg20": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "test_ndcg20",
+      "n_seeds": 3,
+      "mean": 0.0855,
+      "std": 0.0001999999999999988,
+      "ci_lo": 0.08500313235833541,
+      "ci_hi": 0.0859968676416646,
       "per_seed": {
-        "0": 838.0
+        "42": 0.0855,
+        "43": 0.0853,
+        "44": 0.0857
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
       ]
     },
-    "sandbox_runs::returncode": {
-      "method": "sandbox_runs",
-      "metric": "returncode",
-      "n_seeds": 1,
-      "mean": 0.0,
-      "std": 0.0,
-      "ci_lo": 0.0,
-      "ci_hi": 0.0,
+    "R3b_SimGCL_Tuned::test_recall10": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "test_recall10",
+      "n_seeds": 3,
+      "mean": 0.1347,
+      "std": 0.004467661580737733,
+      "ci_lo": 0.12360081763311669,
+      "ci_hi": 0.14579918236688327,
       "per_seed": {
-        "0": 0.0
+        "42": 0.1311,
+        "43": 0.1333,
+        "44": 0.1397
       },
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
+      ]
+    },
+    "R3b_SimGCL_Tuned::test_recall20": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "test_recall20",
+      "n_seeds": 3,
+      "mean": 0.20613333333333334,
+      "std": 0.0005773502691896262,
+      "ci_lo": 0.204699,
+      "ci_hi": 0.20756766666666668,
+      "per_seed": {
+        "42": 0.2068,
+        "43": 0.2058,
+        "44": 0.2058
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
+      ]
+    },
+    "R3b_SimGCL_Tuned::val_ndcg20": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "val_ndcg20",
+      "n_seeds": 3,
+      "mean": 0.092,
+      "std": 0.0024248711305964255,
+      "ci_lo": 0.0859758,
+      "ci_hi": 0.09802419999999999,
+      "per_seed": {
+        "42": 0.0948,
+        "43": 0.0906,
+        "44": 0.0906
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
       ]
     }
   },
   "macros": {
-    "\\vlRPopBestEpoch": {
+    "\\vlRecRPopTestNdcgOneZero": {
       "method": "R0_Pop",
-      "metric": "best_epoch",
-      "value": "0.0000$\\pm$0.0000",
+      "metric": "test_ndcg10",
+      "value": "0.0406$\\pm$0.0000",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
       ]
     },
-    "\\vlRPopElapsedS": {
-      "method": "R0_Pop",
-      "metric": "elapsed_s",
-      "value": "0.0100$\\pm$0.0000",
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
-      ]
-    },
-    "\\vlRPopTestNdcg": {
+    "\\vlRecRPopTestNdcgTwoZero": {
       "method": "R0_Pop",
       "metric": "test_ndcg20",
       "value": "0.0545$\\pm$0.0000",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
       ]
     },
-    "\\vlRPopTestRecall": {
+    "\\vlRecRPopTestRecallOneZero": {
+      "method": "R0_Pop",
+      "metric": "test_recall10",
+      "value": "0.0810$\\pm$0.0000",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
+      ]
+    },
+    "\\vlRecRPopTestRecallTwoZero": {
       "method": "R0_Pop",
       "metric": "test_recall20",
       "value": "0.1365$\\pm$0.0000",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
       ]
     },
-    "\\vlRPopValNdcg": {
+    "\\vlRecRPopValNdcgTwoZero": {
       "method": "R0_Pop",
       "metric": "val_ndcg20",
       "value": "0.0475$\\pm$0.0000",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"
       ]
     },
-    "\\vlRMfBprBestEpoch": {
+    "\\vlRecRMfBprTestNdcgOneZero": {
       "method": "R1_MF_BPR",
-      "metric": "best_epoch",
-      "value": "46.6667$\\pm$7.6376",
+      "metric": "test_ndcg10",
+      "value": "0.0611$\\pm$0.0014",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
       ]
     },
-    "\\vlRMfBprElapsedS": {
-      "method": "R1_MF_BPR",
-      "metric": "elapsed_s",
-      "value": "26.0233$\\pm$3.6876",
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
-      ]
-    },
-    "\\vlRMfBprTestNdcg": {
+    "\\vlRecRMfBprTestNdcgTwoZero": {
       "method": "R1_MF_BPR",
       "metric": "test_ndcg20",
       "value": "0.0788$\\pm$0.0016",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
       ]
     },
-    "\\vlRMfBprTestRecall": {
+    "\\vlRecRMfBprTestRecallOneZero": {
+      "method": "R1_MF_BPR",
+      "metric": "test_recall10",
+      "value": "0.1237$\\pm$0.0038",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
+      ]
+    },
+    "\\vlRecRMfBprTestRecallTwoZero": {
       "method": "R1_MF_BPR",
       "metric": "test_recall20",
       "value": "0.1948$\\pm$0.0016",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
       ]
     },
-    "\\vlRMfBprValNdcg": {
+    "\\vlRecRMfBprValNdcgTwoZero": {
       "method": "R1_MF_BPR",
       "metric": "val_ndcg20",
       "value": "0.0814$\\pm$0.0019",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"
       ]
     },
-    "\\vlRLightgcnBestEpoch": {
+    "\\vlRecRLightgcnTestNdcgOneZero": {
       "method": "R2_LightGCN",
-      "metric": "best_epoch",
-      "value": "58.3333$\\pm$2.8868",
+      "metric": "test_ndcg10",
+      "value": "0.0552$\\pm$0.0003",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
       ]
     },
-    "\\vlRLightgcnElapsedS": {
-      "method": "R2_LightGCN",
-      "metric": "elapsed_s",
-      "value": "44.0333$\\pm$5.9719",
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
-      ]
-    },
-    "\\vlRLightgcnTestNdcg": {
+    "\\vlRecRLightgcnTestNdcgTwoZero": {
       "method": "R2_LightGCN",
       "metric": "test_ndcg20",
       "value": "0.0738$\\pm$0.0017",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
       ]
     },
-    "\\vlRLightgcnTestRecall": {
+    "\\vlRecRLightgcnTestRecallOneZero": {
+      "method": "R2_LightGCN",
+      "metric": "test_recall10",
+      "value": "0.1166$\\pm$0.0022",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
+      ]
+    },
+    "\\vlRecRLightgcnTestRecallTwoZero": {
       "method": "R2_LightGCN",
       "metric": "test_recall20",
       "value": "0.1905$\\pm$0.0043",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
       ]
     },
-    "\\vlRLightgcnValNdcg": {
+    "\\vlRecRLightgcnValNdcgTwoZero": {
       "method": "R2_LightGCN",
       "metric": "val_ndcg20",
       "value": "0.0749$\\pm$0.0007",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"
       ]
     },
-    "\\vlRSimgclBestEpoch": {
+    "\\vlRecRSimgclTestNdcgOneZero": {
       "method": "R3_SimGCL",
-      "metric": "best_epoch",
-      "value": "60.0000$\\pm$0.0000",
+      "metric": "test_ndcg10",
+      "value": "0.0103$\\pm$0.0012",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
       ]
     },
-    "\\vlRSimgclElapsedS": {
-      "method": "R3_SimGCL",
-      "metric": "elapsed_s",
-      "value": "109.0633$\\pm$18.0422",
-      "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"
-      ]
-    },
-    "\\vlRSimgclTestNdcg": {
+    "\\vlRecRSimgclTestNdcgTwoZero": {
       "method": "R3_SimGCL",
       "metric": "test_ndcg20",
       "value": "0.0130$\\pm$0.0014",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
       ]
     },
-    "\\vlRSimgclTestRecall": {
+    "\\vlRecRSimgclTestRecallOneZero": {
+      "method": "R3_SimGCL",
+      "metric": "test_recall10",
+      "value": "0.0192$\\pm$0.0039",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
+      ]
+    },
+    "\\vlRecRSimgclTestRecallTwoZero": {
       "method": "R3_SimGCL",
       "metric": "test_recall20",
       "value": "0.0298$\\pm$0.0049",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
       ]
     },
-    "\\vlRSimgclValNdcg": {
+    "\\vlRecRSimgclValNdcgTwoZero": {
       "method": "R3_SimGCL",
       "metric": "val_ndcg20",
       "value": "0.0177$\\pm$0.0038",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"
       ]
     },
-    "\\vlSandboxRunsElapsedS": {
-      "method": "sandbox_runs",
-      "metric": "elapsed_s",
-      "value": "550.7200$\\pm$0.0000",
+    "\\vlRecRBSimgclTunedTestNdcgOneZero": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "test_ndcg10",
+      "value": "0.0676$\\pm$0.0014",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
       ]
     },
-    "\\vlSandboxRunsLogBytes": {
-      "method": "sandbox_runs",
-      "metric": "log_bytes",
-      "value": "838.0000$\\pm$0.0000",
+    "\\vlRecRBSimgclTunedTestNdcgTwoZero": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "test_ndcg20",
+      "value": "0.0855$\\pm$0.0002",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
       ]
     },
-    "\\vlSandboxRunsReturncode": {
-      "method": "sandbox_runs",
-      "metric": "returncode",
-      "value": "0.0000$\\pm$0.0000",
+    "\\vlRecRBSimgclTunedTestRecallOneZero": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "test_recall10",
+      "value": "0.1347$\\pm$0.0045",
       "sources": [
-        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl"
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
+      ]
+    },
+    "\\vlRecRBSimgclTunedTestRecallTwoZero": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "test_recall20",
+      "value": "0.2061$\\pm$0.0006",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
+      ]
+    },
+    "\\vlRecRBSimgclTunedValNdcgTwoZero": {
+      "method": "R3b_SimGCL_Tuned",
+      "metric": "val_ndcg20",
+      "value": "0.0920$\\pm$0.0024",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3b_SimGCL_Tuned_s44.csv"
       ]
     }
   }

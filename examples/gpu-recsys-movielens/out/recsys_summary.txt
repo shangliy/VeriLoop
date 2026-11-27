@@ -1,7 +1,8 @@
 === VERILOOP LEVEL-2 RECSYS REAL-GPU STUDY SUMMARY (ZERO OVERRIDES) ===
-RUNS total_runs=10 gpu=NVIDIA GeForce RTX 3060 Ti torch=2.9.1+cu128 total_gpu_s=537.76 peak_vram_mb=37.5 COMPLETE
+RUNS total_runs=13 gpu=NVIDIA GeForce RTX 3060 Ti torch=2.9.1+cu128 total_gpu_s=1645.18 peak_vram_mb=37.5 COMPLETE
 DATASET movielens_100k users=938 items=1447 train_interactions=53485
-SUMMARY ml100k R0_Pop          n=1 | val_ndcg20=0.0475 | test_recall10=0.0810 test_ndcg10=0.0406 | test_recall20=0.1365 test_ndcg20=0.0545
-SUMMARY ml100k R1_MF_BPR       n=3 | val_ndcg20=0.0814±0.0019 | test_recall10=0.1237±0.0038 test_ndcg10=0.0611±0.0014 | test_recall20=0.1948±0.0016 test_ndcg20=0.0788±0.0016 [0.0749,0.0827]
-SUMMARY ml100k R2_LightGCN     n=3 | val_ndcg20=0.0749±0.0007 | test_recall10=0.1166±0.0022 test_ndcg10=0.0552±0.0003 | test_recall20=0.1905±0.0043 test_ndcg20=0.0738±0.0017 [0.0697,0.0779]
-SUMMARY ml100k R3_SimGCL       n=3 | val_ndcg20=0.0177±0.0038 | test_recall10=0.0192±0.0039 test_ndcg10=0.0103±0.0012 | test_recall20=0.0298±0.0049 test_ndcg20=0.0130±0.0014 [0.0095,0.0164]
+SUMMARY ml100k R0_Pop            n=1 | val_ndcg20=0.0475 | test_recall10=0.0810 test_ndcg10=0.0406 | test_recall20=0.1365 test_ndcg20=0.0545
+SUMMARY ml100k R1_MF_BPR         n=3 | val_ndcg20=0.0814±0.0019 | test_recall10=0.1237±0.0038 test_ndcg10=0.0611±0.0014 | test_recall20=0.1948±0.0016 test_ndcg20=0.0788±0.0016 [0.0749,0.0827]
+SUMMARY ml100k R2_LightGCN       n=3 | val_ndcg20=0.0749±0.0007 | test_recall10=0.1166±0.0022 test_ndcg10=0.0552±0.0003 | test_recall20=0.1905±0.0043 test_ndcg20=0.0738±0.0017 [0.0697,0.0779]
+SUMMARY ml100k R3_SimGCL         n=3 | val_ndcg20=0.0177±0.0038 | test_recall10=0.0192±0.0039 test_ndcg10=0.0103±0.0012 | test_recall20=0.0298±0.0049 test_ndcg20=0.0130±0.0014 [0.0095,0.0164]
+SUMMARY ml100k R3b_SimGCL_Tuned  n=3 | val_ndcg20=0.0920±0.0024 | test_recall10=0.1347±0.0045 test_ndcg10=0.0676±0.0014 | test_recall20=0.2061±0.0006 test_ndcg20=0.0855±0.0002 [0.0850,0.0860]

@@ -202,9 +202,15 @@ def main():
             tmp_path = tf.name
         try:
             audit_flags = ["--logs", str(ROOT / "paper/out/stats_summary.txt")]
-            gpu_summary = ROOT / "examples/gpu-overnight-research/out/overnight_summary.txt"
-            if gpu_summary.is_file():
-                audit_flags.extend(["--logs", str(gpu_summary)])
+            for extra_log in (
+                ROOT / "examples/gpu-overnight-research/out/overnight_summary.txt",
+                ROOT / "examples/gpu-gnn-cora-citeseer/out/gnn_summary.txt",
+                ROOT / "examples/gpu-recsys-movielens/out/recsys_summary.txt",
+                ROOT / "eval/comparison_ai_researcher/COMPARISON_REPORT.md",
+                ROOT / "eval/comparison_ai_researcher/ai_researcher_forensic_audit.csv",
+            ):
+                if extra_log.is_file():
+                    audit_flags.extend(["--logs", str(extra_log)])
             r1 = subprocess.run([sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), tmp_path, *audit_flags])
             r2 = subprocess.run([sys.executable, str(RL_SCRIPTS / "citation_audit.py"), tmp_path, "--bib", str(ROOT / "paper/refs.bib")])
             r3_rc = 0 if no_lint else run_lint_paper([])

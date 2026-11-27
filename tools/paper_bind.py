@@ -442,8 +442,13 @@ def aggregate_records(records: list[dict], metrics_filter: list[str], step_agg: 
     return summary, curves
 
 
+_DIGIT_WORDS = {"0": "Zero", "1": "One", "2": "Two", "3": "Three", "4": "Four", "5": "Five", "6": "Six", "7": "Seven", "8": "Eight", "9": "Nine"}
+
+
 def _macro_name(method: str, metric: str, suffix: str = "", prefix: str = "vl") -> str:
-    clean = re.sub(r"[^A-Za-z]+", " ", f"{method} {metric} {suffix}").title().replace(" ", "")
+    # Preserve backwards-compatible method naming (e.g. M0_Linear -> MLinear) while spelling out digits in metric names (e.g. ndcg10 vs ndcg20)
+    metric_spelled = re.sub(r"\d", lambda m: " " + _DIGIT_WORDS[m.group(0)] + " ", metric)
+    clean = re.sub(r"[^A-Za-z]+", " ", f"{method} {metric_spelled} {suffix}").title().replace(" ", "")
     return f"\\{prefix}{clean}"
 
 
@@ -598,6 +603,9 @@ def write_outputs(summary: dict, curves: dict, sources: list[dict], out_dir: Pat
                             f"{mv:.3f}", ha="center", va="bottom", fontsize=6.2, fontweight="bold")
             ax.set_xticks(x)
             ax.set_xticklabels([met.replace("_", " ").title() for met in plot_metrics])
+            if ax.get_ylim()[1] <= 1.25:
+                from matplotlib.ticker import FormatStrFormatter
+                ax.yaxis.set_major_formatter(FormatStrFormatter("%.2f"))
             ax.set_ylabel("Metric Value (mean ± 95% CI)")
             ax.grid(axis="y", linestyle=":", alpha=0.4)
             ax.set_axisbelow(True)

@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-11-27T07:30:47Z",
+  "generated_utc": "2026-11-27T19:11:29Z",
   "aggregate": {
     "VeriLoop v5": {
       "workspaces_audited": 3,
       "workspaces_with_logs": 3,
-      "total_numbers": 683,
-      "total_traced": 683,
+      "total_numbers": 416,
+      "total_traced": 416,
       "overall_trace_rate_pct": 100.0,
       "with_logs_trace_rate_pct": 100.0,
       "total_py_files": 4,
@@ -14,23 +14,23 @@
       "ast_clean_workspace_pct": 100.0,
       "bib_verified_workspace_pct": 100.0,
       "governance_score_pct": 100.0,
-      "mean_audit_ms": 232.9,
+      "mean_audit_ms": 298.2,
       "layer1_cost_usd": 0.0
     },
     "HKUDS/AI-Researcher": {
       "workspaces_audited": 7,
       "workspaces_with_logs": 7,
       "total_numbers": 184,
-      "total_traced": 133,
-      "overall_trace_rate_pct": 72.28,
-      "with_logs_trace_rate_pct": 72.28,
+      "total_traced": 152,
+      "overall_trace_rate_pct": 82.61,
+      "with_logs_trace_rate_pct": 82.61,
       "total_py_files": 79,
       "total_ast_high": 0,
       "total_ast_medium": 0,
       "ast_clean_workspace_pct": 100.0,
       "bib_verified_workspace_pct": 0.0,
       "governance_score_pct": 0.0,
-      "mean_audit_ms": 302.4,
+      "mean_audit_ms": 358.6,
       "layer1_cost_usd": 0.0
     }
   },
@@ -69,20 +69,20 @@
         "interactive_review_ui": true,
         "studio_snapshot": true
       },
-      "layer1_audit_ms": 320.3,
+      "layer1_audit_ms": 317.3,
       "layer1_audit_cost_usd": 0.0
     },
     {
       "system": "VeriLoop v5",
-      "label": "VeriLoop-v5 (GNN: Cora & CiteSeer, 50 GPU runs)",
+      "label": "VeriLoop-v5 (GNN: Cora & CiteSeer, 60 GPU runs)",
       "domain": "GNN",
       "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer",
-      "deliverable": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/report/report.md",
-      "deliverable_kind": "text",
-      "pdf_pages": 0,
+      "deliverable": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/paper/gnn_study.pdf",
+      "deliverable_kind": "pdf",
+      "pdf_pages": 2,
       "log_files_count": 10,
-      "numbers_total": 281,
-      "numbers_traced": 281,
+      "numbers_total": 129,
+      "numbers_traced": 129,
       "numbers_untraced": 0,
       "trace_rate_pct": 100.0,
       "type3_fonts": 0,
@@ -106,20 +106,20 @@
         "interactive_review_ui": true,
         "studio_snapshot": true
       },
-      "layer1_audit_ms": 215.5,
+      "layer1_audit_ms": 306.5,
       "layer1_audit_cost_usd": 0.0
     },
     {
       "system": "VeriLoop v5",
-      "label": "VeriLoop-v5 (RecSys: MovieLens-100K, 10 GPU runs)",
+      "label": "VeriLoop-v5 (RecSys: MovieLens-100K, 13 GPU runs)",
       "domain": "RecSys",
       "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens",
-      "deliverable": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md",
-      "deliverable_kind": "text",
-      "pdf_pages": 0,
+      "deliverable": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/paper/recsys_study.pdf",
+      "deliverable_kind": "pdf",
+      "pdf_pages": 2,
       "log_files_count": 6,
-      "numbers_total": 207,
-      "numbers_traced": 207,
+      "numbers_total": 92,
+      "numbers_traced": 92,
       "numbers_untraced": 0,
       "trace_rate_pct": 100.0,
       "type3_fonts": 0,
@@ -143,7 +143,7 @@
         "interactive_review_ui": true,
         "studio_snapshot": true
       },
-      "layer1_audit_ms": 163.0,
+      "layer1_audit_ms": 270.8,
       "layer1_audit_cost_usd": 0.0
     },
     {
@@ -180,7 +180,7 @@
         "interactive_review_ui": false,
         "studio_snapshot": false
       },
-      "layer1_audit_ms": 252.2,
+      "layer1_audit_ms": 284.9,
       "layer1_audit_cost_usd": 0.0
     },
     {
@@ -217,7 +217,7 @@
         "interactive_review_ui": false,
         "studio_snapshot": false
       },
-      "layer1_audit_ms": 301.6,
+      "layer1_audit_ms": 337.9,
       "layer1_audit_cost_usd": 0.0
     },
     {
@@ -228,7 +228,7 @@
       "deliverable": "/tmp/ai_researcher_ref/examples/fsq/paper.pdf",
       "deliverable_kind": "pdf",
       "pdf_pages": 9,
-      "log_files_count": 8,
+      "log_files_count": 11,
       "numbers_total": 0,
       "numbers_traced": 0,
       "numbers_untraced": 0,
@@ -254,7 +254,7 @@
         "interactive_review_ui": false,
         "studio_snapshot": false
       },
-      "layer1_audit_ms": 351.2,
+      "layer1_audit_ms": 396.5,
       "layer1_audit_cost_usd": 0.0
     },
     {
@@ -291,7 +291,7 @@
         "interactive_review_ui": false,
         "studio_snapshot": false
       },
-      "layer1_audit_ms": 313.6,
+      "layer1_audit_ms": 336.0,
       "layer1_audit_cost_usd": 0.0
     },
     {
@@ -302,7 +302,7 @@
       "deliverable": "/tmp/ai_researcher_ref/examples/gnn_nodeformer/paper.pdf",
       "deliverable_kind": "pdf",
       "pdf_pages": 7,
-      "log_files_count": 12,
+      "log_files_count": 14,
       "numbers_total": 0,
       "numbers_traced": 0,
       "numbers_untraced": 0,
@@ -328,7 +328,7 @@
         "interactive_review_ui": false,
         "studio_snapshot": false
       },
-      "layer1_audit_ms": 262.3,
+      "layer1_audit_ms": 286.3,
       "layer1_audit_cost_usd": 0.0
     },
     {
@@ -365,7 +365,7 @@
         "interactive_review_ui": false,
         "studio_snapshot": false
       },
-      "layer1_audit_ms": 318.7,
+      "layer1_audit_ms": 355.7,
       "layer1_audit_cost_usd": 0.0
     },
     {
@@ -376,11 +376,11 @@
       "deliverable": "/tmp/ai_researcher_ref/examples/rotation_vq/paper.pdf",
       "deliverable_kind": "pdf",
       "pdf_pages": 11,
-      "log_files_count": 2,
+      "log_files_count": 12,
       "numbers_total": 45,
-      "numbers_traced": 23,
-      "numbers_untraced": 22,
-      "trace_rate_pct": 51.11,
+      "numbers_traced": 42,
+      "numbers_untraced": 3,
+      "trace_rate_pct": 93.33,
       "type3_fonts": 0,
       "unresolved_refs": 0,
       "py_files_scanned": 9,
@@ -402,7 +402,7 @@
         "interactive_review_ui": false,
         "studio_snapshot": false
       },
-      "layer1_audit_ms": 317.4,
+      "layer1_audit_ms": 513.0,
       "layer1_audit_cost_usd": 0.0
     }
   ]

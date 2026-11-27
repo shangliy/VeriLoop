@@ -555,7 +555,7 @@
       <div class="kpi-label">Unseen AST FPR (0 / 18)</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-val blue">102 Runs</div>
+      <div class="kpi-val blue">115 Runs</div>
       <div class="kpi-label">RTX 3060 Ti · CV + GNN + RecSys</div>
     </div>
     <div class="kpi-card">
@@ -881,21 +881,21 @@
         </p>
       </div>
       <div class="card" id="gpu-study">
-        <span class="tag tag-blue">Multi-Domain Real-GPU Matrix · 102 RTX 3060 Ti Runs</span>
-        <h3>CV + GNN + RecSys · 683 / 683 (100.0%) Traced</h3>
+        <span class="tag tag-blue">Multi-Domain Real-GPU Matrix · 115 RTX 3060 Ti Runs</span>
+        <h3>CV + GNN + RecSys · 416 / 416 (100.0%) PDF Decimals Traced</h3>
         <p>
           <strong>CV (42 runs):</strong> CIFAR-10 &amp; F-MNIST (<code>M7_SEResNet_Full</code> <code>0.9193±0.0004</code>, <code>195/195</code> PDF traced).
-          <strong>GNN (50 runs, Level-2):</strong> Cora &amp; CiteSeer (<code>49</code> arXiv AST alignments, 8L-GCN oversmoothing collapse vs. <code>M3_APPNP_PPR</code> <code>0.8348±0.0050</code>, <code>281/281</code> traced).
-          <strong>RecSys (10 runs, Level-2):</strong> MovieLens-100K (<code>26</code> LightGCN/SimGCL alignments, <code>207/207</code> traced).
+          <strong>GNN (60 runs, Level-2):</strong> Cora &amp; CiteSeer (<code>49</code> arXiv AST alignments; diagnosed <code>M4_GCNII_8L</code> collapse → <code>M4b_GCNII_SplitWD</code> <code>0.8266</code>, <code>129/129</code> PDF traced).
+          <strong>RecSys (13 runs, Level-2):</strong> MovieLens-100K (<code>26</code> alignments; tuned <code>R3b_SimGCL_Tuned</code> <code>Recall@20=0.2061</code> / <code>NDCG@20=0.0855</code>, <code>92/92</code> PDF traced).
         </p>
       </div>
     </div>
 
     <div class="card" style="margin-top: 20px;">
-      <span class="tag tag-green">Head-to-Head Automated Audit · ./veriloop compare-bench --fetch-ai-researcher</span>
-      <h3>VeriLoop v5 (3 Domains) vs. Official HKUDS/AI-Researcher Showcases (7 Examples)</h3>
+      <span class="tag tag-green">Head-to-Head PDF-to-PDF Audit · ./veriloop compare-bench --fetch-ai-researcher</span>
+      <h3>VeriLoop v5 (3 Real-GPU PDFs) vs. Official HKUDS/AI-Researcher Showcases (7 PDFs)</h3>
       <p>
-        Identical <code>$0</code> deterministic auditors run across VeriLoop v5's 3-domain workspaces (<code>683/683 = 100.0%</code> traced, <code>100%</code> BibTeX &amp; Governance) vs. all 7 official published <code>HKUDS/AI-Researcher/examples/*</code> repositories with committed logs (<code>133/184 = 72.3%</code> traced — <code>51</code> untraced numbers across <code>con_flowmatching</code>, <code>dccf</code>, and <code>rotation_vq</code>; <code>0%</code> BibTeX &amp; Governance).
+        Identical <code>$0</code> deterministic auditors run across VeriLoop v5's 3-domain compiled PDFs (<code>416/416 = 100.0%</code> traced, <code>100%</code> BibTeX &amp; Governance) vs. all 7 official published <code>HKUDS/AI-Researcher/examples/*</code> PDFs including every committed <code>.log/.json</code> file (<code>152/184 = 82.6%</code> traced — <code>25</code> forensically confirmed unlogged/log-exceeding metrics across <code>dccf</code>, <code>con_flowmatching</code>, and <code>rotation_vq</code>; <code>0/79</code> AST FPR; <code>0%</code> BibTeX &amp; Governance).
       </p>
       <div style="text-align:center; margin-top: 12px;">
         <img src="assets/veriloop_vs_ai_researcher.png" alt="VeriLoop v5 vs HKUDS/AI-Researcher Deterministic Audit Comparison Chart" style="max-width: 760px; width: 100%; border-radius: 10px; border: 1px solid #e2e8f0;" />

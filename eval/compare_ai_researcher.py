@@ -38,8 +38,8 @@ RL_SCRIPTS = ROOT / "skills/research-loop/scripts"
 
 DEFAULT_VERILOOP_WORKSPACES = [
     ("VeriLoop-v5 (CV: CIFAR-10 & F-MNIST, 42 GPU runs)", "CV", ROOT / "examples/gpu-overnight-research"),
-    ("VeriLoop-v5 (GNN: Cora & CiteSeer, 50 GPU runs)", "GNN", ROOT / "examples/gpu-gnn-cora-citeseer"),
-    ("VeriLoop-v5 (RecSys: MovieLens-100K, 10 GPU runs)", "RecSys", ROOT / "examples/gpu-recsys-movielens"),
+    ("VeriLoop-v5 (GNN: Cora & CiteSeer, 60 GPU runs)", "GNN", ROOT / "examples/gpu-gnn-cora-citeseer"),
+    ("VeriLoop-v5 (RecSys: MovieLens-100K, 13 GPU runs)", "RecSys", ROOT / "examples/gpu-recsys-movielens"),
 ]
 
 AI_RESEARCHER_DOMAIN_MAP = {
@@ -112,12 +112,15 @@ def _find_log_paths(ws: Path) -> list[Path]:
                 if fp.is_file() and fp.suffix.lower() in (".txt", ".log", ".csv", ".json", ".jsonl"):
                     if fp.name not in ("ingest_manifest.json", "pipeline_plan.json", "pipeline_events.jsonl"):
                         logs.append(fp)
-    # 2. AI-Researcher project logs
+    # 2. AI-Researcher project logs & structured JSON/CSV result artifacts
     proj = ws / "project"
     if proj.is_dir():
         for fp in sorted(proj.rglob("*")):
-            if fp.is_file() and (fp.suffix.lower() in (".log", ".txt", ".csv") or "logs" in fp.parts):
-                if fp.name.lower() != "readme.md":
+            if fp.is_file() and (
+                fp.suffix.lower() in (".log", ".txt", ".csv", ".json", ".jsonl")
+                or "logs" in fp.parts
+            ):
+                if fp.name.lower() not in ("readme.md", "requirements.txt"):
                     logs.append(fp)
     # Deduplicate preserving order
     seen = set()

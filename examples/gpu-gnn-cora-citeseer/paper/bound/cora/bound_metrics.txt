@@ -1,5 +1,5 @@
 # VeriLoop Paper-Bind Canonical Metrics Log (auto-generated; do not edit by hand)
-# sources=25 methods=5 metrics=4
+# sources=30 methods=6 metrics=4
 SOURCE format=csv sha256=18d63a86a6b37344 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv
 SOURCE format=csv sha256=24629fc703070fa3 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv
 SOURCE format=csv sha256=79966433e58c823c points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv
@@ -25,6 +25,11 @@ SOURCE format=csv sha256=cac3055e884ab67a points=4 path=/home/shawnyang/Document
 SOURCE format=csv sha256=3cb04d8c00092851 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv
 SOURCE format=csv sha256=c1322c011edd7eea points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv
 SOURCE format=csv sha256=d0dba64c169a31d0 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv
+SOURCE format=csv sha256=ed08077365594bb8 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4b_GCNII_SplitWD_s42.csv
+SOURCE format=csv sha256=d60916ddf8b5c9df points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4b_GCNII_SplitWD_s43.csv
+SOURCE format=csv sha256=6cd9ba6d6884f738 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4b_GCNII_SplitWD_s44.csv
+SOURCE format=csv sha256=5bbb48e2ad24b1e8 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4b_GCNII_SplitWD_s45.csv
+SOURCE format=csv sha256=db97b2cd74880cc2 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4b_GCNII_SplitWD_s46.csv
 
 BOUND M0_MLP | dirichlet_energy | n=5 | 0.1247±0.0214 [0.0981,0.1513] | pct=12.47±2.14% | s42=0.1152 s43=0.0925 s44=0.1330 s45=0.1479 s46=0.1349
 BOUND M0_MLP | test_acc | n=5 | 0.5936±0.0086 [0.5829,0.6043] | pct=59.36±0.86% | s42=0.5900 s43=0.5810 s44=0.5970 s45=0.5960 s46=0.6040
@@ -46,4 +51,8 @@ BOUND M4_GCNII_8L | dirichlet_energy | n=5 | 0.0000±0.0000 [-0.0000,0.0001] | p
 BOUND M4_GCNII_8L | test_acc | n=5 | 0.2868±0.0305 [0.2489,0.3247] | pct=28.68±3.05% | s42=0.3120 s43=0.2930 s44=0.2630 s45=0.3180 s46=0.2480
 BOUND M4_GCNII_8L | test_ece | n=5 | 0.1423±0.0303 [0.1046,0.1799] | s42=0.1680 s43=0.1490 s44=0.1184 s45=0.1723 s46=0.1036
 BOUND M4_GCNII_8L | val_acc | n=5 | 0.3036±0.0134 [0.2870,0.3202] | pct=30.36±1.34% | s42=0.3180 s43=0.3000 s44=0.2860 s45=0.3160 s46=0.2980
+BOUND M4b_GCNII_SplitWD | dirichlet_energy | n=5 | 0.0177±0.0008 [0.0168,0.0187] | pct=1.77±0.08% | s42=0.0174 s43=0.0186 s44=0.0178 s45=0.0166 s46=0.0182
+BOUND M4b_GCNII_SplitWD | test_acc | n=5 | 0.8266±0.0045 [0.8210,0.8322] | pct=82.66±0.45% | s42=0.8250 s43=0.8220 s44=0.8270 s45=0.8250 s46=0.8340
+BOUND M4b_GCNII_SplitWD | test_ece | n=5 | 0.3568±0.0071 [0.3480,0.3656] | s42=0.3576 s43=0.3552 s44=0.3630 s45=0.3456 s46=0.3627
+BOUND M4b_GCNII_SplitWD | val_acc | n=5 | 0.8124±0.0033 [0.8083,0.8165] | pct=81.24±0.33% | s42=0.8120 s43=0.8100 s44=0.8120 s45=0.8100 s46=0.8180
 COMPLETED_OK

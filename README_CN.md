@@ -147,26 +147,26 @@
 - **静态 AST 样本外 FPR：** **`0/18 (0.0%)`**
 - **数值级样本外 FPR：** **`2/289 (0.69%)`**（场景级 `2/18 = 11.1%`：`04c` 解析中点 `0.425` 与 `09c` 原始 CSV 值 `3.542`）。
 
-### 3. 三领域真实 GPU 实证矩阵（`102` 次本地 RTX 3060 Ti 闭环轨迹：CV + GNN + RecSys）
+### 3. 三领域真实 GPU 实证矩阵（`115` 次本地 RTX 3060 Ti 闭环：CV + GNN + RecSys，均编译独立 ICML PDF）
 
-| 领域 | 公开工作区与入口 | 运行量 / 耗时 / 显存 | arXiv 公式 ↔ AST 对齐 | 核心实证发现（零手改、全日志绑定） | 硬门控审计 |
+| 领域 | 公开工作区与编译 PDF | 运行量 / 耗时 / 显存 | arXiv 公式 ↔ AST 对齐 | 核心实证与迭代修复闭环（零手改、全日志绑定） | 展开 PDF 审计 |
 |---|---|---:|---:|---|---|
-| **CV**（CIFAR-10 & Fashion-MNIST） | [examples/gpu-overnight-research/](examples/gpu-overnight-research/) | `42` runs（`92.47 min`，`593 MB`） | `1706.04599`（5 条） | `M7_SEResNet_Full` 达 `0.9193±0.0004`（`+14.06 pp`）；LS/Mixup 欠自信 `T*<1` 经温度缩放校准至 `0.0061–0.0120` | `195/195` PDF 溯源 · `10/10` 在线文献 · `G1–G7` 全过 |
-| **GNN**（Cora & CiteSeer） | [examples/gpu-gnn-cora-citeseer/](examples/gpu-gnn-cora-citeseer/)（`--level 2`） | `50` runs（`167.4 s`，`135 MB`） | `1609.02907` / `1810.00826` / `2007.02133`（**`49` 条对齐**） | 清晰复现 8 层 GCN 过平滑塌缩（`0.8184 → 0.2292`，Dirichlet Energy `0.0296 → 0.0021`）；`M3_APPNP_PPR` 达 **`0.8348±0.0050`** | `281/281` 溯源 · `0` AST 高危 · `PASS (rc=0)` |
-| **RecSys**（MovieLens-100K） | [examples/gpu-recsys-movielens/](examples/gpu-recsys-movielens/)（`--level 2`） | `10` runs（`537.8 s`，`38 MB`） | `2002.02126` / `2112.08679`（**`26` 条对齐**） | 全库排序评测（`938` 用户、`1,447` 物品）：`R1_MF_BPR` `Recall@20=0.1948±0.0016` / `NDCG@20=0.0788±0.0016`，`R2_LightGCN` `0.1905±0.0043`（如实报告大权重 `R3_SimGCL` 塌缩 `0.0298`） | `207/207` 溯源 · `0` AST 高危 · `PASS (rc=0)` |
+| **CV**（CIFAR-10 & Fashion-MNIST） | [examples/gpu-overnight-research/](examples/gpu-overnight-research/) · [overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf) | `42` runs（`92.47 min`，`593 MB`） | `1706.04599`（5 条） | `M7_SEResNet_Full` 达 `0.9193±0.0004`（`+14.06 pp`）；LS/Mixup 欠自信 `T*<1` 校准至 `0.0061–0.0120` | **`195/195`（`100%`）** · `0` warn · `10/10` 在线文献 |
+| **GNN**（Cora & CiteSeer） | [examples/gpu-gnn-cora-citeseer/](examples/gpu-gnn-cora-citeseer/) · [gnn_study.pdf](examples/gpu-gnn-cora-citeseer/paper/gnn_study.pdf)（`--level 2`） | `60` runs（`295.8 s`，`135 MB`） | `1609.02907` / `1810.00826` / `2007.02133`（**`49` 条对齐**） | 8 层 GCN 过平滑塌缩（`0.8184 → 0.2292`）；`M3_APPNP_PPR` 达 `0.8348±0.0050`；诊断 `M4_GCNII_8L` 统一衰减塌缩（`0.2868`）→ 分组衰减 **`M4b_GCNII_SplitWD` 拉回 `0.8266±0.0045`（Cora）/ `0.7108±0.0112`（CiteSeer）** | **`129/129`（`100%`）** · `0` warn · `0` AST 高危 |
+| **RecSys**（MovieLens-100K） | [examples/gpu-recsys-movielens/](examples/gpu-recsys-movielens/) · [recsys_study.pdf](examples/gpu-recsys-movielens/paper/recsys_study.pdf)（`--level 2`） | `13` runs（`1645.2 s`，`38 MB`） | `2002.02126` / `2112.08679`（**`26` 条对齐**） | 全库排序（`938` 用户、`1,447` 物品）：诊断 `R3_SimGCL` 过重对比损失塌缩（`0.0298`）→ 调平衡后 **`R3b_SimGCL_Tuned` 全面反超所有基线达 `Recall@20=0.2061±0.0006` / `NDCG@20=0.0855±0.0002`** | **`92/92`（`100%`）** · `0` warn · `0` AST 高危 |
 
-### 4. 可复现头对头自动化审计：VeriLoop v5 vs. `HKUDS/AI-Researcher` 官方 7 个公开示例（`$0` 成本）
+### 4. 可复现 PDF-to-PDF 头对头审计：VeriLoop v5 vs. `HKUDS/AI-Researcher` 官方 7 个公开示例（`$0` 成本）
 
-运行 `./veriloop compare-bench --fetch-ai-researcher`（脚本：[eval/compare_ai_researcher.py](eval/compare_ai_researcher.py)，完整报告：[eval/comparison_ai_researcher/COMPARISON_REPORT.md](eval/comparison_ai_researcher/COMPARISON_REPORT.md)），对 VeriLoop v5 三领域工作区与 `HKUDS/AI-Researcher/examples/*` 全部 7 个官方公开示例（均含提交的 `project/*.log`）运行完全相同的零覆盖确定性审计器：
+运行 `./veriloop compare-bench --fetch-ai-researcher`（脚本：[compare_ai_researcher.py](eval/compare_ai_researcher.py)，汇总报告：[COMPARISON_REPORT.md](eval/comparison_ai_researcher/COMPARISON_REPORT.md)，逐行法医核验表：[ai_researcher_forensic_audit.csv](eval/comparison_ai_researcher/ai_researcher_forensic_audit.csv)），将 `project/` 下全部 `.log/.txt/.csv/.json` 均公平纳入检索：
 
 <p align="center">
   <img src="docs/assets/veriloop_vs_ai_researcher.png" alt="VeriLoop v5 与 HKUDS/AI-Researcher 自动化审计对比图" width="84%" />
 </p>
 
-| 系统 | 审计工作区（含日志） | 数值可溯源率 | AST 洁净率（`0` HIGH） | BibTeX 核验覆盖率 | 治理完备度（Claims/Bind/Gate/UI） | 平均审计耗时 |
-|---|---:|---:|---:|---:|---:|---:|
-| **VeriLoop v5（CV + GNN + RecSys）** | `3`（`3`） | **`683 / 683`（`100.0%`）** | **`100.0%`**（`0` 高危） | **`100.0%`** | **`100.0%`** | `225 ms`（`$0`） |
-| **HKUDS/AI-Researcher（7 个官方示例）** | `7`（`7`） | `133 / 184`（`72.3%` — `51` 个未溯源数字，分布于 `con_flowmatching` / `dccf` / `rotation_vq`） | `100.0%`（79 个脚本 `0` 高危） | `0.0%`（仅 PDF 无 `.bib`，`hgcl` 含 `1` 处未解析引用） | `0.0%` | `310 ms`（`$0`） |
+| 系统 | 编译 PDF（含日志） | 展开 PDF 数值溯源率 | 法医确认无日志/超日志指标 | AST 洁净率（`0` HIGH） | BibTeX 核验覆盖率 | 治理完备度（Claims/Bind/Gate/UI） | 平均审计耗时 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **VeriLoop v5（CV + GNN + RecSys）** | `3`（`3`） | **`416 / 416`（`100.0%`）** | **`0`** | **`100.0%`**（`0` 高危） | **`100.0%`** | **`100.0%`** | `283 ms`（`$0`） |
+| **HKUDS/AI-Researcher（7 个官方示例）** | `7`（`7`） | `152 / 184`（`82.6%`） | **`25`**（+`7` 元数据；如 `dccf` 声称 `Recall@40` 达 `0.1226`，但全部 12 份日志最高仅 `0.0693`；`con_flowmatching` 5 份 `.log` 全为 `0` 字节） | `100.0%`（79 个脚本 `0` 高危） | `0.0%`（仅 PDF 无 `.bib`，`hgcl` 含 `1` 处未解析引用） | `0.0%` | `348 ms`（`$0`） |
 
 ---
 

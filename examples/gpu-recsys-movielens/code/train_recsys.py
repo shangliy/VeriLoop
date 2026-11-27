@@ -260,9 +260,13 @@ def train_cf_run(
     pairs = ds["train_pairs"]
     train_dict = ds["train_dict"]
     reg_weight = 1e-4
-    cl_weight = 0.2 if method == "R3_SimGCL" else 0.0
-    cl_eps = 0.1
-    cl_temp = 0.2
+    if method == "R3_SimGCL":
+        cl_weight, cl_eps, cl_temp = 0.2, 0.1, 0.2
+    elif method == "R3b_SimGCL_Tuned":
+        # Iterative recovery: balance InfoNCE magnitude (~log B) against BPR loss on compact MovieLens-100K graph
+        cl_weight, cl_eps, cl_temp = 0.015, 0.05, 0.2
+    else:
+        cl_weight, cl_eps, cl_temp = 0.0, 0.1, 0.2
 
     best_val_ndcg = -1.0
     best_epoch = 0
@@ -397,7 +401,7 @@ def main():
     print(summary_lines[-1], flush=True)
 
     # 2. Learned CF models across 3 seeds
-    for method in ("R1_MF_BPR", "R2_LightGCN", "R3_SimGCL"):
+    for method in ("R1_MF_BPR", "R2_LightGCN", "R3_SimGCL", "R3b_SimGCL_Tuned"):
         m_rows = []
         for s in a.seeds:
             rec = train_cf_run(method, ds, adj_norm, s, a.epochs, a.batch_size, device)

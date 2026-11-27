@@ -154,26 +154,26 @@ With `eval/v2_frozen/locked/trace_numbers_v2.py` (`42c39cf4a4adeee1`) and `audit
 - **Number-Level Out-of-Sample FPR:** **`2/289 (0.69%)`** (`2/18 = 11.1%` scenario-level FPR: unlogged analytic midpoint `0.425` on `04c` and raw CSV quote `3.542` on `09c`).
 - **Out-of-Sample Mechanical Recall:** Unmeasured (`0/18` completed unseen runs triggered a benchmark trap).
 
-### 3. Multi-Domain Real-GPU Showcase Matrix (`102` NVIDIA RTX 3060 Ti Runs: CV + GNN + RecSys)
+### 3. Multi-Domain Real-GPU Showcase Matrix (`115` NVIDIA RTX 3060 Ti Runs: CV + GNN + RecSys — All Compiled ICML PDFs)
 
-| Domain | Workspace & Command | Runs / GPU Time | arXiv Formula ↔ AST Map | Key Verified Empirical Result | Hard Gate & Audit |
+| Domain | Workspace & Compiled PDF | Runs / GPU Time | arXiv Formula ↔ AST Map | Key Verified Empirical Result (Iterative Diagnosis & Recovery) | Expanded PDF Audit |
 |---|---|---:|---:|---|---|
-| **CV** (CIFAR-10 & Fashion-MNIST) | [examples/gpu-overnight-research/](examples/gpu-overnight-research/) | `42` runs (`92.47 min`, `593 MB`) | `1706.04599` (5 eqs) | `M7_SEResNet_Full` `0.9193±0.0004` (`+14.06 pp`); LS/Mixup `T*<1` calibration restored to `0.0061–0.0120` | `195/195` PDF traced · `10/10` online cites · `G1–G7` pass |
-| **GNN** (Cora & CiteSeer) | [examples/gpu-gnn-cora-citeseer/](examples/gpu-gnn-cora-citeseer/) (`--level 2`) | `50` runs (`167.4 s`, `135 MB`) | `1609.02907`, `1810.00826`, `2007.02133` (**`49` alignments**) | 8-layer GCN oversmoothing collapse (`0.8184 → 0.2292`, Dirichlet energy `0.0296 → 0.0021`); `M3_APPNP_PPR` reaches **`0.8348±0.0050`** on Cora | `281/281` traced · `0` AST HIGH · `PASS (rc=0)` |
-| **RecSys** (MovieLens-100K) | [examples/gpu-recsys-movielens/](examples/gpu-recsys-movielens/) (`--level 2`) | `10` runs (`537.8 s`, `38 MB`) | `2002.02126`, `2112.08679` (**`26` alignments**) | Full-catalog ranking (`938` users, `1,447` items): `R1_MF_BPR` `Recall@20=0.1948±0.0016` / `NDCG@20=0.0788±0.0016`, `R2_LightGCN` `0.1905±0.0043` (honestly reporting high-weight `R3_SimGCL` collapse `0.0298`) | `207/207` traced · `0` AST HIGH · `PASS (rc=0)` |
+| **CV** (CIFAR-10 & Fashion-MNIST) | [examples/gpu-overnight-research/](examples/gpu-overnight-research/) · [overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf) | `42` runs (`92.47 min`, `593 MB`) | `1706.04599` (5 eqs) | `M7_SEResNet_Full` `0.9193±0.0004` (`+14.06 pp`); LS/Mixup `T*<1` calibration restored to `0.0061–0.0120` | **`195/195` (`100%`)** · `0` warn · `10/10` online cites |
+| **GNN** (Cora & CiteSeer) | [examples/gpu-gnn-cora-citeseer/](examples/gpu-gnn-cora-citeseer/) · [gnn_study.pdf](examples/gpu-gnn-cora-citeseer/paper/gnn_study.pdf) (`--level 2`) | `60` runs (`295.8 s`, `135 MB`) | `1609.02907`, `1810.00826`, `2007.02133` (**`49` alignments**) | 8L-GCN oversmoothing (`0.8184 → 0.2292`); `M3_APPNP_PPR` `0.8348±0.0050`; diagnosed uniform-WD `M4_GCNII_8L` collapse (`0.2868`) → split-decay **`M4b_GCNII_SplitWD` recovers to `0.8266±0.0045` (Cora) / `0.7108±0.0112` (CiteSeer)** | **`129/129` (`100%`)** · `0` warn · `0` AST HIGH |
+| **RecSys** (MovieLens-100K) | [examples/gpu-recsys-movielens/](examples/gpu-recsys-movielens/) · [recsys_study.pdf](examples/gpu-recsys-movielens/paper/recsys_study.pdf) (`--level 2`) | `13` runs (`1645.2 s`, `38 MB`) | `2002.02126`, `2112.08679` (**`26` alignments**) | Full-catalog ranking (`938` users, `1,447` items): diagnosed over-weighted `R3_SimGCL` collapse (`0.0298`) → balanced **`R3b_SimGCL_Tuned` beats all baselines at `Recall@20=0.2061±0.0006` / `NDCG@20=0.0855±0.0002`** | **`92/92` (`100%`)** · `0` warn · `0` AST HIGH |
 
-### 4. Reproducible Head-to-Head Audit: VeriLoop v5 vs. Official `HKUDS/AI-Researcher` Showcases (`$0` Cost)
+### 4. Reproducible PDF-to-PDF Audit: VeriLoop v5 vs. Official `HKUDS/AI-Researcher` Showcases (`$0` Cost)
 
-Run `./veriloop compare-bench --fetch-ai-researcher` ([eval/compare_ai_researcher.py](eval/compare_ai_researcher.py), full report in [eval/comparison_ai_researcher/COMPARISON_REPORT.md](eval/comparison_ai_researcher/COMPARISON_REPORT.md)) to execute identical zero-override deterministic auditors across our **3-domain VeriLoop v5 workspaces** and all **7 official published `HKUDS/AI-Researcher/examples/*`** (`con_flowmatching`, `dccf`, `fsq`, `gnn_difformer`, `gnn_nodeformer`, `hgcl`, `rotation_vq` — all 7 include committed `project/*.log` files):
+Run `./veriloop compare-bench --fetch-ai-researcher` ([eval/compare_ai_researcher.py](eval/compare_ai_researcher.py), full report in [COMPARISON_REPORT.md](eval/comparison_ai_researcher/COMPARISON_REPORT.md), row-by-row forensic CSV in [ai_researcher_forensic_audit.csv](eval/comparison_ai_researcher/ai_researcher_forensic_audit.csv)) to execute identical zero-override deterministic auditors across our **3-domain VeriLoop v5 compiled PDFs** and all **7 official published `HKUDS/AI-Researcher/examples/*` PDFs** (including EVERY committed `.log`, `.txt`, `.csv`, and `.json` result file under `project/`):
 
 <p align="center">
   <img src="docs/assets/veriloop_vs_ai_researcher.png" alt="VeriLoop v5 vs HKUDS/AI-Researcher Deterministic Audit Comparison" width="84%" />
 </p>
 
-| System | Workspaces (With Logs) | Numbers Traced to Logs | AST Clean (`0` HIGH) | Verified BibTeX Coverage | Governance (`Claims/Bind/Gate/UI`) | Mean Layer-1 Latency |
-|---|---:|---:|---:|---:|---:|---:|
-| **VeriLoop v5 (CV + GNN + RecSys)** | `3` (`3`) | **`683 / 683` (`100.0%`)** | **`100.0%`** (`0` HIGH) | **`100.0%`** | **`100.0%`** | `225 ms` (`$0`) |
-| **HKUDS/AI-Researcher (7 Official Examples)** | `7` (`7`) | `133 / 184` (`72.3%` — `51` untraced across `con_flowmatching`, `dccf`, `rotation_vq`) | `100.0%` (`0` HIGH across `79` scripts) | `0.0%` (PDF-only; `1` unresolved cite in `hgcl`) | `0.0%` | `310 ms` (`$0`) |
+| System | Compiled PDFs (With Logs) | Expanded PDF Numbers Traced | Forensically Unlogged Metrics | AST Clean (`0` HIGH) | Verified BibTeX Coverage | Governance (`Claims/Bind/Gate/UI`) | Mean Layer-1 Latency |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **VeriLoop v5 (CV + GNN + RecSys)** | `3` (`3`) | **`416 / 416` (`100.0%`)** | **`0`** | **`100.0%`** (`0` HIGH) | **`100.0%`** | **`100.0%`** | `283 ms` (`$0`) |
+| **HKUDS/AI-Researcher (7 Official Examples)** | `7` (`7`) | `152 / 184` (`82.6%`) | **`25`** (+`7` meta; e.g., `dccf` `Recall@40` up to `0.1226` vs `0.0693` max logged; `con_flowmatching` 5× `0`-byte logs) | `100.0%` (`0` HIGH across `79` scripts) | `0.0%` (PDF-only; `1` unresolved cite in `hgcl`) | `0.0%` | `348 ms` (`$0`) |
 
 ---
 

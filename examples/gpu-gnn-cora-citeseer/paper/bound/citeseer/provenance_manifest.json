@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-11-27T07:16:21.042192+00:00",
-  "bound_metrics_sha256": "0e96e8896ad8495a5ccdc84ccfcb80e264830570d2e84cb4fd007c0e316239b4",
+  "generated_utc": "2026-11-27T18:50:00.785779+00:00",
+  "bound_metrics_sha256": "d4f00b5ad6978efccad4db024a14bfff21731977cf121d558c0842d322ca2edf",
   "sources": [
     {
       "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
@@ -150,6 +150,36 @@
       "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
       "format": "csv",
       "sha256": "456259dedd4b704668216cd30c041975afa08e709b635720640995dbcd81ce9a",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s42.csv",
+      "format": "csv",
+      "sha256": "8546fc5628963f34761d332aa9b82f83117da37e63616079d13abb74a79e8ae2",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s43.csv",
+      "format": "csv",
+      "sha256": "d8fe189db4a96be05afa773b60c39514b324e00b9b6595572d133922eaf5fcb2",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s44.csv",
+      "format": "csv",
+      "sha256": "13d4f4db67bb695deae9fc7c8221fea0a00d5769e5e37173a68414457b0a5d10",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s45.csv",
+      "format": "csv",
+      "sha256": "63e4a32fdfa3aa5df28cf38b0c02add08e105a19c68672026a70520b1af76133",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s46.csv",
+      "format": "csv",
+      "sha256": "1b60a903d95205e75077034d3bb0e10ea163f3f748d3976053ee90faff35deb3",
       "points": 4
     }
   ],
@@ -613,6 +643,98 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv"
       ]
+    },
+    "M4b_GCNII_SplitWD::dirichlet_energy": {
+      "method": "M4b_GCNII_SplitWD",
+      "metric": "dirichlet_energy",
+      "n_seeds": 5,
+      "mean": 0.00694,
+      "std": 0.0009396807968666809,
+      "ci_lo": 0.005773419234857698,
+      "ci_hi": 0.008106580765142302,
+      "per_seed": {
+        "42": 0.0054,
+        "43": 0.0071,
+        "44": 0.0074,
+        "45": 0.0079,
+        "46": 0.0069
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s46.csv"
+      ]
+    },
+    "M4b_GCNII_SplitWD::test_acc": {
+      "method": "M4b_GCNII_SplitWD",
+      "metric": "test_acc",
+      "n_seeds": 5,
+      "mean": 0.7108,
+      "std": 0.011166915420114913,
+      "ci_lo": 0.6969366660056103,
+      "ci_hi": 0.7246633339943896,
+      "per_seed": {
+        "42": 0.7,
+        "43": 0.713,
+        "44": 0.729,
+        "45": 0.706,
+        "46": 0.706
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s46.csv"
+      ]
+    },
+    "M4b_GCNII_SplitWD::test_ece": {
+      "method": "M4b_GCNII_SplitWD",
+      "metric": "test_ece",
+      "n_seeds": 5,
+      "mean": 0.36824,
+      "std": 0.06164915246781581,
+      "ci_lo": 0.29170473856219215,
+      "ci_hi": 0.4447752614378079,
+      "per_seed": {
+        "42": 0.4575,
+        "43": 0.3335,
+        "44": 0.4072,
+        "45": 0.3131,
+        "46": 0.3299
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s46.csv"
+      ]
+    },
+    "M4b_GCNII_SplitWD::val_acc": {
+      "method": "M4b_GCNII_SplitWD",
+      "metric": "val_acc",
+      "n_seeds": 5,
+      "mean": 0.7008,
+      "std": 0.0067230945255886505,
+      "ci_lo": 0.6924535138507273,
+      "ci_hi": 0.7091464861492727,
+      "per_seed": {
+        "42": 0.694,
+        "43": 0.708,
+        "44": 0.698,
+        "45": 0.708,
+        "46": 0.696
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s46.csv"
+      ]
     }
   },
   "macros": {
@@ -854,6 +976,54 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv"
+      ]
+    },
+    "\\vlCiteMBGcniiSplitwdDirichletEnergy": {
+      "method": "M4b_GCNII_SplitWD",
+      "metric": "dirichlet_energy",
+      "value": "0.0069$\\pm$0.0009",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s46.csv"
+      ]
+    },
+    "\\vlCiteMBGcniiSplitwdTestAcc": {
+      "method": "M4b_GCNII_SplitWD",
+      "metric": "test_acc",
+      "value": "0.7108$\\pm$0.0112",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s46.csv"
+      ]
+    },
+    "\\vlCiteMBGcniiSplitwdTestEce": {
+      "method": "M4b_GCNII_SplitWD",
+      "metric": "test_ece",
+      "value": "0.3682$\\pm$0.0616",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s46.csv"
+      ]
+    },
+    "\\vlCiteMBGcniiSplitwdValAcc": {
+      "method": "M4b_GCNII_SplitWD",
+      "metric": "val_acc",
+      "value": "0.7008$\\pm$0.0067",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4b_GCNII_SplitWD_s46.csv"
       ]
     }
   }

@@ -1,0 +1,17 @@
+{
+  "pdf": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/paper/recsys_study.pdf",
+  "pages": 2,
+  "main_body_end_page": 2,
+  "type3_fonts": [],
+  "rendered_pages": [],
+  "pdf_number_trace": {
+    "traced": 92,
+    "untraced": 0,
+    "sign_mismatches": 0,
+    "untraced_samples": []
+  },
+  "issues_count": 0,
+  "warnings_count": 0,
+  "issues": [],
+  "warnings": []
+}
