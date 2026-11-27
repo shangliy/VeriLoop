@@ -37,7 +37,8 @@ Autonomous research agents rarely fail by omitting output files; they fail by ex
 | System / Project | Category | End-to-End Exp → Paper | Hard Mechanical Gates (AST / Signed Trace) | Auto-Bind Logs → LaTeX & Figs (TB/W&B/CSV) | Online Citation & Abstract Gate | Award-Paper Style & Fig Lint | Interactive Audit UI (Paper ↔ Log) | Frozen Paired + Unseen Eval |
 |---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | **AI-Scientist / v2** (Sakana) | Autonomous research agent | ✅ (tree search) | ❌ (LLM self-review) | ⚠️ (custom scripts) | ⚠️ (S2 search, non-blocking) | ❌ | ❌ | ❌ |
-| **ARIS** (upstream base) | Cross-model research workflow | ✅ (65+ skills) | ❌ (advisory review) | ❌ | ❌ | ❌ | ❌ | ❌ (1 run) |
+| **HKUDS/AI-Researcher** (NeurIPS Spotlight) | Autonomous Level-1/2 research + Docker + GUI | ✅ (Level-1/2 + Docker) | ❌ (agent self-debug only) | ❌ (LLM writes numbers) | ⚠️ (arXiv LaTeX ingest, no gate) | ❌ | ⚠️ (run GUI, no log-link) | ⚠️ (Scientist-Bench) |
+| **ARIS** (upstream base) | Cross-model research workflow | ✅ (87 skills) | ❌ (advisory review) | ❌ | ❌ | ❌ | ❌ | ❌ (1 run) |
 | **EviBound** | Execution existence gate | ⚠️ (Colab runner) | ⚠️ (file existence / `rc=0`) | ❌ (MLflow schema) | ❌ | ❌ | ❌ | ⚠️ (8 self-authored) |
 | **FabScore / FLAWS / PaperAudit** | Post-hoc audit benchmarks | ❌ (post-hoc) | ⚠️ (FabScore re-exec) | ❌ | ⚠️ (partial) | ❌ | ❌ | ✅ (post-hoc corpora) |
 | **PaperQA2 / OpenScholar / STORM** | Literature RAG & synthesis | ❌ (lit/writing) | ❌ | ❌ | ✅ (full-text RAG) | ❌ | ⚠️ (cite links) | ✅ (lit QA benchmarks) |
@@ -166,6 +167,10 @@ cd VeriLoop
 | `./veriloop review-ui --report <files...> --logs <logs...> [--serve]` | Interactive split-pane local Web review workbench (click any number/citation in manuscript → jump straight to exact `log:line`, AST finding, or fetched abstract) |
 | `./veriloop audit-pdf <main.pdf> [--max-main-pages 8] [--render-dir dir]` | Per-page compiled PDF auditor: page limit, Type-3 fonts, `??` refs, anonymity leaks, visual margin overflow & expanded-macro number tracing |
 | `./veriloop gpu-showcase [--skip-train]` | Real **NVIDIA RTX 3060 Ti** PyTorch Fashion-MNIST (`12` runs) → `bind` → ICML PDF → `gate` → `review_ui.html` end-to-end trace |
+| `./veriloop ingest -w <ws> [--arxiv ID...] [--repo URL\|DIR]` | Download **arXiv LaTeX sources** & statically index baseline repos via Python AST → `wiki/INGEST_MAP.md` (**Formula ↔ Code `file:line` alignment + unmatched watchlist**) |
+| `./veriloop sandbox -w <ws> [--mode local\|docker] --cmd "..."` | Run experiments locally (zero-dep) or inside an isolated **Docker GPU container** (`docker/Dockerfile.gpu`, `:ro` data mount, NaN/OOM watchdog, SHA-256 ledger) |
+| `./veriloop research -w <ws> --level 1\|2 [--idea "..."] [--papers ID...]` | Unified **Level-1 (Idea+Repo) & Level-2 (Reference Papers → Gap → Innovation)** crash-resumable 7-stage orchestrator wired directly into `paper-bind` and dual-layer hard blocking |
+| `./veriloop studio -w <ws> [--port 8765] [--export-html out.html]` | Launch **VeriLoop Studio** zero-dep local Web cockpit (Level-1/2 Launcher + Live SSE Monitor & Gates + embedded Split-Pane Audit Workbench) |
 | `./veriloop milestone-audit [args...]` | Independent dual-model milestone gate (**latest Claude + latest Gemini** in parallel on frozen SHA-256 artifacts → consensus/unique catches + revised next-action plan, `rc=0` pass / `rc=2` revise) |
 | `./veriloop eval-v2 <subcmd> [args...]` | Reproduce v2 zero-override benchmark (`summary`, `layer1`, `run`, `unseen`, `rebuild-paper`) directly from committed frozen artifacts |
 

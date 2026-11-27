@@ -33,7 +33,8 @@
 | 系统 / 工作 | 定位阵营 | 端到端实验→成文 | 执行期硬门控（AST/数值溯源） | 日志直出 LaTeX 宏/表/图 | 联网文献真伪与摘要核验 | 顶会文风/图表自动质检 | 交互式查账 UI（文↔日志联动） | 冻结对照与未见盲测 |
 |---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | **AI-Scientist / v2**（Sakana） | 全自动科研 Agent | ✅（树搜索探索） | ❌（仅 LLM 自审） | ⚠️（定制脚本） | ⚠️（S2 检索，无硬阻断） | ❌ | ❌ | ❌ |
-| **ARIS**（上游基座） | 跨模型科研工作流 | ✅（65+ 技能） | ❌（仅建议性 review） | ❌ | ❌ | ❌ | ❌ | ❌（单次轨迹） |
+| **HKUDS/AI-Researcher**（NeurIPS Spotlight） | Level-1/2 全自动科研 + Docker + Web GUI | ✅（Level-1/2 + Docker） | ❌（仅 Agent 自修） | ❌（LLM 手写数字） | ⚠️（拉 arXiv 源码，无门控） | ❌ | ⚠️（运行界面，无日志联动） | ⚠️（Scientist-Bench） |
+| **ARIS**（上游基座） | 跨模型科研工作流 | ✅（87 技能） | ❌（仅建议性 review） | ❌ | ❌ | ❌ | ❌ | ❌（单次轨迹） |
 | **EviBound** | 执行期存在性门控 | ⚠️（Colab 编排） | ⚠️（仅查文件存在/`rc=0`） | ❌（MLflow 登记） | ❌ | ❌ | ❌ | ⚠️（8 个自建任务） |
 | **FabScore / FLAWS / PaperAudit** | 事后造假审计基准 | ❌（事后尸检） | ⚠️（FabScore 事后复跑） | ❌ | ⚠️（部分核验） | ❌ | ❌ | ✅（事后论文集） |
 | **PaperQA2 / OpenScholar / STORM** | 文献 RAG 与综述生成 | ❌（纯文献/写作） | ❌ | ❌ | ✅（强在全文 RAG 综述） | ❌ | ⚠️（引文溯源） | ✅（文献 QA 基准） |
@@ -110,12 +111,18 @@ cd VeriLoop
 # 5. 阶段性成果双模型独立评审（最新 Claude + 最新 Gemini 并行纯路径审计 → 输出修正行动清单）
 ./veriloop milestone-audit --milestone M2-experiments --workspace . --artifacts paper/build_tables_and_figures.py paper/out/stats_summary.txt --dry-run
 
-# 6. 四合一论文自检、联网三源文献硬核验、GPU 日志自动绑定与交互式 Web 审稿视图
+# 6. 四合一论文自检 + 零编造引文/数据绑定 + 真实 RTX 3060 Ti GPU 标杆演示 + 交互式溯源审核台
 ./veriloop audit-paper
 ./veriloop fetch-bib 1512.03385 1708.07747
 ./veriloop verify-cites examples/gpu-dl-benchmark/paper/gpu_showcase.tex --bib examples/gpu-dl-benchmark/paper/refs.bib --online --check-claims
 ./veriloop gpu-showcase --skip-train   # 5 秒零 GPU 复现 RTX 3060 Ti 标杆案例 -> bind -> PDF -> 硬门控 -> review_ui.html
 ./veriloop review-ui --report paper/sec/3_experiments.tex --logs paper/out/stats_summary.txt --bib paper/refs.bib --out review_ui.html
+
+# 7. VeriLoop v5：arXiv LaTeX+AST 公式代码对齐、Level-1/2 统一编排、Docker GPU 沙箱与本地 Web 驾驶舱
+./veriloop ingest -w ./my_study --arxiv 1706.04599 --repo ./baseline_repo
+./veriloop research -w ./my_study --level 2 --papers 1706.04599 --sandbox local --dry-run
+./veriloop sandbox -w ./my_study --mode auto --cmd "python train.py" --dry-run
+./veriloop studio -w examples/gpu-overnight-research --port 8765
 ```
 
 ---

@@ -27,6 +27,14 @@ Subcommands:
                                     Per-page PDF layout, Type-3 font, anonymity, visual margin & expanded-macro audit
   ./veriloop gpu-showcase [--skip-train]
                                     Run the real PyTorch GPU Fashion-MNIST -> paper-bind -> 8-page PDF -> gate showcase
+  ./veriloop ingest -w <ws> [--arxiv ID...] [--repo URL_OR_DIR]
+                                    Ingest arXiv LaTeX sources & index baseline repo via AST -> Formula<->Code map
+  ./veriloop sandbox -w <ws> [--mode local|docker] --cmd "..."
+                                    Run experiments locally or in an isolated GPU Docker container with NaN/OOM watchdog
+  ./veriloop research -w <ws> --level 1|2 [--idea "..."] [--papers ID...]
+                                    Unified Level-1/Level-2 crash-resumable research pipeline with hard evidence gates
+  ./veriloop studio -w <ws> [--port 8765] [--export-html out.html]
+                                    Launch VeriLoop Studio local Web cockpit (Launcher + Live Monitor + Audit Workbench)
   ./veriloop milestone-audit [args...]
                                     Independent dual-model milestone audit (latest Claude + latest
                                     Gemini in parallel on SHA-256 frozen artifacts -> action plan)
@@ -169,6 +177,14 @@ def main():
         passthrough([sys.executable, str(ROOT / "tools/pdf_audit.py"), *rest])
     elif sub == "gpu-showcase":
         passthrough(["bash", str(ROOT / "examples/gpu-dl-benchmark/run_end_to_end.sh"), *rest])
+    elif sub == "ingest":
+        passthrough([sys.executable, str(ROOT / "tools/paper_ingest.py"), *rest])
+    elif sub == "sandbox":
+        passthrough([sys.executable, str(ROOT / "tools/sandbox_runner.py"), *rest])
+    elif sub == "research":
+        passthrough([sys.executable, str(ROOT / "tools/research_orchestrator.py"), *rest])
+    elif sub == "studio":
+        passthrough([sys.executable, str(ROOT / "tools/studio_server.py"), *rest])
     elif sub == "eval-v2":
         run_eval_v2(rest)
     elif sub == "audit-paper":
