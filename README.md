@@ -14,33 +14,19 @@
 
 ---
 
+<p align="center">
+  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop End-to-End Verifiable Autonomous Research & Paper Pipeline Overview" width="100%" />
+</p>
+
+---
+
 ## Why VeriLoop?
 
 Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, or conclusions that contradict their own logs. **VeriLoop** delivers a complete, convenient, and high-efficiency research pipeline in one place:
 
-- **Complete Lifecycle (90+ Modular Skills):** Idea discovery, literature search, persistent Research Wiki, remote/local experiment execution, multi-seed statistical runs, dual-layer hard verification, **award-paper style writing & figure linting (`bestpaper-writing`)**, automated LaTeX paper generation, and rebuttal workflows.
+- **Complete Lifecycle (91 Modular Skills):** Idea discovery, literature search, persistent Research Wiki, remote/local experiment execution, multi-seed statistical runs, dual-layer hard verification, **award-paper style writing & figure linting (`bestpaper-writing`)**, automated LaTeX paper generation, and rebuttal workflows.
 - **Convenient Single CLI (`./veriloop`):** One unified entry point (`gate`, `verify-cites`, `fetch-bib`, `bind`, `review-ui`, `audit-pdf`, `gpu-showcase`, `claims`, `board`, `demo`, `live`, `install`, `test`, `lint-paper`, `audit-paper`, `milestone-audit`, `eval-v2`) with zero third-party dependencies for the entire deterministic verification, log-binding, citation-API, and interactive review-UI core.
-- **Efficient Fail-Fast Gating (`$0` Layer 1 → Targeted Layer 2 → 4-in-1 Paper Audit):** Catches fabricated numbers, sign flips, Python AST integrity bugs, broken claim hashes, missing BibTeX entries, and AI-draft writing/figure anti-patterns in milliseconds at `$0` LLM cost before invoking a path-isolated cross-family reviewer, backed by a hard USD budget circuit breaker.
-
-```text
-  Idea & Lit/Wiki ──▶ Experiment Execution ──▶ VeriLoop Dual-Layer Hard Gate ──▶ Best-Paper Writing & Lint
-  (90+ Modular Skills)   (Multi-Seed / GPU)         (./veriloop gate)            (/bestpaper-writing +
-                                                            │                     ./veriloop audit-paper)
-                             ┌──────────────────────────────▼──────────────────────────────┐
-                             │ Layer 1 — Deterministic Mechanical Gates ($0 LLM Cost)      │
-                             │ • claims.py        : Pre-registered ledger (G1–G7, SHA-256) │
-                             │ • trace_numbers.py : Signed provenance & WRONG_LOG checks   │
-                             │ • audit_code.py    : 6 static Python AST integrity rules    │
-                             │ • citation_audit.py: BibTeX key & citation verification     │
-                             │ • check_draft/figs : Best-Paper prose & figure style lint   │
-                             ├─────────────────────────────────────────────────────────────┤
-                             │ Layer 2 — Path-Isolated Cross-Model Hard Blocking           │
-                             │ • Zero executor summaries (paths to raw artifacts only)     │
-                             │ • Distinct model family, read-only workspace inspection     │
-                             │ • Hard exit-code blocking (rc=2) + 1-round targeted repair  │
-                             │ • Strict USD circuit breaker (budget.py)                    │
-                             └─────────────────────────────────────────────────────────────┘
-```
+- **Efficient Fail-Fast Gating (`$0` Layer 1 → Targeted Layer 2 → 4-in-1 Paper Audit):** Catches fabricated numbers, sign flips, Python AST integrity bugs, broken claim hashes, missing/fabricated citations, and AI-draft writing/figure anti-patterns in milliseconds at `$0` LLM cost before invoking a path-isolated cross-family reviewer, backed by a hard USD budget circuit breaker.
 
 ---
 

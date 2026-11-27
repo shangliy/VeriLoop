@@ -10,6 +10,12 @@
 
 ---
 
+<p align="center">
+  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop 端到端可验证自主科研与论文流水线全景图" width="100%" />
+</p>
+
+---
+
 ## 为什么选择 VeriLoop？
 
 自主科研 Agent 很少因为「忘记输出文件」而失败；它们真正的失败模式是**代码正常跑完，却在报告中写出与原始日志、代码路径或统计结果相矛盾的数值与结论**。**VeriLoop** 将完整科研流程与硬验证机制合二为一，打造更完备、更便捷、更高效的科研流水线：
