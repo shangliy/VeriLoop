@@ -192,16 +192,33 @@ def audit_workspace(
             num_traced = int(nt.get("traced", 0))
             num_untraced = int(nt.get("untraced", 0)) + int(nt.get("sign_mismatches", 0))
             num_total = num_traced + num_untraced
-    elif deliverable and deliv_kind == "text":
-        cmd_tr = [sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), str(deliverable), "--json"]
-        for lp in log_files[:80]:
-            cmd_tr.extend(["--logs", str(lp)])
-        r_tr = run_cmd(cmd_tr, timeout=60)
-        if r_tr.stdout.strip().startswith("{"):
-            tdata = json.loads(r_tr.stdout)
-            num_traced = int(tdata.get("traced", 0))
-            num_untraced = len(tdata.get("untraced", [])) + len(tdata.get("sign_mismatches", [])) + len(tdata.get("wrong_logs", []))
-            num_total = num_traced + num_untraced
+
+    # Cross-platform fallback when host lacks pdftotext/pypdf (e.g., bare macOS CI)
+    if num_total == 0 and log_files:
+        text_fallback = None
+        if deliverable and deliv_kind == "text":
+            text_fallback = deliverable
+        else:
+            for cand in (
+                ws / "paper/bound/bound_metrics.txt",
+                ws / "report/report.md",
+                ws / "paper/gnn_study.tex",
+                ws / "paper/recsys_study.tex",
+                ws / "paper/overnight_study.tex",
+            ):
+                if cand.is_file():
+                    text_fallback = cand
+                    break
+        if text_fallback:
+            cmd_tr = [sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), str(text_fallback), "--json"]
+            for lp in log_files[:80]:
+                cmd_tr.extend(["--logs", str(lp)])
+            r_tr = run_cmd(cmd_tr, timeout=60)
+            if r_tr.stdout.strip().startswith("{"):
+                tdata = json.loads(r_tr.stdout)
+                num_traced = int(tdata.get("traced", 0))
+                num_untraced = len(tdata.get("untraced", [])) + len(tdata.get("sign_mismatches", [])) + len(tdata.get("wrong_logs", []))
+                num_total = num_traced + num_untraced
 
     # Also check pre-committed pdf_audit.json if workspace has no PDF rebuilt yet (never overrides live run)
     trace_rate = round(100.0 * num_traced / num_total, 2) if num_total > 0 else (100.0 if log_files else 0.0)
