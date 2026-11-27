@@ -52,7 +52,7 @@ CI_PATTERN = re.compile(
 
 
 def now():
-    return datetime.now().isoformat(timespec="microseconds")
+    return datetime.now().astimezone().isoformat(timespec="microseconds")
 
 
 def next_seq(db):

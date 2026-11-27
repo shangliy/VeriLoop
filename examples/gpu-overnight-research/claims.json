@@ -15,11 +15,11 @@
    "kill": "M2_ResNet_Base fails to outperform M1_PlainCNN on CIFAR-10 test_acc across 3 seeds.",
    "scope": "CIFAR-10 (30 ep) & Fashion-MNIST (15 ep), RTX 3060 Ti AMP fp16",
    "status": "supported",
-   "registered": "2026-11-26T17:26:50.891497",
+   "registered": "2026-11-26T19:55:39.387355-08:00",
    "history": [
     {
      "seq": 1,
-     "at": "2026-11-26T17:26:50.891497",
+     "at": "2026-11-26T19:55:39.387355-08:00",
      "text": "3-stage SmallResNet with BatchNorm (M2_ResNet_Base) improves held-out test accuracy over PlainCNN (M1_PlainCNN) across 3 seeds on CIFAR-10 and Fashion-MNIST under identical validation-only checkpoint selection.",
      "why": "registered"
     }
@@ -27,7 +27,7 @@
    "evidence": [
     {
      "seq": 5,
-     "at": "2026-11-26T19:41:25.782670",
+     "at": "2026-11-26T19:55:39.701432-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -42,7 +42,7 @@
     },
     {
      "seq": 6,
-     "at": "2026-11-26T19:41:25.816343",
+     "at": "2026-11-26T19:55:39.771499-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -57,7 +57,7 @@
     },
     {
      "seq": 7,
-     "at": "2026-11-26T19:41:25.849192",
+     "at": "2026-11-26T19:55:39.819108-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -74,7 +74,7 @@
     },
     {
      "seq": 8,
-     "at": "2026-11-26T19:41:25.886087",
+     "at": "2026-11-26T19:55:39.868037-08:00",
      "log": "out/wiki_metrics.log",
      "sha256": "253c1780f20b10f224ba86f8e734d74d2a23d7d07100c2a272091f702f6b64f3",
      "size_bytes": 2793,
@@ -92,21 +92,12 @@
    ],
    "status_log": [
     {
-     "at": "2026-11-26T19:01:01.502822",
-     "from": "proposed",
-     "to": "supported",
-     "by": "reviewer"
-    },
-    {
-     "at": "2026-11-26T19:41:25.926782",
+     "at": "2026-11-26T19:55:39.915370-08:00",
      "from": "proposed",
      "to": "supported",
      "by": "reviewer"
     }
-   ],
-   "status_by": null,
-   "status_at": null,
-   "waivers": []
+   ]
   },
   "H2_AugCosineGain": {
    "text": "Data augmentation plus Nesterov SGD with warmup-cosine decay and weight decay (M4_ResNet_Aug_Cosine) and SE+Cutout+mild label smoothing (M7_SEResNet_Full) yield progressive accuracy gains over M2_ResNet_Base on CIFAR-10 without test-set leakage.",
@@ -121,11 +112,11 @@
    "kill": "M4_ResNet_Aug_Cosine <= M2_ResNet_Base or M7_SEResNet_Full <= M3_ResNet_Aug on CIFAR-10.",
    "scope": "CIFAR-10 (30 ep, 3 seeds)",
    "status": "supported",
-   "registered": "2026-11-26T17:26:50.935977",
+   "registered": "2026-11-26T19:55:39.478343-08:00",
    "history": [
     {
      "seq": 2,
-     "at": "2026-11-26T17:26:50.935977",
+     "at": "2026-11-26T19:55:39.478343-08:00",
      "text": "Data augmentation plus Nesterov SGD with warmup-cosine decay and weight decay (M4_ResNet_Aug_Cosine) and SE+Cutout+mild label smoothing (M7_SEResNet_Full) yield progressive accuracy gains over M2_ResNet_Base on CIFAR-10 without test-set leakage.",
      "why": "registered"
     }
@@ -133,7 +124,7 @@
    "evidence": [
     {
      "seq": 9,
-     "at": "2026-11-26T19:41:25.961077",
+     "at": "2026-11-26T19:55:39.954987-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -148,7 +139,7 @@
     },
     {
      "seq": 10,
-     "at": "2026-11-26T19:41:25.993010",
+     "at": "2026-11-26T19:55:39.997442-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -163,7 +154,7 @@
     },
     {
      "seq": 11,
-     "at": "2026-11-26T19:41:26.025323",
+     "at": "2026-11-26T19:55:40.044881-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -176,14 +167,14 @@
      "ablated": 3,
      "has_ci": true,
      "complete_marker": "COMPLETED_OK",
-     "note": "M4 0.9152, M7 0.9193 vs M2 0.8112 & M3 0.8764"
+     "note": "Bundled recipe ladder: M4 0.9152, M7 0.9193 vs M2 0.8112 & M3 0.8764"
     },
     {
      "seq": 12,
-     "at": "2026-11-26T19:41:26.059848",
+     "at": "2026-11-26T19:55:40.090290-08:00",
      "log": "paper/bound/cifar10/bound_metrics.txt",
-     "sha256": "363e3f010d2c0e717d8ddde45b17441d2ac2a634591de05b38941d297c2b5485",
-     "size_bytes": 21059,
+     "sha256": "b92c52fd9cf6dbb2ca37893d8bdb3372f0019722e614bdb613ab55358c24dd7f",
+     "size_bytes": 21012,
      "role": "ablation",
      "dataset": "cifar10",
      "seeds": 3,
@@ -197,21 +188,12 @@
    ],
    "status_log": [
     {
-     "at": "2026-11-26T19:01:01.662036",
-     "from": "proposed",
-     "to": "supported",
-     "by": "reviewer"
-    },
-    {
-     "at": "2026-11-26T19:41:26.093073",
+     "at": "2026-11-26T19:55:40.177028-08:00",
      "from": "proposed",
      "to": "supported",
      "by": "reviewer"
     }
-   ],
-   "status_by": null,
-   "status_at": null,
-   "waivers": []
+   ]
   },
   "H3_CalibrationTradeoff": {
    "text": "Training-time regularizers (Label Smoothing eps=0.1, Mixup alpha=0.4) and validation-fitted post-hoc Temperature Scaling (T*) substantially alter Expected Calibration Error (ECE) relative to uncalibrated cross-entropy models, and post-hoc T* reduces raw NLL/ECE on overconfident cross-entropy baselines without touching test labels.",
@@ -225,11 +207,11 @@
    "kill": "Post-hoc validation-fitted Temperature Scaling fails to reduce test NLL or ECE on M2_ResNet_Base and M4_ResNet_Aug_Cosine on CIFAR-10.",
    "scope": "CIFAR-10 (30 ep) & Fashion-MNIST (15 ep), post-hoc T* fit on val logits",
    "status": "supported",
-   "registered": "2026-11-26T17:26:50.984618",
+   "registered": "2026-11-26T19:55:39.579686-08:00",
    "history": [
     {
      "seq": 3,
-     "at": "2026-11-26T17:26:50.984618",
+     "at": "2026-11-26T19:55:39.579686-08:00",
      "text": "Training-time regularizers (Label Smoothing eps=0.1, Mixup alpha=0.4) and validation-fitted post-hoc Temperature Scaling (T*) substantially alter Expected Calibration Error (ECE) relative to uncalibrated cross-entropy models, and post-hoc T* reduces raw NLL/ECE on overconfident cross-entropy baselines without touching test labels.",
      "why": "registered"
     }
@@ -237,7 +219,7 @@
    "evidence": [
     {
      "seq": 13,
-     "at": "2026-11-26T19:41:26.126399",
+     "at": "2026-11-26T19:55:40.261827-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -252,7 +234,7 @@
     },
     {
      "seq": 14,
-     "at": "2026-11-26T19:41:26.159322",
+     "at": "2026-11-26T19:55:40.324164-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -269,10 +251,10 @@
     },
     {
      "seq": 15,
-     "at": "2026-11-26T19:41:26.193099",
+     "at": "2026-11-26T19:55:40.378886-08:00",
      "log": "paper/bound/cifar10/bound_metrics.txt",
-     "sha256": "363e3f010d2c0e717d8ddde45b17441d2ac2a634591de05b38941d297c2b5485",
-     "size_bytes": 21059,
+     "sha256": "b92c52fd9cf6dbb2ca37893d8bdb3372f0019722e614bdb613ab55358c24dd7f",
+     "size_bytes": 21012,
      "role": "ablation",
      "dataset": "cifar10",
      "seeds": 3,
@@ -286,21 +268,12 @@
    ],
    "status_log": [
     {
-     "at": "2026-11-26T19:01:01.787098",
-     "from": "proposed",
-     "to": "supported",
-     "by": "reviewer"
-    },
-    {
-     "at": "2026-11-26T19:41:26.228094",
+     "at": "2026-11-26T19:55:40.435681-08:00",
      "from": "proposed",
      "to": "supported",
      "by": "reviewer"
     }
-   ],
-   "status_by": null,
-   "status_at": null,
-   "waivers": []
+   ]
   },
   "H4_CrossDatasetRank": {
    "text": "The full regularized residual architecture (M7_SEResNet_Full) outperforms M0_Linear and M1_PlainCNN on both CIFAR-10 and Fashion-MNIST while every intermediate Research Wiki update passes deterministic Layer-1 number tracing and AST code auditing at zero API cost.",
@@ -315,11 +288,11 @@
    "kill": "M7_SEResNet_Full fails to beat M1_PlainCNN on either dataset or any stage gate fails with untraced numbers or HIGH AST findings.",
    "scope": "CIFAR-10 + Fashion-MNIST, 42 total GPU runs",
    "status": "supported",
-   "registered": "2026-11-26T17:26:51.028400",
+   "registered": "2026-11-26T19:55:39.636934-08:00",
    "history": [
     {
      "seq": 4,
-     "at": "2026-11-26T17:26:51.028400",
+     "at": "2026-11-26T19:55:39.636934-08:00",
      "text": "The full regularized residual architecture (M7_SEResNet_Full) outperforms M0_Linear and M1_PlainCNN on both CIFAR-10 and Fashion-MNIST while every intermediate Research Wiki update passes deterministic Layer-1 number tracing and AST code auditing at zero API cost.",
      "why": "registered"
     }
@@ -327,7 +300,7 @@
    "evidence": [
     {
      "seq": 16,
-     "at": "2026-11-26T19:41:26.262119",
+     "at": "2026-11-26T19:55:40.490562-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -342,7 +315,7 @@
     },
     {
      "seq": 17,
-     "at": "2026-11-26T19:41:26.296255",
+     "at": "2026-11-26T19:55:40.538033-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -357,7 +330,7 @@
     },
     {
      "seq": 18,
-     "at": "2026-11-26T19:41:26.331726",
+     "at": "2026-11-26T19:55:40.600653-08:00",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
      "size_bytes": 4205,
@@ -373,10 +346,10 @@
     },
     {
      "seq": 19,
-     "at": "2026-11-26T19:41:26.364871",
+     "at": "2026-11-26T19:55:40.657771-08:00",
      "log": "paper/bound/fmnist/bound_metrics.txt",
-     "sha256": "e88665780ef1ed96fb53cd83778e754a0e050a042ea9353697a65f107f40dca6",
-     "size_bytes": 15736,
+     "sha256": "90582c3b8bfb40b4cd5358ed645175269eb8700a9badecbabc5c58b37d68b0be",
+     "size_bytes": 15689,
      "role": "ablation",
      "dataset": "fmnist",
      "seeds": 3,
@@ -389,21 +362,12 @@
    ],
    "status_log": [
     {
-     "at": "2026-11-26T19:01:01.942110",
-     "from": "proposed",
-     "to": "supported",
-     "by": "reviewer"
-    },
-    {
-     "at": "2026-11-26T19:41:26.398356",
+     "at": "2026-11-26T19:55:40.703311-08:00",
      "from": "proposed",
      "to": "supported",
      "by": "reviewer"
     }
-   ],
-   "status_by": null,
-   "status_at": null,
-   "waivers": []
+   ]
   }
  }
 }

@@ -458,10 +458,10 @@ def write_outputs(summary: dict, curves: dict, sources: list[dict], out_dir: Pat
     metrics = sorted({k[1] for k in summary})
     fmt = f"{{:.{decimals}f}}"
 
-    # 1. bound_metrics.txt (canonical log 100% traceable by trace_numbers.py)
+    # 1. bound_metrics.txt (canonical byte-deterministic log 100% traceable by trace_numbers.py)
     log_lines = [
         "# VeriLoop Paper-Bind Canonical Metrics Log (auto-generated; do not edit by hand)",
-        f"# generated_utc={datetime.now(timezone.utc).isoformat()} sources={len(sources)} methods={len(methods)} metrics={len(metrics)}",
+        f"# sources={len(sources)} methods={len(methods)} metrics={len(metrics)}",
     ]
     for s in sources:
         log_lines.append(f"SOURCE format={s['format']} sha256={s['sha256'][:16]} points={s['points']} path={s['path']}")
