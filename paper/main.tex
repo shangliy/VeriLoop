@@ -1,12 +1,14 @@
+\pdfoutput=1
 \documentclass[10pt]{article}
 
 % ============================================================================
-% PUBLIC RELEASE METADATA (Edit these 3 macros before arXiv / GitHub upload)
+% PUBLIC RELEASE METADATA (Edit these macros before arXiv / GitHub upload)
 % ============================================================================
 \newcommand{\PaperAuthors}{Shanglin Yang \quad Zhan Shi}
 \newcommand{\PaperAffiliation}{}
 \newcommand{\PaperDate}{November 2026}
 \newcommand{\PaperRepoURL}{https://github.com/shangliy/VeriLoop}
+\newcommand{\PaperPageURL}{https://shangliy.github.io/VeriLoop/}
 \newcommand{\RepoRef}{\texttt{\PaperRepoURL}}
 
 % ---- Typography & Layout (Modern arXiv Preprint Style) ----
@@ -47,7 +49,9 @@
   colorlinks=true,
   linkcolor=navy,
   citecolor=navy,
-  urlcolor=navy
+  urlcolor=navy,
+  pdftitle={VeriLoop: Deterministic Evidence Gates and Path-Isolated Cross-Model Auditing for Autonomous Research},
+  pdfauthor={Shanglin Yang, Zhan Shi}
 }
 
 % ---- Checkmarks / Crosses ----
@@ -123,7 +127,7 @@
   \vspace{3pt}
   {\small\sffamily\color{slate}\if\relax\detokenize\expandafter{\PaperAffiliation}\relax\PaperDate\else\PaperAffiliation \quad$\cdot$\quad \PaperDate\fi\par}
   \vspace{5pt}
-  {\footnotesize\ttfamily\color{navy} Code, Frozen Benchmark \& Self-Audited Artifacts: \PaperRepoURL \quad|\quad 245 Paired Trials + 21 Unseen Scenarios\par}
+  {\footnotesize\ttfamily\color{navy} Code: \href{\PaperRepoURL}{\PaperRepoURL} \quad|\quad Project Page: \href{\PaperPageURL}{\PaperPageURL}\par}
 \end{center}
 \vspace{-2pt}
 \noindent{\color{rulegray}\rule{\linewidth}{0.6pt}}

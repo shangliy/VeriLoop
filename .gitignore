@@ -57,7 +57,7 @@ examples/*/ingested/
 
 # arXiv submission tarballs (generated locally)
 paper/arxiv_v1_submission.tar.gz
-paper/arxiv_v2_submission.tar.gz
+paper/arxiv_submission.tar.gz
 
 # Unseen blind-test raw input data (keep report/, out/, code/, and cited 09c CSV tracked for public forensics)
 eval/v2_unseen/workspaces/*/data/*
