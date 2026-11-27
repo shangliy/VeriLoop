@@ -1,39 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 184" width="960" height="184" role="img" aria-label="VeriLoop — Full-Stack Autonomous Research Engine &amp; Deterministic Verification Kernel">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 210" width="960" height="210" role="img" aria-label="VeriLoop — Hand-Drawn Looseleaf Banner">
   <defs>
-    <radialGradient id="logo-glow" cx="22%" cy="50%" r="55%">
-      <stop offset="0%" stop-color="#9B8B6C" stop-opacity="0.16"/>
-      <stop offset="100%" stop-color="#171614" stop-opacity="0"/>
-    </radialGradient>
+    <filter id="paper-shadow" x="-4%" y="-6%" width="108%" height="118%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1E2E27" flood-opacity="0.18"/>
+    </filter>
+    <pattern id="desk-grain" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="0.6" fill="#89A89B" opacity="0.45"/>
+      <circle cx="9" cy="8" r="0.55" fill="#C4DBD0" opacity="0.35"/>
+    </pattern>
+    <pattern id="paper-grain" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="5" r="0.55" fill="#D5CCB8" opacity="0.38"/>
+      <circle cx="11" cy="12" r="0.5" fill="#DFD7C4" opacity="0.32"/>
+    </pattern>
+    <marker id="pen-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#1E2421" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="orange-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#C44536" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="green-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#3B6E4B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
   </defs>
-  <rect x="2" y="2" width="956" height="180" rx="16" fill="#171614" stroke="#2F2D27" stroke-width="2"/>
-  <rect x="2" y="2" width="956" height="180" rx="16" fill="url(#logo-glow)"/>
+  <!-- Sage desk mat frame -->
+  <rect x="0" y="0" width="960" height="210" rx="14" fill="#A6C1B5"/>
+  <rect x="0" y="0" width="960" height="210" rx="14" fill="url(#desk-grain)"/>
 
-  <!-- Precision Verification Loop Mark -->
-  <g transform="translate(88, 92)">
-    <circle cx="0" cy="0" r="42" fill="#201F1B" stroke="#36332C" stroke-width="1.5"/>
-    <circle cx="0" cy="0" r="30" fill="none" stroke="#F4F1EA" stroke-width="3.6" stroke-dasharray="144 44" stroke-linecap="round" transform="rotate(-24)"/>
-    <circle cx="24" cy="-18" r="4" fill="#7CC4FA"/>
-    <path d="M -14 1 L -4 11 L 16 -11" fill="none" stroke="#4ADE80" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Cream index-card sheet with realistic cast shadow -->
+  <g filter="url(#paper-shadow)">
+    <rect x="26" y="20" width="908" height="170" rx="4" fill="#F6F1E6"/>
+    <rect x="26" y="20" width="908" height="170" rx="4" fill="url(#paper-grain)"/>
+    <!-- Index card horizontal rules -->
+    <line x1="26" y1="62" x2="934" y2="62" stroke="#D99B8C" stroke-width="1.3" opacity="0.65"/>
+    <line x1="26" y1="98" x2="934" y2="98" stroke="#CBD6E0" stroke-width="1" opacity="0.7"/>
+    <line x1="26" y1="134" x2="934" y2="134" stroke="#CBD6E0" stroke-width="1" opacity="0.7"/>
+    <line x1="26" y1="170" x2="934" y2="170" stroke="#CBD6E0" stroke-width="1" opacity="0.7"/>
+  </g>
+  <g transform="translate(10,12) rotate(-14)">  <rect x="0" y="0" width="62" height="16" rx="1.5" fill="#EDE7D5" fill-opacity="0.78" stroke="#CFC7B2" stroke-width="0.9"/></g>
+  <g transform="translate(886,12) rotate(12)">  <rect x="0" y="0" width="62" height="16" rx="1.5" fill="#EDE7D5" fill-opacity="0.78" stroke="#CFC7B2" stroke-width="0.9"/></g>
+  <g transform="translate(828,3) rotate(6) scale(0.92)">  <path d="M 10 42 L 10 12 C 10 4, 24 4, 24 12 L 24 46 C 24 56, 6 56, 6 46 L 6 18 C 6 12, 18 12, 18 18 L 18 40"         fill="none" stroke="#68736D" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>  <path d="M 10 42 L 10 12 C 10 4, 24 4, 24 12 L 24 46 C 24 56, 6 56, 6 46 L 6 18 C 6 12, 18 12, 18 18 L 18 40"         fill="none" stroke="#DCE3DF" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></g>
+
+  <!-- Hand-drawn Loop + Check Emblem -->
+  <g transform="translate(108, 108)">
+    <path d="M 36.8 -10.6 L 37.5 -2.5 L 37.6 5.1 L 35.4 13.4 L 31.2 21.9 L 26.8 29.6 L 18.7 32.1 L 11.2 35.2 L 2.6 39.5 L -5.6 38.6 L -12.7 34.0 L -22.8 33.3 L -28.0 25.9 L -33.1 19.2 L -35.2 10.9 L -38.3 2.6 L -37.1 -5.6 L -35.3 -13.3 L -30.4 -20.7 L -26.5 -27.7 L -20.0 -34.4 L -11.5 -38.0 L -2.4 -36.4 L 5.3 -37.3 L 13.9 -36.7 L 22.9 -33.5 L 28.3 -26.2 L 34.2 -19.3 L 35.5 -11.5 L 36.2 -3.2 L 38.8 6.2 L 37.2 13.7" fill="none" stroke="#1E2421" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="28" cy="-24" r="5" fill="#D96F3C" stroke="#1E2421" stroke-width="1.5"/>
+    <path d="M -16 2 L -4 14 L 18 -12" fill="none" stroke="#3B6E4B" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 
-  <!-- Wordmark -->
-  <text x="160" y="96" font-family="Georgia, 'Iowan Old Style', 'Palatino Linotype', serif" font-size="56" font-weight="700" letter-spacing="-1.2" fill="#F6F3EC">VeriLoop</text>
+  <!-- Wordmark + Terracotta Marker Underline -->
+  <text x="176" y="114" font-family="'Kevin Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="56" font-weight="700" letter-spacing="-1" fill="#1E2421">VeriLoop</text>
+  <path d="M 176.6 124.2 Q 321.6 121.9 468.0 122.3" fill="none" stroke="#D96F3C" stroke-width="4.2" stroke-linecap="round"/>
 
-  <!-- Version pill -->
-  <rect x="424" y="59" width="70" height="28" rx="14" fill="#24221E" stroke="#464239" stroke-width="1.2"/>
-  <text x="459" y="77" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#4ADE80">v5.0</text>
+  <!-- Subtitle in crisp monospace -->
+  <text x="178" y="154" font-family="'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace" font-size="12.5" font-weight="600" fill="#4E5953">FULL-STACK AUTONOMOUS RESEARCH ENGINE  ·  DETERMINISTIC VERIFICATION KERNEL</text>
 
-  <!-- Subtitle -->
-  <text x="162" y="132" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="0.4" fill="#B5AFA2">AUTONOMOUS RESEARCH ENGINE  ·  DETERMINISTIC VERIFICATION KERNEL</text>
-
-  <!-- Right subtle telemetry badges -->
-  <g transform="translate(758, 52)">
-    <rect x="0" y="0" width="168" height="32" rx="6" fill="#1F2421" stroke="#2D4A38" stroke-width="1.2"/>
-    <circle cx="16" cy="16" r="4" fill="#4ADE80"/>
-    <text x="28" y="20" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#BBF7D0">416/416 TRACED</text>
-
-    <rect x="0" y="44" width="168" height="32" rx="6" fill="#1C2129" stroke="#2D3C52" stroke-width="1.2"/>
-    <circle cx="16" cy="60" r="4" fill="#7CC4FA"/>
-    <text x="28" y="64" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#BAE6FD">ZERO RUNTIME DEPS</text>
+  <!-- Forest-green rubber stamp v5.0 -->
+  <g transform="translate(550, 96) rotate(-4)">
+    <rect x="-44.0" y="-18.0" width="88.0" height="34.0" rx="5" fill="#E8F2EA"/>
+  <path d="M -39.2 -18.2 Q 0.3 -18.9 39.2 -17.9" fill="none" stroke="#3B6E4B" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 43.7 -13.0 Q 43.2 -0.6 44.1 11.2" fill="none" stroke="#3B6E4B" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 39.3 15.8 Q -0.2 16.1 -39.2 15.7" fill="none" stroke="#3B6E4B" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M -44.3 10.9 Q -44.4 -1.0 -44.3 -13.4" fill="none" stroke="#3B6E4B" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 39.0 -18.0 Q 44.0 -18.0 44.0 -13.0 M 44.0 11.0 Q 44.0 16.0 39.0 16.0 M -39.0 16.0 Q -44.0 16.0 -44.0 11.0 M -44.0 -13.0 Q -44.0 -18.0 -39.0 -18.0" fill="none" stroke="#3B6E4B" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+    <text x="0" y="5" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="14" font-weight="700" fill="#2F5E3F">v5.0</text>
   </g>
+
+  <!-- Blue ballpoint margin note on right -->
+  <text x="896" y="100" text-anchor="end" font-family="'Kevin Sans', Georgia, serif" font-size="16" font-weight="700" fill="#2A5CA8">416 / 416 traced!</text>
+  <text x="896" y="122" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="600" fill="#545E58">0 deps · 63/63 CI</text>
 </svg>

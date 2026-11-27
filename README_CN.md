@@ -36,9 +36,9 @@
 ---
 
 <p align="center">
-  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop v5 全栈自主科研与确定性验证轨道架构图" width="100%" />
+  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop v5 手绘风格全栈自主科研与确定性验证架构图" width="100%" />
   <br />
-  <em>Schematic 01：VeriLoop v5 全栈闭环架构 — Level-1/2 双入口、arXiv↔AST 对齐、GPU 隔离沙箱、零手抄日志绑定、双层硬门控与 <code>rc=2</code> 修复回流轨道、Studio / Review UI 交付。</em>
+  <em>VeriLoop v5 全栈闭环架构 — Level-1/2 双入口、arXiv↔AST 对齐、GPU 隔离沙箱、零手抄日志绑定、双层硬门控与 <code>rc=2</code> 修复回流、Studio / Review UI 交付。</em>
 </p>
 
 ---

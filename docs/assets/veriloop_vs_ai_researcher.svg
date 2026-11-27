@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" width="920" height="440" role="img" aria-label="VeriLoop v5 vs HKUDS/AI-Researcher Hand-Drawn Bar Chart">
+  <defs>
+    <filter id="paper-shadow" x="-4%" y="-6%" width="108%" height="118%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1E2E27" flood-opacity="0.18"/>
+    </filter>
+    <pattern id="desk-grain" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="0.6" fill="#89A89B" opacity="0.45"/>
+      <circle cx="9" cy="8" r="0.55" fill="#C4DBD0" opacity="0.35"/>
+    </pattern>
+    <pattern id="paper-grain" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="5" r="0.55" fill="#D5CCB8" opacity="0.38"/>
+      <circle cx="11" cy="12" r="0.5" fill="#DFD7C4" opacity="0.32"/>
+    </pattern>
+    <marker id="pen-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#1E2421" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="orange-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#C44536" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="green-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#3B6E4B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+<rect x="0" y="0" width="920" height="440" rx="12" fill="#A6C1B5"/>
+<rect x="0" y="0" width="920" height="440" rx="12" fill="url(#desk-grain)"/>
+<g filter="url(#paper-shadow)">
+  <rect x="20" y="20" width="880" height="400" rx="4" fill="#F6F1E6"/>
+  <rect x="20" y="20" width="880" height="400" rx="4" fill="url(#paper-grain)"/>
+</g>
+<g transform="translate(828,3) rotate(5) scale(1.0)">  <path d="M 10 42 L 10 12 C 10 4, 24 4, 24 12 L 24 46 C 24 56, 6 56, 6 46 L 6 18 C 6 12, 18 12, 18 18 L 18 40"         fill="none" stroke="#68736D" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>  <path d="M 10 42 L 10 12 C 10 4, 24 4, 24 12 L 24 46 C 24 56, 6 56, 6 46 L 6 18 C 6 12, 18 12, 18 18 L 18 40"         fill="none" stroke="#DCE3DF" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(10,12) rotate(-12)">  <rect x="0" y="0" width="58" height="16" rx="1.5" fill="#EDE7D5" fill-opacity="0.78" stroke="#CFC7B2" stroke-width="0.9"/></g>
+<text x="54" y="64" font-family="'Kevin Sans', -apple-system, sans-serif" font-size="22" font-weight="700" fill="#1E2421">Layer-1 Audit ($0 Cost)</text>
+<text x="54" y="88" font-family="'Kevin Sans', -apple-system, sans-serif" font-size="13" fill="#545E58">VeriLoop v5 (3 real-GPU PDFs) vs. HKUDS/AI-Researcher (7 official PDFs, all logs included).</text>
+<rect x="498.0" y="46.0" width="18.0" height="14.0" rx="3" fill="#4A7C59"/>
+  <path d="M 501.1 46.1 Q 506.8 46.1 513.3 46.4" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 516.1 48.9 Q 516.9 53.0 515.7 56.9" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 512.8 59.9 Q 507.1 59.2 500.6 60.0" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 498.4 57.0 Q 498.6 53.0 498.4 48.7" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 513.0 46.0 Q 516.0 46.0 516.0 49.0 M 516.0 57.0 Q 516.0 60.0 513.0 60.0 M 501.0 60.0 Q 498.0 60.0 498.0 57.0 M 498.0 49.0 Q 498.0 46.0 501.0 46.0" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+<text x="524" y="58" font-family="'Kevin Sans', sans-serif" font-size="13" font-weight="700" fill="#1E2421">VeriLoop v5</text>
+<rect x="654.0" y="46.0" width="18.0" height="14.0" rx="3" fill="#D96F3C"/>
+  <path d="M 657.1 45.9 Q 663.9 46.0 668.7 45.9" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 671.8 48.9 Q 672.1 52.2 671.6 57.0" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 669.4 60.0 Q 663.6 60.0 657.4 59.7" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 653.9 56.7 Q 653.7 53.9 654.3 49.2" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 669.0 46.0 Q 672.0 46.0 672.0 49.0 M 672.0 57.0 Q 672.0 60.0 669.0 60.0 M 657.0 60.0 Q 654.0 60.0 654.0 57.0 M 654.0 49.0 Q 654.0 46.0 657.0 46.0" fill="none" stroke="#1E2421" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+<text x="680" y="58" font-family="'Kevin Sans', sans-serif" font-size="13" font-weight="700" fill="#1E2421">AI-Researcher</text>
+<text x="90" y="330.0" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" fill="#545E58">0%</text>
+<line x1="104" y1="278.0" x2="856" y2="278.0" stroke="#CFC8B7" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="90" y="282.0" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" fill="#545E58">25%</text>
+<line x1="104" y1="230.0" x2="856" y2="230.0" stroke="#CFC8B7" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="90" y="234.0" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" fill="#545E58">50%</text>
+<line x1="104" y1="182.0" x2="856" y2="182.0" stroke="#CFC8B7" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="90" y="186.0" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" fill="#545E58">75%</text>
+<line x1="104" y1="134.0" x2="856" y2="134.0" stroke="#CFC8B7" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="90" y="138.0" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" fill="#545E58">100%</text>
+<path d="M 103.8 126.2 Q 104.3 226.2 103.9 325.9" fill="none" stroke="#1E2421" stroke-width="1.6"/>
+<path d="M 103.9 326.2 Q 480.0 325.4 856.1 325.8" fill="none" stroke="#1E2421" stroke-width="1.6"/>
+<rect x="130.0" y="134.0" width="58.0" height="192.0" rx="5" fill="#4A7C59"/>
+  <path d="M 135.2 133.7 Q 158.3 134.1 183.2 134.0" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 188.2 139.0 Q 187.8 229.6 188.1 320.9" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 183.0 326.1 Q 158.3 326.2 135.0 325.6" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 130.2 320.9 Q 129.0 230.9 130.2 139.1" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 183.0 134.0 Q 188.0 134.0 188.0 139.0 M 188.0 321.0 Q 188.0 326.0 183.0 326.0 M 135.0 326.0 Q 130.0 326.0 130.0 321.0 M 130.0 139.0 Q 130.0 134.0 135.0 134.0" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 135.2 134.1 Q 159.2 134.0 183.3 134.1" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 187.9 139.1 Q 188.3 230.2 187.9 320.7" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 182.7 326.1 Q 158.3 325.9 135.2 325.8" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 129.8 321.2 Q 129.8 229.3 130.2 139.0" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+<text x="159.0" y="126.0" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#1E2421">100.0%</text>
+<rect x="200.0" y="167.4" width="58.0" height="158.6" rx="5" fill="#D96F3C"/>
+  <path d="M 204.7 167.5 Q 229.5 167.4 252.8 167.4" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 257.7 172.8 Q 258.6 247.3 258.3 321.3" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 253.4 325.8 Q 228.0 325.2 204.6 325.7" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 200.2 320.8 Q 200.7 246.4 199.9 172.8" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 253.0 167.4 Q 258.0 167.4 258.0 172.4 M 258.0 321.0 Q 258.0 326.0 253.0 326.0 M 205.0 326.0 Q 200.0 326.0 200.0 321.0 M 200.0 172.4 Q 200.0 167.4 205.0 167.4" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 205.1 167.2 Q 229.5 166.8 253.1 167.7" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 258.0 172.2 Q 257.6 247.0 257.8 320.8" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 253.2 325.8 Q 229.1 325.3 204.8 325.8" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 200.2 321.3 Q 199.6 246.7 200.0 172.7" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+<text x="229.0" y="159.4" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#545E58">82.6%</text>
+<text x="194" y="348" text-anchor="middle" font-family="'Kevin Sans', sans-serif" font-size="13.5" font-weight="700" fill="#1E2421">Number Trace</text>
+<text x="194" y="364" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" fill="#545E58">(With Logs)</text>
+<rect x="318.0" y="134.0" width="58.0" height="192.0" rx="5" fill="#4A7C59"/>
+  <path d="M 323.1 134.4 Q 347.1 135.0 370.9 133.6" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 376.2 139.1 Q 376.7 229.4 376.3 321.1" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 371.2 326.0 Q 346.5 326.6 323.0 326.4" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 317.7 321.1 Q 317.5 230.2 318.1 138.6" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 371.0 134.0 Q 376.0 134.0 376.0 139.0 M 376.0 321.0 Q 376.0 326.0 371.0 326.0 M 323.0 326.0 Q 318.0 326.0 318.0 321.0 M 318.0 139.0 Q 318.0 134.0 323.0 134.0" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 323.0 134.2 Q 347.2 134.1 370.8 133.9" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 376.0 139.1 Q 375.8 229.6 375.8 321.2" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 371.2 326.0 Q 346.7 326.3 323.1 326.0" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 318.1 320.8 Q 317.3 230.1 318.2 138.7" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+<text x="347.0" y="126.0" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#1E2421">100.0%</text>
+<rect x="388.0" y="134.0" width="58.0" height="192.0" rx="5" fill="#D96F3C"/>
+  <path d="M 392.9 133.8 Q 417.3 133.8 441.3 133.8" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 445.6 138.9 Q 445.5 230.0 445.6 320.8" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 441.0 325.9 Q 416.8 325.5 392.6 326.4" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 387.8 320.8 Q 388.6 229.1 388.3 139.3" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 441.0 134.0 Q 446.0 134.0 446.0 139.0 M 446.0 321.0 Q 446.0 326.0 441.0 326.0 M 393.0 326.0 Q 388.0 326.0 388.0 321.0 M 388.0 139.0 Q 388.0 134.0 393.0 134.0" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 392.9 133.9 Q 416.4 134.6 440.9 133.9" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 446.0 139.1 Q 446.4 230.3 446.0 321.3" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 440.9 326.0 Q 416.8 325.5 393.2 325.8" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 388.3 320.9 Q 388.4 230.0 388.0 139.2" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+<text x="417.0" y="126.0" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#545E58">100.0%</text>
+<text x="382" y="348" text-anchor="middle" font-family="'Kevin Sans', sans-serif" font-size="13.5" font-weight="700" fill="#1E2421">AST Clean</text>
+<text x="382" y="364" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" fill="#545E58">(0 HIGH)</text>
+<rect x="506.0" y="134.0" width="58.0" height="192.0" rx="5" fill="#4A7C59"/>
+  <path d="M 510.9 134.3 Q 534.6 134.3 558.9 134.2" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 564.0 138.8 Q 563.6 231.1 564.4 320.9" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 558.6 325.9 Q 534.0 325.3 510.6 326.3" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 505.7 321.1 Q 505.3 229.0 505.8 138.8" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 559.0 134.0 Q 564.0 134.0 564.0 139.0 M 564.0 321.0 Q 564.0 326.0 559.0 326.0 M 511.0 326.0 Q 506.0 326.0 506.0 321.0 M 506.0 139.0 Q 506.0 134.0 511.0 134.0" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 511.0 134.1 Q 534.5 133.4 558.7 134.0" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 563.8 139.1 Q 564.3 230.4 563.8 321.1" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 558.9 326.3 Q 534.3 326.2 510.8 326.2" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 505.9 320.8 Q 506.6 230.5 506.0 138.8" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+<text x="535.0" y="126.0" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#1E2421">100.0%</text>
+<text x="605.0" y="318.0" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#545E58">0.0%</text>
+<text x="570" y="348" text-anchor="middle" font-family="'Kevin Sans', sans-serif" font-size="13.5" font-weight="700" fill="#1E2421">Verified BibTeX</text>
+<text x="570" y="364" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" fill="#545E58">Coverage</text>
+<rect x="694.0" y="134.0" width="58.0" height="192.0" rx="5" fill="#4A7C59"/>
+  <path d="M 698.7 134.1 Q 723.6 133.6 747.4 134.1" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 751.6 139.3 Q 751.7 231.0 751.8 320.6" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 747.3 325.9 Q 722.0 327.1 698.6 325.9" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 693.6 320.9 Q 693.2 230.3 694.0 138.8" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 747.0 134.0 Q 752.0 134.0 752.0 139.0 M 752.0 321.0 Q 752.0 326.0 747.0 326.0 M 699.0 326.0 Q 694.0 326.0 694.0 321.0 M 694.0 139.0 Q 694.0 134.0 699.0 134.0" fill="none" stroke="#1E2421" stroke-width="1.60" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 698.8 134.3 Q 722.9 133.3 747.0 134.1" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 752.1 138.9 Q 751.7 230.0 751.9 321.2" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 747.0 325.9 Q 723.1 326.3 698.9 326.3" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 693.9 321.0 Q 694.4 229.5 693.9 139.0" fill="none" stroke="#1E2421" stroke-width="1.04" opacity="0.4" stroke-linecap="round"/>
+<text x="723.0" y="126.0" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#1E2421">100.0%</text>
+<text x="793.0" y="318.0" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#545E58">0.0%</text>
+<text x="758" y="348" text-anchor="middle" font-family="'Kevin Sans', sans-serif" font-size="13.5" font-weight="700" fill="#1E2421">Governance</text>
+<text x="758" y="364" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" fill="#545E58">Claims/Bind/UI</text>
+<path d="M 191.3 116.9 L 193.3 119.5 L 192.2 122.8 L 191.2 125.8 L 186.4 128.5 L 181.9 131.2 L 175.8 133.1 L 169.8 134.8 L 162.1 136.6 L 153.9 136.5 L 146.7 135.3 L 140.3 133.4 L 133.7 132.0 L 128.4 129.4 L 127.7 125.2 L 124.3 122.2 L 125.2 118.8 L 127.0 114.8 L 131.4 112.5 L 136.2 109.5 L 142.7 108.5 L 149.3 107.2 L 156.2 106.3 L 164.0 105.8 L 172.1 107.5 L 177.8 108.3 L 182.7 111.5 L 188.6 112.7 L 192.2 116.8 L 191.4 120.6 L 191.2 122.5 L 188.9 126.3" fill="none" stroke="#2A5CA8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="200" y="114" font-family="'Kevin Sans', Georgia, serif" font-size="13.5" font-weight="700" fill="#2A5CA8">416 / 416 traced!</text>
+<path d="M 256.6 152.3 L 258.7 155.4 L 259.6 157.7 L 257.3 160.6 L 254.1 163.5 L 249.2 165.9 L 244.1 167.5 L 237.4 168.7 L 230.9 170.7 L 224.8 169.2 L 218.3 168.4 L 212.6 166.7 L 206.4 165.9 L 203.0 163.6 L 198.6 159.9 L 199.9 156.4 L 198.8 153.9 L 199.4 150.3 L 204.6 147.8 L 208.6 145.6 L 214.1 143.7 L 220.0 142.1 L 226.5 142.3 L 233.3 142.1 L 240.3 143.2 L 246.9 144.5 L 251.1 145.7 L 254.3 149.8 L 257.0 151.5 L 259.4 155.5 L 257.1 157.7 L 256.2 161.3" fill="none" stroke="#C44536" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="460" y="394" text-anchor="middle" font-family="'Kevin Sans', Georgia, serif" font-size="13" font-weight="700" fill="#C44536">Forensic audit note: 25 unlogged / log-exceeding table metrics across 3 AI-Researcher PDFs (0/79 AST FPs).</text>
+</svg>

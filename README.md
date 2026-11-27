@@ -36,9 +36,9 @@
 ---
 
 <p align="center">
-  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop v5 Precision Orbital Architecture Schematic" width="100%" />
+  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop v5 Hand-Drawn Architecture Sheet" width="100%" />
   <br />
-  <em>Schematic 01: VeriLoop v5 full-stack trajectory — Level-1/2 entry, arXiv↔AST ingest, isolated GPU sandbox, byte-stable log binding, dual-layer hard gate with <code>rc=2</code> repair orbit, and live Studio / Audit UI release.</em>
+  <em>VeriLoop v5 full-stack architecture — Level-1/2 entry, arXiv↔AST ingest, isolated GPU sandbox, byte-stable log binding, dual-layer hard gate with <code>rc=2</code> repair loop, and live Studio / Audit UI release.</em>
 </p>
 
 ---

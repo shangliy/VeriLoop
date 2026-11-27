@@ -1,146 +1,181 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 600" width="1360" height="600" role="img" aria-label="VeriLoop v5 Precision Orbital Architecture Schematic: Level-1 and Level-2 Ingest, GPU Sandbox, Log-to-LaTeX Binding, Dual-Layer Hard Gate with Retry Orbit, and Verified Release">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 620" width="1360" height="620" role="img" aria-label="VeriLoop v5 Looseleaf Hand-Drawn Architecture Sheet">
   <defs>
-    <radialGradient id="focal-glow" cx="68%" cy="46%" r="36%">
-      <stop offset="0%" stop-color="#7CC4FA" stop-opacity="0.11"/>
-      <stop offset="55%" stop-color="#4ADE80" stop-opacity="0.04"/>
-      <stop offset="100%" stop-color="#090E16" stop-opacity="0"/>
-    </radialGradient>
-    <marker id="arr-ice" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
-      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#7CC4FA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <filter id="paper-shadow" x="-4%" y="-6%" width="108%" height="118%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#1E2E27" flood-opacity="0.18"/>
+    </filter>
+    <pattern id="desk-grain" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="0.6" fill="#89A89B" opacity="0.45"/>
+      <circle cx="9" cy="8" r="0.55" fill="#C4DBD0" opacity="0.35"/>
+    </pattern>
+    <pattern id="paper-grain" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="5" r="0.55" fill="#D5CCB8" opacity="0.38"/>
+      <circle cx="11" cy="12" r="0.5" fill="#DFD7C4" opacity="0.32"/>
+    </pattern>
+    <marker id="pen-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#1E2421" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
-    <marker id="arr-ok" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
-      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#4ADE80" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <marker id="orange-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#C44536" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
-    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
-      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#FB7185" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <marker id="green-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 1 2 L 8.5 5 L 1 8" fill="none" stroke="#3B6E4B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
   </defs>
-
-  <!-- Deep Space Telemetry Frame -->
-  <rect x="0" y="0" width="1360" height="600" rx="14" fill="#090E16"/>
-  <rect x="0" y="0" width="1360" height="600" rx="14" fill="url(#focal-glow)"/>
-  <rect x="1" y="1" width="1358" height="598" rx="13" fill="none" stroke="#1E2D42" stroke-width="1.5"/>
-
-  <!-- Subtle engineering grid crosshairs -->
-  <line x1="36" y1="74" x2="1324" y2="74" stroke="#182538" stroke-width="1"/>
-  <line x1="36" y1="274" x2="1324" y2="274" stroke="#162235" stroke-width="1" stroke-dasharray="4 6"/>
-  <line x1="36" y1="494" x2="1324" y2="494" stroke="#1D2C42" stroke-width="1.4"/>
-
-  <!-- Header Spec Bar -->
-  <text x="36" y="42" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="1.1" fill="#7CC4FA">SCHEMATIC 01 · VERILOOP V5 FULL-STACK AUTONOMOUS RESEARCH &amp; VERIFICATION TRAJECTORY</text>
-  <text x="36" y="61" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#8FA3BF">Seven-stage crash-resumable pipeline pairing Level-1/2 autonomous orchestration with zero-dependency deterministic hard gates</text>
-  <text x="1324" y="42" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" font-weight="700" fill="#4ADE80">ZERO RUNTIME DEPS · 63/63 CI · 416/416 TRACED</text>
-  <text x="1324" y="61" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" fill="#6E819C">CV (42) · GNN (60) · RECSYS (13) · RTX 3060 Ti</text>
-
-  <!-- Dual Entry Input Badges (Left Margin) -->
-  <g>
-    <rect x="36" y="152" width="146" height="62" rx="8" fill="#101928" stroke="#284060" stroke-width="1.3"/>
-    <text x="50" y="174" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" font-weight="700" fill="#7CC4FA">LEVEL 1 ENTRY</text>
-    <text x="50" y="193" font-family="-apple-system, sans-serif" font-size="12.5" font-weight="600" fill="#F1F5F9">Idea + Base Repo</text>
-    <text x="50" y="207" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#8FA3BF">--idea --repo</text>
-
-    <rect x="36" y="330" width="146" height="62" rx="8" fill="#101928" stroke="#284060" stroke-width="1.3"/>
-    <text x="50" y="352" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" font-weight="700" fill="#7CC4FA">LEVEL 2 ENTRY</text>
-    <text x="50" y="371" font-family="-apple-system, sans-serif" font-size="12.5" font-weight="600" fill="#F1F5F9">arXiv Papers</text>
-    <text x="50" y="385" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#8FA3BF">--papers IDs</text>
-
-    <!-- Converging entry arcs into Node 1 -->
-    <path d="M 182 183 C 222 183, 224 242, 250 256" fill="none" stroke="#7CC4FA" stroke-width="1.6" marker-end="url(#arr-ice)"/>
-    <path d="M 182 361 C 222 361, 224 306, 250 292" fill="none" stroke="#7CC4FA" stroke-width="1.6" marker-end="url(#arr-ice)"/>
-  </g>
-
-  <!-- Main Orbital Trajectories between Nodes 1 -> 2 -> 3 -> 4 -> 5 -->
-  <path d="M 342 252 C 402 152, 488 152, 548 250" fill="none" stroke="#7CC4FA" stroke-width="1.9" marker-end="url(#arr-ice)"/>
-  <text x="445" y="164" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" fill="#8FA3BF">INGEST_MAP + G1-G7 CLAIMS</text>
-
-  <path d="M 628 250 C 684 166, 756 166, 808 248" fill="none" stroke="#7CC4FA" stroke-width="1.9" marker-end="url(#arr-ice)"/>
-  <text x="718" y="176" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" fill="#8FA3BF">SHA-256 CSV / TB / W&amp;B</text>
-
-  <path d="M 888 274 L 948 274" fill="none" stroke="#7CC4FA" stroke-width="2" marker-end="url(#arr-ice)"/>
-
-  <path d="M 1072 274 L 1168 274" fill="none" stroke="#4ADE80" stroke-width="2.4" marker-end="url(#arr-ok)"/>
-  <text x="1120" y="261" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" font-weight="700" fill="#4ADE80">rc=0 PASS</text>
-
-  <!-- Red Dashed Failure / Targeted Repair Return Orbit underneath (clean clearance below all node captions) -->
-  <path d="M 962 324 C 910 458, 695 458, 636 318" fill="none" stroke="#FB7185" stroke-width="1.7" stroke-dasharray="6 4" marker-end="url(#arr-red)"/>
-  <rect x="652" y="432" width="300" height="24" rx="12" fill="#23121A" stroke="#7F2940" stroke-width="1.1"/>
-  <text x="802" y="448" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" font-weight="700" fill="#FDA4AF">rc=2 HARD BLOCK -&gt; REPAIR ORBIT (0.0% FPR)</text>
-
-  <!-- NODE 1: INGEST & AST MAP -->
-  <g transform="translate(296, 274)">
-    <circle cx="0" cy="0" r="48" fill="#101A29" stroke="#7CC4FA" stroke-width="1.8"/>
-    <circle cx="0" cy="0" r="38" fill="none" stroke="#243C5C" stroke-width="1" stroke-dasharray="3 3"/>
-    <text x="0" y="-6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" font-weight="700" fill="#FFFFFF">INGEST</text>
-    <text x="0" y="11" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#7CC4FA">LaTeX &lt;-&gt; AST</text>
-    <text x="0" y="70" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#E2E8F0">Paper &amp; Code Index</text>
-    <text x="0" y="88" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" fill="#8FA3BF">75 eq-to-AST links</text>
-  </g>
-
-  <!-- NODE 2: SANDBOX GPU EXECUTION -->
-  <g transform="translate(588, 274)">
-    <circle cx="0" cy="0" r="52" fill="#101A29" stroke="#7CC4FA" stroke-width="1.9"/>
-    <circle cx="0" cy="0" r="62" fill="none" stroke="#1E334F" stroke-width="1" stroke-dasharray="4 4"/>
-    <text x="0" y="-6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" font-weight="700" fill="#FFFFFF">SANDBOX</text>
-    <text x="0" y="11" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#7CC4FA">Docker / GPU</text>
-    <text x="0" y="82" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#E2E8F0">Isolated Execution</text>
-    <text x="0" y="100" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" fill="#8FA3BF">115 seeded GPU runs</text>
-  </g>
-
-  <!-- NODE 3: BYTE-DETERMINISTIC BIND -->
-  <g transform="translate(842, 274)">
-    <circle cx="0" cy="0" r="46" fill="#101A29" stroke="#7CC4FA" stroke-width="1.8"/>
-    <text x="0" y="-6" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" font-weight="700" fill="#FFFFFF">BIND</text>
-    <text x="0" y="11" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#7CC4FA">Log -&gt; TeX</text>
-    <text x="0" y="70" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#E2E8F0">Zero Transcription</text>
-    <text x="0" y="88" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" fill="#8FA3BF">Macros + Okabe-Ito</text>
-  </g>
-
-  <!-- NODE 4: DUAL-LAYER HARD GATE (HERO FOCAL RING) -->
-  <g transform="translate(1012, 274)">
-    <circle cx="0" cy="0" r="76" fill="none" stroke="#223A58" stroke-width="1.2" stroke-dasharray="3 5"/>
-    <circle cx="0" cy="0" r="64" fill="#0F2134" stroke="#7CC4FA" stroke-width="2.2"/>
-    <circle cx="0" cy="0" r="53" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-dasharray="62 18"/>
-    <text x="0" y="-13" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" font-weight="700" fill="#7CC4FA">L1 ($0) + L2</text>
-    <text x="0" y="5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" font-weight="700" fill="#FFFFFF">HARD GATE</text>
-    <text x="0" y="21" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" font-weight="700" fill="#4ADE80">AST · Trace · Cites</text>
-    <text x="0" y="96" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF">Dual-Layer Audit</text>
-    <text x="0" y="114" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" fill="#8FA3BF">Path-isolated X-Model</text>
-  </g>
-
-  <!-- NODE 5: VERIFIED RELEASE & STUDIO -->
-  <g transform="translate(1234, 274)">
-    <circle cx="0" cy="0" r="56" fill="#0E261D" stroke="#4ADE80" stroke-width="2.4"/>
-    <circle cx="0" cy="0" r="45" fill="none" stroke="#226846" stroke-width="1.2" stroke-dasharray="3 3"/>
-    <text x="0" y="-10" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#4ADE80">416 / 416</text>
-    <text x="0" y="7" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" font-weight="700" fill="#FFFFFF">VERIFIED</text>
-    <text x="0" y="22" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#A7F3D0">PDF · Studio · UI</text>
-    <text x="0" y="78" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#4ADE80">Audited Artifacts</text>
-    <text x="0" y="96" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" fill="#A7F3D0">100.0% traced · 0 warn</text>
-  </g>
-
-  <!-- Bottom Artemis II Style Mission Milestone Ruler -->
-  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11">
-    <circle cx="296" cy="494" r="5" fill="#7CC4FA"/>
-    <text x="296" y="518" text-anchor="middle" fill="#CBD5E1" font-weight="700">01 · ./veriloop ingest</text>
-    <text x="296" y="535" text-anchor="middle" fill="#6E819C" font-size="10">arXiv e-print + AST map</text>
-
-    <circle cx="588" cy="494" r="5" fill="#7CC4FA"/>
-    <text x="588" y="518" text-anchor="middle" fill="#CBD5E1" font-weight="700">02 · ./veriloop sandbox</text>
-    <text x="588" y="535" text-anchor="middle" fill="#6E819C" font-size="10">Docker/Local GPU + watchdogs</text>
-
-    <circle cx="842" cy="494" r="5" fill="#7CC4FA"/>
-    <text x="842" y="518" text-anchor="middle" fill="#CBD5E1" font-weight="700">03 · ./veriloop bind</text>
-    <text x="842" y="535" text-anchor="middle" fill="#6E819C" font-size="10">Byte-stable LaTeX + PDFs</text>
-
-    <circle cx="1012" cy="494" r="5" fill="#7CC4FA"/>
-    <text x="1012" y="518" text-anchor="middle" fill="#CBD5E1" font-weight="700">04 · ./veriloop gate</text>
-    <text x="1012" y="535" text-anchor="middle" fill="#6E819C" font-size="10">$0 L1 + Cross-Model L2</text>
-
-    <circle cx="1234" cy="494" r="6" fill="#4ADE80"/>
-    <text x="1234" y="518" text-anchor="middle" fill="#4ADE80" font-weight="700">05 · studio &amp; review-ui</text>
-    <text x="1234" y="535" text-anchor="middle" fill="#86EFAC" font-size="10">Live cockpit + PDF audit</text>
-  </g>
-
-  <!-- Subtle bottom telemetry footer -->
-  <text x="36" y="576" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" fill="#6E819C">DROP-IN EXTERNAL AUDITOR:  ./veriloop compare-bench --fetch-ai-researcher   |   AUDITS ANY AGENT REPO + COMPILED PDF AT $0 COST</text>
+<rect x="0" y="0" width="1360" height="620" rx="14" fill="#A6C1B5"/>
+<rect x="0" y="0" width="1360" height="620" rx="14" fill="url(#desk-grain)"/>
+<g filter="url(#paper-shadow)">
+  <rect x="28" y="26" width="1304" height="568" rx="4" fill="#F6F1E6"/>
+  <rect x="28" y="26" width="1304" height="568" rx="4" fill="url(#paper-grain)"/>
+  <line x1="28" y1="92" x2="1332" y2="92" stroke="#D99B8C" stroke-width="1.4" opacity="0.65"/>
+</g>
+<line x1="28" y1="132" x2="1332" y2="132" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="174" x2="1332" y2="174" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="216" x2="1332" y2="216" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="258" x2="1332" y2="258" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="300" x2="1332" y2="300" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="342" x2="1332" y2="342" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="384" x2="1332" y2="384" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="426" x2="1332" y2="426" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="468" x2="1332" y2="468" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="510" x2="1332" y2="510" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<line x1="28" y1="552" x2="1332" y2="552" stroke="#CBD6E0" stroke-width="0.95" opacity="0.58"/>
+<g transform="translate(8,16) rotate(-12)">  <rect x="0" y="0" width="76" height="18" rx="1.5" fill="#EDE7D5" fill-opacity="0.78" stroke="#CFC7B2" stroke-width="0.9"/></g>
+<g transform="translate(1274,16) rotate(11)">  <rect x="0" y="0" width="76" height="18" rx="1.5" fill="#EDE7D5" fill-opacity="0.78" stroke="#CFC7B2" stroke-width="0.9"/></g>
+<g transform="translate(1176,4) rotate(5) scale(1.05)">  <path d="M 10 42 L 10 12 C 10 4, 24 4, 24 12 L 24 46 C 24 56, 6 56, 6 46 L 6 18 C 6 12, 18 12, 18 18 L 18 40"         fill="none" stroke="#68736D" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>  <path d="M 10 42 L 10 12 C 10 4, 24 4, 24 12 L 24 46 C 24 56, 6 56, 6 46 L 6 18 C 6 12, 18 12, 18 18 L 18 40"         fill="none" stroke="#DCE3DF" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="58" y="64" font-family="'Kevin Sans', -apple-system, sans-serif" font-size="22" font-weight="700" fill="#1E2421">VeriLoop v5 — Full-Stack Research &amp; Verification Sheet</text>
+<path d="M 57.6 73.7 Q 263.7 72.2 470.3 71.7" fill="none" stroke="#D96F3C" stroke-width="3" stroke-linecap="round"/>
+<text x="1152" y="64" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="12" font-weight="700" fill="#3B6E4B">0 EXTERNAL DEPS · 63/63 CI · 115 GPU RUNS</text>
+<rect x="54.0" y="146.0" width="174.0" height="86.0" rx="6" fill="#FFFDF8"/>
+  <path d="M 59.7 146.2 Q 140.2 146.3 222.1 145.9" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 228.2 152.2 Q 229.1 188.9 227.7 225.6" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 222.2 231.8 Q 142.0 232.8 59.9 232.2" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 54.3 226.4 Q 54.8 188.7 53.8 152.2" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 222.0 146.0 Q 228.0 146.0 228.0 152.0 M 228.0 226.0 Q 228.0 232.0 222.0 232.0 M 60.0 232.0 Q 54.0 232.0 54.0 226.0 M 54.0 152.0 Q 54.0 146.0 60.0 146.0" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 60.0 146.2 Q 140.3 146.3 222.3 146.1" fill="none" stroke="#1E2421" stroke-width="1.10" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 227.9 152.0 Q 228.4 188.4 227.7 226.1" fill="none" stroke="#1E2421" stroke-width="1.10" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 222.2 231.8 Q 141.0 231.3 60.1 231.7" fill="none" stroke="#1E2421" stroke-width="1.10" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 54.0 226.0 Q 54.1 189.3 53.9 152.2" fill="none" stroke="#1E2421" stroke-width="1.10" opacity="0.4" stroke-linecap="round"/>
+<text x="68" y="169" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#D96F3C">LEVEL 1</text>
+<text x="68" y="191" font-family="'Kevin Sans', sans-serif" font-size="14" font-weight="700" fill="#1E2421">Idea + Repo</text>
+<text x="68" y="213" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" fill="#545E58">--idea --repo</text>
+<rect x="54.0" y="286.0" width="174.0" height="86.0" rx="6" fill="#FFFDF8"/>
+  <path d="M 60.1 286.2 Q 141.0 286.4 222.4 286.2" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 228.2 291.6 Q 227.0 329.8 228.0 365.8" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 222.1 371.8 Q 140.4 371.1 60.1 371.7" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 53.7 365.7 Q 54.9 328.3 54.2 292.3" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 222.0 286.0 Q 228.0 286.0 228.0 292.0 M 228.0 366.0 Q 228.0 372.0 222.0 372.0 M 60.0 372.0 Q 54.0 372.0 54.0 366.0 M 54.0 292.0 Q 54.0 286.0 60.0 286.0" fill="none" stroke="#1E2421" stroke-width="1.70" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 59.8 285.7 Q 140.4 285.6 222.2 286.0" fill="none" stroke="#1E2421" stroke-width="1.10" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 227.8 291.9 Q 228.5 329.6 228.0 365.8" fill="none" stroke="#1E2421" stroke-width="1.10" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 222.3 372.1 Q 141.3 372.5 59.8 372.3" fill="none" stroke="#1E2421" stroke-width="1.10" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 53.8 366.3 Q 54.7 328.8 54.2 292.1" fill="none" stroke="#1E2421" stroke-width="1.10" opacity="0.4" stroke-linecap="round"/>
+<text x="68" y="309" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#2A5CA8">LEVEL 2</text>
+<text x="68" y="331" font-family="'Kevin Sans', sans-serif" font-size="14" font-weight="700" fill="#1E2421">arXiv Papers</text>
+<text x="68" y="353" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" fill="#545E58">--papers IDs</text>
+<path d="M 228 189 C 254 189, 254 238, 274 246" fill="none" stroke="#1E2421" stroke-width="1.8" marker-end="url(#pen-arr)"/>
+<path d="M 228 329 C 254 329, 254 282, 274 274" fill="none" stroke="#1E2421" stroke-width="1.8" marker-end="url(#pen-arr)"/>
+<rect x="280.0" y="178.0" width="178.0" height="162.0" rx="7" fill="#FFFDF8"/>
+  <path d="M 286.9 177.7 Q 369.6 178.3 451.2 178.4" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 458.1 184.7 Q 457.1 259.8 458.2 333.1" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 451.1 339.7 Q 368.8 339.1 287.0 339.9" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 280.0 333.0 Q 279.9 259.5 280.3 184.8" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 451.0 178.0 Q 458.0 178.0 458.0 185.0 M 458.0 333.0 Q 458.0 340.0 451.0 340.0 M 287.0 340.0 Q 280.0 340.0 280.0 333.0 M 280.0 185.0 Q 280.0 178.0 287.0 178.0" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 286.8 177.8 Q 368.5 178.5 450.7 177.9" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 458.3 184.9 Q 458.5 258.4 458.1 333.0" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 450.9 340.1 Q 369.3 340.4 287.1 339.8" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 280.3 333.1 Q 279.8 259.0 280.0 185.2" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+<path d="M 292.2 204.2 Q 368.1 203.6 446.3 204.3" fill="none" stroke="#2A5CA8" stroke-width="2.4" stroke-linecap="round"/>
+<text x="294" y="198" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#2A5CA8">01 · INGEST</text>
+<text x="294" y="228" font-family="'Kevin Sans', sans-serif" font-size="17" font-weight="700" fill="#1E2421">arXiv <-> AST</text>
+<text x="294" y="256" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· Raw LaTeX parse</text>
+<text x="294" y="280" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· 75 eq-code links</text>
+<text x="294" y="304" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· Unmatched watchlist</text>
+<rect x="494.0" y="178.0" width="182.0" height="162.0" rx="7" fill="#FFFDF8"/>
+  <path d="M 500.8 177.6 Q 585.6 177.4 668.8 178.2" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 675.9 185.0 Q 675.6 258.9 676.0 333.2" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 668.6 340.0 Q 584.0 339.3 500.8 339.9" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 494.2 333.4 Q 494.4 258.4 494.2 184.7" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 669.0 178.0 Q 676.0 178.0 676.0 185.0 M 676.0 333.0 Q 676.0 340.0 669.0 340.0 M 501.0 340.0 Q 494.0 340.0 494.0 333.0 M 494.0 185.0 Q 494.0 178.0 501.0 178.0" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 501.0 178.2 Q 584.3 178.1 669.1 177.8" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 676.0 185.0 Q 675.6 259.6 676.1 333.1" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 668.8 339.7 Q 584.9 340.7 501.2 340.1" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 494.0 332.9 Q 493.7 259.0 493.9 184.8" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+<path d="M 506.0 204.1 Q 585.0 204.6 663.7 203.9" fill="none" stroke="#D96F3C" stroke-width="2.4" stroke-linecap="round"/>
+<text x="508" y="198" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#D96F3C">02 · SANDBOX</text>
+<text x="508" y="228" font-family="'Kevin Sans', sans-serif" font-size="17" font-weight="700" fill="#1E2421">Docker / GPU</text>
+<text x="508" y="256" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· RTX 3060 Ti runs</text>
+<text x="508" y="280" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· NaN/OOM watchdog</text>
+<text x="508" y="304" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· SHA-256 CSV logs</text>
+<rect x="712.0" y="178.0" width="176.0" height="162.0" rx="7" fill="#FFFDF8"/>
+  <path d="M 719.4 178.1 Q 799.6 178.0 881.0 178.2" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 887.9 185.0 Q 889.1 259.1 887.8 332.8" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 881.2 339.9 Q 801.0 340.6 719.1 339.6" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 712.0 333.3 Q 711.2 258.9 712.4 185.1" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 881.0 178.0 Q 888.0 178.0 888.0 185.0 M 888.0 333.0 Q 888.0 340.0 881.0 340.0 M 719.0 340.0 Q 712.0 340.0 712.0 333.0 M 712.0 185.0 Q 712.0 178.0 719.0 178.0" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 718.7 177.8 Q 799.9 178.4 880.8 177.8" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 888.2 185.1 Q 887.7 259.2 887.9 333.0" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 881.0 340.3 Q 799.3 339.6 719.2 340.1" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 712.0 333.2 Q 712.2 259.6 712.1 185.3" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+<path d="M 724.2 203.7 Q 800.8 204.0 876.0 204.1" fill="none" stroke="#1E2421" stroke-width="2.4" stroke-linecap="round"/>
+<text x="726" y="198" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#1E2421">03 · BIND</text>
+<text x="726" y="228" font-family="'Kevin Sans', sans-serif" font-size="17" font-weight="700" fill="#1E2421">Log -> LaTeX</text>
+<text x="726" y="256" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· TB / W&B / CSV</text>
+<text x="726" y="280" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· \newcommand macros</text>
+<text x="726" y="304" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· Okabe-Ito PDFs</text>
+<rect x="924.0" y="164.0" width="186.0" height="190.0" rx="7" fill="#EDF5EF"/>
+  <path d="M 931.0 163.9 Q 1016.6 164.1 1102.9 163.8" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 1110.4 171.3 Q 1110.5 259.7 1109.9 347.1" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 1103.0 354.0 Q 1017.3 354.4 930.8 354.3" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 923.8 347.0 Q 924.7 259.0 923.8 171.2" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 1103.0 164.0 Q 1110.0 164.0 1110.0 171.0 M 1110.0 347.0 Q 1110.0 354.0 1103.0 354.0 M 931.0 354.0 Q 924.0 354.0 924.0 347.0 M 924.0 171.0 Q 924.0 164.0 931.0 164.0" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 930.7 164.2 Q 1016.8 164.3 1103.2 164.1" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 1109.7 170.9 Q 1110.1 258.8 1110.2 347.0" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 1103.0 354.0 Q 1016.9 354.4 930.8 354.1" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 924.0 347.0 Q 924.7 259.1 923.8 170.7" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+<path d="M 936.1 190.0 Q 1017.8 190.1 1097.8 189.9" fill="none" stroke="#3B6E4B" stroke-width="2.4" stroke-linecap="round"/>
+<text x="938" y="184" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#3B6E4B">04 · HARD GATE</text>
+<text x="938" y="214" font-family="'Kevin Sans', sans-serif" font-size="17" font-weight="700" fill="#1E2421">L1 ($0) + L2</text>
+<text x="938" y="242" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· AST hygiene (0% FPR)</text>
+<text x="938" y="266" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· Signed num trace</text>
+<text x="938" y="290" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· Live cite check</text>
+<text x="938" y="314" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· Path-isolated X-Model</text>
+<rect x="1146.0" y="178.0" width="160.0" height="162.0" rx="7" fill="#FCEEE6"/>
+  <path d="M 1153.0 178.3 Q 1226.4 179.0 1299.2 178.4" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 1306.0 184.8 Q 1306.5 258.2 1306.3 333.4" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 1298.7 340.0 Q 1225.0 339.5 1153.3 340.3" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 1146.1 332.6 Q 1146.2 258.8 1145.9 185.3" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 1299.0 178.0 Q 1306.0 178.0 1306.0 185.0 M 1306.0 333.0 Q 1306.0 340.0 1299.0 340.0 M 1153.0 340.0 Q 1146.0 340.0 1146.0 333.0 M 1146.0 185.0 Q 1146.0 178.0 1153.0 178.0" fill="none" stroke="#1E2421" stroke-width="1.80" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 1153.2 178.0 Q 1225.5 178.6 1299.1 178.1" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 1306.0 184.9 Q 1305.9 259.2 1306.0 332.8" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 1299.0 340.0 Q 1225.7 339.5 1153.3 340.3" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+  <path d="M 1146.0 332.8 Q 1146.5 259.4 1145.9 185.3" fill="none" stroke="#1E2421" stroke-width="1.17" opacity="0.4" stroke-linecap="round"/>
+<path d="M 1157.7 204.2 Q 1226.0 203.7 1293.9 204.3" fill="none" stroke="#C25B2B" stroke-width="2.4" stroke-linecap="round"/>
+<text x="1160" y="198" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#C25B2B">05 · RELEASE</text>
+<text x="1160" y="228" font-family="'Kevin Sans', sans-serif" font-size="17" font-weight="700" fill="#1E2421">416 / 416</text>
+<text x="1160" y="256" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· 100% traced PDF</text>
+<text x="1160" y="280" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· VeriLoop Studio</text>
+<text x="1160" y="304" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#46504B">· Split Review UI</text>
+<path d="M 460.0 259.0 Q 474.8 259.6 489.8 259.1" fill="none" stroke="#1E2421" stroke-width="1.9" marker-end="url(#pen-arr)"/>
+<path d="M 678.0 259.0 Q 693.9 259.1 707.8 258.6" fill="none" stroke="#1E2421" stroke-width="1.9" marker-end="url(#pen-arr)"/>
+<path d="M 889.8 259.4 Q 904.1 259.9 920.4 258.8" fill="none" stroke="#1E2421" stroke-width="1.9" marker-end="url(#pen-arr)"/>
+<path d="M 1112.3 259.0 Q 1126.3 258.9 1141.8 259.1" fill="none" stroke="#3B6E4B" stroke-width="2.2" marker-end="url(#green-arr)"/>
+<path d="M 1273.8 216.5 L 1274.8 220.3 L 1274.3 225.3 L 1269.2 227.6 L 1265.5 232.7 L 1256.6 234.8 L 1246.3 237.9 L 1233.2 239.0 L 1220.5 239.2 L 1206.9 239.6 L 1193.1 239.8 L 1181.3 237.3 L 1171.2 234.5 L 1164.4 231.0 L 1160.7 226.9 L 1156.3 223.3 L 1158.3 219.9 L 1160.5 215.9 L 1164.1 211.1 L 1175.8 209.5 L 1187.3 207.5 L 1198.9 205.1 L 1211.1 203.1 L 1225.4 203.9 L 1237.7 205.8 L 1251.2 206.7 L 1260.0 209.2 L 1269.0 212.4 L 1273.2 216.6 L 1274.8 220.3 L 1277.1 224.6 L 1272.8 228.9" fill="none" stroke="#2A5CA8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 1228 202 Q 1244 146 1168 134" fill="none" stroke="#2A5CA8" stroke-width="1.6"/>
+<text x="1158" y="138" text-anchor="end" font-family="'Kevin Sans', Georgia, serif" font-size="15" font-weight="700" fill="#2A5CA8">100% byte-traced across CV, GNN &amp; RecSys PDFs!</text>
+<path d="M 1016 356 C 1016 456, 585 456, 585 344" fill="none" stroke="#C44536" stroke-width="1.9" stroke-dasharray="6 4" marker-end="url(#orange-arr)"/>
+<rect x="646.0" y="428.0" width="314.0" height="30.0" rx="14" fill="#FDF3F1"/>
+  <path d="M 660.2 428.0 Q 802.5 428.6 946.0 428.4" fill="none" stroke="#C44536" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 959.7 442.1 Q 959.5 443.2 960.1 443.6" fill="none" stroke="#C44536" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 946.1 457.7 Q 802.4 457.1 659.8 457.9" fill="none" stroke="#C44536" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 646.3 443.7 Q 645.0 442.9 646.0 441.7" fill="none" stroke="#C44536" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+  <path d="M 946.0 428.0 Q 960.0 428.0 960.0 442.0 M 960.0 444.0 Q 960.0 458.0 946.0 458.0 M 660.0 458.0 Q 646.0 458.0 646.0 444.0 M 646.0 442.0 Q 646.0 428.0 660.0 428.0" fill="none" stroke="#C44536" stroke-width="1.40" opacity="0.95" stroke-linecap="round"/>
+<text x="803" y="447" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="700" fill="#B5382A">rc=2 HARD BLOCK -&gt; TARGETED REPAIR (0.0% FPR)</text>
+<path d="M 58.2 504.0 Q 679.3 503.7 1302.0 504.2" fill="none" stroke="#1E2421" stroke-width="1.3" opacity="0.5"/>
+<text x="58" y="534" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#1E2421">./veriloop research --level 1|2</text>
+<text x="58" y="556" font-family="'Kevin Sans', sans-serif" font-size="12" fill="#545E58">Unified 7-stage orchestrator</text>
+<text x="366" y="534" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#1E2421">./veriloop compare-bench</text>
+<text x="366" y="556" font-family="'Kevin Sans', sans-serif" font-size="12" fill="#545E58">$0 drop-in external agent auditor</text>
+<text x="696" y="534" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#1E2421">./veriloop studio & review-ui</text>
+<text x="696" y="556" font-family="'Kevin Sans', sans-serif" font-size="12" fill="#545E58">Zero-dep live cockpit + audit UI</text>
+<text x="1018" y="534" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11.5" font-weight="700" fill="#1E2421">./veriloop install --all</text>
+<text x="1018" y="556" font-family="'Kevin Sans', sans-serif" font-size="12" fill="#545E58">90+ skills (Claude / Codex / Gemini)</text>
 </svg>
