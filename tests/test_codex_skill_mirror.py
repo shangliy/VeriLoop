@@ -6,7 +6,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from tools.check_skills_inventory import check_inventory
+from tools.check_skills_inventory import VERILOOP_CORE_SKILLS, check_inventory
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -33,7 +33,7 @@ def has_send_input_block(text: str) -> bool:
 
 
 def test_codex_skill_set_matches_mainline() -> None:
-    main_names = skill_names(MAIN_SKILLS)
+    main_names = skill_names(MAIN_SKILLS) - VERILOOP_CORE_SKILLS
     codex_names = skill_names(CODEX_SKILLS)
     assert len(main_names) == 87
     assert main_names == codex_names

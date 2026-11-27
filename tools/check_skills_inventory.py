@@ -12,14 +12,24 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_ROOT = REPO_ROOT / "skills"
 CODEX_ROOT = SKILLS_ROOT / "skills-codex"
 CATALOG = REPO_ROOT / "docs" / "SKILLS_CATALOG.md"
-README = REPO_ROOT / "README.md"
-README_CN = REPO_ROOT / "README_CN.md"
+# VeriLoop keeps the upstream ARIS READMEs under docs/ while shipping VeriLoop's own top-level READMEs.
+README = REPO_ROOT / "docs" / "ARIS_UPSTREAM_README.md"
+README_CN = REPO_ROOT / "docs" / "ARIS_UPSTREAM_README_CN.md"
 AGENT_GUIDE = REPO_ROOT / "AGENT_GUIDE.md"
 ARIS_INTRO = REPO_ROOT / "docs" / "ARIS_INTRO.md"
 ARIS_INTRO_HTML = REPO_ROOT / "docs" / "ARIS_INTRO.html"
 CODEX_README = CODEX_ROOT / "README.md"
 CODEX_README_CN = CODEX_ROOT / "README_CN.md"
 BOM = b"\xef\xbb\xbf"
+
+# VeriLoop-added verification/writing skills installed directly via `./veriloop install`
+# (kept distinct from the 87 upstream ARIS skills checked against the Codex mirror).
+VERILOOP_CORE_SKILLS = frozenset({
+    "bestpaper-writing",
+    "milestone-dual-audit",
+    "research-loop",
+    "verifiable-gate",
+})
 
 FORBIDDEN_CODEX_REVIEWER_STRINGS = (
     "mcp__codex__codex",
@@ -132,7 +142,7 @@ def require_count(path: Path, text: str, pattern: str, expected_count: int, fail
 
 def check_inventory() -> list[str]:
     failures: list[str] = []
-    main = skill_names(SKILLS_ROOT)
+    main = skill_names(SKILLS_ROOT) - VERILOOP_CORE_SKILLS
     codex = skill_names(CODEX_ROOT)
     catalog = catalog_names()
     main_refs = {path.name for path in (SKILLS_ROOT / "shared-references").glob("*.md")}

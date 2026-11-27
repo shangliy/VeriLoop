@@ -9,7 +9,7 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
-@pytest.mark.parametrize("filename", ["README.md", "README_CN.md"])
+@pytest.mark.parametrize("filename", ["docs/ARIS_UPSTREAM_README.md", "docs/ARIS_UPSTREAM_README_CN.md"])
 def test_numbered_subsections_match_parent_section(filename):
     section = None
     in_fence = False
@@ -44,5 +44,5 @@ def test_numbered_subsections_match_parent_section(filename):
     ],
 )
 def test_setup_legacy_fragments_preserved(fragment):
-    readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+    readme = (REPO_ROOT / "docs" / "ARIS_UPSTREAM_README.md").read_text(encoding="utf-8")
     assert f'<a id="{fragment}"></a>' in readme

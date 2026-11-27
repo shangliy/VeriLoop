@@ -90,7 +90,7 @@ def test_research_pipeline_passes_resolved_mode_to_nested_workflows() -> None:
 
 def test_user_docs_match_same_turn_auto_proceed_contract() -> None:
     docs = (
-        REPO_ROOT / "README.md",
+        REPO_ROOT / "docs" / "ARIS_UPSTREAM_README.md",
         REPO_ROOT / "docs" / "CUSTOMIZATION.md",
         REPO_ROOT / "docs" / "CUSTOMIZATION_CN.md",
     )

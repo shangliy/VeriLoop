@@ -204,6 +204,9 @@ class TestReviewUI(unittest.TestCase):
 
 class TestPDFAudit(unittest.TestCase):
     def test_audits_icml2027_and_gpu_showcase_pdfs_with_expanded_macros(self):
+        import shutil
+        if not (shutil.which("pdftotext") and shutil.which("pdffonts") and shutil.which("pdfinfo") and shutil.which("pdftoppm")):
+            self.skipTest("poppler utilities (pdftotext/pdffonts/pdfinfo/pdftoppm) not installed")
         icml_pdf = ROOT / "paper/main_icml2027.pdf"
         gpu_pdf = ROOT / "examples/gpu-dl-benchmark/paper/gpu_showcase.pdf"
         self.assertTrue(icml_pdf.is_file())

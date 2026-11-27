@@ -4,7 +4,7 @@ A complete, crash-resumable, zero-fabrication deep learning research trajectory 
 
 ## What This Artifact Demonstrates
 
-1. **Claims Ledger (`claims.json`, `audits/claims_check.txt`)**: 4 hypotheses (`H1_ResidualGain`–`H4_CrossDatasetRank`) registered before GPU execution (committed alongside results; production studies should anchor `claims.json` in a pre-run commit) passing 7/7 mechanical gates (`G1–G7`, 0 post-evidence revisions).
+1. **Claims Ledger (`claims.json`, `audits/claims_check.txt`)**: 4 hypotheses (`H1_ResidualGain`–`H4_CrossDatasetRank`) originally registered before GPU execution (git `856cf11`, `17:26:50 UTC-8`); the committed `claims.json` was rebuilt post-run via `register_claims.sh` (`--by executor`, tz-aware timestamps) after making `paper_bind.py` byte-deterministic, passing 7/7 ledger checks (`G1–G7`, `G2/G3/G5` self-attested, `G1/G7` verified on disk, 0 post-evidence revisions).
 2. **42 Real Multi-Seed GPU Runs Across 2 Benchmarks (`out/trajectory_ledger.jsonl`)**:
    - **CIFAR-10** (30 epochs, 45k/5k/10k split, 8 bundled recipe stages × 3 seeds = **24 runs**): `M0_Linear` (`0.3692±0.0090`) → `M7_SEResNet_Full` (`0.9193±0.0004`, **+14.06 pp** over `M1_PlainCNN`).
    - **Fashion-MNIST** (15 epochs, 50k/10k/10k split, 6 core stages × 3 seeds = **18 runs**; Mixup omitted): `M0_Linear` (`0.8400±0.0011`) → `M5_ResNet_LS` (`0.9394±0.0004`) / `M4_ResNet_Aug_Cosine` (`0.9393±0.0013`) / `M7_SEResNet_Full` (`0.9373±0.0012`, **+3.75 pp** over `M1_PlainCNN`).

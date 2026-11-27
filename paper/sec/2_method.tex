@@ -19,9 +19,9 @@ Without an immutable claim registry, autonomous agents frequently rewrite hypoth
 Every claim enters \texttt{proposed} and reaches \texttt{supported} only when seven gates pass (matching \texttt{claims.py}; Appendix~\ref{app:gates}):
 \texttt{G1} verifies log existence, non-emptiness, byte size, SHA-256, and completion markers on disk;
 \texttt{G2}--\texttt{G5} check declared metadata for planned seeds (\texttt{G2}), no test/unknown selection (\texttt{G3}), baseline coverage (\texttt{G4}), and $\ge k-1$ ablations with a dedicated ablation log (\texttt{G5});
-\texttt{G6} forbids wording revisions after evidence via monotonic sequence IDs (without verifying pre-run registration unless anchored in an external pre-run commit); and
+\texttt{G6} forbids wording revisions after the latest evidence entry via monotonic sequence IDs (without verifying pre-run registration unless anchored in an external pre-run commit); and
 \texttt{G7} scans logged files for CI/\texttt{$\pm$}/$p$ syntax when seeds $\ge 3$.
-Only an explicit human waiver can bypass a failed gate, ensuring state transitions remain tamper-evident.
+Bypassing a failed gate requires recording \texttt{--by user} and a written waiver reason in \texttt{status\_log} (self-declared; tamper-evidence requires anchoring \texttt{claims.json} in version control).
 
 \subsection{Frozen Deterministic Layer-1 Gates (\$0)}
 \label{sec:layer1}

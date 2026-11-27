@@ -1,0 +1,68 @@
+test_clean_script_passes_strict (test_audit_code.TestAuditCode.test_clean_script_passes_strict) ... ok
+test_detects_all_six_integrity_patterns (test_audit_code.TestAuditCode.test_detects_all_six_integrity_patterns) ... ok
+test_fstring_computed_metric_vs_sota_ref_is_info_not_high (test_audit_code.TestAuditCode.test_fstring_computed_metric_vs_sota_ref_is_info_not_high) ... ok
+test_bestpaper_skill_assets_and_scripts_present (test_bestpaper_integration.TestBestPaperIntegration.test_bestpaper_skill_assets_and_scripts_present) ... ok
+test_check_draft_catches_dash_error (test_bestpaper_integration.TestBestPaperIntegration.test_check_draft_catches_dash_error) ... ok
+test_veriloop_lint_paper_passes_on_companion_paper (test_bestpaper_integration.TestBestPaperIntegration.test_veriloop_lint_paper_passes_on_companion_paper) ... ok
+test_full_gates_pass_and_allow_supported (test_claims.TestClaimsLedger.test_full_gates_pass_and_allow_supported) ... ok
+test_g1_blocks_truncated_log_missing_marker (test_claims.TestClaimsLedger.test_g1_blocks_truncated_log_missing_marker) ... ok
+test_g1_detects_tampered_log_hash (test_claims.TestClaimsLedger.test_g1_detects_tampered_log_hash) ... ok
+test_g2_per_dataset_and_per_arm_seed_check (test_claims.TestClaimsLedger.test_g2_per_dataset_and_per_arm_seed_check) ... ok
+test_g5_requires_actual_ablation_log_not_just_flag (test_claims.TestClaimsLedger.test_g5_requires_actual_ablation_log_not_just_flag) ... ok
+test_g6_monotonic_sequence_same_second_no_collision (test_claims.TestClaimsLedger.test_g6_monotonic_sequence_same_second_no_collision) ... ok
+test_g7_requires_real_ci_in_log (test_claims.TestClaimsLedger.test_g7_requires_real_ci_in_log) ... ok
+test_only_user_can_waive (test_claims.TestClaimsLedger.test_only_user_can_waive) ... ok
+test_unsupported_status_accepted (test_claims.TestClaimsLedger.test_unsupported_status_accepted) ... ok
+test_both_approve_clean_returns_zero (test_milestone_dual_audit.TestMilestoneDualAudit.test_both_approve_clean_returns_zero) ... ok
+test_dry_run_freezes_sha256_manifest_via_cli (test_milestone_dual_audit.TestMilestoneDualAudit.test_dry_run_freezes_sha256_manifest_via_cli) ... ok
+test_dual_mock_consensus_unique_and_conservative_block (test_milestone_dual_audit.TestMilestoneDualAudit.test_dual_mock_consensus_unique_and_conservative_block) ... ok
+test_sycophancy_override_blocks_approve_with_blocker (test_milestone_dual_audit.TestMilestoneDualAudit.test_sycophancy_override_blocks_approve_with_blocker) ... ok
+test_record_and_circuit_breaker (test_stage2.TestBudgetLedger.test_record_and_circuit_breaker) ... ok
+test_renders_html_with_provenance_and_xss_escape (test_stage2.TestRenderBoard.test_renders_html_with_provenance_and_xss_escape) ... ok
+test_dry_run_single_and_kill_adjudicate (test_stage2.TestRunAudit.test_dry_run_single_and_kill_adjudicate) ... ok
+test_mechanical_verdict_by_upheld_counts (test_stage2.TestRunAudit.test_mechanical_verdict_by_upheld_counts) ... ok
+test_stagnation_detection (test_stage2.TestRunAudit.test_stagnation_detection) ... ok
+test_sequential_run_and_crash_resume (test_stage2.TestRunSeeds.test_sequential_run_and_crash_resume) ... ok
+test_watchdog_aborts_on_nan_loss (test_stage2.TestRunSeeds.test_watchdog_aborts_on_nan_loss) ... ok
+test_extracts_cite_and_catches_missing_bib_key (test_stage3.TestCitationAudit.test_extracts_cite_and_catches_missing_bib_key) ... ok
+test_dry_run_separates_bare_evibound_vs_ours_and_isolates_private (test_stage3.TestEvalHarnessOffline.test_dry_run_separates_bare_evibound_vs_ours_and_isolates_private) ... skipped 'Sci-Integrity-Bench not cloned under external/'
+test_spr_suite_isolation_revision_and_blind_judge_dry_run (test_stage3.TestEvalHarnessOffline.test_spr_suite_isolation_revision_and_blind_judge_dry_run) ... skipped 'AIScientistPitfalls not cloned under external/'
+test_demo_script_runs_cleanly_end_to_end (test_stage3.TestMiniMLDemo.test_demo_script_runs_cleanly_end_to_end) ... ok
+test_cited_stale_vs_workspace_stale (test_trace_numbers.TestTraceNumbers.test_cited_stale_vs_workspace_stale) ... ok
+test_clean_report_passes (test_trace_numbers.TestTraceNumbers.test_clean_report_passes) ... ok
+test_data_flag_traces_raw_csv_without_stale_flag (test_trace_numbers.TestTraceNumbers.test_data_flag_traces_raw_csv_without_stale_flag) ... ok
+test_negative_direction_prose_polarity_preserves_explicit_sign_flip (test_trace_numbers.TestTraceNumbers.test_negative_direction_prose_polarity_preserves_explicit_sign_flip) ... ok
+test_percent_fraction_unit_conversion_no_false_positive (test_trace_numbers.TestTraceNumbers.test_percent_fraction_unit_conversion_no_false_positive) ... ok
+test_sign_flip_caught (test_trace_numbers.TestTraceNumbers.test_sign_flip_caught) ... ok
+test_unicode_minus_and_trailing_zeros_no_false_positive (test_trace_numbers.TestTraceNumbers.test_unicode_minus_and_trailing_zeros_no_false_positive) ... ok
+test_unpaired_pm_caught (test_trace_numbers.TestTraceNumbers.test_unpaired_pm_caught) ... ok
+test_wrong_log_caught_when_row_cites_different_log (test_trace_numbers.TestTraceNumbers.test_wrong_log_caught_when_row_cites_different_log) ... ok
+test_frozen_corpus_route_a_labels_and_sha256_integrity (test_v2_frozen_eval.TestV2FrozenEval.test_frozen_corpus_route_a_labels_and_sha256_integrity) ... ok
+test_layer1_aggregator_runs_zero_override (test_v2_frozen_eval.TestV2FrozenEval.test_layer1_aggregator_runs_zero_override) ... ok
+test_locked_v2_layer1_reproduces_committed_predictions (test_v2_frozen_eval.TestV2FrozenEval.test_locked_v2_layer1_reproduces_committed_predictions) ... ok
+test_veriloop_eval_v2_summary_cli (test_v2_frozen_eval.TestV2FrozenEval.test_veriloop_eval_v2_summary_cli) ... ok
+test_claim_vs_abstract_detects_polarity_conflict_and_format_bibtex (test_v4_upgrades.TestCitationAuditV2.test_claim_vs_abstract_detects_polarity_conflict_and_format_bibtex) ... ok
+test_online_gate_catches_title_author_year_and_retraction (test_v4_upgrades.TestCitationAuditV2.test_online_gate_catches_title_author_year_and_retraction) ... ok
+test_audits_icml2027_and_gpu_showcase_pdfs_with_expanded_macros (test_v4_upgrades.TestPDFAudit.test_audits_icml2027_and_gpu_showcase_pdfs_with_expanded_macros) ... ok
+test_ingests_tfevents_wandb_csv_and_traces_100_percent (test_v4_upgrades.TestPaperBind.test_ingests_tfevents_wandb_csv_and_traces_100_percent) ... ok
+test_generates_self_contained_interactive_html (test_v4_upgrades.TestReviewUI.test_generates_self_contained_interactive_html) ... ok
+test_clean_workspace_passes_layer1_and_dry_run (test_verifiable_gate_integration.TestVerifiableGateCLI.test_clean_workspace_passes_layer1_and_dry_run) ... ok
+test_fabricated_number_and_hardcoded_print_hard_blocks (test_verifiable_gate_integration.TestVerifiableGateCLI.test_fabricated_number_and_hardcoded_print_hard_blocks) ... ok
+test_multilog_auto_data_and_wrong_logs_reporting (test_verifiable_gate_integration.TestVerifiableGateCLI.test_multilog_auto_data_and_wrong_logs_reporting) ... ok
+
+----------------------------------------------------------------------
+Ran 51 tests in 9.355s
+
+OK (skipped=2)
+test_every_group_is_nonempty (tests.test_skill_groups.CatalogTest.test_every_group_is_nonempty) ... ok
+test_every_upstream_skill_is_cataloged (tests.test_skill_groups.CatalogTest.test_every_upstream_skill_is_cataloged) ... ok
+test_no_stale_catalog_entries (tests.test_skill_groups.CatalogTest.test_no_stale_catalog_entries) ... ok
+test_requires_edges_are_referenced_in_skill_md (tests.test_skill_groups.CatalogTest.test_requires_edges_are_referenced_in_skill_md)
+Coarse anti-drift guard for the `requires` column. ... ok
+test_requires_reference_cataloged_skills (tests.test_skill_groups.CatalogTest.test_requires_reference_cataloged_skills) ... ok
+test_skill_groups_exist (tests.test_skill_groups.CatalogTest.test_skill_groups_exist) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.007s
+
+OK
