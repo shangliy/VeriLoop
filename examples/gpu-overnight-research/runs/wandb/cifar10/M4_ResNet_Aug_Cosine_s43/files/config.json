@@ -1,0 +1,20 @@
+{
+  "dataset": "cifar10",
+  "method": "M4_ResNet_Aug_Cosine",
+  "seed": 43,
+  "epochs": 30,
+  "batch_size": 256,
+  "n_params": 696618,
+  "selected_on": "val_acc",
+  "temp_scaling_fit_on": "val_logits",
+  "arch": "resnet",
+  "aug": true,
+  "opt": "sgd",
+  "lr": 0.1,
+  "wd": 0.0005,
+  "cos": true,
+  "ls": 0.0,
+  "mixup": 0.0,
+  "cutout": 0,
+  "se": false
+}

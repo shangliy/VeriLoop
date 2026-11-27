@@ -1,0 +1,15 @@
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 1, "train_loss": 0.579941, "val_acc": 0.8297, "val_nll": 0.478402, "val_ece": 0.010414}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 2, "train_loss": 0.450668, "val_acc": 0.843, "val_nll": 0.448545, "val_ece": 0.014091}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 3, "train_loss": 0.429154, "val_acc": 0.8468, "val_nll": 0.434112, "val_ece": 0.009099}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 4, "train_loss": 0.4198, "val_acc": 0.8507, "val_nll": 0.425699, "val_ece": 0.008665}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 5, "train_loss": 0.415501, "val_acc": 0.8456, "val_nll": 0.437902, "val_ece": 0.009512}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 6, "train_loss": 0.410769, "val_acc": 0.8479, "val_nll": 0.434147, "val_ece": 0.013215}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 7, "train_loss": 0.402756, "val_acc": 0.8485, "val_nll": 0.43359, "val_ece": 0.007549}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 8, "train_loss": 0.394229, "val_acc": 0.8422, "val_nll": 0.442495, "val_ece": 0.011105}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 9, "train_loss": 0.397093, "val_acc": 0.8499, "val_nll": 0.429772, "val_ece": 0.006576}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 10, "train_loss": 0.391236, "val_acc": 0.8466, "val_nll": 0.436411, "val_ece": 0.019207}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 11, "train_loss": 0.388418, "val_acc": 0.8486, "val_nll": 0.434133, "val_ece": 0.014298}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 12, "train_loss": 0.387252, "val_acc": 0.8514, "val_nll": 0.430818, "val_ece": 0.014345}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 13, "train_loss": 0.385923, "val_acc": 0.8436, "val_nll": 0.442997, "val_ece": 0.024498}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 14, "train_loss": 0.385752, "val_acc": 0.8437, "val_nll": 0.443427, "val_ece": 0.021644}
+{"dataset": "fmnist", "method": "M0_Linear", "seed": 43, "epoch": 15, "train_loss": 0.386176, "val_acc": 0.8406, "val_nll": 0.460786, "val_ece": 0.020132}

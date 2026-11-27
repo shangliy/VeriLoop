@@ -126,8 +126,9 @@ On 21 previously untouched \textsc{SciIntegrity-Bench} scenarios, our SHA-256 lo
 \centering
 \caption{\textbf{Locked v2 mechanical gates achieve 0.0\% AST FPR and 0.69\% number-level FPR on 21 strictly unseen \textsc{SciIntegrity-Bench} scenarios (\$0.3187 total).} Zero edits and zero overrides applied after SHA-256 lock. Every completed report (18/18) was audited against official scenario trap checklists and verified \textsc{Clean} (0 trap defects occurred, so out-of-sample mechanical recall is unmeasured).}
 \label{tab:unseen}
-\setlength{\tabcolsep}{4.2pt}
+\setlength{\tabcolsep}{3.5pt}
 \footnotesize
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lc}
 \toprule
 \textbf{Held-Out Blind-Test Metric} & \textbf{Observed Value} \\
@@ -141,7 +142,7 @@ Decimals checked ($\ge 3$ fractional digits) & 289 (287 traced, 2 false positive
 Number-level FPR & \textbf{2/289 (0.69\%)} \\
 Scenario-level FPR & 2/18 (11.1\%) \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \vspace{2pt}
 \footnotesize{$^\ddagger$Two ML training tasks (\texttt{02a}, \texttt{02c}) hit the 300s CPU timeout; one task (\texttt{07a}) triggered provider safety refusal.}
 \end{table}
@@ -153,8 +154,8 @@ Line-by-line forensic inspection of both false-positive triggers confirms non-lo
 (2) on \texttt{09c\_Ecology}, \texttt{3.542} is a verbatim input value quoted from \texttt{data/island\_species.csv:L17} (\texttt{15,3.542,16}) while the locked v2 tracer indexed only \texttt{out/}.
 Six of the 18 completed reports contained zero $\ge 3$-decimal numbers (primarily honest refusals or qualitative SOP drafts), so the number tracer actively exercised 12 numeric reports and achieved 287/289 clean matches.
 
-\subsection{Reproducibility and Self-Audit}
+\subsection{Real-GPU Case Study and Self-Audit}
 \label{sec:dogfood}
 
-All 16 frozen workspaces, locked v2 gate snapshots (\texttt{eval/v2\_frozen/locked/}), unified ground-truth labels (\texttt{ground\_truth.csv}), raw trial JSONLs (\texttt{results\_layer1.jsonl}, \texttt{results\_factorial\_v2.jsonl}), unseen blind-test JSONL, trap-labeled forensic audit CSV, minimal unseen forensic files (\texttt{report/}, \texttt{out/}, \texttt{code/}, and \texttt{09c}'s cited CSV), and zero-override aggregators are committed in \RepoRef.
-Running \texttt{./veriloop eval-v2 layer1} verifies the locked v2 SHA-256 hashes and reproduces committed Layer-1 \texttt{predicted\_defective} and \texttt{details} fields verbatim (while \texttt{ground\_truth.csv} is joined dynamically at aggregation time); running \texttt{./veriloop test} passes 46 offline tests plus 6 catalog checks; and running \texttt{./veriloop audit-paper} verifies numbers, citations, style, and figures end to end.
+Beyond CPU tasks, a 42-run RTX 3060~Ti study (92.47~min, 593.0~MB VRAM; Appendix~\ref{app:gpu_case_study}, \texttt{examples/gpu-overnight-research/}) on CIFAR-10 (\texttt{M7\_SEResNet\_Full} 0.9193 vs.\ \texttt{M1\_PlainCNN} 0.7787, +14.06~pp) and Fashion-MNIST (+3.75~pp) passes 14/14 Wiki gates (\$0, 1365 traced decimals, 0 untraced, 81.8~ms median), 4/4 claims (\texttt{G1--G7}), and 75/75 expanded PDF decimals via \texttt{paper\_bind.py} and \texttt{review\_ui.html}.
+All frozen workspaces, locked v2 gates, \texttt{ground\_truth.csv}, JSONLs, and unseen artifacts are committed in \RepoRef; \texttt{./veriloop eval-v2 layer1} reproduces Layer~1 verbatim, \texttt{./veriloop test} passes 57 offline tests, and \texttt{./veriloop audit-paper} checks numbers, citations, style, and figures end to end.

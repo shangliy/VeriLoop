@@ -91,6 +91,13 @@ With `eval/v2_frozen/locked/trace_numbers_v2.py` (`42c39cf4a4adeee1`) and `audit
 - **Number-Level Out-of-Sample FPR:** **`2/289 (0.69%)`** (`2/18 = 11.1%` scenario-level FPR: unlogged analytic midpoint `0.425` on `04c` and raw CSV quote `3.542` on `09c`).
 - **Out-of-Sample Mechanical Recall:** Unmeasured (`0/18` completed unseen runs triggered a benchmark trap).
 
+### 3. Long-Horizon Real-GPU End-to-End Case Study (`42` RTX 3060 Ti Runs)
+
+Committed in [examples/gpu-overnight-research/](examples/gpu-overnight-research/) (`bash examples/gpu-overnight-research/run_reproduce.sh`): a crash-resumable 42-run multi-seed PyTorch AMP fp16 study (`5548.4s` / `92.47 min` GPU time, `593.0 MB` peak VRAM) across an 8-stage CIFAR-10 ladder (30 epochs, 3 seeds) and a 6-stage Fashion-MNIST ladder (15 epochs, 3 seeds):
+- **Live Per-Stage Governance (`$0` API cost):** **`14/14` stage gates passed** on `wiki/RESEARCH_WIKI.md` (`1365` cumulative traced decimals, `0` untraced, `0` sign mismatches, `0` AST `HIGH`, `81.8 ms` median latency), and `4/4` pre-registered claims pass `7/7` ledger gates (`G1–G7`, `0` post-evidence revisions).
+- **Zero-Transcription Binding & Verified Paper:** `./veriloop bind` ingests 126 TensorBoard/W&B files into `\vlC*` / `\vlF*` LaTeX macros, Booktabs tables, and Okabe-Ito PDFs → compiled ICML-style report ([overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf): **`75/75` expanded PDF numbers traced**, `0` Type-3 fonts, `0` warnings, `10/10` arXiv/Crossref/S2 verified references) + interactive split-pane [review_ui.html](examples/gpu-overnight-research/review_ui.html).
+- **Real Empirical Findings:** On CIFAR-10, `M7_SEResNet_Full` reaches `0.9193±0.0004` (`+14.06 pp` over `M1_PlainCNN`); across both datasets, unaugmented `M2_ResNet_Base` is severely overconfident (`raw_ece=0.1261 → cal_ece=0.0098`, `T*=2.6460`), whereas Label Smoothing (`T*=0.7234` / `0.6716`) and Mixup (`T*=0.6449`) invert into underconfidence until validation-fitted `T*<1` restores sub-1.5% ECE.
+
 ---
 
 ## Quick Start

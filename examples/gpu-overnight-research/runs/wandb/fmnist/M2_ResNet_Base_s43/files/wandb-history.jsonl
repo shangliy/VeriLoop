@@ -1,0 +1,15 @@
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 1, "train_loss": 0.474131, "val_acc": 0.823, "val_nll": 0.529359, "val_ece": 0.025644}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 2, "train_loss": 0.275666, "val_acc": 0.8225, "val_nll": 0.496858, "val_ece": 0.04915}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 3, "train_loss": 0.230443, "val_acc": 0.8989, "val_nll": 0.280436, "val_ece": 0.012299}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 4, "train_loss": 0.199173, "val_acc": 0.9117, "val_nll": 0.242856, "val_ece": 0.004991}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 5, "train_loss": 0.176999, "val_acc": 0.9102, "val_nll": 0.253152, "val_ece": 0.013414}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 6, "train_loss": 0.155442, "val_acc": 0.9076, "val_nll": 0.267879, "val_ece": 0.027237}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 7, "train_loss": 0.137351, "val_acc": 0.9083, "val_nll": 0.268594, "val_ece": 0.022719}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 8, "train_loss": 0.122281, "val_acc": 0.9112, "val_nll": 0.266225, "val_ece": 0.027751}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 9, "train_loss": 0.104022, "val_acc": 0.9054, "val_nll": 0.287237, "val_ece": 0.039411}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 10, "train_loss": 0.087665, "val_acc": 0.9111, "val_nll": 0.272361, "val_ece": 0.038254}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 11, "train_loss": 0.072067, "val_acc": 0.9025, "val_nll": 0.314504, "val_ece": 0.045151}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 12, "train_loss": 0.061411, "val_acc": 0.9177, "val_nll": 0.276106, "val_ece": 0.040739}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 13, "train_loss": 0.058068, "val_acc": 0.9178, "val_nll": 0.281924, "val_ece": 0.041356}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 14, "train_loss": 0.043304, "val_acc": 0.9018, "val_nll": 0.402195, "val_ece": 0.061276}
+{"dataset": "fmnist", "method": "M2_ResNet_Base", "seed": 43, "epoch": 15, "train_loss": 0.035042, "val_acc": 0.9076, "val_nll": 0.377288, "val_ece": 0.056219}

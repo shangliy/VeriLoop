@@ -1,0 +1,20 @@
+{
+  "dataset": "fmnist",
+  "method": "M1_PlainCNN",
+  "seed": 42,
+  "epochs": 15,
+  "batch_size": 256,
+  "n_params": 241546,
+  "selected_on": "val_acc",
+  "temp_scaling_fit_on": "val_logits",
+  "arch": "plain",
+  "aug": false,
+  "opt": "adamw",
+  "lr": 0.001,
+  "wd": 0.0,
+  "cos": false,
+  "ls": 0.0,
+  "mixup": 0.0,
+  "cutout": 0,
+  "se": false
+}

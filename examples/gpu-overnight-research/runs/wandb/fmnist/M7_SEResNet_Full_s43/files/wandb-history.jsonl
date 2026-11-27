@@ -1,0 +1,15 @@
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 1, "train_loss": 1.00465, "val_acc": 0.7977, "val_nll": 0.57081, "val_ece": 0.013235}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 2, "train_loss": 0.704869, "val_acc": 0.8129, "val_nll": 0.542893, "val_ece": 0.02431}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 3, "train_loss": 0.641351, "val_acc": 0.8313, "val_nll": 0.513676, "val_ece": 0.044927}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 4, "train_loss": 0.594144, "val_acc": 0.8753, "val_nll": 0.366769, "val_ece": 0.01816}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 5, "train_loss": 0.564159, "val_acc": 0.8676, "val_nll": 0.376065, "val_ece": 0.015908}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 6, "train_loss": 0.544972, "val_acc": 0.8414, "val_nll": 0.479862, "val_ece": 0.012381}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 7, "train_loss": 0.527444, "val_acc": 0.8803, "val_nll": 0.340197, "val_ece": 0.024163}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 8, "train_loss": 0.514792, "val_acc": 0.8735, "val_nll": 0.398247, "val_ece": 0.011567}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 9, "train_loss": 0.502714, "val_acc": 0.904, "val_nll": 0.290161, "val_ece": 0.034642}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 10, "train_loss": 0.491578, "val_acc": 0.8755, "val_nll": 0.365785, "val_ece": 0.023354}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 11, "train_loss": 0.476493, "val_acc": 0.9235, "val_nll": 0.251651, "val_ece": 0.038529}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 12, "train_loss": 0.465688, "val_acc": 0.9274, "val_nll": 0.233035, "val_ece": 0.031011}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 13, "train_loss": 0.449944, "val_acc": 0.9345, "val_nll": 0.212573, "val_ece": 0.033951}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 14, "train_loss": 0.441187, "val_acc": 0.9403, "val_nll": 0.199187, "val_ece": 0.03621}
+{"dataset": "fmnist", "method": "M7_SEResNet_Full", "seed": 43, "epoch": 15, "train_loss": 0.433441, "val_acc": 0.943, "val_nll": 0.19569, "val_ece": 0.039245}

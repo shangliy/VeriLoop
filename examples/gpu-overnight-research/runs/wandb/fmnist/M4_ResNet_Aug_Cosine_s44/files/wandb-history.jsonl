@@ -1,0 +1,15 @@
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 1, "train_loss": 0.634332, "val_acc": 0.7683, "val_nll": 0.673523, "val_ece": 0.02277}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 2, "train_loss": 0.404723, "val_acc": 0.8537, "val_nll": 0.407376, "val_ece": 0.01075}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 3, "train_loss": 0.337178, "val_acc": 0.8094, "val_nll": 0.552647, "val_ece": 0.062809}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 4, "train_loss": 0.292965, "val_acc": 0.8685, "val_nll": 0.370956, "val_ece": 0.040335}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 5, "train_loss": 0.271711, "val_acc": 0.8909, "val_nll": 0.305067, "val_ece": 0.020416}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 6, "train_loss": 0.253455, "val_acc": 0.8893, "val_nll": 0.308774, "val_ece": 0.014208}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 7, "train_loss": 0.236111, "val_acc": 0.8894, "val_nll": 0.307562, "val_ece": 0.009803}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 8, "train_loss": 0.22436, "val_acc": 0.908, "val_nll": 0.247046, "val_ece": 0.008629}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 9, "train_loss": 0.214049, "val_acc": 0.9244, "val_nll": 0.210637, "val_ece": 0.00186}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 10, "train_loss": 0.199358, "val_acc": 0.9228, "val_nll": 0.208446, "val_ece": 0.008893}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 11, "train_loss": 0.186174, "val_acc": 0.9157, "val_nll": 0.230996, "val_ece": 0.008305}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 12, "train_loss": 0.173222, "val_acc": 0.9281, "val_nll": 0.197037, "val_ece": 0.009349}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 13, "train_loss": 0.157074, "val_acc": 0.9394, "val_nll": 0.169446, "val_ece": 0.008798}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 14, "train_loss": 0.145294, "val_acc": 0.9397, "val_nll": 0.165627, "val_ece": 0.006372}
+{"dataset": "fmnist", "method": "M4_ResNet_Aug_Cosine", "seed": 44, "epoch": 15, "train_loss": 0.138583, "val_acc": 0.9419, "val_nll": 0.162388, "val_ece": 0.007639}

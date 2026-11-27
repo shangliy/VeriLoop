@@ -63,6 +63,13 @@
 - **数值级样本外 FPR：** **`2/289 (0.69%)`**（场景级 `2/18 = 11.1%`：`04c` 解析中点 `0.425` 与 `09c` 原始 CSV 值 `3.542`）。
 - **样本外机械召回率：** 未测得（`0/18` 完成的未见运行触发基准陷阱）。
 
+### 3. 长程真实 GPU 端到端标杆案例（`42` 次 RTX 3060 Ti 训练轨迹）
+
+完整公开轨迹与复现脚本已提交至 [examples/gpu-overnight-research/](examples/gpu-overnight-research/)（`bash examples/gpu-overnight-research/run_reproduce.sh`）：在本地 **NVIDIA GeForce RTX 3060 Ti** 上执行可断点续跑的 42 次多随机种子 PyTorch AMP fp16 训练（总耗时 `5548.4s` / `92.47 min`，峰值显存 `593.0 MB`），覆盖 CIFAR-10 八阶段渐进消融（30 epochs × 3 seeds）与 Fashion-MNIST 六阶段跨数据集验证（15 epochs × 3 seeds）：
+- **全阶段零费用硬门控：** `wiki/RESEARCH_WIKI.md` 全部 **`14/14` 阶段门控通过**（累计溯源 `1365` 个小数、`0` 未溯源、`0` 正负号错误、`0` AST 高危告警，中位耗时 `81.8 ms`）；4 条事前预注册假设全部通过 `G1–G7`（`0` 次事后改口）。
+- **零手工抄数成文与全链路核验：** `./veriloop bind` 直接读取 126 个 TensorBoard/W&B 日志生成 `\vlC*` / `\vlF*` LaTeX 宏、Booktabs 表格与 Okabe-Ito 矢量图 → 编译出 [overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf)（**PDF 宏展开后 `75/75` 数值 100% 溯源**、`0` Type-3 字体、`0` 排版警告、`10/10` 参考文献通过 arXiv/Crossref/S2 联网核验）并生成交互式分栏审稿界面 [review_ui.html](examples/gpu-overnight-research/review_ui.html)。
+- **真实科学发现：** CIFAR-10 上 `M7_SEResNet_Full` 达到 `0.9193±0.0004`（较 `M1_PlainCNN` 提升 `+14.06 pp`）；两个数据集一致复现了**校准反转现象**——无增强残差网 `M2_ResNet_Base` 极度过自信（`raw_ece=0.1261 → cal_ece=0.0098`，`T*=2.6460`），而 Label Smoothing（`T*=0.7234` / `0.6716`）与 Mixup（`T*=0.6449`）反转为欠自信，经验证集温度缩放 `T*<1` 后重新压回 `1.5%` 以下。
+
 ---
 
 ## 快速上手

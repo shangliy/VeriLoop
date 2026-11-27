@@ -1,0 +1,373 @@
+{
+ "schema_version": 2,
+ "next_seq": 19,
+ "claims": {
+  "H1_ResidualGain": {
+   "text": "3-stage SmallResNet with BatchNorm (M2_ResNet_Base) improves held-out test accuracy over PlainCNN (M1_PlainCNN) across 3 seeds on CIFAR-10 and Fashion-MNIST under identical validation-only checkpoint selection.",
+   "metric": "test_acc (mean±sd, 95% CI)",
+   "select_on": "valid",
+   "seeds_planned": 3,
+   "require_ci": true,
+   "baselines": [
+    "M0_Linear",
+    "M1_PlainCNN"
+   ],
+   "kill": "M2_ResNet_Base fails to outperform M1_PlainCNN on CIFAR-10 test_acc across 3 seeds.",
+   "scope": "CIFAR-10 (30 ep) & Fashion-MNIST (15 ep), RTX 3060 Ti AMP fp16",
+   "status": "supported",
+   "registered": "2026-11-26T17:26:50.891497",
+   "history": [
+    {
+     "seq": 1,
+     "at": "2026-11-26T17:26:50.891497",
+     "text": "3-stage SmallResNet with BatchNorm (M2_ResNet_Base) improves held-out test accuracy over PlainCNN (M1_PlainCNN) across 3 seeds on CIFAR-10 and Fashion-MNIST under identical validation-only checkpoint selection.",
+     "why": "registered"
+    }
+   ],
+   "evidence": [
+    {
+     "seq": 5,
+     "at": "2026-11-26T19:01:01.375129",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "baseline",
+     "dataset": "cifar10",
+     "arm": "M0_Linear",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK"
+    },
+    {
+     "seq": 6,
+     "at": "2026-11-26T19:01:01.407799",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "baseline",
+     "dataset": "cifar10",
+     "arm": "M1_PlainCNN",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK"
+    },
+    {
+     "seq": 7,
+     "at": "2026-11-26T19:01:01.438540",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "method",
+     "dataset": "cifar10",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "changes": 1,
+     "ablated": 1,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK",
+     "note": "M2_ResNet_Base 0.8112 vs M1_PlainCNN 0.7787"
+    },
+    {
+     "seq": 8,
+     "at": "2026-11-26T19:01:01.469526",
+     "log": "out/wiki_metrics.log",
+     "sha256": "253c1780f20b10f224ba86f8e734d74d2a23d7d07100c2a272091f702f6b64f3",
+     "size_bytes": 2793,
+     "role": "method",
+     "dataset": "fmnist",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "changes": 1,
+     "ablated": 1,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK",
+     "note": "M2_ResNet_Base 0.9155 vs M1_PlainCNN 0.8998"
+    }
+   ],
+   "status_log": [
+    {
+     "at": "2026-11-26T19:01:01.502822",
+     "from": "proposed",
+     "to": "supported",
+     "by": "reviewer"
+    }
+   ]
+  },
+  "H2_AugCosineGain": {
+   "text": "Data augmentation plus Nesterov SGD with warmup-cosine decay and weight decay (M4_ResNet_Aug_Cosine) and SE+Cutout+mild label smoothing (M7_SEResNet_Full) yield progressive accuracy gains over M2_ResNet_Base on CIFAR-10 without test-set leakage.",
+   "metric": "test_acc (mean±sd)",
+   "select_on": "valid",
+   "seeds_planned": 3,
+   "require_ci": true,
+   "baselines": [
+    "M2_ResNet_Base",
+    "M3_ResNet_Aug"
+   ],
+   "kill": "M4_ResNet_Aug_Cosine <= M2_ResNet_Base or M7_SEResNet_Full <= M3_ResNet_Aug on CIFAR-10.",
+   "scope": "CIFAR-10 (30 ep, 3 seeds)",
+   "status": "supported",
+   "registered": "2026-11-26T17:26:50.935977",
+   "history": [
+    {
+     "seq": 2,
+     "at": "2026-11-26T17:26:50.935977",
+     "text": "Data augmentation plus Nesterov SGD with warmup-cosine decay and weight decay (M4_ResNet_Aug_Cosine) and SE+Cutout+mild label smoothing (M7_SEResNet_Full) yield progressive accuracy gains over M2_ResNet_Base on CIFAR-10 without test-set leakage.",
+     "why": "registered"
+    }
+   ],
+   "evidence": [
+    {
+     "seq": 9,
+     "at": "2026-11-26T19:01:01.534951",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "baseline",
+     "dataset": "cifar10",
+     "arm": "M2_ResNet_Base",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK"
+    },
+    {
+     "seq": 10,
+     "at": "2026-11-26T19:01:01.566518",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "baseline",
+     "dataset": "cifar10",
+     "arm": "M3_ResNet_Aug",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK"
+    },
+    {
+     "seq": 11,
+     "at": "2026-11-26T19:01:01.596894",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "method",
+     "dataset": "cifar10",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "changes": 3,
+     "ablated": 3,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK",
+     "note": "M4 0.9152, M7 0.9193 vs M2 0.8112 & M3 0.8764"
+    },
+    {
+     "seq": 12,
+     "at": "2026-11-26T19:01:01.630610",
+     "log": "paper/bound/cifar10/bound_metrics.txt",
+     "sha256": "2c2e4ced80430365dc4c1f485f55a54572d77cdc4127978a6c3822a633927135",
+     "size_bytes": 20727,
+     "role": "ablation",
+     "dataset": "cifar10",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "changes": 3,
+     "ablated": 3,
+     "has_ci": true,
+     "note": "Progressive 8-step CIFAR-10 ablation ladder"
+    }
+   ],
+   "status_log": [
+    {
+     "at": "2026-11-26T19:01:01.662036",
+     "from": "proposed",
+     "to": "supported",
+     "by": "reviewer"
+    }
+   ]
+  },
+  "H3_CalibrationTradeoff": {
+   "text": "Training-time regularizers (Label Smoothing eps=0.1, Mixup alpha=0.4) and validation-fitted post-hoc Temperature Scaling (T*) substantially alter Expected Calibration Error (ECE) relative to uncalibrated cross-entropy models, and post-hoc T* reduces raw NLL/ECE on overconfident cross-entropy baselines without touching test labels.",
+   "metric": "raw_ece, cal_ece, raw_nll, cal_nll (15-bin)",
+   "select_on": "valid",
+   "seeds_planned": 3,
+   "require_ci": true,
+   "baselines": [
+    "M4_ResNet_Aug_Cosine"
+   ],
+   "kill": "Post-hoc validation-fitted Temperature Scaling fails to reduce test NLL or ECE on M2_ResNet_Base and M4_ResNet_Aug_Cosine on CIFAR-10.",
+   "scope": "CIFAR-10 (30 ep) & Fashion-MNIST (15 ep), post-hoc T* fit on val logits",
+   "status": "supported",
+   "registered": "2026-11-26T17:26:50.984618",
+   "history": [
+    {
+     "seq": 3,
+     "at": "2026-11-26T17:26:50.984618",
+     "text": "Training-time regularizers (Label Smoothing eps=0.1, Mixup alpha=0.4) and validation-fitted post-hoc Temperature Scaling (T*) substantially alter Expected Calibration Error (ECE) relative to uncalibrated cross-entropy models, and post-hoc T* reduces raw NLL/ECE on overconfident cross-entropy baselines without touching test labels.",
+     "why": "registered"
+    }
+   ],
+   "evidence": [
+    {
+     "seq": 13,
+     "at": "2026-11-26T19:01:01.693412",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "baseline",
+     "dataset": "cifar10",
+     "arm": "M4_ResNet_Aug_Cosine",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK"
+    },
+    {
+     "seq": 14,
+     "at": "2026-11-26T19:01:01.724178",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "method",
+     "dataset": "cifar10",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "changes": 2,
+     "ablated": 2,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK",
+     "note": "LS/Mixup invert confidence (T*<1); val T* slashes ECE/NLL"
+    },
+    {
+     "seq": 15,
+     "at": "2026-11-26T19:01:01.756285",
+     "log": "paper/bound/cifar10/bound_metrics.txt",
+     "sha256": "2c2e4ced80430365dc4c1f485f55a54572d77cdc4127978a6c3822a633927135",
+     "size_bytes": 20727,
+     "role": "ablation",
+     "dataset": "cifar10",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "changes": 2,
+     "ablated": 2,
+     "has_ci": true,
+     "note": "LS vs Mixup vs raw CE calibration comparison"
+    }
+   ],
+   "status_log": [
+    {
+     "at": "2026-11-26T19:01:01.787098",
+     "from": "proposed",
+     "to": "supported",
+     "by": "reviewer"
+    }
+   ]
+  },
+  "H4_CrossDatasetRank": {
+   "text": "The full regularized residual architecture (M7_SEResNet_Full) outperforms M0_Linear and M1_PlainCNN on both CIFAR-10 and Fashion-MNIST while every intermediate Research Wiki update passes deterministic Layer-1 number tracing and AST code auditing at zero API cost.",
+   "metric": "test_acc across 2 datasets + gate_pass_rate",
+   "select_on": "valid",
+   "seeds_planned": 3,
+   "require_ci": true,
+   "baselines": [
+    "M0_Linear",
+    "M1_PlainCNN"
+   ],
+   "kill": "M7_SEResNet_Full fails to beat M1_PlainCNN on either dataset or any stage gate fails with untraced numbers or HIGH AST findings.",
+   "scope": "CIFAR-10 + Fashion-MNIST, 42 total GPU runs",
+   "status": "supported",
+   "registered": "2026-11-26T17:26:51.028400",
+   "history": [
+    {
+     "seq": 4,
+     "at": "2026-11-26T17:26:51.028400",
+     "text": "The full regularized residual architecture (M7_SEResNet_Full) outperforms M0_Linear and M1_PlainCNN on both CIFAR-10 and Fashion-MNIST while every intermediate Research Wiki update passes deterministic Layer-1 number tracing and AST code auditing at zero API cost.",
+     "why": "registered"
+    }
+   ],
+   "evidence": [
+    {
+     "seq": 16,
+     "at": "2026-11-26T19:01:01.817749",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "baseline",
+     "dataset": "cifar10",
+     "arm": "M0_Linear",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK"
+    },
+    {
+     "seq": 17,
+     "at": "2026-11-26T19:01:01.848522",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "baseline",
+     "dataset": "cifar10",
+     "arm": "M1_PlainCNN",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK"
+    },
+    {
+     "seq": 18,
+     "at": "2026-11-26T19:01:01.878903",
+     "log": "out/overnight_summary.txt",
+     "sha256": "d60e353ab68ab00e097f998150838e6d2ad51dcafb1677b5ee18e52c4c360c8c",
+     "size_bytes": 4200,
+     "role": "method",
+     "dataset": "cifar10",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "changes": 2,
+     "ablated": 2,
+     "has_ci": true,
+     "complete_marker": "COMPLETED_OK"
+    },
+    {
+     "seq": 19,
+     "at": "2026-11-26T19:01:01.910159",
+     "log": "paper/bound/fmnist/bound_metrics.txt",
+     "sha256": "2e5b4fda77670969e0e66e19f558b4b986ba65a0cba87327fd05bbdce1e494ec",
+     "size_bytes": 15501,
+     "role": "ablation",
+     "dataset": "fmnist",
+     "seeds": 3,
+     "selected_on": "valid",
+     "n": 10000,
+     "changes": 2,
+     "ablated": 2,
+     "has_ci": true
+    }
+   ],
+   "status_log": [
+    {
+     "at": "2026-11-26T19:01:01.942110",
+     "from": "proposed",
+     "to": "supported",
+     "by": "reviewer"
+    }
+   ]
+  }
+ }
+}

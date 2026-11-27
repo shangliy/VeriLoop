@@ -1,0 +1,16 @@
+dataset,method,seed,epoch,train_loss,val_acc,val_nll,val_ece
+fmnist,M4_ResNet_Aug_Cosine,44,1,0.634332,0.7683,0.673523,0.02277
+fmnist,M4_ResNet_Aug_Cosine,44,2,0.404723,0.8537,0.407376,0.01075
+fmnist,M4_ResNet_Aug_Cosine,44,3,0.337178,0.8094,0.552647,0.062809
+fmnist,M4_ResNet_Aug_Cosine,44,4,0.292965,0.8685,0.370956,0.040335
+fmnist,M4_ResNet_Aug_Cosine,44,5,0.271711,0.8909,0.305067,0.020416
+fmnist,M4_ResNet_Aug_Cosine,44,6,0.253455,0.8893,0.308774,0.014208
+fmnist,M4_ResNet_Aug_Cosine,44,7,0.236111,0.8894,0.307562,0.009803
+fmnist,M4_ResNet_Aug_Cosine,44,8,0.22436,0.908,0.247046,0.008629
+fmnist,M4_ResNet_Aug_Cosine,44,9,0.214049,0.9244,0.210637,0.00186
+fmnist,M4_ResNet_Aug_Cosine,44,10,0.199358,0.9228,0.208446,0.008893
+fmnist,M4_ResNet_Aug_Cosine,44,11,0.186174,0.9157,0.230996,0.008305
+fmnist,M4_ResNet_Aug_Cosine,44,12,0.173222,0.9281,0.197037,0.009349
+fmnist,M4_ResNet_Aug_Cosine,44,13,0.157074,0.9394,0.169446,0.008798
+fmnist,M4_ResNet_Aug_Cosine,44,14,0.145294,0.9397,0.165627,0.006372
+fmnist,M4_ResNet_Aug_Cosine,44,15,0.138583,0.9419,0.162388,0.007639

@@ -124,3 +124,41 @@ Table~\ref{tab:gates} specifies all seven claim-ledger gates enforced by \texttt
 \bottomrule
 \end{tabularx}
 \end{table*}
+
+\section{Long-Horizon Real-GPU Deep Learning Case Study}
+\label{app:gpu_case_study}
+
+To validate VeriLoop's end-to-end governance, log-to-\LaTeX{} binding (\texttt{paper\_bind.py}), online citation verification (\texttt{citation\_audit.py}), expanded-PDF auditing (\texttt{pdf\_audit.py}), and interactive split-pane review workbench (\texttt{review\_ui.py}) on a sustained deep learning workload, we ran 42 multi-seed PyTorch AMP fp16 training jobs on a local NVIDIA GeForce RTX 3060~Ti (5548.4~s / 92.47~min total compute, 593.0~MB peak VRAM; full artifact committed under \texttt{examples/gpu-overnight-research/}).
+Four falsifiable hypotheses were pre-registered in \texttt{claims.json} prior to training; every checkpoint and post-hoc temperature $T^*$ was selected strictly on the validation split; and held-out test metrics were scored once and logged to TensorBoard, W\&B, CSV, and an append-only ledger.
+Across all 14 completed stages (8 CIFAR-10 + 6 Fashion-MNIST), VeriLoop updated \texttt{wiki/RESEARCH\_WIKI.md} and ran deterministic Layer-1 gates automatically: 14/14 stage gates passed (1365 cumulative traced decimals, 0 untraced, 0 sign mismatches, 0 AST \texttt{HIGH} findings, 81.8~ms median latency at \$0 API cost).
+Table~\ref{tab:app_gpu} summarizes the verified multi-seed results, including the cross-dataset calibration reversal where unaugmented \texttt{M2\_ResNet\_Base} is severely overconfident ($T^*=2.6460$) while Label Smoothing ($T^*=0.7234$ / $0.6716$) and Mixup ($T^*=0.6449$) induce underconfidence that validation-fitted post-hoc Temperature Scaling resolves.
+
+\begin{table*}[h]
+\centering
+\caption{\textbf{End-to-end 42-run RTX 3060~Ti deep learning trajectory governed by VeriLoop (\texttt{examples/gpu-overnight-research/}).} All metrics are mean $\pm$ std across 3 independent seeds (zero manual transcription; auto-bound from 126 TensorBoard/W\&B files). All 14/14 live stage gates passed in 81.8~ms median latency at \$0 API cost.}
+\label{tab:app_gpu}
+\setlength{\tabcolsep}{3.4pt}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccccc}
+\toprule
+\textbf{Dataset} & \textbf{Method} & \textbf{Val Acc} & \textbf{Test Acc} & \textbf{Raw ECE $\downarrow$} & \textbf{Cal ECE $\downarrow$} & \textbf{Cal NLL $\downarrow$} & \textbf{Mean $T^*$} \\
+\midrule
+CIFAR-10 & \texttt{M0\_Linear}            & 0.3722$\pm$0.0025 & 0.3692$\pm$0.0090 & 0.0959$\pm$0.0135 & 0.0236$\pm$0.0061 & 1.8050$\pm$0.0130 & 1.4978 \\
+CIFAR-10 & \texttt{M1\_PlainCNN}          & 0.7838$\pm$0.0043 & 0.7787$\pm$0.0029 & 0.0281$\pm$0.0038 & 0.0127$\pm$0.0048 & 0.6407$\pm$0.0041 & 1.1669 \\
+CIFAR-10 & \texttt{M2\_ResNet\_Base}      & 0.8134$\pm$0.0052 & 0.8112$\pm$0.0058 & 0.1261$\pm$0.0074 & 0.0098$\pm$0.0023 & 0.5624$\pm$0.0170 & 2.6460 \\
+CIFAR-10 & \texttt{M3\_ResNet\_Aug}       & 0.8760$\pm$0.0075 & 0.8764$\pm$0.0034 & 0.0487$\pm$0.0047 & 0.0088$\pm$0.0006 & 0.3641$\pm$0.0083 & 1.5584 \\
+CIFAR-10 & \texttt{M4\_ResNet\_Aug\_Cosine} & 0.9160$\pm$0.0024 & 0.9152$\pm$0.0011 & 0.0324$\pm$0.0013 & \textbf{0.0061$\pm$0.0015} & \textbf{0.2500$\pm$0.0031} & 1.4338 \\
+CIFAR-10 & \texttt{M5\_ResNet\_LS}        & 0.9186$\pm$0.0023 & 0.9173$\pm$0.0027 & 0.0619$\pm$0.0028 & 0.0116$\pm$0.0033 & 0.2674$\pm$0.0029 & 0.7234 \\
+CIFAR-10 & \texttt{M6\_ResNet\_Mixup}     & 0.9167$\pm$0.0013 & 0.9181$\pm$0.0016 & 0.0954$\pm$0.0054 & 0.0065$\pm$0.0007 & 0.2535$\pm$0.0021 & 0.6449 \\
+CIFAR-10 & \texttt{M7\_SEResNet\_Full}    & \textbf{0.9208$\pm$0.0024} & \textbf{0.9193$\pm$0.0004} & 0.0302$\pm$0.0018 & 0.0120$\pm$0.0013 & 0.2560$\pm$0.0007 & 0.8192 \\
+\midrule
+F-MNIST  & \texttt{M0\_Linear}            & 0.8511$\pm$0.0004 & 0.8400$\pm$0.0011 & 0.0154$\pm$0.0038 & 0.0099$\pm$0.0006 & 0.4444$\pm$0.0005 & 1.0765 \\
+F-MNIST  & \texttt{M1\_PlainCNN}          & 0.9031$\pm$0.0014 & 0.8998$\pm$0.0006 & \textbf{0.0059$\pm$0.0018} & \textbf{0.0069$\pm$0.0016} & 0.2845$\pm$0.0018 & 0.9805 \\
+F-MNIST  & \texttt{M2\_ResNet\_Base}      & 0.9194$\pm$0.0024 & 0.9155$\pm$0.0026 & 0.0294$\pm$0.0164 & 0.0110$\pm$0.0007 & 0.2381$\pm$0.0063 & 1.3368 \\
+F-MNIST  & \texttt{M4\_ResNet\_Aug\_Cosine} & 0.9416$\pm$0.0015 & 0.9393$\pm$0.0013 & 0.0123$\pm$0.0004 & 0.0082$\pm$0.0010 & \textbf{0.1736$\pm$0.0034} & 1.0719 \\
+F-MNIST  & \texttt{M5\_ResNet\_LS}        & \textbf{0.9421$\pm$0.0010} & \textbf{0.9394$\pm$0.0004} & 0.0725$\pm$0.0009 & 0.0145$\pm$0.0005 & 0.1921$\pm$0.0020 & 0.6716 \\
+F-MNIST  & \texttt{M7\_SEResNet\_Full}    & 0.9420$\pm$0.0011 & 0.9373$\pm$0.0012 & 0.0299$\pm$0.0021 & 0.0134$\pm$0.0006 & 0.1900$\pm$0.0017 & 0.7632 \\
+\bottomrule
+\end{tabular}}
+\end{table*}

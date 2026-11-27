@@ -1,0 +1,20 @@
+{
+  "dataset": "fmnist",
+  "method": "M7_SEResNet_Full",
+  "seed": 43,
+  "epochs": 15,
+  "batch_size": 256,
+  "n_params": 707818,
+  "selected_on": "val_acc",
+  "temp_scaling_fit_on": "val_logits",
+  "arch": "resnet",
+  "aug": true,
+  "opt": "sgd",
+  "lr": 0.1,
+  "wd": 0.0005,
+  "cos": true,
+  "ls": 0.05,
+  "mixup": 0.0,
+  "cutout": 8,
+  "se": true
+}

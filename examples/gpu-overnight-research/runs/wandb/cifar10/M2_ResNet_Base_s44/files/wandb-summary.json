@@ -1,0 +1,23 @@
+{
+  "timestamp_utc": "2026-11-27T01:42:39.216113+00:00",
+  "dataset": "cifar10",
+  "method": "M2_ResNet_Base",
+  "seed": 44,
+  "epochs": 30,
+  "n_params": 696618,
+  "best_val_epoch": 25,
+  "val_acc": 0.8166,
+  "test_acc": 0.8164,
+  "test_nll": 0.85776,
+  "test_ece": 0.12074,
+  "test_brier": 0.298442,
+  "temp_T": 2.5701,
+  "cal_nll": 0.547458,
+  "cal_ece": 0.007938,
+  "cal_brier": 0.260768,
+  "wall_time_s": 190.6,
+  "peak_vram_mb": 313.9,
+  "device": "NVIDIA GeForce RTX 3060 Ti",
+  "torch_version": "2.9.1+cu128",
+  "_step": 30
+}

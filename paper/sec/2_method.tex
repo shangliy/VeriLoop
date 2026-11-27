@@ -49,8 +49,8 @@ Without executing untrusted code, \texttt{audit\_code.py} parses every script in
 \texttt{DEAD\_METRIC\_CODE} (defined but uncalled metric functions), and
 \texttt{OPTIMISTIC\_TIE\_BREAKING} (strict \texttt{>} rank counts).
 
-\paragraph{BibTeX verification (\texttt{citation\_audit.py}).}
-For LaTeX manuscripts, \texttt{citation\_audit.py} extracts every citation key, validates its presence in \texttt{refs.bib}, and flags missing keys before compilation.
+\paragraph{Online citation verification, log binding, and PDF auditing.}
+\texttt{citation\_audit.py} checks BibTeX keys locally and optionally queries arXiv, Crossref, and Semantic Scholar (\texttt{--online --check-claims}) to block fabricated or abstract-contradicting citations; \texttt{paper\_bind.py}, \texttt{pdf\_audit.py}, and \texttt{review\_ui.py} bind TensorBoard/W\&B/CSV logs directly into \LaTeX{} macros/tables/PDFs and link clickable manuscript numbers back to exact \texttt{log:line} sources.
 
 \subsection{Independent Layer-2 Auditing and Dual-Model Milestone Gates}
 \label{sec:layer2}

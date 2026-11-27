@@ -1,0 +1,20 @@
+{
+  "dataset": "cifar10",
+  "method": "M3_ResNet_Aug",
+  "seed": 44,
+  "epochs": 30,
+  "batch_size": 256,
+  "n_params": 696618,
+  "selected_on": "val_acc",
+  "temp_scaling_fit_on": "val_logits",
+  "arch": "resnet",
+  "aug": true,
+  "opt": "adamw",
+  "lr": 0.001,
+  "wd": 0.0001,
+  "cos": false,
+  "ls": 0.0,
+  "mixup": 0.0,
+  "cutout": 0,
+  "se": false
+}

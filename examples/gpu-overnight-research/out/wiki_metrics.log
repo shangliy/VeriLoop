@@ -1,0 +1,17 @@
+# VeriLoop Overnight GPU Trajectory Canonical Log
+# updated_utc=2026-11-27T02:59:49Z completed_runs=42 ledger_sha256=09556a9fa536a86f
+STAGE cifar10 M0_Linear            n=3 | val_acc=0.3722±0.0025 test_acc=0.3692±0.0090 raw_ece=0.0959±0.0135 cal_ece=0.0236±0.0061 raw_nll=1.8679±0.0210 cal_nll=1.8050±0.0130 T=1.4978
+STAGE cifar10 M1_PlainCNN          n=3 | val_acc=0.7838±0.0043 test_acc=0.7787±0.0029 raw_ece=0.0281±0.0038 cal_ece=0.0127±0.0048 raw_nll=0.6484±0.0016 cal_nll=0.6407±0.0041 T=1.1669
+STAGE cifar10 M2_ResNet_Base       n=3 | val_acc=0.8134±0.0052 test_acc=0.8112±0.0058 raw_ece=0.1261±0.0074 cal_ece=0.0098±0.0023 raw_nll=0.9155±0.0716 cal_nll=0.5624±0.0170 T=2.6460
+STAGE cifar10 M3_ResNet_Aug        n=3 | val_acc=0.8760±0.0075 test_acc=0.8764±0.0034 raw_ece=0.0487±0.0047 cal_ece=0.0088±0.0006 raw_nll=0.4112±0.0154 cal_nll=0.3641±0.0083 T=1.5584
+STAGE cifar10 M4_ResNet_Aug_Cosine n=3 | val_acc=0.9160±0.0024 test_acc=0.9152±0.0011 raw_ece=0.0324±0.0013 cal_ece=0.0061±0.0015 raw_nll=0.2728±0.0038 cal_nll=0.2500±0.0031 T=1.4338
+STAGE cifar10 M5_ResNet_LS         n=3 | val_acc=0.9186±0.0023 test_acc=0.9173±0.0027 raw_ece=0.0619±0.0028 cal_ece=0.0116±0.0033 raw_nll=0.3076±0.0018 cal_nll=0.2674±0.0029 T=0.7234
+STAGE cifar10 M6_ResNet_Mixup      n=3 | val_acc=0.9167±0.0013 test_acc=0.9181±0.0016 raw_ece=0.0954±0.0054 cal_ece=0.0065±0.0007 raw_nll=0.3226±0.0052 cal_nll=0.2535±0.0021 T=0.6449
+STAGE cifar10 M7_SEResNet_Full     n=3 | val_acc=0.9208±0.0024 test_acc=0.9193±0.0004 raw_ece=0.0302±0.0018 cal_ece=0.0120±0.0013 raw_nll=0.2710±0.0005 cal_nll=0.2560±0.0007 T=0.8192
+STAGE fmnist  M0_Linear            n=3 | val_acc=0.8511±0.0004 test_acc=0.8400±0.0011 raw_ece=0.0154±0.0038 cal_ece=0.0099±0.0006 raw_nll=0.4472±0.0021 cal_nll=0.4444±0.0005 T=1.0765
+STAGE fmnist  M1_PlainCNN          n=3 | val_acc=0.9031±0.0014 test_acc=0.8998±0.0006 raw_ece=0.0059±0.0018 cal_ece=0.0069±0.0016 raw_nll=0.2842±0.0019 cal_nll=0.2845±0.0018 T=0.9805
+STAGE fmnist  M2_ResNet_Base       n=3 | val_acc=0.9194±0.0024 test_acc=0.9155±0.0026 raw_ece=0.0294±0.0164 cal_ece=0.0110±0.0007 raw_nll=0.2627±0.0313 cal_nll=0.2381±0.0063 T=1.3368
+STAGE fmnist  M4_ResNet_Aug_Cosine n=3 | val_acc=0.9416±0.0015 test_acc=0.9393±0.0013 raw_ece=0.0123±0.0004 cal_ece=0.0082±0.0010 raw_nll=0.1753±0.0035 cal_nll=0.1736±0.0034 T=1.0719
+STAGE fmnist  M5_ResNet_LS         n=3 | val_acc=0.9421±0.0010 test_acc=0.9394±0.0004 raw_ece=0.0725±0.0009 cal_ece=0.0145±0.0005 raw_nll=0.2472±0.0019 cal_nll=0.1921±0.0020 T=0.6716
+STAGE fmnist  M7_SEResNet_Full     n=3 | val_acc=0.9420±0.0011 test_acc=0.9373±0.0012 raw_ece=0.0299±0.0021 cal_ece=0.0134±0.0006 raw_nll=0.2079±0.0014 cal_nll=0.1900±0.0017 T=0.7632
+COMPLETED_OK

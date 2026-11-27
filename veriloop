@@ -183,7 +183,11 @@ def main():
             tf.write(combined)
             tmp_path = tf.name
         try:
-            r1 = subprocess.run([sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), tmp_path, "--logs", str(ROOT / "paper/out/stats_summary.txt")])
+            audit_flags = ["--logs", str(ROOT / "paper/out/stats_summary.txt")]
+            gpu_summary = ROOT / "examples/gpu-overnight-research/out/overnight_summary.txt"
+            if gpu_summary.is_file():
+                audit_flags.extend(["--logs", str(gpu_summary)])
+            r1 = subprocess.run([sys.executable, str(RL_SCRIPTS / "trace_numbers.py"), tmp_path, *audit_flags])
             r2 = subprocess.run([sys.executable, str(RL_SCRIPTS / "citation_audit.py"), tmp_path, "--bib", str(ROOT / "paper/refs.bib")])
             r3_rc = 0 if no_lint else run_lint_paper([])
             sys.exit(0 if (r1.returncode == 0 and r2.returncode == 0 and r3_rc == 0) else 1)

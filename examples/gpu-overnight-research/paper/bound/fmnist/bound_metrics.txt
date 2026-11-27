@@ -1,0 +1,94 @@
+# VeriLoop Paper-Bind Canonical Metrics Log (auto-generated; do not edit by hand)
+# generated_utc=2026-11-27T03:09:24.283383+00:00 sources=54 methods=6 metrics=6
+SOURCE format=tensorboard sha256=fdd75101a3c926e6 points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M0_Linear_s42/events.out.tfevents.fmnist.M0_Linear.s42
+SOURCE format=tensorboard sha256=35990c2206d8a108 points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M0_Linear_s43/events.out.tfevents.fmnist.M0_Linear.s43
+SOURCE format=tensorboard sha256=47ed9ac0c1c25a6b points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M0_Linear_s44/events.out.tfevents.fmnist.M0_Linear.s44
+SOURCE format=tensorboard sha256=b8de61353e920d2d points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M1_PlainCNN_s42/events.out.tfevents.fmnist.M1_PlainCNN.s42
+SOURCE format=tensorboard sha256=cee79a94deea680b points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M1_PlainCNN_s43/events.out.tfevents.fmnist.M1_PlainCNN.s43
+SOURCE format=tensorboard sha256=fee3fd3f2f46a47e points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M1_PlainCNN_s44/events.out.tfevents.fmnist.M1_PlainCNN.s44
+SOURCE format=tensorboard sha256=2e974db14d76ae22 points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M2_ResNet_Base_s42/events.out.tfevents.fmnist.M2_ResNet_Base.s42
+SOURCE format=tensorboard sha256=550b0bd1216bb323 points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M2_ResNet_Base_s43/events.out.tfevents.fmnist.M2_ResNet_Base.s43
+SOURCE format=tensorboard sha256=aeaf3623b5f67cf9 points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M2_ResNet_Base_s44/events.out.tfevents.fmnist.M2_ResNet_Base.s44
+SOURCE format=tensorboard sha256=013b22bee2f3900b points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M4_ResNet_Aug_Cosine_s42/events.out.tfevents.fmnist.M4_ResNet_Aug_Cosine.s42
+SOURCE format=tensorboard sha256=35479414d10b3fc0 points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M4_ResNet_Aug_Cosine_s43/events.out.tfevents.fmnist.M4_ResNet_Aug_Cosine.s43
+SOURCE format=tensorboard sha256=eb3d75a8d667560c points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M4_ResNet_Aug_Cosine_s44/events.out.tfevents.fmnist.M4_ResNet_Aug_Cosine.s44
+SOURCE format=tensorboard sha256=381e1e881a96b795 points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M5_ResNet_LS_s42/events.out.tfevents.fmnist.M5_ResNet_LS.s42
+SOURCE format=tensorboard sha256=1945b1c5fe203b9e points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M5_ResNet_LS_s43/events.out.tfevents.fmnist.M5_ResNet_LS.s43
+SOURCE format=tensorboard sha256=d8b1536e3e37a03f points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M5_ResNet_LS_s44/events.out.tfevents.fmnist.M5_ResNet_LS.s44
+SOURCE format=tensorboard sha256=08f603a0160f67fb points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M7_SEResNet_Full_s42/events.out.tfevents.fmnist.M7_SEResNet_Full.s42
+SOURCE format=tensorboard sha256=c175d4cbf5b17d6d points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M7_SEResNet_Full_s43/events.out.tfevents.fmnist.M7_SEResNet_Full.s43
+SOURCE format=tensorboard sha256=5f6b6668cde6c54b points=65 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/fmnist/M7_SEResNet_Full_s44/events.out.tfevents.fmnist.M7_SEResNet_Full.s44
+SOURCE format=wandb_history sha256=6a2a7935a59c029d points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M0_Linear_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=76ee1c928fcdb420 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M0_Linear_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=2881f464138c122e points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M0_Linear_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=929c58731e0ed7cf points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M0_Linear_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=8e725d57c28905e9 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M0_Linear_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=f1a48f679c5c5331 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M0_Linear_s44/files/wandb-summary.json
+SOURCE format=wandb_history sha256=4ad5258b4cc46c55 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M1_PlainCNN_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=e08991d9d3da2b92 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M1_PlainCNN_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=e91fddc2d1b7ec3e points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M1_PlainCNN_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=360dab781225a309 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M1_PlainCNN_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=2fd8c8da056e5631 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M1_PlainCNN_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=b4c9f3a4a1e8dfb9 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M1_PlainCNN_s44/files/wandb-summary.json
+SOURCE format=wandb_history sha256=5c1b02a85b8a7a27 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M2_ResNet_Base_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=624d4d7a929ff2b4 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M2_ResNet_Base_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=6571f85731943f02 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M2_ResNet_Base_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=3ffc11a3c4b643a5 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M2_ResNet_Base_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=4220bd544f637afc points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M2_ResNet_Base_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=cdca50b7119965b4 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M2_ResNet_Base_s44/files/wandb-summary.json
+SOURCE format=wandb_history sha256=40c19b421991face points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M4_ResNet_Aug_Cosine_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=9850d922279e295b points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M4_ResNet_Aug_Cosine_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=fda1f08d23e09c81 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M4_ResNet_Aug_Cosine_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=a936f12661c8a8cd points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M4_ResNet_Aug_Cosine_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=51e768f8e48ae257 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M4_ResNet_Aug_Cosine_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=5d664d704daff4dd points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M4_ResNet_Aug_Cosine_s44/files/wandb-summary.json
+SOURCE format=wandb_history sha256=b4b4201aeee76774 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M5_ResNet_LS_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=7b52e14100f5c50d points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M5_ResNet_LS_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=1a1227524b67b85f points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M5_ResNet_LS_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=2c15c74ca92ca501 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M5_ResNet_LS_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=78d07d6d18219f7f points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M5_ResNet_LS_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=5d23b92a17ba2a2a points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M5_ResNet_LS_s44/files/wandb-summary.json
+SOURCE format=wandb_history sha256=44d9e557ead820d5 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M7_SEResNet_Full_s42/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=66eb5bb37f851eb3 points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M7_SEResNet_Full_s42/files/wandb-summary.json
+SOURCE format=wandb_history sha256=e06b6c7b23593859 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M7_SEResNet_Full_s43/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=50712794d156530c points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M7_SEResNet_Full_s43/files/wandb-summary.json
+SOURCE format=wandb_history sha256=658e8cab0d026b32 points=60 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M7_SEResNet_Full_s44/files/wandb-history.jsonl
+SOURCE format=wandb_summary sha256=a1bd70cca1154e3f points=14 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/fmnist/M7_SEResNet_Full_s44/files/wandb-summary.json
+
+BOUND M0_Linear | cal_ece | n=3 | 0.0099±0.0006 [0.0083,0.0114] | s42=0.0098 s43=0.0105 s44=0.0093
+BOUND M0_Linear | cal_nll | n=3 | 0.4444±0.0005 [0.4431,0.4457] | s42=0.4447 s43=0.4447 s44=0.4438
+BOUND M0_Linear | test_acc | n=3 | 0.8400±0.0011 [0.8373,0.8426] | pct=84.00±0.11% | s42=0.8390 s43=0.8398 s44=0.8411
+BOUND M0_Linear | test_ece | n=3 | 0.0154±0.0038 [0.0060,0.0248] | s42=0.0136 s43=0.0198 s44=0.0129
+BOUND M0_Linear | test_nll | n=3 | 0.4472±0.0021 [0.4420,0.4523] | s42=0.4456 s43=0.4495 s44=0.4464
+BOUND M0_Linear | val_acc | n=3 | 0.8511±0.0004 [0.8500,0.8522] | pct=85.11±0.04% | s42=0.8513 s43=0.8514 s44=0.8506
+BOUND M1_PlainCNN | cal_ece | n=3 | 0.0069±0.0016 [0.0030,0.0108] | s42=0.0078 s43=0.0051 s44=0.0079
+BOUND M1_PlainCNN | cal_nll | n=3 | 0.2845±0.0018 [0.2801,0.2890] | s42=0.2851 s43=0.2825 s44=0.2860
+BOUND M1_PlainCNN | test_acc | n=3 | 0.8998±0.0006 [0.8984,0.9012] | pct=89.98±0.06% | s42=0.8993 s43=0.8997 s44=0.9004
+BOUND M1_PlainCNN | test_ece | n=3 | 0.0059±0.0018 [0.0015,0.0103] | s42=0.0047 s43=0.0050 s44=0.0079
+BOUND M1_PlainCNN | test_nll | n=3 | 0.2842±0.0019 [0.2795,0.2888] | s42=0.2840 s43=0.2823 s44=0.2861
+BOUND M1_PlainCNN | val_acc | n=3 | 0.9031±0.0014 [0.8997,0.9064] | pct=90.31±0.14% | s42=0.9044 s43=0.9017 s44=0.9031
+BOUND M2_ResNet_Base | cal_ece | n=3 | 0.0110±0.0007 [0.0092,0.0129] | s42=0.0112 s43=0.0117 s44=0.0102
+BOUND M2_ResNet_Base | cal_nll | n=3 | 0.2381±0.0063 [0.2224,0.2538] | s42=0.2389 s43=0.2440 s44=0.2315
+BOUND M2_ResNet_Base | test_acc | n=3 | 0.9155±0.0026 [0.9092,0.9218] | pct=91.55±0.26% | s42=0.9126 s43=0.9174 s44=0.9165
+BOUND M2_ResNet_Base | test_ece | n=3 | 0.0294±0.0164 [-0.0114,0.0702] | s42=0.0112 s43=0.0432 s44=0.0338
+BOUND M2_ResNet_Base | test_nll | n=3 | 0.2627±0.0313 [0.1850,0.3404] | s42=0.2389 s43=0.2982 s44=0.2512
+BOUND M2_ResNet_Base | val_acc | n=3 | 0.9194±0.0024 [0.9134,0.9254] | pct=91.94±0.24% | s42=0.9182 s43=0.9178 s44=0.9222
+BOUND M4_ResNet_Aug_Cosine | cal_ece | n=3 | 0.0082±0.0010 [0.0057,0.0106] | s42=0.0077 s43=0.0093 s44=0.0075
+BOUND M4_ResNet_Aug_Cosine | cal_nll | n=3 | 0.1736±0.0034 [0.1650,0.1822] | s42=0.1739 s43=0.1769 s44=0.1700
+BOUND M4_ResNet_Aug_Cosine | test_acc | n=3 | 0.9393±0.0013 [0.9360,0.9426] | pct=93.93±0.13% | s42=0.9382 s43=0.9389 s44=0.9408
+BOUND M4_ResNet_Aug_Cosine | test_ece | n=3 | 0.0123±0.0004 [0.0113,0.0132] | s42=0.0119 s43=0.0127 s44=0.0121
+BOUND M4_ResNet_Aug_Cosine | test_nll | n=3 | 0.1753±0.0035 [0.1667,0.1840] | s42=0.1757 s43=0.1786 s44=0.1717
+BOUND M4_ResNet_Aug_Cosine | val_acc | n=3 | 0.9416±0.0015 [0.9379,0.9454] | pct=94.16±0.15% | s42=0.9430 s43=0.9400 s44=0.9419
+BOUND M5_ResNet_LS | cal_ece | n=3 | 0.0145±0.0005 [0.0133,0.0157] | s42=0.0144 s43=0.0140 s44=0.0150
+BOUND M5_ResNet_LS | cal_nll | n=3 | 0.1921±0.0020 [0.1870,0.1971] | s42=0.1921 s43=0.1941 s44=0.1900
+BOUND M5_ResNet_LS | test_acc | n=3 | 0.9394±0.0004 [0.9385,0.9403] | pct=93.94±0.04% | s42=0.9398 s43=0.9393 s44=0.9391
+BOUND M5_ResNet_LS | test_ece | n=3 | 0.0725±0.0009 [0.0703,0.0748] | s42=0.0734 s43=0.0727 s44=0.0716
+BOUND M5_ResNet_LS | test_nll | n=3 | 0.2472±0.0019 [0.2424,0.2520] | s42=0.2477 s43=0.2488 s44=0.2451
+BOUND M5_ResNet_LS | val_acc | n=3 | 0.9421±0.0010 [0.9397,0.9445] | pct=94.21±0.10% | s42=0.9413 s43=0.9419 s44=0.9432
+BOUND M7_SEResNet_Full | cal_ece | n=3 | 0.0134±0.0006 [0.0120,0.0148] | s42=0.0139 s43=0.0128 s44=0.0134
+BOUND M7_SEResNet_Full | cal_nll | n=3 | 0.1900±0.0017 [0.1858,0.1943] | s42=0.1920 s43=0.1887 s44=0.1894
+BOUND M7_SEResNet_Full | test_acc | n=3 | 0.9373±0.0012 [0.9344,0.9403] | pct=93.73±0.12% | s42=0.9368 s43=0.9387 s44=0.9365
+BOUND M7_SEResNet_Full | test_ece | n=3 | 0.0299±0.0021 [0.0246,0.0352] | s42=0.0291 s43=0.0323 s44=0.0283
+BOUND M7_SEResNet_Full | test_nll | n=3 | 0.2079±0.0014 [0.2045,0.2113] | s42=0.2091 s43=0.2082 s44=0.2064
+BOUND M7_SEResNet_Full | val_acc | n=3 | 0.9420±0.0011 [0.9394,0.9446] | pct=94.20±0.11% | s42=0.9420 s43=0.9430 s44=0.9409
+COMPLETED_OK

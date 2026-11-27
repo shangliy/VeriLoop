@@ -1,0 +1,15 @@
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 1, "train_loss": 0.982901, "val_acc": 0.7418, "val_nll": 0.724849, "val_ece": 0.024596}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 2, "train_loss": 0.597592, "val_acc": 0.784, "val_nll": 0.562707, "val_ece": 0.033242}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 3, "train_loss": 0.498414, "val_acc": 0.8246, "val_nll": 0.47282, "val_ece": 0.009975}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 4, "train_loss": 0.448715, "val_acc": 0.8335, "val_nll": 0.450924, "val_ece": 0.023792}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 5, "train_loss": 0.402025, "val_acc": 0.859, "val_nll": 0.391808, "val_ece": 0.015515}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 6, "train_loss": 0.377837, "val_acc": 0.8619, "val_nll": 0.370591, "val_ece": 0.010862}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 7, "train_loss": 0.351935, "val_acc": 0.8745, "val_nll": 0.3372, "val_ece": 0.017528}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 8, "train_loss": 0.335815, "val_acc": 0.8709, "val_nll": 0.346917, "val_ece": 0.010353}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 9, "train_loss": 0.319836, "val_acc": 0.8846, "val_nll": 0.310579, "val_ece": 0.017797}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 10, "train_loss": 0.304205, "val_acc": 0.8764, "val_nll": 0.331364, "val_ece": 0.017538}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 11, "train_loss": 0.294769, "val_acc": 0.8861, "val_nll": 0.301104, "val_ece": 0.009602}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 12, "train_loss": 0.280914, "val_acc": 0.89, "val_nll": 0.295823, "val_ece": 0.008317}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 13, "train_loss": 0.27358, "val_acc": 0.8991, "val_nll": 0.273924, "val_ece": 0.006824}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 14, "train_loss": 0.261727, "val_acc": 0.8968, "val_nll": 0.28053, "val_ece": 0.007212}
+{"dataset": "fmnist", "method": "M1_PlainCNN", "seed": 42, "epoch": 15, "train_loss": 0.258885, "val_acc": 0.9044, "val_nll": 0.25876, "val_ece": 0.009137}

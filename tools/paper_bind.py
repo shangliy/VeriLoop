@@ -442,17 +442,17 @@ def aggregate_records(records: list[dict], metrics_filter: list[str], step_agg: 
     return summary, curves
 
 
-def _macro_name(method: str, metric: str, suffix: str = "") -> str:
+def _macro_name(method: str, metric: str, suffix: str = "", prefix: str = "vl") -> str:
     clean = re.sub(r"[^A-Za-z]+", " ", f"{method} {metric} {suffix}").title().replace(" ", "")
-    return f"\\vl{clean}"
+    return f"\\{prefix}{clean}"
 
 
 def _is_lower_better(metric: str) -> bool:
     low = metric.lower()
-    return any(tok in low for tok in ("loss", "err", "error", "mse", "mae", "rmse", "ppl", "perplexity", "fpr", "latency", "time"))
+    return any(tok in low for tok in ("loss", "err", "error", "ece", "nll", "brier", "mse", "mae", "rmse", "ppl", "perplexity", "fpr", "latency", "time"))
 
 
-def write_outputs(summary: dict, curves: dict, sources: list[dict], out_dir: Path, decimals: int = 4, curve_metric: str | None = None):
+def write_outputs(summary: dict, curves: dict, sources: list[dict], out_dir: Path, decimals: int = 4, curve_metric: str | None = None, macro_prefix: str = "vl"):
     out_dir.mkdir(parents=True, exist_ok=True)
     methods = sorted({k[0] for k in summary})
     metrics = sorted({k[1] for k in summary})
@@ -492,9 +492,9 @@ def write_outputs(summary: dict, curves: dict, sources: list[dict], out_dir: Pat
     ]
     macro_map = {}
     for (m, met), r in sorted(summary.items()):
-        nm_pm = _macro_name(m, met)
-        nm_mean = _macro_name(m, met, "Mean")
-        nm_ci = _macro_name(m, met, "CI")
+        nm_pm = _macro_name(m, met, prefix=macro_prefix)
+        nm_mean = _macro_name(m, met, "Mean", prefix=macro_prefix)
+        nm_ci = _macro_name(m, met, "CI", prefix=macro_prefix)
         val_pm = f"{fmt.format(r['mean'])}$\\pm${fmt.format(r['std'])}"
         val_mean = fmt.format(r["mean"])
         val_ci = f"[{fmt.format(r['ci_lo'])}, {fmt.format(r['ci_hi'])}]"
@@ -650,6 +650,7 @@ def main():
     ap.add_argument("--step-agg", choices=("last", "max", "min"), default="last", help="Per-seed reduction across steps (default: last)")
     ap.add_argument("--curve-metric", default=None, help="Metric name to plot in bound_curves.pdf")
     ap.add_argument("--decimals", type=int, default=4, help="Decimal places in macros/tables (default: 4)")
+    ap.add_argument("--macro-prefix", default="vl", help="LaTeX macro prefix (default: vl; use distinct prefixes for multi-dataset papers)")
     ap.add_argument("--out-dir", default="paper/bound", help="Output directory for bound_metrics.txt, macros, tables, figures, manifest")
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
@@ -670,7 +671,7 @@ def main():
         print("No metrics matched --metrics filter", file=sys.stderr)
         sys.exit(1)
 
-    res = write_outputs(summary, curves, sources, Path(a.out_dir).resolve(), decimals=a.decimals, curve_metric=a.curve_metric)
+    res = write_outputs(summary, curves, sources, Path(a.out_dir).resolve(), decimals=a.decimals, curve_metric=a.curve_metric, macro_prefix=a.macro_prefix)
     if a.json:
         print(json.dumps(res, indent=2))
     else:

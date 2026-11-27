@@ -1,0 +1,20 @@
+{
+  "dataset": "fmnist",
+  "method": "M5_ResNet_LS",
+  "seed": 43,
+  "epochs": 15,
+  "batch_size": 256,
+  "n_params": 696042,
+  "selected_on": "val_acc",
+  "temp_scaling_fit_on": "val_logits",
+  "arch": "resnet",
+  "aug": true,
+  "opt": "sgd",
+  "lr": 0.1,
+  "wd": 0.0005,
+  "cos": true,
+  "ls": 0.1,
+  "mixup": 0.0,
+  "cutout": 0,
+  "se": false
+}
