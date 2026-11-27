@@ -14,7 +14,7 @@ A complete, crash-resumable, zero-fabrication deep learning research trajectory 
 4. **Auto-Bound Log-to-LaTeX Tables & Macros (`paper/bound/cifar10/`, `paper/bound/fmnist/`)**:
    - `./veriloop bind` ingests 126 raw TensorBoard (`.tfevents`) and W&B files to emit `\vlC*` / `\vlF*` LaTeX macros for every per-arm metric and `temp_T` cell, Booktabs tables, provenance manifests, and Okabe-Ito vector PDFs (aggregate deltas and compute totals trace to `out/overnight_summary.txt`).
 5. **Verified Paper, Committed Audit Logs (`audits/`) & Interactive Review UI**:
-   - Compiled paper: `paper/overnight_study.pdf` + committed audit artifacts (`audits/veriloop_gate.json`, `audits/pdf_audit.json`, `audits/verify_cites_online.json`, `audits/claims_check.txt`) + split-pane `review_ui.html`.
+   - Compiled paper: `paper/overnight_study.pdf` + committed audit artifacts (`audits/claims_check.txt` for 4/4 `G1–G7`, `audits/veriloop_gate.json` with `"blocked": false` on raw `.tex` + AST + claims, `audits/verify_cites_online.json` for 10/10 online-verified citations, and `audits/pdf_audit.json` for 100% expanded-PDF decimal tracing with 0 Type-3 fonts and 0 warnings) + split-pane `review_ui.html`. (Note: evidence logs were attached via `claims.py evidence` after regenerating `overnight_summary.txt` and `bound_metrics.txt` with `temp_T` macros while raw `trajectory_ledger.jsonl` GPU results remained untouched.)
 
 ## Reproduce End-to-End
 

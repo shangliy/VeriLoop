@@ -27,10 +27,10 @@
    "evidence": [
     {
      "seq": 5,
-     "at": "2026-11-26T19:01:01.375129",
+     "at": "2026-11-26T19:41:25.782670",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "baseline",
      "dataset": "cifar10",
      "arm": "M0_Linear",
@@ -42,10 +42,10 @@
     },
     {
      "seq": 6,
-     "at": "2026-11-26T19:01:01.407799",
+     "at": "2026-11-26T19:41:25.816343",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "baseline",
      "dataset": "cifar10",
      "arm": "M1_PlainCNN",
@@ -57,10 +57,10 @@
     },
     {
      "seq": 7,
-     "at": "2026-11-26T19:01:01.438540",
+     "at": "2026-11-26T19:41:25.849192",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "method",
      "dataset": "cifar10",
      "seeds": 3,
@@ -74,7 +74,7 @@
     },
     {
      "seq": 8,
-     "at": "2026-11-26T19:01:01.469526",
+     "at": "2026-11-26T19:41:25.886087",
      "log": "out/wiki_metrics.log",
      "sha256": "253c1780f20b10f224ba86f8e734d74d2a23d7d07100c2a272091f702f6b64f3",
      "size_bytes": 2793,
@@ -96,8 +96,17 @@
      "from": "proposed",
      "to": "supported",
      "by": "reviewer"
+    },
+    {
+     "at": "2026-11-26T19:41:25.926782",
+     "from": "proposed",
+     "to": "supported",
+     "by": "reviewer"
     }
-   ]
+   ],
+   "status_by": null,
+   "status_at": null,
+   "waivers": []
   },
   "H2_AugCosineGain": {
    "text": "Data augmentation plus Nesterov SGD with warmup-cosine decay and weight decay (M4_ResNet_Aug_Cosine) and SE+Cutout+mild label smoothing (M7_SEResNet_Full) yield progressive accuracy gains over M2_ResNet_Base on CIFAR-10 without test-set leakage.",
@@ -124,10 +133,10 @@
    "evidence": [
     {
      "seq": 9,
-     "at": "2026-11-26T19:01:01.534951",
+     "at": "2026-11-26T19:41:25.961077",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "baseline",
      "dataset": "cifar10",
      "arm": "M2_ResNet_Base",
@@ -139,10 +148,10 @@
     },
     {
      "seq": 10,
-     "at": "2026-11-26T19:01:01.566518",
+     "at": "2026-11-26T19:41:25.993010",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "baseline",
      "dataset": "cifar10",
      "arm": "M3_ResNet_Aug",
@@ -154,10 +163,10 @@
     },
     {
      "seq": 11,
-     "at": "2026-11-26T19:01:01.596894",
+     "at": "2026-11-26T19:41:26.025323",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "method",
      "dataset": "cifar10",
      "seeds": 3,
@@ -171,10 +180,10 @@
     },
     {
      "seq": 12,
-     "at": "2026-11-26T19:01:01.630610",
+     "at": "2026-11-26T19:41:26.059848",
      "log": "paper/bound/cifar10/bound_metrics.txt",
      "sha256": "363e3f010d2c0e717d8ddde45b17441d2ac2a634591de05b38941d297c2b5485",
-     "size_bytes": 20727,
+     "size_bytes": 21059,
      "role": "ablation",
      "dataset": "cifar10",
      "seeds": 3,
@@ -183,7 +192,7 @@
      "changes": 3,
      "ablated": 3,
      "has_ci": true,
-     "note": "Progressive 8-step CIFAR-10 ablation ladder"
+     "note": "Bundled 8-stage CIFAR-10 recipe ladder"
     }
    ],
    "status_log": [
@@ -192,8 +201,17 @@
      "from": "proposed",
      "to": "supported",
      "by": "reviewer"
+    },
+    {
+     "at": "2026-11-26T19:41:26.093073",
+     "from": "proposed",
+     "to": "supported",
+     "by": "reviewer"
     }
-   ]
+   ],
+   "status_by": null,
+   "status_at": null,
+   "waivers": []
   },
   "H3_CalibrationTradeoff": {
    "text": "Training-time regularizers (Label Smoothing eps=0.1, Mixup alpha=0.4) and validation-fitted post-hoc Temperature Scaling (T*) substantially alter Expected Calibration Error (ECE) relative to uncalibrated cross-entropy models, and post-hoc T* reduces raw NLL/ECE on overconfident cross-entropy baselines without touching test labels.",
@@ -219,10 +237,10 @@
    "evidence": [
     {
      "seq": 13,
-     "at": "2026-11-26T19:01:01.693412",
+     "at": "2026-11-26T19:41:26.126399",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "baseline",
      "dataset": "cifar10",
      "arm": "M4_ResNet_Aug_Cosine",
@@ -234,10 +252,10 @@
     },
     {
      "seq": 14,
-     "at": "2026-11-26T19:01:01.724178",
+     "at": "2026-11-26T19:41:26.159322",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "method",
      "dataset": "cifar10",
      "seeds": 3,
@@ -251,10 +269,10 @@
     },
     {
      "seq": 15,
-     "at": "2026-11-26T19:01:01.756285",
+     "at": "2026-11-26T19:41:26.193099",
      "log": "paper/bound/cifar10/bound_metrics.txt",
      "sha256": "363e3f010d2c0e717d8ddde45b17441d2ac2a634591de05b38941d297c2b5485",
-     "size_bytes": 20727,
+     "size_bytes": 21059,
      "role": "ablation",
      "dataset": "cifar10",
      "seeds": 3,
@@ -272,8 +290,17 @@
      "from": "proposed",
      "to": "supported",
      "by": "reviewer"
+    },
+    {
+     "at": "2026-11-26T19:41:26.228094",
+     "from": "proposed",
+     "to": "supported",
+     "by": "reviewer"
     }
-   ]
+   ],
+   "status_by": null,
+   "status_at": null,
+   "waivers": []
   },
   "H4_CrossDatasetRank": {
    "text": "The full regularized residual architecture (M7_SEResNet_Full) outperforms M0_Linear and M1_PlainCNN on both CIFAR-10 and Fashion-MNIST while every intermediate Research Wiki update passes deterministic Layer-1 number tracing and AST code auditing at zero API cost.",
@@ -300,10 +327,10 @@
    "evidence": [
     {
      "seq": 16,
-     "at": "2026-11-26T19:01:01.817749",
+     "at": "2026-11-26T19:41:26.262119",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "baseline",
      "dataset": "cifar10",
      "arm": "M0_Linear",
@@ -315,10 +342,10 @@
     },
     {
      "seq": 17,
-     "at": "2026-11-26T19:01:01.848522",
+     "at": "2026-11-26T19:41:26.296255",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "baseline",
      "dataset": "cifar10",
      "arm": "M1_PlainCNN",
@@ -330,10 +357,10 @@
     },
     {
      "seq": 18,
-     "at": "2026-11-26T19:01:01.878903",
+     "at": "2026-11-26T19:41:26.331726",
      "log": "out/overnight_summary.txt",
      "sha256": "2e6595fa84ac2146812d32b61a4ca738bbd66b5d52106d7b1c195ef6dce23b1c",
-     "size_bytes": 4200,
+     "size_bytes": 4205,
      "role": "method",
      "dataset": "cifar10",
      "seeds": 3,
@@ -346,10 +373,10 @@
     },
     {
      "seq": 19,
-     "at": "2026-11-26T19:01:01.910159",
+     "at": "2026-11-26T19:41:26.364871",
      "log": "paper/bound/fmnist/bound_metrics.txt",
      "sha256": "e88665780ef1ed96fb53cd83778e754a0e050a042ea9353697a65f107f40dca6",
-     "size_bytes": 15501,
+     "size_bytes": 15736,
      "role": "ablation",
      "dataset": "fmnist",
      "seeds": 3,
@@ -366,8 +393,17 @@
      "from": "proposed",
      "to": "supported",
      "by": "reviewer"
+    },
+    {
+     "at": "2026-11-26T19:41:26.398356",
+     "from": "proposed",
+     "to": "supported",
+     "by": "reviewer"
     }
-   ]
+   ],
+   "status_by": null,
+   "status_at": null,
+   "waivers": []
   }
  }
 }

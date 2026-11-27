@@ -154,6 +154,8 @@ def gates(c, ws):
         if sz == 0:
             g1_issues.append(f"empty: {e['log']}")
             continue
+        if e.get("size_bytes") is not None and sz != int(e["size_bytes"]):
+            g1_issues.append(f"size changed ({e['size_bytes']} -> {sz}): {e['log']}")
         if e.get("sha256"):
             cur = sha256_file(fp)
             if cur != e["sha256"]:
