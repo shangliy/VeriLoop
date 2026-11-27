@@ -1,0 +1,30 @@
+{
+ "schema_version": 2,
+ "next_seq": 1,
+ "claims": {
+  "C1_Primary": {
+   "text": "Targeted algorithmic refinement addressing unverified/unmatched formulation eq_9 in 1810.00826 across reference study (Semi-Supervised Classification with Graph Convolutional Networks; How Powerful are Graph Neural Networks?) improves held-out evaluation metrics over the baseline under strict validation-only selection.",
+   "metric": "primary_eval_metric",
+   "select_on": "valid",
+   "seeds_planned": 3,
+   "require_ci": true,
+   "baselines": [
+    "baseline"
+   ],
+   "kill": "Refined method fails to outperform the baseline across planned seeds or violates VeriLoop AST/provenance gates.",
+   "scope": "Level-2 VeriLoop orchestrated study",
+   "status": "proposed",
+   "registered": "2026-11-26T23:13:18.658283-08:00",
+   "history": [
+    {
+     "seq": 1,
+     "at": "2026-11-26T23:13:18.658283-08:00",
+     "text": "Targeted algorithmic refinement addressing unverified/unmatched formulation eq_9 in 1810.00826 across reference study (Semi-Supervised Classification with Graph Convolutional Networks; How Powerful are Graph Neural Networks?) improves held-out evaluation metrics over the baseline under strict validation-only selection.",
+     "why": "registered"
+    }
+   ],
+   "evidence": [],
+   "status_log": []
+  }
+ }
+}

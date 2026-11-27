@@ -185,6 +185,8 @@ def main():
         passthrough([sys.executable, str(ROOT / "tools/research_orchestrator.py"), *rest])
     elif sub == "studio":
         passthrough([sys.executable, str(ROOT / "tools/studio_server.py"), *rest])
+    elif sub == "compare-bench":
+        passthrough([sys.executable, str(ROOT / "eval/compare_ai_researcher.py"), *rest])
     elif sub == "eval-v2":
         run_eval_v2(rest)
     elif sub == "audit-paper":

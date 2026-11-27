@@ -285,13 +285,16 @@ def main():
             if a.papers:
                 cmd.extend(["--arxiv", *a.papers])
             if a.tex_dir:
-                cmd.extend(["--tex-dir", *a.tex_dir])
+                resolved_tex = [str(Path(t).resolve()) if Path(t).exists() else t for t in a.tex_dir]
+                cmd.extend(["--tex-dir", *resolved_tex])
             if a.repo:
-                cmd.extend(["--repo", a.repo])
+                repo_arg = str(Path(a.repo).resolve()) if Path(a.repo).exists() else a.repo
+                cmd.extend(["--repo", repo_arg])
             if a.auto_clone_github:
                 cmd.append("--auto-clone-github")
             if a.bib:
-                cmd.extend(["--append-bib", a.bib])
+                bib_arg = str(Path(a.bib).resolve()) if not Path(a.bib).is_absolute() else a.bib
+                cmd.extend(["--append-bib", bib_arg])
             r = run_cmd(cmd, cwd=ws)
             if r.returncode != 0:
                 _mark("ingest", "failed", {"error": r.stderr[-500:]})

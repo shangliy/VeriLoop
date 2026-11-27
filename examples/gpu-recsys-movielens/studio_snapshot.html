@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VeriLoop Studio — Verifiable Research Cockpit</title>
+<style>
+  :root {
+    --bg: #0b1220; --panel: #111a2e; --card: #16223a; --border: #253553;
+    --text: #e2e8f0; --muted: #94a3b8; --blue: #38bdf8; --navy: #0072b2;
+    --green: #10b981; --amber: #f59e0b; --red: #ef4444; --purple: #a78bfa;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; background: linear-gradient(90deg, #0b2545, #004c78); border-bottom: 1px solid #1e3a5f; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand h1 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
+  .brand .sub { font-size: 12px; color: #bae6fd; }
+  .ws-pill { font-family: monospace; font-size: 12px; background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(147,197,253,0.35); }
+  nav.tabs { display: flex; gap: 6px; padding: 10px 24px 0; background: var(--panel); border-bottom: 1px solid var(--border); }
+  nav.tabs button { background: transparent; color: var(--muted); border: none; padding: 10px 16px; font-size: 13px; font-weight: 700; cursor: pointer; border-bottom: 3px solid transparent; }
+  nav.tabs button.active { color: #ffffff; border-bottom-color: var(--blue); }
+  main { padding: 20px 24px; max-width: 1480px; margin: 0 auto; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+  .grid-2 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 18px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .card h2 { margin: 0 0 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.6px; color: #93c5fd; }
+  .kpi { font-size: 24px; font-weight: 800; margin-top: 4px; }
+  .kpi.ok { color: var(--green); } .kpi.warn { color: var(--amber); } .kpi.bad { color: var(--red); } .kpi.info { color: var(--blue); }
+  .kpi-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .stepper { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 18px; }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px; text-align: center; font-size: 12px; font-weight: 700; }
+  .step .st { font-size: 10px; margin-top: 4px; text-transform: uppercase; color: var(--muted); }
+  .step.completed { border-color: var(--green); background: rgba(16,185,129,0.12); }
+  .step.completed .st { color: #34d399; }
+  .step.running { border-color: var(--blue); background: rgba(56,189,248,0.14); }
+  .step.running .st { color: var(--blue); }
+  .step.failed, .step.blocked { border-color: var(--red); background: rgba(239,68,68,0.14); }
+  .step.failed .st, .step.blocked .st { color: #fca5a5; }
+  label { display: block; font-size: 12px; color: var(--muted); margin: 10px 0 4px; font-weight: 600; }
+  input, textarea, select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px; font-size: 13px; font-family: inherit; }
+  textarea { min-height: 76px; resize: vertical; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; border: none; font-size: 13px; font-weight: 700; cursor: pointer; }
+  .btn-primary { background: #0284c7; color: #fff; }
+  .btn-primary:hover { background: #0369a1; }
+  .btn-green { background: #059669; color: #fff; }
+  .btn-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .terminal { background: #070c16; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; height: 290px; overflow-y: auto; line-height: 1.5; }
+  .log-line { white-space: pre-wrap; margin-bottom: 3px; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .badge.ok { background: rgba(16,185,129,0.18); color: #34d399; }
+  .badge.bad { background: rgba(239,68,68,0.2); color: #fca5a5; }
+  .badge.info { background: rgba(56,189,248,0.18); color: #7dd3fc; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); }
+  th { color: #93c5fd; font-size: 11px; text-transform: uppercase; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; color: #7dd3fc; }
+  iframe.review-frame { width: 100%; height: 740px; border: 1px solid var(--border); border-radius: 10px; background: #fff; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <svg width="32" height="32" viewBox="0 0 56 60"><path d="M 28 2 L 52 10 L 52 28 C 52 44 40 53 28 58 C 16 53 4 44 4 28 L 4 10 Z" fill="rgba(16,185,129,0.25)" stroke="#34d399" stroke-width="3"/><path d="M 17 29 L 25 37 L 40 20" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div>
+      <h1>VeriLoop Studio</h1>
+      <div class="sub">Level-1 / Level-2 Autonomous Research Cockpit + Real-Time Hard-Gate Verification</div>
+    </div>
+  </div>
+  <div class="ws-pill" id="ws-pill">/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens</div>
+</header>
+
+<nav class="tabs">
+  <button class="active" onclick="switchTab('monitor', this)">1. Live Monitor &amp; Gates</button>
+  <button onclick="switchTab('launcher', this)">2. Level-1 / Level-2 Launcher</button>
+  <button onclick="switchTab('workbench', this)">3. Split-Pane Audit Workbench</button>
+</nav>
+
+<main>
+  <!-- TAB 1: LIVE MONITOR -->
+  <section id="tab-monitor" class="tab-pane active">
+    <div class="stepper" id="stepper"></div>
+    <div class="grid-4" id="kpi-row"></div>
+    <div class="grid-2">
+      <div class="card">
+        <h2>Live Pipeline Events &amp; Stage Logs</h2>
+        <div class="terminal" id="log-term"></div>
+        <div class="btn-row">
+          <button class="btn btn-green" onclick="triggerGate()" disabled>Re-Run Hard Gate (./veriloop gate)</button>
+          <button class="btn btn-primary" onclick="refreshState()" disabled>Refresh Snapshot</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Claims Ledger (G1–G7) &amp; Formula ↔ Code Map</h2>
+        <div id="claims-box" style="margin-bottom:14px;"></div>
+        <div id="align-box"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px;">
+      <h2>Auto-Bound Experiment Metrics (paper_bind.py)</h2>
+      <div id="metrics-box"></div>
+    </div>
+  </section>
+
+  <!-- TAB 2: LAUNCHER -->
+  <section id="tab-launcher" class="tab-pane">
+    <div class="grid-2">
+      <div class="card">
+        <h2>Launch Verified Research Run</h2>
+        <div class="row">
+          <div>
+            <label>Research Mode</label>
+            <select id="f-level">
+              <option value="1">Level 1 — Concrete Idea + Baseline Repo</option>
+              <option value="2">Level 2 — Reference Papers → Gap → Innovation</option>
+            </select>
+          </div>
+          <div>
+            <label>Execution Sandbox</label>
+            <select id="f-sandbox">
+              <option value="local">Local Python (Zero-Dep Fast)</option>
+              <option value="docker">Docker GPU Container (Isolated)</option>
+            </select>
+          </div>
+        </div>
+        <label>Seed Idea / Hypothesis (Level 1)</label>
+        <textarea id="f-idea" placeholder="e.g., Post-hoc validation-fitted temperature scaling resolves underconfidence induced by Label Smoothing &amp; Mixup on CIFAR-10..."></textarea>
+        <label>Reference arXiv IDs (Level 2 or citations, space-separated)</label>
+        <input id="f-papers" placeholder="e.g., 1706.04599 1512.03385 1710.09412" />
+        <label>Baseline Repo URL or Local Path</label>
+        <input id="f-repo" placeholder="e.g., https://github.com/... or ./code" />
+        <label>Experiment Command (optional)</label>
+        <input id="f-cmd" placeholder="e.g., python3 code/train.py --seeds 42 43 44" />
+        <div class="row">
+          <div>
+            <label>Executor Provider</label>
+            <select id="f-provider">
+              <option value="offline">Offline / Deterministic ($0)</option>
+              <option value="claude-cli">Claude CLI (Anthropic)</option>
+              <option value="codex-cli">Codex CLI (OpenAI)</option>
+            </select>
+          </div>
+          <div>
+            <label>Layer-2 Reviewer Provider</label>
+            <select id="f-reviewer">
+              <option value="none">Layer 1 Only ($0)</option>
+              <option value="codex-cli">Codex CLI (Path-Isolated)</option>
+              <option value="claude-cli">Claude CLI (Path-Isolated)</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Hard Budget Cap (USD)</label>
+            <input id="f-budget" type="number" step="0.5" value="5.0" />
+          </div>
+          <div>
+            <label>Online 3-API Citation Gate</label>
+            <select id="f-online-cites">
+              <option value="false">Offline BibTeX Only</option>
+              <option value="true">Online (arXiv + Crossref + S2)</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="launchPipeline(false)" disabled>Launch Full Verified Pipeline</button>
+          <button class="btn btn-green" onclick="launchPipeline(true)" disabled>Dry-Run Plan ($0)</button>
+        </div>
+        <div id="launch-msg" style="margin-top:10px; font-size:12px; color:#7dd3fc;"></div>
+      </div>
+      <div class="card">
+        <h2>Why VeriLoop Studio vs. Black-Box Runners</h2>
+        <p style="font-size:13px; color:var(--muted); line-height:1.6;">
+          Unlike black-box idea-to-paper runners that only surface a final PDF after hours of unverified LLM execution,
+          <strong>VeriLoop Studio</strong> enforces mechanical accountability at every stage:
+        </p>
+        <ul style="font-size:13px; color:var(--text); line-height:1.75; padding-left:18px;">
+          <li><strong>Formula ↔ Code AST Alignment:</strong> Parses arXiv LaTeX sources directly and maps equations to baseline AST symbols.</li>
+          <li><strong>Byte-Deterministic Binding:</strong> TensorBoard / W&amp;B / CSV logs bind directly into <code>bound_macros.tex</code> and Okabe-Ito vector PDFs.</li>
+          <li><strong>Dual-Layer Hard Blocking:</strong> Layer 1 catches AST cheating (0.0% FPR), sign flips, and fake references at $0 before paid Layer-2 review.</li>
+          <li><strong>Interactive Click-to-Verify:</strong> Every number and citation in the Audit Workbench jumps straight to its raw <code>log:line</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 3: WORKBENCH -->
+  <section id="tab-workbench" class="tab-pane">
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <h2 style="margin:0;">Split-Pane Paper ↔ Raw Log &amp; Citation Workbench</h2>
+        <button class="btn btn-green" onclick="reloadWorkbench()" disabled>Reload Review UI</button>
+      </div>
+      <p style='color:var(--muted);font-size:13px;'>Static snapshot mode: open <code>review_ui.html</code> in your workspace for the full interactive split-pane workbench, or run <code>./veriloop studio -w &lt;ws&gt;</code>.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+const STATIC_MODE = true;
+const STAGES = [["ingest", "1. Ingest"], ["ideate_and_register", "2. Plan & Claims"], ["execute", "3. Execute"], ["bind", "4. Auto-Bind"], ["draft", "5. Draft"], ["gate_and_repair", "6. Hard Gate"], ["package_and_ui", "7. Audit & UI"]];
+let SNAP = {"workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens", "workspace_name": "gpu-recsys-movielens", "active_job": {"running": false}, "state": {"schema_version": 1, "created_utc": "2026-11-27T07:16:24Z", "updated_utc": "2026-11-27T07:26:20Z", "status": "completed", "stages": {"ingest": {"status": "OK", "updated_utc": "2026-11-27T07:17:06Z", "papers": 2, "equations": 26, "code_symbols": 11, "alignments": 26, "unmatched_equations": 0, "manifest": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/ingest_manifest.json", "wiki_map": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/wiki/INGEST_MAP.md"}, "ideate_and_register": {"status": "completed", "updated_utc": "2026-11-27T07:17:06Z", "claim": "Targeted algorithmic refinement addressing calibration, generalization, and reproducibility gaps across reference methods across reference study (LightGCN: Simplifying and Powering Graph Convolution N"}, "execute": {"status": "completed", "updated_utc": "2026-11-27T07:26:17Z", "timestamp_utc": "2026-11-27T07:26:16Z", "mode": "local", "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens", "cmd": "/home/shawnyang/anaconda3/bin/python code/train_recsys.py -w .", "returncode": 0, "elapsed_s": 550.72, "timed_out": false, "anomalies": [], "log_path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_last.log", "log_sha256": "0086662570a63b5870dce08a22a928ac9f3312c546a53c1674f35c2070455ccc", "log_bytes": 838}, "bind": {"status": "completed", "updated_utc": "2026-11-27T07:26:19Z", "out_dir": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/paper/bound", "methods": ["R0_Pop", "R1_MF_BPR", "R2_LightGCN", "R3_SimGCL", "sandbox_runs"], "metrics": ["best_epoch", "elapsed_s", "log_bytes", "returncode", "test_ndcg10", "test_ndcg20", "test_recall10", "test_recall20", "val_ndcg20"], "sources_count": 14, "figures": ["bound_bars.pdf", "bound_curves.pdf"]}, "draft": {"status": "completed", "updated_utc": "2026-11-27T07:26:19Z", "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md"}, "gate_and_repair": {"status": "completed", "updated_utc": "2026-11-27T07:26:19Z", "passed": true, "returncode": 0, "repairs_run": 0, "gate_json": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/audits/veriloop_gate.json"}, "package_and_ui": {"status": "completed", "updated_utc": "2026-11-27T07:26:20Z", "review_ui": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/review_ui.html", "pdf_audited": false}}, "config": {"schema_version": 1, "generated_utc": "2026-11-27T07:16:24Z", "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens", "level": 2, "idea": "", "papers": ["2002.02126", "2112.08679"], "tex_dir": [], "repo": "examples/gpu-recsys-movielens/code", "train_cmd": "/home/shawnyang/anaconda3/bin/python code/train_recsys.py -w .", "sandbox": "local", "provider": "offline", "reviewer_provider": "none", "online_cites": false, "budget_limit_usd": 5.0}}, "gate": {"workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens", "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md", "blocked": false, "block_reasons": [], "checks": {"trace_numbers": {"returncode": 0, "summary": {"report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md", "log_files": 8, "data_files": 0, "skipped_large": [], "traced": 207, "untraced": [], "sign_mismatches": [], "wrong_logs": [], "unpaired_pairs": [], "mixed_rows": [], "cited_stale": [], "workspace_stale": [], "common": 0}}, "audit_code": {"returncode": 0, "summary": {"scripts_scanned": 1, "counts": {"HIGH": 0, "MEDIUM": 0, "INFO": 0}, "findings": []}}, "citation_audit": {"returncode": 0, "summary": {"document": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md", "bib": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/paper/refs.bib", "online_checked": false, "claims_checked": false, "pairs_count": 2, "issues_count": 0, "warnings_count": 0, "issues": [], "warnings": [], "pairs": [{"line": 44, "kind": "cite", "key": "he2020lightgcn", "sentence": "Ingested arXiv formulations aligned via Python AST (`wiki/INGEST_MAP.md`): LightGCN \\cite{he2020lightgcn} and SimGCL \\cite{yu2021simgcl}.", "bib_title": "{LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation}", "bib_author": "Xiangnan He and Kuan Deng and Xiang Wang and Yan Li and Yongdong Zhang and Meng Wang", "bib_year": "2020", "arxiv_id": "2002.02126", "status": "BIB_FOUND_OFFLINE"}, {"line": 44, "kind": "cite", "key": "yu2021simgcl", "sentence": "Ingested arXiv formulations aligned via Python AST (`wiki/INGEST_MAP.md`): LightGCN \\cite{he2020lightgcn} and SimGCL \\cite{yu2021simgcl}.", "bib_title": "{Are Graph Augmentations Necessary? Simple Graph Contrastive Learning for Recommendation}", "bib_author": "", "bib_year": "2021", "arxiv_id": "2112.08679", "status": "BIB_FOUND_OFFLINE"}]}}, "claims_ledger": {"returncode": 0, "stdout": "C1_Primary [proposed] gates: 2/7 open  revisions: 0\n    Targeted algorithmic refinement addressing calibration, generalization, and reproducibility gaps across reference methods across reference study (Ligh\n    FAIL G1 logs exist & intact: no evidence\n    FAIL G2 seeds >= 3: no method evidence\n    FAIL G3 no test selection: no evidence\n    FAIL G4 baselines run: no evidence for: baseline\n    FAIL G7 uncertainty/CI logged: no evidence log contains CI/[lo,hi]/±/bootstrap/p-value", "stderr": ""}}}, "pdf_audit": null, "ingest": {"papers": 2, "code_symbols": 11, "alignments": [{"paper": "2002.02126", "equation_id": "eq:NGCF", "equation_loc": "2_preliminary.tex:L7", "latex_preview": "\\label{eq:NGCF} \\begin{aligned} \\textbf{e}_{u}^{(k+1)} &= \\sigma \\Big(\\textbf{W}_1 \\textbf{e}_u^{(k)} + \\sum_{", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 0.981, "shared_tokens": ["embedding", "item", "layers", "propagate", "propagation"]}, {"paper": "2002.02126", "equation_id": "eq_2", "equation_loc": "3_method_new.tex:L16", "latex_preview": "\\textbf{e}_{u}^{(k+1)} = \\text{AGG} ( \\textbf{e}_{u}^{(k)}, \\{ \\textbf{e}_i^{(k)} : i \\in \\mathcal{N}_u \\}).", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 0.385, "shared_tokens": ["gcn", "neighborhood"]}, {"paper": "2002.02126", "equation_id": "eq:LGC", "equation_loc": "3_method_new.tex:L35", "latex_preview": "\\label{eq:LGC} \\begin{aligned} \\textbf{e}_{u}^{(k+1)} &= \\sum_{i \\in \\mathcal{N}_u} \\frac{1}{\\sqrt{|\\mathcal{N", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 1.1, "shared_tokens": ["gcn", "in", "light", "propagation"]}, {"paper": "2002.02126", "equation_id": "eq_4", "equation_loc": "3_method_new.tex:L49", "latex_preview": "\\begin{aligned} \\textbf{e}_{u} = \\sum_{k=0}^K \\alpha_k \\textbf{e}_u^{(k)}; \\quad \\textbf{e}_{i} = \\sum_{k=0}^K", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 1.107, "shared_tokens": ["embedding", "final", "in", "item", "items", "layer", "layers"]}, {"paper": "2002.02126", "equation_id": "eq_5", "equation_loc": "3_method_new.tex:L60", "latex_preview": "\\hat{y}_{ui} = \\textbf{e}_u ^T \\textbf{e}_i,", "matched_symbol": "load_movielens_100k", "symbol_kind": "function", "code_loc": "train_recsys.py:L47", "score": 0.97, "shared_tokens": ["as", "defined", "is", "item"]}, {"paper": "2002.02126", "equation_id": "eq_6", "equation_loc": "3_method_new.tex:L66", "latex_preview": "\\textbf{A}= \\left(\\begin{matrix} \\textbf{0} & \\textbf{R}\\\\ \\textbf{R}^{T} & \\textbf{0}\\\\ \\end{matrix} \\right),", "matched_symbol": "MFModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L142", "score": 0.928, "shared_tokens": ["embedding", "item", "items", "user", "users"]}, {"paper": "2002.02126", "equation_id": "eq_7", "equation_loc": "3_method_new.tex:L75", "latex_preview": "\\textbf{E}^{(k+1)} = (\\textbf{D}^{-\\frac{1}{2}} \\textbf{A} \\textbf{D}^{-\\frac{1}{2}}) \\textbf{E}^{(k)},", "matched_symbol": "build_bipartite_norm_adj", "symbol_kind": "function", "code_loc": "train_recsys.py:L108", "score": 0.784, "shared_tokens": ["adjacency", "in", "matrix", "row"]}, {"paper": "2002.02126", "equation_id": "eq:E_LGCN", "equation_loc": "3_method_new.tex:L79", "latex_preview": "\\label{eq:E_LGCN} \\begin{aligned} \\textbf{E} &= \\alpha_0 \\textbf{E}^{(0)} + \\alpha_1 \\textbf{E}^{(1)} + \\alpha", "matched_symbol": "build_bipartite_norm_adj", "symbol_kind": "function", "code_loc": "train_recsys.py:L108", "score": 0.928, "shared_tokens": ["adjacency", "in", "matrix", "normalized", "row"]}, {"paper": "2002.02126", "equation_id": "eq_9", "equation_loc": "3_method_new.tex:L95", "latex_preview": "\\textbf{E}^{(k+1)} = (\\textbf{D}+\\textbf{I})^{-\\frac{1}{2}} (\\textbf{A}+\\textbf{I}) (\\textbf{D}+\\textbf{I})^{-", "matched_symbol": "load_movielens_100k", "symbol_kind": "function", "code_loc": "train_recsys.py:L47", "score": 0.676, "shared_tokens": ["as", "defined", "in", "is"]}, {"paper": "2002.02126", "equation_id": "eq:SGCN", "equation_loc": "3_method_new.tex:L100", "latex_preview": "\\label{eq:SGCN} \\begin{aligned} \\textbf{E}^{(K)} &= (\\textbf{A}+\\textbf{I}) \\textbf{E}^{(K-1)} = (\\textbf{A}+\\", "matched_symbol": "load_movielens_100k", "symbol_kind": "function", "code_loc": "train_recsys.py:L47", "score": 0.474, "shared_tokens": ["as", "in", "is"]}, {"paper": "2002.02126", "equation_id": "eq_11", "equation_loc": "3_method_new.tex:L111", "latex_preview": "\\textbf{E}^{(k+1)} = \\beta \\textbf{E}^{(0)} + (1-\\beta) \\Tilde{\\textbf{A}} \\textbf{E}^{(k)},", "matched_symbol": "load_movielens_100k", "symbol_kind": "function", "code_loc": "train_recsys.py:L47", "score": 0.649, "shared_tokens": ["as", "defined", "in", "is"]}, {"paper": "2002.02126", "equation_id": "eq_12", "equation_loc": "3_method_new.tex:L115", "latex_preview": "\\begin{aligned} \\textbf{E}^{(K)} &= \\beta \\textbf{E}^{(0)} + (1-\\beta) \\Tilde{\\textbf{A}} \\textbf{E}^{(K-1)}, ", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 1.458, "shared_tokens": ["embedding", "final", "gcn", "in", "layer", "light", "propagation"]}, {"paper": "2002.02126", "equation_id": "eq_13", "equation_loc": "3_method_new.tex:L129", "latex_preview": "\\begin{aligned} \\textbf{e}_{u}^{(2)} &= \\sum_{i \\in \\mathcal{N}_u} \\frac{1}{\\sqrt{|\\mathcal{N}_u|}\\sqrt{|\\math", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 1.028, "shared_tokens": ["gcn", "if", "items", "layer", "light"]}, {"paper": "2002.02126", "equation_id": "eq:c_vu", "equation_loc": "3_method_new.tex:L135", "latex_preview": "\\label{eq:c_vu} c_{v -> u} = \\frac{1}{\\sqrt{|\\mathcal{N}_u|}\\sqrt{|\\mathcal{N}_v|}} \\sum_{i \\in \\mathcal{N}_u ", "matched_symbol": "evaluate_full_ranking", "symbol_kind": "function", "code_loc": "train_recsys.py:L180", "score": 0.548, "shared_tokens": ["if", "items", "target"]}, {"paper": "2002.02126", "equation_id": "eq_15", "equation_loc": "3_method_new.tex:L145", "latex_preview": "L_{BPR} = - \\sum_{u=1}^{M} \\sum_{i \\in \\mathcal{N}_u} \\sum_{j \\notin \\mathcal{N}_u} \\ln \\sigma (\\hat{y}_{ui} -", "matched_symbol": "bpr_ranking_loss", "symbol_kind": "function", "code_loc": "train_recsys.py:L126", "score": 1.66, "shared_tokens": ["bayesian", "bpr", "loss", "pairwise", "personalized", "ranking"]}, {"paper": "2002.02126", "equation_id": "eq_16", "equation_loc": "4_experiment.tex:L78", "latex_preview": "\\begin{aligned} L &= - \\sum_{u=1}^{M} \\sum_{i \\in \\mathcal{N}_u} \\Big(\\sum_{j \\notin \\mathcal{N}_u} \\ln \\sigma", "matched_symbol": "bpr_ranking_loss", "symbol_kind": "function", "code_loc": "train_recsys.py:L126", "score": 0.945, "shared_tokens": ["bpr", "loss"]}, {"paper": "2002.02126", "equation_id": "eq_17", "equation_loc": "4_experiment.tex:L212", "latex_preview": "S_U = \\sum_{u=1}^M \\sum_{v=1}^M c_{v\\to u} (\\frac{\\textbf{e}_{u}}{||\\textbf{e}_{u}||^2} - \\frac{\\textbf{e}_{v}", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 1.217, "shared_tokens": ["embedding", "gcn", "in", "item", "light", "norm"]}, {"paper": "2112.08679", "equation_id": "joint", "equation_loc": "paper.tex:L167", "latex_preview": "\\label{joint} \\mathcal{L}_{joint} = \\mathcal{L}_{rec} + \\lambda\\mathcal{L}_{cl},", "matched_symbol": "simgcl_infonce_loss", "symbol_kind": "function", "code_loc": "train_recsys.py:L133", "score": 0.943, "shared_tokens": ["info", "loss", "nce", "two"]}, {"paper": "2112.08679", "equation_id": "loss:cl", "equation_loc": "paper.tex:L172", "latex_preview": "\\label{loss:cl} \\mathcal{L}_{cl}=\\sum_{i \\in \\mathcal{B}}-\\log \\frac{\\exp (\\mathbf{z}_{i}^{\\prime\\top}\\mathbf{", "matched_symbol": "simgcl_infonce_loss", "symbol_kind": "function", "code_loc": "train_recsys.py:L133", "score": 1.123, "shared_tokens": ["info", "loss", "nce", "two"]}, {"paper": "2112.08679", "equation_id": "lightgcn", "equation_loc": "paper.tex:L177", "latex_preview": "\\label{lightgcn} \\mathbf{E}=\\frac{1}{1+L}(\\mathbf{E}^{(0)}+\\tilde{\\mathbf{A}}\\mathbf{E}^{(0)}+...+\\tilde{\\math", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 0.93, "shared_tokens": ["gcn", "item", "layers", "light"]}, {"paper": "2112.08679", "equation_id": "loss:cl2", "equation_loc": "paper.tex:L211", "latex_preview": "\\label{loss:cl2} \\mathcal{L}_{cl}=\\sum_{i \\in \\mathcal{B}}-\\log \\frac{\\exp ( 1 / \\tau)}{\\sum_{j \\in \\mathcal{B", "matched_symbol": "load_movielens_100k", "symbol_kind": "function", "code_loc": "train_recsys.py:L47", "score": 0.507, "shared_tokens": ["in", "is", "item"]}, {"paper": "2112.08679", "equation_id": "bpr", "equation_loc": "paper.tex:L239", "latex_preview": "\\label{bpr} \\mathcal{L}_{rec} = -\\log(\\sigma(\\mathbf{e}_{u}^{\\top}\\mathbf{e}_{i}-\\mathbf{e}_{u}^{\\top}\\mathbf{", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 0.988, "shared_tokens": ["gcn", "in", "layers", "light"]}, {"paper": "2112.08679", "equation_id": "eq_6", "equation_loc": "paper.tex:L246", "latex_preview": "\\mathcal{L}_{cl}=\\sum_{i \\in \\mathcal{B}}-1 / \\tau + \\log\\big(\\exp(1 / \\tau)+\\sum_{j \\in \\mathcal{B}/\\{i\\}} \\e", "matched_symbol": "simgcl_infonce_loss", "symbol_kind": "function", "code_loc": "train_recsys.py:L133", "score": 0.714, "shared_tokens": ["between", "loss"]}, {"paper": "2112.08679", "equation_id": "eq_7", "equation_loc": "paper.tex:L268", "latex_preview": "\\mathbf{e}_{i}^{\\prime} = \\mathbf{e}_{i} + \\Delta^{\\prime}_{i},\\,\\,\\,\\mathbf{e}_{i}^{\\prime\\prime} = \\mathbf{e", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 0.707, "shared_tokens": ["embedding", "in", "noise"]}, {"paper": "2112.08679", "equation_id": "eq_8", "equation_loc": "paper.tex:L275", "latex_preview": "\\begin{aligned} \\mathbf{E}^{\\prime}=\\frac{1}{L}\\big((\\tilde{\\mathbf{A}}\\mathbf{E}^{(0)}+\\mathbf{\\Delta}^{(1)})", "matched_symbol": "LightGCNModel", "symbol_kind": "nn_module", "code_loc": "train_recsys.py:L154", "score": 0.949, "shared_tokens": ["embedding", "final", "in", "layer", "perturbed", "propagate"]}, {"paper": "2112.08679", "equation_id": "metric", "equation_loc": "paper.tex:L286", "latex_preview": "\\mathcal{L}_{\\text {uniform }}(f)=\\log \\underset{\\underset{u, v\\ \\sim\\ p_{\\text {node}}}{\\scriptscriptstyle i.", "matched_symbol": "build_bipartite_norm_adj", "symbol_kind": "function", "code_loc": "train_recsys.py:L108", "score": 0.641, "shared_tokens": ["in", "items", "normalized", "users"]}], "unmatched": []}, "claims": {"C1_Primary": {"text": "Targeted algorithmic refinement addressing calibration, generalization, and reproducibility gaps across reference methods across reference study (LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation; Are Graph Augmentations Necessary? Simple Graph Contrastive Learning for Recommendation) improves held-out evaluation metrics over the baseline under strict validation-only selection.", "metric": "primary_eval_metric", "select_on": "valid", "seeds_planned": 3, "require_ci": true, "baselines": ["baseline"], "kill": "Refined method fails to outperform the baseline across planned seeds or violates VeriLoop AST/provenance gates.", "scope": "Level-2 VeriLoop orchestrated study", "status": "proposed", "registered": "2026-11-26T23:17:06.101967-08:00", "history": [{"seq": 1, "at": "2026-11-26T23:17:06.101967-08:00", "text": "Targeted algorithmic refinement addressing calibration, generalization, and reproducibility gaps across reference methods across reference study (LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation; Are Graph Augmentations Necessary? Simple Graph Contrastive Learning for Recommendation) improves held-out evaluation metrics over the baseline under strict validation-only selection.", "why": "registered"}], "evidence": [], "status_log": []}}, "budget": {"total_usd": 0.0}, "events": [{"timestamp_utc": "2026-11-27T07:16:24Z", "stage": "ingest", "status": "running", "message": "Ingesting reference papers & indexing baseline codebase via AST", "detail": {}}, {"timestamp_utc": "2026-11-27T07:17:06Z", "stage": "ingest", "status": "completed", "message": "Indexed 2 paper(s), 26 alignments", "detail": {"status": "OK", "papers": 2, "equations": 26, "code_symbols": 11, "alignments": 26, "unmatched_equations": 0, "manifest": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/ingest_manifest.json", "wiki_map": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/wiki/INGEST_MAP.md"}}, {"timestamp_utc": "2026-11-27T07:17:06Z", "stage": "ideate_and_register", "status": "running", "message": "Synthesizing Level-2 research plan & registering C1_Primary", "detail": {}}, {"timestamp_utc": "2026-11-27T07:17:06Z", "stage": "ideate_and_register", "status": "completed", "message": "Wrote wiki/RESEARCH_PLAN.md & initialized claims.json", "detail": {}}, {"timestamp_utc": "2026-11-27T07:17:06Z", "stage": "execute", "status": "running", "message": "Running experiment in local sandbox: /home/shawnyang/anaconda3/bin/python code/train_recsys.py -w .", "detail": {}}, {"timestamp_utc": "2026-11-27T07:26:17Z", "stage": "execute", "status": "completed", "message": "Sandbox succeeded in 550.72s", "detail": {"timestamp_utc": "2026-11-27T07:26:16Z", "mode": "local", "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens", "cmd": "/home/shawnyang/anaconda3/bin/python code/train_recsys.py -w .", "returncode": 0, "elapsed_s": 550.72, "timed_out": false, "anomalies": [], "log_path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_last.log", "log_sha256": "0086662570a63b5870dce08a22a928ac9f3312c546a53c1674f35c2070455ccc", "log_bytes": 838}}, {"timestamp_utc": "2026-11-27T07:26:17Z", "stage": "bind", "status": "running", "message": "Auto-binding raw logs (2 dirs) via paper_bind.py", "detail": {}}, {"timestamp_utc": "2026-11-27T07:26:19Z", "stage": "bind", "status": "completed", "message": "Bound 14 source(s) -> paper/bound/", "detail": {"out_dir": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/paper/bound", "methods": ["R0_Pop", "R1_MF_BPR", "R2_LightGCN", "R3_SimGCL", "sandbox_runs"], "metrics": ["best_epoch", "elapsed_s", "log_bytes", "returncode", "test_ndcg10", "test_ndcg20", "test_recall10", "test_recall20", "val_ndcg20"], "sources_count": 14, "figures": ["bound_bars.pdf", "bound_curves.pdf"]}}, {"timestamp_utc": "2026-11-27T07:26:19Z", "stage": "draft", "status": "completed", "message": "Active manuscript: /home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md", "detail": {}}, {"timestamp_utc": "2026-11-27T07:26:19Z", "stage": "gate_and_repair", "status": "running", "message": "Running VeriLoop dual-layer hard evidence gate", "detail": {}}, {"timestamp_utc": "2026-11-27T07:26:19Z", "stage": "gate_and_repair", "status": "completed", "message": "Gate PASSED (rc=0)", "detail": {"repairs_run": 0}}, {"timestamp_utc": "2026-11-27T07:26:19Z", "stage": "package_and_ui", "status": "running", "message": "Building split-pane Review UI & auditing compiled PDF if present", "detail": {}}, {"timestamp_utc": "2026-11-27T07:26:20Z", "stage": "package_and_ui", "status": "completed", "message": "Generated /home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/review_ui.html", "detail": {}}], "sandbox_runs": [{"timestamp_utc": "2026-11-27T07:26:16Z", "mode": "local", "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens", "cmd": "/home/shawnyang/anaconda3/bin/python code/train_recsys.py -w .", "returncode": 0, "elapsed_s": 550.72, "timed_out": false, "anomalies": [], "log_path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_last.log", "log_sha256": "0086662570a63b5870dce08a22a928ac9f3312c546a53c1674f35c2070455ccc", "log_bytes": 838}], "gate_trace": [], "bound_summaries": {"default": {"R0_Pop::best_epoch": {"method": "R0_Pop", "metric": "best_epoch", "n_seeds": 1, "mean": 0.0, "std": 0.0, "ci_lo": 0.0, "ci_hi": 0.0, "per_seed": {"42": 0.0}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"]}, "R0_Pop::elapsed_s": {"method": "R0_Pop", "metric": "elapsed_s", "n_seeds": 1, "mean": 0.01, "std": 0.0, "ci_lo": 0.01, "ci_hi": 0.01, "per_seed": {"42": 0.01}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"]}, "R0_Pop::test_ndcg10": {"method": "R0_Pop", "metric": "test_ndcg10", "n_seeds": 3, "mean": 0.0406, "std": 0.0, "ci_lo": 0.0406, "ci_hi": 0.0406, "per_seed": {"42": 0.0406, "43": 0.0406, "44": 0.0406}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"]}, "R0_Pop::test_ndcg20": {"method": "R0_Pop", "metric": "test_ndcg20", "n_seeds": 3, "mean": 0.0545, "std": 0.0, "ci_lo": 0.0545, "ci_hi": 0.0545, "per_seed": {"42": 0.0545, "43": 0.0545, "44": 0.0545}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"]}, "R0_Pop::test_recall10": {"method": "R0_Pop", "metric": "test_recall10", "n_seeds": 3, "mean": 0.081, "std": 0.0, "ci_lo": 0.081, "ci_hi": 0.081, "per_seed": {"42": 0.081, "43": 0.081, "44": 0.081}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"]}, "R0_Pop::test_recall20": {"method": "R0_Pop", "metric": "test_recall20", "n_seeds": 3, "mean": 0.1365, "std": 0.0, "ci_lo": 0.1365, "ci_hi": 0.1365, "per_seed": {"42": 0.1365, "43": 0.1365, "44": 0.1365}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"]}, "R0_Pop::val_ndcg20": {"method": "R0_Pop", "metric": "val_ndcg20", "n_seeds": 3, "mean": 0.0475, "std": 0.0, "ci_lo": 0.0475, "ci_hi": 0.0475, "per_seed": {"42": 0.0475, "43": 0.0475, "44": 0.0475}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R0_Pop_s44.csv"]}, "R1_MF_BPR::best_epoch": {"method": "R1_MF_BPR", "metric": "best_epoch", "n_seeds": 3, "mean": 46.666666666666664, "std": 7.637626158259733, "ci_lo": 27.69222018081511, "ci_hi": 65.64111315251822, "per_seed": {"42": 55.0, "43": 45.0, "44": 40.0}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"]}, "R1_MF_BPR::elapsed_s": {"method": "R1_MF_BPR", "metric": "elapsed_s", "n_seeds": 3, "mean": 26.023333333333333, "std": 3.6876053657262906, "ci_lo": 16.862074426042746, "ci_hi": 35.18459224062392, "per_seed": {"42": 26.74, "43": 22.03, "44": 29.3}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"]}, "R1_MF_BPR::test_ndcg10": {"method": "R1_MF_BPR", "metric": "test_ndcg10", "n_seeds": 3, "mean": 0.061066666666666665, "std": 0.001401189970465581, "ci_lo": 0.057585636885920104, "ci_hi": 0.06454769644741323, "per_seed": {"42": 0.0622, "43": 0.0615, "44": 0.0595}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"]}, "R1_MF_BPR::test_ndcg20": {"method": "R1_MF_BPR", "metric": "test_ndcg20", "n_seeds": 3, "mean": 0.0788, "std": 0.0015716233645501738, "ci_lo": 0.07489555602635492, "ci_hi": 0.08270444397364507, "per_seed": {"42": 0.0805, "43": 0.0785, "44": 0.0774}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"]}, "R1_MF_BPR::test_recall10": {"method": "R1_MF_BPR", "metric": "test_recall10", "n_seeds": 3, "mean": 0.12366666666666667, "std": 0.003813572253587626, "ci_lo": 0.11419246340687864, "ci_hi": 0.1331408699264547, "per_seed": {"42": 0.1226, "43": 0.1279, "44": 0.1205}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"]}, "R1_MF_BPR::test_recall20": {"method": "R1_MF_BPR", "metric": "test_recall20", "n_seeds": 3, "mean": 0.19476666666666667, "std": 0.0016258331197676293, "ci_lo": 0.19072754732687103, "ci_hi": 0.19880578600646232, "per_seed": {"42": 0.1951, "43": 0.1962, "44": 0.193}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"]}, "R1_MF_BPR::val_ndcg20": {"method": "R1_MF_BPR", "metric": "val_ndcg20", "n_seeds": 3, "mean": 0.08143333333333333, "std": 0.0019087517736293847, "ci_lo": 0.07669134837190163, "ci_hi": 0.08617531829476503, "per_seed": {"42": 0.0807, "43": 0.08, "44": 0.0836}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R1_MF_BPR_s44.csv"]}, "R2_LightGCN::best_epoch": {"method": "R2_LightGCN", "metric": "best_epoch", "n_seeds": 3, "mean": 58.333333333333336, "std": 2.8867513459481287, "ci_lo": 51.16166666666667, "ci_hi": 65.505, "per_seed": {"42": 55.0, "43": 60.0, "44": 60.0}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"]}, "R2_LightGCN::elapsed_s": {"method": "R2_LightGCN", "metric": "elapsed_s", "n_seeds": 3, "mean": 44.03333333333333, "std": 5.971886915651815, "ci_lo": 29.19714649299557, "ci_hi": 58.86952017367109, "per_seed": {"42": 50.81, "43": 39.54, "44": 41.75}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"]}, "R2_LightGCN::test_ndcg10": {"method": "R2_LightGCN", "metric": "test_ndcg10", "n_seeds": 3, "mean": 0.0552, "std": 0.00030000000000000165, "ci_lo": 0.05445469853750311, "ci_hi": 0.05594530146249689, "per_seed": {"42": 0.0555, "43": 0.0549, "44": 0.0552}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"]}, "R2_LightGCN::test_ndcg20": {"method": "R2_LightGCN", "metric": "test_ndcg20", "n_seeds": 3, "mean": 0.07383333333333333, "std": 0.0016563010998406446, "ci_lo": 0.06971852122651188, "ci_hi": 0.07794814544015478, "per_seed": {"42": 0.0754, "43": 0.074, "44": 0.0721}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"]}, "R2_LightGCN::test_recall10": {"method": "R2_LightGCN", "metric": "test_recall10", "n_seeds": 3, "mean": 0.11656666666666667, "std": 0.002193931022920583, "ci_lo": 0.11111619999999998, "ci_hi": 0.12201713333333335, "per_seed": {"42": 0.1141, "43": 0.1173, "44": 0.1183}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"]}, "R2_LightGCN::test_recall20": {"method": "R2_LightGCN", "metric": "test_recall20", "n_seeds": 3, "mean": 0.1905, "std": 0.004330127018922197, "ci_lo": 0.1797425, "ci_hi": 0.2012575, "per_seed": {"42": 0.193, "43": 0.193, "44": 0.1855}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"]}, "R2_LightGCN::val_ndcg20": {"method": "R2_LightGCN", "metric": "val_ndcg20", "n_seeds": 3, "mean": 0.07493333333333334, "std": 0.0006658328118479372, "ci_lo": 0.0732791794385044, "ci_hi": 0.07658748722816228, "per_seed": {"42": 0.0755, "43": 0.0751, "44": 0.0742}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R2_LightGCN_s44.csv"]}, "R3_SimGCL::best_epoch": {"method": "R3_SimGCL", "metric": "best_epoch", "n_seeds": 3, "mean": 60.0, "std": 0.0, "ci_lo": 60.0, "ci_hi": 60.0, "per_seed": {"42": 60.0, "43": 60.0, "44": 60.0}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"]}, "R3_SimGCL::elapsed_s": {"method": "R3_SimGCL", "metric": "elapsed_s", "n_seeds": 3, "mean": 109.06333333333333, "std": 18.04219868345688, "ci_lo": 64.2404097818672, "ci_hi": 153.88625688479948, "per_seed": {"42": 119.49, "43": 88.23, "44": 119.47}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl"]}, "R3_SimGCL::test_ndcg10": {"method": "R3_SimGCL", "metric": "test_ndcg10", "n_seeds": 3, "mean": 0.0103, "std": 0.0012165525060596441, "ci_lo": 0.007277672126764978, "ci_hi": 0.013322327873235023, "per_seed": {"42": 0.0095, "43": 0.0117, "44": 0.0097}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"]}, "R3_SimGCL::test_ndcg20": {"method": "R3_SimGCL", "metric": "test_ndcg20", "n_seeds": 3, "mean": 0.012966666666666666, "std": 0.0014011899704655802, "ci_lo": 0.009485636885920105, "ci_hi": 0.016447696447413226, "per_seed": {"42": 0.0116, "43": 0.0144, "44": 0.0129}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"]}, "R3_SimGCL::test_recall10": {"method": "R3_SimGCL", "metric": "test_recall10", "n_seeds": 3, "mean": 0.019200000000000002, "std": 0.0038691084244306204, "ci_lo": 0.009587826109042765, "ci_hi": 0.02881217389095724, "per_seed": {"42": 0.016, "43": 0.0235, "44": 0.0181}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"]}, "R3_SimGCL::test_recall20": {"method": "R3_SimGCL", "metric": "test_recall20", "n_seeds": 3, "mean": 0.029833333333333333, "std": 0.004888080741286228, "ci_lo": 0.01768968758238834, "ci_hi": 0.041976979084278325, "per_seed": {"42": 0.0245, "43": 0.0341, "44": 0.0309}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"]}, "R3_SimGCL::val_ndcg20": {"method": "R3_SimGCL", "metric": "val_ndcg20", "n_seeds": 3, "mean": 0.017666666666666667, "std": 0.003768730997740928, "ci_lo": 0.00830386425208777, "ci_hi": 0.027029469081245566, "per_seed": {"42": 0.0137, "43": 0.0212, "44": 0.0181}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/trajectory_ledger.jsonl", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s42.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s43.csv", "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/runs/csv/R3_SimGCL_s44.csv"]}, "sandbox_runs::elapsed_s": {"method": "sandbox_runs", "metric": "elapsed_s", "n_seeds": 1, "mean": 550.72, "std": 0.0, "ci_lo": 550.72, "ci_hi": 550.72, "per_seed": {"0": 550.72}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl"]}, "sandbox_runs::log_bytes": {"method": "sandbox_runs", "metric": "log_bytes", "n_seeds": 1, "mean": 838.0, "std": 0.0, "ci_lo": 838.0, "ci_hi": 838.0, "per_seed": {"0": 838.0}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl"]}, "sandbox_runs::returncode": {"method": "sandbox_runs", "metric": "returncode", "n_seeds": 1, "mean": 0.0, "std": 0.0, "ci_lo": 0.0, "ci_hi": 0.0, "per_seed": {"0": 0.0}, "sources": ["/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_runs.jsonl"]}}}, "has_review_ui": true};
+
+function esc(s) { return String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav.tabs button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+function render(snap) {
+  SNAP = snap;
+  // Stepper
+  const stMap = (snap.state && snap.state.stages) || {};
+  document.getElementById('stepper').innerHTML = STAGES.map(([k, lbl]) => {
+    const st = (stMap[k] && stMap[k].status) || 'pending';
+    return `<div class="step ${esc(st)}"><div>${esc(lbl)}</div><div class="st">${esc(st)}</div></div>`;
+  }).join('');
+
+  // KPIs
+  const gateBlocked = snap.gate ? snap.gate.blocked : null;
+  const gateTxt = gateBlocked === null ? 'NOT RUN' : (gateBlocked ? 'BLOCKED (rc=2)' : 'PASSED (rc=0)');
+  const gateCls = gateBlocked === null ? 'info' : (gateBlocked ? 'bad' : 'ok');
+  const pdfTr = snap.pdf_audit && snap.pdf_audit.pdf_number_trace;
+  const pdfTxt = pdfTr ? `${pdfTr.traced} / ${pdfTr.traced + pdfTr.untraced}` : '—';
+  const claimsCnt = Object.keys(snap.claims || {}).length;
+  const supCnt = Object.values(snap.claims || {}).filter(c => c.status === 'supported').length;
+  const spent = Number((snap.budget && snap.budget.total_usd) || 0).toFixed(4);
+  document.getElementById('kpi-row').innerHTML = `
+    <div class="card"><div class="kpi-lbl">Dual-Layer Hard Gate</div><div class="kpi ${gateCls}">${gateTxt}</div></div>
+    <div class="card"><div class="kpi-lbl">Expanded PDF Numbers</div><div class="kpi ok">${pdfTxt}</div></div>
+    <div class="card"><div class="kpi-lbl">Claims Ledger (Supported)</div><div class="kpi info">${supCnt} / ${claimsCnt}</div></div>
+    <div class="card"><div class="kpi-lbl">Tracked API Spend</div><div class="kpi warn">$${spent}</div></div>
+  `;
+
+  // Logs
+  const term = document.getElementById('log-term');
+  const evs = snap.events || [];
+  const gtrace = snap.gate_trace || [];
+  let lines = evs.map(e => `<div class="log-line">[${esc(e.timestamp_utc)}] <code>[${esc(e.stage)}]</code> <strong>${esc(e.status)}</strong>: ${esc(e.message)}</div>`);
+  if (!lines.length && gtrace.length) {
+    lines = gtrace.map(g => `<div class="log-line">[${esc(g.timestamp_utc)}] <code>[stage-gate]</code> ${esc(g.stage)} passed=${g.passed} traced=${g.traced} ast_high=${g.ast_high} (${g.gate_elapsed_ms}ms)</div>`);
+  }
+  term.innerHTML = lines.length ? lines.join('') : '<div class="log-line" style="color:#64748b;">Ready. Launch a Level-1 or Level-2 pipeline or run a hard gate check.</div>';
+  term.scrollTop = term.scrollHeight;
+
+  // Claims
+  const cEntries = Object.entries(snap.claims || {});
+  document.getElementById('claims-box').innerHTML = cEntries.length ? `<table><thead><tr><th>Claim</th><th>Status</th><th>Evidence</th></tr></thead><tbody>` +
+    cEntries.map(([cid, c]) => `<tr><td><code>${esc(cid)}</code></td><td><span class="badge ${c.status==='supported'?'ok':'info'}">${esc(c.status)}</span></td><td>${(c.evidence||[]).length} logs</td></tr>`).join('') + `</tbody></table>`
+    : '<div style="font-size:12px;color:var(--muted);">No claims registered in claims.json yet.</div>';
+
+  // Formula <-> Code Alignments
+  const als = (snap.ingest && snap.ingest.alignments) || [];
+  document.getElementById('align-box').innerHTML = als.length ? `<table><thead><tr><th>Equation</th><th>AST Symbol</th><th>Code</th></tr></thead><tbody>` +
+    als.slice(0, 8).map(a => `<tr><td><code>${esc(a.equation_id)}</code></td><td><code>${esc(a.matched_symbol)}</code></td><td><code>${esc(a.code_loc)}</code></td></tr>`).join('') + `</tbody></table>`
+    : '<div style="font-size:12px;color:var(--muted);">Run <code>./veriloop ingest --arxiv ... --repo ...</code> to populate Formula ↔ Code alignments.</div>';
+
+  // Bound Metrics
+  const bds = snap.bound_summaries || {};
+  const dsKeys = Object.keys(bds);
+  if (dsKeys.length) {
+    let htmlOut = '';
+    for (const ds of dsKeys) {
+      const rows = Object.values(bds[ds]).slice(0, 24);
+      htmlOut += `<div style="margin-bottom:10px;"><span class="badge info">${esc(ds)}</span></div><table><thead><tr><th>Method</th><th>Metric</th><th>Seeds</th><th>Mean ± Std</th><th>95% CI</th></tr></thead><tbody>` +
+        rows.map(r => `<tr><td><code>${esc(r.method)}</code></td><td><code>${esc(r.metric)}</code></td><td>${r.n_seeds}</td><td><strong>${Number(r.mean).toFixed(4)} ± ${Number(r.std).toFixed(4)}</strong></td><td>[${Number(r.ci_lo).toFixed(4)}, ${Number(r.ci_hi).toFixed(4)}]</td></tr>`).join('') +
+        `</tbody></table>`;
+    }
+    document.getElementById('metrics-box').innerHTML = htmlOut;
+  } else {
+    document.getElementById('metrics-box').innerHTML = '<div style="font-size:12px;color:var(--muted);">No auto-bound metrics yet. Run <code>./veriloop bind</code> or launch an experiment.</div>';
+  }
+}
+
+async function refreshState() {
+  if (STATIC_MODE) return;
+  const r = await fetch('/api/state');
+  if (r.ok) render(await r.json());
+}
+
+async function launchPipeline(dryRun) {
+  const payload = {
+    level: Number(document.getElementById('f-level').value),
+    sandbox: document.getElementById('f-sandbox').value,
+    idea: document.getElementById('f-idea').value,
+    papers: document.getElementById('f-papers').value.trim().split(/\s+/).filter(Boolean),
+    repo: document.getElementById('f-repo').value.trim() || null,
+    train_cmd: document.getElementById('f-cmd').value.trim(),
+    provider: document.getElementById('f-provider').value,
+    reviewer_provider: document.getElementById('f-reviewer').value,
+    budget_limit: Number(document.getElementById('f-budget').value || 5.0),
+    online_cites: document.getElementById('f-online-cites').value === 'true',
+    dry_run: dryRun,
+  };
+  const msg = document.getElementById('launch-msg');
+  msg.textContent = dryRun ? 'Running dry-run plan...' : 'Launching verified research pipeline...';
+  const r = await fetch('/api/launch', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+  const d = await r.json();
+  msg.textContent = d.message || JSON.stringify(d);
+  if (!dryRun) switchTab('monitor', document.querySelectorAll('nav.tabs button')[0]);
+  refreshState();
+}
+
+async function triggerGate() {
+  const r = await fetch('/api/gate', { method: 'POST' });
+  await refreshState();
+  reloadWorkbench();
+}
+
+function reloadWorkbench() {
+  const f = document.getElementById('review-frame');
+  if (f) f.src = '/review-ui?t=' + Date.now();
+}
+
+render(SNAP);
+if (!STATIC_MODE) {
+  const es = new EventSource('/api/events');
+  es.onmessage = () => refreshState();
+}
+</script>
+</body>
+</html>

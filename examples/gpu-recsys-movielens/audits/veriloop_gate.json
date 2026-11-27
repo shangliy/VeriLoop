@@ -1,0 +1,81 @@
+{
+  "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens",
+  "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md",
+  "blocked": false,
+  "block_reasons": [],
+  "checks": {
+    "trace_numbers": {
+      "returncode": 0,
+      "summary": {
+        "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md",
+        "log_files": 8,
+        "data_files": 0,
+        "skipped_large": [],
+        "traced": 207,
+        "untraced": [],
+        "sign_mismatches": [],
+        "wrong_logs": [],
+        "unpaired_pairs": [],
+        "mixed_rows": [],
+        "cited_stale": [],
+        "workspace_stale": [],
+        "common": 0
+      }
+    },
+    "audit_code": {
+      "returncode": 0,
+      "summary": {
+        "scripts_scanned": 1,
+        "counts": {
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "INFO": 0
+        },
+        "findings": []
+      }
+    },
+    "citation_audit": {
+      "returncode": 0,
+      "summary": {
+        "document": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md",
+        "bib": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/paper/refs.bib",
+        "online_checked": false,
+        "claims_checked": false,
+        "pairs_count": 2,
+        "issues_count": 0,
+        "warnings_count": 0,
+        "issues": [],
+        "warnings": [],
+        "pairs": [
+          {
+            "line": 44,
+            "kind": "cite",
+            "key": "he2020lightgcn",
+            "sentence": "Ingested arXiv formulations aligned via Python AST (`wiki/INGEST_MAP.md`): LightGCN \\cite{he2020lightgcn} and SimGCL \\cite{yu2021simgcl}.",
+            "bib_title": "{LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation}",
+            "bib_author": "Xiangnan He and Kuan Deng and Xiang Wang and Yan Li and Yongdong Zhang and Meng Wang",
+            "bib_year": "2020",
+            "arxiv_id": "2002.02126",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 44,
+            "kind": "cite",
+            "key": "yu2021simgcl",
+            "sentence": "Ingested arXiv formulations aligned via Python AST (`wiki/INGEST_MAP.md`): LightGCN \\cite{he2020lightgcn} and SimGCL \\cite{yu2021simgcl}.",
+            "bib_title": "{Are Graph Augmentations Necessary? Simple Graph Contrastive Learning for Recommendation}",
+            "bib_author": "",
+            "bib_year": "2021",
+            "arxiv_id": "2112.08679",
+            "status": "BIB_FOUND_OFFLINE"
+          }
+        ]
+      }
+    },
+    "claims_ledger": {
+      "returncode": 0,
+      "stdout": "C1_Primary [proposed] gates: 2/7 open  revisions: 0\n    Targeted algorithmic refinement addressing calibration, generalization, and reproducibility gaps across reference methods across reference study (Ligh\n    FAIL G1 logs exist & intact: no evidence\n    FAIL G2 seeds >= 3: no method evidence\n    FAIL G3 no test selection: no evidence\n    FAIL G4 baselines run: no evidence for: baseline\n    FAIL G7 uncertainty/CI logged: no evidence log contains CI/[lo,hi]/±/bootstrap/p-value",
+      "stderr": ""
+    }
+  }
+}

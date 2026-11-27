@@ -1,0 +1,2 @@
+epoch,val_acc,test_acc,test_ece,dirichlet_energy
+71,0.738,0.724,0.2887,0.0214

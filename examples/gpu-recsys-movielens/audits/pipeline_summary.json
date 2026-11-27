@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "level": 2,
+  "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens",
+  "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md",
+  "gate_passed": true,
+  "gate_json": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/audits/veriloop_gate.json",
+  "review_ui": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/review_ui.html",
+  "state_file": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/state.json"
+}

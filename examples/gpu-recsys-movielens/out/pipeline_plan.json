@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-27T07:16:24Z",
+  "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens",
+  "level": 2,
+  "idea": "",
+  "papers": [
+    "2002.02126",
+    "2112.08679"
+  ],
+  "tex_dir": [],
+  "repo": "examples/gpu-recsys-movielens/code",
+  "train_cmd": "/home/shawnyang/anaconda3/bin/python code/train_recsys.py -w .",
+  "sandbox": "local",
+  "provider": "offline",
+  "reviewer_provider": "none",
+  "online_cites": false,
+  "budget_limit_usd": 5.0,
+  "stages": [
+    "ingest",
+    "ideate_and_register",
+    "execute",
+    "bind",
+    "draft",
+    "gate_and_repair",
+    "package_and_ui"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "level": 2,
+  "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer",
+  "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/report/report.md",
+  "gate_passed": true,
+  "gate_json": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/audits/veriloop_gate.json",
+  "review_ui": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/review_ui.html",
+  "state_file": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/state.json"
+}

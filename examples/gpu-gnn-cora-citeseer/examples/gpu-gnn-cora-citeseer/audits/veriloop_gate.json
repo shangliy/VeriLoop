@@ -1,0 +1,41 @@
+{
+  "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer",
+  "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/examples/gpu-gnn-cora-citeseer/report/report.md",
+  "blocked": true,
+  "block_reasons": [
+    "trace_numbers failed (untraced=0, sign=0, wrong_logs=0, unpaired=0)",
+    "audit_code failed (HIGH=0: [], MEDIUM=0)",
+    "citation_audit failed (rc=2)"
+  ],
+  "checks": {
+    "trace_numbers": {
+      "returncode": 2,
+      "summary": {
+        "raw_stdout": "",
+        "raw_stderr": "no such report: /home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/examples/gpu-gnn-cora-citeseer/report/report.md\n",
+        "returncode": 2
+      }
+    },
+    "audit_code": {
+      "returncode": 2,
+      "summary": {
+        "raw_stdout": "",
+        "raw_stderr": "no .py files found under --scripts\n",
+        "returncode": 2
+      }
+    },
+    "citation_audit": {
+      "returncode": 2,
+      "summary": {
+        "raw_stdout": "",
+        "raw_stderr": "no such document: /home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/examples/gpu-gnn-cora-citeseer/report/report.md\n",
+        "returncode": 2
+      }
+    },
+    "claims_ledger": {
+      "returncode": 0,
+      "stdout": "C1_Primary [proposed] gates: 2/7 open  revisions: 0\n    Targeted algorithmic refinement addressing unverified/unmatched formulation eq_9 in 1810.00826 across reference study (Semi-Supervised Classification \n    FAIL G1 logs exist & intact: no evidence\n    FAIL G2 seeds >= 3: no method evidence\n    FAIL G3 no test selection: no evidence\n    FAIL G4 baselines run: no evidence for: baseline\n    FAIL G7 uncertainty/CI logged: no evidence log contains CI/[lo,hi]/±/bootstrap/p-value",
+      "stderr": ""
+    }
+  }
+}

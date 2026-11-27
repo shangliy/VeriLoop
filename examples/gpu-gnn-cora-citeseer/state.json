@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-27T07:12:51Z",
+  "updated_utc": "2026-11-27T07:16:18Z",
+  "status": "completed",
+  "stages": {
+    "ingest": {
+      "status": "OK",
+      "updated_utc": "2026-11-27T07:13:18Z",
+      "papers": 3,
+      "equations": 59,
+      "code_symbols": 17,
+      "alignments": 49,
+      "unmatched_equations": 10,
+      "manifest": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/ingest_manifest.json",
+      "wiki_map": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/wiki/INGEST_MAP.md"
+    },
+    "ideate_and_register": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:13:18Z",
+      "claim": "Targeted algorithmic refinement addressing unverified/unmatched formulation eq_9 in 1810.00826 across reference study (Semi-Supervised Classification with Graph Convolutional Networks; How Powerful ar"
+    },
+    "execute": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:16:13Z",
+      "timestamp_utc": "2026-11-27T07:16:13Z",
+      "mode": "local",
+      "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer",
+      "cmd": "/home/shawnyang/anaconda3/bin/python code/train_gnn.py -w .",
+      "returncode": 0,
+      "elapsed_s": 175.17,
+      "timed_out": false,
+      "anomalies": [],
+      "log_path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/sandbox_last.log",
+      "log_sha256": "eefa307e89cab9093175d27c5cb7d1fa6656af6dc151223a628558d622b56281",
+      "log_bytes": 2329
+    },
+    "bind": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:16:16Z",
+      "out_dir": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/paper/bound",
+      "methods": [
+        "M0_MLP",
+        "M1_GCN_2L",
+        "M2_GCN_8L_Deep",
+        "M3_APPNP_PPR",
+        "M4_GCNII_8L",
+        "sandbox_runs"
+      ],
+      "metrics": [
+        "best_epoch",
+        "dirichlet_energy",
+        "elapsed_s",
+        "log_bytes",
+        "returncode",
+        "test_acc",
+        "test_ece",
+        "val_acc"
+      ],
+      "sources_count": 52,
+      "figures": [
+        "bound_bars.pdf",
+        "bound_curves.pdf"
+      ]
+    },
+    "draft": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:16:16Z",
+      "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/report/report.md"
+    },
+    "gate_and_repair": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:16:17Z",
+      "passed": true,
+      "returncode": 0,
+      "repairs_run": 0,
+      "gate_json": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/audits/veriloop_gate.json"
+    },
+    "package_and_ui": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:16:18Z",
+      "review_ui": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/review_ui.html",
+      "pdf_audited": false
+    }
+  },
+  "config": {
+    "schema_version": 1,
+    "generated_utc": "2026-11-27T07:12:51Z",
+    "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer",
+    "level": 2,
+    "idea": "",
+    "papers": [
+      "1609.02907",
+      "1810.00826",
+      "2007.02133"
+    ],
+    "tex_dir": [],
+    "repo": "examples/gpu-gnn-cora-citeseer/code",
+    "train_cmd": "/home/shawnyang/anaconda3/bin/python code/train_gnn.py -w .",
+    "sandbox": "local",
+    "provider": "offline",
+    "reviewer_provider": "none",
+    "online_cites": false,
+    "budget_limit_usd": 5.0
+  }
+}

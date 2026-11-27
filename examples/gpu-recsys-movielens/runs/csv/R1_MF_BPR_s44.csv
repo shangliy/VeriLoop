@@ -1,0 +1,2 @@
+epoch,val_ndcg20,test_recall10,test_ndcg10,test_recall20,test_ndcg20
+40,0.0836,0.1205,0.0595,0.193,0.0774

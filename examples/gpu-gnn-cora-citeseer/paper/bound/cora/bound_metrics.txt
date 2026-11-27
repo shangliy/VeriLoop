@@ -1,0 +1,49 @@
+# VeriLoop Paper-Bind Canonical Metrics Log (auto-generated; do not edit by hand)
+# sources=25 methods=5 metrics=4
+SOURCE format=csv sha256=18d63a86a6b37344 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv
+SOURCE format=csv sha256=24629fc703070fa3 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv
+SOURCE format=csv sha256=79966433e58c823c points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv
+SOURCE format=csv sha256=2264c000f6f46ded points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv
+SOURCE format=csv sha256=da25a4e49c75d60f points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv
+SOURCE format=csv sha256=f5d8f32e2b247141 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv
+SOURCE format=csv sha256=4166bcd9da7c747f points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv
+SOURCE format=csv sha256=e3973b24cdb8302c points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv
+SOURCE format=csv sha256=8a880ad31b17ed76 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv
+SOURCE format=csv sha256=5285a167b7c7c5fc points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv
+SOURCE format=csv sha256=215e06c073a2ae80 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv
+SOURCE format=csv sha256=83efc0c26796d7a7 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv
+SOURCE format=csv sha256=979b084ce740cb8a points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv
+SOURCE format=csv sha256=78661769e1f21775 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv
+SOURCE format=csv sha256=5b4c1e5fb7d4c75c points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv
+SOURCE format=csv sha256=602ee1d9107d3532 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv
+SOURCE format=csv sha256=99aef21ae9f7b71c points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv
+SOURCE format=csv sha256=4a639222b3b6f270 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv
+SOURCE format=csv sha256=98092622f88ac67f points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv
+SOURCE format=csv sha256=d94c5b61e06688c1 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv
+SOURCE format=csv sha256=404c3ac45560b906 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv
+SOURCE format=csv sha256=cac3055e884ab67a points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv
+SOURCE format=csv sha256=3cb04d8c00092851 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv
+SOURCE format=csv sha256=c1322c011edd7eea points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv
+SOURCE format=csv sha256=d0dba64c169a31d0 points=4 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv
+
+BOUND M0_MLP | dirichlet_energy | n=5 | 0.1247±0.0214 [0.0981,0.1513] | pct=12.47±2.14% | s42=0.1152 s43=0.0925 s44=0.1330 s45=0.1479 s46=0.1349
+BOUND M0_MLP | test_acc | n=5 | 0.5936±0.0086 [0.5829,0.6043] | pct=59.36±0.86% | s42=0.5900 s43=0.5810 s44=0.5970 s45=0.5960 s46=0.6040
+BOUND M0_MLP | test_ece | n=5 | 0.1763±0.0768 [0.0810,0.2717] | s42=0.1812 s43=0.2968 s44=0.1577 s45=0.0841 s46=0.1618
+BOUND M0_MLP | val_acc | n=5 | 0.6056±0.0079 [0.5958,0.6154] | pct=60.56±0.79% | s42=0.6080 s43=0.6120 s44=0.5920 s45=0.6060 s46=0.6100
+BOUND M1_GCN_2L | dirichlet_energy | n=5 | 0.0296±0.0028 [0.0261,0.0331] | pct=2.96±0.28% | s42=0.0323 s43=0.0288 s44=0.0305 s45=0.0312 s46=0.0251
+BOUND M1_GCN_2L | test_acc | n=5 | 0.8184±0.0042 [0.8132,0.8236] | pct=81.84±0.42% | s42=0.8150 s43=0.8230 s44=0.8230 s45=0.8160 s46=0.8150
+BOUND M1_GCN_2L | test_ece | n=5 | 0.1836±0.0300 [0.1463,0.2208] | s42=0.1614 s43=0.1983 s44=0.1711 s45=0.1579 s46=0.2292
+BOUND M1_GCN_2L | val_acc | n=5 | 0.8084±0.0046 [0.8027,0.8141] | pct=80.84±0.46% | s42=0.8060 s43=0.8080 s44=0.8160 s45=0.8080 s46=0.8040
+BOUND M2_GCN_8L_Deep | dirichlet_energy | n=5 | 0.0021±0.0022 [-0.0006,0.0048] | pct=0.21±0.22% | s42=0.0003 s43=0.0011 s44=0.0033 s45=0.0054 s46=0.0005
+BOUND M2_GCN_8L_Deep | test_acc | n=5 | 0.2292±0.0102 [0.2166,0.2418] | pct=22.92±1.02% | s42=0.2120 s43=0.2340 s44=0.2280 s45=0.2370 s46=0.2350
+BOUND M2_GCN_8L_Deep | test_ece | n=5 | 0.0785±0.0113 [0.0645,0.0925] | s42=0.0586 s43=0.0826 s44=0.0820 s45=0.0865 s46=0.0828
+BOUND M2_GCN_8L_Deep | val_acc | n=5 | 0.2328±0.0094 [0.2211,0.2445] | pct=23.28±0.94% | s42=0.2160 s43=0.2380 s44=0.2360 s45=0.2380 s46=0.2360
+BOUND M3_APPNP_PPR | dirichlet_energy | n=5 | 0.0475±0.0079 [0.0378,0.0573] | pct=4.75±0.79% | s42=0.0497 s43=0.0507 s44=0.0553 s45=0.0344 s46=0.0475
+BOUND M3_APPNP_PPR | test_acc | n=5 | 0.8348±0.0050 [0.8286,0.8410] | pct=83.48±0.50% | s42=0.8320 s43=0.8390 s44=0.8330 s45=0.8410 s46=0.8290
+BOUND M3_APPNP_PPR | test_ece | n=5 | 0.2351±0.0500 [0.1730,0.2972] | s42=0.1935 s43=0.1859 s44=0.2808 s45=0.2948 s46=0.2206
+BOUND M3_APPNP_PPR | val_acc | n=5 | 0.8112±0.0011 [0.8098,0.8126] | pct=81.12±0.11% | s42=0.8120 s43=0.8100 s44=0.8120 s45=0.8120 s46=0.8100
+BOUND M4_GCNII_8L | dirichlet_energy | n=5 | 0.0000±0.0000 [-0.0000,0.0001] | pct=0.00±0.00% | s42=0.0000 s43=0.0000 s44=0.0000 s45=0.0001 s46=0.0000
+BOUND M4_GCNII_8L | test_acc | n=5 | 0.2868±0.0305 [0.2489,0.3247] | pct=28.68±3.05% | s42=0.3120 s43=0.2930 s44=0.2630 s45=0.3180 s46=0.2480
+BOUND M4_GCNII_8L | test_ece | n=5 | 0.1423±0.0303 [0.1046,0.1799] | s42=0.1680 s43=0.1490 s44=0.1184 s45=0.1723 s46=0.1036
+BOUND M4_GCNII_8L | val_acc | n=5 | 0.3036±0.0134 [0.2870,0.3202] | pct=30.36±1.34% | s42=0.3180 s43=0.3000 s44=0.2860 s45=0.3160 s46=0.2980
+COMPLETED_OK

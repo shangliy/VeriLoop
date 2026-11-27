@@ -262,5 +262,26 @@ class TestStudioServer(unittest.TestCase):
             srv.server_close()
 
 
+class TestCompareBench(unittest.TestCase):
+    def test_compare_ai_researcher_runs_on_multidomain_workspaces(self):
+        with tempfile.TemporaryDirectory() as td:
+            r = subprocess.run(
+                [
+                    sys.executable, str(ROOT / "eval/compare_ai_researcher.py"),
+                    "--out-dir", td, "--json",
+                ],
+                capture_output=True, text=True,
+            )
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            agg = json.loads(r.stdout)
+            self.assertIn("VeriLoop v5", agg)
+            vl = agg["VeriLoop v5"]
+            self.assertEqual(vl["workspaces_audited"], 3)
+            self.assertEqual(vl["overall_trace_rate_pct"], 100.0)
+            self.assertEqual(vl["total_ast_high"], 0)
+            self.assertTrue((Path(td) / "COMPARISON_REPORT.md").is_file())
+            self.assertTrue((Path(td) / "comparison_report.json").is_file())
+
+
 if __name__ == "__main__":
     unittest.main()

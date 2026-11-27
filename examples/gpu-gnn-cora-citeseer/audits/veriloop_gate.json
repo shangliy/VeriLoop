@@ -1,0 +1,127 @@
+{
+  "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer",
+  "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/report/report.md",
+  "blocked": false,
+  "block_reasons": [],
+  "checks": {
+    "trace_numbers": {
+      "returncode": 0,
+      "summary": {
+        "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/report/report.md",
+        "log_files": 8,
+        "data_files": 0,
+        "skipped_large": [],
+        "traced": 281,
+        "untraced": [],
+        "sign_mismatches": [],
+        "wrong_logs": [],
+        "unpaired_pairs": [],
+        "mixed_rows": [],
+        "cited_stale": [],
+        "workspace_stale": [],
+        "common": 0
+      }
+    },
+    "audit_code": {
+      "returncode": 0,
+      "summary": {
+        "scripts_scanned": 1,
+        "counts": {
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "INFO": 0
+        },
+        "findings": []
+      }
+    },
+    "citation_audit": {
+      "returncode": 0,
+      "summary": {
+        "document": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/report/report.md",
+        "bib": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/paper/refs.bib",
+        "online_checked": false,
+        "claims_checked": false,
+        "pairs_count": 8,
+        "issues_count": 0,
+        "warnings_count": 0,
+        "issues": [],
+        "warnings": [],
+        "pairs": [
+          {
+            "line": 3,
+            "kind": "arxiv_inline",
+            "key": "1810.00826",
+            "sentence": "- **Hypothesis (`C1_Primary`):** Targeted algorithmic refinement addressing unverified/unmatched formulation eq_9 in 1810.00826 across reference study (Semi-Supervised Classification with Graph Convolutional Networks; How Powerful are Graph Neural Networks?) improves held-out evaluation metrics over",
+            "status": "EXTRACTED_OFFLINE"
+          },
+          {
+            "line": 41,
+            "kind": "arxiv_inline",
+            "key": "2329.0000",
+            "sentence": "- `BOUND sandbox_runs | log_bytes | n=1 | 2329.0000±0.0000 [2329.0000,2329.0000] | s0=2329.0000`",
+            "status": "EXTRACTED_OFFLINE"
+          },
+          {
+            "line": 41,
+            "kind": "arxiv_inline",
+            "key": "2329.0000",
+            "sentence": "- `BOUND sandbox_runs | log_bytes | n=1 | 2329.0000±0.0000 [2329.0000,2329.0000] | s0=2329.0000`",
+            "status": "EXTRACTED_OFFLINE"
+          },
+          {
+            "line": 41,
+            "kind": "arxiv_inline",
+            "key": "2329.0000",
+            "sentence": "- `BOUND sandbox_runs | log_bytes | n=1 | 2329.0000±0.0000 [2329.0000,2329.0000] | s0=2329.0000`",
+            "status": "EXTRACTED_OFFLINE"
+          },
+          {
+            "line": 41,
+            "kind": "arxiv_inline",
+            "key": "2329.0000",
+            "sentence": "- `BOUND sandbox_runs | log_bytes | n=1 | 2329.0000±0.0000 [2329.0000,2329.0000] | s0=2329.0000`",
+            "status": "EXTRACTED_OFFLINE"
+          },
+          {
+            "line": 46,
+            "kind": "cite",
+            "key": "kipf2016semi",
+            "sentence": "Ingested arXiv formulations aligned via Python AST (`wiki/INGEST_MAP.md`): GCN \\cite{kipf2016semi}, GIN expressiveness \\cite{xu2018powerful}, and GCNII deep residual propagation \\cite{chen2020simple}.",
+            "bib_title": "{Semi-Supervised Classification with Graph Convolutional Networks}",
+            "bib_author": "Thomas N. Kipf and Max Welling",
+            "bib_year": "2016",
+            "arxiv_id": "1609.02907",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 46,
+            "kind": "cite",
+            "key": "xu2018powerful",
+            "sentence": "Ingested arXiv formulations aligned via Python AST (`wiki/INGEST_MAP.md`): GCN \\cite{kipf2016semi}, GIN expressiveness \\cite{xu2018powerful}, and GCNII deep residual propagation \\cite{chen2020simple}.",
+            "bib_title": "{How Powerful are Graph Neural Networks?}",
+            "bib_author": "Keyulu Xu and Weihua Hu and Jure Leskovec and Stefanie Jegelka",
+            "bib_year": "2018",
+            "arxiv_id": "1810.00826",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 46,
+            "kind": "cite",
+            "key": "chen2020simple",
+            "sentence": "Ingested arXiv formulations aligned via Python AST (`wiki/INGEST_MAP.md`): GCN \\cite{kipf2016semi}, GIN expressiveness \\cite{xu2018powerful}, and GCNII deep residual propagation \\cite{chen2020simple}.",
+            "bib_title": "{Simple and Deep Graph Convolutional Networks}",
+            "bib_author": "Ming Chen and Zhewei Wei and Zengfeng Huang and Bolin Ding and Yaliang Li",
+            "bib_year": "2020",
+            "arxiv_id": "2007.02133",
+            "status": "BIB_FOUND_OFFLINE"
+          }
+        ]
+      }
+    },
+    "claims_ledger": {
+      "returncode": 0,
+      "stdout": "C1_Primary [proposed] gates: 2/7 open  revisions: 0\n    Targeted algorithmic refinement addressing unverified/unmatched formulation eq_9 in 1810.00826 across reference study (Semi-Supervised Classification \n    FAIL G1 logs exist & intact: no evidence\n    FAIL G2 seeds >= 3: no method evidence\n    FAIL G3 no test selection: no evidence\n    FAIL G4 baselines run: no evidence for: baseline\n    FAIL G7 uncertainty/CI logged: no evidence log contains CI/[lo,hi]/±/bootstrap/p-value",
+      "stderr": ""
+    }
+  }
+}

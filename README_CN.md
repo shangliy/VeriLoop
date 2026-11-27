@@ -147,12 +147,26 @@
 - **静态 AST 样本外 FPR：** **`0/18 (0.0%)`**
 - **数值级样本外 FPR：** **`2/289 (0.69%)`**（场景级 `2/18 = 11.1%`：`04c` 解析中点 `0.425` 与 `09c` 原始 CSV 值 `3.542`）。
 
-### 3. 长程真实 GPU 端到端标杆案例（`42` 次 RTX 3060 Ti 训练轨迹）
+### 3. 三领域真实 GPU 实证矩阵（`102` 次本地 RTX 3060 Ti 闭环轨迹：CV + GNN + RecSys）
 
-完整公开轨迹、复现脚本与全部审计日志（`audits/`）已提交至 [examples/gpu-overnight-research/](examples/gpu-overnight-research/)（`bash examples/gpu-overnight-research/run_reproduce.sh`）：在本地 **NVIDIA GeForce RTX 3060 Ti** 上执行可断点续跑的 42 次多随机种子 PyTorch AMP fp16 训练（总耗时 `5548.4s` / `92.47 min`，峰值显存 `593.0 MB`），覆盖 CIFAR-10 八阶段组合配方阶梯（30 epochs × 3 seeds）与 Fashion-MNIST 六阶段验证（15 epochs × 3 seeds）：
-- **全阶段流水线自洽检查与可查证审计日志（`$0` API 成本）：** `wiki/RESEARCH_WIKI.md` 全部 **`14/14` 阶段自洽检查通过**（终版 `182` 个数值、`0` AST 高危告警，中位耗时 `81.8 ms`）；`audits/` 同步提交 `claims_check.txt`（4/4 假设通过 `G1–G7`）、`veriloop_gate.json`、`verify_cites_online.json`（`10/10` 文献联网核验通过）与 `pdf_audit.json`（`195/195` PDF 展开数值 100% 溯源）。
-- **宏绑定表格、Studio 与交互审稿视图：** `./veriloop bind` 直读 126 个 TensorBoard/W&B 日志生成 `\vlC*` / `\vlF*` LaTeX 宏与 Okabe-Ito 矢量图 → 编译出 [overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf)、[studio_snapshot.html](examples/gpu-overnight-research/studio_snapshot.html) 与分栏审稿界面 [review_ui.html](examples/gpu-overnight-research/review_ui.html)。
-- **真实科学发现：** CIFAR-10 上 `M7_SEResNet_Full` 达到 `0.9193±0.0004`（较 `M1_PlainCNN` 提升 `+14.06 pp`）；无增强残差网 `M2_ResNet_Base` 高度过自信（`raw_ece=0.1261 → cal_ece=0.0098`，`T*=2.6460`），而 Label Smoothing（`T*=0.7234` / `0.6716`）与 Mixup（`T*=0.6449`）反转为欠自信，经验证集温度缩放 `T*` 后 CIFAR-10 `M4–M7` 校准 ECE 压回 `0.0061–0.0120`。
+| 领域 | 公开工作区与入口 | 运行量 / 耗时 / 显存 | arXiv 公式 ↔ AST 对齐 | 核心实证发现（零手改、全日志绑定） | 硬门控审计 |
+|---|---|---:|---:|---|---|
+| **CV**（CIFAR-10 & Fashion-MNIST） | [examples/gpu-overnight-research/](examples/gpu-overnight-research/) | `42` runs（`92.47 min`，`593 MB`） | `1706.04599`（5 条） | `M7_SEResNet_Full` 达 `0.9193±0.0004`（`+14.06 pp`）；LS/Mixup 欠自信 `T*<1` 经温度缩放校准至 `0.0061–0.0120` | `195/195` PDF 溯源 · `10/10` 在线文献 · `G1–G7` 全过 |
+| **GNN**（Cora & CiteSeer） | [examples/gpu-gnn-cora-citeseer/](examples/gpu-gnn-cora-citeseer/)（`--level 2`） | `50` runs（`167.4 s`，`135 MB`） | `1609.02907` / `1810.00826` / `2007.02133`（**`49` 条对齐**） | 清晰复现 8 层 GCN 过平滑塌缩（`0.8184 → 0.2292`，Dirichlet Energy `0.0296 → 0.0021`）；`M3_APPNP_PPR` 达 **`0.8348±0.0050`** | `281/281` 溯源 · `0` AST 高危 · `PASS (rc=0)` |
+| **RecSys**（MovieLens-100K） | [examples/gpu-recsys-movielens/](examples/gpu-recsys-movielens/)（`--level 2`） | `10` runs（`537.8 s`，`38 MB`） | `2002.02126` / `2112.08679`（**`26` 条对齐**） | 全库排序评测（`938` 用户、`1,447` 物品）：`R1_MF_BPR` `Recall@20=0.1948±0.0016` / `NDCG@20=0.0788±0.0016`，`R2_LightGCN` `0.1905±0.0043`（如实报告大权重 `R3_SimGCL` 塌缩 `0.0298`） | `207/207` 溯源 · `0` AST 高危 · `PASS (rc=0)` |
+
+### 4. 可复现头对头自动化审计：VeriLoop v5 vs. `HKUDS/AI-Researcher` 官方 7 个公开示例（`$0` 成本）
+
+运行 `./veriloop compare-bench --fetch-ai-researcher`（脚本：[eval/compare_ai_researcher.py](eval/compare_ai_researcher.py)，完整报告：[eval/comparison_ai_researcher/COMPARISON_REPORT.md](eval/comparison_ai_researcher/COMPARISON_REPORT.md)），对 VeriLoop v5 三领域工作区与 `HKUDS/AI-Researcher/examples/*` 全部 7 个官方公开示例（均含提交的 `project/*.log`）运行完全相同的零覆盖确定性审计器：
+
+<p align="center">
+  <img src="docs/assets/veriloop_vs_ai_researcher.png" alt="VeriLoop v5 与 HKUDS/AI-Researcher 自动化审计对比图" width="84%" />
+</p>
+
+| 系统 | 审计工作区（含日志） | 数值可溯源率 | AST 洁净率（`0` HIGH） | BibTeX 核验覆盖率 | 治理完备度（Claims/Bind/Gate/UI） | 平均审计耗时 |
+|---|---:|---:|---:|---:|---:|---:|
+| **VeriLoop v5（CV + GNN + RecSys）** | `3`（`3`） | **`683 / 683`（`100.0%`）** | **`100.0%`**（`0` 高危） | **`100.0%`** | **`100.0%`** | `225 ms`（`$0`） |
+| **HKUDS/AI-Researcher（7 个官方示例）** | `7`（`7`） | `133 / 184`（`72.3%` — `51` 个未溯源数字，分布于 `con_flowmatching` / `dccf` / `rotation_vq`） | `100.0%`（79 个脚本 `0` 高危） | `0.0%`（仅 PDF 无 `.bib`，`hgcl` 含 `1` 处未解析引用） | `0.0%` | `310 ms`（`$0`） |
 
 ---
 

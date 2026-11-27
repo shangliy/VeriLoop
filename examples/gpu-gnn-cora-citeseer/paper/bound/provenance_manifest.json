@@ -1,0 +1,1601 @@
+{
+  "generated_utc": "2026-11-27T07:16:14.211465+00:00",
+  "bound_metrics_sha256": "820826e8dd0b28ef3a7d3e72cd5c6570376ae2228d215eb84f2a4e4dc54755f1",
+  "sources": [
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
+      "format": "csv",
+      "sha256": "62b4aac03ded747a48dd6ce516b2b14f87ca7352d3e8c29036c2d1d53020a108",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s43.csv",
+      "format": "csv",
+      "sha256": "c7c163fb191b67bef528c71547c7a6686ce2abbb5cadb13aea56e52beb1e9c94",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s44.csv",
+      "format": "csv",
+      "sha256": "13d3252d10e4bc9d15d13f0011d0c36b112fbe0911d5bd73dfa237598c265c57",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s45.csv",
+      "format": "csv",
+      "sha256": "340a5e90ccd52d4a8804ef770a30d4f477501c52904bfe230d02e074755e596f",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s46.csv",
+      "format": "csv",
+      "sha256": "4657be49c1a3e13da8fd413fa31c1050a665e9737db6ca617aa0614afa22b9b7",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s42.csv",
+      "format": "csv",
+      "sha256": "d88d859eaf17c5033be94f98be9176333782db00a7cadddf07faf17579cd8867",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s43.csv",
+      "format": "csv",
+      "sha256": "94bae7a1477267b281d3f620dc76c0fc8ab8b81f2589059915ec3ab8434ffac4",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s44.csv",
+      "format": "csv",
+      "sha256": "c191b7a40b360f3838378e183783dc7045f8d5faecacfe9f3f6aaef318391172",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s45.csv",
+      "format": "csv",
+      "sha256": "44a5c51e7111b7265889198222e4d52777fc092fe11de3d0de56d692e90a4dfd",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s46.csv",
+      "format": "csv",
+      "sha256": "a82e3b6744429bdaaf4981440618cf55ffbbb7307cf057edade7cad11d245865",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s42.csv",
+      "format": "csv",
+      "sha256": "7355779b633c8da731798ac1567adfa89c4cc8ce761778f6c29dd6d620d7f000",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s43.csv",
+      "format": "csv",
+      "sha256": "8e92cdcd9ad487120d6db81014a0dd16b833125573f364ca1c869b59d9cef3e2",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s44.csv",
+      "format": "csv",
+      "sha256": "a39ebc2996aa22b9681ebe93245f46cb2ca2fd12c819f26661bec5ba7dae2271",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s45.csv",
+      "format": "csv",
+      "sha256": "17547c0ebb4c1e73e5afbb2d98be064403f1ee44afecaeb4cac45e16d4097fa7",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s46.csv",
+      "format": "csv",
+      "sha256": "03996fbde6de45de54290b74543b8232165346daa138979c74a0e695910bd84d",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s42.csv",
+      "format": "csv",
+      "sha256": "4000a3540a4a79b7f72bfee4494d0b7d4c570a7277c0f98269b8e5b54669aaf8",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s43.csv",
+      "format": "csv",
+      "sha256": "4fb24934f9c8e5fcd592aa8e7c347a01e4eac0b5436f4eb856913cc420582068",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s44.csv",
+      "format": "csv",
+      "sha256": "54d699bd049bea194b640589743d653750acf44c096ee2961e1e4a27c68cb3a0",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s45.csv",
+      "format": "csv",
+      "sha256": "8d15ab6389f9ba7ac59f2e7f5685739792d1ac7befaed5847a1ec4b5742e0d04",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s46.csv",
+      "format": "csv",
+      "sha256": "8c9b632fef6f15fd09aa2e83792c98240f5002c3e38c7f2f4cf38bb749c1965d",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s42.csv",
+      "format": "csv",
+      "sha256": "7a1e5e2c4bd119d9ccb832acabc6b17bb2c9a168ebcc162b2e8449b60aefcf33",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s43.csv",
+      "format": "csv",
+      "sha256": "60ca79645b26226ff268e682e8e81249de4a22218802f07b2d882bf50378a2b1",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
+      "format": "csv",
+      "sha256": "c9f7933a0f5c07e95bdf00964e8a05e3fd1f27191dca310c07c69543c7598137",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
+      "format": "csv",
+      "sha256": "323cef01b54c6fe582e371d8c00b0e3df7788daabd9b1fa29323855cc80ec671",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
+      "format": "csv",
+      "sha256": "456259dedd4b704668216cd30c041975afa08e709b635720640995dbcd81ce9a",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv",
+      "format": "csv",
+      "sha256": "18d63a86a6b373440919c3dd6781c945aceabc6ef0ed02fdbaa3065a5c51a578",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv",
+      "format": "csv",
+      "sha256": "24629fc703070fa351fd2ed92662d4aedfaac32d49aa88e2fa156f699875378e",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv",
+      "format": "csv",
+      "sha256": "79966433e58c823cd2f08b1448e9d60bde46642d9240d150f97881109d91bd04",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv",
+      "format": "csv",
+      "sha256": "2264c000f6f46ded6029585ac8ab8b5b4387117619f85e7646535940a6d59f92",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv",
+      "format": "csv",
+      "sha256": "da25a4e49c75d60fe76795afcdbc11b7b7d358d77dc79d45b265f76f35f53515",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv",
+      "format": "csv",
+      "sha256": "f5d8f32e2b24714198b3ba86d34b3c6ba19807cf4b73f99f42014fff90dbd8b6",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv",
+      "format": "csv",
+      "sha256": "4166bcd9da7c747f3fdca5d0d69f054dd4c70e29c895e104ac13f7b47882dbc7",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv",
+      "format": "csv",
+      "sha256": "e3973b24cdb8302c78590eabc5a2519328eea1765760a14e46f10b50ee57e275",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv",
+      "format": "csv",
+      "sha256": "8a880ad31b17ed769dc403f7e734771c6cb2f4a25bf5a48f789570efd47b350f",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv",
+      "format": "csv",
+      "sha256": "5285a167b7c7c5fc4c9bd0eddccd383f4b1584b7a33eb86e65d5dc0f1508ae83",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv",
+      "format": "csv",
+      "sha256": "215e06c073a2ae807db4741c4440306ac0706d0f811ca073bd3b04514534dd6b",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv",
+      "format": "csv",
+      "sha256": "83efc0c26796d7a7f0612f99afd7391bd9ab64a251e22b1e20d70f81d4001842",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv",
+      "format": "csv",
+      "sha256": "979b084ce740cb8a55b6b4aba9c8997d2d944687ac8c4a37c13a33c90647dee2",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv",
+      "format": "csv",
+      "sha256": "78661769e1f21775a3c5fdef0ff1e0b1ae50d970e05de7b7598405c515af1175",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv",
+      "format": "csv",
+      "sha256": "5b4c1e5fb7d4c75c803d302c53a0c99dca0fbee702eb87e9632d1fe260e7760f",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv",
+      "format": "csv",
+      "sha256": "602ee1d9107d3532531eef1129a21ddd19b66b26da3ae9576e693bf58e0988e4",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv",
+      "format": "csv",
+      "sha256": "99aef21ae9f7b71c6730f5266407f2e0c9891ffd30bd96114cbe0695f445b9c0",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv",
+      "format": "csv",
+      "sha256": "4a639222b3b6f270df753f64999c93ec3c72171243da01f0031de0600ae7852c",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv",
+      "format": "csv",
+      "sha256": "98092622f88ac67f69c8129ecf11baeb8bf97cb2bb38adb68212d8704aa6100e",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv",
+      "format": "csv",
+      "sha256": "d94c5b61e06688c114420823400433cda6e7fddc32f5c2531c9dcb44c2d07c2c",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv",
+      "format": "csv",
+      "sha256": "404c3ac45560b906e6bda74bdfb1a094105e25b2f9123efbc0598390124c6ce9",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv",
+      "format": "csv",
+      "sha256": "cac3055e884ab67a9217e721eae8c04fce713628aae189fc301829946cf31c7b",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv",
+      "format": "csv",
+      "sha256": "3cb04d8c000928512b938fb70f0d0c619c2f47ce57b22a10eaddbc0f4bab55a7",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv",
+      "format": "csv",
+      "sha256": "c1322c011edd7eea13533151a7f7445d9697d21094dcc0b9f1ad98054ec900b0",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv",
+      "format": "csv",
+      "sha256": "d0dba64c169a31d09c5983672715c44c1c9bffe6a57296a26f051c0b22e6f79a",
+      "points": 4
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/sandbox_runs.jsonl",
+      "format": "jsonl",
+      "sha256": "875c0c1223a99634ccb30a5fe2d4747a56927886b21f2889e81f77ae1317eb35",
+      "points": 3
+    },
+    {
+      "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+      "format": "jsonl",
+      "sha256": "edc92ee06208d7e0bf4ee9fa2c4b1dc37ebbcbb448fbd4c5a1d18142046864b9",
+      "points": 300
+    }
+  ],
+  "summary": {
+    "M0_MLP::best_epoch": {
+      "method": "M0_MLP",
+      "metric": "best_epoch",
+      "n_seeds": 5,
+      "mean": 180.8,
+      "std": 25.013996082193664,
+      "ci_lo": 149.74600082694664,
+      "ci_hi": 211.85399917305338,
+      "per_seed": {
+        "42": 188.0,
+        "43": 187.0,
+        "44": 137.0,
+        "45": 200.0,
+        "46": 192.0
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M0_MLP::dirichlet_energy": {
+      "method": "M0_MLP",
+      "metric": "dirichlet_energy",
+      "n_seeds": 5,
+      "mean": 0.07918,
+      "std": 0.0035730938974507785,
+      "ci_lo": 0.07474412919502833,
+      "ci_hi": 0.08361587080497167,
+      "per_seed": {
+        "42": 0.076,
+        "43": 0.0851,
+        "44": 0.0795,
+        "45": 0.0769,
+        "46": 0.0784
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv"
+      ]
+    },
+    "M0_MLP::elapsed_s": {
+      "method": "M0_MLP",
+      "metric": "elapsed_s",
+      "n_seeds": 5,
+      "mean": 1.0916000000000001,
+      "std": 0.11219313704500823,
+      "ci_lo": 0.9523161537257103,
+      "ci_hi": 1.23088384627429,
+      "per_seed": {
+        "42": 1.13,
+        "43": 0.922,
+        "44": 1.175,
+        "45": 1.193,
+        "46": 1.038
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M0_MLP::test_acc": {
+      "method": "M0_MLP",
+      "metric": "test_acc",
+      "n_seeds": 5,
+      "mean": 0.5968,
+      "std": 0.0048166378315169225,
+      "ci_lo": 0.5908203129981578,
+      "ci_hi": 0.6027796870018421,
+      "per_seed": {
+        "42": 0.597,
+        "43": 0.601,
+        "44": 0.593,
+        "45": 0.602,
+        "46": 0.591
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv"
+      ]
+    },
+    "M0_MLP::test_ece": {
+      "method": "M0_MLP",
+      "metric": "test_ece",
+      "n_seeds": 5,
+      "mean": 0.16074,
+      "std": 0.00817147477509415,
+      "ci_lo": 0.15059540054957318,
+      "ci_hi": 0.1708845994504268,
+      "per_seed": {
+        "42": 0.1571,
+        "43": 0.1621,
+        "44": 0.1718,
+        "45": 0.1631,
+        "46": 0.1496
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv"
+      ]
+    },
+    "M0_MLP::val_acc": {
+      "method": "M0_MLP",
+      "metric": "val_acc",
+      "n_seeds": 5,
+      "mean": 0.5851999999999999,
+      "std": 0.007293833011524194,
+      "ci_lo": 0.5761449620298973,
+      "ci_hi": 0.5942550379701026,
+      "per_seed": {
+        "42": 0.588,
+        "43": 0.574,
+        "44": 0.586,
+        "45": 0.584,
+        "46": 0.594
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv"
+      ]
+    },
+    "M1_GCN_2L::best_epoch": {
+      "method": "M1_GCN_2L",
+      "metric": "best_epoch",
+      "n_seeds": 5,
+      "mean": 118.8,
+      "std": 52.912191411809815,
+      "ci_lo": 53.11136940504848,
+      "ci_hi": 184.48863059495153,
+      "per_seed": {
+        "42": 125.0,
+        "43": 112.0,
+        "44": 192.0,
+        "45": 122.0,
+        "46": 43.0
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M1_GCN_2L::dirichlet_energy": {
+      "method": "M1_GCN_2L",
+      "metric": "dirichlet_energy",
+      "n_seeds": 5,
+      "mean": 0.02636,
+      "std": 0.0072334639005112895,
+      "ci_lo": 0.017379908164745755,
+      "ci_hi": 0.035340091835254245,
+      "per_seed": {
+        "42": 0.0323,
+        "43": 0.0288,
+        "44": 0.0144,
+        "45": 0.0312,
+        "46": 0.0251
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv"
+      ]
+    },
+    "M1_GCN_2L::elapsed_s": {
+      "method": "M1_GCN_2L",
+      "metric": "elapsed_s",
+      "n_seeds": 5,
+      "mean": 1.3208,
+      "std": 0.10577665148793472,
+      "ci_lo": 1.189481995589942,
+      "ci_hi": 1.452118004410058,
+      "per_seed": {
+        "42": 1.39,
+        "43": 1.361,
+        "44": 1.265,
+        "45": 1.424,
+        "46": 1.164
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M1_GCN_2L::test_acc": {
+      "method": "M1_GCN_2L",
+      "metric": "test_acc",
+      "n_seeds": 5,
+      "mean": 0.7979999999999999,
+      "std": 0.0431740662898458,
+      "ci_lo": 0.7444009103360887,
+      "ci_hi": 0.8515990896639112,
+      "per_seed": {
+        "42": 0.815,
+        "43": 0.823,
+        "44": 0.721,
+        "45": 0.816,
+        "46": 0.815
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv"
+      ]
+    },
+    "M1_GCN_2L::test_ece": {
+      "method": "M1_GCN_2L",
+      "metric": "test_ece",
+      "n_seeds": 5,
+      "mean": 0.18302,
+      "std": 0.030336397281153865,
+      "ci_lo": 0.14535842633592697,
+      "ci_hi": 0.220681573664073,
+      "per_seed": {
+        "42": 0.1614,
+        "43": 0.1983,
+        "44": 0.1683,
+        "45": 0.1579,
+        "46": 0.2292
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv"
+      ]
+    },
+    "M1_GCN_2L::val_acc": {
+      "method": "M1_GCN_2L",
+      "metric": "val_acc",
+      "n_seeds": 5,
+      "mean": 0.7908000000000001,
+      "std": 0.035145412218382105,
+      "ci_lo": 0.747168202890094,
+      "ci_hi": 0.8344317971099061,
+      "per_seed": {
+        "42": 0.806,
+        "43": 0.808,
+        "44": 0.728,
+        "45": 0.808,
+        "46": 0.804
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv"
+      ]
+    },
+    "M2_GCN_8L_Deep::best_epoch": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "best_epoch",
+      "n_seeds": 5,
+      "mean": 85.0,
+      "std": 88.48163651289458,
+      "ci_lo": -24.846849662609785,
+      "ci_hi": 194.84684966260977,
+      "per_seed": {
+        "42": 196.0,
+        "43": 22.0,
+        "44": 166.0,
+        "45": 29.0,
+        "46": 12.0
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M2_GCN_8L_Deep::dirichlet_energy": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "dirichlet_energy",
+      "n_seeds": 5,
+      "mean": 0.0023,
+      "std": 0.0020579115627256677,
+      "ci_lo": -0.0002548250570244526,
+      "ci_hi": 0.004854825057024453,
+      "per_seed": {
+        "42": 0.0011,
+        "43": 0.0011,
+        "44": 0.0034,
+        "45": 0.0054,
+        "46": 0.0005
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv"
+      ]
+    },
+    "M2_GCN_8L_Deep::elapsed_s": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "elapsed_s",
+      "n_seeds": 5,
+      "mean": 3.5672,
+      "std": 0.4723152548880887,
+      "ci_lo": 2.980837169906004,
+      "ci_hi": 4.153562830093996,
+      "per_seed": {
+        "42": 3.821,
+        "43": 3.571,
+        "44": 3.098,
+        "45": 3.132,
+        "46": 4.214
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M2_GCN_8L_Deep::test_acc": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "test_acc",
+      "n_seeds": 5,
+      "mean": 0.2358,
+      "std": 0.0021679483388678702,
+      "ci_lo": 0.23310856814316247,
+      "ci_hi": 0.23849143185683755,
+      "per_seed": {
+        "42": 0.239,
+        "43": 0.234,
+        "44": 0.234,
+        "45": 0.237,
+        "46": 0.235
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv"
+      ]
+    },
+    "M2_GCN_8L_Deep::test_ece": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "test_ece",
+      "n_seeds": 5,
+      "mean": 0.07556,
+      "std": 0.011619939758879991,
+      "ci_lo": 0.0611342521715649,
+      "ci_hi": 0.0899857478284351,
+      "per_seed": {
+        "42": 0.0634,
+        "43": 0.0826,
+        "44": 0.0625,
+        "45": 0.0865,
+        "46": 0.0828
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv"
+      ]
+    },
+    "M2_GCN_8L_Deep::val_acc": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "val_acc",
+      "n_seeds": 5,
+      "mean": 0.23279999999999998,
+      "std": 0.010545141061171251,
+      "ci_lo": 0.2197085770735187,
+      "ci_hi": 0.24589142292648125,
+      "per_seed": {
+        "42": 0.238,
+        "43": 0.238,
+        "44": 0.214,
+        "45": 0.238,
+        "46": 0.236
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv"
+      ]
+    },
+    "M3_APPNP_PPR::best_epoch": {
+      "method": "M3_APPNP_PPR",
+      "metric": "best_epoch",
+      "n_seeds": 5,
+      "mean": 77.8,
+      "std": 23.338808881346107,
+      "ci_lo": 48.82568700659151,
+      "ci_hi": 106.77431299340849,
+      "per_seed": {
+        "42": 119.0,
+        "43": 71.0,
+        "44": 62.0,
+        "45": 71.0,
+        "46": 66.0
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M3_APPNP_PPR::dirichlet_energy": {
+      "method": "M3_APPNP_PPR",
+      "metric": "dirichlet_energy",
+      "n_seeds": 5,
+      "mean": 0.04752,
+      "std": 0.007866511297900742,
+      "ci_lo": 0.03775400201482716,
+      "ci_hi": 0.05728599798517284,
+      "per_seed": {
+        "42": 0.0497,
+        "43": 0.0507,
+        "44": 0.0553,
+        "45": 0.0344,
+        "46": 0.0475
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv"
+      ]
+    },
+    "M3_APPNP_PPR::elapsed_s": {
+      "method": "M3_APPNP_PPR",
+      "metric": "elapsed_s",
+      "n_seeds": 5,
+      "mean": 1.7268000000000001,
+      "std": 0.5496032205145819,
+      "ci_lo": 1.0444868702111618,
+      "ci_hi": 2.4091131297888384,
+      "per_seed": {
+        "42": 2.692,
+        "43": 1.563,
+        "44": 1.33,
+        "45": 1.452,
+        "46": 1.597
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M3_APPNP_PPR::test_acc": {
+      "method": "M3_APPNP_PPR",
+      "metric": "test_acc",
+      "n_seeds": 5,
+      "mean": 0.8348,
+      "std": 0.005019960159204458,
+      "ci_lo": 0.8285678954565893,
+      "ci_hi": 0.8410321045434107,
+      "per_seed": {
+        "42": 0.832,
+        "43": 0.839,
+        "44": 0.833,
+        "45": 0.841,
+        "46": 0.829
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv"
+      ]
+    },
+    "M3_APPNP_PPR::test_ece": {
+      "method": "M3_APPNP_PPR",
+      "metric": "test_ece",
+      "n_seeds": 5,
+      "mean": 0.23512,
+      "std": 0.050035057709569994,
+      "ci_lo": 0.17300323002725915,
+      "ci_hi": 0.29723676997274084,
+      "per_seed": {
+        "42": 0.1935,
+        "43": 0.1859,
+        "44": 0.2808,
+        "45": 0.2948,
+        "46": 0.2206
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv"
+      ]
+    },
+    "M3_APPNP_PPR::val_acc": {
+      "method": "M3_APPNP_PPR",
+      "metric": "val_acc",
+      "n_seeds": 5,
+      "mean": 0.8112,
+      "std": 0.0010954451150103333,
+      "ci_lo": 0.8098400432948069,
+      "ci_hi": 0.8125599567051932,
+      "per_seed": {
+        "42": 0.812,
+        "43": 0.81,
+        "44": 0.812,
+        "45": 0.812,
+        "46": 0.81
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv"
+      ]
+    },
+    "M4_GCNII_8L::best_epoch": {
+      "method": "M4_GCNII_8L",
+      "metric": "best_epoch",
+      "n_seeds": 5,
+      "mean": 131.0,
+      "std": 56.542019772908716,
+      "ci_lo": 60.80506475250512,
+      "ci_hi": 201.19493524749487,
+      "per_seed": {
+        "42": 82.0,
+        "43": 64.0,
+        "44": 172.0,
+        "45": 195.0,
+        "46": 142.0
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M4_GCNII_8L::dirichlet_energy": {
+      "method": "M4_GCNII_8L",
+      "metric": "dirichlet_energy",
+      "n_seeds": 5,
+      "mean": 0.0,
+      "std": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "per_seed": {
+        "42": 0.0,
+        "43": 0.0,
+        "44": 0.0,
+        "45": 0.0,
+        "46": 0.0
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv"
+      ]
+    },
+    "M4_GCNII_8L::elapsed_s": {
+      "method": "M4_GCNII_8L",
+      "metric": "elapsed_s",
+      "n_seeds": 5,
+      "mean": 3.9848,
+      "std": 1.1413742593908451,
+      "ci_lo": 2.5678238722832907,
+      "ci_hi": 5.401776127716709,
+      "per_seed": {
+        "42": 2.593,
+        "43": 3.027,
+        "44": 4.301,
+        "45": 4.694,
+        "46": 5.309
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "M4_GCNII_8L::test_acc": {
+      "method": "M4_GCNII_8L",
+      "metric": "test_acc",
+      "n_seeds": 5,
+      "mean": 0.246,
+      "std": 0.03201562118716424,
+      "ci_lo": 0.20625372872834485,
+      "ci_hi": 0.28574627127165514,
+      "per_seed": {
+        "42": 0.221,
+        "43": 0.293,
+        "44": 0.262,
+        "45": 0.239,
+        "46": 0.215
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv"
+      ]
+    },
+    "M4_GCNII_8L::test_ece": {
+      "method": "M4_GCNII_8L",
+      "metric": "test_ece",
+      "n_seeds": 5,
+      "mean": 0.08302,
+      "std": 0.04122307606183701,
+      "ci_lo": 0.03184299630460572,
+      "ci_hi": 0.13419700369539428,
+      "per_seed": {
+        "42": 0.0532,
+        "43": 0.149,
+        "44": 0.0944,
+        "45": 0.0714,
+        "46": 0.0471
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv"
+      ]
+    },
+    "M4_GCNII_8L::val_acc": {
+      "method": "M4_GCNII_8L",
+      "metric": "val_acc",
+      "n_seeds": 5,
+      "mean": 0.2804,
+      "std": 0.016577092628081668,
+      "ci_lo": 0.25982012067673865,
+      "ci_hi": 0.3009798793232613,
+      "per_seed": {
+        "42": 0.258,
+        "43": 0.3,
+        "44": 0.29,
+        "45": 0.284,
+        "46": 0.27
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv"
+      ]
+    },
+    "sandbox_runs::elapsed_s": {
+      "method": "sandbox_runs",
+      "metric": "elapsed_s",
+      "n_seeds": 1,
+      "mean": 175.17,
+      "std": 0.0,
+      "ci_lo": 175.17,
+      "ci_hi": 175.17,
+      "per_seed": {
+        "0": 175.17
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/sandbox_runs.jsonl"
+      ]
+    },
+    "sandbox_runs::log_bytes": {
+      "method": "sandbox_runs",
+      "metric": "log_bytes",
+      "n_seeds": 1,
+      "mean": 2329.0,
+      "std": 0.0,
+      "ci_lo": 2329.0,
+      "ci_hi": 2329.0,
+      "per_seed": {
+        "0": 2329.0
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/sandbox_runs.jsonl"
+      ]
+    },
+    "sandbox_runs::returncode": {
+      "method": "sandbox_runs",
+      "metric": "returncode",
+      "n_seeds": 1,
+      "mean": 0.0,
+      "std": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0,
+      "per_seed": {
+        "0": 0.0
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/sandbox_runs.jsonl"
+      ]
+    }
+  },
+  "macros": {
+    "\\vlMMlpBestEpoch": {
+      "method": "M0_MLP",
+      "metric": "best_epoch",
+      "value": "180.8000$\\pm$25.0140",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMMlpDirichletEnergy": {
+      "method": "M0_MLP",
+      "metric": "dirichlet_energy",
+      "value": "0.0792$\\pm$0.0036",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv"
+      ]
+    },
+    "\\vlMMlpElapsedS": {
+      "method": "M0_MLP",
+      "metric": "elapsed_s",
+      "value": "1.0916$\\pm$0.1122",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMMlpTestAcc": {
+      "method": "M0_MLP",
+      "metric": "test_acc",
+      "value": "0.5968$\\pm$0.0048",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv"
+      ]
+    },
+    "\\vlMMlpTestEce": {
+      "method": "M0_MLP",
+      "metric": "test_ece",
+      "value": "0.1607$\\pm$0.0082",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv"
+      ]
+    },
+    "\\vlMMlpValAcc": {
+      "method": "M0_MLP",
+      "metric": "val_acc",
+      "value": "0.5852$\\pm$0.0073",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M0_MLP_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M0_MLP_s46.csv"
+      ]
+    },
+    "\\vlMGcnLBestEpoch": {
+      "method": "M1_GCN_2L",
+      "metric": "best_epoch",
+      "value": "118.8000$\\pm$52.9122",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMGcnLDirichletEnergy": {
+      "method": "M1_GCN_2L",
+      "metric": "dirichlet_energy",
+      "value": "0.0264$\\pm$0.0072",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv"
+      ]
+    },
+    "\\vlMGcnLElapsedS": {
+      "method": "M1_GCN_2L",
+      "metric": "elapsed_s",
+      "value": "1.3208$\\pm$0.1058",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMGcnLTestAcc": {
+      "method": "M1_GCN_2L",
+      "metric": "test_acc",
+      "value": "0.7980$\\pm$0.0432",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv"
+      ]
+    },
+    "\\vlMGcnLTestEce": {
+      "method": "M1_GCN_2L",
+      "metric": "test_ece",
+      "value": "0.1830$\\pm$0.0303",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv"
+      ]
+    },
+    "\\vlMGcnLValAcc": {
+      "method": "M1_GCN_2L",
+      "metric": "val_acc",
+      "value": "0.7908$\\pm$0.0351",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M1_GCN_2L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M1_GCN_2L_s46.csv"
+      ]
+    },
+    "\\vlMGcnLDeepBestEpoch": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "best_epoch",
+      "value": "85.0000$\\pm$88.4816",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMGcnLDeepDirichletEnergy": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "dirichlet_energy",
+      "value": "0.0023$\\pm$0.0021",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv"
+      ]
+    },
+    "\\vlMGcnLDeepElapsedS": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "elapsed_s",
+      "value": "3.5672$\\pm$0.4723",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMGcnLDeepTestAcc": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "test_acc",
+      "value": "0.2358$\\pm$0.0022",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv"
+      ]
+    },
+    "\\vlMGcnLDeepTestEce": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "test_ece",
+      "value": "0.0756$\\pm$0.0116",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv"
+      ]
+    },
+    "\\vlMGcnLDeepValAcc": {
+      "method": "M2_GCN_8L_Deep",
+      "metric": "val_acc",
+      "value": "0.2328$\\pm$0.0105",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M2_GCN_8L_Deep_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M2_GCN_8L_Deep_s46.csv"
+      ]
+    },
+    "\\vlMAppnpPprBestEpoch": {
+      "method": "M3_APPNP_PPR",
+      "metric": "best_epoch",
+      "value": "77.8000$\\pm$23.3388",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMAppnpPprDirichletEnergy": {
+      "method": "M3_APPNP_PPR",
+      "metric": "dirichlet_energy",
+      "value": "0.0475$\\pm$0.0079",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv"
+      ]
+    },
+    "\\vlMAppnpPprElapsedS": {
+      "method": "M3_APPNP_PPR",
+      "metric": "elapsed_s",
+      "value": "1.7268$\\pm$0.5496",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMAppnpPprTestAcc": {
+      "method": "M3_APPNP_PPR",
+      "metric": "test_acc",
+      "value": "0.8348$\\pm$0.0050",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv"
+      ]
+    },
+    "\\vlMAppnpPprTestEce": {
+      "method": "M3_APPNP_PPR",
+      "metric": "test_ece",
+      "value": "0.2351$\\pm$0.0500",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv"
+      ]
+    },
+    "\\vlMAppnpPprValAcc": {
+      "method": "M3_APPNP_PPR",
+      "metric": "val_acc",
+      "value": "0.8112$\\pm$0.0011",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M3_APPNP_PPR_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M3_APPNP_PPR_s46.csv"
+      ]
+    },
+    "\\vlMGcniiLBestEpoch": {
+      "method": "M4_GCNII_8L",
+      "metric": "best_epoch",
+      "value": "131.0000$\\pm$56.5420",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMGcniiLDirichletEnergy": {
+      "method": "M4_GCNII_8L",
+      "metric": "dirichlet_energy",
+      "value": "0.0000$\\pm$0.0000",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv"
+      ]
+    },
+    "\\vlMGcniiLElapsedS": {
+      "method": "M4_GCNII_8L",
+      "metric": "elapsed_s",
+      "value": "3.9848$\\pm$1.1414",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl"
+      ]
+    },
+    "\\vlMGcniiLTestAcc": {
+      "method": "M4_GCNII_8L",
+      "metric": "test_acc",
+      "value": "0.2460$\\pm$0.0320",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv"
+      ]
+    },
+    "\\vlMGcniiLTestEce": {
+      "method": "M4_GCNII_8L",
+      "metric": "test_ece",
+      "value": "0.0830$\\pm$0.0412",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv"
+      ]
+    },
+    "\\vlMGcniiLValAcc": {
+      "method": "M4_GCNII_8L",
+      "metric": "val_acc",
+      "value": "0.2804$\\pm$0.0166",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/trajectory_ledger.jsonl",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/citeseer/csv/M4_GCNII_8L_s46.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s42.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s43.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s44.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s45.csv",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/runs/cora/csv/M4_GCNII_8L_s46.csv"
+      ]
+    },
+    "\\vlSandboxRunsElapsedS": {
+      "method": "sandbox_runs",
+      "metric": "elapsed_s",
+      "value": "175.1700$\\pm$0.0000",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/sandbox_runs.jsonl"
+      ]
+    },
+    "\\vlSandboxRunsLogBytes": {
+      "method": "sandbox_runs",
+      "metric": "log_bytes",
+      "value": "2329.0000$\\pm$0.0000",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/sandbox_runs.jsonl"
+      ]
+    },
+    "\\vlSandboxRunsReturncode": {
+      "method": "sandbox_runs",
+      "metric": "returncode",
+      "value": "0.0000$\\pm$0.0000",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer/out/sandbox_runs.jsonl"
+      ]
+    }
+  }
+}

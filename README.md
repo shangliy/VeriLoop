@@ -154,12 +154,26 @@ With `eval/v2_frozen/locked/trace_numbers_v2.py` (`42c39cf4a4adeee1`) and `audit
 - **Number-Level Out-of-Sample FPR:** **`2/289 (0.69%)`** (`2/18 = 11.1%` scenario-level FPR: unlogged analytic midpoint `0.425` on `04c` and raw CSV quote `3.542` on `09c`).
 - **Out-of-Sample Mechanical Recall:** Unmeasured (`0/18` completed unseen runs triggered a benchmark trap).
 
-### 3. Long-Horizon Real-GPU End-to-End Case Study (`42` RTX 3060 Ti Runs)
+### 3. Multi-Domain Real-GPU Showcase Matrix (`102` NVIDIA RTX 3060 Ti Runs: CV + GNN + RecSys)
 
-Committed in [examples/gpu-overnight-research/](examples/gpu-overnight-research/) (`bash examples/gpu-overnight-research/run_reproduce.sh`, with full audit logs committed under `audits/`): a crash-resumable 42-run multi-seed PyTorch AMP fp16 study (`5548.4s` / `92.47 min` GPU time, `593.0 MB` peak VRAM) across an 8-stage bundled CIFAR-10 recipe ladder (30 epochs, 3 seeds) and a 6-stage Fashion-MNIST ladder (15 epochs, 3 seeds; Mixup CIFAR-10 only):
-- **Live Pipeline Self-Consistency & Committed Audit Logs (`$0` API cost):** **`14/14` stage checks passed** on `wiki/RESEARCH_WIKI.md` (`182` distinct numbers in the final wiki re-audited at each stage, `0` AST `HIGH`, `81.8 ms` median latency), while committed logs under `audits/` record `4/4` claims passing `G1–G7` (`audits/claims_check.txt`, `0` wording revisions), hard-gate `"blocked": false` + `"online_checked": true` (`audits/veriloop_gate.json`), `10/10` arXiv/Crossref/S2 references (`audits/verify_cites_online.json`), and `100%` expanded-PDF number tracing (`195/195`, `audits/pdf_audit.json`).
-- **Auto-Bound Tables, Studio & Interactive Review UI:** `./veriloop bind` ingests 126 TensorBoard/W&B files into `\vlC*` / `\vlF*` LaTeX macros, Booktabs tables, and Okabe-Ito PDFs → compiled ICML-style report ([overnight_study.pdf](examples/gpu-overnight-research/paper/overnight_study.pdf), `0` Type-3 fonts, `0` warnings), [studio_snapshot.html](examples/gpu-overnight-research/studio_snapshot.html), and interactive split-pane [review_ui.html](examples/gpu-overnight-research/review_ui.html).
-- **Real Empirical Findings:** On CIFAR-10, `M7_SEResNet_Full` reaches `0.9193±0.0004` (`+14.06 pp` over `M1_PlainCNN`); unaugmented `M2_ResNet_Base` is strongly overconfident (`raw_ece=0.1261 → cal_ece=0.0098`, `T*=2.6460`), whereas Label Smoothing (`T*=0.7234` CIFAR-10 / `0.6716` Fashion-MNIST) and Mixup (`T*=0.6449`) flip to underconfidence until validation-fitted `T*` restores calibrated ECE to `0.0061–0.0120` across CIFAR-10 `M4–M7` (note Fashion-MNIST `M1_PlainCNN` raw ECE `0.0059` slightly increases to `0.0069` after `T*`).
+| Domain | Workspace & Command | Runs / GPU Time | arXiv Formula ↔ AST Map | Key Verified Empirical Result | Hard Gate & Audit |
+|---|---|---:|---:|---|---|
+| **CV** (CIFAR-10 & Fashion-MNIST) | [examples/gpu-overnight-research/](examples/gpu-overnight-research/) | `42` runs (`92.47 min`, `593 MB`) | `1706.04599` (5 eqs) | `M7_SEResNet_Full` `0.9193±0.0004` (`+14.06 pp`); LS/Mixup `T*<1` calibration restored to `0.0061–0.0120` | `195/195` PDF traced · `10/10` online cites · `G1–G7` pass |
+| **GNN** (Cora & CiteSeer) | [examples/gpu-gnn-cora-citeseer/](examples/gpu-gnn-cora-citeseer/) (`--level 2`) | `50` runs (`167.4 s`, `135 MB`) | `1609.02907`, `1810.00826`, `2007.02133` (**`49` alignments**) | 8-layer GCN oversmoothing collapse (`0.8184 → 0.2292`, Dirichlet energy `0.0296 → 0.0021`); `M3_APPNP_PPR` reaches **`0.8348±0.0050`** on Cora | `281/281` traced · `0` AST HIGH · `PASS (rc=0)` |
+| **RecSys** (MovieLens-100K) | [examples/gpu-recsys-movielens/](examples/gpu-recsys-movielens/) (`--level 2`) | `10` runs (`537.8 s`, `38 MB`) | `2002.02126`, `2112.08679` (**`26` alignments**) | Full-catalog ranking (`938` users, `1,447` items): `R1_MF_BPR` `Recall@20=0.1948±0.0016` / `NDCG@20=0.0788±0.0016`, `R2_LightGCN` `0.1905±0.0043` (honestly reporting high-weight `R3_SimGCL` collapse `0.0298`) | `207/207` traced · `0` AST HIGH · `PASS (rc=0)` |
+
+### 4. Reproducible Head-to-Head Audit: VeriLoop v5 vs. Official `HKUDS/AI-Researcher` Showcases (`$0` Cost)
+
+Run `./veriloop compare-bench --fetch-ai-researcher` ([eval/compare_ai_researcher.py](eval/compare_ai_researcher.py), full report in [eval/comparison_ai_researcher/COMPARISON_REPORT.md](eval/comparison_ai_researcher/COMPARISON_REPORT.md)) to execute identical zero-override deterministic auditors across our **3-domain VeriLoop v5 workspaces** and all **7 official published `HKUDS/AI-Researcher/examples/*`** (`con_flowmatching`, `dccf`, `fsq`, `gnn_difformer`, `gnn_nodeformer`, `hgcl`, `rotation_vq` — all 7 include committed `project/*.log` files):
+
+<p align="center">
+  <img src="docs/assets/veriloop_vs_ai_researcher.png" alt="VeriLoop v5 vs HKUDS/AI-Researcher Deterministic Audit Comparison" width="84%" />
+</p>
+
+| System | Workspaces (With Logs) | Numbers Traced to Logs | AST Clean (`0` HIGH) | Verified BibTeX Coverage | Governance (`Claims/Bind/Gate/UI`) | Mean Layer-1 Latency |
+|---|---:|---:|---:|---:|---:|---:|
+| **VeriLoop v5 (CV + GNN + RecSys)** | `3` (`3`) | **`683 / 683` (`100.0%`)** | **`100.0%`** (`0` HIGH) | **`100.0%`** | **`100.0%`** | `225 ms` (`$0`) |
+| **HKUDS/AI-Researcher (7 Official Examples)** | `7` (`7`) | `133 / 184` (`72.3%` — `51` untraced across `con_flowmatching`, `dccf`, `rotation_vq`) | `100.0%` (`0` HIGH across `79` scripts) | `0.0%` (PDF-only; `1` unresolved cite in `hgcl`) | `0.0%` | `310 ms` (`$0`) |
 
 ---
 

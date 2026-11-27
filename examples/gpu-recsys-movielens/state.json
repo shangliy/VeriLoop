@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-27T07:16:24Z",
+  "updated_utc": "2026-11-27T07:26:20Z",
+  "status": "completed",
+  "stages": {
+    "ingest": {
+      "status": "OK",
+      "updated_utc": "2026-11-27T07:17:06Z",
+      "papers": 2,
+      "equations": 26,
+      "code_symbols": 11,
+      "alignments": 26,
+      "unmatched_equations": 0,
+      "manifest": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/ingest_manifest.json",
+      "wiki_map": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/wiki/INGEST_MAP.md"
+    },
+    "ideate_and_register": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:17:06Z",
+      "claim": "Targeted algorithmic refinement addressing calibration, generalization, and reproducibility gaps across reference methods across reference study (LightGCN: Simplifying and Powering Graph Convolution N"
+    },
+    "execute": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:26:17Z",
+      "timestamp_utc": "2026-11-27T07:26:16Z",
+      "mode": "local",
+      "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens",
+      "cmd": "/home/shawnyang/anaconda3/bin/python code/train_recsys.py -w .",
+      "returncode": 0,
+      "elapsed_s": 550.72,
+      "timed_out": false,
+      "anomalies": [],
+      "log_path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/out/sandbox_last.log",
+      "log_sha256": "0086662570a63b5870dce08a22a928ac9f3312c546a53c1674f35c2070455ccc",
+      "log_bytes": 838
+    },
+    "bind": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:26:19Z",
+      "out_dir": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/paper/bound",
+      "methods": [
+        "R0_Pop",
+        "R1_MF_BPR",
+        "R2_LightGCN",
+        "R3_SimGCL",
+        "sandbox_runs"
+      ],
+      "metrics": [
+        "best_epoch",
+        "elapsed_s",
+        "log_bytes",
+        "returncode",
+        "test_ndcg10",
+        "test_ndcg20",
+        "test_recall10",
+        "test_recall20",
+        "val_ndcg20"
+      ],
+      "sources_count": 14,
+      "figures": [
+        "bound_bars.pdf",
+        "bound_curves.pdf"
+      ]
+    },
+    "draft": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:26:19Z",
+      "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/report/report.md"
+    },
+    "gate_and_repair": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:26:19Z",
+      "passed": true,
+      "returncode": 0,
+      "repairs_run": 0,
+      "gate_json": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/audits/veriloop_gate.json"
+    },
+    "package_and_ui": {
+      "status": "completed",
+      "updated_utc": "2026-11-27T07:26:20Z",
+      "review_ui": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens/review_ui.html",
+      "pdf_audited": false
+    }
+  },
+  "config": {
+    "schema_version": 1,
+    "generated_utc": "2026-11-27T07:16:24Z",
+    "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-recsys-movielens",
+    "level": 2,
+    "idea": "",
+    "papers": [
+      "2002.02126",
+      "2112.08679"
+    ],
+    "tex_dir": [],
+    "repo": "examples/gpu-recsys-movielens/code",
+    "train_cmd": "/home/shawnyang/anaconda3/bin/python code/train_recsys.py -w .",
+    "sandbox": "local",
+    "provider": "offline",
+    "reviewer_provider": "none",
+    "online_cites": false,
+    "budget_limit_usd": 5.0
+  }
+}

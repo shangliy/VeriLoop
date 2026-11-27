@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-27T07:12:51Z",
+  "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-gnn-cora-citeseer",
+  "level": 2,
+  "idea": "",
+  "papers": [
+    "1609.02907",
+    "1810.00826",
+    "2007.02133"
+  ],
+  "tex_dir": [],
+  "repo": "examples/gpu-gnn-cora-citeseer/code",
+  "train_cmd": "/home/shawnyang/anaconda3/bin/python code/train_gnn.py -w .",
+  "sandbox": "local",
+  "provider": "offline",
+  "reviewer_provider": "none",
+  "online_cites": false,
+  "budget_limit_usd": 5.0,
+  "stages": [
+    "ingest",
+    "ideate_and_register",
+    "execute",
+    "bind",
+    "draft",
+    "gate_and_repair",
+    "package_and_ui"
+  ]
+}
