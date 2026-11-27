@@ -1,10 +1,10 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="docs/assets/veriloop_logo.png" alt="VeriLoop Logo" width="760" />
-  <h1 align="center">VeriLoop: End-to-End Verifiable Autonomous Scientific Research</h1>
+  <img src="docs/assets/veriloop_logo.png" alt="VeriLoop Logo" width="820" />
+  <h1 align="center">VeriLoop: Full-Stack Autonomous Research Engine &amp; Deterministic Verification Kernel</h1>
   <p align="center">
-    <strong>Level-1 &amp; Level-2 Autonomous Research · 90+ Composable Skills · $0 Deterministic Hard Evidence Gates · VeriLoop Studio</strong>
+    <strong>6 Zero-Dependency Engines · Level-1 &amp; Level-2 Research OS · 90+ Skills · 115 Real RTX 3060 Ti Runs · Drop-In Forensic PDF Auditor</strong>
   </p>
 </div>
 
@@ -24,44 +24,46 @@
 
 <br />
 
-Welcome to **VeriLoop**! Autonomous research agents rarely fail by omitting output files; they fail by executing cleanly while reporting numbers, code paths, citations, or conclusions that contradict their own logs. **VeriLoop** unites full **Level-1 & Level-2 autonomous research** with **deterministic mechanical verification** so every number, figure, citation, and claim is auditable line by line before release:
+**VeriLoop** is an end-to-end, zero-dependency **autonomous scientific research platform** engineered to run real experiments at scale AND verify every number, script, figure, and citation down to the byte before release. Built on pure Python 3.10+ stdlib (`0` external runtime dependencies, `63/63` Linux+macOS CI), it integrates seamlessly with **Claude Code, Codex CLI, Gemini CLI, OpenCode, or any LLM backend**:
 
-- 🎯 **Dual-Level Autonomy (Level 1 & Level 2):** Launch from a concrete research idea + baseline repo (**Level 1**) or directly from arXiv reference papers → Formula↔Code AST alignment → Gap → Innovation (**Level 2**).
-- 🛡️ **Zero-Cost Mechanical Hard Gates (`$0` Layer 1 → Path-Isolated Layer 2):** Catches fabricated numbers, sign flips, 6 classes of Python AST integrity defects, broken SHA-256 claim hashes (`G1–G7`), and hallucinated citations in milliseconds with exit code `2` hard blocking.
-- 📐 **Byte-Deterministic Log-to-LaTeX Binding (`./veriloop bind`):** Reads raw TensorBoard `.tfevents`, W&B, and CSV/JSONL files directly via Python stdlib to emit `\newcommand` macros, Booktabs tables, and Okabe-Ito vector PDFs — zero hand-copied numbers.
-- 🖥️ **Zero-Dep Web Research Cockpit (`./veriloop studio` & `review-ui`):** Real-time SSE pipeline monitor, Level-1/2 launcher, and interactive split-pane Paper ↔ Log audit workbench.
+- **Full-Stack Autonomous Research OS (`ingest` → `sandbox` → `research` → `bind` → `gate` → `studio`):** Launch from an idea + baseline repo (**Level 1**) or directly from arXiv reference papers via static LaTeX↔AST alignment (**Level 2**), backed by `90+` composable research lifecycle skills and crash-resumable `state.json` orchestration.
+- **Proven Across 3 Domains on Local Hardware (`115` RTX 3060 Ti Runs):** Real end-to-end studies compiled into standalone ICML PDFs across **CV (42 runs)**, **GNN (60 runs, diagnosing & fixing 8-layer GCNII collapse `+54 pp`)**, and **RecSys (13 runs, diagnosing & fixing SimGCL collapse)** — all **`416/416 (100.0%)`** expanded PDF decimals traced.
+- **Zero-Cost Deterministic Core + Byte-Stable Log-to-LaTeX Binding:** Directly parses TensorBoard `.tfevents`, W&B, CSV, and JSONL logs into `\newcommand` macros, Booktabs tables, and Okabe-Ito vector PDFs; enforces AST hygiene (`0.0%` FPR), SHA-256 claim hashes (`G1–G7`), and live arXiv/Crossref/S2 citation checks with exit-code-`2` hard blocking.
+- **Drop-In Forensic Auditor for Any AI Agent (`./veriloop compare-bench`) & Live Web Cockpits:** Audit third-party research agents at `$0` cost (uncovering `25` unlogged/log-exceeding table metrics across 7 official `HKUDS/AI-Researcher` PDFs) and inspect every claim interactively in **VeriLoop Studio** and the split-pane **Audit Workbench**.
+
+> **Repository vs. Companion Paper Scope:** This repository delivers the complete **v5 full-stack engineering platform** (orchestrator, Docker GPU sandbox, Studio cockpit, 90+ skills, and drop-in external auditor). Our companion paper ([ICML 8-Page PDF](paper/main_icml2027.pdf) · [arXiv Preprint](paper/main.pdf)) isolates and evaluates the **four core scientific contributions**: *(1)* decoupling stochastic exploration from a stdlib deterministic verification core + path-isolated cross-model auditing, *(2)* a non-circular `16`-workspace (`245`-trial) SHA-256 frozen benchmark quantifying yield-vs-recall trade-offs, *(3)* honest out-of-sample FPR calibration on `21` strictly unseen `SciIntegrity-Bench` scenarios (`0.0%` AST FPR, `0.69%` number-level FPR), and *(4)* zero-override external forensic auditing + self-audited manuscript release.
 
 ---
 
 <p align="center">
-  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop End-to-End Verifiable Autonomous Research & Paper Pipeline Overview" width="100%" />
+  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop v5 Precision Orbital Architecture Schematic" width="100%" />
   <br />
-  <em>End-to-end overview of VeriLoop v5: Level-1/2 research orchestration backed by deterministic evidence gates, byte-stable log binding, and interactive auditing.</em>
+  <em>Schematic 01: VeriLoop v5 full-stack trajectory — Level-1/2 entry, arXiv↔AST ingest, isolated GPU sandbox, byte-stable log binding, dual-layer hard gate with <code>rc=2</code> repair orbit, and live Studio / Audit UI release.</em>
 </p>
 
 ---
 
 <span id="news"></span>
-## 🔥 News
+## News
 
-- **`[v5.0]`** Shipped **arXiv LaTeX + Python AST Formula↔Code Ingest** (`./veriloop ingest`), **Docker/Local GPU Sandbox** (`./veriloop sandbox` + `docker/Dockerfile.gpu`), **Unified Level-1/Level-2 Crash-Resumable Orchestrator** (`./veriloop research`), **VeriLoop Studio Web Cockpit** (`./veriloop studio`), and the live [Project Homepage](https://shangliy.github.io/VeriLoop/). Full CI suite passes **`1,248` tests (`0` failures)**.
-- **`[v4.0]`** Completed the **42-run NVIDIA RTX 3060 Ti real-GPU overnight case study** (`92.47 min`, `195/195` expanded PDF numbers traced, `14/14` live Wiki stage checks, `10/10` online-verified citations), plus byte-deterministic `paper_bind.py`, `review_ui.py`, and `pdf_audit.py`.
+- **`[v5.0]`** Shipped the full-stack v5 engine (**`ingest`**, **`sandbox`** + `docker/Dockerfile.gpu`, **`research`** Level-1/2 orchestrator, **`studio`** SSE web cockpit, and **`compare-bench`** external auditor), expanded our local RTX 3060 Ti portfolio to **`115` runs across 3 compiled ICML PDFs (CV + GNN + RecSys, `416/416` traced)**, audited all 7 official `HKUDS/AI-Researcher` showcases (`25` forensically unlogged metrics flagged, `0/79` AST FPs), and launched the redesigned [Project Homepage](https://shangliy.github.io/VeriLoop/). Cross-platform CI (`ubuntu-latest` + `macos-latest`) passes **`63/63` core suites (`0` failures)**.
+- **`[v4.0]`** Completed the **42-run NVIDIA RTX 3060 Ti real-GPU overnight CV study** (`92.47 min`, `195/195` expanded PDF numbers traced, `14/14` live Wiki stage checks, `10/10` online-verified citations), plus byte-deterministic `paper_bind.py`, `review_ui.py`, and `pdf_audit.py`.
 - **`[v2.0–v3.0]`** Released the publicly committed **zero-override frozen benchmark** (`16` SHA-256 workspaces, `245` paired trials + `21` strictly unseen `SciIntegrity-Bench` scenarios), integrated [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill) (CC BY 4.0), and published the self-audited companion paper ([arXiv PDF](paper/main.pdf) · [ICML 8-page PDF](paper/main_icml2027.pdf)).
 
 ---
 
 <span id="table-of-contents"></span>
-## 📑 Table of Contents
+## Table of Contents
 
-- [🔥 News](#news)
-- [✨ Two-Level Autonomous Research Entry](#two-level-entry)
-- [🖥️ VeriLoop Studio & Interactive Audit Workbench](#veriloop-studio)
-- [⚔️ How VeriLoop Compares](#how-veriloop-compares)
-- [📊 Benchmark Results & 42-Run Real-GPU Study](#benchmark-results)
-- [⚡ Quick Start](#quick-start)
-- [🧰 Unified CLI Reference (`./veriloop`)](#unified-cli-reference)
-- [📂 Repository Structure](#repository-structure)
-- [🌟 Attribution & Citation](#attribution-and-citation)
+- [News](#news)
+- [Two-Level Autonomous Research Entry](#two-level-entry)
+- [VeriLoop Studio &amp; Interactive Audit Workbench](#veriloop-studio)
+- [How VeriLoop Compares](#how-veriloop-compares)
+- [Benchmark Results, 115-Run GPU Portfolio &amp; External Audit](#benchmark-results)
+- [Quick Start](#quick-start)
+- [Unified CLI Reference (`./veriloop`)](#unified-cli-reference)
+- [Repository Structure](#repository-structure)
+- [Attribution &amp; Citation](#attribution-and-citation)
 
 ---
 
@@ -125,7 +127,7 @@ Launch the zero-dependency local Web cockpit with `./veriloop studio -w examples
 ---
 
 <span id="benchmark-results"></span>
-## 📊 Benchmark Results & 42-Run Real-GPU Study
+## Benchmark Results, 115-Run GPU Portfolio &amp; External Audit
 
 All evaluation artifacts, frozen SHA-256 workspaces, independent `file:line` ground-truth labels ([eval/v2_frozen/ground_truth.csv](eval/v2_frozen/ground_truth.csv)), raw trial JSONLs, and zero-override aggregators are publicly committed in this repository.
 
@@ -185,7 +187,7 @@ Run `./veriloop compare-bench --fetch-ai-researcher` ([eval/compare_ai_researche
 git clone https://github.com/shangliy/VeriLoop.git
 cd VeriLoop
 
-# Run all 62 core verification & integration tests + skill catalog checks
+# Run all 63 core verification & integration tests + skill catalog checks
 ./veriloop test
 
 # Run the 10-second closed-loop walkthrough (Round 1 hard block -> Round 2 repair -> HTML board)

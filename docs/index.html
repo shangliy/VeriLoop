@@ -3,25 +3,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VeriLoop — Deterministic Verification for Autonomous Scientific Research</title>
-  <meta name="description" content="VeriLoop pairs a zero-dependency deterministic verification core with Level-1 and Level-2 autonomous research orchestration, byte-deterministic log-to-LaTeX binding, and path-isolated cross-model auditing." />
+  <title>VeriLoop — Full-Stack Autonomous Research Engine &amp; Deterministic Verification Kernel</title>
+  <meta name="description" content="VeriLoop is a zero-dependency full-stack autonomous research engine and deterministic verification kernel: arXiv-to-AST ingest, Docker GPU sandboxes, Level-1/2 orchestration, byte-traced LaTeX binding, VeriLoop Studio, and drop-in forensic PDF auditing." />
   <style>
     :root {
-      --bg: #faf9f5;
+      --slate-deep: #141310;
+      --slate: #1c1b17;
+      --slate-edge: #2e2c26;
+      --bone: #f5f2eb;
+      --bone-muted: #b6b0a2;
+      --paper: #f4f2ec;
       --surface: #ffffff;
-      --wash: #f2efe9;
-      --ink: #141413;
-      --ink-secondary: #44403c;
-      --muted: #57534e;
-      --rule: #ddd8cd;
-      --rule-strong: #bdb7aa;
+      --wash: #ece9e0;
+      --ink: #171614;
+      --ink-2: #44403a;
+      --muted: #68635a;
+      --rule: #ddd8cc;
+      --rule-strong: #bdb6a7;
+      --ok: #15803d;
+      --ok-bright: #4ade80;
+      --ok-wash: #eef8f1;
+      --bad: #b91c1c;
+      --bad-wash: #fef2f2;
       --accent: #0f4c81;
       --accent-hover: #0a365c;
-      --accent-wash: #eef4fa;
-      --ok: #15803d;
-      --ok-wash: #f0faf3;
-      --danger: #b91c1c;
-      --code-bg: #18181b;
+      --code-bg: #121316;
       --code-ink: #f4f4f5;
       --font-serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Noto Serif", serif;
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -37,11 +43,11 @@
 
     body {
       margin: 0;
-      background: var(--bg);
+      background: var(--paper);
       color: var(--ink);
       font-family: var(--font-sans);
       font-size: 16px;
-      line-height: 1.65;
+      line-height: 1.62;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -56,146 +62,143 @@
       text-decoration-color: var(--accent-hover);
     }
     a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid #7cc4fa;
       outline-offset: 2px;
-      border-radius: 3px;
+      border-radius: 4px;
     }
 
     .skip-link {
       position: absolute;
       left: -9999px;
       top: 8px;
-      background: var(--ink);
-      color: #ffffff;
+      background: var(--bone);
+      color: var(--ink);
       padding: 8px 14px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       z-index: 100;
     }
     .skip-link:focus { left: 16px; }
 
-    /* Top Bar — quiet, paper-integrated, hairline border */
+    /* ============================================================
+       TOP STICKY DARK SLATE BAR (Harvey Tactile Charcoal Chrome)
+       ============================================================ */
     header.site-header {
       position: sticky;
       top: 0;
-      z-index: 40;
-      background: rgba(250, 249, 245, 0.94);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--rule);
+      z-index: 50;
+      background: rgba(20, 19, 16, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--slate-edge);
     }
     .header-inner {
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
       padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 16px;
     }
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       text-decoration: none;
-      color: var(--ink);
+      color: var(--bone);
       font-family: var(--font-serif);
       font-weight: 700;
       font-size: 20px;
-      letter-spacing: -0.4px;
-    }
-    .brand:hover { text-decoration: none; color: var(--ink); }
-    .brand-mark {
-      width: 24px;
-      height: 24px;
-      display: inline-block;
+      letter-spacing: -0.3px;
       flex-shrink: 0;
     }
+    .brand:hover { text-decoration: none; color: #ffffff; }
     .brand-ver {
       font-family: var(--font-mono);
       font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
-      border: 1px solid var(--rule-strong);
-      padding: 1px 6px;
-      border-radius: 4px;
-      letter-spacing: 0.2px;
+      font-weight: 700;
+      color: var(--ok-bright);
+      background: #1f2420;
+      border: 1px solid #2e4a38;
+      padding: 1px 7px;
+      border-radius: 999px;
     }
     nav.primary-nav {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
     }
     nav.primary-nav a {
       text-decoration: none;
-      color: var(--ink-secondary);
-      font-size: 14px;
+      color: var(--bone-muted);
+      font-size: 13.5px;
       font-weight: 500;
       padding: 4px 0;
+      white-space: nowrap;
     }
-    nav.primary-nav a:hover { color: var(--ink); text-decoration: underline; }
+    nav.primary-nav a:hover { color: #ffffff; text-decoration: none; }
     nav.primary-nav a.repo-link {
       color: var(--ink);
-      font-weight: 600;
-      border: 1px solid var(--rule-strong);
-      background: var(--surface);
-      padding: 5px 12px;
-      border-radius: 6px;
+      background: var(--bone);
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
     }
-    nav.primary-nav a.repo-link:hover {
-      border-color: var(--ink);
-      text-decoration: none;
-    }
+    nav.primary-nav a.repo-link:hover { background: #ffffff; color: var(--ink); }
 
-    /* Main Editorial Container */
-    main {
-      max-width: 1120px;
+    /* ============================================================
+       HARVEY-INSPIRED TACTILE SLATE HERO + LUMINOUS COMMAND BAR
+       ============================================================ */
+    .hero-band {
+      background:
+        radial-gradient(ellipse at 74% 20%, rgba(168, 152, 118, 0.14), transparent 55%),
+        radial-gradient(ellipse at 18% 88%, rgba(124, 196, 250, 0.06), transparent 50%),
+        linear-gradient(180deg, #1b1a16 0%, #141310 100%);
+      color: var(--bone);
+      border-bottom: 1px solid var(--slate-edge);
+      padding: 52px 24px 56px;
+    }
+    .hero-inner {
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 48px 24px 88px;
     }
-
-    /* Asymmetric Editorial Hero (Paper Title Block + Side Ledger) */
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.85fr);
+      grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
       gap: 44px;
-      align-items: start;
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--rule);
+      align-items: center;
     }
-    .kicker {
+    .hero-grid > *, .xray-stage > *, .split-2 > *, .engine-grid > *, .artifact-grid > * {
+      min-width: 0;
+    }
+    .hero-kicker {
       font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--accent);
-      margin: 0 0 12px;
-    }
-    h1.paper-title {
-      font-family: var(--font-serif);
-      font-size: clamp(32px, 4.2vw, 46px);
-      line-height: 1.14;
+      font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: -0.8px;
-      margin: 0 0 18px;
-      color: var(--ink);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ok-bright);
+      margin: 0 0 14px;
     }
-    .lead {
-      font-size: 17.5px;
-      line-height: 1.62;
-      color: var(--ink-secondary);
-      max-width: 64ch;
+    h1.hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 4.4vw, 50px);
+      line-height: 1.1;
+      font-weight: 400;
+      letter-spacing: -1px;
       margin: 0 0 18px;
+      color: #ffffff;
     }
-    .byline {
-      font-size: 14.5px;
-      color: var(--muted);
+    .hero-lead {
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: #c8c2b5;
+      max-width: 56ch;
       margin: 0 0 26px;
     }
-    .byline strong { color: var(--ink); font-weight: 600; }
-
-    .action-bar {
+    .hero-lead strong { color: #ffffff; font-weight: 600; }
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -204,274 +207,488 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 38px;
-      padding: 8px 15px;
-      border-radius: 6px;
-      font-size: 14px;
+      min-height: 40px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13.8px;
       font-weight: 600;
       text-decoration: none;
       border: 1px solid transparent;
-      transition: background-color 0.12s ease, border-color 0.12s ease;
+      transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
     }
     .btn:hover { text-decoration: none; }
-    .btn-primary {
-      background: var(--ink);
+    .btn-bone { background: var(--bone); color: var(--ink); }
+    .btn-bone:hover { background: #ffffff; color: var(--ink); }
+    .btn-emerald { background: var(--ok); color: #ffffff; }
+    .btn-emerald:hover { background: #166534; color: #ffffff; }
+    .btn-dark-outline {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--bone);
+      border-color: #3a3730;
+    }
+    .btn-dark-outline:hover {
+      background: rgba(255, 255, 255, 0.11);
+      border-color: #6b6558;
       color: #ffffff;
-    }
-    .btn-primary:hover { background: #2c2c2a; color: #ffffff; }
-    .btn-accent {
-      background: var(--accent);
-      color: #ffffff;
-    }
-    .btn-accent:hover { background: var(--accent-hover); color: #ffffff; }
-    .btn-secondary {
-      background: var(--surface);
-      color: var(--ink);
-      border-color: var(--rule-strong);
-    }
-    .btn-secondary:hover {
-      background: var(--wash);
-      border-color: var(--ink);
-      color: var(--ink);
     }
 
-    /* Right-hand Verification Ledger (tabular hairline list, no card shadow) */
-    aside.ledger {
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      border-top: 3px solid var(--ink);
-      border-radius: 4px;
-      padding: 18px 20px;
+    /* Luminous Floating White Command Bar (Harvey focal motif) */
+    .command-card {
+      background: #ffffff;
+      color: var(--ink);
+      border-radius: 16px;
+      padding: 20px 22px 18px;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.48);
     }
-    .ledger-title {
+    .cmd-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .cmd-tab {
+      background: var(--paper);
+      color: var(--ink-2);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 4px 11px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .cmd-tab[aria-pressed="true"] {
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
+    }
+    .cmd-prompt-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #f8f7f3;
+      border: 1px solid #e4e0d6;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      min-width: 0;
+    }
+    .cmd-text {
+      font-family: var(--font-mono);
+      font-size: 12.2px;
+      line-height: 1.45;
+      font-weight: 600;
+      color: var(--ink);
+      white-space: pre-wrap;
+      word-break: break-word;
+      min-width: 0;
+    }
+    .cmd-copy {
+      flex-shrink: 0;
+      background: var(--ink);
+      color: #ffffff;
+      border: none;
+      border-radius: 7px;
+      padding: 6px 11px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .cmd-copy:hover { background: #33312c; }
+    .cmd-desc {
+      margin: 0 0 14px;
+      font-size: 13px;
+      color: var(--ink-2);
+    }
+    .cmd-telemetry {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      border-top: 1px solid #ece9e1;
+      padding-top: 14px;
+    }
+    .ct-item {
+      background: #f8f7f3;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+    .ct-val {
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+    .ct-val.ok { color: var(--ok); }
+    .ct-lbl {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Hero bottom capability strip (Repo = 大而强 platform overview) */
+    .hero-strip {
+      margin-top: 38px;
+      padding-top: 22px;
+      border-top: 1px solid var(--slate-edge);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      font-size: 13px;
+    }
+    .hs-k {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #7cc4fa;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 4px;
+    }
+    .hs-v { color: #d6d0c4; }
+
+    /* ============================================================
+       MAIN EDITORIAL / WORKBENCH CONTENT CONTAINER
+       ============================================================ */
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 48px 24px 88px;
+    }
+    section.content-sec {
+      margin-top: 68px;
+    }
+    section.content-sec:first-child { margin-top: 0; }
+    .sec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .sec-label {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.9px;
-      color: var(--muted);
-      margin: 0 0 12px;
-    }
-    .ledger-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .ledger-list li {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      padding: 9px 0;
-      border-top: 1px solid var(--rule);
-      font-size: 13.5px;
-    }
-    .ledger-list li:first-child { border-top: none; padding-top: 2px; }
-    .ledger-key { color: var(--muted); }
-    .ledger-val {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-      color: var(--ink);
-      text-align: right;
-    }
-    .ledger-val.ok { color: var(--ok); }
-    .ledger-val.accent { color: var(--accent); }
-    .ledger-foot {
-      margin: 12px 0 0;
-      padding-top: 10px;
-      border-top: 1px solid var(--rule);
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      color: var(--muted);
-    }
-
-    /* Full-width Figure Block */
-    figure.arch-figure {
-      margin: 36px 0 0;
-      padding: 0;
-    }
-    figure.arch-figure img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      border: 1px solid var(--rule);
-      background: var(--surface);
-    }
-    figure.arch-figure figcaption {
-      margin-top: 12px;
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 92ch;
-    }
-    figure.arch-figure figcaption strong { color: var(--ink); }
-
-    /* Sections */
-    section.content-sec {
-      margin-top: 64px;
-      padding-top: 28px;
-      border-top: 1px solid var(--rule);
-    }
-    .sec-label {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.9px;
+      letter-spacing: 1px;
       color: var(--muted);
       margin: 0 0 6px;
     }
     section.content-sec h2 {
       font-family: var(--font-serif);
-      font-size: clamp(24px, 2.8vw, 30px);
-      line-height: 1.22;
-      font-weight: 700;
-      letter-spacing: -0.4px;
-      margin: 0 0 12px;
+      font-size: clamp(26px, 3vw, 34px);
+      line-height: 1.18;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      margin: 0 0 8px;
       color: var(--ink);
     }
     .sec-intro {
-      color: var(--ink-secondary);
+      color: var(--ink-2);
       max-width: 72ch;
-      margin: 0 0 26px;
+      margin: 0;
       font-size: 15.5px;
     }
 
-    /* Two-column editorial spec blocks (top-rule, minimal chrome) */
-    .split-2 {
+    /* ============================================================
+       PROFOUND-STYLE INTERACTIVE "PAPER VIEW | AUDIT X-RAY" PANEL
+       ============================================================ */
+    .xray-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .view-switch {
+      display: inline-flex;
+      background: var(--slate);
+      padding: 4px;
+      border-radius: 999px;
+      gap: 3px;
+    }
+    .view-switch button {
+      border: none;
+      background: transparent;
+      color: var(--bone-muted);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .view-switch button[aria-pressed="true"] {
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    .xray-stage {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 18px;
+      padding: 28px 30px;
+      box-shadow: 0 12px 36px rgba(23, 22, 20, 0.05);
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 32px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 28px;
+      align-items: stretch;
     }
-    .spec-col {
+    .xray-case-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .case-pill {
+      border: 1px solid var(--rule-strong);
+      background: var(--paper);
+      color: var(--ink-2);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .case-pill[aria-pressed="true"] {
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
+    }
+    .case-pill.warn-pill[aria-pressed="true"] {
+      background: var(--bad);
+      border-color: var(--bad);
+      color: #ffffff;
+    }
+    .paper-surface-kicker {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .paper-surface h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      line-height: 1.24;
+      font-weight: 400;
+      margin: 0 0 10px;
+    }
+    .paper-surface p {
+      font-size: 14.3px;
+      color: var(--ink-2);
+      margin: 0 0 16px;
+    }
+    table.mini-booktabs {
+      width: 100%;
+      border-collapse: collapse;
       border-top: 2px solid var(--ink);
-      padding-top: 16px;
+      border-bottom: 2px solid var(--ink);
+      font-size: 13px;
     }
-    .spec-col.accent-top { border-top-color: var(--accent); }
-    .spec-tag {
+    table.mini-booktabs th, table.mini-booktabs td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #ece9e1;
+      text-align: left;
+    }
+    table.mini-booktabs tbody tr:last-child td { border-bottom: none; }
+    table.mini-booktabs td.num, table.mini-booktabs th.num {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    table.mini-booktabs tr.highlight-ok td { background: var(--ok-wash); font-weight: 700; }
+    table.mini-booktabs tr.highlight-bad td { background: var(--bad-wash); font-weight: 700; color: var(--bad); }
+
+    /* Dark X-Ray Provenance Aperture */
+    .xray-lens {
+      background:
+        radial-gradient(circle at 26% 24%, rgba(74, 222, 128, 0.12), transparent 56%),
+        #111317;
+      color: #e4e4e7;
+      border-radius: 14px;
+      padding: 20px 22px;
+      border: 1px solid #282b33;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 12.2px;
+      line-height: 1.65;
+    }
+    .xray-lens.is-alert {
+      background:
+        radial-gradient(circle at 26% 24%, rgba(248, 113, 113, 0.14), transparent 56%),
+        #141113;
+      border-color: #4a2328;
+    }
+    .lens-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #262932;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      gap: 8px;
+    }
+    .lens-badge {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: #133923;
+      color: #86efac;
+    }
+    .xray-lens.is-alert .lens-badge {
+      background: #42181c;
+      color: #fca5a5;
+    }
+    .lens-code {
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #e4e4e7;
+    }
+    .lens-foot {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid #262932;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+    .xray-stage.paper-only {
+      grid-template-columns: 1fr;
+    }
+    .xray-stage.paper-only .xray-lens { display: none; }
+
+    /* ============================================================
+       ARTEMIS SCHEMATIC + FULL-STACK PLATFORM CAPABILITY MATRIX
+       ============================================================ */
+    figure.schematic-figure {
+      margin: 0;
+      background: #090e16;
+      border: 1px solid #1e2d42;
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: 0 18px 46px rgba(9, 14, 22, 0.16);
+    }
+    figure.schematic-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    figure.schematic-figure figcaption {
+      padding: 12px 8px 4px;
+      font-size: 13.5px;
+      color: #9fb0c7;
+    }
+    figure.schematic-figure figcaption strong { color: #f1f5f9; }
+    figure.schematic-figure figcaption code {
+      background: #162235;
+      color: #bae6fd;
+    }
+
+    .engine-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .engine-cell {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-top: 2.5px solid var(--ink);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .engine-cell.accent { border-top-color: var(--ok); }
+    .engine-cmd {
       font-family: var(--font-mono);
       font-size: 11.5px;
       font-weight: 700;
       color: var(--accent);
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      display: block;
       margin-bottom: 6px;
+      display: block;
     }
-    .spec-col h3 {
+    .engine-cell h3 {
       font-family: var(--font-serif);
-      font-size: 20px;
-      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 8px;
       color: var(--ink);
     }
-    .spec-col p {
-      margin: 0 0 14px;
-      font-size: 14.8px;
-      color: var(--ink-secondary);
+    .engine-cell p {
+      margin: 0;
+      font-size: 13.8px;
+      color: var(--ink-2);
     }
 
-    /* Artifact showcase (real screenshots with restrained framing) */
+    /* ============================================================
+       STUDIO & REVIEW UI SHOWCASE
+       ============================================================ */
     .artifact-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
+      gap: 24px;
     }
     .artifact-item {
       display: flex;
       flex-direction: column;
       background: var(--surface);
       border: 1px solid var(--rule);
-      border-radius: 6px;
+      border-radius: 14px;
       overflow: hidden;
     }
     .artifact-frame {
-      background: #141413;
-      padding: 8px;
+      background: #141310;
+      padding: 10px;
       border-bottom: 1px solid var(--rule);
     }
     .artifact-frame img {
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 3px;
+      border-radius: 6px;
     }
     .artifact-meta {
-      padding: 18px 20px 20px;
+      padding: 20px 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       flex: 1;
       gap: 14px;
     }
-    .artifact-meta h3 {
-      margin: 0 0 6px;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-    .artifact-meta p {
-      margin: 0;
-      font-size: 14.3px;
-      color: var(--ink-secondary);
-    }
+    .artifact-meta h3 { margin: 0 0 6px; font-size: 17px; }
+    .artifact-meta p { margin: 0; font-size: 14.2px; color: var(--ink-2); }
     .artifact-links {
       display: flex;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
       font-size: 14px;
       font-weight: 600;
     }
 
-    /* Code blocks */
-    .code-box {
-      position: relative;
-      margin-top: 10px;
-    }
-    pre.code {
-      margin: 0;
-      background: var(--code-bg);
-      color: var(--code-ink);
-      padding: 14px 16px;
-      padding-right: 76px;
-      border-radius: 6px;
-      overflow-x: auto;
-      font-family: var(--font-mono);
-      font-size: 12.8px;
-      line-height: 1.55;
-    }
-    .copy-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      min-height: 28px;
-      min-width: 56px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      border: 1px solid #3f3f46;
-      background: #27272a;
-      color: #f4f4f5;
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .copy-btn:hover { background: #3f3f46; }
-    code {
-      font-family: var(--font-mono);
-      font-size: 0.89em;
-      background: var(--wash);
-      padding: 1px 5px;
-      border-radius: 3px;
-      color: var(--ink);
-    }
-    pre code { background: none; padding: 0; color: inherit; }
-
-    /* Scientific Booktabs-style Tables */
+    /* ============================================================
+       SCIENTIFIC BOOKTABS TABLES & CHART FIGURE
+       ============================================================ */
     .table-scroll {
       overflow-x: auto;
-      margin-top: 14px;
+      margin-top: 16px;
     }
     table.sci-table {
       width: 100%;
@@ -482,7 +699,7 @@
       border-bottom: 2px solid var(--ink);
     }
     table.sci-table th, table.sci-table td {
-      padding: 10px 12px;
+      padding: 11px 13px;
       text-align: left;
       border-bottom: 1px solid var(--rule);
       vertical-align: top;
@@ -490,8 +707,7 @@
     table.sci-table thead th {
       background: var(--wash);
       color: var(--ink);
-      font-family: var(--font-sans);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       border-bottom: 1.5px solid var(--ink);
     }
@@ -506,28 +722,12 @@
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
-    table.sci-table td.ctr, table.sci-table th.ctr { text-align: center; }
-
-    /* Callout note */
-    .note-box {
-      margin-top: 20px;
-      padding: 16px 18px;
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      border-left: 3px solid var(--accent);
-      border-radius: 4px;
-      font-size: 14.3px;
-      color: var(--ink-secondary);
-    }
-    .note-box strong { color: var(--ink); }
-
-    /* Chart block */
     .chart-figure {
-      margin: 22px 0;
+      margin: 20px 0;
       background: var(--surface);
       border: 1px solid var(--rule);
-      border-radius: 6px;
-      padding: 14px;
+      border-radius: 14px;
+      padding: 18px;
     }
     .chart-figure img {
       display: block;
@@ -542,8 +742,104 @@
       color: var(--muted);
       text-align: center;
     }
+    .note-box {
+      margin-top: 18px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--ink);
+      border-radius: 8px;
+      font-size: 14.2px;
+      color: var(--ink-2);
+    }
+    .note-box strong { color: var(--ink); }
 
-    /* Accessible Tabs */
+    /* ============================================================
+       DEDICATED ACADEMIC PAPER & CONTRIBUTIONS BAND
+       (Deliberately restrained scholarly tone, distinct from Repo)
+       ============================================================ */
+    .paper-panel {
+      background: #fcfbf7;
+      border: 1px solid var(--rule-strong);
+      border-top: 4px solid var(--ink);
+      border-radius: 14px;
+      padding: 34px 36px;
+    }
+    .paper-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 24px;
+    }
+    .paper-meta-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      line-height: 1.22;
+      margin: 6px 0 8px;
+      color: var(--ink);
+    }
+    .paper-authors {
+      font-size: 14.5px;
+      color: var(--muted);
+      margin: 0;
+    }
+    .paper-authors strong { color: var(--ink); }
+    .paper-btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-paper-dark {
+      background: var(--ink);
+      color: #ffffff;
+    }
+    .btn-paper-dark:hover { background: #312f2a; color: #ffffff; }
+    .btn-paper-light {
+      background: #ffffff;
+      color: var(--ink);
+      border-color: var(--rule-strong);
+    }
+    .btn-paper-light:hover { background: var(--wash); color: var(--ink); }
+
+    .contrib-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .contrib-item {
+      border-left: 2px solid var(--ink);
+      padding-left: 16px;
+    }
+    .contrib-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .contrib-item h3 {
+      font-family: var(--font-serif);
+      font-size: 17.5px;
+      margin: 0 0 6px;
+      color: var(--ink);
+    }
+    .contrib-item p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+
+    /* ============================================================
+       CODE BLOCKS, TABS & FOOTER
+       ============================================================ */
     .tablist {
       display: flex;
       flex-wrap: wrap;
@@ -570,13 +866,59 @@
       border-bottom-color: var(--ink);
     }
     .tabpanel[hidden] { display: none; }
+    .code-box {
+      position: relative;
+      margin-top: 10px;
+    }
+    pre.code {
+      margin: 0;
+      background: var(--code-bg);
+      color: var(--code-ink);
+      padding: 16px 18px;
+      padding-right: 82px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 12.8px;
+      line-height: 1.58;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      min-height: 28px;
+      min-width: 58px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #3f3f46;
+      background: #27272a;
+      color: #f4f4f5;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: #3f3f46; }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.88em;
+      background: var(--wash);
+      padding: 1px 5px;
+      border-radius: 4px;
+      color: var(--ink);
+    }
+    pre code { background: none; padding: 0; color: inherit; }
 
-    /* Release Log */
+    .split-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+    }
     dl.release-log {
       margin: 0;
       display: grid;
-      grid-template-columns: 140px minmax(0, 1fr);
-      gap: 16px 24px;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 14px 20px;
     }
     dl.release-log dt {
       font-family: var(--font-mono);
@@ -587,50 +929,66 @@
     }
     dl.release-log dd {
       margin: 0;
-      padding-bottom: 16px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--rule);
-      font-size: 14.5px;
-      color: var(--ink-secondary);
+      font-size: 14.3px;
+      color: var(--ink-2);
     }
     dl.release-log dd:last-of-type { border-bottom: none; padding-bottom: 0; }
-    dl.release-log dd strong { color: var(--ink); }
 
-    /* Footer Colophon */
     footer.site-footer {
-      border-top: 1px solid var(--rule);
-      background: var(--wash);
-      padding: 28px 24px;
+      border-top: 1px solid var(--slate-edge);
+      background: var(--slate-deep);
+      color: var(--bone-muted);
+      padding: 30px 24px;
       font-size: 13.5px;
-      color: var(--muted);
     }
     .footer-inner {
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
     }
+    .footer-inner strong { color: var(--bone); }
     .footer-links {
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
     }
+    .footer-links a { color: var(--bone-muted); text-decoration: none; }
+    .footer-links a:hover { color: #ffffff; text-decoration: underline; }
 
-    @media (max-width: 1020px) {
-      nav.primary-nav { gap: 13px; }
-      nav.primary-nav a { font-size: 13px; }
+    /* Responsive Rules */
+    @media (max-width: 1080px) {
+      nav.primary-nav { gap: 11px; }
+      nav.primary-nav a { font-size: 12.5px; }
+      .engine-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 900px) {
-      .hero-grid, .split-2, .artifact-grid { grid-template-columns: 1fr; gap: 24px; }
-      dl.release-log { grid-template-columns: 1fr; gap: 4px; }
-      nav.primary-nav { gap: 11px; }
+      .hero-grid, .xray-stage, .artifact-grid, .contrib-grid, .split-2 {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      nav.primary-nav { gap: 10px; }
+      nav.primary-nav a { font-size: 12.2px; }
+      .hero-strip { grid-template-columns: repeat(2, 1fr); }
+      .cmd-telemetry { grid-template-columns: repeat(2, 1fr); }
+      .paper-panel { padding: 24px 20px; }
+    }
+    @media (max-width: 720px) {
+      nav.primary-nav a:not(.repo-link) { display: none; }
     }
     @media (max-width: 640px) {
-      main { padding: 28px 16px 64px; }
+      .hero-band { padding: 32px 16px 38px; }
+      main { padding: 32px 16px 64px; }
       .header-inner { padding: 10px 16px; }
-      nav.primary-nav a:not(.repo-link) { display: none; }
+      .engine-grid, .hero-strip { grid-template-columns: 1fr; }
+      .command-card { padding: 16px; }
+      .xray-stage { padding: 20px 16px; }
+      dl.release-log { grid-template-columns: 1fr; gap: 4px; }
     }
   </style>
 </head>
@@ -640,148 +998,244 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#main-content">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="6" fill="#141413"/>
-          <circle cx="16" cy="16" r="9.5" fill="none" stroke="#FAF9F5" stroke-width="2" stroke-dasharray="44 12" stroke-linecap="round"/>
-          <path d="M11.5 16.3 L14.8 19.6 L21 12.8" fill="none" stroke="#4ADE80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#23221D" stroke="#3D3A32" stroke-width="1.4"/>
+          <circle cx="16" cy="16" r="9" fill="none" stroke="#F5F2EB" stroke-width="2" stroke-dasharray="42 14" stroke-linecap="round"/>
+          <path d="M 11.4 16.4 L 14.7 19.6 L 21 12.6" fill="none" stroke="#4ADE80" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         VeriLoop
         <span class="brand-ver">v5.0</span>
       </a>
       <nav class="primary-nav" aria-label="Primary navigation">
-        <a href="#modes">Level-1 &amp; 2</a>
+        <a href="#xray">Audit X-Ray</a>
+        <a href="#platform">Platform</a>
         <a href="#workbench">Studio</a>
         <a href="#gpu-portfolio">GPU Matrix</a>
         <a href="#external-audit">External Audit</a>
-        <a href="#benchmarks">Benchmarks</a>
+        <a href="#paper">Paper</a>
         <a href="#quickstart">Quick Start</a>
-        <a href="#cite">Cite</a>
         <a class="repo-link" href="https://github.com/shangliy/VeriLoop" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </div>
   </header>
 
-  <main id="main-content">
-    <!-- Asymmetric Editorial Header -->
-    <div class="hero-grid">
-      <div>
-        <p class="kicker">Open-Source Verification Infrastructure · MIT License</p>
-        <h1 class="paper-title">Deterministic Evidence Gates for Autonomous Scientific Research</h1>
-        <p class="lead">
-          Autonomous research agents rarely fail by omitting files; they fail by executing cleanly while reporting numbers, code paths, or citations that contradict their own logs.
-          <strong>VeriLoop</strong> couples Level-1 and Level-2 research orchestration to a zero-dependency deterministic core — enforcing signed numerical provenance, Python AST hygiene, online citation verification, and byte-stable log-to-LaTeX binding before delivery.
-        </p>
-        <p class="byline">
-          <strong>Shanglin Yang</strong> &nbsp;·&nbsp; <strong>Zhan Shi</strong> &nbsp;·&nbsp; Preprint &amp; Open-Source Release (2026)
-        </p>
-        <div class="action-bar">
-          <a class="btn btn-primary" href="https://github.com/shangliy/VeriLoop" target="_blank" rel="noopener">View GitHub Repository</a>
-          <a class="btn btn-accent" href="demo/studio_snapshot.html" target="_blank" rel="noopener">Open Live Studio Snapshot</a>
-          <a class="btn btn-secondary" href="demo/review_ui.html" target="_blank" rel="noopener">Open Split-Pane Audit UI</a>
-          <a class="btn btn-secondary" href="https://github.com/shangliy/VeriLoop/blob/main/paper/main.pdf" target="_blank" rel="noopener">Paper (arXiv PDF)</a>
-          <a class="btn btn-secondary" href="https://github.com/shangliy/VeriLoop/blob/main/paper/main_icml2027.pdf" target="_blank" rel="noopener">ICML 8-Page PDF</a>
-          <a class="btn btn-secondary" href="https://github.com/shangliy/VeriLoop/blob/main/README_CN.md" target="_blank" rel="noopener">中文文档</a>
+  <!-- HERO BAND: Full-Stack Platform ("大而强") in Harvey Tactile Charcoal Slate -->
+  <section class="hero-band" aria-label="VeriLoop platform overview">
+    <div class="hero-inner">
+      <div class="hero-grid">
+        <div>
+          <p class="hero-kicker">Full-Stack Autonomous Research Infrastructure · MIT License</p>
+          <h1 class="hero-title">End-to-end autonomous research, verified down to the byte.</h1>
+          <p class="hero-lead">
+            <strong>VeriLoop</strong> is a zero-dependency research engine spanning the complete scientific lifecycle:
+            arXiv LaTeX-to-AST ingest, Docker GPU sandboxes, Level-1 &amp; Level-2 research orchestration,
+            live web cockpits, and cryptographic log-to-LaTeX binding — plus a drop-in forensic auditor for any existing AI agent.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-bone" href="https://github.com/shangliy/VeriLoop" target="_blank" rel="noopener">GitHub Repository</a>
+            <a class="btn btn-emerald" href="demo/studio_snapshot.html" target="_blank" rel="noopener">Open Live Studio</a>
+            <a class="btn btn-dark-outline" href="demo/review_ui.html" target="_blank" rel="noopener">Split-Pane Audit UI</a>
+            <a class="btn btn-dark-outline" href="#paper">Paper &amp; Contributions</a>
+            <a class="btn btn-dark-outline" href="https://github.com/shangliy/VeriLoop/blob/main/README_CN.md" target="_blank" rel="noopener">中文文档</a>
+          </div>
+        </div>
+
+        <!-- Luminous Floating Command Bar (Interactive CLI presets) -->
+        <div class="command-card" aria-label="Interactive CLI launcher">
+          <div class="cmd-tabs" role="group" aria-label="CLI workflow presets">
+            <button type="button" class="cmd-tab" aria-pressed="true" onclick="setCmd('research', this)">research L2</button>
+            <button type="button" class="cmd-tab" aria-pressed="false" onclick="setCmd('compare', this)">compare-bench</button>
+            <button type="button" class="cmd-tab" aria-pressed="false" onclick="setCmd('studio', this)">studio</button>
+            <button type="button" class="cmd-tab" aria-pressed="false" onclick="setCmd('audit', this)">audit-paper</button>
+          </div>
+          <div class="cmd-prompt-box">
+            <span class="cmd-text" id="hero-cmd-text">$ ./veriloop research -w ./study --level 2 --papers 2007.02133</span>
+            <button type="button" class="cmd-copy" onclick="copyHeroCmd(this)">Copy</button>
+          </div>
+          <p class="cmd-desc" id="hero-cmd-desc">
+            Crash-resumable 7-stage Level-2 pipeline: fetches arXiv LaTeX, maps equations to AST, runs GPU training, binds LaTeX macros, and enforces hard gates.
+          </p>
+          <div class="cmd-telemetry">
+            <div class="ct-item">
+              <div class="ct-val ok">416/416</div>
+              <div class="ct-lbl">PDF Traced</div>
+            </div>
+            <div class="ct-item">
+              <div class="ct-val">115 Runs</div>
+              <div class="ct-lbl">RTX 3060 Ti</div>
+            </div>
+            <div class="ct-item">
+              <div class="ct-val ok">0.0% FPR</div>
+              <div class="ct-lbl">AST Gate</div>
+            </div>
+            <div class="ct-item">
+              <div class="ct-val">0 Deps</div>
+              <div class="ct-lbl">Stdlib Core</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <aside class="ledger" aria-label="Key empirical verification metrics">
-        <p class="ledger-title">Publicly Committed Evidence</p>
-        <ul class="ledger-list">
-          <li>
-            <span class="ledger-key">Frozen Defect Recall (L1 ∪ Codex)</span>
-            <span class="ledger-val ok">100.0%</span>
-          </li>
-          <li>
-            <span class="ledger-key">Unseen AST FPR (21 Blind Scenarios)</span>
-            <span class="ledger-val ok">0.0% (0/18)</span>
-          </li>
-          <li>
-            <span class="ledger-key">Real RTX 3060 Ti Portfolio</span>
-            <span class="ledger-val accent">115 Runs · 3 PDFs</span>
-          </li>
-          <li>
-            <span class="ledger-key">Expanded PDF Decimals Traced</span>
-            <span class="ledger-val ok">416 / 416</span>
-          </li>
-          <li>
-            <span class="ledger-key">External AI-Researcher Audit</span>
-            <span class="ledger-val">25 Unlogged Flagged</span>
-          </li>
-          <li>
-            <span class="ledger-key">Layer-1 Mechanical Gate Cost</span>
-            <span class="ledger-val">$0.00</span>
-          </li>
-        </ul>
-        <p class="ledger-foot">CI: Linux + macOS passing · Zero post-hoc overrides</p>
-      </aside>
+      <div class="hero-strip">
+        <div>
+          <div class="hs-k">Unified Orchestration</div>
+          <div class="hs-v">Level-1 (Idea+Repo) &amp; Level-2 (arXiv Papers) + 90+ Composable Skills</div>
+        </div>
+        <div>
+          <div class="hs-k">Multi-Domain GPU Proof</div>
+          <div class="hs-v">CV (42) · GNN (60) · RecSys (13) — 3 standalone ICML PDFs, 0 warnings</div>
+        </div>
+        <div>
+          <div class="hs-k">Drop-In Agent Auditor</div>
+          <div class="hs-v">Audits any repo/PDF at $0 cost (flagged 25 unlogged metrics in AI-Researcher)</div>
+        </div>
+        <div>
+          <div class="hs-k">Cross-Platform Engineering</div>
+          <div class="hs-v">Python 3.10+ stdlib · Linux + macOS 63/63 CI · Claude / Codex / Gemini CLI</div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Figure 1: Full-width Architectural Schematic -->
-    <figure class="arch-figure">
-      <img src="assets/veriloop_overview.png" alt="VeriLoop v5 architectural diagram showing Level-1 and Level-2 ingest, zero-transcription paper_bind, dual-layer hard blocking gate, compiled PDF auditor, and VeriLoop Studio." />
-      <figcaption>
-        <strong>Figure 1. VeriLoop v5 architecture.</strong> Every experiment run flows from pre-registered claims and isolated execution through byte-deterministic log binding (<code>./veriloop bind</code>) into a two-layer hard gate (<code>rc=2</code> block on defect, 1-round targeted repair) and compiled-PDF verification (<code>./veriloop audit-pdf</code>).
-      </figcaption>
-    </figure>
-
-    <!-- Section 1: Dual Entry Modes -->
-    <section class="content-sec" id="modes">
-      <p class="sec-label">01 · Research Orchestration</p>
-      <h2>Two Entry Modes, One Hard-Gated Pipeline</h2>
-      <p class="sec-intro">
-        Both entry points execute the same crash-resumable 7-stage graph (<code>ingest → ideate_and_register → execute → bind → draft → gate_and_repair → package_and_ui</code>), logging every state transition to <code>state.json</code> and streaming live events to VeriLoop Studio.
-      </p>
-      <div class="split-2">
-        <div class="spec-col">
-          <span class="spec-tag">Level 1 · Idea + Baseline Repository</span>
-          <h3>Hypothesis-Driven Implementation</h3>
-          <p>
-            Supply a concrete hypothesis and baseline repo. VeriLoop statically indexes the codebase via Python AST, registers falsifiable claims (<code>G1–G7</code>), runs multi-seed training in local or Docker GPU sandboxes with NaN/OOM watchdogs, binds logs to LaTeX macros, and blocks release on exit code <code>2</code>.
+  <main id="main-content">
+    <!-- SECTION 1: PROFOUND-STYLE INTERACTIVE "PAPER VIEW | AUDIT X-RAY" -->
+    <section class="content-sec" id="xray">
+      <div class="sec-head">
+        <div>
+          <p class="sec-label">01 · Interactive Provenance Inspector</p>
+          <h2>Paper Surface vs. Cryptographic Audit X-Ray</h2>
+          <p class="sec-intro">
+            Switch between the compiled PDF table a reviewer reads and the live machine-provenance layer underneath — or inspect a real unlogged failure caught in an external AI-Researcher showcase.
           </p>
-          <div class="code-box">
-            <button type="button" class="copy-btn" onclick="copyCode(this)">Copy</button>
-            <pre class="code"><code>./veriloop research -w ./study_l1 --level 1 \
-  --idea "Split weight decay cures 8-layer GCNII collapse" \
-  --repo ./baseline_repo --sandbox auto --online-cites</code></pre>
-          </div>
         </div>
-
-        <div class="spec-col accent-top">
-          <span class="spec-tag">Level 2 · Reference arXiv Papers</span>
-          <h3>Formula-to-Code Alignment &amp; Discovery</h3>
-          <p>
-            Supply arXiv IDs without a fixed design. <code>./veriloop ingest</code> downloads raw LaTeX e-print archives, extracts equations and linked GitHub repos, maps equations directly to Python AST <code>file:line</code> symbols (<code>wiki/INGEST_MAP.md</code>), and places unmatched equations on a Layer-2 verification watchlist.
-          </p>
-          <div class="code-box">
-            <button type="button" class="copy-btn" onclick="copyCode(this)">Copy</button>
-            <pre class="code"><code>./veriloop research -w ./study_l2 --level 2 \
-  --papers 1609.02907 2007.02133 \
-  --auto-clone-github --sandbox docker --gpus device=0</code></pre>
+        <div class="xray-controls">
+          <div class="view-switch" role="group" aria-label="View mode toggle">
+            <button type="button" id="mode-paper" aria-pressed="false" onclick="setXrayMode('paper')">Paper View</button>
+            <button type="button" id="mode-xray" aria-pressed="true" onclick="setXrayMode('xray')">Audit X-Ray</button>
           </div>
         </div>
       </div>
 
-      <div class="note-box">
-        <strong>Verified live ingest example (<code>arXiv:1706.04599</code>):</strong> Running <code>./veriloop ingest --arxiv 1706.04599 --repo examples/gpu-overnight-research/code</code> parses Guo et al. (ICML 2017) raw LaTeX (13 equations, 14 sections, official repo discovered) and aligns <code>calibration_methods.tex:L142</code> &amp; <code>L152</code> to <code>fit_temperature_on_val</code> (<code>L241</code>) and <code>definitions.tex:L70</code> (ECE) to <code>compute_metrics_from_logits</code> (<code>L220</code>) at $0 LLM cost.
+      <div class="xray-case-pills" role="group" aria-label="Select audited domain">
+        <button type="button" class="case-pill" aria-pressed="true" onclick="setXrayCase('gnn', this)">GNN · Cora/CiteSeer (129/129)</button>
+        <button type="button" class="case-pill" aria-pressed="false" onclick="setXrayCase('recsys', this)">RecSys · MovieLens (92/92)</button>
+        <button type="button" class="case-pill" aria-pressed="false" onclick="setXrayCase('cv', this)">CV · CIFAR-10 (195/195)</button>
+        <button type="button" class="case-pill warn-pill" aria-pressed="false" onclick="setXrayCase('external', this)">External Audit · AI-Researcher dccf (20 Unlogged)</button>
+      </div>
+
+      <div class="xray-stage" id="xray-stage">
+        <div class="paper-surface">
+          <div class="paper-surface-kicker" id="xray-kicker">HUMAN VIEW · COMPILED ICML PDF (gnn_study.pdf)</div>
+          <h3 id="xray-title">Every printed number compiles directly from disk logs.</h3>
+          <p id="xray-desc">In our 60-run GNN study, VeriLoop detected 8-layer GCNII collapse under uniform weight decay (0.2868), executed a split-decay recovery run, and bound the verified result directly into LaTeX macros.</p>
+          <table class="mini-booktabs">
+            <thead>
+              <tr><th>Experiment Row</th><th class="num">Printed Metric</th><th class="num">Audit Status</th></tr>
+            </thead>
+            <tbody id="xray-tbody">
+              <tr><td>M1 · 2-Layer GCN (Baseline)</td><td class="num">0.8184 ± .0038</td><td class="num" style="color:#15803d;">TRACED</td></tr>
+              <tr><td>M4 · 8-Layer GCNII (Uniform WD)</td><td class="num">0.2868 ± .0054</td><td class="num" style="color:#15803d;">TRACED</td></tr>
+              <tr class="highlight-ok"><td>M4b · 8-Layer GCNII (Split-WD Fix)</td><td class="num">0.8266 ± .0045</td><td class="num" style="color:#15803d;">SHA-256 BOUND</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="xray-lens" id="xray-lens">
+          <div>
+            <div class="lens-top">
+              <span style="color:#f4f4f5;font-weight:700;" id="lens-title">AUDIT X-RAY · MACHINE PROVENANCE</span>
+              <span class="lens-badge" id="lens-badge">PASS · 129/129 TRACED</span>
+            </div>
+            <pre class="lens-code" id="lens-code">&lt;macro name="\valCoraGCNIISplitWD"&gt;
+  printed_pdf: "0.8266 ± 0.0045"
+  source_log:  examples/gpu-gnn-cora-citeseer/metrics.csv:48
+  manifest:    sha256:9f3a81e2c04d7b19...8c2a
+  arxiv_ast:   49 equation &lt;-&gt; code alignments (3 papers)
+  ast_gate:    0 HIGH defects (0.0% FPR)
+  pdf_audit:   129 / 129 expanded decimals verified (0 warn)</pre>
+          </div>
+          <div class="lens-foot">
+            <span id="lens-cmd">$ ./veriloop audit-pdf examples/gpu-gnn-cora-citeseer/paper/gnn_study.pdf</span>
+            <span id="lens-cost">Layer-1 cost: $0.00</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Section 2: Interactive Artifacts -->
+    <!-- SECTION 2: ARTEMIS II SCHEMATIC + FULL-STACK PLATFORM ENGINE GRID -->
+    <section class="content-sec" id="platform">
+      <div class="sec-head">
+        <div>
+          <p class="sec-label">02 · Full-Stack Platform Architecture</p>
+          <h2>Six Zero-Dependency Engines, One Crash-Resumable CLI</h2>
+          <p class="sec-intro">
+            Built to run real autonomous research at scale on local GPUs or Docker containers — every module runs on Python 3.10+ stdlib and plugs into Claude Code, Codex CLI, Gemini CLI, or any LLM backend.
+          </p>
+        </div>
+      </div>
+
+      <figure class="schematic-figure">
+        <img src="assets/veriloop_overview.png" alt="VeriLoop v5 precision orbital architecture schematic showing Level-1 and Level-2 entry, arXiv-to-AST Ingest, Docker/Local GPU Sandbox, Zero-Transcription Bind, Dual-Layer Hard Gate with rc=2 repair orbit, and Verified Release." />
+        <figcaption>
+          <strong>Schematic 01 · VeriLoop v5 end-to-end trajectory.</strong> Both Level-1 (<code>--idea --repo</code>) and Level-2 (<code>--papers</code>) workflows execute through the same crash-resumable state machine, routing any AST fault, citation mismatch, or unlogged metric into an automatic <code>rc=2</code> repair orbit before publication.
+        </figcaption>
+      </figure>
+
+      <div class="engine-grid">
+        <div class="engine-cell">
+          <span class="engine-cmd">./veriloop ingest</span>
+          <h3>arXiv LaTeX &harr; Python AST Map</h3>
+          <p>Downloads raw arXiv e-print tarballs, extracts equations, hyperparameters, and official repos, and statically maps paper equations to local Python AST <code>file:line</code> symbols with an unmatched watchlist.</p>
+        </div>
+        <div class="engine-cell">
+          <span class="engine-cmd">./veriloop sandbox</span>
+          <h3>Isolated Local &amp; Docker GPU Runs</h3>
+          <p>Executes multi-seed training locally or inside <code>docker/Dockerfile.gpu</code> with <code>:ro</code> data mounts, network isolation, NaN/OOM watchdogs, and SHA-256 run manifests.</p>
+        </div>
+        <div class="engine-cell">
+          <span class="engine-cmd">./veriloop research --level 1|2</span>
+          <h3>Crash-Resumable Orchestrator</h3>
+          <p>Drives a 7-stage research loop with checkpointed <code>state.json</code> recovery, pre-registered falsifiable claim ledgers (<code>G1–G7</code>), and 90+ modular research lifecycle skills.</p>
+        </div>
+        <div class="engine-cell accent">
+          <span class="engine-cmd">./veriloop bind</span>
+          <h3>Zero-Transcription LaTeX Engine</h3>
+          <p>Parses TensorBoard <code>.tfevents</code>, W&amp;B, CSV, and JSONL logs directly in stdlib to generate deterministic <code>\newcommand</code> macros, Booktabs tables, and Okabe-Ito vector PDFs.</p>
+        </div>
+        <div class="engine-cell accent">
+          <span class="engine-cmd">./veriloop gate &amp; audit-pdf</span>
+          <h3>Dual-Layer Hard Blocking Gate</h3>
+          <p>Combines $0 static AST hygiene, signed numerical tracing, and live arXiv/Crossref/S2 citation checks with path-isolated cross-model auditing (<code>rc=2</code> hard block on defect).</p>
+        </div>
+        <div class="engine-cell">
+          <span class="engine-cmd">./veriloop studio &amp; compare-bench</span>
+          <h3>Web Cockpit &amp; External Auditor</h3>
+          <p>Ships a zero-dep SSE web studio, split-pane Paper&harr;Log audit UI, and a one-command forensic auditor (<code>compare-bench</code>) that grades third-party research agents at $0 cost.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE STUDIO & REVIEW UI -->
     <section class="content-sec" id="workbench">
-      <p class="sec-label">02 · Interactive Inspection</p>
-      <h2>VeriLoop Studio &amp; Split-Pane Audit Workbench</h2>
-      <p class="sec-intro">
-        Both interfaces are zero-dependency local web apps generated directly from workspace artifacts. Open the live static snapshots below (exported from our 42-run RTX 3060 Ti study) to inspect real numbers, claims, and log lines in your browser.
-      </p>
+      <div class="sec-head">
+        <div>
+          <p class="sec-label">03 · Interactive Local Web Cockpits</p>
+          <h2>VeriLoop Studio &amp; Split-Pane Audit Workbench</h2>
+          <p class="sec-intro">
+            Zero-dependency local web apps exported straight from workspace artifacts. Open either live interactive snapshot below (captured from our 42-run RTX 3060 Ti study).
+          </p>
+        </div>
+      </div>
+
       <div class="artifact-grid">
         <article class="artifact-item">
           <div class="artifact-frame">
-            <img src="assets/veriloop_studio_preview.png" alt="VeriLoop Studio interface showing 7-stage progress, gate status, claims ledger, and auto-bound metrics table." />
+            <img src="assets/veriloop_studio_preview.png" alt="VeriLoop Studio web cockpit showing 7-stage progress, hard-gate metrics, claims ledger, and auto-bound 95% CI table." />
           </div>
           <div class="artifact-meta">
             <div>
               <h3>VeriLoop Studio (<code>./veriloop studio</code>)</h3>
-              <p>Live 7-stage SSE monitor, Level-1/2 form launcher, hard-gate summary (<code>PASSED rc=0</code>, <code>195/195</code> PDF numbers, <code>4/4</code> claims), and auto-bound 95% CI tables.</p>
+              <p>Live 7-stage SSE pipeline monitor, Level-1/2 form launcher, hard-gate telemetry (<code>PASSED rc=0</code>, <code>195/195</code> traced, <code>4/4</code> claims), and auto-bound 95% CI tables.</p>
             </div>
             <div class="artifact-links">
               <a href="demo/studio_snapshot.html" target="_blank" rel="noopener">Open live Studio snapshot &rarr;</a>
@@ -792,12 +1246,12 @@
 
         <article class="artifact-item">
           <div class="artifact-frame">
-            <img src="assets/veriloop_review_ui_preview.png" alt="Split-pane audit workbench showing LaTeX manuscript on the left and matched SHA-256 summary log on the right." />
+            <img src="assets/veriloop_review_ui_preview.png" alt="VeriLoop split-pane review workbench showing compiled manuscript text on the left and SHA-256 verified log line on the right." />
           </div>
           <div class="artifact-meta">
             <div>
               <h3>Split-Pane Audit Workbench (<code>./veriloop review-ui</code>)</h3>
-              <p>Click any decimal or <code>\cite{}</code> key in the manuscript on the left to jump directly to its exact SHA-256 verified <code>log:line</code>, AST finding, or fetched online abstract on the right.</p>
+              <p>Click any decimal or <code>\cite{}</code> key in the manuscript on the left to jump straight to its SHA-256 verified <code>log:line</code>, AST report, or online abstract on the right.</p>
             </div>
             <div class="artifact-links">
               <a href="demo/review_ui.html" target="_blank" rel="noopener">Open live Audit Workbench &rarr;</a>
@@ -808,22 +1262,27 @@
       </div>
     </section>
 
-    <!-- Section 3: Multi-Domain Real-GPU Portfolio -->
+    <!-- SECTION 4: MULTI-DOMAIN REAL-GPU PORTFOLIO -->
     <section class="content-sec" id="gpu-portfolio">
-      <p class="sec-label">03 · Multi-Domain Empirical Artifacts</p>
-      <h2>115 Real RTX 3060 Ti Runs Across CV, GNN, and RecSys</h2>
-      <p class="sec-intro">
-        Every domain below was executed on a local NVIDIA GeForce RTX 3060 Ti under validation-only checkpoint selection, bound into byte-deterministic LaTeX macros via <code>./veriloop bind</code>, and compiled into standalone ICML-style PDFs passing 100% expanded-PDF decimal tracing with 0 warnings.
-      </p>
+      <div class="sec-head">
+        <div>
+          <p class="sec-label">04 · Multi-Domain Hardware Validation</p>
+          <h2>115 Local RTX 3060 Ti Runs Across CV, GNN, and RecSys</h2>
+          <p class="sec-intro">
+            Every study below ran end-to-end on a single consumer NVIDIA RTX 3060 Ti, compiled into standalone ICML-style PDFs via <code>./veriloop bind</code>, and passed 100.0% expanded-PDF decimal auditing with 0 warnings.
+          </p>
+        </div>
+      </div>
+
       <div class="table-scroll">
         <table class="sci-table">
           <thead>
             <tr>
               <th>Domain</th>
-              <th>Compiled PDF &amp; Artifact</th>
+              <th>Compiled PDF &amp; Workspace</th>
               <th class="num">GPU Runs</th>
-              <th class="num">arXiv ↔ AST</th>
-              <th>Empirical Trajectory (Including Diagnosed Recoveries)</th>
+              <th class="num">arXiv &harr; AST</th>
+              <th>Closed-Loop Discovery &amp; Verified Recovery</th>
               <th class="num">Expanded PDF Trace</th>
             </tr>
           </thead>
@@ -836,7 +1295,7 @@
               </td>
               <td class="num">42<br/>(92.5 min)</td>
               <td class="num">5 eqs<br/>(1706.04599)</td>
-              <td><code>M7_SEResNet_Full</code> reaches <code>0.9193±0.0004</code> (+14.06 pp); Label Smoothing &amp; Mixup flip to underconfidence (<code>T*&lt;1</code>) until validation-fitted temperature scaling restores ECE to <code>0.0061–0.0120</code>.</td>
+              <td><code>M7_SEResNet_Full</code> reaches <code>0.9193±0.0004</code> (+14.06 pp); validation temperature scaling restores LS/Mixup ECE to <code>0.0061–0.0120</code>.</td>
               <td class="num"><strong>195/195</strong><br/>(100.0%)</td>
             </tr>
             <tr>
@@ -847,7 +1306,7 @@
               </td>
               <td class="num">60<br/>(295.8 s)</td>
               <td class="num">49 eqs<br/>(3 papers)</td>
-              <td>8-layer plain GCN oversmooths (<code>0.8184 → 0.2292</code>); <code>M3_APPNP_PPR</code> hits <code>0.8348±0.0050</code>. Diagnosing uniform-decay collapse in <code>M4_GCNII_8L</code> (<code>0.2868</code>) with split decay (<code>M4b_GCNII_SplitWD</code>) recovers to <code>0.8266±0.0045</code> (Cora) and <code>0.7108±0.0112</code> (CiteSeer).</td>
+              <td>Diagnosed 8-layer GCNII uniform-WD collapse (<code>0.2868</code>) and recovered with split decay (<code>M4b_GCNII_SplitWD</code>) to <code>0.8266±0.0045</code> (Cora) / <code>0.7108±0.0112</code> (CiteSeer).</td>
               <td class="num"><strong>129/129</strong><br/>(100.0%)</td>
             </tr>
             <tr>
@@ -858,7 +1317,7 @@
               </td>
               <td class="num">13<br/>(1645.2 s)</td>
               <td class="num">26 eqs<br/>(2 papers)</td>
-              <td>Full-catalog ranking (938 users, 1,447 items): diagnosing over-weighted <code>R3_SimGCL</code> collapse (<code>0.0298</code>) and balancing InfoNCE loss in <code>R3b_SimGCL_Tuned</code> outperforms every baseline at <code>Recall@20=0.2061±0.0006</code> and <code>NDCG@20=0.0855±0.0002</code>.</td>
+              <td>Diagnosed over-weighted <code>R3_SimGCL</code> collapse (<code>0.0298</code>); balanced InfoNCE in <code>R3b_SimGCL_Tuned</code> beats every baseline at <code>Recall@20=0.2061±0.0006</code> / <code>NDCG@20=0.0855±0.0002</code>.</td>
               <td class="num"><strong>92/92</strong><br/>(100.0%)</td>
             </tr>
           </tbody>
@@ -866,18 +1325,22 @@
       </div>
     </section>
 
-    <!-- Section 4: External Audit vs HKUDS/AI-Researcher -->
+    <!-- SECTION 5: DROP-IN EXTERNAL FORENSIC AUDIT -->
     <section class="content-sec" id="external-audit">
-      <p class="sec-label">04 · External Third-Party Audit</p>
-      <h2>Head-to-Head PDF Audit: VeriLoop v5 vs. Official HKUDS/AI-Researcher Showcases</h2>
-      <p class="sec-intro">
-        Reproducible via <code>./veriloop compare-bench --fetch-ai-researcher</code> ($0 API cost). We ran identical zero-override deterministic auditors across VeriLoop v5's 3 real-GPU PDFs and all 7 official published <code>HKUDS/AI-Researcher/examples/*</code> PDFs, fairly including every committed <code>.log</code>, <code>.txt</code>, <code>.csv</code>, and <code>.json</code> file under <code>project/</code>.
-      </p>
+      <div class="sec-head">
+        <div>
+          <p class="sec-label">05 · Drop-In Third-Party Audit Benchmark</p>
+          <h2>Head-to-Head PDF Audit: VeriLoop v5 vs. HKUDS/AI-Researcher</h2>
+          <p class="sec-intro">
+            Reproducible in one command (<code>./veriloop compare-bench --fetch-ai-researcher</code>, $0 API cost). Identical deterministic auditors were executed on VeriLoop v5's 3 real-GPU PDFs and all 7 official published <code>HKUDS/AI-Researcher/examples/*</code> PDFs, fairly indexing every committed <code>.log</code>, <code>.txt</code>, <code>.csv</code>, and <code>.json</code> file under <code>project/</code>.
+          </p>
+        </div>
+      </div>
 
       <figure class="chart-figure">
-        <img src="assets/veriloop_vs_ai_researcher.png" alt="Grouped bar chart comparing VeriLoop v5 against HKUDS/AI-Researcher on Number Trace Rate (100.0% vs 82.6%), AST Clean Code (100.0% vs 100.0%), Verified BibTeX Coverage (100.0% vs 0.0%), and Governance Score (100.0% vs 0.0%)." />
+        <img src="assets/veriloop_vs_ai_researcher.png" alt="Grouped bar chart comparing VeriLoop v5 (100.0% trace, 100.0% AST clean, 100.0% BibTeX, 100.0% governance) against HKUDS/AI-Researcher (82.6% trace, 100.0% AST clean, 0.0% BibTeX, 0.0% governance)." />
         <figcaption>
-          <strong>Figure 2. Deterministic Layer-1 audit ($0 cost).</strong> VeriLoop traces 416/416 expanded PDF decimals (100.0%) vs. 152/184 (82.6%) across 7 official AI-Researcher showcases, with 0/79 (0.0%) AST false positives on third-party PyTorch codebases.
+          <strong>Figure 2 · Zero-cost deterministic audit comparison.</strong> VeriLoop traces 416/416 expanded PDF decimals (100.0%) vs. 152/184 (82.6%) across 7 official AI-Researcher showcases, with 0/79 (0.0%) AST false positives on third-party PyTorch codebases.
         </figcaption>
       </figure>
 
@@ -921,107 +1384,149 @@
       </div>
 
       <div class="note-box">
-        <strong>Line-by-line forensic breakdown (<a href="https://github.com/shangliy/VeriLoop/blob/main/eval/comparison_ai_researcher/ai_researcher_forensic_audit.csv" target="_blank" rel="noopener">ai_researcher_forensic_audit.csv</a>):</strong>
-        Of 32 untraced decimals across 3 AI-Researcher PDFs, 7 are benign metadata (5 EMA hyperparameters, 2 dataset densities) and <strong>25 are unlogged or log-exceeding experimental metrics</strong>:
-        <code>dccf</code> (20 metrics: reports <code>Recall@40</code> up to <code>0.1226</code> and <code>Recall@20</code> up to <code>0.0698</code>, whereas across all 12 committed logs max <code>Recall@40 = 0.0693</code>, max <code>Recall@20 = 0.0464</code>, and final revision = <code>0.0000</code>);
-        <code>rotation_vq</code> (3 metrics: repeats <code>0.0077</code> absent from all 12 <code>.log/.json</code> files);
-        and <code>con_flowmatching</code> (2 final training losses while all five <code>project/experiments/logs/*.log</code> files are 0 bytes). <code>hgcl</code> also contains 1 unresolved citation marker.
+        <strong>Row-by-row forensic evidence (<a href="https://github.com/shangliy/VeriLoop/blob/main/eval/comparison_ai_researcher/ai_researcher_forensic_audit.csv" target="_blank" rel="noopener">ai_researcher_forensic_audit.csv</a>):</strong>
+        Of 32 untraced decimals across 3 AI-Researcher PDFs, 7 are benign metadata and <strong>25 are unlogged or log-exceeding table metrics</strong>:
+        <code>dccf</code> (20 metrics: prints <code>Recall@40</code> up to <code>0.1226</code> vs max <code>0.0693</code> across all 12 logs),
+        <code>rotation_vq</code> (3 metrics: <code>0.0077</code> absent from all 12 log/JSON files),
+        and <code>con_flowmatching</code> (2 final losses while all five <code>project/experiments/logs/*.log</code> files are 0 bytes).
       </div>
     </section>
 
-    <!-- Section 5: Frozen Paired & Unseen Benchmarks -->
-    <section class="content-sec" id="benchmarks">
-      <p class="sec-label">05 · Controlled Governance Evaluation</p>
-      <h2>Frozen Paired Benchmark (245 Trials) &amp; Unseen Blind Test</h2>
-      <p class="sec-intro">
-        All 16 SHA-256 frozen workspaces, independent <code>file:line</code> ground truth, locked v2 gate snapshots, and raw trial JSONLs are publicly committed (<code>./veriloop eval-v2 summary</code>).
-      </p>
-      <div class="table-scroll">
-        <table class="sci-table">
-          <thead>
-            <tr>
-              <th>Evaluator / Cascade</th>
-              <th>Framing</th>
-              <th class="num">n</th>
-              <th class="num">Trial Prec.</th>
-              <th class="num">Trial Recall</th>
-              <th class="num">Trial F1</th>
-              <th class="num">Trial FPR</th>
-              <th class="num">Clean Yield</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>layer1_mechanical</code> ($0)</td>
-              <td>deterministic</td>
-              <td class="num">16</td>
-              <td class="num">71.4%</td>
-              <td class="num">71.4%</td>
-              <td class="num">71.4%</td>
-              <td class="num">22.2%</td>
-              <td class="num">77.8%</td>
-            </tr>
-            <tr>
-              <td><code>claude-sonnet</code></td>
-              <td><code>path_only</code></td>
-              <td class="num">48</td>
-              <td class="num">100.0%</td>
-              <td class="num">85.7%</td>
-              <td class="num">92.3%</td>
-              <td class="num">0.0%</td>
-              <td class="num">100.0%</td>
-            </tr>
-            <tr>
-              <td><code>claude-haiku</code></td>
-              <td><code>path_only</code></td>
-              <td class="num">48</td>
-              <td class="num">91.3%</td>
-              <td class="num">100.0%</td>
-              <td class="num">95.5%</td>
-              <td class="num">7.4%</td>
-              <td class="num">92.6%</td>
-            </tr>
-            <tr>
-              <td><code>codex-cli</code></td>
-              <td><code>path_only</code></td>
-              <td class="num">48</td>
-              <td class="num">100.0%</td>
-              <td class="num">100.0%</td>
-              <td class="num">100.0%</td>
-              <td class="num">0.0%</td>
-              <td class="num">100.0%</td>
-            </tr>
-            <tr class="ours">
-              <td>VeriLoop (L1 ∪ codex-cli, strict hard union)</td>
-              <td><code>path_only</code></td>
-              <td class="num">48</td>
-              <td class="num">77.8%</td>
-              <td class="num">100.0%</td>
-              <td class="num">87.5%</td>
-              <td class="num">22.2%</td>
-              <td class="num">77.8%</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- ============================================================
+         SECTION 6: DEDICATED ACADEMIC PAPER & CONTRIBUTIONS BAND
+         (Distinct, restrained scholarly framing separated from Repo pitch)
+         ============================================================ -->
+    <section class="content-sec" id="paper">
+      <div class="paper-panel">
+        <div class="paper-header-row">
+          <div>
+            <p class="sec-label">06 · Companion Research Paper — Core Scientific Contributions</p>
+            <h2 class="paper-meta-title">VeriLoop: Deterministic Evidence Gates and Path-Isolated Cross-Model Auditing for Autonomous Research</h2>
+            <p class="paper-authors">
+              <strong>Shanglin Yang</strong> &nbsp;·&nbsp; <strong>Zhan Shi</strong> &nbsp;·&nbsp; Preprint &amp; ICML 8-Page Double-Blind Format (2026)
+            </p>
+          </div>
+          <div class="paper-btn-group">
+            <a class="btn btn-paper-dark" href="https://github.com/shangliy/VeriLoop/blob/main/paper/main_icml2027.pdf" target="_blank" rel="noopener">ICML 8-Page PDF</a>
+            <a class="btn btn-paper-light" href="https://github.com/shangliy/VeriLoop/blob/main/paper/main.pdf" target="_blank" rel="noopener">Full arXiv Preprint PDF</a>
+          </div>
+        </div>
+
+        <p style="margin: 0 0 22px; font-size: 14.8px; color: var(--ink-2); max-width: 82ch;">
+          While this repository ships the complete v5 autonomous research platform, the companion paper focuses strictly on four falsifiable scientific and methodological contributions evaluated under zero-override SHA-256 locks:
+        </p>
+
+        <div class="contrib-grid">
+          <div class="contrib-item">
+            <span class="contrib-num">Contribution 01 · Dual-Layer Governance Architecture</span>
+            <h3>Decoupling Stochastic Exploration from Deterministic Verification</h3>
+            <p>Formalizes a stdlib-only Layer-1 core (cryptographic claim hashes, signed numerical provenance, Python AST hygiene, log-to-LaTeX binding) cascaded with path-isolated Layer-2 cross-model auditing to eliminate circular self-review.</p>
+          </div>
+          <div class="contrib-item">
+            <span class="contrib-num">Contribution 02 · Non-Circular Frozen Benchmark</span>
+            <h3>16 SHA-256 Frozen Workspaces &amp; 245 Paired Audit Trials</h3>
+            <p>Evaluates single layers and cascades on identical immutable artifacts against independent <code>file:line</code> ground truth — quantifying the exact yield-vs-recall trade-off between strict hard blocking (77.8% clean yield, 100% recall) and Layer-1→Layer-2 diagnostic cascading.</p>
+          </div>
+          <div class="contrib-item">
+            <span class="contrib-num">Contribution 03 · Honest Out-of-Sample Calibration</span>
+            <h3>Blind Test on 21 Strictly Unseen SciIntegrity-Bench Scenarios</h3>
+            <p>Locks v2 gate scripts by SHA-256 prior to execution, measuring <strong>0/18 (0.0%) AST FPR</strong> and <strong>2/289 (0.69%) number-level FPR</strong> across verified-clean unseen runs ($0.3187 total spend) while transparently reporting unmeasured out-of-sample recall.</p>
+          </div>
+          <div class="contrib-item">
+            <span class="contrib-num">Contribution 04 · External Forensic &amp; Closed-Loop Proof</span>
+            <h3>Third-Party Agent Audit &amp; Self-Audited Manuscript Release</h3>
+            <p>Applies locked gates externally at $0 cost to 7 official AI-Researcher showcases (flagging 25 unlogged table metrics, 0/79 AST FPs) and releases a companion manuscript self-audited at 211/211 traced decimals and 25/25 verified citations.</p>
+          </div>
+        </div>
+
+        <div class="table-scroll" style="margin-top: 0;">
+          <table class="sci-table">
+            <thead>
+              <tr>
+                <th>Frozen Paired Benchmark (n = 245 Valid Trials, k = 3)</th>
+                <th>Framing</th>
+                <th class="num">n</th>
+                <th class="num">Trial Prec.</th>
+                <th class="num">Trial Recall</th>
+                <th class="num">Trial F1</th>
+                <th class="num">Trial FPR</th>
+                <th class="num">Clean Yield</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>layer1_mechanical</code> ($0 deterministic pre-filter)</td>
+                <td>deterministic</td>
+                <td class="num">16</td>
+                <td class="num">71.4%</td>
+                <td class="num">71.4%</td>
+                <td class="num">71.4%</td>
+                <td class="num">22.2%</td>
+                <td class="num">77.8%</td>
+              </tr>
+              <tr>
+                <td><code>claude-sonnet</code></td>
+                <td><code>path_only</code></td>
+                <td class="num">48</td>
+                <td class="num">100.0%</td>
+                <td class="num">85.7%</td>
+                <td class="num">92.3%</td>
+                <td class="num">0.0%</td>
+                <td class="num">100.0%</td>
+              </tr>
+              <tr>
+                <td><code>claude-haiku</code></td>
+                <td><code>path_only</code></td>
+                <td class="num">48</td>
+                <td class="num">91.3%</td>
+                <td class="num">100.0%</td>
+                <td class="num">95.5%</td>
+                <td class="num">7.4%</td>
+                <td class="num">92.6%</td>
+              </tr>
+              <tr>
+                <td><code>codex-cli</code></td>
+                <td><code>path_only</code></td>
+                <td class="num">48</td>
+                <td class="num">100.0%</td>
+                <td class="num">100.0%</td>
+                <td class="num">100.0%</td>
+                <td class="num">0.0%</td>
+                <td class="num">100.0%</td>
+              </tr>
+              <tr class="ours">
+                <td>VeriLoop (L1 &cup; codex-cli, strict hard union)</td>
+                <td><code>path_only</code></td>
+                <td class="num">48</td>
+                <td class="num">77.8%</td>
+                <td class="num">100.0%</td>
+                <td class="num">87.5%</td>
+                <td class="num">22.2%</td>
+                <td class="num">77.8%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <p class="sec-intro" style="margin-top: 16px; margin-bottom: 0;">
-        <strong>Strictly unseen 21-scenario blind test (<code>SciIntegrity-Bench</code>, $0.3187 total):</strong> Across 18 verified-clean completed runs (289 checked decimals), SHA-256 locked v2 gates record <strong>0/18 (0.0%) AST FPR</strong> and <strong>2/289 (0.69%) number-level FPR</strong> (out-of-sample recall unmeasured on this split due to 0 positive traps; addressed externally via the 7-paper AI-Researcher audit above).
-      </p>
     </section>
 
-    <!-- Section 6: Quick Start -->
+    <!-- SECTION 7: QUICK START -->
     <section class="content-sec" id="quickstart">
-      <p class="sec-label">06 · Reproduction &amp; Usage</p>
-      <h2>Quick Start</h2>
-      <p class="sec-intro">
-        The entire deterministic verification, log-binding, arXiv ingest, and Studio server core uses only the Python 3.10+ standard library.
-      </p>
+      <div class="sec-head">
+        <div>
+          <p class="sec-label">07 · Reproduction &amp; Deployment</p>
+          <h2>Quick Start</h2>
+          <p class="sec-intro">
+            Clone and run immediately — zero pip installs required for the verification, ingest, log-binding, and Studio server core.
+          </p>
+        </div>
+      </div>
 
       <div class="tablist" role="tablist" aria-label="Quick start workflows">
-        <button type="button" role="tab" id="tab-demo" aria-selected="true" aria-controls="panel-demo" onclick="selectTab('panel-demo', this)">Zero-Cost Demo &amp; Audit</button>
+        <button type="button" role="tab" id="tab-demo" aria-selected="true" aria-controls="panel-demo" onclick="selectTab('panel-demo', this)">Zero-Cost Demo &amp; Tests</button>
         <button type="button" role="tab" id="tab-v5" aria-selected="false" aria-controls="panel-v5" onclick="selectTab('panel-v5', this)">Level-1/2 &amp; Studio</button>
-        <button type="button" role="tab" id="tab-compare" aria-selected="false" aria-controls="panel-compare" onclick="selectTab('panel-compare', this)">Reproduce External Audit</button>
-        <button type="button" role="tab" id="tab-docker" aria-selected="false" aria-controls="panel-docker" onclick="selectTab('panel-docker', this)">Docker GPU &amp; Skills</button>
+        <button type="button" role="tab" id="tab-compare" aria-selected="false" aria-controls="panel-compare" onclick="selectTab('panel-compare', this)">Audit External Agents</button>
+        <button type="button" role="tab" id="tab-docker" aria-selected="false" aria-controls="panel-docker" onclick="selectTab('panel-docker', this)">Docker GPU &amp; 90+ Skills</button>
       </div>
 
       <div id="panel-demo" class="tabpanel" role="tabpanel" aria-labelledby="tab-demo">
@@ -1072,34 +1577,34 @@ cd VeriLoop
 docker build -t veriloop-gpu:latest -f docker/Dockerfile.gpu .
 ./veriloop sandbox -w ./my_study --mode docker --gpus device=0 --network-none --cmd "python3 code/train.py"
 
-# Install core quartet or all 90+ skills into Claude Code / Codex CLI
+# Install core quartet or all 90+ lifecycle skills into Claude Code / Codex CLI
 ./veriloop install --core-only
 ./veriloop install --all</code></pre>
         </div>
       </div>
     </section>
 
-    <!-- Section 7: Release History & Citation -->
+    <!-- SECTION 8: CHANGELOG & CITATION -->
     <section class="content-sec" id="cite">
       <div class="split-2">
         <div>
-          <p class="sec-label">07 · Changelog</p>
-          <h2>Release Notes</h2>
+          <p class="sec-label">08 · Release History</p>
+          <h2>Changelog</h2>
           <dl class="release-log">
             <dt>v5.0</dt>
-            <dd><strong>Full Autonomous Stack &amp; External Audit.</strong> Added <code>ingest</code>, <code>sandbox</code> (Docker GPU), <code>research</code> (Level-1/2), <code>studio</code>, and <code>compare-bench</code>; expanded real RTX 3060 Ti portfolio to 115 runs across 3 compiled PDFs and audited 7 official AI-Researcher showcases.</dd>
+            <dd><strong>Full-Stack Platform &amp; External Audit.</strong> Shipped <code>ingest</code>, <code>sandbox</code> (Docker GPU), <code>research</code> (Level-1/2), <code>studio</code>, and <code>compare-bench</code>; expanded RTX 3060 Ti proof to 115 runs across 3 compiled PDFs and audited 7 official AI-Researcher showcases.</dd>
             <dt>v4.0</dt>
-            <dd><strong>Zero-Transcription Paper-Bind &amp; PDF Audit.</strong> Added stdlib TensorBoard/W&amp;B/CSV binder, live arXiv/Crossref/S2 citation gating, split-pane <code>review-ui</code>, and the 42-run CV real-GPU study.</dd>
+            <dd><strong>Zero-Transcription Paper-Bind &amp; PDF Audit.</strong> Added stdlib TensorBoard/W&amp;B/CSV binder, live arXiv/Crossref/S2 citation gates, split-pane <code>review-ui</code>, and the 42-run CV GPU study.</dd>
             <dt>v2.0 – v3.0</dt>
-            <dd><strong>Frozen Benchmark &amp; Companion Paper.</strong> Released 16 SHA-256 frozen workspaces (245 paired trials), 21 unseen scenarios, dual-model milestone gates, and CC BY 4.0 <code>bestpaper-writing</code> lint integration.</dd>
+            <dd><strong>Frozen Benchmark &amp; Companion Paper.</strong> Released 16 SHA-256 frozen workspaces (245 paired trials), 21 unseen blind scenarios, dual-model milestone gates, and CC BY 4.0 <code>bestpaper-writing</code> lint integration.</dd>
           </dl>
         </div>
 
         <div>
-          <p class="sec-label">08 · Citation</p>
+          <p class="sec-label">09 · Attribution &amp; BibTeX</p>
           <h2>Cite VeriLoop</h2>
-          <p style="margin: 0 0 12px; font-size: 14.5px; color: var(--ink-secondary);">
-            Core code is MIT-licensed, building on MIT-licensed upstream ARIS workflows (<code>arXiv:2605.03042</code>) and integrating CC BY 4.0 Best-Paper-Writing-Skill.
+          <p style="margin: 0 0 12px; font-size: 14.3px; color: var(--ink-2);">
+            MIT-licensed core extending MIT-licensed upstream ARIS workflows (<code>arXiv:2605.03042</code>) and integrating CC BY 4.0 Best-Paper-Writing-Skill.
           </p>
           <div class="code-box">
             <button type="button" class="copy-btn" onclick="copyCode(this)">Copy</button>
@@ -1126,17 +1631,152 @@ docker build -t veriloop-gpu:latest -f docker/Dockerfile.gpu .
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div><strong>VeriLoop</strong> · MIT License · Shanglin Yang &amp; Zhan Shi</div>
+      <div><strong>VeriLoop v5.0</strong> · MIT License · Shanglin Yang &amp; Zhan Shi</div>
       <div class="footer-links">
         <a href="https://github.com/shangliy/VeriLoop" target="_blank" rel="noopener">GitHub</a>
         <a href="demo/studio_snapshot.html" target="_blank" rel="noopener">Studio Snapshot</a>
         <a href="demo/review_ui.html" target="_blank" rel="noopener">Audit Workbench</a>
-        <a href="https://github.com/shangliy/VeriLoop/blob/main/NOTICE.md" target="_blank" rel="noopener">Attribution (NOTICE.md)</a>
+        <a href="https://github.com/shangliy/VeriLoop/blob/main/paper/main_icml2027.pdf" target="_blank" rel="noopener">ICML Paper</a>
+        <a href="https://github.com/shangliy/VeriLoop/blob/main/NOTICE.md" target="_blank" rel="noopener">Attribution</a>
       </div>
     </div>
   </footer>
 
   <script>
+    const HERO_CMDS = {
+      research: {
+        cmd: './veriloop research -w ./study --level 2 --papers 2007.02133',
+        desc: 'Crash-resumable 7-stage Level-2 pipeline: fetches arXiv LaTeX, maps equations to AST, runs GPU training, binds LaTeX macros, and enforces hard gates.'
+      },
+      compare: {
+        cmd: './veriloop compare-bench --fetch-ai-researcher',
+        desc: 'Runs identical $0 deterministic PDF, AST, BibTeX, and governance auditors across VeriLoop v5 (3 PDFs) and 7 official HKUDS/AI-Researcher showcases.'
+      },
+      studio: {
+        cmd: './veriloop studio -w examples/gpu-overnight-research --port 8765',
+        desc: 'Launches the zero-dependency VeriLoop Studio local web cockpit with SSE stage tracking, hard-gate telemetry, and split-pane manuscript auditing.'
+      },
+      audit: {
+        cmd: './veriloop audit-paper',
+        desc: 'Runs the 4-in-1 deterministic manuscript audit: signed number tracing (211/211), BibTeX verification (25/25), and Best-Paper prose & figure checks.'
+      }
+    };
+
+    const XRAY_CASES = {
+      gnn: {
+        alert: false,
+        kicker: 'HUMAN VIEW · COMPILED ICML PDF (gnn_study.pdf)',
+        title: 'Every printed number compiles directly from disk logs.',
+        desc: 'In our 60-run GNN study, VeriLoop detected 8-layer GCNII collapse under uniform weight decay (0.2868), executed a split-decay recovery run, and bound the verified result directly into LaTeX macros.',
+        rows: [
+          ['M1 · 2-Layer GCN (Baseline)', '0.8184 ± .0038', 'TRACED', 'ok'],
+          ['M4 · 8-Layer GCNII (Uniform WD)', '0.2868 ± .0054', 'TRACED', 'ok'],
+          ['M4b · 8-Layer GCNII (Split-WD Fix)', '0.8266 ± .0045', 'SHA-256 BOUND', 'hi-ok']
+        ],
+        lensTitle: 'AUDIT X-RAY · MACHINE PROVENANCE',
+        lensBadge: 'PASS · 129/129 TRACED',
+        lensCode: '<macro name="\\valCoraGCNIISplitWD">\n  printed_pdf: "0.8266 ± 0.0045"\n  source_log:  examples/gpu-gnn-cora-citeseer/metrics.csv:48\n  manifest:    sha256:9f3a81e2c04d7b19...8c2a\n  arxiv_ast:   49 equation <-> code alignments (3 papers)\n  ast_gate:    0 HIGH defects (0.0% FPR)\n  pdf_audit:   129 / 129 expanded decimals verified (0 warn)',
+        lensCmd: '$ ./veriloop audit-pdf examples/gpu-gnn-cora-citeseer/paper/gnn_study.pdf',
+        lensCost: 'Layer-1 cost: $0.00'
+      },
+      recsys: {
+        alert: false,
+        kicker: 'HUMAN VIEW · COMPILED ICML PDF (recsys_study.pdf)',
+        title: 'Diagnosed contrastive collapse and verified full-catalog gains.',
+        desc: 'Across 13 full-catalog MovieLens-100K runs (938 users, 1,447 items), VeriLoop caught over-regularized SimGCL collapse (0.0298) and bound the tuned recovery beating all baselines.',
+        rows: [
+          ['R1 · LightGCN (Baseline)', '0.1984 ± .0009', 'TRACED', 'ok'],
+          ['R3 · SimGCL (Over-Regularized)', '0.0298 ± .0004', 'TRACED', 'ok'],
+          ['R3b · SimGCL Tuned (Recall@20)', '0.2061 ± .0006', 'SHA-256 BOUND', 'hi-ok']
+        ],
+        lensTitle: 'AUDIT X-RAY · MACHINE PROVENANCE',
+        lensBadge: 'PASS · 92/92 TRACED',
+        lensCode: '<macro name="\\valRecSimGCLTunedRecallTwenty">\n  printed_pdf: "0.2061 ± 0.0006" (NDCG@20: 0.0855 ± 0.0002)\n  source_log:  examples/gpu-recsys-movielens/metrics.csv:13\n  arxiv_ast:   26 equation <-> code alignments (2 papers)\n  ast_gate:    0 HIGH defects across training & eval scripts\n  pdf_audit:   92 / 92 expanded decimals verified (0 warn)',
+        lensCmd: '$ ./veriloop audit-pdf examples/gpu-recsys-movielens/paper/recsys_study.pdf',
+        lensCost: 'Layer-1 cost: $0.00'
+      },
+      cv: {
+        alert: false,
+        kicker: 'HUMAN VIEW · COMPILED ICML PDF (overnight_study.pdf)',
+        title: '42 overnight RTX 3060 Ti runs with 10/10 online-verified citations.',
+        desc: 'Full overnight study across CIFAR-10 and Fashion-MNIST: temperature scaling restores underconfident Label Smoothing / Mixup models to 0.0061–0.0120 ECE with zero hand-copied numbers.',
+        rows: [
+          ['M1 · Standard ResNet-18', '0.7787 ± .0021', 'TRACED', 'ok'],
+          ['M7 · SE-ResNet Full (+14.06 pp)', '0.9193 ± .0004', 'SHA-256 BOUND', 'hi-ok'],
+          ['Post-Hoc Val Temp Scaling ECE', '0.0061 – 0.0120', 'TRACED + CITED', 'ok']
+        ],
+        lensTitle: 'AUDIT X-RAY · MACHINE PROVENANCE',
+        lensBadge: 'PASS · 195/195 TRACED',
+        lensCode: '<macro name="\\valSEResNetFullAcc">\n  printed_pdf: "0.9193 ± 0.0004"\n  source_log:  examples/gpu-overnight-research/logs/summary.csv\n  citations:   10 / 10 live-verified (arXiv / Crossref / S2)\n  wiki_audit:  14 / 14 live stage consistency checks passed\n  pdf_audit:   195 / 195 expanded decimals verified (0 warn)',
+        lensCmd: '$ ./veriloop studio -w examples/gpu-overnight-research --port 8765',
+        lensCost: 'Layer-1 cost: $0.00'
+      },
+      external: {
+        alert: true,
+        kicker: 'EXTERNAL AUDIT · HKUDS/AI-RESEARCHER (examples/dccf/paper.pdf)',
+        title: '20 printed table metrics exceed every committed training log.',
+        desc: 'Running VeriLoop compare-bench unchanged on all 7 official AI-Researcher showcases flags 25 forensically unlogged table metrics across 3 PDFs — while keeping 0/79 (0.0%) AST false positives.',
+        rows: [
+          ['dccf · Printed Table Recall@40', '0.1226', 'EXCEEDS LOGS', 'hi-bad'],
+          ['dccf · Max Across All 12 Logs', '0.0693', 'DISK EVIDENCE', 'ok'],
+          ['con_flowmatching · 5 Log Files', '0 bytes', 'UNLOGGED LOSS', 'hi-bad']
+        ],
+        lensTitle: 'AUDIT X-RAY · FORENSIC MISMATCH DETECTED',
+        lensBadge: 'BLOCK rc=2 · 25 UNLOGGED',
+        lensCode: '<forensic-audit repo="HKUDS/AI-Researcher" corpus="7 PDFs">\n  expanded_trace: 152 / 184 (82.6%)  [vs VeriLoop 416/416]\n  dccf:           20 unlogged/log-exceeding table values\n                  printed Recall@40=0.1226 vs max_log=0.0693\n  rotation_vq:    3 occurrences of 0.0077 absent from 12 logs\n  con_flowmatch:  2 final losses with 5x zero-byte .log files\n  ast_gate_fpr:   0 / 79 Python scripts flagged (0.0% FPR)',
+        lensCmd: '$ ./veriloop compare-bench --fetch-ai-researcher',
+        lensCost: 'Mean latency: 348 ms ($0.00)'
+      }
+    };
+
+    function setCmd(key, btn) {
+      const cfg = HERO_CMDS[key];
+      if (!cfg) return;
+      document.querySelectorAll('.cmd-tab').forEach(b => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      document.getElementById('hero-cmd-text').textContent = '$ ' + cfg.cmd;
+      document.getElementById('hero-cmd-desc').textContent = cfg.desc;
+    }
+
+    function copyHeroCmd(btn) {
+      const raw = document.getElementById('hero-cmd-text').textContent.replace(/^\$\s*/, '');
+      navigator.clipboard.writeText(raw).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => { btn.textContent = orig; }, 1400);
+      });
+    }
+
+    function setXrayMode(mode) {
+      const stage = document.getElementById('xray-stage');
+      document.getElementById('mode-paper').setAttribute('aria-pressed', mode === 'paper' ? 'true' : 'false');
+      document.getElementById('mode-xray').setAttribute('aria-pressed', mode === 'xray' ? 'true' : 'false');
+      stage.classList.toggle('paper-only', mode === 'paper');
+    }
+
+    function setXrayCase(key, btn) {
+      const c = XRAY_CASES[key];
+      if (!c) return;
+      document.querySelectorAll('.case-pill').forEach(b => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      document.getElementById('xray-kicker').textContent = c.kicker;
+      document.getElementById('xray-title').textContent = c.title;
+      document.getElementById('xray-desc').textContent = c.desc;
+      const tbody = document.getElementById('xray-tbody');
+      tbody.innerHTML = c.rows.map(([label, metric, status, kind]) => {
+        const cls = kind === 'hi-ok' ? ' class="highlight-ok"' : (kind === 'hi-bad' ? ' class="highlight-bad"' : '');
+        const col = kind === 'hi-bad' ? '#b91c1c' : '#15803d';
+        return `<tr${cls}><td>${label}</td><td class="num">${metric}</td><td class="num" style="color:${col};">${status}</td></tr>`;
+      }).join('');
+      const lens = document.getElementById('xray-lens');
+      lens.classList.toggle('is-alert', c.alert);
+      document.getElementById('lens-title').textContent = c.lensTitle;
+      document.getElementById('lens-badge').textContent = c.lensBadge;
+      document.getElementById('lens-code').textContent = c.lensCode;
+      document.getElementById('lens-cmd').textContent = c.lensCmd;
+      document.getElementById('lens-cost').textContent = c.lensCost;
+    }
+
     function selectTab(panelId, btn) {
       document.querySelectorAll('.tabpanel').forEach(p => { p.hidden = true; });
       document.querySelectorAll('.tablist [role="tab"]').forEach(b => { b.setAttribute('aria-selected', 'false'); });

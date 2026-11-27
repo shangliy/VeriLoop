@@ -1,10 +1,10 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="docs/assets/veriloop_logo.png" alt="VeriLoop Logo" width="760" />
-  <h1 align="center">VeriLoop：端到端可验证自主科研流水线</h1>
+  <img src="docs/assets/veriloop_logo.png" alt="VeriLoop Logo" width="820" />
+  <h1 align="center">VeriLoop：全栈自主科研引擎与确定性验证内核</h1>
   <p align="center">
-    <strong>Level-1 / Level-2 全自动科研编排 · 90+ 模块化科研技能 · $0 确定性硬证据门控 · VeriLoop Studio 本地 Web 驾驶舱</strong>
+    <strong>6 大零依赖核心引擎 · Level-1 / Level-2 全栈科研 OS · 90+ 技能 · 115 次 RTX 3060 Ti 实跑 · 外部 Agent 法医级审计</strong>
   </p>
 </div>
 
@@ -24,42 +24,44 @@
 
 <br />
 
-欢迎来到 **VeriLoop**！自主科研 Agent 很少因为「忘记输出文件」而失败；它们真正的失败模式是**代码正常跑完，却在报告中写出与原始日志、代码路径、引用文献或统计结果相矛盾的数值与结论**。**VeriLoop** 将完整的 **Level-1 / Level-2 全自动科研编排** 与 **确定性硬验证机制** 深度融合，让每一组数字、每一条公式、每一张图和每一篇引用在放行前都经得起逐行查账：
+**VeriLoop** 是一套面向实战的、零外部依赖的**全栈自主科研基础设施**——既能端到端跑通论文解析、GPU 沙箱训练与顶会稿件生成，又能把论文中的每一组数字、代码路径与引用文献精确校验到磁盘字节。核心引擎 100% 基于 Python 3.10+ 标准库（`0` 第三方依赖冲突，Ubuntu + macOS `63/63` CI 绿灯），原生兼容 **Claude Code / Codex CLI / Gemini CLI / OpenCode 与任意 LLM 后端**：
 
-- 🎯 **双入口全自动科研（Level 1 & Level 2）：** 既支持给具体 Idea + 基线仓库直接落地（**Level 1**），也支持只给几篇 arXiv 论文自动抓 LaTeX 源码、做公式↔AST 对齐、发现 Gap 并提出创新（**Level 2**）。
-- 🛡️ **`$0` 确定性硬阻断门控（Layer 1 → 纯路径跨模型 Layer 2）：** 毫秒级以零 API 成本拦截数值编造、正负号反转、6 类 Python AST 代码作弊、SHA-256 假设账本篡改（`G1–G7`）与虚假引用，不通过则以退出码 `2` 硬阻断交付。
-- 📐 **字节确定性日志直出 LaTeX（`./veriloop bind`）：** 零额外 Python 依赖直读 TensorBoard `.tfevents` / W&B / CSV / JSONL，自动生成 `\newcommand` 宏、Booktabs 表格与 Okabe-Ito 矢量图，杜绝手抄数字。
-- 🖥️ **零依赖本地 Web 驾驶舱（`./veriloop studio` & `review-ui`）：** 集成 7 阶段 SSE 实时监控、Level-1/2 启动表单与「论文 ↔ 原始日志/AST/在线摘要」分栏联动查账台。
+- **全栈自主科研 OS（`ingest` → `sandbox` → `research` → `bind` → `gate` → `studio`）：** 统一支持 **Level 1（Idea + 基线仓库）** 与 **Level 2（arXiv 论文 → 公式↔AST 静态对齐 → Gap → 创新）** 双入口，内置 `90+` 模块化科研生命周期技能与 `state.json` 断点续跑调度。
+- **单卡消费级 GPU 三领域实跑验证（`115` 次 RTX 3060 Ti 闭环）：** 完整跑通并编译独立 ICML PDF 涵盖 **CV（42 次）**、**GNN（60 次，自动诊断并修复 8 层 GCNII 塌缩 `+54 pp`）** 与 **RecSys（13 次，自动诊断并修复 SimGCL 过正则塌缩超越全部基线）**，全部 **`416/416（100.0%）`** PDF 展开数值精确溯源。
+- **`$0` 确定性验证核 + 字节级日志直出 LaTeX：** 标准库直读 TensorBoard / W&B / CSV / JSONL 自动生成 `\newcommand` 宏、Booktabs 三线表与 Okabe-Ito 矢量图；执行静态 AST 门控（`0.0%` FPR）、SHA-256 假设账本（`G1–G7`）与在线文献核验，缺陷即以 `rc=2` 硬阻断。
+- **可独立审计外部科研 Agent（`./veriloop compare-bench`）+ 零依赖本地驾驶舱：** 一行命令以 `$0` 成本审计任意外部 Agent 的仓库与 PDF（对 `HKUDS/AI-Researcher` 7 篇官方 PDF 检出 `25` 处无日志/超日志表格数值），并提供 **VeriLoop Studio** 与分栏查账台 `review-ui`。
+
+> **仓库工程定位 vs. 配套论文贡献边界：** 本仓库交付完整的 **v5 全栈科研平台**（编排器、Docker GPU 沙箱、Studio 驾驶舱、90+ 技能与外部审计器）；配套论文（[ICML 8 页双盲版](paper/main_icml2027.pdf) · [arXiv 预印本](paper/main.pdf)）则克制聚焦于**四项可证伪的核心学术贡献**：*(1)* 将随机探索与零依赖确定性验证核及路径隔离跨模型审稿解耦；*(2)* 公开 `16` 个 SHA-256 冻结工作区（`245` 次配对审稿）量化严阻断与级联诊断的召回-良率权衡；*(3)* 在 `21` 个严格未见 `SciIntegrity-Bench` 场景上给出样本外机械 FPR 诚实标定（`0.0%` AST FPR、`0.69%` 数值级 FPR）；*(4)* 外部 7 篇官方论文法医级审计与全自审配套论文发布。
 
 ---
 
 <p align="center">
-  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop 端到端可验证自主科研与论文流水线全景图" width="100%" />
+  <img src="docs/assets/veriloop_overview.png" alt="VeriLoop v5 全栈自主科研与确定性验证轨道架构图" width="100%" />
   <br />
-  <em>VeriLoop v5 全局架构：Level-1 / Level-2 双入口编排 × arXiv 公式↔AST 对齐 × Docker GPU 沙箱 × 确定性日志绑定与双层硬门控。</em>
+  <em>Schematic 01：VeriLoop v5 全栈闭环架构 — Level-1/2 双入口、arXiv↔AST 对齐、GPU 隔离沙箱、零手抄日志绑定、双层硬门控与 <code>rc=2</code> 修复回流轨道、Studio / Review UI 交付。</em>
 </p>
 
 ---
 
 <span id="news"></span>
-## 🔥 最新动态（News）
+## 最新动态（News）
 
-- **`[v5.0]`** 正式发布 **arXiv LaTeX + Python AST 公式↔代码对齐引擎**（`./veriloop ingest`）、**Docker / 本地 GPU 隔离沙箱**（`./veriloop sandbox` + `docker/Dockerfile.gpu`）、**Level-1 / Level-2 断点续跑编排器**（`./veriloop research`）、**VeriLoop Studio 本地 Web 驾驶舱**（`./veriloop studio`）以及全新在线 [项目主页](https://shangliy.github.io/VeriLoop/)；全仓 CI 通过 **`1,248` 项测试（`0` 失败）**。
-- **`[v4.0]`** 跑通 **42 次本地 RTX 3060 Ti 真实 GPU 过夜科研案例**（`92.47 min`、`195/195` PDF 展开数值 100% 溯源、`14/14` 阶段 Wiki 自洽检查、`10/10` 在线文献核验），上线字节确定性 `paper_bind.py`、`review_ui.py` 与 `pdf_audit.py`。
+- **`[v5.0]`** 正式发布全栈 v5 引擎（`ingest`、`sandbox` + `docker/Dockerfile.gpu`、`research` Level-1/2 编排器、`studio` SSE 驾驶舱与 `compare-bench` 外部审计器）；在本地 RTX 3060 Ti 扩展至 **CV + GNN + RecSys 三领域 `115` 次实跑（3 篇独立 ICML PDF，`416/416` 溯源）**，完成对 7 篇 `HKUDS/AI-Researcher` 官方示例的头对头法医审计（`25` 处无日志指标，`0/79` AST 误报），并上线全新视觉改版的 [项目主页](https://shangliy.github.io/VeriLoop/)。Ubuntu + macOS 跨平台 CI 通过 **`63/63` 核心套件（`0` 失败）**。
+- **`[v4.0]`** 跑通 **42 次本地 RTX 3060 Ti 真实 GPU 过夜 CV 科研案例**（`92.47 min`、`195/195` PDF 展开数值 100% 溯源、`14/14` 阶段 Wiki 自洽检查、`10/10` 在线文献核验），上线字节确定性 `paper_bind.py`、`review_ui.py` 与 `pdf_audit.py`。
 - **`[v2.0–v3.0]`** 公开提交零事后覆盖冻结基准（`16` 个 SHA-256 工作区、`245` 次配对审稿 + `21` 个严格未见场景），原生集成 [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)（CC BY 4.0）并发布自审通过的配套论文（[arXiv 版](paper/main.pdf) · [ICML 8 页双盲版](paper/main_icml2027.pdf)）。
 
 ---
 
 <span id="table-of-contents"></span>
-## 📑 目录导航
+## 目录导航
 
-- [🔥 最新动态（News）](#news)
-- [✨ Level-1 / Level-2 双入口自主科研](#two-level-entry)
-- [🖥️ VeriLoop Studio 与分栏查账工作台](#veriloop-studio)
-- [⚔️ 与其他开源科研 / 写论文工具对比](#how-veriloop-compares)
-- [📊 冻结基准评测与 42 次真实 GPU 实证](#benchmark-results)
-- [⚡ 快速上手](#quick-start)
-- [🌟 开源许可、归属与引用](#attribution-and-citation)
+- [最新动态（News）](#news)
+- [Level-1 / Level-2 双入口自主科研](#two-level-entry)
+- [VeriLoop Studio 与分栏查账工作台](#veriloop-studio)
+- [与其他开源科研 / 写论文工具对比](#how-veriloop-compares)
+- [冻结基准、115 次三领域 GPU 实证与外部审计](#benchmark-results)
+- [快速上手](#quick-start)
+- [开源许可、归属与引用](#attribution-and-citation)
 
 ---
 
@@ -121,7 +123,7 @@
 ---
 
 <span id="benchmark-results"></span>
-## 📊 v2 冻结产物、未见盲测与 42 次真实 GPU 实证
+## 冻结基准、115 次三领域 GPU 实证与外部审计
 
 ### 1. 16 个 SHA-256 冻结工作区配对实验（统一 Route A 规则：`9` 干净 / `7` 缺陷，`k=3`，`245` 次有效审稿；以下均为 Trial 级指标）
 

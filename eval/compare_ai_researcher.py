@@ -437,24 +437,24 @@ def render_comparison_chart(agg: dict[str, dict], out_dir: Path):
     ]
     x = np.arange(len(metrics))
     width = 0.34
-    colors = ["#0F4C81", "#C25934", "#15803D"]
+    colors = ["#15803D", "#B84A27", "#0F4C81"]
 
     fig, ax = plt.subplots(figsize=(8.6, 4.1), dpi=220)
-    fig.patch.set_facecolor("#FCFBF8")
-    ax.set_facecolor("#FCFBF8")
+    fig.patch.set_facecolor("#FFFFFF")
+    ax.set_facecolor("#FFFFFF")
     for idx, sys_name in enumerate(systems):
         vals = [agg[sys_name][k] for _, k in metrics]
         offset = (idx - (len(systems) - 1) / 2.0) * width
         bars = ax.bar(x + offset, vals, width, label=sys_name, color=colors[idx % len(colors)], edgecolor="none", zorder=3)
         for b, v in zip(bars, vals):
-            ax.text(b.get_x() + b.get_width() / 2.0, v + 2.5, f"{v:.1f}%", ha="center", va="bottom", fontsize=9.2, fontweight="bold", color="#1C1917")
+            ax.text(b.get_x() + b.get_width() / 2.0, v + 2.5, f"{v:.1f}%", ha="center", va="bottom", fontsize=9.2, fontweight="bold", color="#171614")
 
     ax.set_ylabel("Verified Rate (%)", fontsize=10, fontweight="bold", color="#292524")
-    ax.set_title("VeriLoop v5 vs. HKUDS/AI-Researcher — Deterministic Layer-1 Audit ($0 Cost)", fontsize=11.2, fontweight="bold", color="#141413", pad=28)
+    ax.set_title("VeriLoop v5 vs. HKUDS/AI-Researcher — Deterministic Layer-1 Audit ($0 Cost)", fontsize=11.2, fontweight="bold", color="#171614", pad=28)
     ax.set_xticks(x)
     ax.set_xticklabels([m[0] for m in metrics], fontsize=9.2, color="#292524")
     ax.set_ylim(0, 114)
-    ax.grid(axis="y", linestyle="-", color="#E7E5E4", linewidth=0.8, zorder=0)
+    ax.grid(axis="y", linestyle="-", color="#EAE7DF", linewidth=0.8, zorder=0)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_color("#A8A29E")
