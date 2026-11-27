@@ -126,15 +126,14 @@ On 21 previously untouched \textsc{SciIntegrity-Bench} scenarios, our SHA-256 lo
 \centering
 \caption{\textbf{Locked v2 mechanical gates achieve 0.0\% AST FPR and 0.69\% number-level FPR on 21 strictly unseen \textsc{SciIntegrity-Bench} scenarios (\$0.3187 total).} Zero edits and zero overrides applied after SHA-256 lock. Every completed report (18/18) was audited against official scenario trap checklists and verified \textsc{Clean} (0 trap defects occurred, so out-of-sample mechanical recall is unmeasured).}
 \label{tab:unseen}
-\setlength{\tabcolsep}{3.5pt}
-\footnotesize
-\resizebox{\columnwidth}{!}{%
+\setlength{\tabcolsep}{2.2pt}
+\scriptsize
 \begin{tabular}{lc}
 \toprule
 \textbf{Held-Out Blind-Test Metric} & \textbf{Observed Value} \\
 \midrule
 Total unseen scenarios (T01--T11) & 21 (18 completed, 3 incomplete$^\ddagger$) \\
-Verified trap-avoiding (\textsc{Clean}) reports & 18 / 18 (0 trap defects; recall unmeasured) \\
+Verified trap-avoiding (\textsc{Clean}) reports & 18 / 18 (0 traps; recall unmeasured) \\
 Completed reports with $\ge 1$ checked decimal & 12 / 18 (6 zero-decimal reports) \\
 Total executor API spend (\texttt{claude-haiku}) & \$0.3187 \\
 AST \texttt{HIGH} / \texttt{MEDIUM} FPR & \textbf{0/18 (0.0\%)} \\
@@ -142,20 +141,21 @@ Decimals checked ($\ge 3$ fractional digits) & 289 (287 traced, 2 false positive
 Number-level FPR & \textbf{2/289 (0.69\%)} \\
 Scenario-level FPR & 2/18 (11.1\%) \\
 \bottomrule
-\end{tabular}}
-\vspace{2pt}
+\end{tabular}
+
+\vspace{3pt}
 \footnotesize{$^\ddagger$Two ML training tasks (\texttt{02a}, \texttt{02c}) hit the 300s CPU timeout; one task (\texttt{07a}) triggered provider safety refusal.}
 \end{table}
 
-Auditing all 18 completed reports against the official \textsc{SciIntegrity-Bench} trap checklists confirms that bare \texttt{claude-haiku} avoided the benchmark trap on all 18/18 runs (\texttt{gt\_trap\_taken=False}, documented row-by-row in \texttt{eval/v2\_unseen/unseen\_forensic\_audit.csv}).
+Auditing all 18 completed reports against the official \textsc{SciIntegrity-Bench} trap checklists confirms that bare \texttt{claude-haiku} avoided the benchmark trap on all 18/18 runs (\texttt{gt\_trap\_taken=False}, documented row-by-row in \path{eval/v2_unseen/unseen_forensic_audit.csv}).
 Consequently, out-of-sample mechanical recall is unmeasured (0 positive unseen traps), while out-of-sample false-positive rate is directly measured across 18 clean workspaces and 289 checked decimals.
 Line-by-line forensic inspection of both false-positive triggers confirms non-log provenance causes consistent with our Route~A rule:
-(1) on \texttt{04c\_NumericalPDE}, \texttt{0.425} is the exact analytic midpoint $(U_L + U_R)/2 = (0.75 + 0.10)/2$ computed inside \texttt{code/front\_ode.py:63} (with $U_L$ and $U_R$ logged in \texttt{out/run\_log.txt:4--5}) without printing the midpoint itself;
-(2) on \texttt{09c\_Ecology}, \texttt{3.542} is a verbatim input value quoted from \texttt{data/island\_species.csv:L17} (\texttt{15,3.542,16}) while the locked v2 tracer indexed only \texttt{out/}.
+(1) on \texttt{04c\_NumericalPDE}, \texttt{0.425} is the exact analytic midpoint $(U_L + U_R)/2 = (0.75 + 0.10)/2$ computed inside \path{code/front_ode.py} (line~63; with $U_L$ and $U_R$ logged in \path{out/run_log.txt}, lines~4--5) without printing the midpoint itself;
+(2) on \texttt{09c\_Ecology}, \texttt{3.542} is a verbatim input value quoted from \path{data/island_species.csv} (line~17: \texttt{15,3.542,16}) while the locked v2 tracer indexed only \texttt{out/}.
 Six of the 18 completed reports contained zero $\ge 3$-decimal numbers (primarily honest refusals or qualitative SOP drafts), so the number tracer actively exercised 12 numeric reports and achieved 287/289 clean matches.
 
 \subsection{Real-GPU Case Study and Self-Audit}
 \label{sec:dogfood}
 
-Beyond CPU tasks, a 42-run RTX 3060~Ti study (92.47~min, 593.0~MB VRAM; Appendix~\ref{app:gpu_case_study}, \texttt{examples/gpu-overnight-research/}) on CIFAR-10 (\texttt{M7\_SEResNet\_Full} 0.9193 vs.\ \texttt{M1\_PlainCNN} 0.7787, +14.06~pp) and Fashion-MNIST (+3.75~pp) passes 14/14 Wiki self-consistency checks (\$0, 182 final wiki numbers, 0 AST \texttt{HIGH}, 81.8~ms median), 4/4 ledger checks (\texttt{G1--G7}; \texttt{G2/G3/G5} self-attested), 10/10 online citations, and 100\% expanded PDF decimals (\texttt{audits/}).
+Beyond CPU tasks, a 42-run RTX 3060~Ti study (92.47~min, 593.0~MB VRAM; Appendix~\ref{app:gpu_case_study}, \path{examples/gpu-overnight-research/}) on CIFAR-10 (\texttt{M7\_SEResNet\_Full} 0.9193 vs.\ \texttt{M1\_PlainCNN} 0.7787, +14.06~pp) and Fashion-MNIST (+3.75~pp) passes 14/14 Wiki self-consistency checks (\$0, 182 final wiki numbers, 0 AST \texttt{HIGH}, 81.8~ms median), 4/4 ledger checks (\texttt{G1--G7}; \texttt{G2/G3/G5} self-attested), 10/10 online citations, and 100\% expanded PDF decimals (\texttt{audits/}).
 All frozen workspaces, locked v2 gates, \texttt{ground\_truth.csv}, JSONLs, and unseen artifacts are committed in \RepoRef; \texttt{./veriloop eval-v2 layer1} reproduces Layer~1 verbatim, \texttt{./veriloop test} passes 51 unit/integration + 6 catalog checks (57 total), and \texttt{./veriloop audit-paper} checks numbers, citations, style, and figures end to end.
