@@ -39,7 +39,7 @@
       "summary": {
         "document": "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/paper/overnight_study.tex",
         "bib": "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/paper/refs.bib",
-        "online_checked": false,
+        "online_checked": true,
         "claims_checked": true,
         "pairs_count": 11,
         "issues_count": 0,
@@ -56,7 +56,29 @@
             "bib_author": "Ruofeng Yang and Yongcan Li and Shuai Li",
             "bib_year": "2026",
             "arxiv_id": "2605.03042",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "2605.03042",
+              "title": "ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration",
+              "authors": [
+                "Ruofeng Yang",
+                "Yongcan Li",
+                "Shuai Li"
+              ],
+              "year": "2026",
+              "venue": "arXiv preprint arXiv:2605.03042",
+              "abstract": "This report describes ARIS (Auto-Research-in-sleep), an open-source research harness for autonomous research, including its architecture, assurance mechanisms, and early deployment experience. The performance of agent systems built on LLMs depends on both the model weights and the harness around them, which governs what information to store, retrieve, and present to the model. For long-horizon research workflows, the central failure mode is not a visible breakdown but a plausible unsupported success: a long-running agent can produce claims whose evidential support is incomplete, misreported, or silently inherited from the executor's framing. Therefore, we present ARIS as a research harness that coordinates machine-learning research workflows through cross-model adversarial collaboration as a default configuration: an executor model drives forward progress while a reviewer from a different model family is recommended to critique intermediate artifacts and request revisions. ARIS has three architectural layers. The execution layer provides more than 65 reusable Markdown-defined skills, model integrations via MCP, a persistent research wiki for iterative reuse of prior findings, and deterministic figure generation. The orchestration layer coordinates five end-to-end workflows with adjustable effort settings and configurable routing to reviewer models. The assurance layer includes a three-stage process for checking whether experimental claims are supported by evidence: integrity verification, result-to-claim mapping, and claim auditing that cross-checks manuscript statements against the claim ledger and raw evidence, as well as a five-pass scientific-editing pipeline, mathematical-proof checks, and visual inspection of the rendered PDF. A prototype self-improvement loop records research traces and proposes harness improvements that are adopted only after reviewer approval.",
+              "url": "https://arxiv.org/abs/2605.03042",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "GROUNDED_IN_ABSTRACT",
+              "overlap": 0.833,
+              "ungrounded_numbers": [],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 46,
@@ -67,7 +89,29 @@
             "bib_author": "Han Xiao and Kashif Rasul and Roland Vollgraf",
             "bib_year": "2017",
             "arxiv_id": "1708.07747",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1708.07747",
+              "title": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms",
+              "authors": [
+                "Han Xiao",
+                "Kashif Rasul",
+                "Roland Vollgraf"
+              ],
+              "year": "2017",
+              "venue": "arXiv preprint arXiv:1708.07747",
+              "abstract": "We present Fashion-MNIST, a new dataset comprising of 28x28 grayscale images of 70,000 fashion products from 10 categories, with 7,000 images per category. The training set has 60,000 images and the test set has 10,000 images. Fashion-MNIST is intended to serve as a direct drop-in replacement for the original MNIST dataset for benchmarking machine learning algorithms, as it shares the same image size, data format and the structure of training and testing splits. The dataset is freely available at https://github.com/zalandoresearch/fashion-mnist",
+              "url": "https://arxiv.org/abs/1708.07747",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "GROUNDED_IN_ABSTRACT",
+              "overlap": 0.417,
+              "ungrounded_numbers": [],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 46,
@@ -78,7 +122,30 @@
             "bib_author": "Chuan Guo and Geoff Pleiss and Yu Sun and Kilian Q. Weinberger",
             "bib_year": "2017",
             "arxiv_id": "1706.04599",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1706.04599",
+              "title": "On Calibration of Modern Neural Networks",
+              "authors": [
+                "Chuan Guo",
+                "Geoff Pleiss",
+                "Yu Sun",
+                "Kilian Q. Weinberger"
+              ],
+              "year": "2017",
+              "venue": "arXiv preprint arXiv:1706.04599",
+              "abstract": "Confidence calibration -- the problem of predicting probability estimates representative of the true correctness likelihood -- is important for classification models in many applications. We discover that modern neural networks, unlike those from a decade ago, are poorly calibrated. Through extensive experiments, we observe that depth, width, weight decay, and Batch Normalization are important factors influencing calibration. We evaluate the performance of various post-processing calibration methods on state-of-the-art architectures with image and document classification datasets. Our analysis and experiments not only offer insights into neural network learning, but also provide a simple and straightforward recipe for practical settings: on most datasets, temperature scaling -- a single-parameter variant of Platt Scaling -- is surprisingly effective at calibrating predictions.",
+              "url": "https://arxiv.org/abs/1706.04599",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "GROUNDED_IN_ABSTRACT",
+              "overlap": 0.333,
+              "ungrounded_numbers": [],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 56,
@@ -89,7 +156,30 @@
             "bib_author": "Kaiming He and Xiangyu Zhang and Shaoqing Ren and Jian Sun",
             "bib_year": "2015",
             "arxiv_id": "1512.03385",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1512.03385",
+              "title": "Deep Residual Learning for Image Recognition",
+              "authors": [
+                "Kaiming He",
+                "Xiangyu Zhang",
+                "Shaoqing Ren",
+                "Jian Sun"
+              ],
+              "year": "2015",
+              "venue": "arXiv preprint arXiv:1512.03385",
+              "abstract": "Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers---8x deeper than VGG nets but still having lower complexity. An ensemble of these residual nets achieves 3.57% error on the ImageNet test set. This result won the 1st place on the ILSVRC 2015 classification task. We also present analysis on CIFAR-10 with 100 and 1000 layers. The depth of representations is of central importance for many visual recognition tasks. Solely due to our extremely deep representations, we obtain a 28% relative improvement on the COCO object detection dataset. Deep residual nets are foundations of our submissions to ILSVRC & COCO 2015 competitions, where we also won the 1st places on the tasks of ImageNet detection, ImageNet localization, COCO detection, and COCO segmentation.",
+              "url": "https://arxiv.org/abs/1512.03385",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "GROUNDED_IN_ABSTRACT",
+              "overlap": 0.333,
+              "ungrounded_numbers": [],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 56,
@@ -100,7 +190,28 @@
             "bib_author": "Sergey Ioffe and Christian Szegedy",
             "bib_year": "2015",
             "arxiv_id": "1502.03167",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1502.03167",
+              "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift",
+              "authors": [
+                "Sergey Ioffe",
+                "Christian Szegedy"
+              ],
+              "year": "2015",
+              "venue": "arXiv preprint arXiv:1502.03167",
+              "abstract": "Training Deep Neural Networks is complicated by the fact that the distribution of each layer's inputs changes during training, as the parameters of the previous layers change. This slows down the training by requiring lower learning rates and careful parameter initialization, and makes it notoriously hard to train models with saturating nonlinearities. We refer to this phenomenon as internal covariate shift, and address the problem by normalizing layer inputs. Our method draws its strength from making normalization a part of the model architecture and performing the normalization for each training mini-batch. Batch Normalization allows us to use much higher learning rates and be less careful about initialization. It also acts as a regularizer, in some cases eliminating the need for Dropout. Applied to a state-of-the-art image classification model, Batch Normalization achieves the same accuracy with 14 times fewer training steps, and beats the original model by a significant margin. Using an ensemble of batch-normalized networks, we improve upon the best published result on ImageNet classification: reaching 4.9% top-5 validation error (and 4.8% test error), exceeding the accuracy of human raters.",
+              "url": "https://arxiv.org/abs/1502.03167",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "GROUNDED_IN_ABSTRACT",
+              "overlap": 0.167,
+              "ungrounded_numbers": [],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 58,
@@ -111,7 +222,30 @@
             "bib_author": "Ilya Loshchilov and Frank Hutter",
             "bib_year": "2016",
             "arxiv_id": "1608.03983",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1608.03983",
+              "title": "SGDR: Stochastic Gradient Descent with Warm Restarts",
+              "authors": [
+                "Ilya Loshchilov",
+                "Frank Hutter"
+              ],
+              "year": "2016",
+              "venue": "arXiv preprint arXiv:1608.03983",
+              "abstract": "Restart techniques are common in gradient-free optimization to deal with multimodal functions. Partial warm restarts are also gaining popularity in gradient-based optimization to improve the rate of convergence in accelerated gradient schemes to deal with ill-conditioned functions. In this paper, we propose a simple warm restart technique for stochastic gradient descent to improve its anytime performance when training deep neural networks. We empirically study its performance on the CIFAR-10 and CIFAR-100 datasets, where we demonstrate new state-of-the-art results at 3.14% and 16.21%, respectively. We also demonstrate its advantages on a dataset of EEG recordings and on a downsampled version of the ImageNet dataset. Our source code is available at https://github.com/loshchil/SGDR",
+              "url": "https://arxiv.org/abs/1608.03983",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "NUMBERS_NOT_IN_ABSTRACT_VERIFY_BODY",
+              "overlap": 0.167,
+              "ungrounded_numbers": [
+                "0.1"
+              ],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 59,
@@ -122,7 +256,33 @@
             "bib_author": "Christian Szegedy and Vincent Vanhoucke and Sergey Ioffe and Jonathon Shlens and Zbigniew Wojna",
             "bib_year": "2015",
             "arxiv_id": "1512.00567",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1512.00567",
+              "title": "Rethinking the Inception Architecture for Computer Vision",
+              "authors": [
+                "Christian Szegedy",
+                "Vincent Vanhoucke",
+                "Sergey Ioffe",
+                "Jonathon Shlens",
+                "Zbigniew Wojna"
+              ],
+              "year": "2015",
+              "venue": "arXiv preprint arXiv:1512.00567",
+              "abstract": "Convolutional networks are at the core of most state-of-the-art computer vision solutions for a wide variety of tasks. Since 2014 very deep convolutional networks started to become mainstream, yielding substantial gains in various benchmarks. Although increased model size and computational cost tend to translate to immediate quality gains for most tasks (as long as enough labeled data is provided for training), computational efficiency and low parameter count are still enabling factors for various use cases such as mobile vision and big-data scenarios. Here we explore ways to scale up networks in ways that aim at utilizing the added computation as efficiently as possible by suitably factorized convolutions and aggressive regularization. We benchmark our methods on the ILSVRC 2012 classification challenge validation set demonstrate substantial gains over the state of the art: 21.2% top-1 and 5.6% top-5 error for single frame evaluation using a network with a computational cost of 5 billion multiply-adds per inference and with using less than 25 million parameters. With an ensemble of 4 models and multi-crop evaluation, we report 3.5% top-5 error on the validation set (3.6% error on the test set) and 17.3% top-1 error on the validation set.",
+              "url": "https://arxiv.org/abs/1512.00567",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "NUMBERS_NOT_IN_ABSTRACT_VERIFY_BODY",
+              "overlap": 0.25,
+              "ungrounded_numbers": [
+                "0.1"
+              ],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 60,
@@ -133,7 +293,32 @@
             "bib_author": "Hongyi Zhang and Moustapha Cisse and Yann N. Dauphin and David Lopez-Paz",
             "bib_year": "2017",
             "arxiv_id": "1710.09412",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1710.09412",
+              "title": "mixup: Beyond Empirical Risk Minimization",
+              "authors": [
+                "Hongyi Zhang",
+                "Moustapha Cisse",
+                "Yann N. Dauphin",
+                "David Lopez-Paz"
+              ],
+              "year": "2017",
+              "venue": "arXiv preprint arXiv:1710.09412",
+              "abstract": "Large deep neural networks are powerful, but exhibit undesirable behaviors such as memorization and sensitivity to adversarial examples. In this work, we propose mixup, a simple learning principle to alleviate these issues. In essence, mixup trains a neural network on convex combinations of pairs of examples and their labels. By doing so, mixup regularizes the neural network to favor simple linear behavior in-between training examples. Our experiments on the ImageNet-2012, CIFAR-10, CIFAR-100, Google commands and UCI datasets show that mixup improves the generalization of state-of-the-art neural network architectures. We also find that mixup reduces the memorization of corrupt labels, increases the robustness to adversarial examples, and stabilizes the training of generative adversarial networks.",
+              "url": "https://arxiv.org/abs/1710.09412",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "NUMBERS_NOT_IN_ABSTRACT_VERIFY_BODY",
+              "overlap": 0.182,
+              "ungrounded_numbers": [
+                "0.4"
+              ],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 61,
@@ -144,7 +329,33 @@
             "bib_author": "Jie Hu and Li Shen and Samuel Albanie and Gang Sun and Enhua Wu",
             "bib_year": "2017",
             "arxiv_id": "1709.01507",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1709.01507",
+              "title": "Squeeze-and-Excitation Networks",
+              "authors": [
+                "Jie Hu",
+                "Li Shen",
+                "Samuel Albanie",
+                "Gang Sun",
+                "Enhua Wu"
+              ],
+              "year": "2017",
+              "venue": "arXiv preprint arXiv:1709.01507",
+              "abstract": "The central building block of convolutional neural networks (CNNs) is the convolution operator, which enables networks to construct informative features by fusing both spatial and channel-wise information within local receptive fields at each layer. A broad range of prior research has investigated the spatial component of this relationship, seeking to strengthen the representational power of a CNN by enhancing the quality of spatial encodings throughout its feature hierarchy. In this work, we focus instead on the channel relationship and propose a novel architectural unit, which we term the \"Squeeze-and-Excitation\" (SE) block, that adaptively recalibrates channel-wise feature responses by explicitly modelling interdependencies between channels. We show that these blocks can be stacked together to form SENet architectures that generalise extremely effectively across different datasets. We further demonstrate that SE blocks bring significant improvements in performance for existing state-of-the-art CNNs at slight additional computational cost. Squeeze-and-Excitation Networks formed the foundation of our ILSVRC 2017 classification submission which won first place and reduced the top-5 error to 2.251%, surpassing the winning entry of 2016 by a relative improvement of ~25%. Models and code are available at https://github.com/hujie-frank/SENet.",
+              "url": "https://arxiv.org/abs/1709.01507",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "NUMBERS_NOT_IN_ABSTRACT_VERIFY_BODY",
+              "overlap": 0.167,
+              "ungrounded_numbers": [
+                "0.05"
+              ],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 61,
@@ -155,7 +366,30 @@
             "bib_author": "Terrance DeVries and Graham W. Taylor",
             "bib_year": "2017",
             "arxiv_id": "1708.04552",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1708.04552",
+              "title": "Improved Regularization of Convolutional Neural Networks with Cutout",
+              "authors": [
+                "Terrance DeVries",
+                "Graham W. Taylor"
+              ],
+              "year": "2017",
+              "venue": "arXiv preprint arXiv:1708.04552",
+              "abstract": "Convolutional neural networks are capable of learning powerful representational spaces, which are necessary for tackling complex learning tasks. However, due to the model capacity required to capture such representations, they are often susceptible to overfitting and therefore require proper regularization in order to generalize well. In this paper, we show that the simple regularization technique of randomly masking out square regions of input during training, which we call cutout, can be used to improve the robustness and overall performance of convolutional neural networks. Not only is this method extremely easy to implement, but we also demonstrate that it can be used in conjunction with existing forms of data augmentation and other regularizers to further improve model performance. We evaluate this method by applying it to current state-of-the-art architectures on the CIFAR-10, CIFAR-100, and SVHN datasets, yielding new state-of-the-art results of 2.56%, 15.20%, and 1.30% test error respectively. Code is available at https://github.com/uoguelph-mlrg/Cutout",
+              "url": "https://arxiv.org/abs/1708.04552",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "NUMBERS_NOT_IN_ABSTRACT_VERIFY_BODY",
+              "overlap": 0.167,
+              "ungrounded_numbers": [
+                "0.05"
+              ],
+              "polarity_conflict": false
+            }
           },
           {
             "line": 102,
@@ -166,7 +400,30 @@
             "bib_author": "Chuan Guo and Geoff Pleiss and Yu Sun and Kilian Q. Weinberger",
             "bib_year": "2017",
             "arxiv_id": "1706.04599",
-            "status": "BIB_FOUND_OFFLINE"
+            "online": {
+              "exists": true,
+              "source": "arxiv",
+              "arxiv_id": "1706.04599",
+              "title": "On Calibration of Modern Neural Networks",
+              "authors": [
+                "Chuan Guo",
+                "Geoff Pleiss",
+                "Yu Sun",
+                "Kilian Q. Weinberger"
+              ],
+              "year": "2017",
+              "venue": "arXiv preprint arXiv:1706.04599",
+              "abstract": "Confidence calibration -- the problem of predicting probability estimates representative of the true correctness likelihood -- is important for classification models in many applications. We discover that modern neural networks, unlike those from a decade ago, are poorly calibrated. Through extensive experiments, we observe that depth, width, weight decay, and Batch Normalization are important factors influencing calibration. We evaluate the performance of various post-processing calibration methods on state-of-the-art architectures with image and document classification datasets. Our analysis and experiments not only offer insights into neural network learning, but also provide a simple and straightforward recipe for practical settings: on most datasets, temperature scaling -- a single-parameter variant of Platt Scaling -- is surprisingly effective at calibrating predictions.",
+              "url": "https://arxiv.org/abs/1706.04599",
+              "retracted": false
+            },
+            "status": "VERIFIED_ONLINE",
+            "claim_vs_abstract": {
+              "status": "GROUNDED_IN_ABSTRACT",
+              "overlap": 0.25,
+              "ungrounded_numbers": [],
+              "polarity_conflict": false
+            }
           }
         ]
       }
