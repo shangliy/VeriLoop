@@ -6,7 +6,7 @@
 \usepackage{hyperref}
 \usepackage[accepted]{icml2027}
 
-% 100% auto-generated macros from raw TensorBoard (.tfevents) & W&B logs via ./veriloop bind
+% Auto-generated macros from raw TensorBoard (.tfevents) & W&B logs via ./veriloop bind
 \input{bound/cifar10/bound_macros.tex}
 \input{bound/fmnist/bound_macros.tex}
 
@@ -21,7 +21,7 @@ A 42-Run Real-GPU Research Trajectory Governed by VeriLoop}
 \begin{icmlauthorlist}
 \icmlauthor{VeriLoop Real-GPU Benchmark Artifact}{vl}
 \end{icmlauthorlist}
-\icmlaffiliation{vl}{Generated end-to-end on a local NVIDIA GeForce RTX 3060 Ti with zero manual metric transcription}
+\icmlaffiliation{vl}{Generated end-to-end on a local NVIDIA GeForce RTX 3060 Ti; per-arm table metrics and $T^*$ auto-bound via \texttt{paper\_bind.py}}
 \icmlcorrespondingauthor{VeriLoop Artifact}{https://github.com/shangliy/VeriLoop}
 \icmlkeywords{Calibration, Temperature Scaling, Label Smoothing, Mixup, Verifiable Research}
 \vskip 0.25in
@@ -30,52 +30,54 @@ A 42-Run Real-GPU Research Trajectory Governed by VeriLoop}
 \printAffiliationsAndNotice{}
 
 \begin{abstract}
-We present a complete, end-to-end long-horizon deep learning study executed on a local NVIDIA GeForce RTX 3060 Ti under VeriLoop's deterministic verification harness: 42 multi-seed GPU training runs spanning an 8-stage progressive architecture and regularization ladder on CIFAR-10 (30 epochs, 3 seeds) and a 6-stage cross-dataset validation ladder on Fashion-MNIST (15 epochs, 3 seeds; 5548.4~s / 92.47~min total GPU time, 593.0~MB peak VRAM).
+We present an end-to-end multi-stage deep learning case study executed on a local NVIDIA GeForce RTX 3060 Ti under VeriLoop's deterministic verification pipeline: 42 multi-seed GPU runs spanning an 8-stage bundled CIFAR-10 recipe ladder (30 epochs, 3 seeds) and a 6-stage Fashion-MNIST validation ladder (15 epochs, 3 seeds; 5548.4~s / 92.47~min compute, 593.0~MB peak VRAM).
 Every checkpoint and post-hoc temperature $T^*$ is selected strictly on the validation split; held-out test metrics are scored once and logged simultaneously to TensorBoard, W\&B, CSV, and an append-only ledger.
-Across all 14 completed experimental stages, VeriLoop's live Research Wiki and deterministic Layer-1 gates audited 1365 cumulative numbers with 0 untraced values, 0 static-AST violations, and 81.8~ms median gate latency at \$0 API cost.
-Empirically, \texttt{M7\_SEResNet\_Full} reaches \vlCMSeresnetFullTestAcc{} test accuracy on CIFAR-10 (+14.06~pp over \texttt{M1\_PlainCNN}'s \vlCMPlaincnnTestAcc{}), while revealing a striking cross-dataset calibration reversal: unaugmented residual networks (\texttt{M2\_ResNet\_Base}) are severely overconfident (raw ECE \vlCMResnetBaseTestEce{}, $T^*=2.6460$), whereas Label Smoothing (\texttt{M5\_ResNet\_LS}, $T^*=0.7234$) and Mixup (\texttt{M6\_ResNet\_Mixup}, $T^*=0.6449$) flip predictions into underconfidence, elevating raw ECE until validation-fitted Temperature Scaling restores calibrated ECE to \vlCMResnetAugCosineCalEce{}--\vlCMResnetMixupCalEce{}.
+Across all 14 stages, VeriLoop ran an automated live Research Wiki self-consistency and AST smoke check (182 distinct numbers in the final wiki re-audited at each stage, 0 AST \texttt{HIGH} findings, 81.8~ms median latency at \$0 API cost), while independent audit logs under \texttt{audits/} record 4/4 claims passing \texttt{G1--G7}, 10/10 online-verified citations, and 100\% of expanded PDF numbers traced with 0 untraced values.
+Empirically, \texttt{M7\_SEResNet\_Full} reaches \vlCMSeresnetFullTestAcc{} CIFAR-10 test accuracy (+14.06~pp over \texttt{M1\_PlainCNN}'s \vlCMPlaincnnTestAcc{}).
+Unaugmented \texttt{M2\_ResNet\_Base} is strongly overconfident on CIFAR-10 (raw ECE \vlCMResnetBaseTestEce{}, $T^*=\vlCMResnetBaseTempTMean{}$; milder on Fashion-MNIST, $T^*=\vlFMResnetBaseTempTMean{}$), whereas Label Smoothing (\texttt{M5\_ResNet\_LS}, $T^*=\vlCMResnetLsTempTMean{}$ on CIFAR-10 and \vlFMResnetLsTempTMean{} on Fashion-MNIST) and CIFAR-10 Mixup (\texttt{M6\_ResNet\_Mixup}, $T^*=\vlCMResnetMixupTempTMean{}$) invert into underconfidence, raising raw ECE until validation-fitted Temperature Scaling restores CIFAR-10 calibrated ECE across \texttt{M4}--\texttt{M7} to \vlCMResnetAugCosineCalEce{}--\vlCMSeresnetFullCalEce{} (\vlCMResnetLsCalEce{} for LS and \vlCMResnetMixupCalEce{} for Mixup).
 \end{abstract}
 
 \section{Introduction and Governance Protocol}
 
 Autonomous research pipelines frequently fail silently during long-horizon multi-stage studies through stale number copying, test-set checkpoint peeking, unverified citations, or cherry-picked cross-dataset claims~\citep{yang2026aris}.
-This artifact demonstrates VeriLoop's end-to-end verifiable writing and experimentation pipeline on a genuine multi-seed GPU deep learning investigation rather than a toy CPU script.
+This artifact demonstrates VeriLoop's verifiable writing and experimentation pipeline on a genuine multi-seed GPU deep learning investigation rather than a short CPU script.
 
-Prior to launching the first GPU run, four falsifiable hypotheses (\texttt{H1\_ResidualGain}--\texttt{H4\_CrossDatasetRank}) were pre-registered in \texttt{claims.json} with explicit kill criteria and SHA-256 log-integrity gates (G1--G7).
+Prior to launching the first GPU run, four hypotheses (\texttt{H1\_ResidualGain}--\texttt{H4\_CrossDatasetRank}) were registered in \texttt{claims.json} with explicit kill criteria and SHA-256 log-integrity gates (\texttt{G1--G7}); note that \texttt{claims.json} was committed alongside results in this showcase, whereas production pre-registration should anchor \texttt{claims.json} in an earlier commit.
 Every training run uses identical fixed train/validation splits (45,000/5,000 on CIFAR-10; 50,000/10,000 on Fashion-MNIST~\citep{xiao2017fashion}), selects the best epoch strictly by validation accuracy, fits post-hoc Temperature Scaling $T^*$~\citep{guo2017calibration} exclusively on validation logits via L-BFGS, and evaluates the 10,000-example held-out test set exactly once.
-After every stage completes, \texttt{run\_overnight\_study.py} updates \texttt{wiki/RESEARCH\_WIKI.md} and invokes VeriLoop's deterministic Layer-1 gates (\texttt{trace\_numbers.py} and \texttt{audit\_code.py --strict}), recording every audit event in \texttt{out/gate\_audit\_trace.jsonl}.
-All numbers in this manuscript are injected directly via \LaTeX{} macros generated by \texttt{./veriloop bind} from raw TensorBoard (\texttt{.tfevents}) and W\&B run files, and all 10 cited references are verified online against arXiv, Crossref, and Semantic Scholar via \texttt{./veriloop verify-cites}.
+After every stage completes, \texttt{run\_overnight\_study.py} updates \texttt{wiki/RESEARCH\_WIKI.md} and invokes \texttt{trace\_numbers.py} and \texttt{audit\_code.py --strict} as a live pipeline self-consistency and AST smoke check (recording every event in \texttt{out/gate\_audit\_trace.jsonl}).
+Every per-arm metric cell and $T^*$ value in Tables~\ref{tab:c10}--\ref{tab:fmnist} is injected directly via \LaTeX{} macros generated by \texttt{./veriloop bind} from raw TensorBoard (\texttt{.tfevents}) and W\&B run files (while aggregate deltas and compute totals trace to \texttt{out/overnight\_summary.txt}), and all 10 cited references are verified online against arXiv, Crossref, and Semantic Scholar via \texttt{./veriloop verify-cites} (committed in \texttt{audits/}).
 
 \section{Experimental Design}
 
-We construct a controlled 8-stage progressive ablation ladder on CIFAR-10 (30 epochs, batch size 256, AMP fp16, seeds 42/43/44; 24 runs) and a 6-stage core ladder on Fashion-MNIST (15 epochs, seeds 42/43/44; 18 runs):
+We construct an 8-stage progressive recipe ladder on CIFAR-10 (30 epochs, batch size 256, AMP fp16, seeds 42/43/44; 24 runs) and a 6-stage core ladder on Fashion-MNIST (15 epochs, seeds 42/43/44; 18 runs). Because adjacent stages bundle standard training recipe changes rather than isolating single hyperparameters, we interpret accuracy shifts at the recipe-bundle level:
 \begin{enumerate}
-  \item \texttt{M0\_Linear}: Linear classifier baseline.
-  \item \texttt{M1\_PlainCNN}: 4-layer ConvNet (widths 32--64--128) without BatchNorm or skip connections.
-  \item \texttt{M2\_ResNet\_Base}: 3-stage CIFAR ResNet-14 with residual shortcuts~\citep{he2015deep} and BatchNorm~\citep{ioffe2015batch}, trained with constant-LR AdamW and no augmentation.
-  \item \texttt{M3\_ResNet\_Aug}: Adds standard padding-4 random crop and horizontal flip.
-  \item \texttt{M4\_ResNet\_Aug\_Cosine}: Switches to Nesterov SGD (LR 0.1, weight decay $5\times 10^{-4}$) with 3-epoch linear warmup and cosine annealing~\citep{loshchilov2016sgdr}.
-  \item \texttt{M5\_ResNet\_LS}: Adds Label Smoothing ($\epsilon=0.1$)~\citep{szegedy2015rethinking}.
-  \item \texttt{M6\_ResNet\_Mixup}: Replaces Label Smoothing with Mixup ($\alpha=0.4$)~\citep{zhang2017mixup}.
-  \item \texttt{M7\_SEResNet\_Full}: Combines Squeeze-and-Excitation channel attention~\citep{hu2017squeeze}, $8\times 8$ Cutout~\citep{devries2017improved}, cosine SGD, and mild label smoothing ($\epsilon=0.05$).
+  \item \texttt{M0\_Linear}: Linear classifier baseline (AdamW, LR $2\times 10^{-3}$, WD $10^{-4}$).
+  \item \texttt{M1\_PlainCNN}: 4-layer ConvNet (widths 32--64--128, AdamW, WD 0) without BatchNorm or skip connections.
+  \item \texttt{M2\_ResNet\_Base}: 3-stage CIFAR ResNet-14 (greater depth/capacity plus residual shortcuts~\citep{he2015deep} and BatchNorm~\citep{ioffe2015batch}, constant-LR AdamW, no augmentation).
+  \item \texttt{M3\_ResNet\_Aug}: Adds padding-4 random crop, horizontal flip, and weight decay ($10^{-4}$).
+  \item \texttt{M4\_ResNet\_Aug\_Cosine}: Switches optimizer bundle to Nesterov SGD (LR 0.1, WD $5\times 10^{-4}$) with 3-epoch linear warmup and cosine annealing~\citep{loshchilov2016sgdr}.
+  \item \texttt{M5\_ResNet\_LS}: Adds Label Smoothing ($\epsilon=0.1$)~\citep{szegedy2015rethinking} to \texttt{M4}.
+  \item \texttt{M6\_ResNet\_Mixup}: Replaces Label Smoothing with Mixup ($\alpha=0.4$)~\citep{zhang2017mixup} (CIFAR-10 only).
+  \item \texttt{M7\_SEResNet\_Full}: Bundles Squeeze-and-Excitation attention~\citep{hu2017squeeze}, $8\times 8$ Cutout~\citep{devries2017improved}, cosine SGD, and mild label smoothing ($\epsilon=0.05$).
 \end{enumerate}
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{figures/fig_cifar10_ablation_and_ece.pdf}
-  \caption{\textbf{CIFAR-10 progressive ablation ladder (24 RTX 3060 Ti runs, 30 epochs, 3 seeds) reveals strong accuracy gains alongside a non-monotonic calibration reversal.} (a) Held-out test accuracy (mean $\pm$ 95\% $t$-CI) climbs monotonically from \texttt{M0\_Linear} (\vlCMLinearTestAccMean{}) to \texttt{M7\_SEResNet\_Full} (\vlCMSeresnetFullTestAccMean{}). (b) Unaugmented \texttt{M2\_ResNet\_Base} exhibits severe overconfidence (raw ECE \vlCMResnetBaseTestEceMean{}), whereas Label Smoothing (\texttt{M5}) and Mixup (\texttt{M6}) induce underconfidence ($T^*<1$); strictly validation-fitted post-hoc Temperature Scaling reduces ECE across every residual arm.}
+  \caption{\textbf{CIFAR-10 progressive recipe ladder (24 RTX 3060 Ti runs, 30 epochs, 3 seeds) reveals strong accuracy gains alongside a non-monotonic calibration reversal.} (a) Held-out test accuracy (mean $\pm$ 95\% $t$-CI) climbs from \texttt{M0\_Linear} (\vlCMLinearTestAccMean{}) to \texttt{M7\_SEResNet\_Full} (\vlCMSeresnetFullTestAccMean{}). (b) Unaugmented \texttt{M2\_ResNet\_Base} exhibits severe overconfidence (raw ECE \vlCMResnetBaseTestEceMean{}), whereas Label Smoothing (\texttt{M5}) and Mixup (\texttt{M6}) induce underconfidence ($T^*<1$); strictly validation-fitted post-hoc Temperature Scaling reduces ECE across every residual arm.}
   \label{fig:c10_ablation}
 \end{figure*}
 
 \section{Results: Accuracy, Calibration, and Gate Trace}
 
-\paragraph{CIFAR-10 progressive gains (Table~\ref{tab:c10}, Figure~\ref{fig:c10_ablation}).}
-Adding residual connections and BatchNorm (\texttt{M2\_ResNet\_Base}, \vlCMResnetBaseTestAcc{}) improves CIFAR-10 held-out test accuracy over \texttt{M1\_PlainCNN} (\vlCMPlaincnnTestAcc{}), supporting \texttt{H1\_ResidualGain}.
-Data augmentation (\texttt{M3\_ResNet\_Aug}, \vlCMResnetAugTestAcc{}) and warmup-cosine Nesterov SGD (\texttt{M4\_ResNet\_Aug\_Cosine}, \vlCMResnetAugCosineTestAcc{}) deliver the largest single jumps, while \texttt{M7\_SEResNet\_Full} achieves the highest CIFAR-10 accuracy of \vlCMSeresnetFullTestAcc{} (95\% CI \vlCMSeresnetFullTestAccCi{}, a delta of +0.1406 / +14.06~pp over \texttt{M1\_PlainCNN}), supporting \texttt{H2\_AugCosineGain}.
+\paragraph{CIFAR-10 progressive recipe gains (Table~\ref{tab:c10}, Figure~\ref{fig:c10_ablation}).}
+Moving from \texttt{M1\_PlainCNN} (\vlCMPlaincnnTestAcc{}) to the deeper residual+BatchNorm \texttt{M2\_ResNet\_Base} (\vlCMResnetBaseTestAcc{}) improves CIFAR-10 held-out test accuracy across all three seeds, supporting \texttt{H1\_ResidualGain}.
+Adding augmentation plus weight decay (\texttt{M3\_ResNet\_Aug}, \vlCMResnetAugTestAcc{}) and switching to warmup-cosine Nesterov SGD (\texttt{M4\_ResNet\_Aug\_Cosine}, \vlCMResnetAugCosineTestAcc{}) produce the largest bundled jumps, while \texttt{M7\_SEResNet\_Full} reaches \vlCMSeresnetFullTestAcc{} (95\% CI \vlCMSeresnetFullTestAccCi{}, delta +0.1406 / +14.06~pp over \texttt{M1\_PlainCNN}), supporting \texttt{H2\_AugCosineGain}.
+By contrast, the modest accuracy differences of \texttt{M5\_ResNet\_LS} (+0.0021) and \texttt{M6\_ResNet\_Mixup} (\vlCMResnetMixupTestAcc{}) over \texttt{M4} lie within 3-seed CI overlap.
 
 \begin{table*}[t]
 \centering
-\caption{\textbf{CIFAR-10 multi-seed held-out test results (30 epochs, 3 seeds, 24 GPU runs) auto-bound from TensorBoard and W\&B logs.} All values are mean $\pm$ std via \texttt{paper\_bind.py} macros; $T^*$ is fit strictly on validation logits.}
+\caption{\textbf{CIFAR-10 multi-seed held-out test results (30 epochs, 3 seeds, 24 GPU runs) auto-bound from TensorBoard and W\&B logs.} Every cell (including Mean $T^*$) is injected via \texttt{paper\_bind.py} macros; $T^*$ is fit strictly on validation logits.}
 \label{tab:c10}
 \setlength{\tabcolsep}{3.6pt}
 \footnotesize
@@ -84,22 +86,22 @@ Data augmentation (\texttt{M3\_ResNet\_Aug}, \vlCMResnetAugTestAcc{}) and warmup
 \toprule
 \textbf{Method} & \textbf{Val Acc} & \textbf{Test Acc} & \textbf{Raw ECE $\downarrow$} & \textbf{Cal ECE $\downarrow$} & \textbf{Raw NLL $\downarrow$} & \textbf{Cal NLL $\downarrow$} & \textbf{Mean $T^*$} \\
 \midrule
-\texttt{M0\_Linear}            & \vlCMLinearValAcc{}          & \vlCMLinearTestAcc{}          & \vlCMLinearTestEce{}          & \vlCMLinearCalEce{}          & \vlCMLinearTestNll{}          & \vlCMLinearCalNll{}          & 1.4978 \\
-\texttt{M1\_PlainCNN}          & \vlCMPlaincnnValAcc{}        & \vlCMPlaincnnTestAcc{}        & \vlCMPlaincnnTestEce{}        & \vlCMPlaincnnCalEce{}        & \vlCMPlaincnnTestNll{}        & \vlCMPlaincnnCalNll{}        & 1.1669 \\
-\texttt{M2\_ResNet\_Base}      & \vlCMResnetBaseValAcc{}      & \vlCMResnetBaseTestAcc{}      & \vlCMResnetBaseTestEce{}      & \vlCMResnetBaseCalEce{}      & \vlCMResnetBaseTestNll{}      & \vlCMResnetBaseCalNll{}      & 2.6460 \\
-\texttt{M3\_ResNet\_Aug}       & \vlCMResnetAugValAcc{}       & \vlCMResnetAugTestAcc{}       & \vlCMResnetAugTestEce{}       & \vlCMResnetAugCalEce{}       & \vlCMResnetAugTestNll{}       & \vlCMResnetAugCalNll{}       & 1.5584 \\
-\texttt{M4\_ResNet\_Aug\_Cosine} & \vlCMResnetAugCosineValAcc{} & \vlCMResnetAugCosineTestAcc{} & \vlCMResnetAugCosineTestEce{} & \textbf{\vlCMResnetAugCosineCalEce{}} & \vlCMResnetAugCosineTestNll{} & \textbf{\vlCMResnetAugCosineCalNll{}} & 1.4338 \\
-\texttt{M5\_ResNet\_LS}        & \vlCMResnetLsValAcc{}        & \vlCMResnetLsTestAcc{}        & \vlCMResnetLsTestEce{}        & \vlCMResnetLsCalEce{}        & \vlCMResnetLsTestNll{}        & \vlCMResnetLsCalNll{}        & 0.7234 \\
-\texttt{M6\_ResNet\_Mixup}     & \vlCMResnetMixupValAcc{}     & \vlCMResnetMixupTestAcc{}     & \vlCMResnetMixupTestEce{}     & \vlCMResnetMixupCalEce{}     & \vlCMResnetMixupTestNll{}     & \vlCMResnetMixupCalNll{}     & 0.6449 \\
-\texttt{M7\_SEResNet\_Full}    & \textbf{\vlCMSeresnetFullValAcc{}} & \textbf{\vlCMSeresnetFullTestAcc{}} & \vlCMSeresnetFullTestEce{} & \vlCMSeresnetFullCalEce{} & \textbf{\vlCMSeresnetFullTestNll{}} & \vlCMSeresnetFullCalNll{} & 0.8192 \\
+\texttt{M0\_Linear}            & \vlCMLinearValAcc{}          & \vlCMLinearTestAcc{}          & \vlCMLinearTestEce{}          & \vlCMLinearCalEce{}          & \vlCMLinearTestNll{}          & \vlCMLinearCalNll{}          & \vlCMLinearTempTMean{} \\
+\texttt{M1\_PlainCNN}          & \vlCMPlaincnnValAcc{}        & \vlCMPlaincnnTestAcc{}        & \vlCMPlaincnnTestEce{}        & \vlCMPlaincnnCalEce{}        & \vlCMPlaincnnTestNll{}        & \vlCMPlaincnnCalNll{}        & \vlCMPlaincnnTempTMean{} \\
+\texttt{M2\_ResNet\_Base}      & \vlCMResnetBaseValAcc{}      & \vlCMResnetBaseTestAcc{}      & \vlCMResnetBaseTestEce{}      & \vlCMResnetBaseCalEce{}      & \vlCMResnetBaseTestNll{}      & \vlCMResnetBaseCalNll{}      & \vlCMResnetBaseTempTMean{} \\
+\texttt{M3\_ResNet\_Aug}       & \vlCMResnetAugValAcc{}       & \vlCMResnetAugTestAcc{}       & \vlCMResnetAugTestEce{}       & \vlCMResnetAugCalEce{}       & \vlCMResnetAugTestNll{}       & \vlCMResnetAugCalNll{}       & \vlCMResnetAugTempTMean{} \\
+\texttt{M4\_ResNet\_Aug\_Cosine} & \vlCMResnetAugCosineValAcc{} & \vlCMResnetAugCosineTestAcc{} & \vlCMResnetAugCosineTestEce{} & \textbf{\vlCMResnetAugCosineCalEce{}} & \vlCMResnetAugCosineTestNll{} & \textbf{\vlCMResnetAugCosineCalNll{}} & \vlCMResnetAugCosineTempTMean{} \\
+\texttt{M5\_ResNet\_LS}        & \vlCMResnetLsValAcc{}        & \vlCMResnetLsTestAcc{}        & \vlCMResnetLsTestEce{}        & \vlCMResnetLsCalEce{}        & \vlCMResnetLsTestNll{}        & \vlCMResnetLsCalNll{}        & \vlCMResnetLsTempTMean{} \\
+\texttt{M6\_ResNet\_Mixup}     & \vlCMResnetMixupValAcc{}     & \vlCMResnetMixupTestAcc{}     & \vlCMResnetMixupTestEce{}     & \vlCMResnetMixupCalEce{}     & \vlCMResnetMixupTestNll{}     & \vlCMResnetMixupCalNll{}     & \vlCMResnetMixupTempTMean{} \\
+\texttt{M7\_SEResNet\_Full}    & \textbf{\vlCMSeresnetFullValAcc{}} & \textbf{\vlCMSeresnetFullTestAcc{}} & \vlCMSeresnetFullTestEce{} & \vlCMSeresnetFullCalEce{} & \textbf{\vlCMSeresnetFullTestNll{}} & \vlCMSeresnetFullCalNll{} & \vlCMSeresnetFullTempTMean{} \\
 \bottomrule
 \end{tabular}}
 \end{table*}
 
 \paragraph{Calibration reversal under Label Smoothing and Mixup.}
-Consistent with \citet{guo2017calibration}, unaugmented \texttt{M2\_ResNet\_Base} suffers severe overconfidence (raw ECE \vlCMResnetBaseTestEce{}, raw NLL \vlCMResnetBaseTestNll{}), which validation-fitted $T^*=2.6460$ slashes to calibrated ECE \vlCMResnetBaseCalEce{} and calibrated NLL \vlCMResnetBaseCalNll{}.
-Similarly, \texttt{M4\_ResNet\_Aug\_Cosine} drops from raw ECE \vlCMResnetAugCosineTestEce{} to \vlCMResnetAugCosineCalEce{} ($T^*=1.4338$), achieving both the lowest calibrated ECE and lowest calibrated NLL (\vlCMResnetAugCosineCalNll{}) across all eight CIFAR-10 arms.
-Crucially, training-time target softening inverts the direction of miscalibration: \texttt{M5\_ResNet\_LS} (+0.0021 test accuracy vs.\ \texttt{M4}) raises raw ECE by +0.0295 to \vlCMResnetLsTestEce{} ($T^*=0.7234 < 1$, underconfident), and \texttt{M6\_ResNet\_Mixup} reaches raw ECE \vlCMResnetMixupTestEce{} ($T^*=0.6449$).
+Consistent with \citet{guo2017calibration}, unaugmented \texttt{M2\_ResNet\_Base} suffers severe overconfidence on CIFAR-10 (raw ECE \vlCMResnetBaseTestEce{}, raw NLL \vlCMResnetBaseTestNll{}), which validation-fitted $T^*=\vlCMResnetBaseTempTMean{}$ reduces to calibrated ECE \vlCMResnetBaseCalEce{} and calibrated NLL \vlCMResnetBaseCalNll{}.
+Similarly, \texttt{M4\_ResNet\_Aug\_Cosine} drops from raw ECE \vlCMResnetAugCosineTestEce{} to \vlCMResnetAugCosineCalEce{} ($T^*=\vlCMResnetAugCosineTempTMean{}$), achieving both the lowest calibrated ECE and lowest calibrated NLL (\vlCMResnetAugCosineCalNll{}) across all eight CIFAR-10 arms.
+Training-time target softening inverts the direction of miscalibration: \texttt{M5\_ResNet\_LS} raises raw ECE by +0.0295 to \vlCMResnetLsTestEce{} ($T^*=\vlCMResnetLsTempTMean{} < 1$, underconfident), and \texttt{M6\_ResNet\_Mixup} (tested on CIFAR-10 only) reaches raw ECE \vlCMResnetMixupTestEce{} ($T^*=\vlCMResnetMixupTempTMean{}$).
 Sharpening logits with validation-fitted $T^*<1$ recovers calibrated ECE to \vlCMResnetLsCalEce{} (delta $-0.0503$) for \texttt{M5} and \vlCMResnetMixupCalEce{} for \texttt{M6}, confirming \texttt{H3\_CalibrationTradeoff}.
 
 \begin{figure*}[t]
@@ -110,13 +112,13 @@ Sharpening logits with validation-fitted $T^*<1$ recovers calibrated ECE to \vlC
 \end{figure*}
 
 \paragraph{Cross-dataset validation and honest nuance on Fashion-MNIST (Table~\ref{tab:fmnist}, Figure~\ref{fig:pareto}).}
-On Fashion-MNIST (15 epochs, 18 runs), \texttt{M2\_ResNet\_Base} (\vlFMResnetBaseTestAcc{}) again outperforms \texttt{M1\_PlainCNN} (\vlFMPlaincnnTestAcc{}), and \texttt{M7\_SEResNet\_Full} (\vlFMSeresnetFullTestAcc{}) improves by +0.0375 (+3.75~pp) over \texttt{M1\_PlainCNN}, supporting \texttt{H4\_CrossDatasetRank}.
-The Label Smoothing underconfidence reversal reproduces identically: \texttt{M5\_ResNet\_LS} lifts raw ECE by +0.0603 over \texttt{M4\_ResNet\_Aug\_Cosine} to \vlFMResnetLsTestEce{} ($T^*=0.6716$), and validation-fitted $T^*$ reduces it by $-0.0581$ to \vlFMResnetLsCalEce{}.
-Reporting transparently without cherry-picking, however, \texttt{M7\_SEResNet\_Full} (\vlFMSeresnetFullTestAcc{}) slightly trails \texttt{M4\_ResNet\_Aug\_Cosine} (\vlFMResnetAugCosineTestAcc{}) and \texttt{M5\_ResNet\_LS} (\vlFMResnetLsTestAcc{}) on Fashion-MNIST: $8\times 8$ Cutout occludes a larger fraction of $28\times 28$ grayscale garments than $32\times 32$ RGB CIFAR-10 scenes.
+On Fashion-MNIST (15 epochs, 18 runs; Mixup omitted), \texttt{M2\_ResNet\_Base} (\vlFMResnetBaseTestAcc{}) again outperforms \texttt{M1\_PlainCNN} (\vlFMPlaincnnTestAcc{}), and \texttt{M7\_SEResNet\_Full} (\vlFMSeresnetFullTestAcc{}) improves by +0.0375 (+3.75~pp) over \texttt{M1\_PlainCNN}, supporting \texttt{H4\_CrossDatasetRank}.
+The Label Smoothing underconfidence reversal reproduces cleanly on Fashion-MNIST: \texttt{M5\_ResNet\_LS} lifts raw ECE by +0.0603 over \texttt{M4\_ResNet\_Aug\_Cosine} to \vlFMResnetLsTestEce{} ($T^*=\vlFMResnetLsTempTMean{}$), and validation-fitted $T^*$ reduces it by $-0.0581$ to \vlFMResnetLsCalEce{}.
+Two honest nuances merit reporting without cherry-picking: (1) on already well-calibrated \texttt{M1\_PlainCNN} (raw ECE \vlFMPlaincnnTestEce{}, $T^*=\vlFMPlaincnnTempTMean{}$), post-hoc temperature scaling slightly increases test ECE to \vlFMPlaincnnCalEce{}; and (2) \texttt{M7\_SEResNet\_Full} (\vlFMSeresnetFullTestAcc{}) slightly trails \texttt{M4\_ResNet\_Aug\_Cosine} (\vlFMResnetAugCosineTestAcc{}) and \texttt{M5\_ResNet\_LS} (\vlFMResnetLsTestAcc{}), which we conjecture stems from $8\times 8$ Cutout occluding a larger fraction of $28\times 28$ grayscale garments than $32\times 32$ RGB scenes.
 
 \begin{table*}[t]
 \centering
-\caption{\textbf{Fashion-MNIST cross-dataset results (15 epochs, 3 seeds, 18 GPU runs) auto-bound from TensorBoard and W\&B logs.}}
+\caption{\textbf{Fashion-MNIST cross-dataset results (15 epochs, 3 seeds, 18 GPU runs) auto-bound from TensorBoard and W\&B logs.} Every cell (including Mean $T^*$) is injected via \texttt{paper\_bind.py} macros.}
 \label{tab:fmnist}
 \setlength{\tabcolsep}{3.6pt}
 \footnotesize
@@ -125,12 +127,12 @@ Reporting transparently without cherry-picking, however, \texttt{M7\_SEResNet\_F
 \toprule
 \textbf{Method} & \textbf{Val Acc} & \textbf{Test Acc} & \textbf{Raw ECE $\downarrow$} & \textbf{Cal ECE $\downarrow$} & \textbf{Raw NLL $\downarrow$} & \textbf{Cal NLL $\downarrow$} & \textbf{Mean $T^*$} \\
 \midrule
-\texttt{M0\_Linear}            & \vlFMLinearValAcc{}          & \vlFMLinearTestAcc{}          & \vlFMLinearTestEce{}          & \vlFMLinearCalEce{}          & \vlFMLinearTestNll{}          & \vlFMLinearCalNll{}          & 1.0765 \\
-\texttt{M1\_PlainCNN}          & \vlFMPlaincnnValAcc{}        & \vlFMPlaincnnTestAcc{}        & \textbf{\vlFMPlaincnnTestEce{}} & \textbf{\vlFMPlaincnnCalEce{}} & \vlFMPlaincnnTestNll{}        & \vlFMPlaincnnCalNll{}        & 0.9805 \\
-\texttt{M2\_ResNet\_Base}      & \vlFMResnetBaseValAcc{}      & \vlFMResnetBaseTestAcc{}      & \vlFMResnetBaseTestEce{}      & \vlFMResnetBaseCalEce{}      & \vlFMResnetBaseTestNll{}      & \vlFMResnetBaseCalNll{}      & 1.3368 \\
-\texttt{M4\_ResNet\_Aug\_Cosine} & \vlFMResnetAugCosineValAcc{} & \vlFMResnetAugCosineTestAcc{} & \vlFMResnetAugCosineTestEce{} & \vlFMResnetAugCosineCalEce{} & \textbf{\vlFMResnetAugCosineTestNll{}} & \textbf{\vlFMResnetAugCosineCalNll{}} & 1.0719 \\
-\texttt{M5\_ResNet\_LS}        & \textbf{\vlFMResnetLsValAcc{}} & \textbf{\vlFMResnetLsTestAcc{}} & \vlFMResnetLsTestEce{}        & \vlFMResnetLsCalEce{}        & \vlFMResnetLsTestNll{}        & \vlFMResnetLsCalNll{}        & 0.6716 \\
-\texttt{M7\_SEResNet\_Full}    & \vlFMSeresnetFullValAcc{}    & \vlFMSeresnetFullTestAcc{}    & \vlFMSeresnetFullTestEce{}    & \vlFMSeresnetFullCalEce{}    & \vlFMSeresnetFullTestNll{}    & \vlFMSeresnetFullCalNll{}    & 0.7632 \\
+\texttt{M0\_Linear}            & \vlFMLinearValAcc{}          & \vlFMLinearTestAcc{}          & \vlFMLinearTestEce{}          & \vlFMLinearCalEce{}          & \vlFMLinearTestNll{}          & \vlFMLinearCalNll{}          & \vlFMLinearTempTMean{} \\
+\texttt{M1\_PlainCNN}          & \vlFMPlaincnnValAcc{}        & \vlFMPlaincnnTestAcc{}        & \textbf{\vlFMPlaincnnTestEce{}} & \textbf{\vlFMPlaincnnCalEce{}} & \vlFMPlaincnnTestNll{}        & \vlFMPlaincnnCalNll{}        & \vlFMPlaincnnTempTMean{} \\
+\texttt{M2\_ResNet\_Base}      & \vlFMResnetBaseValAcc{}      & \vlFMResnetBaseTestAcc{}      & \vlFMResnetBaseTestEce{}      & \vlFMResnetBaseCalEce{}      & \vlFMResnetBaseTestNll{}      & \vlFMResnetBaseCalNll{}      & \vlFMResnetBaseTempTMean{} \\
+\texttt{M4\_ResNet\_Aug\_Cosine} & \vlFMResnetAugCosineValAcc{} & \vlFMResnetAugCosineTestAcc{} & \vlFMResnetAugCosineTestEce{} & \vlFMResnetAugCosineCalEce{} & \textbf{\vlFMResnetAugCosineTestNll{}} & \textbf{\vlFMResnetAugCosineCalNll{}} & \vlFMResnetAugCosineTempTMean{} \\
+\texttt{M5\_ResNet\_LS}        & \textbf{\vlFMResnetLsValAcc{}} & \textbf{\vlFMResnetLsTestAcc{}} & \vlFMResnetLsTestEce{}        & \vlFMResnetLsCalEce{}        & \vlFMResnetLsTestNll{}        & \vlFMResnetLsCalNll{}        & \vlFMResnetLsTempTMean{} \\
+\texttt{M7\_SEResNet\_Full}    & \vlFMSeresnetFullValAcc{}    & \vlFMSeresnetFullTestAcc{}    & \vlFMSeresnetFullTestEce{}    & \vlFMSeresnetFullCalEce{}    & \vlFMSeresnetFullTestNll{}    & \vlFMSeresnetFullCalNll{}    & \vlFMSeresnetFullTempTMean{} \\
 \bottomrule
 \end{tabular}}
 \end{table*}
@@ -144,9 +146,9 @@ Reporting transparently without cherry-picking, however, \texttt{M7\_SEResNet\_F
 
 \section{VeriLoop Governance Trace and Reproducibility}
 
-Across the full 92.47~min RTX 3060 Ti run (5548.4~s total compute, 593.0~MB peak VRAM, PyTorch \texttt{2.9.1+cu128}), VeriLoop executed 14 automated stage gates (8 CIFAR-10 stages + 6 Fashion-MNIST stages, Figure~\ref{fig:curves}).
-All 14/14 stage gates passed (\texttt{passed=True}) with 1365 cumulative traced decimals, 0 untraced values, 0 sign mismatches, and 0 static-AST \texttt{HIGH} violations at a median gate latency of 81.8~ms and \$0 API cost.
-All four pre-registered claims pass 7/7 ledger gates (G1--G7) with 0 post-evidence revisions, and the compiled PDF passes expanded-macro auditing (\texttt{./veriloop audit-pdf}), online citation verification (\texttt{./veriloop verify-cites}), and interactive split-pane inspection (\texttt{review\_ui.html}).
+Across the full 92.47~min RTX 3060 Ti run (5548.4~s total compute, 593.0~MB peak VRAM, PyTorch \texttt{2.9.1+cu128}), VeriLoop executed 14 automated stage self-consistency and AST smoke checks (8 CIFAR-10 stages + 6 Fashion-MNIST stages, Figure~\ref{fig:curves}): 14/14 passed (\texttt{passed=True}) on 182 distinct numbers in the final wiki re-audited across stages with 0 static-AST \texttt{HIGH} violations at 81.8~ms median gate latency and \$0 API cost.
+Because the live wiki and \texttt{wiki\_metrics.log} are generated together from the same run summary, this stage gate verifies pipeline integrity and AST hygiene rather than serving as an independent tracing-recall test.
+Independent end-to-end verification outputs are committed under \texttt{audits/}: \texttt{audits/claims\_check.txt} (4/4 claims passing 7/7 \texttt{G1--G7} gates with 0 revisions), \texttt{audits/veriloop\_gate.json} (\texttt{VERIFIABLE\_GATE: PASSED}), \texttt{audits/verify\_cites\_online.json} (10/10 arXiv/Crossref/S2 verified references), \texttt{audits/pdf\_audit.json} (expanded PDF numbers 100\% traced, 0 Type-3 fonts, 0 warnings), and the interactive split-pane \texttt{review\_ui.html}.
 
 \bibliography{refs}
 \bibliographystyle{icml2027}

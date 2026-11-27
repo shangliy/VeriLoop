@@ -25,7 +25,10 @@ echo "[3/6] Compiling overnight_study.pdf (ICML-style layout, 100% macro-bound).
   pdflatex -interaction=nonstopmode -halt-on-error overnight_study.tex >/dev/null
 )
 
-echo "[4/6] Running VeriLoop hard verifiable gate (numbers + AST + online arXiv/Crossref/S2 citations + claims ledger)..."
+echo "[4/6] Running VeriLoop hard verifiable gate + online citation audit + claims check (logging to audits/)..."
+mkdir -p "$WS/audits"
+"$ROOT/veriloop" claims -w "$WS" check | tee "$WS/audits/claims_check.txt"
+"$ROOT/veriloop" verify-cites "$WS/paper/overnight_study.tex" --bib "$WS/paper/refs.bib" --online --check-claims --json > "$WS/audits/verify_cites_online.json"
 "$ROOT/veriloop" gate \
   --workspace "$WS" \
   --report "$WS/paper/overnight_study.tex" \
@@ -34,12 +37,14 @@ echo "[4/6] Running VeriLoop hard verifiable gate (numbers + AST + online arXiv/
   --scripts "$WS/code" \
   --bib "$WS/paper/refs.bib" \
   --online-cites \
-  --check-claims
+  --check-claims \
+  --out-json "$WS/audits/veriloop_gate.json"
 
-echo "[5/6] Auditing compiled PDF (expanded-macro number tracing, fonts, layout)..."
+echo "[5/6] Auditing compiled PDF (expanded-macro number tracing, fonts, layout -> audits/pdf_audit.json)..."
 "$ROOT/veriloop" audit-pdf "$WS/paper/overnight_study.pdf" \
   --logs "$WS/out/overnight_summary.txt" \
-         "$WS/paper/bound/cifar10/bound_metrics.txt" "$WS/paper/bound/fmnist/bound_metrics.txt"
+         "$WS/paper/bound/cifar10/bound_metrics.txt" "$WS/paper/bound/fmnist/bound_metrics.txt" \
+  --json > "$WS/audits/pdf_audit.json"
 
 echo "[6/6] Building interactive split-pane Review UI..."
 "$ROOT/veriloop" review-ui \

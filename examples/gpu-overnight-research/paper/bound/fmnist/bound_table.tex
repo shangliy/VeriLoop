@@ -4,16 +4,16 @@
 \caption{\textbf{Multi-seed experiment results automatically bound from raw execution logs (mean $\pm$ std).}}
 \label{tab:bound_results}
 \footnotesize
-\begin{tabular}{lccccccc}
+\begin{tabular}{lcccccccc}
 \toprule
-\textbf{Method} & \textbf{Seeds} & \textbf{Cal Ece} & \textbf{Cal Nll} & \textbf{Test Acc} & \textbf{Test Ece} & \textbf{Test Nll} & \textbf{Val Acc} \\
+\textbf{Method} & \textbf{Seeds} & \textbf{Cal Ece} & \textbf{Cal Nll} & \textbf{Temp T} & \textbf{Test Acc} & \textbf{Test Ece} & \textbf{Test Nll} & \textbf{Val Acc} \\
 \midrule
-M0\_Linear & 3 & 0.0099$\pm$0.0006 & 0.4444$\pm$0.0005 & 0.8400$\pm$0.0011 & 0.0154$\pm$0.0038 & 0.4472$\pm$0.0021 & 0.8511$\pm$0.0004 \\
-M1\_PlainCNN & 3 & \textbf{0.0069$\pm$0.0016} & 0.2845$\pm$0.0018 & 0.8998$\pm$0.0006 & \textbf{0.0059$\pm$0.0018} & 0.2842$\pm$0.0019 & 0.9031$\pm$0.0014 \\
-M2\_ResNet\_Base & 3 & 0.0110$\pm$0.0007 & 0.2381$\pm$0.0063 & 0.9155$\pm$0.0026 & 0.0294$\pm$0.0164 & 0.2627$\pm$0.0313 & 0.9194$\pm$0.0024 \\
-M4\_ResNet\_Aug\_Cosine & 3 & 0.0082$\pm$0.0010 & \textbf{0.1736$\pm$0.0034} & 0.9393$\pm$0.0013 & 0.0123$\pm$0.0004 & \textbf{0.1753$\pm$0.0035} & 0.9416$\pm$0.0015 \\
-M5\_ResNet\_LS & 3 & 0.0145$\pm$0.0005 & 0.1921$\pm$0.0020 & \textbf{0.9394$\pm$0.0004} & 0.0725$\pm$0.0009 & 0.2472$\pm$0.0019 & \textbf{0.9421$\pm$0.0010} \\
-M7\_SEResNet\_Full & 3 & 0.0134$\pm$0.0006 & 0.1900$\pm$0.0017 & 0.9373$\pm$0.0012 & 0.0299$\pm$0.0021 & 0.2079$\pm$0.0014 & 0.9420$\pm$0.0011 \\
+M0\_Linear & 3 & 0.0099$\pm$0.0006 & 0.4444$\pm$0.0005 & 1.0765$\pm$0.0420 & 0.8400$\pm$0.0011 & 0.0154$\pm$0.0038 & 0.4472$\pm$0.0021 & 0.8511$\pm$0.0004 \\
+M1\_PlainCNN & 3 & \textbf{0.0069$\pm$0.0016} & 0.2845$\pm$0.0018 & 0.9805$\pm$0.0300 & 0.8998$\pm$0.0006 & \textbf{0.0059$\pm$0.0018} & 0.2842$\pm$0.0019 & 0.9031$\pm$0.0014 \\
+M2\_ResNet\_Base & 3 & 0.0110$\pm$0.0007 & 0.2381$\pm$0.0063 & \textbf{1.3368$\pm$0.3245} & 0.9155$\pm$0.0026 & 0.0294$\pm$0.0164 & 0.2627$\pm$0.0313 & 0.9194$\pm$0.0024 \\
+M4\_ResNet\_Aug\_Cosine & 3 & 0.0082$\pm$0.0010 & \textbf{0.1736$\pm$0.0034} & 1.0719$\pm$0.0083 & 0.9393$\pm$0.0013 & 0.0123$\pm$0.0004 & \textbf{0.1753$\pm$0.0035} & 0.9416$\pm$0.0015 \\
+M5\_ResNet\_LS & 3 & 0.0145$\pm$0.0005 & 0.1921$\pm$0.0020 & 0.6716$\pm$0.0015 & \textbf{0.9394$\pm$0.0004} & 0.0725$\pm$0.0009 & 0.2472$\pm$0.0019 & \textbf{0.9421$\pm$0.0010} \\
+M7\_SEResNet\_Full & 3 & 0.0134$\pm$0.0006 & 0.1900$\pm$0.0017 & 0.7632$\pm$0.0100 & 0.9373$\pm$0.0012 & 0.0299$\pm$0.0021 & 0.2079$\pm$0.0014 & 0.9420$\pm$0.0011 \\
 \bottomrule
 \end{tabular}
 \end{table}

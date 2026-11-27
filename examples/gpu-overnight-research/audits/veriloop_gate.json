@@ -1,0 +1,180 @@
+{
+  "workspace": "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research",
+  "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/paper/overnight_study.tex",
+  "blocked": false,
+  "block_reasons": [],
+  "checks": {
+    "trace_numbers": {
+      "returncode": 0,
+      "summary": {
+        "report": "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/paper/overnight_study.tex",
+        "log_files": 4,
+        "data_files": 0,
+        "skipped_large": [],
+        "traced": 7,
+        "untraced": [],
+        "sign_mismatches": [],
+        "wrong_logs": [],
+        "unpaired_pairs": [],
+        "mixed_rows": [],
+        "cited_stale": [],
+        "workspace_stale": [],
+        "common": 0
+      }
+    },
+    "audit_code": {
+      "returncode": 0,
+      "summary": {
+        "scripts_scanned": 2,
+        "counts": {
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "INFO": 0
+        },
+        "findings": []
+      }
+    },
+    "citation_audit": {
+      "returncode": 0,
+      "summary": {
+        "document": "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/paper/overnight_study.tex",
+        "bib": "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/paper/refs.bib",
+        "online_checked": false,
+        "claims_checked": true,
+        "pairs_count": 11,
+        "issues_count": 0,
+        "warnings_count": 0,
+        "issues": [],
+        "warnings": [],
+        "pairs": [
+          {
+            "line": 42,
+            "kind": "cite",
+            "key": "yang2026aris",
+            "sentence": "Autonomous research pipelines frequently fail silently during long-horizon multi-stage studies through stale number copying, test-set checkpoint peeking, unverified citations, or cherry-picked cross-dataset claims~\\citep{yang2026aris}.",
+            "bib_title": "{ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration}",
+            "bib_author": "Ruofeng Yang and Yongcan Li and Shuai Li",
+            "bib_year": "2026",
+            "arxiv_id": "2605.03042",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 46,
+            "kind": "cite",
+            "key": "xiao2017fashion",
+            "sentence": "Every training run uses identical fixed train/validation splits (45,000/5,000 on CIFAR-10; 50,000/10,000 on Fashion-MNIST~\\citep{xiao2017fashion}), selects the best epoch strictly by validation accuracy, fits post-hoc Temperature Scaling $T^*$~\\citep{guo2017calibration} exclusively on validation log",
+            "bib_title": "{Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms}",
+            "bib_author": "Han Xiao and Kashif Rasul and Roland Vollgraf",
+            "bib_year": "2017",
+            "arxiv_id": "1708.07747",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 46,
+            "kind": "cite",
+            "key": "guo2017calibration",
+            "sentence": "Every training run uses identical fixed train/validation splits (45,000/5,000 on CIFAR-10; 50,000/10,000 on Fashion-MNIST~\\citep{xiao2017fashion}), selects the best epoch strictly by validation accuracy, fits post-hoc Temperature Scaling $T^*$~\\citep{guo2017calibration} exclusively on validation log",
+            "bib_title": "{On Calibration of Modern Neural Networks}",
+            "bib_author": "Chuan Guo and Geoff Pleiss and Yu Sun and Kilian Q. Weinberger",
+            "bib_year": "2017",
+            "arxiv_id": "1706.04599",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 56,
+            "kind": "cite",
+            "key": "he2015deep",
+            "sentence": "\\item \\texttt{M2\\_ResNet\\_Base}: 3-stage CIFAR ResNet-14 (greater depth/capacity plus residual shortcuts~\\citep{he2015deep} and BatchNorm~\\citep{ioffe2015batch}, constant-LR AdamW, no augmentation).",
+            "bib_title": "{Deep Residual Learning for Image Recognition}",
+            "bib_author": "Kaiming He and Xiangyu Zhang and Shaoqing Ren and Jian Sun",
+            "bib_year": "2015",
+            "arxiv_id": "1512.03385",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 56,
+            "kind": "cite",
+            "key": "ioffe2015batch",
+            "sentence": "\\item \\texttt{M2\\_ResNet\\_Base}: 3-stage CIFAR ResNet-14 (greater depth/capacity plus residual shortcuts~\\citep{he2015deep} and BatchNorm~\\citep{ioffe2015batch}, constant-LR AdamW, no augmentation).",
+            "bib_title": "{Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift}",
+            "bib_author": "Sergey Ioffe and Christian Szegedy",
+            "bib_year": "2015",
+            "arxiv_id": "1502.03167",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 58,
+            "kind": "cite",
+            "key": "loshchilov2016sgdr",
+            "sentence": "\\item \\texttt{M4\\_ResNet\\_Aug\\_Cosine}: Switches optimizer bundle to Nesterov SGD (LR 0.1, WD $5\\times 10^{-4}$) with 3-epoch linear warmup and cosine annealing~\\citep{loshchilov2016sgdr}.",
+            "bib_title": "{SGDR: Stochastic Gradient Descent with Warm Restarts}",
+            "bib_author": "Ilya Loshchilov and Frank Hutter",
+            "bib_year": "2016",
+            "arxiv_id": "1608.03983",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 59,
+            "kind": "cite",
+            "key": "szegedy2015rethinking",
+            "sentence": "\\item \\texttt{M5\\_ResNet\\_LS}: Adds Label Smoothing ($\\epsilon=0.1$)~\\citep{szegedy2015rethinking} to \\texttt{M4}.",
+            "bib_title": "{Rethinking the Inception Architecture for Computer Vision}",
+            "bib_author": "Christian Szegedy and Vincent Vanhoucke and Sergey Ioffe and Jonathon Shlens and Zbigniew Wojna",
+            "bib_year": "2015",
+            "arxiv_id": "1512.00567",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 60,
+            "kind": "cite",
+            "key": "zhang2017mixup",
+            "sentence": "\\item \\texttt{M6\\_ResNet\\_Mixup}: Replaces Label Smoothing with Mixup ($\\alpha=0.4$)~\\citep{zhang2017mixup} (CIFAR-10 only).",
+            "bib_title": "{mixup: Beyond Empirical Risk Minimization}",
+            "bib_author": "Hongyi Zhang and Moustapha Cisse and Yann N. Dauphin and David Lopez-Paz",
+            "bib_year": "2017",
+            "arxiv_id": "1710.09412",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 61,
+            "kind": "cite",
+            "key": "hu2017squeeze",
+            "sentence": "\\item \\texttt{M7\\_SEResNet\\_Full}: Bundles Squeeze-and-Excitation attention~\\citep{hu2017squeeze}, $8\\times 8$ Cutout~\\citep{devries2017improved}, cosine SGD, and mild label smoothing ($\\epsilon=0.05$).",
+            "bib_title": "{Squeeze-and-Excitation Networks}",
+            "bib_author": "Jie Hu and Li Shen and Samuel Albanie and Gang Sun and Enhua Wu",
+            "bib_year": "2017",
+            "arxiv_id": "1709.01507",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 61,
+            "kind": "cite",
+            "key": "devries2017improved",
+            "sentence": "\\item \\texttt{M7\\_SEResNet\\_Full}: Bundles Squeeze-and-Excitation attention~\\citep{hu2017squeeze}, $8\\times 8$ Cutout~\\citep{devries2017improved}, cosine SGD, and mild label smoothing ($\\epsilon=0.05$).",
+            "bib_title": "{Improved Regularization of Convolutional Neural Networks with Cutout}",
+            "bib_author": "Terrance DeVries and Graham W. Taylor",
+            "bib_year": "2017",
+            "arxiv_id": "1708.04552",
+            "status": "BIB_FOUND_OFFLINE"
+          },
+          {
+            "line": 102,
+            "kind": "cite",
+            "key": "guo2017calibration",
+            "sentence": "Consistent with \\citet{guo2017calibration}, unaugmented \\texttt{M2\\_ResNet\\_Base} suffers severe overconfidence on CIFAR-10 (raw ECE \\vlCMResnetBaseTestEce{}, raw NLL \\vlCMResnetBaseTestNll{}), which validation-fitted $T^*=\\vlCMResnetBaseTempTMean{}$ reduces to calibrated ECE \\vlCMResnetBaseCalEce{}",
+            "bib_title": "{On Calibration of Modern Neural Networks}",
+            "bib_author": "Chuan Guo and Geoff Pleiss and Yu Sun and Kilian Q. Weinberger",
+            "bib_year": "2017",
+            "arxiv_id": "1706.04599",
+            "status": "BIB_FOUND_OFFLINE"
+          }
+        ]
+      }
+    },
+    "claims_ledger": {
+      "returncode": 0,
+      "stdout": "H1_ResidualGain [supported] gates: 7/7 ok  revisions: 0\n    3-stage SmallResNet with BatchNorm (M2_ResNet_Base) improves held-out test accuracy over PlainCNN (M1_PlainCNN) across 3 seeds on CIFAR-10 and Fashion\nH2_AugCosineGain [supported] gates: 7/7 ok  revisions: 0\n    Data augmentation plus Nesterov SGD with warmup-cosine decay and weight decay (M4_ResNet_Aug_Cosine) and SE+Cutout+mild label smoothing (M7_SEResNet_F\nH3_CalibrationTradeoff [supported] gates: 7/7 ok  revisions: 0\n    Training-time regularizers (Label Smoothing eps=0.1, Mixup alpha=0.4) and validation-fitted post-hoc Temperature Scaling (T*) substantially alter Expe\nH4_CrossDatasetRank [supported] gates: 7/7 ok  revisions: 0\n    The full regularized residual architecture (M7_SEResNet_Full) outperforms M0_Linear and M1_PlainCNN on both CIFAR-10 and Fashion-MNIST while every int",
+      "stderr": ""
+    }
+  }
+}

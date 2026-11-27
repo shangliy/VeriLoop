@@ -1,6 +1,6 @@
 === VERILOOP OVERNIGHT REAL-GPU STUDY SUMMARY (ZERO OVERRIDES) ===
 RUNS total_runs=42 gpu=NVIDIA GeForce RTX 3060 Ti torch=2.9.1+cu128 total_gpu_s=5548.4 (92.47 min) peak_vram_mb=593.0
-GATES stages_audited=14 passed=14/14 total_traced=1365 total_untraced=0 total_ast_high=0 median_gate_ms=81.8
+GATES stages_audited=14 passed=14/14 final_wiki_numbers=182 total_untraced=0 total_ast_high=0 median_gate_ms=81.8
 
 --- DATASET: cifar10 ---
 SUMMARY cifar10 M0_Linear            n=3 | val_acc=0.3722±0.0025 test_acc=0.3692±0.0090 [0.3468,0.3915] | raw_ece=0.0959±0.0135 cal_ece=0.0236±0.0061 | raw_nll=1.8679±0.0210 cal_nll=1.8050±0.0130 | raw_brier=0.7795 cal_brier=0.7660 T=1.4978

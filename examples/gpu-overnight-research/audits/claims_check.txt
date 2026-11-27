@@ -1,0 +1,8 @@
+H1_ResidualGain [supported] gates: 7/7 ok  revisions: 0
+    3-stage SmallResNet with BatchNorm (M2_ResNet_Base) improves held-out test accuracy over PlainCNN (M1_PlainCNN) across 3 seeds on CIFAR-10 and Fashion
+H2_AugCosineGain [supported] gates: 7/7 ok  revisions: 0
+    Data augmentation plus Nesterov SGD with warmup-cosine decay and weight decay (M4_ResNet_Aug_Cosine) and SE+Cutout+mild label smoothing (M7_SEResNet_F
+H3_CalibrationTradeoff [supported] gates: 7/7 ok  revisions: 0
+    Training-time regularizers (Label Smoothing eps=0.1, Mixup alpha=0.4) and validation-fitted post-hoc Temperature Scaling (T*) substantially alter Expe
+H4_CrossDatasetRank [supported] gates: 7/7 ok  revisions: 0
+    The full regularized residual architecture (M7_SEResNet_Full) outperforms M0_Linear and M1_PlainCNN on both CIFAR-10 and Fashion-MNIST while every int

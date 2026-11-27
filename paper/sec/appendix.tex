@@ -114,13 +114,13 @@ Table~\ref{tab:gates} specifies all seven claim-ledger gates enforced by \texttt
 \toprule
 \textbf{Gate} & \textbf{Invariant} & \textbf{Failure Condition Blocked} \\
 \midrule
-\texttt{G1} & Artifact SHA-256 \& completion & Rejects truncated logs, missing completion markers, or logs modified after registration. \\
-\texttt{G2} & Per-dataset \& per-arm seeds & Requires $\ge 3$ independent seeds across every declared dataset and experimental arm. \\
-\texttt{G3} & Deterministic baseline & Requires at least one deterministic non-parametric baseline logged on the same split. \\
-\texttt{G4} & Validation/test separation & Requires explicit \texttt{selected\_on} validation split metadata distinct from test reporting. \\
-\texttt{G5} & Ablation log binding & Requires distinct executed ablation log files rather than prose-only ablation assertions. \\
-\texttt{G6} & Monotonic sequence IDs & Prevents same-second timestamp collisions and post-hoc claim rewriting without revision logs. \\
-\texttt{G7} & Logged uncertainty intervals & Requires numeric dispersion (\texttt{$\pm$} std or \texttt{[lo, hi]} CI) present inside registered logs. \\
+\texttt{G1} & Logs exist \& intact & Rejects missing, empty, truncated (missing completion marker), or SHA-256-altered evidence logs. \\
+\texttt{G2} & Seeds $\ge$ planned & Requires planned seed count across every dataset and non-deterministic baseline arm (else ceiling is \texttt{pilot}). \\
+\texttt{G3} & No test selection & Rejects any evidence entry with \texttt{selected\_on} set to \texttt{test} or \texttt{unknown}. \\
+\texttt{G4} & Baselines run & Requires every pre-registered baseline arm to have its own attached evidence entry. \\
+\texttt{G5} & Ablations logged & When $k>1$ changes are introduced, requires $\ge k-1$ ablated plus a dedicated \texttt{--role ablation} log on disk. \\
+\texttt{G6} & Claim fixed before evidence & Rejects any wording revision whose monotonic sequence ID is at or after the latest attached evidence. \\
+\texttt{G7} & Uncertainty / CI logged & When planned seeds $\ge 3$, verifies uncertainty/CI syntax (\texttt{$\pm$}, \texttt{[a,b]}, \texttt{95\% CI}, $p$-value) inside a logged file. \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -128,14 +128,14 @@ Table~\ref{tab:gates} specifies all seven claim-ledger gates enforced by \texttt
 \section{Long-Horizon Real-GPU Deep Learning Case Study}
 \label{app:gpu_case_study}
 
-To validate VeriLoop's end-to-end governance, log-to-\LaTeX{} binding (\texttt{paper\_bind.py}), online citation verification (\texttt{citation\_audit.py}), expanded-PDF auditing (\texttt{pdf\_audit.py}), and interactive split-pane review workbench (\texttt{review\_ui.py}) on a sustained deep learning workload, we ran 42 multi-seed PyTorch AMP fp16 training jobs on a local NVIDIA GeForce RTX 3060~Ti (5548.4~s / 92.47~min total compute, 593.0~MB peak VRAM; full artifact committed under \texttt{examples/gpu-overnight-research/}).
-Four falsifiable hypotheses were pre-registered in \texttt{claims.json} prior to training; every checkpoint and post-hoc temperature $T^*$ was selected strictly on the validation split; and held-out test metrics were scored once and logged to TensorBoard, W\&B, CSV, and an append-only ledger.
-Across all 14 completed stages (8 CIFAR-10 + 6 Fashion-MNIST), VeriLoop updated \texttt{wiki/RESEARCH\_WIKI.md} and ran deterministic Layer-1 gates automatically: 14/14 stage gates passed (1365 cumulative traced decimals, 0 untraced, 0 sign mismatches, 0 AST \texttt{HIGH} findings, 81.8~ms median latency at \$0 API cost).
-Table~\ref{tab:app_gpu} summarizes the verified multi-seed results, including the cross-dataset calibration reversal where unaugmented \texttt{M2\_ResNet\_Base} is severely overconfident ($T^*=2.6460$) while Label Smoothing ($T^*=0.7234$ / $0.6716$) and Mixup ($T^*=0.6449$) induce underconfidence that validation-fitted post-hoc Temperature Scaling resolves.
+To validate VeriLoop's end-to-end pipeline---log-to-\LaTeX{} binding (\texttt{paper\_bind.py}), online citation verification (\texttt{citation\_audit.py}), expanded-PDF auditing (\texttt{pdf\_audit.py}), and interactive split-pane review (\texttt{review\_ui.py})---on a sustained deep learning workload, we ran 42 multi-seed PyTorch AMP fp16 jobs on a local NVIDIA GeForce RTX 3060~Ti (5548.4~s / 92.47~min compute, 593.0~MB peak VRAM; full artifact and committed gate/PDF/citation JSON logs under \texttt{examples/gpu-overnight-research/audits/}).
+Four hypotheses were registered in \texttt{claims.json} prior to training (committed alongside results; future studies should anchor \texttt{claims.json} in a pre-run commit); every checkpoint and post-hoc temperature $T^*$ was selected strictly on the validation split; and held-out test metrics were scored once and logged to TensorBoard, W\&B, CSV, and an append-only ledger.
+Across all 14 stages (8 bundled CIFAR-10 recipe stages + 6 Fashion-MNIST stages), VeriLoop updated \texttt{wiki/RESEARCH\_WIKI.md} and ran a live pipeline self-consistency and AST smoke check: 14/14 stages passed (182 distinct numbers in the final wiki re-audited across stages, 0 AST \texttt{HIGH}, 81.8~ms median latency at \$0 API cost; because the wiki and \texttt{wiki\_metrics.log} are emitted together, this validates pipeline integrity rather than tracing recall, while \texttt{audits/pdf\_audit.json} independently traces 100\% of expanded PDF decimals with 0 untraced and 0 sign mismatches).
+Table~\ref{tab:app_gpu} summarizes the multi-seed results, including the Label Smoothing underconfidence reversal ($T^*=0.7234$ on CIFAR-10; $0.6716$ on Fashion-MNIST) and CIFAR-10 Mixup reversal ($T^*=0.6449$), contrasted with overconfident unaugmented \texttt{M2\_ResNet\_Base} ($T^*=2.6460$ on CIFAR-10; $1.3368$ on Fashion-MNIST).
 
 \begin{table*}[h]
 \centering
-\caption{\textbf{End-to-end 42-run RTX 3060~Ti deep learning trajectory governed by VeriLoop (\texttt{examples/gpu-overnight-research/}).} All metrics are mean $\pm$ std across 3 independent seeds (zero manual transcription; auto-bound from 126 TensorBoard/W\&B files). All 14/14 live stage gates passed in 81.8~ms median latency at \$0 API cost.}
+\caption{\textbf{End-to-end 42-run RTX 3060~Ti deep learning trajectory governed by VeriLoop (\texttt{examples/gpu-overnight-research/}).} All per-arm metric and $T^*$ cells are mean $\pm$ std across 3 independent seeds, auto-bound from 126 TensorBoard/W\&B files via \texttt{paper\_bind.py} (audit JSONs in \texttt{audits/}).}
 \label{tab:app_gpu}
 \setlength{\tabcolsep}{3.4pt}
 \scriptsize

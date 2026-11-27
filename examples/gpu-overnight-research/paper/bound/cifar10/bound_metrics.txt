@@ -1,5 +1,5 @@
 # VeriLoop Paper-Bind Canonical Metrics Log (auto-generated; do not edit by hand)
-# generated_utc=2026-11-27T03:09:23.419880+00:00 sources=72 methods=8 metrics=6
+# generated_utc=2026-11-27T03:32:39.413321+00:00 sources=72 methods=8 metrics=7
 SOURCE format=tensorboard sha256=7431cedc08d50455 points=125 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M0_Linear_s42/events.out.tfevents.cifar10.M0_Linear.s42
 SOURCE format=tensorboard sha256=e2ad674503d623f9 points=125 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M0_Linear_s43/events.out.tfevents.cifar10.M0_Linear.s43
 SOURCE format=tensorboard sha256=1115f947557b3075 points=125 path=/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M0_Linear_s44/events.out.tfevents.cifar10.M0_Linear.s44
@@ -75,48 +75,56 @@ SOURCE format=wandb_summary sha256=82d193f74d296ba4 points=14 path=/home/shawnya
 
 BOUND M0_Linear | cal_ece | n=3 | 0.0236±0.0061 [0.0084,0.0388] | s42=0.0303 s43=0.0185 s44=0.0220
 BOUND M0_Linear | cal_nll | n=3 | 1.8050±0.0130 [1.7726,1.8374] | s42=1.7906 s43=1.8081 s44=1.8162
+BOUND M0_Linear | temp_T | n=3 | 1.4978±0.0529 [1.3664,1.6292] | s42=1.4804 s43=1.5572 s44=1.4558
 BOUND M0_Linear | test_acc | n=3 | 0.3692±0.0090 [0.3468,0.3915] | pct=36.92±0.90% | s42=0.3791 s43=0.3668 s44=0.3616
 BOUND M0_Linear | test_ece | n=3 | 0.0959±0.0135 [0.0624,0.1293] | s42=0.0865 s43=0.1113 s44=0.0898
 BOUND M0_Linear | test_nll | n=3 | 1.8679±0.0210 [1.8157,1.9200] | s42=1.8470 s43=1.8890 s44=1.8676
 BOUND M0_Linear | val_acc | n=3 | 0.3722±0.0025 [0.3660,0.3784] | pct=37.22±0.25% | s42=0.3750 s43=0.3714 s44=0.3702
 BOUND M1_PlainCNN | cal_ece | n=3 | 0.0127±0.0048 [0.0009,0.0246] | s42=0.0097 s43=0.0103 s44=0.0182
 BOUND M1_PlainCNN | cal_nll | n=3 | 0.6407±0.0041 [0.6305,0.6509] | s42=0.6443 s43=0.6362 s44=0.6415
+BOUND M1_PlainCNN | temp_T | n=3 | 1.1669±0.0468 [1.0506,1.2831] | s42=1.1139 s43=1.2026 s44=1.1841
 BOUND M1_PlainCNN | test_acc | n=3 | 0.7787±0.0029 [0.7715,0.7860] | pct=77.87±0.29% | s42=0.7769 s43=0.7821 s44=0.7772
 BOUND M1_PlainCNN | test_ece | n=3 | 0.0281±0.0038 [0.0186,0.0376] | s42=0.0238 s43=0.0296 s44=0.0310
 BOUND M1_PlainCNN | test_nll | n=3 | 0.6484±0.0016 [0.6443,0.6525] | s42=0.6491 s43=0.6465 s44=0.6495
 BOUND M1_PlainCNN | val_acc | n=3 | 0.7838±0.0043 [0.7732,0.7944] | pct=78.38±0.43% | s42=0.7830 s43=0.7884 s44=0.7800
 BOUND M2_ResNet_Base | cal_ece | n=3 | 0.0098±0.0023 [0.0040,0.0156] | s42=0.0124 s43=0.0089 s44=0.0079
 BOUND M2_ResNet_Base | cal_nll | n=3 | 0.5624±0.0170 [0.5202,0.6046] | s42=0.5809 s43=0.5588 s44=0.5475
+BOUND M2_ResNet_Base | temp_T | n=3 | 2.6460±0.1037 [2.3883,2.9037] | s42=2.7642 s43=2.6037 s44=2.5701
 BOUND M2_ResNet_Base | test_acc | n=3 | 0.8112±0.0058 [0.7967,0.8257] | pct=81.12±0.58% | s42=0.8049 s43=0.8123 s44=0.8164
 BOUND M2_ResNet_Base | test_ece | n=3 | 0.1261±0.0074 [0.1078,0.1444] | s42=0.1345 s43=0.1231 s44=0.1207
 BOUND M2_ResNet_Base | test_nll | n=3 | 0.9155±0.0716 [0.7375,1.0935] | s42=0.9957 s43=0.8931 s44=0.8578
 BOUND M2_ResNet_Base | val_acc | n=3 | 0.8134±0.0052 [0.8005,0.8263] | pct=81.34±0.52% | s42=0.8074 s43=0.8162 s44=0.8166
 BOUND M3_ResNet_Aug | cal_ece | n=3 | 0.0088±0.0006 [0.0073,0.0103] | s42=0.0081 s43=0.0090 s44=0.0093
 BOUND M3_ResNet_Aug | cal_nll | n=3 | 0.3641±0.0083 [0.3435,0.3847] | s42=0.3674 s43=0.3546 s44=0.3702
+BOUND M3_ResNet_Aug | temp_T | n=3 | 1.5584±0.0720 [1.3794,1.7373] | s42=1.6013 s43=1.4752 s44=1.5986
 BOUND M3_ResNet_Aug | test_acc | n=3 | 0.8764±0.0034 [0.8679,0.8850] | pct=87.64±0.34% | s42=0.8744 s43=0.8804 s44=0.8745
 BOUND M3_ResNet_Aug | test_ece | n=3 | 0.0487±0.0047 [0.0371,0.0603] | s42=0.0522 s43=0.0434 s44=0.0506
 BOUND M3_ResNet_Aug | test_nll | n=3 | 0.4112±0.0154 [0.3731,0.4494] | s42=0.4226 s43=0.3938 s44=0.4174
 BOUND M3_ResNet_Aug | val_acc | n=3 | 0.8760±0.0075 [0.8572,0.8948] | pct=87.60±0.75% | s42=0.8750 s43=0.8840 s44=0.8690
 BOUND M4_ResNet_Aug_Cosine | cal_ece | n=3 | 0.0061±0.0015 [0.0023,0.0098] | s42=0.0046 s43=0.0076 s44=0.0059
 BOUND M4_ResNet_Aug_Cosine | cal_nll | n=3 | 0.2500±0.0031 [0.2424,0.2576] | s42=0.2497 s43=0.2532 s44=0.2472
+BOUND M4_ResNet_Aug_Cosine | temp_T | n=3 | 1.4338±0.0128 [1.4021,1.4655] | s42=1.4421 s43=1.4191 s44=1.4402
 BOUND M4_ResNet_Aug_Cosine | test_acc | n=3 | 0.9152±0.0011 [0.9124,0.9179] | pct=91.52±0.11% | s42=0.9156 s43=0.9139 s44=0.9160
 BOUND M4_ResNet_Aug_Cosine | test_ece | n=3 | 0.0324±0.0013 [0.0291,0.0356] | s42=0.0312 s43=0.0338 s44=0.0321
 BOUND M4_ResNet_Aug_Cosine | test_nll | n=3 | 0.2728±0.0038 [0.2633,0.2822] | s42=0.2713 s43=0.2771 s44=0.2699
 BOUND M4_ResNet_Aug_Cosine | val_acc | n=3 | 0.9160±0.0024 [0.9100,0.9220] | pct=91.60±0.24% | s42=0.9160 s43=0.9184 s44=0.9136
 BOUND M5_ResNet_LS | cal_ece | n=3 | 0.0116±0.0033 [0.0034,0.0197] | s42=0.0136 s43=0.0133 s44=0.0078
 BOUND M5_ResNet_LS | cal_nll | n=3 | 0.2674±0.0029 [0.2602,0.2745] | s42=0.2692 s43=0.2688 s44=0.2640
+BOUND M5_ResNet_LS | temp_T | n=3 | 0.7234±0.0074 [0.7051,0.7417] | pct=72.34±0.74% | s42=0.7203 s43=0.7181 s44=0.7318
 BOUND M5_ResNet_LS | test_acc | n=3 | 0.9173±0.0027 [0.9107,0.9239] | pct=91.73±0.27% | s42=0.9147 s43=0.9172 s44=0.9200
 BOUND M5_ResNet_LS | test_ece | n=3 | 0.0619±0.0028 [0.0550,0.0687] | s42=0.0597 s43=0.0609 s44=0.0650
 BOUND M5_ResNet_LS | test_nll | n=3 | 0.3076±0.0018 [0.3030,0.3121] | s42=0.3089 s43=0.3083 s44=0.3055
 BOUND M5_ResNet_LS | val_acc | n=3 | 0.9186±0.0023 [0.9129,0.9243] | pct=91.86±0.23% | s42=0.9168 s43=0.9212 s44=0.9178
 BOUND M6_ResNet_Mixup | cal_ece | n=3 | 0.0065±0.0007 [0.0047,0.0083] | s42=0.0058 s43=0.0072 s44=0.0065
 BOUND M6_ResNet_Mixup | cal_nll | n=3 | 0.2535±0.0021 [0.2483,0.2586] | s42=0.2558 s43=0.2520 s44=0.2526
+BOUND M6_ResNet_Mixup | temp_T | n=3 | 0.6449±0.0090 [0.6225,0.6673] | pct=64.49±0.90% | s42=0.6368 s43=0.6432 s44=0.6546
 BOUND M6_ResNet_Mixup | test_acc | n=3 | 0.9181±0.0016 [0.9142,0.9221] | pct=91.81±0.16% | s42=0.9168 s43=0.9199 s44=0.9177
 BOUND M6_ResNet_Mixup | test_ece | n=3 | 0.0954±0.0054 [0.0820,0.1087] | s42=0.0962 s43=0.1003 s44=0.0897
 BOUND M6_ResNet_Mixup | test_nll | n=3 | 0.3226±0.0052 [0.3098,0.3354] | s42=0.3261 s43=0.3251 s44=0.3167
 BOUND M6_ResNet_Mixup | val_acc | n=3 | 0.9167±0.0013 [0.9135,0.9200] | pct=91.67±0.13% | s42=0.9180 s43=0.9154 s44=0.9168
 BOUND M7_SEResNet_Full | cal_ece | n=3 | 0.0120±0.0013 [0.0087,0.0153] | s42=0.0121 s43=0.0106 s44=0.0133
 BOUND M7_SEResNet_Full | cal_nll | n=3 | 0.2560±0.0007 [0.2544,0.2577] | s42=0.2559 s43=0.2554 s44=0.2568
+BOUND M7_SEResNet_Full | temp_T | n=3 | 0.8192±0.0009 [0.8171,0.8213] | pct=81.92±0.09% | s42=0.8191 s43=0.8201 s44=0.8184
 BOUND M7_SEResNet_Full | test_acc | n=3 | 0.9193±0.0004 [0.9185,0.9202] | pct=91.93±0.04% | s42=0.9193 s43=0.9197 s44=0.9190
 BOUND M7_SEResNet_Full | test_ece | n=3 | 0.0302±0.0018 [0.0256,0.0348] | s42=0.0307 s43=0.0317 s44=0.0281
 BOUND M7_SEResNet_Full | test_nll | n=3 | 0.2710±0.0005 [0.2696,0.2723] | s42=0.2716 s43=0.2707 s44=0.2706

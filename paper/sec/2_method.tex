@@ -16,14 +16,14 @@ All verification utilities are implemented in Python~3 using only the standard l
 
 Without an immutable claim registry, autonomous agents frequently rewrite hypotheses post hoc after observing weak results or overwrite raw logs while citing stale figures.
 \texttt{claims.py} requires every scientific claim to be pre-registered with its target metric, dataset scope, and selection split before full evaluation runs.
-Every claim enters in \texttt{pilot} state and cannot be promoted to \texttt{supported} unless seven deterministic gates pass (formal specifications in Appendix~\ref{app:gates}):
-\texttt{G1} binds each evidence log to its SHA-256 digest and completion marker, rejecting truncated or silently overwritten logs;
-\texttt{G2} enforces multi-seed coverage per dataset and experimental arm;
-\texttt{G3} requires a deterministic non-parametric baseline;
-\texttt{G4} separates development selection from held-out test reporting;
-\texttt{G5} binds ablation claims to distinct executed ablation log files;
-\texttt{G6} enforces monotonic sequence IDs preventing timestamp collisions; and
-\texttt{G7} requires numeric uncertainty intervals to exist inside logged outputs.
+Every claim enters in \texttt{proposed} state and reaches \texttt{supported} only when seven deterministic gates pass (matching \texttt{claims.py}; details in Appendix~\ref{app:gates}):
+\texttt{G1} checks evidence-log existence, non-emptiness, SHA-256 integrity, and completion markers;
+\texttt{G2} enforces planned multi-seed coverage per dataset and non-deterministic baseline;
+\texttt{G3} forbids test-split or unknown selection;
+\texttt{G4} requires evidence for every pre-registered baseline arm;
+\texttt{G5} requires $\ge k-1$ ablations plus a dedicated \texttt{--role ablation} log when $k>1$ changes are introduced;
+\texttt{G6} keeps claim wording fixed before the latest evidence via monotonic sequence IDs; and
+\texttt{G7} verifies logged uncertainty/CI syntax (\texttt{$\pm$}, \texttt{[lo, hi]}, \texttt{95\% CI}, or $p$) when seeds $\ge 3$.
 Only an explicit human waiver can bypass a failed gate, ensuring state transitions remain tamper-evident.
 
 \subsection{Frozen Deterministic Layer-1 Gates (\$0)}

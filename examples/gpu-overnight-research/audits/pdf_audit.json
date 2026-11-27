@@ -1,0 +1,17 @@
+{
+  "pdf": "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/paper/overnight_study.pdf",
+  "pages": 4,
+  "main_body_end_page": 3,
+  "type3_fonts": [],
+  "rendered_pages": [],
+  "pdf_number_trace": {
+    "traced": 195,
+    "untraced": 0,
+    "sign_mismatches": 0,
+    "untraced_samples": []
+  },
+  "issues_count": 0,
+  "warnings_count": 0,
+  "issues": [],
+  "warnings": []
+}

@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-11-27T03:09:23.420964+00:00",
-  "bound_metrics_sha256": "2c2e4ced80430365dc4c1f485f55a54572d77cdc4127978a6c3822a633927135",
+  "generated_utc": "2026-11-27T03:32:39.414355+00:00",
+  "bound_metrics_sha256": "363e3f010d2c0e717d8ddde45b17441d2ac2a634591de05b38941d297c2b5485",
   "sources": [
     {
       "path": "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M0_Linear_s42/events.out.tfevents.cifar10.M0_Linear.s42",
@@ -480,6 +480,25 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M0_Linear_s44/files/wandb-summary.json"
       ]
     },
+    "M0_Linear::temp_T": {
+      "method": "M0_Linear",
+      "metric": "temp_T",
+      "n_seeds": 3,
+      "mean": 1.4978,
+      "std": 0.05289196536337062,
+      "ci_lo": 1.3663984695344837,
+      "ci_hi": 1.6292015304655163,
+      "per_seed": {
+        "42": 1.4804,
+        "43": 1.5572,
+        "44": 1.4558
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M0_Linear_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M0_Linear_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M0_Linear_s44/files/wandb-summary.json"
+      ]
+    },
     "M0_Linear::test_acc": {
       "method": "M0_Linear",
       "metric": "test_acc",
@@ -610,6 +629,25 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M1_PlainCNN_s42/events.out.tfevents.cifar10.M1_PlainCNN.s42",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M1_PlainCNN_s43/events.out.tfevents.cifar10.M1_PlainCNN.s43",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M1_PlainCNN_s44/events.out.tfevents.cifar10.M1_PlainCNN.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s44/files/wandb-summary.json"
+      ]
+    },
+    "M1_PlainCNN::temp_T": {
+      "method": "M1_PlainCNN",
+      "metric": "temp_T",
+      "n_seeds": 3,
+      "mean": 1.1668666666666665,
+      "std": 0.04679383862575642,
+      "ci_lo": 1.050614945454601,
+      "ci_hi": 1.283118387878732,
+      "per_seed": {
+        "42": 1.1139,
+        "43": 1.2026,
+        "44": 1.1841
+      },
+      "sources": [
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s42/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s43/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s44/files/wandb-summary.json"
@@ -750,6 +788,25 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M2_ResNet_Base_s44/files/wandb-summary.json"
       ]
     },
+    "M2_ResNet_Base::temp_T": {
+      "method": "M2_ResNet_Base",
+      "metric": "temp_T",
+      "n_seeds": 3,
+      "mean": 2.646,
+      "std": 0.10373364931400045,
+      "ci_lo": 2.388290531520454,
+      "ci_hi": 2.903709468479546,
+      "per_seed": {
+        "42": 2.7642,
+        "43": 2.6037,
+        "44": 2.5701
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M2_ResNet_Base_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M2_ResNet_Base_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M2_ResNet_Base_s44/files/wandb-summary.json"
+      ]
+    },
     "M2_ResNet_Base::test_acc": {
       "method": "M2_ResNet_Base",
       "metric": "test_acc",
@@ -880,6 +937,25 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M3_ResNet_Aug_s42/events.out.tfevents.cifar10.M3_ResNet_Aug.s42",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M3_ResNet_Aug_s43/events.out.tfevents.cifar10.M3_ResNet_Aug.s43",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M3_ResNet_Aug_s44/events.out.tfevents.cifar10.M3_ResNet_Aug.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s44/files/wandb-summary.json"
+      ]
+    },
+    "M3_ResNet_Aug::temp_T": {
+      "method": "M3_ResNet_Aug",
+      "metric": "temp_T",
+      "n_seeds": 3,
+      "mean": 1.5583666666666667,
+      "std": 0.07203709692466324,
+      "ci_lo": 1.3794021543600614,
+      "ci_hi": 1.737331178973272,
+      "per_seed": {
+        "42": 1.6013,
+        "43": 1.4752,
+        "44": 1.5986
+      },
+      "sources": [
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s42/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s43/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s44/files/wandb-summary.json"
@@ -1020,6 +1096,25 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M4_ResNet_Aug_Cosine_s44/files/wandb-summary.json"
       ]
     },
+    "M4_ResNet_Aug_Cosine::temp_T": {
+      "method": "M4_ResNet_Aug_Cosine",
+      "metric": "temp_T",
+      "n_seeds": 3,
+      "mean": 1.4338,
+      "std": 0.012765970390064305,
+      "ci_lo": 1.4020850119936437,
+      "ci_hi": 1.4655149880063563,
+      "per_seed": {
+        "42": 1.4421,
+        "43": 1.4191,
+        "44": 1.4402
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M4_ResNet_Aug_Cosine_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M4_ResNet_Aug_Cosine_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M4_ResNet_Aug_Cosine_s44/files/wandb-summary.json"
+      ]
+    },
     "M4_ResNet_Aug_Cosine::test_acc": {
       "method": "M4_ResNet_Aug_Cosine",
       "metric": "test_acc",
@@ -1150,6 +1245,25 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M5_ResNet_LS_s42/events.out.tfevents.cifar10.M5_ResNet_LS.s42",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M5_ResNet_LS_s43/events.out.tfevents.cifar10.M5_ResNet_LS.s43",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M5_ResNet_LS_s44/events.out.tfevents.cifar10.M5_ResNet_LS.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s44/files/wandb-summary.json"
+      ]
+    },
+    "M5_ResNet_LS::temp_T": {
+      "method": "M5_ResNet_LS",
+      "metric": "temp_T",
+      "n_seeds": 3,
+      "mean": 0.7234,
+      "std": 0.007357309290766571,
+      "ci_lo": 0.7051219554184992,
+      "ci_hi": 0.7416780445815009,
+      "per_seed": {
+        "42": 0.7203,
+        "43": 0.7181,
+        "44": 0.7318
+      },
+      "sources": [
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s42/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s43/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s44/files/wandb-summary.json"
@@ -1290,6 +1404,25 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M6_ResNet_Mixup_s44/files/wandb-summary.json"
       ]
     },
+    "M6_ResNet_Mixup::temp_T": {
+      "method": "M6_ResNet_Mixup",
+      "metric": "temp_T",
+      "n_seeds": 3,
+      "mean": 0.6448666666666667,
+      "std": 0.009016281569102237,
+      "ci_lo": 0.6224671738675479,
+      "ci_hi": 0.6672661594657855,
+      "per_seed": {
+        "42": 0.6368,
+        "43": 0.6432,
+        "44": 0.6546
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M6_ResNet_Mixup_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M6_ResNet_Mixup_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M6_ResNet_Mixup_s44/files/wandb-summary.json"
+      ]
+    },
     "M6_ResNet_Mixup::test_acc": {
       "method": "M6_ResNet_Mixup",
       "metric": "test_acc",
@@ -1425,6 +1558,25 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s44/files/wandb-summary.json"
       ]
     },
+    "M7_SEResNet_Full::temp_T": {
+      "method": "M7_SEResNet_Full",
+      "metric": "temp_T",
+      "n_seeds": 3,
+      "mean": 0.8192,
+      "std": 0.0008544003745317695,
+      "ci_lo": 0.8170773805043453,
+      "ci_hi": 0.8213226194956548,
+      "per_seed": {
+        "42": 0.8191,
+        "43": 0.8201,
+        "44": 0.8184
+      },
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s44/files/wandb-summary.json"
+      ]
+    },
     "M7_SEResNet_Full::test_acc": {
       "method": "M7_SEResNet_Full",
       "metric": "test_acc",
@@ -1544,6 +1696,16 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M0_Linear_s44/files/wandb-summary.json"
       ]
     },
+    "\\vlCMLinearTempT": {
+      "method": "M0_Linear",
+      "metric": "temp_T",
+      "value": "1.4978$\\pm$0.0529",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M0_Linear_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M0_Linear_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M0_Linear_s44/files/wandb-summary.json"
+      ]
+    },
     "\\vlCMLinearTestAcc": {
       "method": "M0_Linear",
       "metric": "test_acc",
@@ -1620,6 +1782,16 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M1_PlainCNN_s42/events.out.tfevents.cifar10.M1_PlainCNN.s42",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M1_PlainCNN_s43/events.out.tfevents.cifar10.M1_PlainCNN.s43",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M1_PlainCNN_s44/events.out.tfevents.cifar10.M1_PlainCNN.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlCMPlaincnnTempT": {
+      "method": "M1_PlainCNN",
+      "metric": "temp_T",
+      "value": "1.1669$\\pm$0.0468",
+      "sources": [
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s42/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s43/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M1_PlainCNN_s44/files/wandb-summary.json"
@@ -1706,6 +1878,16 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M2_ResNet_Base_s44/files/wandb-summary.json"
       ]
     },
+    "\\vlCMResnetBaseTempT": {
+      "method": "M2_ResNet_Base",
+      "metric": "temp_T",
+      "value": "2.6460$\\pm$0.1037",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M2_ResNet_Base_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M2_ResNet_Base_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M2_ResNet_Base_s44/files/wandb-summary.json"
+      ]
+    },
     "\\vlCMResnetBaseTestAcc": {
       "method": "M2_ResNet_Base",
       "metric": "test_acc",
@@ -1782,6 +1964,16 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M3_ResNet_Aug_s42/events.out.tfevents.cifar10.M3_ResNet_Aug.s42",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M3_ResNet_Aug_s43/events.out.tfevents.cifar10.M3_ResNet_Aug.s43",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M3_ResNet_Aug_s44/events.out.tfevents.cifar10.M3_ResNet_Aug.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlCMResnetAugTempT": {
+      "method": "M3_ResNet_Aug",
+      "metric": "temp_T",
+      "value": "1.5584$\\pm$0.0720",
+      "sources": [
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s42/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s43/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M3_ResNet_Aug_s44/files/wandb-summary.json"
@@ -1868,6 +2060,16 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M4_ResNet_Aug_Cosine_s44/files/wandb-summary.json"
       ]
     },
+    "\\vlCMResnetAugCosineTempT": {
+      "method": "M4_ResNet_Aug_Cosine",
+      "metric": "temp_T",
+      "value": "1.4338$\\pm$0.0128",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M4_ResNet_Aug_Cosine_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M4_ResNet_Aug_Cosine_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M4_ResNet_Aug_Cosine_s44/files/wandb-summary.json"
+      ]
+    },
     "\\vlCMResnetAugCosineTestAcc": {
       "method": "M4_ResNet_Aug_Cosine",
       "metric": "test_acc",
@@ -1944,6 +2146,16 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M5_ResNet_LS_s42/events.out.tfevents.cifar10.M5_ResNet_LS.s42",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M5_ResNet_LS_s43/events.out.tfevents.cifar10.M5_ResNet_LS.s43",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M5_ResNet_LS_s44/events.out.tfevents.cifar10.M5_ResNet_LS.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlCMResnetLsTempT": {
+      "method": "M5_ResNet_LS",
+      "metric": "temp_T",
+      "value": "0.7234$\\pm$0.0074",
+      "sources": [
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s42/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s43/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M5_ResNet_LS_s44/files/wandb-summary.json"
@@ -2030,6 +2242,16 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M6_ResNet_Mixup_s44/files/wandb-summary.json"
       ]
     },
+    "\\vlCMResnetMixupTempT": {
+      "method": "M6_ResNet_Mixup",
+      "metric": "temp_T",
+      "value": "0.6449$\\pm$0.0090",
+      "sources": [
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M6_ResNet_Mixup_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M6_ResNet_Mixup_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M6_ResNet_Mixup_s44/files/wandb-summary.json"
+      ]
+    },
     "\\vlCMResnetMixupTestAcc": {
       "method": "M6_ResNet_Mixup",
       "metric": "test_acc",
@@ -2106,6 +2328,16 @@
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M7_SEResNet_Full_s42/events.out.tfevents.cifar10.M7_SEResNet_Full.s42",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M7_SEResNet_Full_s43/events.out.tfevents.cifar10.M7_SEResNet_Full.s43",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/tb/cifar10/M7_SEResNet_Full_s44/events.out.tfevents.cifar10.M7_SEResNet_Full.s44",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s42/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s43/files/wandb-summary.json",
+        "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s44/files/wandb-summary.json"
+      ]
+    },
+    "\\vlCMSeresnetFullTempT": {
+      "method": "M7_SEResNet_Full",
+      "metric": "temp_T",
+      "value": "0.8192$\\pm$0.0009",
+      "sources": [
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s42/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s43/files/wandb-summary.json",
         "/home/shawnyang/Documents/VeriLoop/examples/gpu-overnight-research/runs/wandb/cifar10/M7_SEResNet_Full_s44/files/wandb-summary.json"

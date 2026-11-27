@@ -48,14 +48,14 @@ def main():
         if l.strip()
     ]
 
-    # Run ./veriloop bind per dataset so macros, tables, and manifests are auto-generated
+    # Run ./veriloop bind per dataset so macros, tables, and manifests are auto-generated (including temp_T)
     for ds in sorted({r["dataset"] for r in rows}):
         prefix = "vlC" if ds == "cifar10" else "vlF"
         subprocess.run(
             [
                 sys.executable, str(REPO_ROOT / "tools/paper_bind.py"),
                 "--inputs", str(WS / "runs/tb" / ds), str(WS / "runs/wandb" / ds),
-                "--metrics", "val_acc", "test_acc", "test_ece", "cal_ece", "test_nll", "cal_nll",
+                "--metrics", "val_acc", "test_acc", "test_ece", "cal_ece", "test_nll", "cal_nll", "temp_T",
                 "--curve-metric", "val_acc",
                 "--macro-prefix", prefix,
                 "--out-dir", str(WS / "paper/bound" / ds),
@@ -76,7 +76,7 @@ def main():
         "=== VERILOOP OVERNIGHT REAL-GPU STUDY SUMMARY (ZERO OVERRIDES) ===",
         f"RUNS total_runs={len(rows)} gpu={gpu_name} torch={torch_ver} total_gpu_s={total_gpu_s:.1f} ({total_gpu_s/60.0:.2f} min) peak_vram_mb={max_vram:.1f}",
         f"GATES stages_audited={len(gate_rows)} passed={sum(1 for g in gate_rows if g['passed'])}/{len(gate_rows)} "
-        f"total_traced={sum(g['traced'] for g in gate_rows)} total_untraced={sum(g['untraced'] for g in gate_rows)} "
+        f"final_wiki_numbers={gate_rows[-1]['traced'] if gate_rows else 0} total_untraced={sum(g['untraced'] for g in gate_rows)} "
         f"total_ast_high={sum(g['ast_high'] for g in gate_rows)} median_gate_ms={statistics.median(g['gate_elapsed_ms'] for g in gate_rows):.1f}",
         "",
     ]
