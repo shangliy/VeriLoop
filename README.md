@@ -292,7 +292,7 @@ npx skills add shangliy/VeriLoop --list                         # Vercel Skills 
 ```bibtex
 @article{yang2026veriloop,
   title={{VeriLoop}: Deterministic Evidence Gates and Path-Isolated Cross-Model Auditing for Autonomous Research},
-  author={Yang, Shanglin and Shi, Zhan},
+  author={Yang, Shanglin and Shi, Zhan and Fang, Yi and Liu, Yuhong},
   year={2026},
   note={Preprint},
   url={https://github.com/shangliy/VeriLoop}
