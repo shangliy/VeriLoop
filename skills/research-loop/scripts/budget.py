@@ -19,10 +19,16 @@ DEFAULT_PRICING = {
     # Anthropic Claude
     "claude-sonnet-4-6": (3.00, 15.00),
     "claude-sonnet-4-5": (3.00, 15.00),
+    "claude-sonnet": (3.00, 15.00),
     "sonnet": (3.00, 15.00),
+    "claude-opus-5-5": (15.00, 75.00),
     "claude-opus-4-6": (15.00, 75.00),
+    "claude-opus-4-5": (15.00, 75.00),
+    "claude-opus-4-1": (15.00, 75.00),
+    "claude-opus": (15.00, 75.00),
     "opus": (15.00, 75.00),
     "claude-haiku-4-5": (0.80, 4.00),
+    "claude-haiku": (0.80, 4.00),
     "haiku": (0.80, 4.00),
     "claude-3-5-sonnet-20241022": (3.00, 15.00),
     # OpenAI

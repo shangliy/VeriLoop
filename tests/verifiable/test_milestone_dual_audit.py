@@ -4,10 +4,15 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[2]
 MDA_SCRIPT = ROOT / "skills/milestone-dual-audit/scripts/milestone_dual_audit.py"
 VERILOOP_CLI = ROOT / "veriloop"
+sys.path.insert(0, str(ROOT / "skills/research-loop/scripts"))
+sys.path.insert(0, str(MDA_SCRIPT.parent))
+import budget  # noqa: E402
+import milestone_dual_audit as mda  # noqa: E402
 
 
 class TestMilestoneDualAudit(unittest.TestCase):
@@ -204,6 +209,57 @@ class TestMilestoneDualAudit(unittest.TestCase):
             plan = json.loads(list(out_dir.glob("*_action_plan.json"))[0].read_text(encoding="utf-8"))
             self.assertEqual(plan["merged_decision"], "APPROVE")
             self.assertTrue(plan["gate_passed"])
+
+    def test_budget_circuit_breaker_and_claude_cli_fail_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            td_p = Path(td)
+            ws, out_dir = self._make_workspace(td_p)
+            bf = td_p / "budget.json"
+            budget.record_call(str(bf), "claude-cli", "opus", "milestone", "M1", 100, 50, default_limit=10.0, actual_cost_usd=10.0)
+            ok_json = td_p / "ok.json"
+            ok_json.write_text(json.dumps({"overall_decision": "APPROVE", "findings": []}), encoding="utf-8")
+            r = subprocess.run(
+                [
+                    sys.executable, str(MDA_SCRIPT),
+                    "--milestone", "M2-check",
+                    "--workspace", str(ws),
+                    "--artifacts", "report.md",
+                    "--claude-backend", "mock", "--mock-claude", str(ok_json),
+                    "--gemini-backend", "skip",
+                    "--budget-file", str(bf),
+                    "--budget-limit", "10.0",
+                    "--out-dir", str(out_dir),
+                ],
+                capture_output=True, text=True,
+            )
+            self.assertEqual(r.returncode, 1)
+            self.assertIn("BUDGET_EXCEEDED", r.stderr)
+
+            # invoke_claude_cli must use model-aware $5.00 cap for opus and fail closed on error_max_budget_usd
+            err_proc = subprocess.CompletedProcess(
+                args=["claude"], returncode=0,
+                stdout=json.dumps({"subtype": "error_max_budget_usd", "is_error": True, "total_cost_usd": 2.52}),
+                stderr="",
+            )
+            with mock.patch.object(mda.subprocess, "run", return_value=err_proc) as mocked_run:
+                with self.assertRaises(RuntimeError) as ctx:
+                    mda.invoke_claude_cli("prompt", "opus", ws, 60)
+            self.assertIn("error_max_budget_usd", str(ctx.exception))
+            cmd = mocked_run.call_args[0][0]
+            self.assertEqual(cmd[cmd.index("--max-budget-usd") + 1], "5.00")
+
+            ok_proc = subprocess.CompletedProcess(
+                args=["claude"], returncode=0,
+                stdout=json.dumps({
+                    "subtype": "success", "is_error": False, "result": '{"overall_decision": "APPROVE"}',
+                    "total_cost_usd": 1.45, "usage": {"input_tokens": 500, "output_tokens": 120},
+                }),
+                stderr="",
+            )
+            with mock.patch.object(mda.subprocess, "run", return_value=ok_proc):
+                raw, meta = mda.invoke_claude_cli("prompt", "opus", ws, 60, max_call_usd=4.5)
+            self.assertIn("APPROVE", raw)
+            self.assertAlmostEqual(meta["cost_usd"], 1.45, places=4)
 
 
 if __name__ == "__main__":

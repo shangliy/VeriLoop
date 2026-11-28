@@ -24,7 +24,7 @@
 
 <br />
 
-**VeriLoop** 是一套面向实战的、零外部依赖的**全栈自主科研基础设施**——既能端到端跑通论文解析、GPU 沙箱训练与顶会稿件生成，又能把论文中的每一组数字、代码路径与引用文献精确校验到磁盘字节。核心引擎 100% 基于 Python 3.10+ 标准库（`0` 第三方依赖冲突，Ubuntu + macOS `63/63` CI 绿灯），原生兼容 **Claude Code / Codex CLI / Gemini CLI / OpenCode 与任意 LLM 后端**：
+**VeriLoop** 是一套面向实战的、零外部依赖的**全栈自主科研基础设施**——既能端到端跑通论文解析、GPU 沙箱训练与顶会稿件生成，又能把论文中的每一组数字、代码路径与引用文献精确校验到磁盘字节。核心引擎 100% 基于 Python 3.10+ 标准库（`0` 第三方依赖冲突，Ubuntu + macOS `68/68` CI 绿灯），原生兼容 **Claude Code / Codex CLI / Gemini CLI / OpenCode 与任意 LLM 后端**：
 
 - **全栈自主科研 OS（`ingest` → `sandbox` → `research` → `bind` → `gate` → `studio`）：** 统一支持 **Level 1（Idea + 基线仓库）** 与 **Level 2（arXiv 论文 → 公式↔AST 静态对齐 → Gap → 创新）** 双入口，内置 `90+` 模块化科研生命周期技能与 `state.json` 断点续跑调度。
 - **单卡消费级 GPU 三领域实跑验证（`115` 次 RTX 3060 Ti 闭环）：** 完整跑通并编译独立 ICML PDF 涵盖 **CV（42 次）**、**GNN（60 次，自动诊断并修复 8 层 GCNII 塌缩 `+54 pp`）** 与 **RecSys（13 次，自动诊断并修复 SimGCL 过正则塌缩超越全部基线）**，全部 **`416/416（100.0%）`** PDF 展开数值精确溯源。
@@ -46,7 +46,7 @@
 <span id="news"></span>
 ## 最新动态（News）
 
-- **`[v5.0]`** 正式发布全栈 v5 引擎（`ingest`、`sandbox` + `docker/Dockerfile.gpu`、`research` Level-1/2 编排器、`studio` SSE 驾驶舱与 `compare-bench` 外部审计器）；在本地 RTX 3060 Ti 扩展至 **CV + GNN + RecSys 三领域 `115` 次实跑（3 篇独立 ICML PDF，`416/416` 溯源）**，完成对 7 篇 `HKUDS/AI-Researcher` 官方示例的头对头法医审计（`25` 处无日志指标，`0/79` AST 误报），并上线全新视觉改版的 [项目主页](https://shangliy.github.io/VeriLoop/)。Ubuntu + macOS 跨平台 CI 通过 **`63/63` 核心套件（`0` 失败）**。
+- **`[v5.0]`** 正式发布全栈 v5 引擎（`ingest`、`sandbox` + `docker/Dockerfile.gpu`、`research` Level-1/2 编排器、`studio` SSE 驾驶舱与 `compare-bench` 外部审计器）；在本地 RTX 3060 Ti 扩展至 **CV + GNN + RecSys 三领域 `115` 次实跑（3 篇独立 ICML PDF，`416/416` 溯源）**，完成对 7 篇 `HKUDS/AI-Researcher` 官方示例的头对头法医审计（`25` 处无日志指标，`0/79` AST 误报），并上线全新视觉改版的 [项目主页](https://shangliy.github.io/VeriLoop/)。Ubuntu + macOS 跨平台 CI 通过 **`68/68` 核心套件（`0` 失败）**。
 - **`[v4.0]`** 跑通 **42 次本地 RTX 3060 Ti 真实 GPU 过夜 CV 科研案例**（`92.47 min`、`195/195` PDF 展开数值 100% 溯源、`14/14` 阶段 Wiki 自洽检查、`10/10` 在线文献核验），上线字节确定性 `paper_bind.py`、`review_ui.py` 与 `pdf_audit.py`。
 - **`[v2.0–v3.0]`** 公开提交零事后覆盖冻结基准（`16` 个 SHA-256 工作区、`245` 次配对审稿 + `21` 个严格未见场景），原生集成 [Best-Paper-Writing-Skill](https://github.com/shangliy/Best-Paper-Writing-Skill)（CC BY 4.0）并发布自审通过的配套论文（[arXiv 版](paper/main.pdf) · [ICML 8 页双盲版](paper/main_icml2027.pdf)）。
 

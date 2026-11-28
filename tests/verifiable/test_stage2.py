@@ -5,6 +5,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 SCRIPTS = Path(__file__).resolve().parents[2] / "skills/research-loop/scripts"
 sys.path.insert(0, str(SCRIPTS))
@@ -33,6 +34,20 @@ class TestBudgetLedger(unittest.TestCase):
         # $2.50 trips the $20.00 circuit breaker
         with self.assertRaises(budget.BudgetExceededError):
             budget.check_budget(self.fp, 2.50, default_limit=20.0)
+
+    def test_opus_pricing_prefix_and_model_aware_cli_budget(self):
+        # Newer Opus versions must use Opus pricing (15/75), not generic fallback (5/20)
+        self.assertAlmostEqual(budget.estimate_cost("claude-opus-5-5", 1_000_000, 1_000_000), 90.0, places=4)
+        self.assertEqual(run_audit.resolve_cli_call_budget("opus", None, 10.0), 5.0)
+        self.assertEqual(run_audit.resolve_cli_call_budget("sonnet", None, 10.0), 2.0)
+        self.assertEqual(run_audit.resolve_cli_call_budget("opus", None, 10.0, max_call_usd=4.5), 4.5)
+        # Bounded by remaining ledger limit_usd even when budget_limit default is larger
+        budget.record_call(self.fp, "claude-cli", "opus", "single", "r.md", 100, 50, default_limit=10.0, actual_cost_usd=6.63)
+        self.assertAlmostEqual(run_audit.resolve_cli_call_budget("opus", self.fp, 50.0), 3.37, places=2)
+        # Exhausted ledger trips BudgetExceededError before launching CLI
+        budget.record_call(self.fp, "claude-cli", "opus", "single", "r.md", 100, 50, default_limit=10.0, actual_cost_usd=3.37)
+        with self.assertRaises(budget.BudgetExceededError):
+            run_audit.resolve_cli_call_budget("opus", self.fp, 50.0)
 
 
 class TestRunAudit(unittest.TestCase):
@@ -106,6 +121,59 @@ class TestRunAudit(unittest.TestCase):
         st2 = run_audit.detect_stagnation(str(self.ws / "audits"), ["[C1] Brand new leakage bug"])
         self.assertFalse(st2["stagnant"])
         self.assertEqual(st2["novel_count"], 1)
+
+    def test_claude_cli_fail_closed_on_max_budget_and_records_spend(self):
+        bf = str(self.ws / "budget_cli.json")
+        fake_stdout = json.dumps({
+            "type": "result",
+            "subtype": "error_max_budget_usd",
+            "is_error": True,
+            "result": "",
+            "total_cost_usd": 2.52,
+            "usage": {"input_tokens": 1200, "output_tokens": 300},
+            "errors": ["Reached maximum budget of $2.00"],
+        })
+        fake_proc = subprocess.CompletedProcess(args=["claude"], returncode=0, stdout=fake_stdout, stderr="")
+        with mock.patch.object(run_audit.subprocess, "run", return_value=fake_proc) as mocked_run:
+            with self.assertRaises(RuntimeError) as ctx:
+                run_audit.call_llm(
+                    "claude-cli", "opus", "sys", "usr", 4000, bf, 10.0, "single", "r1.md",
+                    workspace_dir=str(self.ws),
+                )
+        self.assertIn("error_max_budget_usd", str(ctx.exception))
+        cmd = mocked_run.call_args[0][0]
+        self.assertIn("--max-budget-usd", cmd)
+        self.assertEqual(cmd[cmd.index("--max-budget-usd") + 1], "5.00")
+        self.assertIn("--add-dir", cmd)
+        self.assertEqual(cmd[cmd.index("--add-dir") + 1], str(self.ws))
+        # Spend must still be recorded even when claude-cli hits max budget
+        db = budget.load_ledger(bf, default_limit=10.0)
+        self.assertAlmostEqual(db["spent_usd"], 2.52, places=4)
+
+    def test_claude_cli_success_honors_max_call_usd_and_workspace(self):
+        bf = str(self.ws / "budget_ok.json")
+        fake_stdout = json.dumps({
+            "type": "result",
+            "subtype": "success",
+            "is_error": False,
+            "result": '# Audit\n```json\n{"overall_decision": "APPROVE_SUPPORTED"}\n```',
+            "total_cost_usd": 1.62,
+            "usage": {"input_tokens": 900, "output_tokens": 250},
+        })
+        fake_proc = subprocess.CompletedProcess(args=["claude"], returncode=0, stdout=fake_stdout, stderr="")
+        with mock.patch.object(run_audit.subprocess, "run", return_value=fake_proc) as mocked_run:
+            text, in_tok, out_tok = run_audit.call_llm(
+                "claude-cli", "opus", "sys", "usr", 4000, bf, 10.0, "single", "r1.md",
+                workspace_dir=str(self.ws), max_call_usd=4.5,
+            )
+        cmd = mocked_run.call_args[0][0]
+        self.assertEqual(cmd[cmd.index("--max-budget-usd") + 1], "4.50")
+        self.assertEqual(mocked_run.call_args[1]["cwd"], str(self.ws))
+        self.assertIn("APPROVE_SUPPORTED", text)
+        self.assertEqual(in_tok, 900)
+        self.assertEqual(out_tok, 250)
+        db = budget.load_ledger(bf, default_limit=10.0)
+        self.assertAlmostEqual(db["spent_usd"], 1.62, places=4)
 
 
 class TestRunSeeds(unittest.TestCase):

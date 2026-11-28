@@ -111,6 +111,55 @@ class TestVerifiableGateCLI(unittest.TestCase):
         bad_data = json.loads((self.ws / "audits/gate_bad.json").read_text())
         self.assertTrue(any("wrong_logs=1" in r for r in bad_data["block_reasons"]), bad_data["block_reasons"])
 
+    def test_gate_max_call_usd_passthrough_and_fail_closed_on_missing_verdict(self):
+        (self.ws / "out/run.txt").write_text("ACC 0.9123\n")
+        (self.ws / "report/report.md").write_text("Acc is 0.9123 (`out/run.txt`).\n")
+        # 1. dry-run accepts --max-call-usd and passes cleanly
+        p_dry = subprocess.run(
+            [
+                sys.executable, GATE,
+                "-w", str(self.ws),
+                "--report", "report/report.md",
+                "--logs", "out",
+                "--reviewer-provider", "dry-run",
+                "--reviewer-model", "dry-run",
+                "--max-call-usd", "4.5",
+                "--out-json", "audits/gate_dry.json",
+            ],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(p_dry.returncode, 0, p_dry.stdout + p_dry.stderr)
+
+        # 2. live reviewer returning rc=0 without overall_decision JSON must fail closed
+        sys.path.insert(0, str(ROOT / "tools"))
+        import verifiable_gate as vg
+        from unittest import mock
+
+        orig_run_cmd = vg.run_cmd
+
+        def fake_run_cmd(cmd, cwd=None):
+            if any("run_audit.py" in str(x) for x in cmd):
+                self.assertIn("--max-call-usd", cmd)
+                self.assertEqual(cmd[cmd.index("--max-call-usd") + 1], "4.5")
+                out_path = Path(cmd[cmd.index("--out") + 1])
+                out_path.write_text("Truncated output with no verdict JSON.", encoding="utf-8")
+                return 0, "wrote truncated", ""
+            return orig_run_cmd(cmd, cwd=cwd)
+
+        argv = [
+            "verifiable_gate.py", "-w", str(self.ws),
+            "--report", "report/report.md", "--logs", "out",
+            "--reviewer-provider", "claude-cli", "--reviewer-model", "opus",
+            "--max-call-usd", "4.5", "--out-json", "audits/gate_live.json",
+        ]
+        with mock.patch.object(vg, "run_cmd", side_effect=fake_run_cmd), mock.patch.object(sys, "argv", argv):
+            with self.assertRaises(SystemExit) as cm:
+                vg.main()
+        self.assertEqual(cm.exception.code, 2)
+        live_data = json.loads((self.ws / "audits/gate_live.json").read_text())
+        self.assertTrue(live_data["blocked"])
+        self.assertTrue(any("missing overall_decision" in r for r in live_data["block_reasons"]))
+
 
 if __name__ == "__main__":
     unittest.main()

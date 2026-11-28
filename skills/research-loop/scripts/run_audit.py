@@ -287,8 +287,27 @@ def compute_mechanical_verdict(rulings, preaudit):
     return verdicts
 
 
+def resolve_cli_call_budget(model, budget_file, budget_limit, max_call_usd=None):
+    """Compute safe per-call USD cap for CLI reviewers (model-aware + ledger-bounded)."""
+    default_cap = 5.0 if "opus" in (model or "").lower() else 2.0
+    cap = float(max_call_usd) if max_call_usd is not None else default_cap
+    if cap <= 0:
+        raise ValueError(f"--max-call-usd must be positive, got {cap}")
+    if budget_file:
+        db = budget.load_ledger(budget_file, default_limit=budget_limit)
+        effective_limit = float(db["limit_usd"])
+        rem_ledger = effective_limit - float(db["spent_usd"])
+    else:
+        rem_ledger = float(budget_limit)
+    if rem_ledger < 0.01:
+        raise budget.BudgetExceededError(
+            f"Budget circuit breaker tripped before CLI call: remaining=${max(0.0, rem_ledger):.4f} < $0.01"
+        )
+    return round(min(cap, rem_ledger), 2)
+
+
 def call_llm(provider, model, system, user, max_output_tokens, budget_file, budget_limit, role, task_id,
-             workspace_dir=None):
+             workspace_dir=None, max_call_usd=None):
     est_in = max(1, (len(system) + len(user)) // 4)
     est_cost = budget.estimate_cost(model, est_in, max_output_tokens)
     if budget_file:
@@ -367,7 +386,7 @@ def call_llm(provider, model, system, user, max_output_tokens, budget_file, budg
         return text, in_tok, out_tok
 
     if provider == "claude-cli":
-        rem_usd = max(0.25, min(2.0, budget_limit - (budget.load_ledger(budget_file, budget_limit)["spent_usd"] if budget_file else 0.0)))
+        rem_usd = resolve_cli_call_budget(model, budget_file, budget_limit, max_call_usd=max_call_usd)
         cmd = [
             "claude", "-p", "--output-format", "json", "--no-session-persistence",
             "--permission-mode", "plan",
@@ -395,20 +414,44 @@ def call_llm(provider, model, system, user, max_output_tokens, budget_file, budg
                 _time.sleep(10)
         if p.returncode != 0:
             raise RuntimeError(f"claude-cli failed: {last_err}")
+        subtype = ""
+        is_error = False
+        err_detail = ""
         try:
             body = json.loads(p.stdout)
-            text = body.get("result") or body.get("text") or p.stdout
-            usage = body.get("usage", {})
-            in_tok = int(usage.get("input_tokens", 0)) + int(usage.get("cache_creation_input_tokens", 0)) + int(usage.get("cache_read_input_tokens", 0))
-            if in_tok <= 0:
-                in_tok = est_in
-            out_tok = int(usage.get("output_tokens", max(1, len(text) // 4)))
-            actual_cost = body.get("total_cost_usd")
+            if isinstance(body, dict):
+                subtype = str(body.get("subtype") or "")
+                is_error = bool(body.get("is_error"))
+                errs = body.get("errors")
+                if isinstance(errs, list) and errs:
+                    err_detail = "; ".join(str(x) for x in errs[:3])
+                text = body.get("result") or body.get("text") or ""
+                usage = body.get("usage") or {}
+                in_tok = (
+                    int(usage.get("input_tokens", 0))
+                    + int(usage.get("cache_creation_input_tokens", 0))
+                    + int(usage.get("cache_read_input_tokens", 0))
+                )
+                if in_tok <= 0:
+                    in_tok = est_in
+                out_tok = int(usage.get("output_tokens", max(1, len(text) // 4)))
+                actual_cost = body.get("total_cost_usd")
+            else:
+                text, in_tok, out_tok, actual_cost = p.stdout, est_in, max(1, len(p.stdout) // 4), None
         except json.JSONDecodeError:
             text, in_tok, out_tok, actual_cost = p.stdout, est_in, max(1, len(p.stdout) // 4), None
         if budget_file:
             budget.record_call(budget_file, provider, model, role, task_id, in_tok, out_tok,
                                default_limit=budget_limit, actual_cost_usd=actual_cost)
+        if is_error or subtype.startswith("error_"):
+            hint = " (raise --max-call-usd for heavy multi-tool Opus audits)" if subtype == "error_max_budget_usd" else ""
+            detail = err_detail or str(text)[:240]
+            raise RuntimeError(
+                f"claude-cli failed closed (subtype={subtype or 'error'}, "
+                f"cost_usd={actual_cost}, max_budget_usd={rem_usd:.2f}){hint}: {detail}"
+            )
+        if not str(text).strip():
+            raise RuntimeError("claude-cli returned empty audit output")
         return text, in_tok, out_tok
 
     if provider == "codex-cli":
@@ -486,6 +529,8 @@ def main():
     ap.add_argument("--judge-model", help="second reviewer model for kill-adjudicate stage 2")
     ap.add_argument("--budget-file", help="path to budget_ledger.json")
     ap.add_argument("--budget-limit", type=float, default=50.0)
+    ap.add_argument("--max-call-usd", type=float, default=None,
+                    help="per-call USD cap for CLI reviewers like claude-cli (default: $5.00 for opus, $2.00 otherwise)")
     ap.add_argument("--compute-budget", default="1x 8GB GPU, <=$50 API budget")
     ap.add_argument("--out", help="output markdown path (default: <workspace>/audits/<date>-audit.md)")
     a = ap.parse_args()
@@ -505,6 +550,7 @@ def main():
         out_text, in_tok, out_tok = call_llm(
             a.provider, a.model, sys_p, usr_p, preset["max_output_tokens"],
             a.budget_file, a.budget_limit, a.mode, task_id,
+            workspace_dir=a.workspace, max_call_usd=a.max_call_usd,
         )
         final_md = out_text
     else:
@@ -516,6 +562,7 @@ def main():
         attacks_text, in1, out1 = call_llm(
             a.provider, a.model, sys_p, usr_p, preset["max_output_tokens"],
             a.budget_file, a.budget_limit, "kill-attack", task_id,
+            workspace_dir=a.workspace, max_call_usd=a.max_call_usd,
         )
         claims_txt = _read_bounded(os.path.join(a.workspace, "claims.json"), 20_000)
         j_sys, j_usr = build_adjudicate_prompt(attacks_text, preaudit, claims_txt)
@@ -524,6 +571,7 @@ def main():
         adj_text, in2, out2 = call_llm(
             j_prov, j_mod, j_sys, j_usr, preset["max_output_tokens"],
             a.budget_file, a.budget_limit, "kill-adjudicate", task_id,
+            workspace_dir=a.workspace, max_call_usd=a.max_call_usd,
         )
         rulings = _extract_json_block(adj_text).get("rulings", [])
         verdicts = compute_mechanical_verdict(rulings, preaudit)

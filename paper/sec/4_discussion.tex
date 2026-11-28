@@ -41,4 +41,4 @@ Five boundaries scope our findings:
 (2) \emph{In-sample recall \& unmeasured unseen recall:} Locked v2 rules (\texttt{b897378}) were finalized with the 16 workspaces visible, while 18/18 unseen runs avoided traps, calibrating out-of-sample FPR rather than recall.
 (3) \emph{Post-v2 tracer updates:} Shipped v3 \texttt{trace\_numbers.py} (\texttt{--data}, unsigned prose polarity) awaits a fresh held-out benchmark before claiming v3 FP reductions.
 (4) \emph{Incomplete cells:} \texttt{codex-cli} \texttt{with\_summary} stopped at 5/48 trials (quota cap; 43 errors retained), and non-interactive \texttt{gemini} CLI awaits cloud setup.
-(5) \emph{Workload scope:} Controlled adversarial benchmarks remain CPU-only; while Appendix~\ref{app:gpu_case_study} demonstrates live VeriLoop governance on a 42-run RTX 3060~Ti study, multi-node distributed GPU workloads remain future work.
+(5) \emph{Workload scope:} Controlled adversarial benchmarks remain CPU-only; while Appendices~\ref{app:gpu_case_study}--\ref{app:external_audit} demonstrate live VeriLoop governance across 115 RTX 3060~Ti runs (CV, GNN, and RecSys), multi-node distributed GPU workloads remain future work.

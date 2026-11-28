@@ -270,11 +270,22 @@ def resolve_backend(kind: str, requested: str) -> str:
     return "unavailable"
 
 
-def invoke_claude_cli(prompt: str, model: str, workspace: Path, timeout: int) -> tuple[str, dict]:
+def invoke_claude_cli(
+    prompt: str,
+    model: str,
+    workspace: Path,
+    timeout: int,
+    max_call_usd: float | None = None,
+) -> tuple[str, dict]:
+    cap_usd = max_call_usd if max_call_usd is not None else (5.0 if "opus" in (model or "").lower() else 2.0)
     cmd = [
         "claude", "-p",
-        "--output-format", "text",
-        "--allowedTools", "Read", "Grep", "Glob",
+        "--output-format", "json",
+        "--no-session-persistence",
+        "--permission-mode", "plan",
+        "--tools", "Read,Grep,Glob",
+        "--add-dir", str(workspace),
+        "--max-budget-usd", f"{cap_usd:.2f}",
     ]
     if model and model.lower() not in ("auto", "latest", "default"):
         cmd.extend(["--model", model])
@@ -288,7 +299,37 @@ def invoke_claude_cli(prompt: str, model: str, workspace: Path, timeout: int) ->
     )
     if p.returncode != 0:
         raise RuntimeError(f"claude-cli failed (rc={p.returncode}): {p.stderr[:800]}")
-    return p.stdout, {"backend": "claude-cli", "model": model, "cost_usd": 0.0}
+    try:
+        body = json.loads(p.stdout)
+    except json.JSONDecodeError:
+        return p.stdout, {"backend": "claude-cli", "model": model, "cost_usd": 0.0}
+    if not isinstance(body, dict):
+        return p.stdout, {"backend": "claude-cli", "model": model, "cost_usd": 0.0}
+    usage = body.get("usage") or {}
+    in_tok = (
+        int(usage.get("input_tokens", 0))
+        + int(usage.get("cache_creation_input_tokens", 0))
+        + int(usage.get("cache_read_input_tokens", 0))
+    )
+    out_tok = int(usage.get("output_tokens", 0))
+    cost = float(body.get("total_cost_usd") or 0.0)
+    subtype = str(body.get("subtype") or "")
+    is_error = bool(body.get("is_error"))
+    text = body.get("result") or body.get("text") or ""
+    if is_error or subtype.startswith("error_"):
+        errs = body.get("errors")
+        detail = "; ".join(str(x) for x in errs[:3]) if isinstance(errs, list) and errs else str(text)[:240]
+        raise RuntimeError(
+            f"claude-cli failed closed (subtype={subtype or 'error'}, "
+            f"cost_usd={cost:.4f}, max_budget_usd={cap_usd:.2f}): {detail}"
+        )
+    return text, {
+        "backend": "claude-cli",
+        "model": model,
+        "input_tokens": in_tok,
+        "output_tokens": out_tok,
+        "cost_usd": round(cost, 6),
+    }
 
 
 def invoke_anthropic_api(prompt: str, model: str, timeout: int) -> tuple[str, dict]:
@@ -391,6 +432,7 @@ def run_single_reviewer(
     workspace: Path,
     timeout: int,
     mock_path: str | None,
+    max_call_usd: float | None = None,
 ) -> tuple[dict, dict]:
     if backend == "mock":
         if not mock_path:
@@ -401,7 +443,7 @@ def run_single_reviewer(
         }
     if kind == "claude":
         if backend == "claude-cli":
-            raw, meta = invoke_claude_cli(prompt, model, workspace, timeout)
+            raw, meta = invoke_claude_cli(prompt, model, workspace, timeout, max_call_usd=max_call_usd)
         elif backend == "anthropic-api":
             raw, meta = invoke_anthropic_api(prompt, model, timeout)
         else:
@@ -664,6 +706,7 @@ def main():
     ap.add_argument("--out-dir", default=None, help="Output directory (default: <workspace>/audits/milestones)")
     ap.add_argument("--budget-file", default=None, help="Optional budget.py JSON ledger path")
     ap.add_argument("--budget-limit", type=float, default=50.0, help="Hard USD budget cap (default: 50.0)")
+    ap.add_argument("--max-call-usd", type=float, default=None, help="Per-call USD cap for claude-cli (default: $5.00 opus, $2.00 other)")
     ap.add_argument("--max-file-chars", type=int, default=24000)
     ap.add_argument("--max-total-chars", type=int, default=120000)
     ap.add_argument("--timeout", type=int, default=300)
@@ -675,14 +718,17 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # Budget circuit breaker check before any LLM call
+    rem_budget_usd = float(args.budget_limit)
     if not args.dry_run and args.budget_file and budget_mod is not None:
         bf = Path(args.budget_file)
         if bf.exists():
-            data = json.loads(bf.read_text(encoding="utf-8"))
-            spent = float(data.get("total_usd", 0.0))
-            if spent >= args.budget_limit:
+            db = budget_mod.load_ledger(str(bf), default_limit=args.budget_limit)
+            spent = float(db.get("spent_usd", db.get("total_usd", 0.0)))
+            eff_limit = min(float(args.budget_limit), float(db.get("limit_usd", args.budget_limit)))
+            rem_budget_usd = max(0.0, eff_limit - spent)
+            if spent >= eff_limit - 1e-9:
                 print(
-                    f"BUDGET_EXCEEDED: spent ${spent:.4f} >= cap ${args.budget_limit:.2f}; refusing live audit.",
+                    f"BUDGET_EXCEEDED: spent ${spent:.4f} >= cap ${eff_limit:.2f}; refusing live audit.",
                     file=sys.stderr,
                 )
                 sys.exit(1)
@@ -754,12 +800,18 @@ def main():
         print("ERROR: Both Claude and Gemini reviewers were skipped.", file=sys.stderr)
         sys.exit(1)
 
+    claude_call_cap = (
+        min(float(args.max_call_usd), rem_budget_usd)
+        if args.max_call_usd is not None
+        else min(5.0 if "opus" in (args.claude_model or "").lower() else 2.0, rem_budget_usd)
+    )
     results: dict[str, dict] = {}
     metas: dict[str, dict] = {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
         futs = {
             pool.submit(
-                run_single_reviewer, kind, bkd, mdl, prompt, workspace, args.timeout, mock_p
+                run_single_reviewer, kind, bkd, mdl, prompt, workspace, args.timeout, mock_p,
+                claude_call_cap if kind == "claude" else None,
             ): kind
             for kind, (bkd, mdl, mock_p) in tasks.items()
         }
@@ -775,17 +827,16 @@ def main():
         for kind, meta in metas.items():
             cost = float(meta.get("cost_usd", 0.0))
             if cost > 0:
-                subprocess.run(
-                    [
-                        sys.executable, str(RL_SCRIPTS / "budget.py"),
-                        "--ledger", str(args.budget_file),
-                        "record",
-                        "--provider", meta["backend"],
-                        "--model", str(meta["model"]),
-                        "--cost-usd", str(cost),
-                        "--tag", f"milestone_{safe_ms}_{kind}",
-                    ],
-                    capture_output=True,
+                budget_mod.record_call(
+                    str(args.budget_file),
+                    meta["backend"],
+                    str(meta["model"]),
+                    f"milestone_{safe_ms}_{kind}",
+                    args.milestone,
+                    int(meta.get("input_tokens", 0)),
+                    int(meta.get("output_tokens", 0)),
+                    default_limit=args.budget_limit,
+                    actual_cost_usd=cost,
                 )
 
     plan = merge_dual_reviews(

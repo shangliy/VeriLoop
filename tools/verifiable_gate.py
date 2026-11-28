@@ -51,6 +51,8 @@ def main():
     ap.add_argument("--reviewer-model", default="default", help="Model name for Layer-2 reviewer")
     ap.add_argument("--budget-file", help="Optional budget_ledger.json path for Layer-2 circuit breaker")
     ap.add_argument("--budget-limit", type=float, default=10.0, help="Hard USD cap for Layer-2 reviewer")
+    ap.add_argument("--max-call-usd", type=float, default=None,
+                    help="Optional per-call USD cap for Layer-2 CLI reviewer (default: $5.00 opus, $2.00 other)")
     ap.add_argument("--out-json", help="Optional path to save structured gate report JSON")
     a = ap.parse_args()
 
@@ -159,12 +161,14 @@ def main():
             cmd_xmr.extend(["--logs", lp])
         for sp in scripts_p:
             cmd_xmr.extend(["--scripts", sp])
+        cmd_xmr.extend(["--budget-limit", str(a.budget_limit)])
         if a.budget_file:
-            cmd_xmr.extend(["--budget-file", str(Path(a.budget_file) if Path(a.budget_file).is_absolute() else (ws / a.budget_file)),
-                            "--budget-limit", str(a.budget_limit)])
+            cmd_xmr.extend(["--budget-file", str(Path(a.budget_file) if Path(a.budget_file).is_absolute() else (ws / a.budget_file))])
+        if a.max_call_usd is not None:
+            cmd_xmr.extend(["--max-call-usd", str(a.max_call_usd)])
         rc, out, err = run_cmd(cmd_xmr)
         review_verdict = None
-        if audit_out.is_file():
+        if rc == 0 and audit_out.is_file():
             import re as _re
             txt = audit_out.read_text(encoding="utf-8", errors="ignore")
             m = _re.search(r'"overall_decision"\s*:\s*"([A-Z_]+)"', txt)
@@ -175,11 +179,14 @@ def main():
             "review_path": str(audit_out),
             "overall_decision": review_verdict,
             "stdout": out[-1000:],
+            "stderr": err[-1000:],
         }
-        if rc != 0 or (review_verdict and review_verdict.startswith("BLOCK_")):
+        missing_live_verdict = (a.reviewer_provider not in ("none", "dry-run") and review_verdict is None)
+        if rc != 0 or missing_live_verdict or (review_verdict and review_verdict.startswith("BLOCK_")):
             result["blocked"] = True
+            reason_tag = f"decision={review_verdict}" if review_verdict else "missing overall_decision (fail-closed)"
             result["block_reasons"].append(
-                f"path-isolated cross-model audit blocked (decision={review_verdict}, rc={rc}, see {audit_out})"
+                f"path-isolated cross-model audit blocked ({reason_tag}, rc={rc}, see {audit_out})"
             )
 
     if a.out_json:
